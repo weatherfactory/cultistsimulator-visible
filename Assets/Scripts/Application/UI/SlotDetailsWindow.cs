@@ -14,6 +14,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Enums.Elements;
+using Object = UnityEngine.Object;
 
 namespace SecretHistories.UI {
     public class SlotDetailsWindow : AbstractDetailsWindow {
@@ -32,6 +33,8 @@ namespace SecretHistories.UI {
         [Header("Aspect Display")]
         [SerializeField] AspectSetsDisplay aspectsDisplayRequiredAndForbidden;
         [SerializeField] AspectsDisplay aspectsDisplayFlat;
+
+        [SerializeField]Object cardPingFx;
 
         Coroutine infoHighlight;
 
@@ -120,10 +123,10 @@ namespace SecretHistories.UI {
          if (slotSpec != null) {
 				SetSlot(slotSpec);
 				HighlightSlotCompatibleCards(slotSpec);
-            }
-            else if (deckSpec != null) {
-                SetDeck(deckSpec, deckQuantity);
-            }
+         }
+         else if (deckSpec != null) {
+             SetDeck(deckSpec, deckQuantity);
+         }
         }
 
         // SET TOKEN TYPE CONTENT VISUALS
@@ -298,8 +301,7 @@ namespace SecretHistories.UI {
                 foreach (var stack in stacks)
                 {
 
-                    var cardPingPrefab = Resources.Load("/FX/CardPingEffect");
-                    ShowFXonToken(cardPingPrefab, stack.transform);
+                    ShowFXonToken(stack.transform);
                 }
             }
         }
@@ -321,14 +323,11 @@ namespace SecretHistories.UI {
             return stackList;
         }
 
-        private void ShowFXonToken(UnityEngine.Object fx, Transform parent)
+        private void ShowFXonToken(Transform parent)
         {
-            var prefab = Resources.Load(name);
+           
 
-            if (prefab == null)
-                return;
-
-            var obj = Instantiate(prefab) as GameObject;
+            var obj = Instantiate(cardPingFx) as GameObject;
 
             if (obj == null)
                 return;
