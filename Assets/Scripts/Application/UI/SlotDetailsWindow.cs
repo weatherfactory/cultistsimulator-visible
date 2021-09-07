@@ -32,7 +32,6 @@ namespace SecretHistories.UI {
 
         [Header("Aspect Display")]
         [SerializeField] AspectSetsDisplay aspectsDisplayRequiredAndForbidden;
-        [SerializeField] AspectsDisplay aspectsDisplayFlat;
 
         [SerializeField]Object cardPingFx;
 
@@ -170,7 +169,6 @@ namespace SecretHistories.UI {
             ShowSlotIcons(slotSpec.Greedy, slotSpec.Consumes);
             ShowDeckInfos(0); // Make sure the other hint icons are gone
 
-            aspectsDisplayFlat.DisplayAspects(null);
             aspectsDisplayRequiredAndForbidden.AddAspectSet(0, slotSpec.Required);
             aspectsDisplayRequiredAndForbidden.AddAspectSet(1, slotSpec.Forbidden);
         }
@@ -189,7 +187,6 @@ namespace SecretHistories.UI {
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
             ShowDeckInfos(deckQuantity);
 
-            aspectsDisplayFlat.DisplayAspects(null);
             aspectsDisplayRequiredAndForbidden.Clear();
         }
 

@@ -111,10 +111,7 @@ namespace SecretHistories.UI {
                 SetElementCard(_element, _stack);
                 _stack.OnLifetimeSpent += HandleOnTokenDecay;// Add decay listener if we need one
             }
-            else if (slotSpec != null) {
-				SetSlot(slotSpec);
-				HighlightSlotCompatibleCards(slotSpec);
-            }
+
             else if (deckSpec != null) {
                 SetDeck(deckSpec, deckQuantity);
             }
@@ -152,28 +149,6 @@ namespace SecretHistories.UI {
 
         }
 
-        void SetSlot(SphereSpec slotSpec)
-		{
-            ShowImage(null);
-            ShowImageDecayTimer(false);
-
-			string slotHeader		= Watchman.Get<ILocStringProvider>().Get("UI_SLOT");
-			string slotUnnamed		= Watchman.Get<ILocStringProvider>().Get("UI_ASPECT");
-			string defaultSlotDesc	= Watchman.Get<ILocStringProvider>().Get("UI_EMPTYSPACE");
-
-            ShowText(
-                (string.IsNullOrEmpty(slotSpec.Label) ? slotHeader + slotUnnamed : slotHeader + slotSpec.Label),
-                (string.IsNullOrEmpty(slotSpec.Description) ? defaultSlotDesc : slotSpec.Description)
-                );
-            SetTextMargin(false, slotSpec.Greedy || slotSpec.Consumes);
-
-            ShowCardIcons(false, false); // Make sure the other hint icons are gone
-            ShowDeckInfos(0); // Make sure the other hint icons are gone
-
-            aspectsDisplayFlat.DisplayAspects(null);
-            aspectsDisplayRequiredAndForbidden.AddAspectSet(0, slotSpec.Required);
-            aspectsDisplayRequiredAndForbidden.AddAspectSet(1, slotSpec.Forbidden);
-        }
 
         void SetDeck(DeckSpec deckId, int deckQuantity) {
             var sprite = ResourcesManager.GetSpriteForCardBack(deckId.Id);
