@@ -92,6 +92,7 @@ namespace SecretHistories.UI {
 		{
             tokenDetails.ShowElementDetails(element, stack);
             aspectDetails.Hide();
+            slotDetails.Hide();
         }
 
         public void ShowElementDetails(Element element, bool fromDetailsWindow = false) {
@@ -105,9 +106,15 @@ namespace SecretHistories.UI {
             aspectDetails.ShowAspectDetails(element, !fromDetailsWindow);
 
             if (fromDetailsWindow)
-                tokenDetails.ResetTimer(); // ensure the token window timer is restored
-            else 
-                tokenDetails.Hide(); // hide the token window
+            {
+                tokenDetails.ResetTimer(); 
+                slotDetails.ResetTimer();
+            }
+            else
+            {
+                tokenDetails.Hide();
+                slotDetails.Hide();
+            }
         }
         
         public void ShowSlotDetails(SphereSpec slotSpec) {
@@ -119,12 +126,14 @@ namespace SecretHistories.UI {
         public void ShowDeckDetails(DeckSpec deckSpec, int quantity) {
             tokenDetails.ShowDeckDetails(deckSpec, quantity);
             aspectDetails.Hide();
+            slotDetails.Hide();
         }
 
         public void HideDetails()
 		{
             tokenDetails.Hide();
             aspectDetails.Hide();
+            slotDetails.Hide();
         }
 
         public void ShowCustomWindow(CustomNotificationWindowArgs args)
