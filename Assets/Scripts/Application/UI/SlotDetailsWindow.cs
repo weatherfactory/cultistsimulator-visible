@@ -21,7 +21,6 @@ namespace SecretHistories.UI {
 
 
         [Header("Slot Infos")]
-        [SerializeField] GameObject slotInfoHolder;
         [SerializeField] TextMeshProUGUI greedyInfo;
         [SerializeField] TextMeshProUGUI consumesInfo;
         [SerializeField] Image greedyIcon;
@@ -37,10 +36,7 @@ namespace SecretHistories.UI {
 
         Coroutine infoHighlight;
 
-        // These are saved here to make sure we have a ref when we're kicking off the anim
-        Element _element;
-        ElementStack _stack;
-
+   
         SphereSpec slotSpec;
 
         DeckSpec deckSpec;
@@ -63,8 +59,6 @@ namespace SecretHistories.UI {
             //}
 
 
-            this._element = element;
-            this._stack = stack; // To be able to update the card's remaining time
             this.slotSpec = null;
             this.deckSpec = null;
             this.deckQuantity = 0;
@@ -78,9 +72,6 @@ namespace SecretHistories.UI {
                 return;
 			*/
 
-
-            this._element = null;
-            this._stack = null;
             this.slotSpec = slotSpec;
             this.deckSpec = null;
             this.deckQuantity = 0;
@@ -94,8 +85,6 @@ namespace SecretHistories.UI {
                 return;
 			*/
 
-            this._element = null;
-            this._stack = null;
             this.slotSpec = null;
             this.deckSpec = deckSpec;
             this.deckQuantity = numCards;
@@ -104,8 +93,7 @@ namespace SecretHistories.UI {
 
         protected override void ClearContent() {
 
-            this._element = null;
-            this._stack = null;
+ 
             this.slotSpec = null;
         }
 
@@ -128,27 +116,7 @@ namespace SecretHistories.UI {
          }
         }
 
-        // SET TOKEN TYPE CONTENT VISUALS
 
-        void SetElementCard(Element element, ElementStack stack) {
-            Sprite sprite;
-
-            if (element.IsAspect)
-                sprite = ResourcesManager.GetSpriteForAspect(element.Icon);
-            else
-                sprite = ResourcesManager.GetSpriteForElement(element.Icon);
-
-            SetImageNarrow(false);
-            ShowImage(sprite);
-
-            ShowText(element.Label, element.Description);
-            SetTextMargin(true, element.Unique || element.Lifetime > 0); // if the general lifetime is > 0 it decays
-
-            ShowSlotIcons(false, false); // Make sure the other hint icons are gone
-            ShowDeckInfos(0); // Make sure the other hint icons are gone
-            aspectsDisplayRequiredAndForbidden.Clear();
-
-        }
 
         void SetSlot(SphereSpec slotSpec)
 		{
@@ -208,7 +176,6 @@ namespace SecretHistories.UI {
 
 
         void ShowSlotIcons(bool isGreedy, bool consumes) {
-            slotInfoHolder.gameObject.SetActive(isGreedy || consumes);
             greedyInfo.gameObject.SetActive(isGreedy);
             consumesInfo.gameObject.SetActive(consumes);
         }
@@ -218,64 +185,7 @@ namespace SecretHistories.UI {
             deckInfos.text = quantity > 0 ? Watchman.Get<ILocStringProvider>().Get("UI_UPCOMINGDRAWS") + quantity : null;
         }
 
-        public void HighlightSlotIcon(SphereSpec slotSpec) {
-            if (infoHighlight != null)
-                StopCoroutine(infoHighlight);
 
-            // note can only Highlight one of the two
-
-            if (slotSpec.Greedy) {
-                infoHighlight = StartCoroutine(DoHighlightSlotIcon(greedyIcon, greedyInfo));
-            }
-            else {
-                greedyIcon.transform.localScale = Vector3.one;
-                greedyIcon.color = UIStyle.slotDefault;
-                greedyInfo.color = UIStyle.textColorLight;
-
-                if (slotSpec.Consumes) {
-                    infoHighlight = StartCoroutine(DoHighlightSlotIcon(consumesIcon, consumesInfo));
-                }
-                else {
-                    consumesIcon.transform.localScale = Vector3.one;
-                    consumesIcon.color = UIStyle.slotDefault;
-                    consumesInfo.color = UIStyle.textColorLight;
-                }
-            }
-        }
-
-        IEnumerator DoHighlightSlotIcon(Image icon, TextMeshProUGUI text) {
-            const float durationAttack = 0.2f;
-            const float durationDecay = 0.4f;
-            Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
-            float lerp;
-
-            float time = 0f;
-
-            while (time < durationAttack) {
-                time += Time.deltaTime;
-                lerp = time / durationAttack;
-                icon.transform.localScale = Vector3.Lerp(Vector3.one, targetScale, lerp);
-                icon.color = Color.Lerp(UIStyle.slotDefault, Color.black, lerp);
-                text.color = Color.Lerp(UIStyle.textColorLight, Color.black, lerp);
-                yield return null;
-            }
-
-            time = 0f;
-
-            while (time < durationDecay) {
-                time += Time.deltaTime;
-                lerp = time / durationDecay;
-                icon.transform.localScale = Vector3.Lerp(targetScale, Vector3.one, lerp);
-                icon.color = Color.Lerp(Color.black, UIStyle.slotDefault, lerp);
-                text.color = Color.Lerp(Color.black, UIStyle.textColorLight, lerp);
-                yield return null;
-            }
-
-            icon.transform.localScale = Vector3.one;
-            icon.color = UIStyle.slotDefault;
-            text.color = UIStyle.textColorLight;
-            infoHighlight = null;
-        }
 
 		void HighlightSlotCompatibleCards(SphereSpec slotSpec) {
 			if (slotSpec.Greedy) // Greedy slots get no possible cards

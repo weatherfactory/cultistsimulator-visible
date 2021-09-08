@@ -112,7 +112,6 @@ namespace SecretHistories.UI {
         
         public void ShowSlotDetails(SphereSpec slotSpec) {
             slotDetails.ShowSlotDetails(slotSpec);
-            slotDetails.HighlightSlotIcon(slotSpec);
             tokenDetails.Hide();
             aspectDetails.Hide();
         }
