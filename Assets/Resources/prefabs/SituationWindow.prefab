@@ -471,6 +471,8 @@ MonoBehaviour:
   positioner: {fileID: 114651031545853594}
   artwork: {fileID: 114475561134123840}
   title: {fileID: 114797357020451180}
+  layoutElement: {fileID: 7815957290418404374}
+  MinHeightBeforeExpansion: 420
   Dominions:
   - {fileID: 4470030975996782642}
   - {fileID: 7731683286596552914}
@@ -1659,8 +1661,24 @@ MonoBehaviour:
   expectedThresholdSize: {x: 80, y: 120}
   spacing: {x: 20, y: 50}
   margin: {x: 20, y: 40}
+  MinHeightBeforeExpansion: 270
   sizeTransitionDuration: 0.35
   slotMoveTransitionDuration: 0.35
+  ContentsDisplayChangedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114020662237663214}
+        m_TargetAssemblyTypeName: SecretHistories.UI.SituationWindow, SecretHistories.Main
+        m_MethodName: ContentsDisplayChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &114762676544654032
 MonoBehaviour:
   m_ObjectHideFlags: 0

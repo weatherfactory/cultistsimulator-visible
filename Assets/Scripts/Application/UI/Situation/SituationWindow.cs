@@ -6,6 +6,7 @@ using System.Numerics;
 using Assets.Scripts.Application.Infrastructure.Events;
 using Assets.Scripts.Application.UI.Situation;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Commands;
 using TMPro;
 using UnityEngine;
@@ -44,6 +45,8 @@ namespace SecretHistories.UI {
         [Space]
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI title;
+        [SerializeField] private LayoutElement layoutElement;
+        [SerializeField] private float MinHeightBeforeExpansion;
 
 
 
@@ -132,8 +135,7 @@ namespace SecretHistories.UI {
             if (args.ChangeType == PayloadChangeType.Closing && this.IsVisible)
                 PayloadRequestsHide();
 
-            int slotsCount = args.Payload.GetSpheresByCategory(SphereCategory.Threshold).Count;
-            SetWindowSize(slotsCount);
+ 
 
         }
 
@@ -191,25 +193,13 @@ namespace SecretHistories.UI {
         }
 
         
-       public void SetWindowSize(int slotsCount) {
-            ///CAN I PLS DO THIS WITH A CONTENTSIZEAFITTER?
-            /// For example, when the pivot is in the center, the Content Size Fitter will expand the Rect Transform out equally in all directions. And when the pivot is in the upper left corner, the Content Size Fitter will expand the Rect Transform down and to the right. -- so I probably need to move it if I don't wnat to expand all ways
-            //RectTransform rectTrans = transform as RectTransform;
-            //bool wide = true;
+       public void ContentsDisplayChanged(ContentsDisplayChangedArgs args)
+       {
 
-            //int rowWidth = 3;
-            //int numberOfRows = slotsCount / rowWidth;
-            //if (slotsCount % rowWidth > 0)
-            //    numberOfRows++;
+      Debug.Log($"Rows: {args.Rows} Height for rows: {args.ExtraHeightRequested}");
 
-            //float windowHeight = 420f;
-            //float extraHeightPerRow=
-            //if(numberOfRows>2) //that's our standard window height
-            //    float extr
-
-
-            //rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 700f);
-        }
+      layoutElement.minHeight = MinHeightBeforeExpansion + args.ExtraHeightRequested;
+       }
 
 
         void DisplayButtonState(Situation situation) {

@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Spheres;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace SecretHistories.UI
@@ -18,11 +20,16 @@ namespace SecretHistories.UI
         [SerializeField] private Vector2 expectedThresholdSize;
         [SerializeField] private Vector2 spacing;
         [SerializeField] private Vector2 margin;
+        [SerializeField] private float MinHeightBeforeExpansion;
 
         [SerializeField] private float sizeTransitionDuration;
         [SerializeField] private float slotMoveTransitionDuration;
+        public ContentsDisplayChangedEvent ContentsDisplayChangedEvent;
+        
+
         int numPerRow = 1;
         int numRows = 1;
+        private int numSpheres = 0;
         
         float slotSpacing;
         void OnEnable()
@@ -32,15 +39,14 @@ namespace SecretHistories.UI
             SetHeight(height, true);
         }
 
-        //I very much do need this. Whoops. The larger context wasn't responding to rows at all.
 
-        public void ReorderThresholds(int newThresholdIndex)
+        public void ReorderThresholds(int numSpheres)
         {
 
             int oldRowCount = numRows;
 
-            numRows = newThresholdIndex / numPerRow;
-            if (newThresholdIndex % numPerRow > 0)
+            numRows = numSpheres / numPerRow;
+            if (numSpheres % numPerRow > 0)
                 numRows++;
 
 
@@ -57,12 +63,23 @@ namespace SecretHistories.UI
                 {
                     SetHeight(targetHeight, true);
                 }
+
+                var args = new ContentsDisplayChangedArgs {Rows = numRows};
+                if (targetHeight > MinHeightBeforeExpansion)
+                    args.ExtraHeightRequested = targetHeight - MinHeightBeforeExpansion;
+                else
+                    args.ExtraHeightRequested = 0f;
+                
+
+                ContentsDisplayChangedEvent.Invoke(args);
             }
 
-         //   int thresholdIndex = 0;
+            
 
-                //     foreach (var t in _thresholds.Keys)
-                //t.viz.MoveToPosition(GetPositionForIndex(thresholdIndex), slotMoveTransitionDuration);
+            //   int thresholdIndex = 0;
+
+            //     foreach (var t in _thresholds.Keys)
+            //t.viz.MoveToPosition(GetPositionForIndex(thresholdIndex), slotMoveTransitionDuration);
 
 
         }
@@ -83,12 +100,15 @@ namespace SecretHistories.UI
             if (gameObject.activeInHierarchy)
                 threshold.viz.TriggerShowAnim();
 
-            ReorderThresholds(index);
+            numSpheres++;
+
+            ReorderThresholds(numSpheres);
         }
 
         public override void SphereRemoved(Sphere sphere)
         {
-            //we don't keep a list of spheres to track in here, so we don't need to remove anything explicitly
+            numSpheres--;
+            ReorderThresholds(numSpheres);
         }
 
         protected void SetNumPerRow()

@@ -256,7 +256,6 @@ namespace SecretHistories.Entities {
 
               var addNoteCommand=new AddNoteCommand(newRecipePrediction, context);
                 addNoteCommand.ExecuteOn(this);
-                Debug.Log("");
 
         }
 
