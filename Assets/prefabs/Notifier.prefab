@@ -331,7 +331,6 @@ MonoBehaviour:
   artworkPin: {fileID: 2766749834938295800}
   baseInfoTimer: 10
   baseTimePerNotch: 2
-  slotInfoHolder: {fileID: 6328042351766289998}
   greedyInfo: {fileID: 4870420408327447008}
   consumesInfo: {fileID: 5240739598534380062}
   greedyIcon: {fileID: 5580340870015408856}
@@ -4905,7 +4904,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: -15.000061}
+  m_AnchoredPosition: {x: -50, y: -15}
   m_SizeDelta: {x: 550, y: -35.00006}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &1784779315865870122
@@ -6825,8 +6824,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 4543293163823148620}
+        m_TargetAssemblyTypeName: SecretHistories.UI.AbstractDetailsWindow, SecretHistories.Main
         m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
@@ -8048,7 +8047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2036716210938066688
 RectTransform:
   m_ObjectHideFlags: 0
