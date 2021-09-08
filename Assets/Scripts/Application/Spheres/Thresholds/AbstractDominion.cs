@@ -95,6 +95,8 @@ namespace SecretHistories.UI
         public virtual void Dismiss()
         {
             canvasGroupFader?.Hide(); //some subclasses don't need or use it
+            //foreach (var s in _spheres)
+            //    RemoveSphere(s.Id, SphereRetirementType.Graceful);
 
         }
 

@@ -15,6 +15,7 @@ using SecretHistories.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SecretHistories.Enums;
 using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.UI
@@ -25,8 +26,13 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         //also, we've broken the model for simplicity - this is a Manifestable which is also its own manifestation
       public   List<AbstractDominion> Dominions=>new List<AbstractDominion>(_dominions);
        public bool Metafictional => false;
+       public bool Retire(RetirementVFX vfx)
+       {
+           //do nothing: can't currently retire an otherworld
+           return false;
+       }
 
-        [SerializeField] private List<OtherworldDominion> _dominions;
+       [SerializeField] private List<OtherworldDominion> _dominions;
 
         [SerializeField] private OtherworldTransitionFX _transitionFx;
         [SerializeField] private EnRouteSphere otherworldSpecificEnRouteSphere;

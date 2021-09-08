@@ -692,7 +692,9 @@ namespace SecretHistories.Entities {
                 if (State.IsVisibleInThisState(dominion))
                     dominion.Evoke();
                 else
+                {
                     dominion.Dismiss();
+                }
             }
 
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Update));

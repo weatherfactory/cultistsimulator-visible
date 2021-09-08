@@ -33,6 +33,8 @@ namespace SecretHistories.Manifestations
         public OutputSphere EgressOutput;
         public CanvasGroupFader Fader;
 
+
+
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
             
@@ -190,7 +192,6 @@ namespace SecretHistories.Manifestations
             return new NullGhost();
         }
 
-      
 
 
     }

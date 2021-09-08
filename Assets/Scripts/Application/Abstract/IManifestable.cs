@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Abstract;
+using SecretHistories.Enums;
 using SecretHistories.Logic;
 using SecretHistories.UI;
 
@@ -24,6 +25,7 @@ namespace SecretHistories.Abstract
         bool RegisterDominion(AbstractDominion dominion);
         public List<AbstractDominion> Dominions { get; }
         public bool Metafictional { get; }
+        public bool Retire(RetirementVFX vfx);
 
     }
 }
