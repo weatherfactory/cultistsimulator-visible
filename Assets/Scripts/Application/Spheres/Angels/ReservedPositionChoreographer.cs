@@ -10,11 +10,14 @@ using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 {
-   public class HorizontalLayoutChoreographer: IChoreographer
+    //make sure there's a position for incoming tokens, bearing in mind other itineraries.
+    //once they arrive, place them assertively.
+    //Assume all tokens are the same dimensions.
+   public class ReservedPositionChoreographer: IChoreographer
     {
         private Sphere _sphere;
 
-        public HorizontalLayoutChoreographer(Sphere sphere)
+        public ReservedPositionChoreographer(Sphere sphere)
         {
             _sphere = sphere;
         }

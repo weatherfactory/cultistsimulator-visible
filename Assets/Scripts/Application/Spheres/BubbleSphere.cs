@@ -26,7 +26,7 @@ namespace SecretHistories.Spheres
     
         public override SphereCategory SphereCategory => SphereCategory.World;
         public override bool AllowDrag => true;
-        public override IChoreographer Choreographer=>new HorizontalLayoutChoreographer(this); //we don't use a horizontal layout group because - as I learnt to my cost - that moves the anchor positions to (0,0) (top left) and spaffs everything up when they leave the bubblesphere later
+        public override IChoreographer Choreographer=>new ReservedPositionChoreographer(this); 
         
         
 
