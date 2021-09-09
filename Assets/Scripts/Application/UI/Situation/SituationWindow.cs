@@ -196,7 +196,6 @@ namespace SecretHistories.UI {
        public void ContentsDisplayChanged(ContentsDisplayChangedArgs args)
        {
 
-      Debug.Log($"Rows: {args.Rows} Height for rows: {args.ExtraHeightRequested}");
 
       layoutElement.minHeight = MinHeightBeforeExpansion + args.ExtraHeightRequested;
        }
