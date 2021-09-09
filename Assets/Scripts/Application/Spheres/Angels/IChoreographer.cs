@@ -24,7 +24,7 @@ namespace SecretHistories.Spheres.Angels
         /// </summary>
         void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos);
 
-        Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1);
+        Vector2 GetFreeLocalPosition(Token token, Vector2 startPos, int startIteration = -1);
 
         Vector3 SnapToGrid(Vector3 transformLocalPosition);
     }

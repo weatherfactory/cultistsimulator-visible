@@ -9,6 +9,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Core;
 using SecretHistories.Commands;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Enums;
@@ -21,7 +22,7 @@ using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SecretHistories.Constants
+namespace SecretHistories.Infrastructure
 {
     public class GameGateway:MonoBehaviour
     {

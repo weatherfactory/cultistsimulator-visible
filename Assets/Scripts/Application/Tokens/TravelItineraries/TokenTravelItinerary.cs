@@ -13,17 +13,19 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace SecretHistories.UI
 {
+
     public class TokenTravelItinerary: AbstractItinerary
     {
         public FucinePath DestinationSpherePath { get; set; }
         public float Duration { get; set; }
         public Vector3 Anchored3DStartPosition { get; set; }
         public Vector3 Anchored3DEndPosition { get; set; }
-        public float StartScale { get; set; }
+        [SerializeField] public float StartScale { get; set; }
         public float EndScale { get; set; }
         //startscale   = 1f, float endScale = 1f)
         private const float DefaultStartScale = 1f;
         private const float DefaultEndScale = 1f;
+        public string TokenName { get; private set; } //for debugging;
 
         
         public TokenTravelItinerary()
@@ -66,6 +68,9 @@ namespace SecretHistories.UI
 
         public override void Depart(Token tokenToSend, Context context)
         {
+            TokenName = tokenToSend.name;
+            Watchman.Get<Xamanek>().ItineraryStarted(this);
+
             tokenToSend.Unshroud(true);
             tokenToSend.CurrentState=new TravellingState();
 
@@ -131,6 +136,8 @@ namespace SecretHistories.UI
                 //THERE MAY BE TROUBLE AHEAD. Do we add/remove blocks for world as well as threshold spheres?
                 destinationSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward,
                     BlockReason.InboundTravellingStack));
+
+                Watchman.Get<Xamanek>().ItineraryCompleted(this);
             }
             catch(Exception e)
             {

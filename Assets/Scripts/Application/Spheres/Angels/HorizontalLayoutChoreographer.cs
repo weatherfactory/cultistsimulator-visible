@@ -35,24 +35,32 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         }
 
-        public Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1)
+        public Vector2 GetFreeLocalPosition(Token token, Vector2 startPos, int startIteration = -1)
         {
             
             float sphereWidth = _sphere.GetRectTransform().rect.width;
             float halfSphereWidth = sphereWidth / 2; //as x, this would be our centre position
-            float halfTokenWidth = token.ManifestationRectTransform.rect.width / 2; //we should offset the token at least half its manifestation's width to the right from the starting position, on the assumption it has a centre pivot
+            float tokenWidth= token.ManifestationRectTransform.rect.width;
+            float halfTokenWidth = tokenWidth/ 2; //we should offset the token at least half its manifestation's width to the right from the starting position, on the assumption it has a centre pivot
             //nb this is the manifestation's width, not the token's, because the token's may not have been updated at this point, and manifestation is our best guess
 
             float startingX = -halfSphereWidth + halfTokenWidth;
             float startingY = 0f;
             var tokensAlreadyPresent = _sphere.Tokens;
-            float totalTokenWidth = 0f;
+            float totalOffsetToRight = 0f;
             foreach (var t in tokensAlreadyPresent)
             {
-                totalTokenWidth += t.TokenRectTransform.rect.width;
+                totalOffsetToRight += tokenWidth;//assuming all tokens are the same size
             }
 
-            Vector2 nextPosition=new Vector2(startingX + totalTokenWidth, startingY);
+            foreach (var i in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_sphere.GetAbsolutePath()))
+            {
+                totalOffsetToRight += tokenWidth;
+            }
+
+            Vector2 nextPosition =new Vector2(startingX + totalOffsetToRight, startingY);
+            
+
             return nextPosition;
 
         }
