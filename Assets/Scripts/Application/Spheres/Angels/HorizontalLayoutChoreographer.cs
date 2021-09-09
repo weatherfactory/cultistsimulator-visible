@@ -23,15 +23,11 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             token.TokenRectTransform.anchoredPosition3D = Vector3.zero;
         }
 
-        public void PlaceTokenAssertivelyAtSpecifiedLocalPosition(Token token, Context context, Vector2 pos)
-        {
-            token.TokenRectTransform.anchoredPosition3D = pos;
-        }
+
 
         public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
         {
-            var freeLocalPosition = GetFreeLocalPosition(token, pos);
-            token.TokenRectTransform.anchoredPosition = freeLocalPosition;
+            token.TokenRectTransform.anchoredPosition3D = pos;
 
         }
 

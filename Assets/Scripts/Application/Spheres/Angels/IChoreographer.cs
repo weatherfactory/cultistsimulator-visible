@@ -14,11 +14,7 @@ namespace SecretHistories.Spheres.Angels
 
         void PlaceTokenAtFreeLocalPosition(Token token, Context context);
 
-        /// <summary>
-        /// Place at a specific position, pushing other tokens out of the way if necessary
-        /// </summary>
-        void PlaceTokenAssertivelyAtSpecifiedLocalPosition(Token token, Context context, Vector2 pos);
-
+        
         /// <summary>
         /// Place as close to a specific position as we can get
         /// </summary>
