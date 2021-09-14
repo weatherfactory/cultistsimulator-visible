@@ -46,7 +46,7 @@ namespace SecretHistories.UI {
             else
             {
                 var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight);
-                args.OnBegin = UpdateContentAfterNavigation;
+                args.OnEnd = UpdateContentAfterNavigation;
 
                 TriggerAnimation(args);
             }
@@ -139,8 +139,9 @@ namespace SecretHistories.UI {
 
 
         void DoHide() {
-           fader.Hide();
             ClearContent();
+            fader.Hide();
+        
         }
 
         public void OnPointerClick(PointerEventData eventData) {
