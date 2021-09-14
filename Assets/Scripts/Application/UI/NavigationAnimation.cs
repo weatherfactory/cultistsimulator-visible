@@ -32,6 +32,7 @@ public class NavigationAnimation : MonoBehaviour {
         isBusy = true;
 
         args.OnBegin?.Invoke(args);
+        args.OnBegin = null;
 
         clipName = GetOutClip(args.FirstNavigationDirection);
         if (clipName != null) { 
@@ -43,6 +44,8 @@ public class NavigationAnimation : MonoBehaviour {
         }
 
         args.OnOutComplete?.Invoke(args);
+        args.OnOutComplete = null;
+
 
         clipName = GetInClip(args.FinalNavigationDirection);
         if (clipName != null) { 
@@ -54,8 +57,10 @@ public class NavigationAnimation : MonoBehaviour {
         }
 
         args.OnInComplete?.Invoke(args);
+        args.OnInComplete = null;
 
         args.OnEnd?.Invoke(args);
+        args.OnEnd = null;
 
         isBusy = false;
     }

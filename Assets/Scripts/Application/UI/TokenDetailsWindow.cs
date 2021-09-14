@@ -38,12 +38,11 @@ namespace SecretHistories.UI {
         Element _element;
         ElementStack _stack;
 
-        SphereSpec slotSpec;
 
         DeckSpec deckSpec;
         int deckQuantity;
 
-        public void ShowElementDetails(Element element, ElementStack stack) {
+        public void ShowTokenDetails(Element element, ElementStack stack) {
 
             //AK: removed for now. Mutations complicate things, but also, clicking on the card and getting no response feels stuck
             // Check if we'd show the same, if so: do nothing
@@ -63,8 +62,7 @@ namespace SecretHistories.UI {
                 _stack.OnLifetimeSpent -= HandleOnTokenDecay;// remove decay listener if we had one on an old token
             this._element = element;
             this._stack = stack; // To be able to update the card's remaining time
-            this.slotSpec = null;
-            this.deckSpec = null;
+            
             this.deckQuantity = 0;
             Show();
         }
@@ -79,8 +77,7 @@ namespace SecretHistories.UI {
               _stack.OnLifetimeSpent -= HandleOnTokenDecay; // remove decay listener if we had one on an old token
             this._element = null;
             this._stack = null;
-            this.slotSpec = null;
-            this.deckSpec = deckSpec;
+          
             this.deckQuantity = numCards;
             Show();
         }
@@ -90,7 +87,6 @@ namespace SecretHistories.UI {
 
             this._element = null;
             this._stack = null;
-            this.slotSpec = null;
         }
 
 

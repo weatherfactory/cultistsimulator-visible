@@ -37,7 +37,7 @@ namespace SecretHistories.UI {
         protected void Show()
         {
             ResetTimer();
-            if(fader.IsVisible())
+            if(!fader.IsVisible())
             {
                 UpdateContent();
                 var args = new NavigationArgs(0, NavigationAnimationDirection.None, NavigationAnimationDirection.MoveRight);

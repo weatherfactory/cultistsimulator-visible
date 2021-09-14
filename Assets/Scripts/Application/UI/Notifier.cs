@@ -90,7 +90,7 @@ namespace SecretHistories.UI {
         // Variant to link to token decay
         public void ShowCardElementDetails(Element element, ElementStack stack)
 		{
-            tokenDetails.ShowElementDetails(element, stack);
+            tokenDetails.ShowTokenDetails(element, stack);
             aspectDetails.Hide();
             slotDetails.Hide();
         }

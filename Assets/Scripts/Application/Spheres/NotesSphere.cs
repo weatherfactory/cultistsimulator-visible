@@ -159,14 +159,6 @@ namespace Assets.Scripts.Application.Spheres
 
 
 
- 
-        //public override void SphereRemoved(Sphere sphere)
-        //{
-        //    if (_arrangingSpheres.Contains(sphere))
-        //        _arrangingSpheres.Remove(sphere);
-        //}
-
-
     }
 
 }
