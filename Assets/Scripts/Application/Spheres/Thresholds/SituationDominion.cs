@@ -76,14 +76,25 @@ namespace SecretHistories.UI {
             foreach (var activeInState in VisibleForStates)
                 spec.MakeActiveInState(activeInState);
 
-            return AddSphere(spec);
+            var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec);
+            _spheres.Add(newSphere);
+
+            OnSphereAdded.Invoke(newSphere);
+            newSphere.Subscribe(this);
+
+            if (sphereArrangement != null) //for testing, but may be useful later also
+                sphereArrangement.AddNewSphereToArrangement(newSphere, _spheres.Count - 1);
+
+            return newSphere;
         }
 
         public override bool CanCreateSphere(SphereSpec spec)
         {
             if (GetSphereById(spec.Id) != null)
+            {
+                NoonUtility.LogWarning($"Trying to create sphere with id {spec.Id} in dominion {Identifier}, but a sphere with that id already exists here");
                 return false; //no spheres with duplicate id
-
+            }
             if (MaxSpheresAllowed == 0)
                 return true;
             else
@@ -144,19 +155,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public Sphere AddSphere(SphereSpec sphereSpec)
-        {
-            var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(sphereSpec);
-            _spheres.Add(newSphere);
 
-            OnSphereAdded.Invoke(newSphere);
-            newSphere.Subscribe(this);
-
-            if (sphereArrangement != null) //for testing, but may be useful later also
-                sphereArrangement.AddNewSphereToArrangement(newSphere, _spheres.Count - 1);
-
-            return newSphere;
-        }
 
         protected void AddDependentSpheresForToken(Sphere sphere, Token tokenAdded)
         {
@@ -169,7 +168,7 @@ namespace SecretHistories.UI {
 
             foreach (var childSlotSpecification in childSlotSpecs)
             {
-                var newSphere = AddSphere(childSlotSpecification);
+                var newSphere = TryCreateSphere(childSlotSpecification);
                 newSphere.OwnerSphereIdentifier = sphere.Id;
             }
         }
