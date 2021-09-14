@@ -9,6 +9,7 @@ using SecretHistories.Services;
 using UnityEngine;
 using SecretHistories.Entities;
 using SecretHistories.Constants.Events;
+using SecretHistories.Elements;
 using SecretHistories.Enums;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -95,15 +96,19 @@ namespace SecretHistories.UI {
             slotDetails.Hide();
         }
 
-        public void ShowElementDetails(Element element, bool fromDetailsWindow = false) {
-            if (element.IsAspect == false) {
-                tokenDetails.ShowElementDetails(element,null);
-                aspectDetails.Hide();
-                return;
-            }
+        public void ShowElementDetails(Element element, bool fromDetailsWindow) {
+            
+            if(fromDetailsWindow)
+                aspectDetails.ShowAspectDetails(element, true);
+
+            //if (element.IsAspect == false) {
+            //    tokenDetails.ShowElementDetails(element,NullElementStack.Create());
+            //    aspectDetails.Hide();
+            //    return;
+            //}
 
             // The following only happens for aspects
-            aspectDetails.ShowAspectDetails(element, !fromDetailsWindow);
+            //aspectDetails.ShowAspectDetails(element, !fromDetailsWindow);
 
             if (fromDetailsWindow)
             {
