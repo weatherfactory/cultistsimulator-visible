@@ -18,6 +18,8 @@ namespace SecretHistories.UI {
 
         [SerializeField] protected TextMeshProUGUI title;
         [SerializeField] protected TextMeshProUGUI description;
+        
+        [SerializeField] protected CanvasGroupFader fader;
 
         [Header("Image")]
 		[SerializeField] protected Image artwork;
@@ -31,29 +33,25 @@ namespace SecretHistories.UI {
 
         private bool _isHoveringOver;
 
-        protected void Show() {
+
+        protected void Show()
+        {
             ResetTimer();
-
-            if (gameObject.activeSelf == false) {
-                // Show the content, then make the anim move in
-                gameObject.SetActive(true);
+            if(fader.IsVisible())
+            {
                 UpdateContent();
-                var args=new NavigationArgs(0,NavigationAnimationDirection.None,NavigationAnimationDirection.MoveRight);
-                args.OnBegin = UpdateContentAfterNavigation;
-
+                var args = new NavigationArgs(0, NavigationAnimationDirection.None, NavigationAnimationDirection.MoveRight);
                 TriggerAnimation(args);
-                StartCoroutine(DoWaitForHide());
             }
-            else {
-                // Make the anim move out, then show the content, then move in again
+            else
+            {
                 var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight);
                 args.OnBegin = UpdateContentAfterNavigation;
 
                 TriggerAnimation(args);
-                
-
             }
         }
+
 
         public void Start()
         {
@@ -125,12 +123,13 @@ namespace SecretHistories.UI {
         }
 
         public void Hide() {
-			if (gameObject.activeInHierarchy) {
-
+            if(fader.IsVisible())
+            {
                 var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.None);
                 args.OnEnd = DoHideAfterNavigation;
                 TriggerAnimation(args);
-			}
+            }
+
         }
 
         void DoHideAfterNavigation(NavigationArgs args)
@@ -140,7 +139,7 @@ namespace SecretHistories.UI {
 
 
         void DoHide() {
-            gameObject.SetActive(false);
+           fader.Hide();
             ClearContent();
         }
 

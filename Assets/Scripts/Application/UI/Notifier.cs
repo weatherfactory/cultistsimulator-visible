@@ -41,8 +41,7 @@ namespace SecretHistories.UI {
         [SerializeField] NotificationWindow SaveDeniedWindow;
 
         public void Start() {
-            tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
-            aspectDetails.gameObject.SetActive(false);
+
 
             Watchman.Get<Concursum>().ShowNotificationEvent.AddListener(ShowNotificationWindow);
 
