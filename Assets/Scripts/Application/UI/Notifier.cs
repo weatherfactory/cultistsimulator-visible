@@ -96,30 +96,12 @@ namespace SecretHistories.UI {
             slotDetails.Hide();
         }
 
-        public void ShowElementDetails(Element element, bool fromDetailsWindow) {
+        public void ShowElementDetails(Element element) {
             
-            if(fromDetailsWindow)
                 aspectDetails.ShowAspectDetails(element, true);
-
-            //if (element.IsAspect == false) {
-            //    tokenDetails.ShowElementDetails(element,NullElementStack.Create());
-            //    aspectDetails.Hide();
-            //    return;
-            //}
-
-            // The following only happens for aspects
-            //aspectDetails.ShowAspectDetails(element, !fromDetailsWindow);
-
-            if (fromDetailsWindow)
-            {
                 tokenDetails.ResetTimer(); 
                 slotDetails.ResetTimer();
-            }
-            else
-            {
-                tokenDetails.Hide();
-                slotDetails.Hide();
-            }
+
         }
         
         public void ShowSlotDetails(SphereSpec slotSpec) {

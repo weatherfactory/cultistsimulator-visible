@@ -50,6 +50,7 @@ namespace SecretHistories.UI {
                 args.OnBegin = UpdateContentAfterNavigation;
 
                 TriggerAnimation(args);
+                
 
             }
         }
@@ -127,7 +128,7 @@ namespace SecretHistories.UI {
 			if (gameObject.activeInHierarchy) {
 
                 var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.None);
-                args.OnBegin = DoHideAfterNavigation;
+                args.OnEnd = DoHideAfterNavigation;
                 TriggerAnimation(args);
 			}
         }

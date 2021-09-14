@@ -19,16 +19,13 @@ namespace SecretHistories.UI {
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element element;
-		bool fromDetailsWindow;
 
         public void ShowAspectDetails(Element element, bool fromDetailsWindow) {
             // Check if we'd show the same, if so: do nothing
-            if (this.element == element && gameObject.activeSelf && fromDetailsWindow == fromDetailsWindow)
+            if (this.element == element && gameObject.activeSelf)
                 return;
 
-           // Debug.Log("Position" + (transform as RectTransform).anchoredPosition);
 
-            this.fromDetailsWindow = fromDetailsWindow;
             this.element = element;
             Show();
         }
@@ -46,9 +43,9 @@ namespace SecretHistories.UI {
             if (element != null)
                 SetAspect(element);
 
-			if (!fromDetailsWindow)
-				(transform as RectTransform).anchoredPosition = posNoDetailsWindow;
-			else
+			//if (!fromDetailsWindow)
+			//	(transform as RectTransform).anchoredPosition = posNoDetailsWindow;
+			//else
 				(transform as RectTransform).anchoredPosition = new Vector2( 0f, -tokenDetailsHeight.sizeDelta.y - 10f);
 
 		//	Debug.Log("tokenDetails size : "+ tokenDetailsHeight.sizeDelta.y);
