@@ -159,6 +159,7 @@ namespace SecretHistories.UI {
 
         protected void AddDependentSpheresForToken(Sphere sphere, Token tokenAdded)
         {
+            
             var situation = _manifestable as Situation;
 
             if (situation == null)
@@ -198,7 +199,7 @@ namespace SecretHistories.UI {
                 NoonUtility.LogWarning(
                     $"Tokens with valid element stacks seem to have been added ({args.TokenAdded.name}) and removed ({args.TokenRemoved.name}) in a single event. This will likely cause issues, but we'll go ahead with both.");
 
-            if (args.TokenAdded != null)
+            if (args.TokenAdded != null || !SphereIsDependent(args.Sphere)) //dependent spheres never generate dependent spheres of their own. That way lies madness.
                 AddDependentSpheresForToken(args.Sphere, args.TokenAdded);
 
             if (args.TokenRemoved != null)
@@ -211,6 +212,11 @@ namespace SecretHistories.UI {
                     removeDependentSpheres(args.Sphere);
             }
 
+        }
+
+        private bool SphereIsDependent(Sphere possiblyDependentSphere)
+        {
+            return (possiblyDependentSphere.OwnerSphereIdentifier != null);
         }
 
 
