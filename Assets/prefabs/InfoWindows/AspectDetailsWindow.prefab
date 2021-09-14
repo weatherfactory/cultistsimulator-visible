@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -519,6 +520,8 @@ GameObject:
   m_Component:
   - component: {fileID: 224832645088343320}
   - component: {fileID: 114432531435072294}
+  - component: {fileID: 192832855577443284}
+  - component: {fileID: 6528294501078378194}
   m_Layer: 5
   m_Name: AspectDetailsWindow
   m_TagString: Untagged
@@ -558,7 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5183cba2446f14dbeca1cc8e99e5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 111379056823569562}
+  animations: {fileID: 0}
   soundIn: InfoWindowShow
   soundOut: InfoWindowHide
   title: {fileID: 114084739214997046}
@@ -568,8 +571,35 @@ MonoBehaviour:
   baseInfoTimer: 10
   baseTimePerNotch: 2
   tokenDetailsHeight: {fileID: 0}
-  posNoTokenDetails: {x: 0, y: 0}
+  posNoDetailsWindow: {x: 0, y: 0}
   adjuster: {fileID: 483906645819999537}
+--- !u!225 &192832855577443284
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387053772939732}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &6528294501078378194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387053772939732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e835ed38c168545d8acd9e0f7f3943f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockRaysDuringFade: 0
+  durationTurnOn: 0
+  durationTurnOff: 0
 --- !u!1 &1920102610850512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,9 +1032,9 @@ RectTransform:
   m_Father: {fileID: 224827032987563330}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 250, y: 0}
   m_SizeDelta: {x: 500, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &483906645819999537

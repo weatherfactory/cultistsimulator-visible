@@ -30,7 +30,6 @@ namespace SecretHistories.UI {
         [SerializeField] TextMeshProUGUI deckInfos;
 
         [Header("Aspect Display")]
-        [SerializeField] AspectSetsDisplay aspectsDisplayRequiredAndForbidden;
         [SerializeField] AspectsDisplay aspectsDisplayFlat;
 
         Coroutine infoHighlight;
@@ -145,7 +144,6 @@ namespace SecretHistories.UI {
 
             ShowCardIcons(element.Unique, element.Lifetime > 0);
             ShowDeckInfos(0); // Make sure the other hint icons are gone
-            aspectsDisplayRequiredAndForbidden.Clear();
 
         }
 
@@ -164,7 +162,6 @@ namespace SecretHistories.UI {
             ShowDeckInfos(deckQuantity);
 
             aspectsDisplayFlat.DisplayAspects(null);
-            aspectsDisplayRequiredAndForbidden.Clear();
         }
 
         // SUB VISUAL SETTERS
