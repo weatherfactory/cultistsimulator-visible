@@ -45,8 +45,9 @@ namespace SecretHistories.UI {
             }
             else
             {
+                
                 var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.MoveRight);
-                args.OnEnd = UpdateContentAfterNavigation;
+                args.OnOutComplete = UpdateContentAfterNavigation;
 
                 TriggerAnimation(args);
             }
