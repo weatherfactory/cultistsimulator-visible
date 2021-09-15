@@ -139,7 +139,7 @@ namespace SecretHistories.UI {
             SetTextMargin(true, element.Unique || element.Lifetime > 0); // if the general lifetime is > 0 it decays
 
             ShowCardIcons(element.Unique, element.Lifetime > 0);
-            ShowDeckInfos(0); // Make sure the other hint icons are gone
+           // ShowDeckInfos(0); // Make sure the other hint icons are gone
 
         }
 

@@ -19,11 +19,13 @@ namespace SecretHistories.UI {
         [SerializeField] protected TextMeshProUGUI title;
         [SerializeField] protected TextMeshProUGUI description;
         
-        [SerializeField] protected CanvasGroupFader fader;
+  
 
         [Header("Image")]
 		[SerializeField] protected Image artwork;
 		[SerializeField] protected Image artworkPin;
+
+        protected CanvasGroupFader Fader => gameObject.GetComponent<CanvasGroupFader>();
 
         public float baseInfoTimer = 10f;
         public float baseTimePerNotch = 2f;
@@ -37,7 +39,7 @@ namespace SecretHistories.UI {
         protected void Show()
         {
             ResetTimer();
-            if(!fader.IsVisible())
+            if(!Fader.IsVisible())
             {
                 UpdateContent();
                 var args = new NavigationArgs(0, NavigationAnimationDirection.None, NavigationAnimationDirection.MoveRight);
@@ -124,7 +126,7 @@ namespace SecretHistories.UI {
         }
 
         public void Hide() {
-            if(fader.IsVisible())
+            if(Fader.IsVisible())
             {
                 var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.None);
                 args.OnEnd = DoHideAfterNavigation;
@@ -141,7 +143,7 @@ namespace SecretHistories.UI {
 
         void DoHide() {
             ClearContent();
-            fader.Hide();
+            Fader.Hide();
         
         }
 

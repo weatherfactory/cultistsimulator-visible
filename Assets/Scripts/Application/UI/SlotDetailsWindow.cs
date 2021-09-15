@@ -36,34 +36,11 @@ namespace SecretHistories.UI {
 
         Coroutine infoHighlight;
 
-   
+        private float cardPingLastTriggered = 0.0f;
         SphereSpec slotSpec;
 
         DeckSpec deckSpec;
         int deckQuantity;
-
-        public void ShowElementDetails(Element element, ElementStack stack) {
-
-            //AK: removed for now. Mutations complicate things, but also, clicking on the card and getting no response feels stuck
-            // Check if we'd show the same, if so: do nothing
-            //if (this._element == _element && gameObject.activeSelf) {
-            //    if (this.token == token
-            //        return;
-
-            //    bool oldDecays = (this.token != null && this.token.Decays);
-            //    bool newDecays = (token != null && token.Decays);
-
-            //    // Is there was and will be no decay visible? Do nothing
-            //    if (!oldDecays && !newDecays)
-            //        return;
-            //}
-
-
-            this.slotSpec = null;
-            this.deckSpec = null;
-            this.deckQuantity = 0;
-            Show();
-        }
 
         public void ShowSlotDetails(SphereSpec slotSpec) {
             /*
@@ -78,18 +55,6 @@ namespace SecretHistories.UI {
             Show();
         }
 
-        public void ShowDeckDetails(DeckSpec deckSpec, int numCards) {
-            /*
-            // Check if we'd show the same, if so: do nothing
-            if (this.deckSpec == deckSpec && this.deckQuantity == numCards && gameObject.activeSelf)
-                return;
-			*/
-
-            this.slotSpec = null;
-            this.deckSpec = deckSpec;
-            this.deckQuantity = numCards;
-            Show();
-        }
 
         protected override void ClearContent() {
 
@@ -187,23 +152,23 @@ namespace SecretHistories.UI {
 
 
 
-		void HighlightSlotCompatibleCards(SphereSpec slotSpec) {
-			if (slotSpec.Greedy) // Greedy slots get no possible cards
+		void HighlightSlotCompatibleCards(SphereSpec forSlotSpec) {
+			if (forSlotSpec.Greedy) // Greedy slots get no possible cards
 				return;
 
-            HighlightAllStacksForSlotSpecificationOnTabletop(slotSpec);
+            HighlightAllStacksForSlotSpecificationOnTabletop(forSlotSpec);
 		}
 
-        private float cardPingLastTriggered = 0.0f;
+  
 
-        public void HighlightAllStacksForSlotSpecificationOnTabletop(SphereSpec slotSpec)
+        public void HighlightAllStacksForSlotSpecificationOnTabletop(SphereSpec forSlotSpec)
         {
             float time = Time.realtimeSinceStartup;
             if (time > cardPingLastTriggered + 1.0f)    // Don't want to trigger these within a second of the last trigger, otherwise they stack up too much
             {
                 cardPingLastTriggered = time;
 
-                var stacks = FindAllElementTokenssForSlotSpecificationOnTabletop(slotSpec);
+                var stacks = FindAllElementTokenssForSlotSpecificationOnTabletop(forSlotSpec);
 
                 foreach (var stack in stacks)
                 {
@@ -215,7 +180,7 @@ namespace SecretHistories.UI {
 
 
 
-        private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SphereSpec slotSpec)
+        private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SphereSpec forSlotSpec)
         {
             var stackList = new List<Token>();
             var worldSpheres = Watchman.Get<HornedAxe>().GetSpheresOfCategory(SphereCategory.World);
@@ -223,7 +188,7 @@ namespace SecretHistories.UI {
             {
                 var stackTokens = worldSphere.GetElementTokens();
                 foreach (var stackToken in stackTokens)
-                    if (slotSpec.CheckPayloadAllowedHere(stackToken.Payload).MatchType == SlotMatchForAspectsType.Okay)
+                    if (forSlotSpec.CheckPayloadAllowedHere(stackToken.Payload).MatchType == SlotMatchForAspectsType.Okay)
                         stackList.Add(stackToken);
             }
 

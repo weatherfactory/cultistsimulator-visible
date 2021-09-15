@@ -28,18 +28,8 @@ namespace SecretHistories.UI
         }
 
 
- 
-        CanvasGroup group;
-
-
-        CanvasGroup Group {
-            get {
-                if (group == null)
-                    group = GetComponent<CanvasGroup>();
-
-                return group;
-            }
-        }
+        private CanvasGroup Group => gameObject.GetComponent<CanvasGroup>();
+    
 
         public void SetOnChangeCompleteCallback(Action onChangeComplete)
         {
