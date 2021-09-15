@@ -50,7 +50,7 @@ namespace SecretHistories.Constants {
         {
             return _tabletop.GetRect();
         }
-        private bool showDebugInfo;
+     [SerializeField] private bool showDebugInfo;
         const float checkPointPerArcLength = 100f;
 
         const float pointGridSize = 100f;
@@ -80,12 +80,19 @@ namespace SecretHistories.Constants {
 
         public void OnGUI()
         {
-          //  if (!showDebugInfo)
-          //      return;
+            if (!showDebugInfo)
+                return;
 
-          //foreach (var r in rectanglesToDisplay)
-          //      GUI.Box(r.Value, r.Key);
+            foreach (var r in rectanglesToDisplay)
+            {
+            var guiRect = GUIUtility.ScreenToGUIRect(r.Value);
+              guiRect.position = new Vector2(guiRect.position.x,Screen.height - guiRect.position.y);
+                GUI.Box(guiRect, r.Key);
+
+            }
         }
+
+
 
         public void GroupAllStacks()
         {
@@ -190,7 +197,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
         Vector2 GetFreeTokenPosition(Token token, Vector2 startPos, int startIteration = -1)
 		{
-            //Debug.Log("Trying to find FREE POS for " + token.Id);
+            
             Vector2 centerPosition = GetPosClampedToTable(startPos);
            Vector2 snappedToGridPosition = SnapToGrid(centerPosition);
             var targetRect = GetCenterPosRect(snappedToGridPosition, token.ManifestationRectTransform.rect.size);
@@ -199,6 +206,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             if (legalPositionCheckResult.IsLegal)
             {
                 HideAllRects();
+                ShowRect(targetRect, token.name);
                 return snappedToGridPosition;
             }
             else
