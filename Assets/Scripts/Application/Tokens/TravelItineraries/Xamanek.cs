@@ -50,16 +50,16 @@ namespace SecretHistories.UI
             return false;
         }
 
-        public void OnGUI()
-        {
-            float xStart = 0f;
-            float yStart = 0f;
-            foreach(var i in currentTokenTravelItineraries)
-            {
-                yStart = yStart + 10;
-                GUI.Label(new Rect(xStart, yStart, 800, 20), $"{i.TokenName} moving to {i.DestinationSpherePath.ToString()} {i.Anchored3DEndPosition}");
-            }
-        }
+        //public void OnGUI()
+        //{
+        //    float xStart = 0f;
+        //    float yStart = 0f;
+        //    foreach(var i in currentTokenTravelItineraries)
+        //    {
+        //        yStart = yStart + 10;
+        //        GUI.Label(new Rect(xStart, yStart, 800, 20), $"{i.TokenName} moving to {i.DestinationSpherePath.ToString()} {i.Anchored3DEndPosition}");
+        //    }
+        //}
 
     }
 

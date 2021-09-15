@@ -80,11 +80,11 @@ namespace SecretHistories.Constants {
 
         public void OnGUI()
         {
-            if (!showDebugInfo)
-                return;
+          //  if (!showDebugInfo)
+          //      return;
 
-          foreach (var r in rectanglesToDisplay)
-                GUI.Box(r.Value, r.Key);
+          //foreach (var r in rectanglesToDisplay)
+          //      GUI.Box(r.Value, r.Key);
         }
 
         public void GroupAllStacks()
