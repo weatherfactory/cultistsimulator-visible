@@ -1026,6 +1026,8 @@ namespace SecretHistories.Entities {
 
             foreach (var s in _subscribers)
                 s.SituationSphereContentsUpdated(this);
+
+            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update));
         }
 
         
