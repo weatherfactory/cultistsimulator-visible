@@ -963,6 +963,14 @@ namespace SecretHistories.Entities {
                 Open();
             }
 
+            if (args.Sphere.SphereCategory == SphereCategory.Output &&
+                args.TokenRemoved != null &&
+                !args.Sphere.Tokens.Any())
+            {
+                //we've just removed the last token from the output. Conclude.
+                Conclude();
+            }
+
 
             var oldEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
 
