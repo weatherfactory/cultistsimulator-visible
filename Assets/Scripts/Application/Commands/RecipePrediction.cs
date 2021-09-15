@@ -12,10 +12,19 @@ namespace SecretHistories.Commands
    public class RecipePrediction: IEquatable<RecipePrediction>,INotification
    {
        private readonly Recipe _predictingRecipe;
-       public string RecipeId => _predictingRecipe.Id;
         public string Title { get; protected set; }
         public string Description { get; protected set; }
         public bool Additive { get; protected set; }
+
+        public int EmphasisLevel
+        {
+            get
+            {
+                if (HintOnly)
+                    return -1;
+                return 0;
+            }
+        }
         public EndingFlavour SignalEndingFlavour => _predictingRecipe.SignalEndingFlavour;
         public bool Craftable => _predictingRecipe.Craftable;
         public bool HintOnly => _predictingRecipe.HintOnly;

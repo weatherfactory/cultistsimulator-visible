@@ -31,6 +31,7 @@ namespace SecretHistories.Constants
         public const string MESSAGE_ILLUMINATION_KEY = "mansusjournal";
         public const string TLG_NOTES_TITLE_KEY = "tlg.notes.title";
         public const string TLG_NOTES_DESCRIPTION_KEY = "tlg.notes.description";
+        public const string TLG_NOTES_EMPHASISLEVEL_KEY = "tlg.notes.emphasislevel";
 
         public const string DEFAULT_CULTURE_ID = "en";
         public const string CULTURE_SETTING_KEY = "Culture";

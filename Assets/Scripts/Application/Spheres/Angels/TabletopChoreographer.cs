@@ -158,7 +158,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
             var targetRect = GetRectWithSpherePosition(pushingToken.TokenRectTransform);
 			// Reduce the target Rect size to be less finnicky
-			targetRect.size = targetRect.size * 0.6f;
+			targetRect.size = targetRect.size * 0.5f;
 
 			Rect pushedRect;
 
@@ -289,7 +289,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             var rectScreenPosition= RectTransformUtility.WorldToScreenPoint( Camera.main, rectWorldPosition);
 
             var guiRect=new Rect(rectScreenPosition,rect.size);
-            guiRect.position = new Vector2(guiRect.position.x, Screen.height - guiRect.position.y);
+            guiRect.position = new Vector3(guiRect.position.x, Screen.height - guiRect.position.y,-50);
 
             rectanglesToDisplay[name] = guiRect;
         }

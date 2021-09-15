@@ -39,17 +39,28 @@ namespace SecretHistories.Manifestations
             //
         }
 
+        private void UpdateTextFromManifestable(IManifestable manifestable)
+        {
+            var description = manifestable.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY);
+            string emphasisLevel = manifestable.GetIllumination(NoonConstants.TLG_NOTES_EMPHASISLEVEL_KEY);
+            int.TryParse(emphasisLevel, out var l);
+            if (l == -1)
+                textComponent.fontStyle = FontStyles.Italic;
+            else
+                textComponent.fontStyle = FontStyles.Normal;
+
+            textComponent.text = description;
+        }
+
         public void Initialise(IManifestable manifestable)
         {
-            var description=manifestable.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY);
-            textComponent.text= description;
+            UpdateTextFromManifestable(manifestable);
         }
 
   
         public void UpdateVisuals(IManifestable manifestable)
         {
-            var description = manifestable.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY);
-            textComponent.text = description;
+            UpdateTextFromManifestable(manifestable);
         }
 
         public void OnBeginDragVisuals()
