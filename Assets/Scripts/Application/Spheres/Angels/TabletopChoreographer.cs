@@ -85,9 +85,9 @@ namespace SecretHistories.Constants {
 
             foreach (var r in rectanglesToDisplay)
             {
-            var guiRect = GUIUtility.ScreenToGUIRect(r.Value);
-              guiRect.position = new Vector2(guiRect.position.x,Screen.height - guiRect.position.y);
-                GUI.Box(guiRect, r.Key);
+            //var guiRect = GUIUtility.ScreenToGUIRect(r.Value);
+          //    guiRect.position = new Vector2(guiRect.position.x,Screen.height - guiRect.position.y);
+                GUI.Box(r.Value, r.Key);
 
             }
         }
@@ -206,13 +206,13 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             if (legalPositionCheckResult.IsLegal)
             {
                 HideAllRects();
-                ShowRect(targetRect, token.name);
+                ShowRectViaIMGUI(targetRect, token.name);
                 return snappedToGridPosition;
             }
             else
             {
-                ShowRect(targetRect, token.name);
-                ShowRect(legalPositionCheckResult.BlockerRect, legalPositionCheckResult.BlockerName);
+                ShowRectViaIMGUI(targetRect, token.name);
+                ShowRectViaIMGUI(legalPositionCheckResult.BlockerRect, legalPositionCheckResult.BlockerName);
             }
 
         
@@ -258,7 +258,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
         // Tokens have their pos in their center, rects in the bottom right
         Rect GetRectWithSpherePosition(RectTransform rectTrans)
 		{
-            return new Rect(rectTrans.anchoredPosition, rectTrans.rect.size);
+            return new Rect(rectTrans.position, rectTrans.rect.size);
         }
 
         Rect GetCenterPosRect(Vector2 centerPos, Vector2 size)
@@ -279,15 +279,17 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return pos;
         }
 
-        void ShowRect(Rect rect,string name)
+        void ShowRectViaIMGUI(Rect rect,string name)
         {
             if (string.IsNullOrEmpty(name))
                 return;
 
+    
             var rectWorldPosition = _tabletop.GetRectTransform().TransformPoint(rect.position);
             var rectScreenPosition= RectTransformUtility.WorldToScreenPoint( Camera.main, rectWorldPosition);
 
             var guiRect=new Rect(rectScreenPosition,rect.size);
+            guiRect.position = new Vector2(guiRect.position.x, Screen.height - guiRect.position.y);
 
             rectanglesToDisplay[name] = guiRect;
         }
@@ -305,7 +307,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
         LegalPositionCheckResult IsLegalPosition(Rect candidateRect,  Token placingToken)
 		{
-          
+          //Is the candidaterect inside the larger tabletop rect? if not, throw it out now.
             if (GetTableRect().Contains(candidateRect.position + candidateRect.size / 2f) == false)
                 
                 return LegalPositionCheckResult.Illegal();
