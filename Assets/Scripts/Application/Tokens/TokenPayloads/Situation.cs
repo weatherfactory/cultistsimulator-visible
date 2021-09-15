@@ -420,6 +420,7 @@ namespace SecretHistories.Entities {
             var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
             newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_TITLE_KEY, notification.Title);
             newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, notification.Description);
+            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_EMPHASISLEVEL_KEY,notification.EmphasisLevel.ToString());
 
             var tokenCreationCommand =
                 new TokenCreationCommand(newNoteCommand, TokenLocation.Default(notesSphere.GetAbsolutePath()));

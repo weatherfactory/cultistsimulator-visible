@@ -414,6 +414,7 @@ namespace SecretHistories.UI {
         {
             SetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY, notification.Title);
             SetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, notification.Description);
+            SetIllumination(NoonConstants.TLG_NOTES_EMPHASISLEVEL_KEY, notification.EmphasisLevel.ToString());
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update, context));
             
             return true;
