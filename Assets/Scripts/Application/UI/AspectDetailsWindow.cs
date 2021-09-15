@@ -43,12 +43,10 @@ namespace SecretHistories.UI {
             if (element != null)
                 SetAspect(element);
 
-			//if (!fromDetailsWindow)
-			//	(transform as RectTransform).anchoredPosition = posNoDetailsWindow;
-			//else
+
 				(transform as RectTransform).anchoredPosition = new Vector2( 0f, -tokenDetailsHeight.sizeDelta.y - 10f);
 
-		//	Debug.Log("tokenDetails size : "+ tokenDetailsHeight.sizeDelta.y);
+		
         }
 
         void SetAspect(Element element)
@@ -59,7 +57,7 @@ namespace SecretHistories.UI {
                 ShowImage(ResourcesManager.GetSpriteForElement(element.Icon));
 
             ShowText(Watchman.Get<ILocStringProvider>().Get("UI_ASPECT") + element.Label, element.Description);
-            adjuster.Adjust();
+          //  adjuster.Adjust();
         }
     }
 }
