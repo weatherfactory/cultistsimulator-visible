@@ -432,58 +432,6 @@ namespace SecretHistories.Entities {
         }
 
 
-        public bool oldReceiveNoteUsingDistinctSpheres(INotification notification, Context context)
-        {
-            //no infinite loops pls
-            if (notification.Title == this.Label && notification.Description == this.Description)
-                return true;
-
-
-            if (!Situation.TextIntendedForDisplay(notification.Description))
-                return true;
-
-            var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
-            
-           var notesDominion = GetRelevantDominions(StateIdentifier,typeof(NotesSphere)).FirstOrDefault();
-           if (notesDominion == null)
-           {
-               NoonUtility.Log($"No notes sphere and no notes dominion found: we won't add note {notification.Title}, then.");
-                return false;
-           }
-           
-
-           if (!notification.Additive) //clear out existing notes spheres first
-           {
-               var existingSpheres = notesDominion.Spheres;
-               var idsToRemove = existingSpheres.Select(s => s.Id);
-               foreach(var i in idsToRemove)
-               {
-                   notesDominion.RemoveSphere(i, SphereRetirementType.Destructive);
-               }
-            }
-
-            var existingNotesSpheres = notesDominion.Spheres;
-
-
-            var notesSphereSpec = new SphereSpec(typeof(NotesSphere), $"{nameof(NotesSphere)}{existingNotesSpheres.Count}");
-
-
-            var emptyNoteSphere = notesDominion.TryCreateSphere(notesSphereSpec);
-           emptyNoteSphere.transform.localScale=Vector3.one; //HACK! there's a bug where opening the window can increase the scale of new notes spheres. This sets it usefully, but I should find a more permanent solution if the issue shows up again
-  
-            var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
-            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_TITLE_KEY, notification.Title);
-            newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_DESCRIPTION_KEY, notification.Description);
-
-            var tokenCreationCommand =
-                new TokenCreationCommand(newNoteCommand, TokenLocation.Default(emptyNoteSphere.GetAbsolutePath()));
-
-            tokenCreationCommand.Execute(context,emptyNoteSphere);
-
-            OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update));
-            
-            return true;
-        }
 
 
 
