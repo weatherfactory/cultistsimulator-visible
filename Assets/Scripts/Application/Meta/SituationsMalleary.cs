@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Meta;
 using SecretHistories.Assets.Scripts.Application.UI;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
@@ -23,9 +25,12 @@ namespace Assets.Scripts.Application.Meta
    {
        [SerializeField] private AutoCompletingInput input;
        [SerializeField] private ThresholdSphere _situationDrydock;
+       [SerializeField] private LinkedRecipeDetailsBrowser _altRecipeDetails;
+       [SerializeField] private LinkedRecipeDetailsBrowser _linkedRecipeDetails;
 
 
-       public void Awake()
+
+        public void Awake()
        {
            var sphereSphec = new SphereSpec(typeof(ThresholdSphere), "drydock");
            sphereSphec.SetId("situationsmalleary");
@@ -73,10 +78,12 @@ namespace Assets.Scripts.Application.Meta
            }
            var newTokenLocation = new TokenLocation(0f, 0f, 0f, _situationDrydock.GetAbsolutePath()); //this is the only place we need to, or should, specify the path!
            var newTokenCommand = new TokenCreationCommand(newSituationCommand, newTokenLocation);
-           newTokenCommand.Execute(new Context(Context.ActionSource.Debug),_situationDrydock);
+          var newToken= newTokenCommand.Execute(new Context(Context.ActionSource.Debug),_situationDrydock);
 
 
-           EncaustDrydockedItem(_situationDrydock.GetTokenInSlot(), input);
+           EncaustDrydockedItem(newToken, input);
+           PopulateLinksPanel(newToken.Payload);
+
 
 
 
@@ -136,6 +143,7 @@ namespace Assets.Scripts.Application.Meta
             {
                 input.text = args.Payload.EntityId;
                 EncaustDrydockedItem(args.Token, input);
+                PopulateLinksPanel(args.Payload);
             }
         }
 
@@ -146,6 +154,15 @@ namespace Assets.Scripts.Application.Meta
             var sh = new SerializationHelper();
 
             jsonEditField.text = sh.SerializeToJsonString(encaustedCommand);
+        }
+
+        private void PopulateLinksPanel(ITokenPayload payload)
+        {
+            if (!(payload is Situation situation))
+                return;
+
+            _altRecipeDetails.PopulateLinks(situation.Recipe.Alt);
+  //   _linkedRecipeDetails.PopulateLinks(situation.Recipe.Linked);
         }
     }
 }
