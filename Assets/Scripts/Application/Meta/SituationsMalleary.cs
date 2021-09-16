@@ -40,7 +40,9 @@ namespace Assets.Scripts.Application.Meta
 
            _situationDrydock.ApplySpec(sphereSphec);
 
-            _situationDrydock.Subscribe(this);
+           _situationDrydock.Subscribe(this);
+
+           _linksPanel.SetActive(false);
        }
 
 
@@ -166,11 +168,13 @@ namespace Assets.Scripts.Application.Meta
             _linksPanel.SetActive(true);
 
             _altRecipeDetails.PopulateLinks(situation.Recipe.Alt);
+            _linkedRecipeDetails.PopulateLinks(situation.Recipe.Linked);
         }
 
         private void ClearLinksPanel()
         {
             _altRecipeDetails.Clear();
+            _linkedRecipeDetails.Clear();
             _linksPanel.SetActive(false);
         }
     }
