@@ -14,6 +14,7 @@ using SecretHistories.Entities;
 public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int Quantity;
+    public string Criterion;
     private Element _aspect=null;
     private bool parentIsDetailsWindow = false; // set by AspectsDisplay. Used in Notifier call.
 
@@ -48,10 +49,22 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
         _aspect = element;
         Quantity = quantity;
+        Criterion = string.Empty;
         DisplayAImage(element);
         DisplayQuantity(quantity, hasBrightBg);
         gameObject.name = "Element - " + element.Id;
     }
+
+        public void PopulateDisplay(Element element, string criterion, bool hasBrightBg = false)
+        {
+
+            _aspect = element;
+            Quantity = 0;
+            Criterion = criterion;
+            DisplayAImage(element);
+            DisplayCriterion(criterion, hasBrightBg);
+            gameObject.name = "Element - " + element.Id;
+        }
 
     private void DisplayAImage(Element element)
     {
@@ -77,6 +90,17 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
             layoutElement.minWidth = quantity > 9 ? width2Digit : width1Digit; ;
             layoutElement.preferredWidth = layoutElement.minWidth;
         }
+    }
+
+    private void DisplayCriterion(string criterion, bool hasBrightBG)
+    {
+
+            quantityText.gameObject.SetActive(true);
+            quantityText.text = criterion.ToString();
+            quantityText.color = hasBrightBG ? darkQuantityColor : brightQuantityColor;
+            layoutElement.minWidth = criterion.Length / 10;
+            layoutElement.preferredWidth = layoutElement.minWidth;
+        
     }
 
     public void SetAsDetailWindowChild() {

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Tokens.Elements;
+using SecretHistories.Core;
 using SecretHistories.Entities;
+using SecretHistories.Enums.Elements;
 using SecretHistories.UI;
 using TMPro;
 using UnityEngine;
@@ -12,7 +15,12 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
 {
    public class LinkedRecipeDetailsDisplay: MonoBehaviour
    {
+#pragma warning disable 649
+       [SerializeField]
+       private RequirementsDisplay _requirements;
        [SerializeField] private TextMeshProUGUI _summary;
+       
+#pragma warning restore 649
 
        const int maxStringLength = 20;
        private const string trimmedMarker = "...";
@@ -20,6 +28,8 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
        {
            
            var r = Watchman.Get<Compendium>().GetEntityById<Recipe>(details.Id);
+            
+            _requirements.DisplayRequirements(r.Requirements);
 
 
            string linkProperties=string.Empty;
