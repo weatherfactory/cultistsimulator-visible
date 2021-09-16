@@ -18,6 +18,7 @@ namespace SecretHistories.Spheres.Angels
         {
         if (_watchingOverThreshold == null)
                 return;
+            //the angel consumes the token when it leaves (see MinisterToDepartingToken below) not on the Act method
         }
 
         public void SetWatch(Sphere sphere)

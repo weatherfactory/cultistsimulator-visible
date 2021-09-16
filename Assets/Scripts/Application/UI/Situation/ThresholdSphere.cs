@@ -289,8 +289,6 @@ namespace SecretHistories.UI
         }
 
         public void OnPointerClick(PointerEventData eventData) {
-       //     bool highlightGreedy = GreedyIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(GreedyIcon);
-       //     bool highlightConsumes = ConsumingIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(ConsumingIcon);
 
             Watchman.Get<Notifier>().ShowSlotDetails(GoverningSphereSpec);
 

@@ -128,6 +128,7 @@ public class SphereSpec: AbstractEntity<SphereSpec>
         if (Consumes)
         {
             ConsumingAngel consumingAngel = new ConsumingAngel();
+            consumingAngel.SetWatch(inSphere);
             angelsMade.Add(consumingAngel);
         }
 
