@@ -19,6 +19,7 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
 #pragma warning disable 649
        [SerializeField] private RequirementsDisplay _requirements;
        [SerializeField] private Button _slotMarkerButton;
+       [SerializeField] private TextMeshProUGUI _additional;
 
         [SerializeField] private TextMeshProUGUI _summary;
        
@@ -36,7 +37,7 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
 
 
 
-            string linkProperties;
+            string linkProperties=String.Empty;
            string chance=string.Empty;
 
            if (!details.Challenges.Any())
@@ -50,19 +51,20 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
                    chance += $"{challenge.Key}:{challenge.Value}";
                }
            }
-           if (details.Additional)
-               linkProperties = $"({chance} +)";
-           else
-           {
-               linkProperties = $"({chance})";
-           }
+           
 
-           string descriptions = $"{TrimToMaxOrLess(r.StartDescription)}/{TrimToMaxOrLess(r.Description)}";
+            var descriptions = $"{TrimToMaxOrLess(r.StartDescription)}/{TrimToMaxOrLess(r.Description)}";
            
 
            _summary.text = $"{linkProperties} <b>{details.Id}<b>: {descriptions}";
 
-           if (r.Slots.Any())
+           if (details.Additional)
+               _additional.gameObject.SetActive(true);
+           else
+               _additional.gameObject.SetActive(false);
+
+
+            if (r.Slots.Any())
            {
                _slotMarkerButton.gameObject.SetActive(true);
                _slotMarkerButton.onClick.AddListener(delegate { ShowSlotDetails(r.Slots.First()); });

@@ -22,7 +22,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
 
             if (!requirements.Any())
             {
-                AddAspectToDisplay("null","ALWAYS AVAILABLE");
+                AddAspectToDisplay("null",".");
             }
             else
                foreach (string k in requirements.Keys)
