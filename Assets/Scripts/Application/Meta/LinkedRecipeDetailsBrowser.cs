@@ -29,7 +29,7 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
          foreach (var l in links)
             {
                 var prefabLinkDisplay = Watchman.Get<PrefabFactory>().CreateLocally<LinkedRecipeDetailsDisplay>(linksContainer.transform);
-                
+                prefabLinkDisplay.name = l.Id;
                 prefabLinkDisplay.Populate(l);
             }
         }

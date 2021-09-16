@@ -10,15 +10,17 @@ using SecretHistories.Enums.Elements;
 using SecretHistories.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SecretHistories.Assets.Scripts.Application.Meta
 {
    public class LinkedRecipeDetailsDisplay: MonoBehaviour
    {
 #pragma warning disable 649
-       [SerializeField]
-       private RequirementsDisplay _requirements;
-       [SerializeField] private TextMeshProUGUI _summary;
+       [SerializeField] private RequirementsDisplay _requirements;
+       [SerializeField] private Button _slotMarkerButton;
+
+        [SerializeField] private TextMeshProUGUI _summary;
        
 #pragma warning restore 649
 
@@ -32,7 +34,9 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
             _requirements.DisplayRequirements(r.Requirements);
 
 
-           string linkProperties=string.Empty;
+
+
+            string linkProperties;
            string chance=string.Empty;
 
            if (!details.Challenges.Any())
@@ -57,7 +61,24 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
            
 
            _summary.text = $"{linkProperties} <b>{details.Id}<b>: {descriptions}";
-       }
+
+           if (r.Slots.Any())
+           {
+               _slotMarkerButton.gameObject.SetActive(true);
+               _slotMarkerButton.onClick.AddListener(delegate { ShowSlotDetails(r.Slots.First()); });
+
+           }
+           else
+           {
+               _slotMarkerButton.onClick.RemoveAllListeners();
+                _slotMarkerButton.gameObject.SetActive(false);
+           }
+        }
+
+        private void ShowSlotDetails(SphereSpec sphereSpec)
+        {
+            Watchman.Get<Notifier>().ShowSlotDetails(sphereSpec);
+        }
 
         private string TrimToMaxOrLess(string toTrim)
         {
