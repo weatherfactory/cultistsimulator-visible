@@ -137,7 +137,7 @@ namespace Assets.Scripts.Application.Meta
         {
             if(args.TokenRemoved!=null)
                ClearLinksPanel();
-        }
+            }
 
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
@@ -163,15 +163,15 @@ namespace Assets.Scripts.Application.Meta
             if (!(payload is Situation situation))
                 return;
 
-            
+            _linksPanel.SetActive(true);
 
             _altRecipeDetails.PopulateLinks(situation.Recipe.Alt);
         }
 
         private void ClearLinksPanel()
         {
-
             _altRecipeDetails.Clear();
+            _linksPanel.SetActive(false);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
          foreach(Transform c in linksContainer.transform)
              GameObject.Destroy(c.gameObject);
 
-            foreach (var l in links)
+         foreach (var l in links)
             {
                 var prefabLinkDisplay = Watchman.Get<PrefabFactory>().CreateLocally<LinkedRecipeDetailsDisplay>(linksContainer.transform);
                 

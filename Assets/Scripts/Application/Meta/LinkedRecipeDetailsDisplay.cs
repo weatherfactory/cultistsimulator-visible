@@ -21,8 +21,32 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
            
            var r = Watchman.Get<Compendium>().GetEntityById<Recipe>(details.Id);
 
-            
-           _summary.text = $"({details.Chance}) <b>{details.Id}<b>: {TrimToMaxOrLess(r.StartDescription)}/{TrimToMaxOrLess(r.Description)}";
+
+           string linkProperties=string.Empty;
+           string chance=string.Empty;
+
+           if (!details.Challenges.Any())
+               chance = details.Chance.ToString();
+           else
+           {
+               foreach (var challenge in details.Challenges)
+               {
+                   if (string.IsNullOrEmpty(chance))
+                       chance += ",";
+                   chance += $"{challenge.Key}:{challenge.Value}";
+               }
+           }
+           if (details.Additional)
+               linkProperties = $"({chance} +)";
+           else
+           {
+               linkProperties = $"({chance})";
+           }
+
+           string descriptions = $"{TrimToMaxOrLess(r.StartDescription)}/{TrimToMaxOrLess(r.Description)}";
+           
+
+           _summary.text = $"{linkProperties} <b>{details.Id}<b>: {descriptions}";
        }
 
         private string TrimToMaxOrLess(string toTrim)
