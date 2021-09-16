@@ -19,7 +19,7 @@ namespace SecretHistories.States
 
         public override bool AllowDuplicateVerbIfVerbSpontaneous => false;
         public override StateEnum Identifier => StateEnum.RequiringExecution;
-
+        public override bool UpdatePredictionDynamically => false;
 
         public override void Enter(Situation situation)
         {
@@ -64,7 +64,7 @@ namespace SecretHistories.States
 
             if (linkedRecipe != null)
             {
-                var note = new Notification(situation.Recipe.Label, situation.Recipe.Description);
+                var note = new Notification(linkedRecipe.Label, linkedRecipe.StartDescription);
 
                 var addNoteCommand=new AddNoteCommand(note, new Context(Context.ActionSource.UI));
                 situation.ExecuteTokenEffectCommand(addNoteCommand);

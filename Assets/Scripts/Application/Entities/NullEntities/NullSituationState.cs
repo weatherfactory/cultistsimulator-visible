@@ -14,6 +14,8 @@ namespace Assets.Scripts.Application.Entities.NullEntities
 {
     public class NullSituationState: SituationState
     {
+        public override bool UpdatePredictionDynamically => false;
+
         public override void Enter(Situation situation)
         {
     //

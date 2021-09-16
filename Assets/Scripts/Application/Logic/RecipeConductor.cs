@@ -93,7 +93,8 @@ namespace SecretHistories.Core
         }
 
         /// <summary>
-        /// Returns information on the recipe that's going to execute, based on current recipe and aspect context
+        /// Returns information on the recipe that's actually going to execute, based on current recipe and aspect context
+        /// This might be an alt or linked recipe depending on state context
         public RecipePrediction GetPredictionForFollowupRecipe(Recipe currentlyPredictedRecipe, Situation situation)
         {
             _aspectsInContext.ThrowErrorIfNotPopulated(situation.Verb.Id);

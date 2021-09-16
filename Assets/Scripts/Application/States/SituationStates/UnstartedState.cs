@@ -48,6 +48,8 @@ namespace SecretHistories.States
             return false;
         }
 
+        public override bool UpdatePredictionDynamically => true;
+
         public override bool AllowDuplicateVerbIfVerbSpontaneous => false;
 
 

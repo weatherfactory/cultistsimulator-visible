@@ -17,7 +17,7 @@ namespace SecretHistories.States
 
         public override bool AllowDuplicateVerbIfVerbSpontaneous => false;
         public override StateEnum Identifier => StateEnum.Ongoing;
-
+        public override bool UpdatePredictionDynamically => true;
 
         public override void Enter(Situation situation)
         {

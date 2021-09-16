@@ -22,6 +22,9 @@ namespace SecretHistories.States
        public abstract bool IsActiveInThisState(Sphere sphereToCheck);
 
         public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
+        //For states like Unstarted and Ongoing, we change the prediction whenever tokens change.
+        //for states like RequiresExecution and Complete, we don't need to (or want to - we can get echo messages)
+        public abstract bool UpdatePredictionDynamically { get; }
        public abstract bool AllowDuplicateVerbIfVerbSpontaneous { get; }
        public abstract StateEnum Identifier { get; }
 

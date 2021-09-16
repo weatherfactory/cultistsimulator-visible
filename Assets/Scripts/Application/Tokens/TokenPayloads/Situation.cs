@@ -972,15 +972,16 @@ namespace SecretHistories.Entities {
                 Conclude();
             }
 
+            if(State.UpdatePredictionDynamically)
+            {
+                var oldEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
 
-            var oldEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
+                UpdateCurrentRecipePrediction(GetRecipePredictionForCurrentStateAndAspects(),args.Context);
+                var newEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
 
-            UpdateCurrentRecipePrediction(GetRecipePredictionForCurrentStateAndAspects(),args.Context);
-            var newEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
-
-            if (oldEndingFlavour!=newEndingFlavour)
-                Token.ExecuteTokenEffectCommand(new SignalEndingFlavourCommand(newEndingFlavour));
-
+                if (oldEndingFlavour!=newEndingFlavour)
+                    Token.ExecuteTokenEffectCommand(new SignalEndingFlavourCommand(newEndingFlavour));
+            }
             foreach (var s in _subscribers)
                 s.SituationSphereContentsUpdated(this);
 
