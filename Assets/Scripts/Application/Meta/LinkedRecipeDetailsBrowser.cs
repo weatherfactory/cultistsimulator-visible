@@ -15,6 +15,12 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
    {
        [SerializeField] private GameObject linksContainer;
 
+
+       public void Clear()
+       {
+           PopulateLinks(new List<LinkedRecipeDetails>());
+       }
+
         public void PopulateLinks(List<LinkedRecipeDetails> links)
         {
          foreach(Transform c in linksContainer.transform)

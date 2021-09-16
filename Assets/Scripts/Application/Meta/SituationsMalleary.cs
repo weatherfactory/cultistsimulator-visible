@@ -25,7 +25,8 @@ namespace Assets.Scripts.Application.Meta
    {
        [SerializeField] private AutoCompletingInput input;
        [SerializeField] private ThresholdSphere _situationDrydock;
-       [SerializeField] private LinkedRecipeDetailsBrowser _altRecipeDetails;
+       [SerializeField] private GameObject _linksPanel;
+        [SerializeField] private LinkedRecipeDetailsBrowser _altRecipeDetails;
        [SerializeField] private LinkedRecipeDetailsBrowser _linkedRecipeDetails;
 
 
@@ -134,7 +135,8 @@ namespace Assets.Scripts.Application.Meta
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
-            //
+            if(args.TokenRemoved!=null)
+               ClearLinksPanel();
         }
 
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
@@ -161,8 +163,15 @@ namespace Assets.Scripts.Application.Meta
             if (!(payload is Situation situation))
                 return;
 
+            
+
             _altRecipeDetails.PopulateLinks(situation.Recipe.Alt);
-  //   _linkedRecipeDetails.PopulateLinks(situation.Recipe.Linked);
+        }
+
+        private void ClearLinksPanel()
+        {
+
+            _altRecipeDetails.Clear();
         }
     }
 }
