@@ -101,6 +101,7 @@ namespace SecretHistories.Infrastructure
             }
 
             Watchman.Get<Heart>().Unmetapause();
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
             Watchman.Get<LocalNexus>().EnablePlayerInput();
 
         }
