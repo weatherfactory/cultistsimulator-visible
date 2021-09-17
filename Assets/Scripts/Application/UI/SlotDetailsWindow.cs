@@ -34,8 +34,6 @@ namespace SecretHistories.UI {
 
         [SerializeField]Object cardPingFx;
 
-        Coroutine infoHighlight;
-
         private float cardPingLastTriggered = 0.0f;
         SphereSpec slotSpec;
 

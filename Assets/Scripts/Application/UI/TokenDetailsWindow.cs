@@ -32,8 +32,7 @@ namespace SecretHistories.UI {
         [Header("Aspect Display")]
         [SerializeField] AspectsDisplay aspectsDisplayFlat;
 
-        Coroutine infoHighlight;
-
+        
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element _element;
         ElementStack _stack;
@@ -225,7 +224,7 @@ namespace SecretHistories.UI {
             icon.transform.localScale = Vector3.one;
             icon.color = UIStyle.slotDefault;
             text.color = UIStyle.textColorLight;
-            infoHighlight = null;
+            
         }
 
 		void HighlightSlotCompatibleCards(SphereSpec slotSpec) {

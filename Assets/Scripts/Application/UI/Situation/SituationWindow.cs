@@ -71,8 +71,6 @@ namespace SecretHistories.UI {
 
         private ITokenPayload _payload; //Ideally, we would reduce this to an ITokenPayload
 
-        private bool windowIsWide = false;
-        
 
         public bool IsVisible {
             get { return canvasGroupFader.IsVisible(); }
