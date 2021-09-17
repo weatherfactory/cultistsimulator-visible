@@ -14,6 +14,7 @@ using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Events;
 using SecretHistories.Fucine;
+using SecretHistories.NullObjects;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
@@ -170,15 +171,15 @@ namespace Assets.Scripts.Application.Meta
 
             _linksPanel.SetActive(true);
 
-            _currentRecipeDetails.Populate(LinkedRecipeDetails.AsCurrentRecipe(situation.Recipe));
+            _currentRecipeDetails.Populate(LinkedRecipeDetails.AsCurrentRecipe(situation.Recipe),situation);
 
-            _altRecipeDetails.PopulateLinks(situation.Recipe.Alt);
-            _linkedRecipeDetails.PopulateLinks(situation.Recipe.Linked);
+            _altRecipeDetails.PopulateLinks(situation.Recipe.Alt,situation);
+            _linkedRecipeDetails.PopulateLinks(situation.Recipe.Linked, situation);
         }
 
         private void ClearLinksPanel()
         {
-            _currentRecipeDetails.Populate(LinkedRecipeDetails.AsCurrentRecipe(NullRecipe.Create()));
+            _currentRecipeDetails.Populate(LinkedRecipeDetails.AsCurrentRecipe(NullRecipe.Create()),NullSituation.Create());
             _altRecipeDetails.Clear();
             _linkedRecipeDetails.Clear();
             _linksPanel.SetActive(false);

@@ -19,20 +19,23 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
 
        public void Clear()
        {
-           PopulateLinks(new List<LinkedRecipeDetails>());
+           PopulateLinks(new List<LinkedRecipeDetails>(),null);
        }
 
-        public void PopulateLinks(List<LinkedRecipeDetails> links)
+        public void PopulateLinks(List<LinkedRecipeDetails> links,Situation currentSituation)
         {
          foreach(Transform c in linksContainer.transform)
              GameObject.Destroy(c.gameObject);
 
+ 
          foreach (var l in links)
-            {
-                var prefabLinkDisplay = Watchman.Get<PrefabFactory>().CreateLocally<LinkedRecipeDetailsDisplay>(linksContainer.transform);
-                prefabLinkDisplay.name = l.Id;
-                prefabLinkDisplay.Populate(l);
-            }
+         {
+             var prefabLinkDisplay = Watchman.Get<PrefabFactory>().CreateLocally<LinkedRecipeDetailsDisplay>(linksContainer.transform);
+             prefabLinkDisplay.name = l.Id;
+             prefabLinkDisplay.Populate(l,currentSituation);
+
+             
+         }
         }
     }
 }

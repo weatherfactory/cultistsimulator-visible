@@ -21,14 +21,14 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
        [SerializeField] private RequirementsDisplay _requirements;
        [SerializeField] private Button _slotMarkerButton;
        [SerializeField] private TextMeshProUGUI _additional;
+       [SerializeField] private TextMeshProUGUI _summary;
 
-        [SerializeField] private TextMeshProUGUI _summary;
        
 #pragma warning restore 649
 
        const int maxStringLength = 20;
        private const string trimmedMarker = "...";
-        public void Populate(LinkedRecipeDetails details)
+        public void Populate(LinkedRecipeDetails details,Situation situation)
        {
            
            var r = Watchman.Get<Compendium>().GetEntityById<Recipe>(details.Id);
@@ -41,8 +41,13 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
            if(r.ExtantReqs.Any())
             _requirements.DisplayRequirements(r.ExtantReqs, "EXTANT");
 
+           var aspectsInContext =
+               Watchman.Get<HornedAxe>().GetAspectsInContext(situation.GetAspects(true));
 
-
+           //if (r.RequirementsSatisfiedBy(aspectsInContext))
+           //    _highlightImage.CrossFadeAlpha(150f, 0.2f, true);
+           //else
+           //    _highlightImage.CrossFadeAlpha(0f, 0.2f, true);
 
             string linkProperties=String.Empty;
            string chance=string.Empty;
@@ -60,7 +65,7 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
            }
            
 
-            var descriptions = $"{TrimToMaxOrLess(r.StartDescription)}/{TrimToMaxOrLess(r.Description)}";
+           var descriptions = $"{TrimToMaxOrLess(r.StartDescription)}/{TrimToMaxOrLess(r.Description)}";
            
 
            _summary.text = $"{linkProperties} <b>{details.Id}<b>: {descriptions}";
@@ -71,7 +76,7 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
                _additional.gameObject.SetActive(false);
 
 
-            if (r.Slots.Any())
+           if (r.Slots.Any())
            {
                _slotMarkerButton.gameObject.SetActive(true);
                _slotMarkerButton.onClick.AddListener(delegate { ShowSlotDetails(r.Slots.First()); });
