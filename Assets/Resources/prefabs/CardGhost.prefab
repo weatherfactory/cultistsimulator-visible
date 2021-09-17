@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2881439765618108084}
   - component: {fileID: 7298925449518795356}
   - component: {fileID: 1071853333634332604}
+  - component: {fileID: 3666688038705023535}
   m_Layer: 5
   m_Name: CardGhost
   m_TagString: Untagged
@@ -83,7 +84,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b24123392edec4fa51bbea2a162f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 7298925449518795356}
+  canvasGroupFader: {fileID: 3666688038705023535}
+--- !u!114 &3666688038705023535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128665598655613098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e835ed38c168545d8acd9e0f7f3943f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockRaysDuringFade: 0
+  durationTurnOn: 0.2
+  durationTurnOff: 0.2
 --- !u!1 &1948240919675838030
 GameObject:
   m_ObjectHideFlags: 0

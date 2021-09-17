@@ -12,28 +12,27 @@ namespace SecretHistories.Ghosts
     {
         
         protected RectTransform rectTransform;
-        [SerializeField] protected CanvasGroup canvasGroup;
+        [SerializeField] protected CanvasGroupFader canvasGroupFader;
         public void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
         }
 
-        public bool Visible { get; protected set; }
+        public bool Visible => canvasGroupFader.IsVisible();
 
         public virtual void ShowAt(Sphere projectInSphere, Vector3 anchoredPosition3D)
         {
-            canvasGroup.alpha = 1f;
+            canvasGroupFader.Show();
             rectTransform.SetParent(projectInSphere.GetRectTransform());
             rectTransform.anchoredPosition3D = anchoredPosition3D;
-            Visible = true;
         }
 
         public virtual void HideIn(Token forToken)
         {
-            canvasGroup.alpha = 0f;
+            canvasGroupFader.Hide();
             if(rectTransform!=null)
                 rectTransform.SetParent(forToken.TokenRectTransform); //so it doesn't clutter up the hierarchy
-            Visible = false;
+            
         }
 
 
