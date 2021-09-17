@@ -33,7 +33,13 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
            
            var r = Watchman.Get<Compendium>().GetEntityById<Recipe>(details.Id);
             
-            _requirements.DisplayRequirements(r.Requirements);
+           _requirements.ClearCurrentlyDisplayedRequirements();
+           if(r.Requirements.Any())
+            _requirements.DisplayRequirements(r.Requirements,"REQS");
+           if(r.TableReqs.Any())
+               _requirements.DisplayRequirements(r.TableReqs, "TABLE");
+           if(r.ExtantReqs.Any())
+            _requirements.DisplayRequirements(r.ExtantReqs, "EXTANT");
 
 
 

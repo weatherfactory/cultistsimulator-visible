@@ -30,6 +30,7 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     float width2Digit = 80f; //85f;
     float width1Digit = 60f; //68f;
     float width0Digits = 40f;
+    private float widthPerCriterionCharacter = 15f;
 
     public void PopulateDisplay(IManifestable manifestable)
     {
@@ -97,8 +98,8 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
             quantityText.gameObject.SetActive(true);
             quantityText.text = criterion.ToString();
             quantityText.color = hasBrightBG ? darkQuantityColor : brightQuantityColor;
-            layoutElement.minWidth = criterion.Length / 10;
-            layoutElement.preferredWidth = layoutElement.minWidth;
+            layoutElement.minWidth = width0Digits + (Criterion.Length * widthPerCriterionCharacter);
+        layoutElement.preferredWidth = layoutElement.minWidth;
         
     }
 
