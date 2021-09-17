@@ -36,9 +36,27 @@ namespace SecretHistories.Entities
         }
 
 
+
+        public static  LinkedRecipeDetails AsCurrentRecipe(Recipe r)
+        {
+            var l=new LinkedRecipeDetails(r.Id);
+            l.Chance = 0;
+            l.Additional = false;
+            l.Challenges=new Dictionary<string, string>();
+            l.ToPath = FucinePath.Current().ToString();
+            return l;
+        }
+
+        private LinkedRecipeDetails(string recipeId)
+        {
+            SetId(recipeId);
+        }
+
         public LinkedRecipeDetails(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
         }
+
+        
 
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)

@@ -11,6 +11,7 @@ using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.Meta
 {
+    //to browse 0 or more linkedrecipedetails
    public class RecipeDetailsBrowser: MonoBehaviour
    {
        [SerializeField] private GameObject linksContainer;

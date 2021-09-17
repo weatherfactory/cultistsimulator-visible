@@ -14,6 +14,7 @@ using UnityEngine.UI;
 
 namespace SecretHistories.Assets.Scripts.Application.Meta
 {
+    //to display exactly one linkedrecipedetails
    public class LinkedRecipeDetailsDisplay: MonoBehaviour
    {
 #pragma warning disable 649

@@ -26,8 +26,11 @@ namespace Assets.Scripts.Application.Meta
        [SerializeField] private AutoCompletingInput input;
        [SerializeField] private ThresholdSphere _situationDrydock;
        [SerializeField] private GameObject _linksPanel;
-        [SerializeField] private RecipeDetailsBrowser _altRecipeDetails;
+        [SerializeField] private LinkedRecipeDetailsDisplay _currentRecipeDetails;
+       [SerializeField] private RecipeDetailsBrowser _altRecipeDetails;
        [SerializeField] private RecipeDetailsBrowser _linkedRecipeDetails;
+       
+
 
 
 
@@ -167,12 +170,15 @@ namespace Assets.Scripts.Application.Meta
 
             _linksPanel.SetActive(true);
 
+            _currentRecipeDetails.Populate(LinkedRecipeDetails.AsCurrentRecipe(situation.Recipe));
+
             _altRecipeDetails.PopulateLinks(situation.Recipe.Alt);
             _linkedRecipeDetails.PopulateLinks(situation.Recipe.Linked);
         }
 
         private void ClearLinksPanel()
         {
+            _currentRecipeDetails.Populate(LinkedRecipeDetails.AsCurrentRecipe(NullRecipe.Create()));
             _altRecipeDetails.Clear();
             _linkedRecipeDetails.Clear();
             _linksPanel.SetActive(false);
