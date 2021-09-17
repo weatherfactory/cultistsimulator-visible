@@ -80,8 +80,6 @@ namespace SecretHistories.Enums.Elements
             ElementFrame newElementFrame = Watchman.Get<PrefabFactory>().CreateLocally<ElementFrame>(aspectsDisplay);
             newElementFrame.PopulateDisplay(aspect, quantity, hasBrightBackground);
 
-            if (isWithinDetailsWindow)
-                newElementFrame.SetAsDetailWindowChild();
         }
     }
 }

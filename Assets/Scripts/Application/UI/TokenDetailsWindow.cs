@@ -227,30 +227,6 @@ namespace SecretHistories.UI {
             
         }
 
-		void HighlightSlotCompatibleCards(SphereSpec slotSpec) {
-			if (slotSpec.Greedy) // Greedy slots get no possible cards
-				return;
-
-            HighlightAllStacksForSlotSpecificationOnTabletop(slotSpec);
-		}
-
-        private float cardPingLastTriggered = 0.0f;
-
-        public void HighlightAllStacksForSlotSpecificationOnTabletop(SphereSpec slotSpec)
-        {
-            float time = Time.realtimeSinceStartup;
-            if (time > cardPingLastTriggered + 1.0f)    // Don't want to trigger these within a second of the last trigger, otherwise they stack up too much
-            {
-                cardPingLastTriggered = time;
-
-                var stacks = FindAllElementTokenssForSlotSpecificationOnTabletop(slotSpec);
-
-                foreach (var stack in stacks)
-                
-                    ShowFXonToken("FX/CardPingEffect", stack.transform);
-            }
-        }
-
 
 
         private List<Token> FindAllElementTokenssForSlotSpecificationOnTabletop(SphereSpec slotSpec)

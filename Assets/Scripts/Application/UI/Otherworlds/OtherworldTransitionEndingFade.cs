@@ -108,7 +108,6 @@ public class OtherworldTransitionEndingFade: OtherworldTransitionFX
 
         IEnumerator DoFadeTransition(RectTransform focusOnTransform, Ending ending)
         {
-            const float zoomDuration = 5f;
             const float fadeDuration = 2f;
 
             

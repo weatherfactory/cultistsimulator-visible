@@ -29,7 +29,6 @@ namespace SecretHistories.Abstract
         void ExecuteHeartbeat(float seconds, float metaseconds);
         bool CanInteractWith(ITokenPayload incomingTokenPayload);
         bool CanMergeWith(ITokenPayload incomingTokenPayload);
-        bool Retire(RetirementVFX vfx);
         void InteractWithIncoming(Token incomingToken);
         bool ReceiveNote(INotification notification,Context context);
         void ShowNoMergeMessage(ITokenPayload incomingTokenPayload);

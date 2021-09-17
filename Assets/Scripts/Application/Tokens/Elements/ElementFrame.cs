@@ -16,7 +16,6 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     public int Quantity;
     public string Criterion;
     private Element _aspect=null;
-    private bool parentIsDetailsWindow = false; // set by AspectsDisplay. Used in Notifier call.
 
     [SerializeField] private LayoutElement layoutElement;
     [SerializeField] private Image aspectImage;
@@ -101,10 +100,6 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
             layoutElement.minWidth = criterion.Length / 10;
             layoutElement.preferredWidth = layoutElement.minWidth;
         
-    }
-
-    public void SetAsDetailWindowChild() {
-        parentIsDetailsWindow = true;
     }
 
     public void OnPointerEnter(PointerEventData eventData) {

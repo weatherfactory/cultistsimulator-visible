@@ -150,9 +150,7 @@ namespace SecretHistories.UI
         {
             float time = 0f;
             float current = rect.rect.height;
-
-            LayoutElement l;
-       
+            
             while (time < duration)
             {
                 SetHeight(Mathf.Lerp(current, target, time / duration)); // TODO: Add some nice easing?

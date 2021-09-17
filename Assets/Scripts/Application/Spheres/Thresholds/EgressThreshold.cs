@@ -18,8 +18,7 @@ namespace SecretHistories.UI {
     [ExecuteInEditMode]
     public class EgressThreshold : ThresholdSphere{
 
-        public event System.Action<Token> onCardDropped;
-
+        
         public Image activeGlow;
         public Color defaultBackgroundColor;
         public Image doorColor;
