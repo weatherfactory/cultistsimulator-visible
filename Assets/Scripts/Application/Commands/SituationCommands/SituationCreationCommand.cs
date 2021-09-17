@@ -29,7 +29,6 @@ namespace SecretHistories.Commands
         public int Quantity { get; set; }
         public StateEnum StateIdentifier { get; set; }
         public float TimeRemaining { get; set; }
-        public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
         public Dictionary<string, int> Mutations { get; set; }
         //This is used for reference and repair - perhaps testing. I'm populating the parent path in the Execute paramater
         public bool IsOpen { get; set; }
@@ -105,7 +104,6 @@ namespace SecretHistories.Commands
 
             newSituation.SetRecipeActive(recipe);
             newSituation.ReduceLifetimeBy(recipe.Warmup - TimeRemaining);
-            newSituation.OverrideTitle = OverrideTitle;
             
 
             //This MUST go here, as soon as the situation is created and before tokens or commands are added, because it's here that the situation spheres get attached.

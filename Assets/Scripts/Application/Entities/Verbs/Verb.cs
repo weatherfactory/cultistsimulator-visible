@@ -42,12 +42,7 @@ namespace SecretHistories.Entities
         public int Quantity => 1;
         [Encaust]
         public Dictionary<string, int> Mutations { get; }
-
-
-
         public List<SphereSpec> Thresholds { get; set; } = new List<SphereSpec>();
-
-
         [FucineSubEntity(typeof(SphereSpec),Localise = true)]
         public SphereSpec Slot { get; set; }
 

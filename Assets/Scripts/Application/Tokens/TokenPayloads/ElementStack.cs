@@ -453,6 +453,8 @@ namespace SecretHistories.UI {
                 return false;
             if (Decays || Element.Unique)
                 return false;
+            if (!Token.Sphere.AllowStackMerge)
+                return false;
 
             if (otherPayload.EntityId != this.EntityId)
                 return false;

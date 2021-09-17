@@ -195,7 +195,7 @@ namespace SecretHistories.Constants
             var situationCreationCommand = new SituationCreationCommand(verb.Id).WithRecipeId(recipe.Id).AlreadyInState(situationState);
             
             situationCreationCommand.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING) ??  0;
-            situationCreationCommand.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
+         //   situationCreationCommand.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
 
             string simplifiedSituationPath;
             TokenLocation tokenLocation;

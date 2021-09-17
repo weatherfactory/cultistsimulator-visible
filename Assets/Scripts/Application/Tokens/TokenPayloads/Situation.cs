@@ -60,9 +60,6 @@ namespace SecretHistories.Entities {
         [DontEncaust]
         public Verb Verb { get; set; }
 
-        [Encaust]
-        public string OverrideTitle { get; set; }
-
 
         [Encaust] public string Id { get; protected set; }
         public FucinePath GetAbsolutePath()
@@ -185,6 +182,7 @@ namespace SecretHistories.Entities {
             Verb = verb;
             Recipe = NullRecipe.Create();
             _currentRecipePrediction = new RecipePrediction(Recipe, AspectsDictionary.Empty(),Verb);
+            Label = _currentRecipePrediction.Title; //the receivenote / title workflow is still uneven. This goes here to make sure verb-based recipes specify the title in brand new windows.
 
             State = new NullSituationState();
             _timeshadow = new Timeshadow(Recipe.Warmup,
