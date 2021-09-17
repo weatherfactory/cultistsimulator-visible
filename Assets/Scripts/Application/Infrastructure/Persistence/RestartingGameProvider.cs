@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Infrastructure.Persistence;
 using UnityEngine;
 
@@ -19,6 +20,11 @@ namespace SecretHistories.Infrastructure.Persistence
         protected override string GetSaveFileLocation()
         {
             return $"{Application.persistentDataPath}/restart.json";
+        }
+
+        public override GameSpeed GetDefaultGameSpeed()
+        {
+            return GameSpeed.Normal;
         }
 
     }

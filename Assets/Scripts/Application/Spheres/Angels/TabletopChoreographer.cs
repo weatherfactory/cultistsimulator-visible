@@ -156,7 +156,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 				return;
 			}
 
-            var targetRect = GetRectWithSpherePosition(pushingToken.TokenRectTransform);
+            var targetRect = GetLocalRectFromRectTransform(pushingToken.TokenRectTransform);
 			// Reduce the target Rect size to be less finnicky
 			targetRect.size = targetRect.size * 0.5f;
 
@@ -166,7 +166,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                 if (token==pushingToken || CanTokenBeIgnored(token))
                     continue;
 
-				pushedRect = GetRectWithSpherePosition(token.TokenRectTransform);
+				pushedRect = GetLocalRectFromRectTransform(token.TokenRectTransform);
 
 				if (!pushedRect.Overlaps(targetRect))
                     continue;
@@ -200,7 +200,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             
             Vector2 centerPosition = GetPosClampedToTable(startPos);
            Vector2 snappedToGridPosition = SnapToGrid(centerPosition);
-            var targetRect = GetCenterPosRect(snappedToGridPosition, token.ManifestationRectTransform.rect.size);
+            var targetRect = GetLocalRectFromCenterPosition(snappedToGridPosition, token.ManifestationRectTransform.rect.size);
 
             var legalPositionCheckResult = IsLegalPosition(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
@@ -225,7 +225,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             // Go over the test points and check if there's a clear spot to place things
             foreach (var point in currentPoints)
 			{
-                if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token).IsLegal)
+                if (IsLegalPosition(GetLocalRectFromCenterPosition(point, targetRect.size), token).IsLegal)
                     return point;
             }
 
@@ -240,13 +240,13 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             // request a new set of points, since the center pos has shifted
             currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations);
 
-            var centerPosRect = GetCenterPosRect(targetRect.position, targetRect.size);
+            var centerPosRect = GetLocalRectFromCenterPosition(targetRect.position, targetRect.size);
             if (IsLegalPosition(centerPosRect, token).IsLegal)
                 return newStartPosition;
 
             foreach (var point in currentPoints)
 			{
-                if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token).IsLegal)
+                if (IsLegalPosition(GetLocalRectFromCenterPosition(point, targetRect.size), token).IsLegal)
                     return point;
             }
 
@@ -256,12 +256,12 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
         }
 
         // Tokens have their pos in their center, rects in the bottom right
-        Rect GetRectWithSpherePosition(RectTransform rectTrans)
+        Rect GetLocalRectFromRectTransform(RectTransform rectTrans)
 		{
-            return new Rect(rectTrans.position, rectTrans.rect.size);
+            return new Rect(rectTrans.localPosition, rectTrans.rect.size);
         }
 
-        Rect GetCenterPosRect(Vector2 centerPos, Vector2 size)
+        Rect GetLocalRectFromCenterPosition(Vector2 centerPos, Vector2 size)
 		{
             return new Rect(centerPos - size / 2f, size);
         }
@@ -316,7 +316,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
 
             foreach (var otherToken in _tabletop.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t))) {
-                  otherTokenRect = GetRectWithSpherePosition(otherToken.TokenRectTransform);
+                  otherTokenRect = GetLocalRectFromRectTransform(otherToken.TokenRectTransform);
 
              if (otherTokenRect.Overlaps(candidateRect))
                 {

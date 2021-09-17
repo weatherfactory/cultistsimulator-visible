@@ -24,9 +24,9 @@ namespace SecretHistories.Spheres.Angels
 
         }
 
-        public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
+        public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 targetPosition)
         {
-            token.TokenRectTransform.anchoredPosition3D = pos;
+            token.TokenRectTransform.anchoredPosition3D = targetPosition;
         }
 
         public Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1)

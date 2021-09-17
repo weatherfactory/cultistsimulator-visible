@@ -18,7 +18,7 @@ namespace SecretHistories.Spheres.Angels
         /// <summary>
         /// Place as close to a specific position as we can get
         /// </summary>
-        void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos);
+        void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 targetPosition);
 
         Vector2 GetFreeLocalPosition(Token token, Vector2 startPos, int startIteration = -1);
 

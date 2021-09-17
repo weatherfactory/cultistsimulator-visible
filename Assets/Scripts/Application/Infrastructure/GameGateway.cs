@@ -54,16 +54,16 @@ namespace SecretHistories.Infrastructure
            Watchman.Get<StageHand>().LoadGameOnTabletop(new DefaultGamePersistenceProvider());
         }
 
-        public async void LoadGame(GamePersistenceProvider gamePersistenceProviderSource)
+        public async void LoadGame(GamePersistenceProvider gamePersistenceProvider)
         {
             Watchman.Get<Heart>().Metapause();
             Watchman.Get<LocalNexus>().DisablePlayerInput(0f);
 
             try
             {
-                gamePersistenceProviderSource.DepersistGameState();
+                gamePersistenceProvider.DepersistGameState();
 
-                var gameState = gamePersistenceProviderSource.RetrievePersistedGameState();
+                var gameState = gamePersistenceProvider.RetrievePersistedGameState();
 
                 Watchman.Get<Stable>().PrepForLoad();
                 foreach (var c in gameState.CharacterCreationCommands)
@@ -100,9 +100,10 @@ namespace SecretHistories.Infrastructure
                 await SaveRestartState();
             }
 
-            Watchman.Get<Heart>().Unmetapause();
-            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
             Watchman.Get<LocalNexus>().EnablePlayerInput();
+            Watchman.Get<Heart>().Unmetapause();
+            //set game speed as appropriate to the provider (usually paused, but not for a fresh or restarting game)
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProvider.GetDefaultGameSpeed(), WithSFX = false });
 
         }
 

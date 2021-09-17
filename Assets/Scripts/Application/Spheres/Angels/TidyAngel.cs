@@ -42,6 +42,8 @@ namespace SecretHistories.Spheres.Angels
 
         public bool MinisterToEvictedToken(Token token, Context context)
         {
+            if (!token.IsValidElementStack())
+                return false; //currently, tidyangels only tidy element stacks
 
             var tidyToSphere = Watchman.Get<HornedAxe>().GetSphereByPath(_tidyToPath);
 

@@ -28,9 +28,9 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
 
 
-        public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
+        public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 targetPosition)
         {
-            token.TokenRectTransform.anchoredPosition3D = pos;
+            token.TokenRectTransform.anchoredPosition3D = targetPosition;
 
         }
 

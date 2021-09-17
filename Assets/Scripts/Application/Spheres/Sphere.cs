@@ -343,7 +343,7 @@ namespace SecretHistories.Spheres
             token.transform.localRotation = Quaternion.identity;
             token.SetLocalScale(Vector3.one);
       
-            Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(token,context,token.Location.Anchored3DPosition);
+            Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(token,context,token.TokenRectTransform.anchoredPosition);
         }
 
         public virtual void TryMoveAsideFor(Token potentialUsurper, Token incumbent,

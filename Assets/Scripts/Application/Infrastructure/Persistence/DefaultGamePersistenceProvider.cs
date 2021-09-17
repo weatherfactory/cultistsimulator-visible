@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
 using SecretHistories.Constants;
+using SecretHistories.Enums;
 using UnityEngine;
 
 namespace SecretHistories.Infrastructure.Persistence
