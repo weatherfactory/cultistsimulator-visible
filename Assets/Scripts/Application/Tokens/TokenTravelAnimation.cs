@@ -82,7 +82,7 @@ public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
         _token = token;
         _context = context;
 
-        _token.SetScale(Vector3.one * _scaleStart);
+        _token.SetLocalScale(Vector3.one * _scaleStart);
         _token.MakeNonInteractable();
         transform.SetAsLastSibling();
 	}
@@ -112,11 +112,11 @@ public void ExecuteHeartbeat(float seconds, float metaseconds)
 		_token.TokenRectTransform.position = GetPos(Easing.Circular.Out(completion));
 
 		if (_scaleStart != 1f && completion < _scalePercentage)
-			_token.SetScale(Vector3.Lerp(Vector3.one * _scaleStart, Vector3.one, Easing.Quartic.Out(completion / _scalePercentage)));
+			_token.SetLocalScale(Vector3.Lerp(Vector3.one * _scaleStart, Vector3.one, Easing.Quartic.Out(completion / _scalePercentage)));
 		else if (_scaleEnd != 1f  && completion > (1f - _scalePercentage))
-            _token.SetScale(Vector3.Lerp(Vector3.one * _scaleEnd, Vector3.one, Easing.Quadratic.Out((1f - completion) / _scalePercentage)));
+            _token.SetLocalScale(Vector3.Lerp(Vector3.one * _scaleEnd, Vector3.one, Easing.Quadratic.Out((1f - completion) / _scalePercentage)));
 		else
-            _token.SetScale(Vector3.one);
+            _token.SetLocalScale(Vector3.one);
 	}
 
     Vector3 GetPos(float lerp) {
@@ -125,7 +125,7 @@ public void ExecuteHeartbeat(float seconds, float metaseconds)
 
 	void Complete() {;
 		_token.TokenRectTransform.position = new Vector3(EndPosition.x, EndPosition.y, EndPosition.z);
-		_token.SetScale(Vector3.one * _scaleEnd);
+		_token.SetLocalScale(Vector3.one * _scaleEnd);
  
         _token.MakeInteractable();
         OnTokenArrival?.Invoke(_token,_context);
