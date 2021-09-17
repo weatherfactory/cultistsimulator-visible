@@ -26,8 +26,8 @@ namespace Assets.Scripts.Application.Meta
        [SerializeField] private AutoCompletingInput input;
        [SerializeField] private ThresholdSphere _situationDrydock;
        [SerializeField] private GameObject _linksPanel;
-        [SerializeField] private LinkedRecipeDetailsBrowser _altRecipeDetails;
-       [SerializeField] private LinkedRecipeDetailsBrowser _linkedRecipeDetails;
+        [SerializeField] private RecipeDetailsBrowser _altRecipeDetails;
+       [SerializeField] private RecipeDetailsBrowser _linkedRecipeDetails;
 
 
 

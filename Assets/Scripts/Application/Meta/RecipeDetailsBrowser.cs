@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.Meta
 {
-   public class LinkedRecipeDetailsBrowser: MonoBehaviour
+   public class RecipeDetailsBrowser: MonoBehaviour
    {
        [SerializeField] private GameObject linksContainer;
 
