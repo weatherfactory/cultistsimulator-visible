@@ -35,8 +35,7 @@ namespace SecretHistories.Entities
       /// <summary>
       /// if set, only appears when the character begins with that legacy
       /// </summary>
-      [FucineValue("")]
-      public string ForLegacy { get; set; }
+      [FucineValue("")] public string ForLegacyFamily { get; set; }
 
         /// <summary>
         /// This is used for internal decks only - default is 1. It allows us to specify >1 draw for an internal deck's default deckeffect.

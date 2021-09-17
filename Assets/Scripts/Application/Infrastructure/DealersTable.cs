@@ -42,12 +42,16 @@ namespace SecretHistories.Infrastructure
 
         public IHasElementTokens GetDrawPile(string forDeckSpecId)
         {
+
+            //actionId is not a mistake. The sphereid doesn't reliably match the deckspec we want.
             return _spheres.SingleOrDefault(s =>
                 s.GoverningSphereSpec.ActionId == forDeckSpecId && s.GoverningSphereSpec.SphereType==typeof(DrawPile));
         }
 
         public IHasElementTokens GetForbiddenPile(string forDeckSpecId)
         {
+
+            //actionId is not a mistake. The sphereid doesn't reliably match the deckspec we want.
             return _spheres.SingleOrDefault(s =>
                 s.GoverningSphereSpec.ActionId == forDeckSpecId && s.GoverningSphereSpec.SphereType == typeof(ForbiddenPile));
         }

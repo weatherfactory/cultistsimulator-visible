@@ -33,6 +33,12 @@ namespace SecretHistories.Entities
         public string Label { get; set; }
 
         /// <summary>
+        /// For legacies that we want to group together, like the various Exile starts
+        /// </summary>
+        [FucineValue(DefaultValue = "")]
+        public string Family { get; set; }
+
+        /// <summary>
         /// Detail that displays at game end
         /// </summary>
         [FucineValue(DefaultValue = "", Localise = true)]

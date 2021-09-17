@@ -65,7 +65,7 @@ namespace SecretHistories.Commands
             var allDeckSpecs = Watchman.Get<Compendium>().GetEntitiesAsAlphabetisedList<DeckSpec>();
             foreach (var deckSpec in allDeckSpecs)
             {
-                if (string.IsNullOrEmpty(deckSpec.ForLegacy) || startingLegacy.Id == deckSpec.ForLegacy)
+                if (string.IsNullOrEmpty(deckSpec.ForLegacyFamily) || startingLegacy.Family == deckSpec.ForLegacyFamily)
                 {
                     var drawSphereSpec = new SphereSpec(typeof(DrawPile), $"{deckSpec.Id}_draw");
                     drawSphereSpec.ActionId = deckSpec.Id;
