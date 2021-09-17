@@ -24,7 +24,7 @@ namespace SecretHistories.Commands
     {
         public TokenLocation Location { get; set; }
         [JsonProperty(TypeNameHandling = TypeNameHandling.All)]
-        public AbstractItinerary CurrentItinerary { get; set; }
+        public TokenItinerary CurrentItinerary { get; set; }
         [JsonProperty(TypeNameHandling = TypeNameHandling.All)]
         public ITokenPayloadCreationCommand Payload { get; set; }
         public bool Defunct { get; set; }

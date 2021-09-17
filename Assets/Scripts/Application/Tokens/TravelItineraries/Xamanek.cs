@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Fucine;
 using UnityEditor;
 using UnityEngine;
 
 namespace SecretHistories.UI
 {
+    /// <summary>
+    /// The God of the North watches over travellers. He tracks all current itineraries and can be aware of problems of overlap.
+    /// </summary>
     public class Xamanek: MonoBehaviour
     {
         [SerializeField]
-  private readonly List<TokenTravelItinerary> currentTokenTravelItineraries=new List<TokenTravelItinerary>();
+  private readonly List<TokenItinerary> currentTokenTravelItineraries=new List<TokenItinerary>();
 
         public void Awake()
         {
@@ -20,24 +24,40 @@ namespace SecretHistories.UI
             r.Register(this);
         }
 
+        private void DestroyTravelAnimationForToken(Token token)
+        {
+            var travelAnimation = token.gameObject.GetComponent<TokenTravelAnimation>();
+            travelAnimation.Retire();
+        }
+
         public void ItineraryStarted(TokenTravelItinerary itinerary)
         {
             currentTokenTravelItineraries.Add(itinerary);
         }
 
-        public void ItineraryCompleted(TokenTravelItinerary itinerary)
+        public void TokenItineraryCompleted(Token token)
         {
-            currentTokenTravelItineraries.Remove(itinerary);
+            currentTokenTravelItineraries.Remove(token.CurrentItinerary);
+            DestroyTravelAnimationForToken(token);
+
         }
 
-        public List<TokenTravelItinerary> CurrentItineraries()
+        public void TokenItineraryInterrupted(Token token)
         {
-            return new List<TokenTravelItinerary>(currentTokenTravelItineraries);
+            currentTokenTravelItineraries.Remove(token.CurrentItinerary);
+            DestroyTravelAnimationForToken(token);
+  
         }
 
-        public List<TokenTravelItinerary> CurrentItinerariesForPath(FucinePath forPath)
+        
+        public List<TokenItinerary> CurrentItineraries()
         {
-            return new List<TokenTravelItinerary>(currentTokenTravelItineraries.Where(i =>
+            return new List<TokenItinerary>(currentTokenTravelItineraries);
+        }
+
+        public List<TokenItinerary> CurrentItinerariesForPath(FucinePath forPath)
+        {
+            return new List<TokenItinerary>(currentTokenTravelItineraries.Where(i =>
                 i.DestinationSpherePath == forPath));
         }
 
@@ -60,6 +80,7 @@ namespace SecretHistories.UI
         //        GUI.Label(new Rect(xStart, yStart, 800, 20), $"{i.TokenName} moving to {i.DestinationSpherePath.ToString()} {i.Anchored3DEndPosition}");
         //    }
         //}
+
 
     }
 

@@ -94,7 +94,7 @@ namespace SecretHistories.UI {
             dragHeight = -8f; // Draggables all drag on a specific height and have a specific "default height"
 
         [Encaust]
-        public AbstractItinerary CurrentItinerary { get; set; }
+        public TokenItinerary CurrentItinerary { get; set; }
 
         [Header("Display")]
         [SerializeField] protected bool shrouded;
@@ -181,7 +181,7 @@ namespace SecretHistories.UI {
             
             canvasGroup = GetComponent<CanvasGroup>();
 
-            CurrentItinerary = new InertItinerary();
+            CurrentItinerary = new TokenInertItinerary();
             _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
             _payload = NullElementStack.Create();
 

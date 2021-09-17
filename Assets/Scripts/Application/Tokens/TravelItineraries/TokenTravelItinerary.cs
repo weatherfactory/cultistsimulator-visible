@@ -14,12 +14,10 @@ using Vector3 = UnityEngine.Vector3;
 namespace SecretHistories.UI
 {
 
-    public class TokenTravelItinerary: AbstractItinerary
+    public class TokenTravelItinerary: TokenItinerary
     {
-        public FucinePath DestinationSpherePath { get; set; }
         public float Duration { get; set; }
-        public Vector3 Anchored3DStartPosition { get; set; }
-        public Vector3 Anchored3DEndPosition { get; set; }
+
         [SerializeField] public float StartScale { get; set; }
         public float EndScale { get; set; }
         //startscale   = 1f, float endScale = 1f)
@@ -62,6 +60,7 @@ namespace SecretHistories.UI
             var currentTravelAnimation = token.gameObject.GetComponent<TokenTravelAnimation>();
             if (currentTravelAnimation != null)
                 currentTravelAnimation.Retire();
+            Watchman.Get<Xamanek>().TokenItineraryInterrupted(token);
 
             Depart(token,context);
         }
@@ -128,6 +127,7 @@ namespace SecretHistories.UI
                     TravelFailed(token);
                 else
                 {
+                    Watchman.Get<Xamanek>().TokenItineraryCompleted(token);
                     token.CurrentState=new TravelledToSphere();
                     // Assign element to new slot
                     destinationSphere.TryAcceptToken(token,context);
@@ -137,7 +137,7 @@ namespace SecretHistories.UI
                 destinationSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward,
                     BlockReason.InboundTravellingStack));
 
-                Watchman.Get<Xamanek>().ItineraryCompleted(this);
+           
             }
             catch(Exception e)
             {
@@ -148,11 +148,12 @@ namespace SecretHistories.UI
 
         private void TravelFailed(Token token)
         {
+            
             var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
-
             destinationSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward,
                 BlockReason.InboundTravellingStack));
 
+            Watchman.Get<Xamanek>().TokenItineraryCompleted(token);
             token.CurrentState=new TravellingState();
             token.GoAway(new Context(Context.ActionSource.TravelFailed));
 

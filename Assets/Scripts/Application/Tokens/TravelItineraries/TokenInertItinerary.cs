@@ -8,7 +8,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.Assets.Scripts.Application.Tokens
 {
-    public class InertItinerary: AbstractItinerary
+    public class TokenInertItinerary: TokenItinerary
     {
         public override void Depart(Token tokenToSend, Context context)
         {
@@ -19,5 +19,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
         {
             //
         }
+
+
     }
 }

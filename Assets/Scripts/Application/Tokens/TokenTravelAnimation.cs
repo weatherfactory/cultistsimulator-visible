@@ -123,7 +123,7 @@ public void ExecuteHeartbeat(float seconds, float metaseconds)
  
         _token.MakeInteractable();
         OnTokenArrival?.Invoke(_token,_context);
-		Retire();
+
 	}
 
     public void OnSphereChanged(SphereChangedArgs args)
