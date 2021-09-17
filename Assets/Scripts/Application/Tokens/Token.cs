@@ -244,10 +244,10 @@ namespace SecretHistories.UI {
         public void ExecuteHeartbeat(float seconds, float metaseconds)
         {
 
-                var animationComponent = gameObject.GetComponent<TokenTravelAnimation>();
+                var travelAnimation = gameObject.GetComponent<TokenTravelAnimation>();
 
-                if(animationComponent!=null)
-                    animationComponent.ExecuteHeartbeat(seconds, metaseconds);
+                if(travelAnimation != null && !travelAnimation.Equals(null))
+                    travelAnimation.ExecuteHeartbeat(seconds, metaseconds);
                 
                 Payload.ExecuteHeartbeat(seconds, metaseconds);
      

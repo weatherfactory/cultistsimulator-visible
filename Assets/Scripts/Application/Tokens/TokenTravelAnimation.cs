@@ -39,6 +39,9 @@ public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
     [SerializeField]
     private float _travelTimeElapsed = 0f;
 
+    public bool Defunct { get; private set;}
+    
+
 
     public SphereBlock AppliesSphereBlock()
     {
@@ -85,7 +88,10 @@ public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
 	}
 
 public void ExecuteHeartbeat(float seconds, float metaseconds)
-    {
+{
+    if (Defunct)
+        return;
+
         if (_token.PauseAnimations)
             return;
 		if (_travelDuration < 0)
@@ -128,6 +134,11 @@ public void ExecuteHeartbeat(float seconds, float metaseconds)
 
     public void OnSphereChanged(SphereChangedArgs args)
     {
+        if(Defunct)
+        {
+            args.Sphere.Unsubscribe(this);
+            return;
+        }
         //destination sphere has been changed, eg its reference point has moved
         var destinationSphere = args.Sphere;
         var sphereTokenLocation = args.Context.TokenDestination;
@@ -150,6 +161,8 @@ public void ExecuteHeartbeat(float seconds, float metaseconds)
 
     public void Retire()
     {
+        
+        Defunct = true;
         Destroy(this);
     }
 
