@@ -51,13 +51,13 @@ namespace Assets.Scripts.Application.Meta
 
                 _elementDrydock.ModifyElementQuantity(elementId, 1, debugContext);
 
-                EncaustDrydockedItem(_elementDrydock.GetTokenInSlot(), input);
+                EncaustDrydockedItem(_elementDrydock.GetElementTokenInSlot(), input);
             }
         }
 
         public void DestroyDrydockedItem()
         {
-             _elementDrydock.GetTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
+             _elementDrydock.GetElementTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
         }
 
         public void Mutate()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -76,7 +77,7 @@ namespace SecretHistories.UI
 
             //if we're not dragging anything, and the slot is empty, glow the slot.
             if (!eventData.dragging) {
-                if (GetTokenInSlot() == null)
+                if (GetElementTokenInSlot() == null)
                     ShowHoverGlow();
             }
             else
@@ -86,7 +87,7 @@ namespace SecretHistories.UI
                 if (CanInteractWithToken(draggedToken)) {
                     draggedToken.ShowPossibleInteractionWithToken(draggedToken);
 
-                    if (GetTokenInSlot() == null) // Only glow if the slot is empty
+                    if (GetElementTokenInSlot() == null) // Only glow if the slot is empty
                         ShowHoverGlow();
                 }
             }
@@ -153,22 +154,32 @@ namespace SecretHistories.UI
             else
                 onRetirementComplete();
         }
+        public Token GetTokenInSlot()
+        {
+            List<Token> tokens = GetTokens().ToList();
+            if(tokens.Count>1)
+            {
+                NoonUtility.Log("Something weird in slot " + GoverningSphereSpec.Id +
+                                ": it has more than one token, so we're just returning the first.");
+                return tokens.First();
+            }
 
-        public Token GetTokenInSlot() {
-            return GetComponentInChildren<Token>();
+            return tokens.SingleOrDefault();
         }
+
 
         public Token GetElementTokenInSlot()
         {
-            if (GetElementTokens().Count() > 1)
+            List<Token> elementTokens = GetElementTokens().ToList();
+            if (elementTokens.Count > 1)
             {
                 NoonUtility.Log("Something weird in slot " + GoverningSphereSpec.Id +
                                 ": it has more than one stack, so we're just returning the first.");
-                return GetElementTokens().First();
+                return elementTokens.First();
 
             }
 
-            return GetElementTokens().SingleOrDefault();
+            return elementTokens.SingleOrDefault();
         }
 
 
@@ -241,6 +252,14 @@ namespace SecretHistories.UI
             }
 
             return true;
+        }
+
+        public override bool IsValidDestinationForToken(Token tokenToSend)
+        {
+            if (GetElementTokenInSlot() != null)
+                return false;
+
+            return base.IsValidDestinationForToken(tokenToSend);
         }
 
         public override TokenTravelItinerary GetItineraryFor(Token forToken)

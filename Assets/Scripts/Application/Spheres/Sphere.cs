@@ -699,6 +699,11 @@ namespace SecretHistories.Spheres
                 t.Retire(RetirementVFX.None);
         }
 
+        public IEnumerable<Token> GetTokens()
+        {
+            return _tokens.Where(t=>true);
+        }
+
         public IEnumerable<Token> GetTokensWhere(Func<Token,bool> filter)
         {
             return _tokens.Where(filter);
