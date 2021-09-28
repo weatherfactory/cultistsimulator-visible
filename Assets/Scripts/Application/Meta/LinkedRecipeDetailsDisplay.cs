@@ -18,10 +18,12 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
    public class LinkedRecipeDetailsDisplay: MonoBehaviour
    {
 #pragma warning disable 649
+       [SerializeField] private CanvasGroupFader _showEligibility;
        [SerializeField] private RequirementsDisplay _requirements;
        [SerializeField] private Button _slotMarkerButton;
        [SerializeField] private TextMeshProUGUI _additional;
        [SerializeField] private TextMeshProUGUI _summary;
+       
 
        
 #pragma warning restore 649
@@ -44,26 +46,30 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
            var aspectsInContext =
                Watchman.Get<HornedAxe>().GetAspectsInContext(situation.GetAspects(true));
 
-           //if (r.RequirementsSatisfiedBy(aspectsInContext))
-           //    _highlightImage.CrossFadeAlpha(150f, 0.2f, true);
-           //else
-           //    _highlightImage.CrossFadeAlpha(0f, 0.2f, true);
+            if (r.RequirementsSatisfiedBy(aspectsInContext))
+                 _showEligibility.Show();
+            else
+                _showEligibility.Hide();
 
             string linkProperties=String.Empty;
-           string chance=string.Empty;
+           string possibilityDescription=string.Empty;
 
-           if (!details.Challenges.Any())
-               chance = details.Chance.ToString();
+           if (!details.Challenges.Any() && details.Chance>0)
+               possibilityDescription = details.Chance.ToString();
            else
            {
                foreach (var challenge in details.Challenges)
                {
-                   if (string.IsNullOrEmpty(chance))
-                       chance += ",";
-                   chance += $"{challenge.Key}:{challenge.Value}";
+                   if (string.IsNullOrEmpty(possibilityDescription))
+                       possibilityDescription += ",";
+                   possibilityDescription += $"{challenge.Key}:{challenge.Value}";
                }
            }
-           
+
+           if (!string.IsNullOrEmpty(possibilityDescription))
+               linkProperties += $"({possibilityDescription})";
+
+          
 
            var descriptions = $"{TrimToMaxOrLess(r.StartDescription)}/{TrimToMaxOrLess(r.Description)}";
            
