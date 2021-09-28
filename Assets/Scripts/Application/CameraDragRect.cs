@@ -66,7 +66,7 @@ public class CameraDragRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         if (lastMousePos != mousePos)
         {
             lastChangeVector = lastMousePos - mousePos;
-            Watchman.Get<CamOperator>().ApplySmoothInputVector(lastChangeVector,0f);
+            Watchman.Get<CamOperator>().ApplySmoothInputVector(lastChangeVector);
             lastMousePos = mousePos;
         }
 
