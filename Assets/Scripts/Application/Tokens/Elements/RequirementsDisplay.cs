@@ -25,9 +25,9 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
             foreach (var req in r.Requirements)
             {
                 if (Recipe.CheckRequirementsSatisfiedForContext(aspectsInContext.AspectsInSituation, req))
-                    DisplayMatchedRequirement(req);
+                    DisplayRequirement(req,true);
                 else
-                    DisplayUnmatchedRequirement(req);
+                    DisplayRequirement(req, false);
             }
 
             if(r.TableReqs.Any())
@@ -36,9 +36,9 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
             foreach (var treq in r.TableReqs)
             {
                 if (Recipe.CheckRequirementsSatisfiedForContext(aspectsInContext.AspectsOnTable, treq))
-                    DisplayMatchedRequirement(treq);
+                    DisplayRequirement(treq, true);
                 else
-                    DisplayUnmatchedRequirement(treq);
+                    DisplayRequirement(treq, false);
             }
 
             if(r.ExtantReqs.Any())
@@ -47,9 +47,9 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
             foreach (var ereq in r.ExtantReqs)
             {
                 if (Recipe.CheckRequirementsSatisfiedForContext(aspectsInContext.AspectsExtant, ereq))
-                    DisplayMatchedRequirement(ereq);
+                    DisplayRequirement(ereq, true);
                 else
-                    DisplayUnmatchedRequirement(ereq);
+                    DisplayRequirement(ereq,false);
             }
 
 
@@ -57,17 +57,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
 
         }
 
-        private void DisplayMatchedRequirement(KeyValuePair<string, string> req)
-        {
-            DisplayUnmatchedRequirement(req);
-        }
 
-        private void DisplayUnmatchedRequirement(KeyValuePair<string, string> req)
+        private void DisplayRequirement(KeyValuePair<string, string> req,bool matched)
         {
             Element reqelement = Watchman.Get<Compendium>().GetEntityById<Element>(req.Key);
-
             ReqFrame newReqFrame = Watchman.Get<PrefabFactory>().CreateLocally<ReqFrame>(transform);
-          newReqFrame.Populate(reqelement, req.Value);
+            newReqFrame.Populate(reqelement, req.Value,matched);
         }
 
 

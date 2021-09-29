@@ -15,16 +15,18 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
     {
         
         [SerializeField] private Image icon;
+        [SerializeField] private Image highlight;
         [SerializeField] private TextMeshProUGUI criterionText;
 
         
-        public void Populate(Element element, string criterion)
+        public void Populate(Element element, string criterion,bool requirementIsMatched)
         {
             
             criterionText.text = criterion;
             DisplayIcon(element);
-
             gameObject.name = $"Req_{element.Id}_{criterion}";
+
+            highlight.gameObject.SetActive(requirementIsMatched);
         }
 
         private void DisplayIcon(Element element)
