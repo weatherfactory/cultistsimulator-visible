@@ -83,8 +83,11 @@ namespace SecretHistories.States
              situation.TransitionToState(new RequiresExecutionState());
             else
             {
-                situation.ReduceLifetimeBy(situation.IntervalForLastHeartbeat);
-                situation.NotifyTimerChange();
+                if(situation.IntervalForLastHeartbeat>0) //don't trigger all those subscriber events unless time has actually passed for the situation
+                {
+                    situation.ReduceLifetimeBy(situation.IntervalForLastHeartbeat);
+                    situation.NotifyTimerChange();
+                }
             }
             
         }

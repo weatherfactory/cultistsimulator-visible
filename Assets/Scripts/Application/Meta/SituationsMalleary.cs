@@ -22,7 +22,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Application.Meta
 {
-   public class SituationsMalleary: MonoBehaviour,ISphereEventSubscriber
+   public class SituationsMalleary: MonoBehaviour,ISphereEventSubscriber, ISituationSubscriber
    {
        [SerializeField] private AutoCompletingInput input;
        [SerializeField] private ThresholdSphere _situationDrydock;
@@ -142,17 +142,25 @@ namespace Assets.Scripts.Application.Meta
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
             if(args.TokenRemoved!=null)
-               ClearLinksPanel();
+            {
+                ClearLinksPanel();
+                if (args.TokenRemoved.Payload is Situation situation)
+                    situation.RemoveSubscriber(this);
             }
+            else if(args.TokenAdded!=null)
+            {
+                EncaustDrydockedItem(args.TokenAdded, input);
+                PopulateLinksPanel(args.TokenAdded.Payload);
+
+                if(args.TokenAdded.Payload is Situation situation)
+                    situation.AddSubscriber(this);
+            }
+        }
+        
 
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
-            if (args.Interaction == Interaction.OnDragEnd)
-            {
-                input.text = args.Payload.EntityId;
-                EncaustDrydockedItem(args.Token, input);
-                PopulateLinksPanel(args.Payload);
-            }
+//
         }
 
         public void EncaustDrydockedItem(Token drydockedItem, AutoCompletingInput jsonEditField)
@@ -184,5 +192,24 @@ namespace Assets.Scripts.Application.Meta
             _linkedRecipeDetails.Clear();
             _linksPanel.SetActive(false);
         }
-    }
+
+        public void SituationStateChanged(Situation s)
+        {
+            EncaustDrydockedItem(s.Token, input);
+            PopulateLinksPanel(s);
+
+        }
+
+        public void TimerValuesChanged(Situation s)
+        {
+            EncaustDrydockedItem(s.Token, input);
+            PopulateLinksPanel(s);
+        }
+
+        public void SituationSphereContentsUpdated(Situation s)
+        {
+            EncaustDrydockedItem(s.Token, input);
+            PopulateLinksPanel(s);
+        }
+   }
 }
