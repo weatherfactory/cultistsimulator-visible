@@ -21,7 +21,8 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
        [SerializeField] private RequirementsDisplay _requirements;
        [SerializeField] private Button _slotMarkerButton;
        [SerializeField] private TextMeshProUGUI _additional;
-       [SerializeField] private TextMeshProUGUI _summary;
+       [SerializeField] private TextMeshProUGUI _title;
+        [SerializeField] private TextMeshProUGUI _summary;
        
 
        
@@ -29,47 +30,20 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
 
        const int maxStringLength = 20;
        private const string trimmedMarker = "...";
+
         public void Populate(LinkedRecipeDetails details,Situation situation)
-       {
+        {
 
-           _requirements.ClearCurrentlyDisplayedRequirements();
+           var r = Watchman.Get<Compendium>().GetEntityById<Recipe>(details.Id);
 
-            var r = Watchman.Get<Compendium>().GetEntityById<Recipe>(details.Id);
-            _requirements.DisplayRequirementsAndFulfilments(r,situation);
+           DisplayTitle(details,r);
 
-            
+            DisplayRequirements(situation, r);
 
 
-            //if (r.RequirementsSatisfiedBy(aspectsInContext))
-            //     _showEligibility.Show();
-            //else
-            //    _showEligibility.Hide();
-
-            string linkProperties=String.Empty;
-           string possibilityDescription=string.Empty;
-
-           if (!details.Challenges.Any() && details.Chance>0)
-               possibilityDescription = details.Chance.ToString();
-           else
-           {
-               foreach (var challenge in details.Challenges)
-               {
-                   if (string.IsNullOrEmpty(possibilityDescription))
-                       possibilityDescription += ",";
-                   possibilityDescription += $"{challenge.Key}:{challenge.Value}";
-               }
-           }
-
-           if (!string.IsNullOrEmpty(possibilityDescription))
-               linkProperties += $"({possibilityDescription})";
-
-          
-
-           var descriptions = $"{TrimToMaxOrLess(r.StartDescription)}/{TrimToMaxOrLess(r.Description)}";
+            _summary.text = $"{TrimToMaxOrLess(r.StartDescription)}/{TrimToMaxOrLess(r.Description)}";
            
-
-           _summary.text = $"{linkProperties} <b>{details.Id}<b>: {descriptions}";
-
+            
            if (details.Additional)
                _additional.gameObject.SetActive(true);
            else
@@ -87,6 +61,48 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
                _slotMarkerButton.onClick.RemoveAllListeners();
                 _slotMarkerButton.gameObject.SetActive(false);
            }
+        }
+
+        private void DisplayTitle(LinkedRecipeDetails linkDetails,Recipe recipe)
+        {
+            
+            _title.text = $"{recipe.Id}: {recipe.Label}";
+
+            var possibilityDescription = GetPossibilityDescription(linkDetails);
+
+            if (!string.IsNullOrEmpty(possibilityDescription))
+                _title.text = $"({possibilityDescription}) {_title.text}";
+        }
+
+        private static string GetPossibilityDescription(LinkedRecipeDetails linkDetails)
+        {
+            string possibilityDescription = string.Empty;
+
+            if (!linkDetails.Challenges.Any() && linkDetails.Chance > 0)
+                possibilityDescription = linkDetails.Chance.ToString();
+            else
+            {
+                foreach (var challenge in linkDetails.Challenges)
+                {
+                    if (string.IsNullOrEmpty(possibilityDescription))
+                        possibilityDescription += ",";
+                    possibilityDescription += $"{challenge.Key}:{challenge.Value}";
+                }
+            }
+
+            return possibilityDescription;
+        }
+
+        private void DisplayRequirements(Situation situation, Recipe r)
+        {
+            _requirements.ClearCurrentlyDisplayedRequirements();
+            _requirements.DisplayRequirementsAndFulfilments(r, situation);
+
+
+            //if (r.RequirementsSatisfiedBy(aspectsInContext))
+            //     _showEligibility.Show();
+            //else
+            //    _showEligibility.Hide();
         }
 
         private void ShowSlotDetails(SphereSpec sphereSpec)
