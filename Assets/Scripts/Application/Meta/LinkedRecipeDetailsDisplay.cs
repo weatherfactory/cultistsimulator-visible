@@ -28,7 +28,7 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
        
 #pragma warning restore 649
 
-       const int maxStringLength = 20;
+       const int maxStringLength = 50;
        private const string trimmedMarker = "...";
 
         public void Populate(LinkedRecipeDetails details,Situation situation)
@@ -41,7 +41,7 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
             DisplayRequirements(situation, r);
 
 
-            _summary.text = $"{TrimToMaxOrLess(r.StartDescription)}/{TrimToMaxOrLess(r.Description)}";
+            _summary.text = $"<i>{TrimToMaxOrLess(r.StartDescription)}</i>\n<i>{TrimToMaxOrLess(r.Description)}</i>";
            
             
            if (details.Additional)
@@ -66,7 +66,7 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
         private void DisplayTitle(LinkedRecipeDetails linkDetails,Recipe recipe)
         {
             
-            _title.text = $"{recipe.Id}: {recipe.Label}";
+            _title.text = $"{recipe.Id}\n<i>{recipe.Label}</i>";
 
             var possibilityDescription = GetPossibilityDescription(linkDetails);
 
