@@ -30,7 +30,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
                     DisplayUnmatchedRequirement(req);
             }
 
-            AddFilterLabel("TAB");
+            if(r.TableReqs.Any())
+                AddFilterLabel("TAB");
 
             foreach (var treq in r.TableReqs)
             {
@@ -40,8 +41,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
                     DisplayUnmatchedRequirement(treq);
             }
 
-
-            AddFilterLabel("EXT");
+            if(r.ExtantReqs.Any())
+                AddFilterLabel("EXT");
 
             foreach (var ereq in r.ExtantReqs)
             {
@@ -74,9 +75,10 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
         {
             var filterLabelObj = new GameObject();
             filterLabelObj.name = $"{filter}_label";
-            var filterLabel = filterLabelObj.AddComponent<TextMeshProUGUI>();
-            filterLabel.text = filter;
-            filterLabel.fontSize = 12f;
+            var filterLabelText = filterLabelObj.AddComponent<TextMeshProUGUI>();
+            filterLabelObj.AddComponent<LayoutElement>();
+            filterLabelText.text = filter;
+            filterLabelText.fontSize = 12f;
             filterLabelObj.transform.SetParent(gameObject.transform, false);
         }
 
