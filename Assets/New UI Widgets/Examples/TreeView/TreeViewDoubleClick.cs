@@ -12,7 +12,8 @@
 		/// Removes the callback.
 		/// </summary>
 		/// <param name="item">Item.</param>
-		protected override void RemoveCallback(ListViewItem item)
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected override void RemoveCallback(TreeViewComponent item)
 		{
 			base.RemoveCallback(item);
 			if (item != null)
@@ -25,7 +26,8 @@
 		/// Adds the callback.
 		/// </summary>
 		/// <param name="item">Item.</param>
-		protected override void AddCallback(ListViewItem item)
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected override void AddCallback(TreeViewComponent item)
 		{
 			base.AddCallback(item);
 			item.onDoubleClick.AddListener(DoubleClickListener);

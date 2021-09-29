@@ -27,12 +27,25 @@ namespace UIWidgets.Examples
 		/// <summary>
 		/// Start this instance.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Start()
 		{
 			Button = GetComponent<Button>();
 			if (Button != null)
 			{
 				Button.onClick.AddListener(Click);
+			}
+		}
+
+		/// <summary>
+		/// Remove listeners.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected virtual void OnDestroy()
+		{
+			if (Button != null)
+			{
+				Button.onClick.RemoveListener(Click);
 			}
 		}
 
@@ -79,17 +92,6 @@ namespace UIWidgets.Examples
 
 				click += 1;
 				return;
-			}
-		}
-
-		/// <summary>
-		/// Remove listeners.
-		/// </summary>
-		protected virtual void OnDestroy()
-		{
-			if (Button != null)
-			{
-				Button.onClick.RemoveListener(Click);
 			}
 		}
 	}

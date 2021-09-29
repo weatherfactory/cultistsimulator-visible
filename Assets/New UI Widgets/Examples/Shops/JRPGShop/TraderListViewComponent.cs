@@ -4,6 +4,7 @@
 	using UIWidgets;
 	using UnityEngine;
 	using UnityEngine.EventSystems;
+	using UnityEngine.Serialization;
 	using UnityEngine.UI;
 
 	/// <summary>
@@ -28,12 +29,13 @@
 		public Text Price;
 
 		/// <summary>
-		/// The available count.
+		/// The available quantity.
 		/// </summary>
 		[SerializeField]
 		[HideInInspector]
 		[Obsolete("Replaced with AvailableCountAdapter.")]
-		public Text AvailableCount;
+		[FormerlySerializedAs("AvailableCount")]
+		public Text AvailableQuantity;
 
 		/// <summary>
 		/// The name.
@@ -48,16 +50,18 @@
 		public TextAdapter PriceAdapter;
 
 		/// <summary>
-		/// The available count.
+		/// The available quantity.
 		/// </summary>
 		[SerializeField]
-		public TextAdapter AvailableCountAdapter;
+		[FormerlySerializedAs("AvailableCountAdapter")]
+		public TextAdapter AvailableQuantityAdapter;
 
 		/// <summary>
-		/// Count spinner.
+		/// Quantity spinner.
 		/// </summary>
 		[SerializeField]
-		protected Spinner Count;
+		[FormerlySerializedAs("Count")]
+		protected Spinner Quantity;
 
 		/// <summary>
 		/// Init graphics foreground.
@@ -68,9 +72,9 @@
 			{
 				Foreground = new Graphic[]
 				{
-					Utilities.GetGraphic(NameAdapter),
-					Utilities.GetGraphic(PriceAdapter),
-					Utilities.GetGraphic(AvailableCountAdapter),
+					UtilitiesUI.GetGraphic(NameAdapter),
+					UtilitiesUI.GetGraphic(PriceAdapter),
+					UtilitiesUI.GetGraphic(AvailableQuantityAdapter),
 				};
 				GraphicsForegroundVersion = 1;
 			}
@@ -88,14 +92,15 @@
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected override void Start()
 		{
-			Count.onValueChangeInt.AddListener(ChangeCount);
+			Quantity.onValueChangeInt.AddListener(ChangeQuantity);
 			base.Start();
 		}
 
 		/// <summary>
-		/// Change count on left and right movements.
+		/// Change quantity on left and right movements.
 		/// </summary>
 		/// <param name="eventData">Event data.</param>
 		public override void OnMove(AxisEventData eventData)
@@ -103,10 +108,10 @@
 			switch (eventData.moveDir)
 			{
 				case MoveDirection.Left:
-					Count.Value -= 1;
+					Quantity.Value -= 1;
 					break;
 				case MoveDirection.Right:
-					Count.Value += 1;
+					Quantity.Value += 1;
 					break;
 				default:
 					base.OnMove(eventData);
@@ -124,38 +129,39 @@
 
 			NameAdapter.text = OrderLine.Item.Name;
 			PriceAdapter.text = OrderLine.Price.ToString();
-			AvailableCountAdapter.text = (OrderLine.Item.Count == -1) ? "∞" : OrderLine.Item.Count.ToString();
+			AvailableQuantityAdapter.text = (OrderLine.Item.Quantity == -1) ? "∞" : OrderLine.Item.Quantity.ToString();
 
-			Count.Min = 0;
-			Count.Max = (OrderLine.Item.Count == -1) ? 9999 : OrderLine.Item.Count;
-			Count.Value = OrderLine.Count;
+			Quantity.Min = 0;
+			Quantity.Max = (OrderLine.Item.Quantity == -1) ? 9999 : OrderLine.Item.Quantity;
+			Quantity.Value = OrderLine.Quantity;
 		}
 
-		void ChangeCount(int count)
+		void ChangeQuantity(int quantity)
 		{
-			OrderLine.Count = count;
+			OrderLine.Quantity = quantity;
 		}
 
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected override void OnDestroy()
 		{
-			if (Count != null)
+			if (Quantity != null)
 			{
-				Count.onValueChangeInt.RemoveListener(ChangeCount);
+				Quantity.onValueChangeInt.RemoveListener(ChangeQuantity);
 			}
 		}
 
 		/// <summary>
-			/// Upgrade this instance.
-			/// </summary>
+		/// Upgrade this instance.
+		/// </summary>
 		public override void Upgrade()
 		{
 #pragma warning disable 0612, 0618
 			Utilities.GetOrAddComponent(Name, ref NameAdapter);
 			Utilities.GetOrAddComponent(Price, ref PriceAdapter);
-			Utilities.GetOrAddComponent(AvailableCount, ref AvailableCountAdapter);
+			Utilities.GetOrAddComponent(AvailableQuantity, ref AvailableQuantityAdapter);
 #pragma warning restore 0612, 0618
 		}
 	}

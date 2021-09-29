@@ -5,7 +5,6 @@ namespace UIWidgets
 	using System.Collections.Generic;
 	using System.Threading;
 	using UIWidgets.Attributes;
-	using UIWidgets.Extensions;
 	using UIWidgets.l10n;
 	using UIWidgets.Styles;
 	using UnityEngine;
@@ -24,6 +23,69 @@ namespace UIWidgets
 	public partial class ListViewCustom<TComponent, TItem> : ListViewCustomBase
 		where TComponent : ListViewItem
 	{
+		/// <summary>
+		/// Default template selector.
+		/// </summary>
+		protected class DefaultSelector : IListViewTemplateSelector<TComponent, TItem>
+		{
+			/// <summary>
+			/// Template.
+			/// </summary>
+			protected TComponent Template;
+
+			/// <summary>
+			/// Templates.
+			/// </summary>
+			protected TComponent[] Templates;
+
+			/// <summary>
+			/// Initializes a new instance of the <see cref="DefaultSelector"/> class.
+			/// </summary>
+			/// <param name="template">Template.</param>
+			public DefaultSelector(TComponent template)
+			{
+				Template = template;
+				Templates = new[] { template };
+			}
+
+			/// <summary>
+			/// Replace template.
+			/// </summary>
+			/// <param name="template">Template.</param>
+			public void Replace(TComponent template)
+			{
+				Template = template;
+				Templates = new[] { template };
+			}
+
+			/// <inheritdoc/>
+			public TComponent Select(int index, TItem item)
+			{
+				return Template;
+			}
+
+			/// <inheritdoc/>
+			public TComponent[] AllTemplates()
+			{
+				return Templates;
+			}
+		}
+
+		/// <summary>
+		/// Template class.
+		/// </summary>
+		[Serializable]
+		public class Template : ListViewItemTemplate<TComponent>
+		{
+			/// <summary>
+			/// Initializes a new instance of the <see cref="Template"/> class.
+			/// </summary>
+			public Template()
+				: base()
+			{
+			}
+		}
+
 		/// <summary>
 		/// DataSourceEvent.
 		/// </summary>
@@ -81,10 +143,8 @@ namespace UIWidgets
 			{
 				if (dataSource == null)
 				{
-					#pragma warning disable 0618
 					dataSource = new ObservableList<TItem>(customItems);
 					dataSource.OnChange += UpdateItems;
-					#pragma warning restore 0618
 				}
 
 				if (!isListViewCustomInited)
@@ -145,11 +205,11 @@ namespace UIWidgets
 		protected List<TComponent> Components = new List<TComponent>();
 
 		/// <summary>
-		/// The components cache list.
+		/// The templates list.
 		/// </summary>
 		[SerializeField]
 		[HideInInspector]
-		protected List<TComponent> ComponentsCache = new List<TComponent>();
+		protected List<Template> Templates = new List<Template>();
 
 		/// <summary>
 		/// The components displayed indices.
@@ -163,36 +223,29 @@ namespace UIWidgets
 		{
 			get
 			{
-				return ComponentsPool.DestroyComponents;
+				return destroyDefaultItemsCache;
 			}
 
 			set
 			{
-				ComponentsPool.DestroyComponents = value;
+				destroyDefaultItemsCache = value;
 			}
 		}
 
-		ListViewComponentPool<TComponent, TItem> componentsPool;
+		ListViewComponentPool componentsPool;
 
 		/// <summary>
 		/// The components pool.
 		/// Constructor with lists needed to avoid lost connections when instantiated copy of the inited ListView.
 		/// </summary>
-		protected virtual ListViewComponentPool<TComponent, TItem> ComponentsPool
+		protected virtual ListViewComponentPool ComponentsPool
 		{
 			get
 			{
 				if (componentsPool == null)
 				{
-					componentsPool = new ListViewComponentPool<TComponent, TItem>(Components, ComponentsCache, ComponentsDisplayedIndices)
-					{
-						Owner = this,
-						Container = Container,
-						CallbackAdd = AddCallback,
-						CallbackRemove = RemoveCallback,
-						Template = DefaultItem,
-						DestroyComponents = destroyDefaultItemsCache,
-					};
+					componentsPool = new ListViewComponentPool(this);
+					componentsPool.Init();
 				}
 
 				return componentsPool;
@@ -228,7 +281,10 @@ namespace UIWidgets
 		{
 			get
 			{
-				return SelectedIndices.Convert<int, TItem>(GetDataItem);
+				var result = new List<TItem>(selectedIndices.Count);
+				GetSelectedItems(result);
+
+				return result;
 			}
 		}
 
@@ -271,21 +327,27 @@ namespace UIWidgets
 		[SerializeField]
 		public ListViewCustomEvent OnDeselectObject = new ListViewCustomEvent();
 
+		/// <summary>
+		/// Called after component instantiated.
+		/// </summary>
+		public event Action<TComponent> OnComponentCreated;
+
+		/// <summary>
+		/// Called before component destroyed.
+		/// </summary>
+		public event Action<TComponent> OnComponentDestroyed;
+
+		/// <summary>
+		/// Called after component activated.
+		/// </summary>
+		public event Action<TComponent> OnComponentActivated;
+
+		/// <summary>
+		/// Called after component cached.
+		/// </summary>
+		public event Action<TComponent> OnComponentCached;
+
 		#region ListRenderer fields
-
-		/// <summary>
-		/// The DefaultItem layout group.
-		/// </summary>
-		[SerializeField]
-		[HideInInspector]
-		protected LayoutGroup DefaultItemLayoutGroup;
-
-		/// <summary>
-		/// The DefaultItem layout group.
-		/// </summary>
-		[SerializeField]
-		[HideInInspector]
-		protected LayoutGroup DefaultItemLayout;
 
 		/// <summary>
 		/// The layout elements of the DefaultItem.
@@ -294,50 +356,6 @@ namespace UIWidgets
 		[HideInInspector]
 		protected List<ILayoutElement> LayoutElements = new List<ILayoutElement>();
 
-		[SerializeField]
-		[HideInInspector]
-		TComponent defaultItemCopy;
-
-		/// <summary>
-		/// Gets the default item copy.
-		/// </summary>
-		/// <value>The default item copy.</value>
-		protected TComponent DefaultItemCopy
-		{
-			get
-			{
-				if (defaultItemCopy == null)
-				{
-					defaultItemCopy = Compatibility.Instantiate(DefaultItem);
-					defaultItemCopy.transform.SetParent(DefaultItem.transform.parent, false);
-					defaultItemCopy.gameObject.name = "DefaultItemCopy";
-					defaultItemCopy.gameObject.SetActive(false);
-
-					Utilities.FixInstantiated(DefaultItem, defaultItemCopy);
-				}
-
-				return defaultItemCopy;
-			}
-		}
-
-		RectTransform defaultItemCopyRect;
-
-		/// <summary>
-		/// Gets the RectTransform of DefaultItemCopy.
-		/// </summary>
-		/// <value>RectTransform.</value>
-		protected RectTransform DefaultItemCopyRect
-		{
-			get
-			{
-				if (defaultItemCopyRect == null)
-				{
-					defaultItemCopyRect = defaultItemCopy.transform as RectTransform;
-				}
-
-				return defaultItemCopyRect;
-			}
-		}
 		#endregion
 
 		[SerializeField]
@@ -379,7 +397,7 @@ namespace UIWidgets
 		/// <summary>
 		/// Selected items cache (to keep valid selected indices with updates).
 		/// </summary>
-		protected HashSet<TItem> SelectedItemsCache = new HashSet<TItem>();
+		protected List<TItem> SelectedItemsCache = new List<TItem>();
 
 		/// <inheritdoc/>
 		protected override ILayoutBridge LayoutBridge
@@ -424,6 +442,165 @@ namespace UIWidgets
 		/// </summary>
 		public DataSourceEvent OnDataSourceChanged = new DataSourceEvent();
 
+		DefaultSelector defaultTemplateSelector;
+
+		/// <summary>
+		/// Default template selector.
+		/// </summary>
+		protected DefaultSelector DefaultTemplateSelector
+		{
+			get
+			{
+				if (defaultTemplateSelector == null)
+				{
+					defaultTemplateSelector = new DefaultSelector(DefaultItem);
+				}
+
+				return defaultTemplateSelector;
+			}
+		}
+
+		IListViewTemplateSelector<TComponent, TItem> templateSelector;
+
+		/// <summary>
+		/// Template selector.
+		/// </summary>
+		public IListViewTemplateSelector<TComponent, TItem> TemplateSelector
+		{
+			get
+			{
+				if (templateSelector == null)
+				{
+					templateSelector = DefaultTemplateSelector;
+				}
+
+				return templateSelector;
+			}
+
+			set
+			{
+				if (value == null)
+				{
+					throw new ArgumentNullException("value");
+				}
+
+				if (ReferenceEquals(templateSelector, value))
+				{
+					return;
+				}
+
+				templateSelector = value;
+
+				if ((componentsPool != null) && DestroyDefaultItemsCache)
+				{
+					componentsPool.Destroy(templateSelector.AllTemplates());
+				}
+
+				if (isListViewCustomInited)
+				{
+					TemplatesChanged();
+				}
+			}
+		}
+
+		[SerializeField]
+		[FormerlySerializedAs("stopScrollAtItemCenter")]
+		[Tooltip("Custom scroll inertia until reach item center.")]
+		bool scrollInertiaUntilItemCenter;
+
+		/// <summary>
+		/// Custom scroll inertia until reach item center.
+		/// </summary>
+		public bool ScrollInertiaUntilItemCenter
+		{
+			get
+			{
+				return scrollInertiaUntilItemCenter;
+			}
+
+			set
+			{
+				if (scrollInertiaUntilItemCenter != value)
+				{
+					scrollInertiaUntilItemCenter = value;
+
+					ListRenderer.ToggleScrollToItemCenter(scrollInertiaUntilItemCenter);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Stop scroll inertia at item center.
+		/// </summary>
+		[Obsolete("Renamed to ScrollInertiaUntilItemCenter.")]
+		public bool StopScrollAtItemCenter
+		{
+			get
+			{
+				return ScrollInertiaUntilItemCenter;
+			}
+
+			set
+			{
+				ScrollInertiaUntilItemCenter = value;
+			}
+		}
+
+		/// <summary>
+		/// Scroll inertia.
+		/// </summary>
+		[SerializeField]
+		[FormerlySerializedAs("StopScrollInertia")]
+		public AnimationCurve ScrollInertia = AnimationCurve.Linear(0, 0, 0.15f, 1);
+
+		/// <summary>
+		/// Scroll inertia.
+		/// </summary>
+		[Obsolete("Renamed to ScrollInertia.")]
+		public AnimationCurve StopScrollInertia
+		{
+			get
+			{
+				return ScrollInertia;
+			}
+
+			set
+			{
+				ScrollInertia = value;
+			}
+		}
+
+		/// <summary>
+		/// Scroll center state.
+		/// </summary>
+		protected enum ScrollCenterState
+		{
+			/// <summary>
+			/// None.
+			/// </summary>
+			None = 0,
+
+			/// <summary>
+			/// Active.
+			/// </summary>
+			Active = 1,
+
+			/// <summary>
+			/// Disable.
+			/// </summary>
+			Disable = 2,
+		}
+
+		/// <summary>
+		/// Current scroll center state.
+		/// </summary>
+		protected ScrollCenterState ScrollCenter = ScrollCenterState.None;
+
+		/// <summary>
+		/// Newly selected indices.
+		/// </summary>
+		protected List<int> NewSelectedIndices = new List<int>();
+
 		/// <summary>
 		/// Init this instance.
 		/// </summary>
@@ -438,24 +615,21 @@ namespace UIWidgets
 
 			MainThread = Thread.CurrentThread;
 
+			foreach (var template in Templates)
+			{
+				template.UpdateId();
+			}
+
 			base.Init();
+
 			Items = new List<ListViewItem>();
 
 			SelectedItemsCache.Clear();
-			for (int i = 0; i < SelectedIndices.Count; i++)
-			{
-				var index = SelectedIndices[i];
-				SelectedItemsCache.Add(DataSource[index]);
-			}
+			GetSelectedItems(SelectedItemsCache);
 
 			DestroyGameObjects = false;
 
-			CanSetData = DefaultItem is IViewData<TItem>;
-
-			ComponentsPool.Template = defaultItem;
-
-			DefaultItem.gameObject.SetActive(true);
-			DefaultItem.FindSelectableObjects();
+			InitTemplates();
 
 			if (ListRenderer.IsVirtualizationSupported())
 			{
@@ -465,9 +639,7 @@ namespace UIWidgets
 
 			SetContentSizeFitter = setContentSizeFitter;
 
-			DefaultItem.gameObject.SetActive(false);
-
-			SetDirection(direction);
+			SetDirection(direction, false);
 
 			UpdateItems();
 
@@ -477,6 +649,50 @@ namespace UIWidgets
 			}
 
 			Localization.OnLocaleChanged += LocaleChanged;
+		}
+
+		/// <summary>
+		/// Gets selected items.
+		/// </summary>
+		/// <param name="output">Selected items.</param>
+		public void GetSelectedItems(List<TItem> output)
+		{
+			foreach (var index in selectedIndices)
+			{
+				output.Add(DataSource[index]);
+			}
+		}
+
+		/// <summary>
+		/// Init templates.
+		/// </summary>
+		protected void InitTemplates()
+		{
+			CanSetData = true;
+
+			foreach (var template in TemplateSelector.AllTemplates())
+			{
+				template.gameObject.SetActive(true);
+				template.FindSelectableObjects();
+				template.gameObject.SetActive(false);
+
+				if (!(template is IViewData<TItem>))
+				{
+					CanSetData = false;
+				}
+
+				ComponentsPool.GetTemplate(template);
+			}
+		}
+
+		/// <summary>
+		/// Get template by index.
+		/// </summary>
+		/// <param name="index">Index.</param>
+		/// <returns>Template.</returns>
+		protected virtual TComponent Index2Template(int index)
+		{
+			return TemplateSelector.Select(index, DataSource[index]);
 		}
 
 		/// <inheritdoc/>
@@ -558,10 +774,11 @@ namespace UIWidgets
 					renderer = new ListViewTypeEllipse(this);
 					break;
 				default:
-					throw new NotSupportedException("Unknown ListView type: " + type);
+					throw new NotSupportedException(string.Format("Unknown ListView type: {0}", EnumHelper<ListViewType>.ToString(type)));
 			}
 
 			renderer.Enable();
+			renderer.ToggleScrollToItemCenter(ScrollInertiaUntilItemCenter);
 
 			return renderer;
 		}
@@ -577,27 +794,23 @@ namespace UIWidgets
 				throw new ArgumentNullException("newDefaultItem");
 			}
 
-			if (defaultItemCopy != null)
-			{
-				Destroy(defaultItemCopy.gameObject);
-				defaultItemCopy = null;
-				defaultItemCopyRect = null;
-			}
-
 			defaultItem = newDefaultItem;
+			DefaultTemplateSelector.Replace(newDefaultItem);
 
-			if (!isListViewCustomInited)
+			if (isListViewCustomInited)
 			{
-				return;
+				TemplatesChanged();
 			}
+		}
 
-			defaultItem.gameObject.SetActive(true);
-			defaultItem.FindSelectableObjects();
+		/// <summary>
+		/// Process templates changed.
+		/// </summary>
+		protected virtual void TemplatesChanged()
+		{
+			InitTemplates();
+
 			CalculateItemSize(true);
-
-			CanSetData = defaultItem is IViewData<TItem>;
-
-			ComponentsPool.Template = defaultItem;
 
 			CalculateMaxVisibleItems();
 
@@ -614,13 +827,11 @@ namespace UIWidgets
 		}
 
 		/// <inheritdoc/>
-		protected override void SetDirection(ListViewDirection newDirection)
+		protected override void SetDirection(ListViewDirection newDirection, bool updateView = true)
 		{
 			direction = newDirection;
 
 			ListRenderer.ResetPosition();
-
-			(Container as RectTransform).anchoredPosition = Vector2.zero;
 
 			if (ListRenderer.IsVirtualizationSupported())
 			{
@@ -630,7 +841,10 @@ namespace UIWidgets
 				CalculateMaxVisibleItems();
 			}
 
-			UpdateView();
+			if (updateView)
+			{
+				UpdateView();
+			}
 		}
 
 		/// <inheritdoc/>
@@ -660,14 +874,12 @@ namespace UIWidgets
 			}
 
 			Vector2 point;
-			var rectTransform = Container as RectTransform;
-			if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out point))
+			if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(Container, eventData.position, eventData.pressEventCamera, out point))
 			{
 				return DataSource.Count;
 			}
 
-			var rect = rectTransform.rect;
-			if (!rect.Contains(point))
+			if (!Container.rect.Contains(point))
 			{
 				return DataSource.Count;
 			}
@@ -695,16 +907,6 @@ namespace UIWidgets
 			}
 
 			return index;
-		}
-
-		/// <summary>
-		/// Gets the item.
-		/// </summary>
-		/// <returns>The item.</returns>
-		/// <param name="index">Index.</param>
-		protected TItem GetDataItem(int index)
-		{
-			return DataSource[index];
 		}
 
 		/// <summary>
@@ -776,7 +978,7 @@ namespace UIWidgets
 		{
 			if (!IsValid(index))
 			{
-				Debug.LogWarning("Incorrect index: " + index, this);
+				Debug.LogWarning(string.Format("Incorrect index: {0}", index.ToString()), this);
 			}
 
 			SelectedItemsCache.Add(DataSource[index]);
@@ -794,7 +996,7 @@ namespace UIWidgets
 		{
 			if (!IsValid(index))
 			{
-				Debug.LogWarning("Incorrect index: " + index, this);
+				Debug.LogWarning(string.Format("Incorrect index: {0}", index.ToString()), this);
 			}
 
 			SelectedItemsCache.Remove(DataSource[index]);
@@ -807,22 +1009,24 @@ namespace UIWidgets
 			}
 		}
 
-		/// <summary>
-		/// Set flag to update view when data source changed.
-		/// </summary>
+		/// <inheritdoc/>
 		public override void UpdateItems()
 		{
 			SetNewItems(DataSource, IsMainThread);
 			IsDataSourceChanged = !IsMainThread;
 		}
 
-		/// <summary>
-		/// Clear items of this instance.
-		/// </summary>
+		/// <inheritdoc/>
 		public override void Clear()
 		{
 			DataSource.Clear();
 			ListRenderer.SetPosition(0f);
+		}
+
+		/// <inheritdoc/>
+		public override void RemoveItemAt(int index)
+		{
+			DataSource.RemoveAt(index);
 		}
 
 		/// <summary>
@@ -979,30 +1183,36 @@ namespace UIWidgets
 			{
 				StopCoroutine(ScrollCoroutine);
 			}
+
+			ScrollCenter = ScrollCenterState.None;
 		}
 
-		/// <summary>
-		/// Stop scrolling.
-		/// </summary>
+		/// <inheritdoc/>
 		public override void ScrollStop()
 		{
 			StopScrollCoroutine();
 		}
 
-		/// <summary>
-		/// Scroll to specified index with time.
-		/// </summary>
-		/// <param name="index">Index.</param>
+		/// <inheritdoc/>
 		public override void ScrollToAnimated(int index)
 		{
-			StartScrollCoroutine(ScrollToAnimatedCoroutine(index, ScrollUnscaledTime));
+			StartScrollCoroutine(ScrollToAnimatedCoroutine(index, ScrollMovement, ScrollUnscaledTime));
 		}
 
-		/// <summary>
-		/// Scrolls to specified position with time.
-		/// </summary>
-		/// <param name="target">Position.</param>
+		/// <inheritdoc/>
+		public override void ScrollToAnimated(int index, AnimationCurve animation, bool unscaledTime, Action after = null)
+		{
+			StartScrollCoroutine(ScrollToAnimatedCoroutine(index, animation, unscaledTime, after));
+		}
+
+		/// <inheritdoc/>
 		public override void ScrollToPositionAnimated(float target)
+		{
+			ScrollToPositionAnimated(target, ScrollMovement, ScrollUnscaledTime);
+		}
+
+		/// <inheritdoc/>
+		public override void ScrollToPositionAnimated(float target, AnimationCurve animation, bool unscaledTime, Action after = null)
 		{
 #if CSHARP_7_3_OR_NEWER
 			Vector2 Position()
@@ -1021,14 +1231,17 @@ namespace UIWidgets
 			;
 #endif
 
-			StartScrollCoroutine(ScrollToAnimatedCoroutine(Position, ScrollUnscaledTime));
+			StartScrollCoroutine(ScrollToAnimatedCoroutine(Position, animation, unscaledTime, after));
 		}
 
-		/// <summary>
-		/// Scrolls to specified position with time.
-		/// </summary>
-		/// <param name="target">Position.</param>
+		/// <inheritdoc/>
 		public override void ScrollToPositionAnimated(Vector2 target)
+		{
+			ScrollToPositionAnimated(target, ScrollMovement, ScrollUnscaledTime);
+		}
+
+		/// <inheritdoc/>
+		public override void ScrollToPositionAnimated(Vector2 target, AnimationCurve animation, bool unscaleTime, Action after = null)
 		{
 #if CSHARP_7_3_OR_NEWER
 			Vector2 Position()
@@ -1042,7 +1255,7 @@ namespace UIWidgets
 			;
 #endif
 
-			StartScrollCoroutine(ScrollToAnimatedCoroutine(Position, ScrollUnscaledTime));
+			StartScrollCoroutine(ScrollToAnimatedCoroutine(Position, animation, unscaleTime, after));
 		}
 
 		/// <summary>
@@ -1050,8 +1263,10 @@ namespace UIWidgets
 		/// </summary>
 		/// <returns>The scroll to index with time coroutine.</returns>
 		/// <param name="index">Index.</param>
+		/// <param name="animation">Animation curve.</param>
 		/// <param name="unscaledTime">Use unscaled time.</param>
-		protected virtual IEnumerator ScrollToAnimatedCoroutine(int index, bool unscaledTime)
+		/// <param name="after">Action to run after animation.</param>
+		protected virtual IEnumerator ScrollToAnimatedCoroutine(int index, AnimationCurve animation, bool unscaledTime, Action after = null)
 		{
 #if CSHARP_7_3_OR_NEWER
 			Vector2 Position()
@@ -1065,7 +1280,7 @@ namespace UIWidgets
 			;
 #endif
 
-			return ScrollToAnimatedCoroutine(Position, unscaledTime);
+			return ScrollToAnimatedCoroutine(Position, animation, unscaledTime, after);
 		}
 
 		/// <summary>
@@ -1129,18 +1344,32 @@ namespace UIWidgets
 		/// <returns>The scroll to index with time coroutine.</returns>
 		/// <param name="targetPosition">Target position.</param>
 		/// <param name="unscaledTime">Use unscaled time.</param>
+		[Obsolete("Replaced with ScrollToAnimatedCoroutine(Func<Vector2> targetPosition, AnimationCurve animation, bool unscaledTime, Action after = null).")]
 		protected virtual IEnumerator ScrollToAnimatedCoroutine(Func<Vector2> targetPosition, bool unscaledTime)
+		{
+			return ScrollToAnimatedCoroutine(targetPosition, ScrollMovement, unscaledTime);
+		}
+
+		/// <summary>
+		/// Scroll to specified position with time coroutine.
+		/// </summary>
+		/// <returns>The scroll to index with time coroutine.</returns>
+		/// <param name="targetPosition">Target position.</param>
+		/// <param name="animation">Animation curve.</param>
+		/// <param name="unscaledTime">Use unscaled time.</param>
+		/// <param name="after">Action to run after animation.</param>
+		protected virtual IEnumerator ScrollToAnimatedCoroutine(Func<Vector2> targetPosition, AnimationCurve animation, bool unscaledTime, Action after = null)
 		{
 			var start = GetScrollStartPosition(targetPosition());
 
 			float delta;
-			var animationLength = ScrollMovement.keys[ScrollMovement.keys.Length - 1].time;
+			var animationLength = animation[animation.length - 1].time;
 			var startTime = UtilitiesTime.GetTime(unscaledTime);
 
 			do
 			{
 				delta = UtilitiesTime.GetTime(unscaledTime) - startTime;
-				var value = ScrollMovement.Evaluate(delta);
+				var value = animation.Evaluate(delta);
 
 				var target = targetPosition();
 				var pos = start + ((target - start) * value);
@@ -1156,6 +1385,11 @@ namespace UIWidgets
 			yield return null;
 
 			ListRenderer.SetPosition(targetPosition());
+
+			if (after != null)
+			{
+				after();
+			}
 		}
 
 		/// <summary>
@@ -1199,19 +1433,88 @@ namespace UIWidgets
 		}
 
 		/// <summary>
+		/// Called after component instantiated.
+		/// </summary>
+		/// <param name="component">Component.</param>
+		protected virtual void ComponentCreated(TComponent component)
+		{
+			AddCallback(component);
+
+			var c = OnComponentCreated;
+			if (c != null)
+			{
+				c(component);
+			}
+		}
+
+		/// <summary>
+		/// Called before component destroyed.
+		/// </summary>
+		/// <param name="component">Component.</param>
+		protected virtual void ComponentDestroyed(TComponent component)
+		{
+			var c = OnComponentDestroyed;
+			if (c != null)
+			{
+				c(component);
+			}
+
+			RemoveCallback(component);
+		}
+
+		/// <summary>
+		/// Called after component became activated.
+		/// </summary>
+		/// <param name="component">Component.</param>
+		protected virtual void ComponentActivated(TComponent component)
+		{
+			var c = OnComponentActivated;
+			if (c != null)
+			{
+				c(component);
+			}
+		}
+
+		/// <summary>
+		/// Called after component moved to cache.
+		/// </summary>
+		/// <param name="component">Component.</param>
+		protected virtual void ComponentCached(TComponent component)
+		{
+			var c = OnComponentCached;
+			if (c != null)
+			{
+				c(component);
+			}
+		}
+
+		/// <summary>
 		/// Adds the callback.
 		/// </summary>
 		/// <param name="item">Item.</param>
-		protected virtual void AddCallback(ListViewItem item)
+		protected virtual void AddCallback(TComponent item)
 		{
 			ListRenderer.AddCallback(item);
+
+			#pragma warning disable 0618
+			AddCallback(item as ListViewItem);
+			#pragma warning restore 0618
+		}
+
+		/// <summary>
+		/// Adds the callback.
+		/// </summary>
+		/// <param name="item">Item.</param>
+		[Obsolete("Replaced with AddCallback(TComponent item).")]
+		protected virtual void AddCallback(ListViewItem item)
+		{
 		}
 
 		/// <summary>
 		/// Removes the callback.
 		/// </summary>
 		/// <param name="item">Item.</param>
-		protected virtual void RemoveCallback(ListViewItem item)
+		protected virtual void RemoveCallback(TComponent item)
 		{
 			if (item == null)
 			{
@@ -1219,6 +1522,19 @@ namespace UIWidgets
 			}
 
 			ListRenderer.RemoveCallback(item);
+
+			#pragma warning disable 0618
+			RemoveCallback(item as ListViewItem);
+			#pragma warning restore 0618
+		}
+
+		/// <summary>
+		/// Adds the callback.
+		/// </summary>
+		/// <param name="item">Item.</param>
+		[Obsolete("Replaced with RemoveCallback(TComponent item).")]
+		protected virtual void RemoveCallback(ListViewItem item)
+		{
 		}
 
 		/// <summary>
@@ -1355,8 +1671,6 @@ namespace UIWidgets
 		/// <param name="updateView">Update view.</param>
 		protected virtual void SetNewItems(ObservableList<TItem> newItems, bool updateView = true)
 		{
-			ListRenderer.CalculateItemsSizes(newItems, false);
-
 			lock (DataSource)
 			{
 				DataSource.OnChange -= UpdateItems;
@@ -1375,24 +1689,22 @@ namespace UIWidgets
 				}
 #pragma warning restore 0618
 
-				SilentDeselect(SelectedIndices);
-				var new_selected_indices = RecalculateSelectedIndices(newItems);
+				SilentDeselect(SelectedIndicesList);
+				RecalculateSelectedIndices(newItems);
 
 				dataSource = newItems;
+
+				ListRenderer.CalculateItemsSizes(DataSource, false);
 
 				CalculateMaxVisibleItems();
 
 				if (KeepSelection)
 				{
-					SilentSelect(new_selected_indices);
+					SilentSelect(NewSelectedIndices);
 				}
 
 				SelectedItemsCache.Clear();
-				for (int i = 0; i < SelectedIndices.Count; i++)
-				{
-					var index = SelectedIndices[i];
-					SelectedItemsCache.Add(DataSource[index]);
-				}
+				GetSelectedItems(SelectedItemsCache);
 
 				DataSource.OnChange += UpdateItems;
 
@@ -1406,22 +1718,19 @@ namespace UIWidgets
 		/// <summary>
 		/// Recalculates the selected indices.
 		/// </summary>
-		/// <returns>The selected indices.</returns>
 		/// <param name="newItems">New items.</param>
-		protected virtual List<int> RecalculateSelectedIndices(ObservableList<TItem> newItems)
+		protected virtual void RecalculateSelectedIndices(ObservableList<TItem> newItems)
 		{
-			var new_selected_indices = new List<int>();
+			NewSelectedIndices.Clear();
 
 			foreach (var item in SelectedItemsCache)
 			{
 				var new_index = newItems.IndexOf(item);
 				if (new_index != -1)
 				{
-					new_selected_indices.Add(new_index);
+					NewSelectedIndices.Add(new_index);
 				}
 			}
-
-			return new_selected_indices;
 		}
 
 		/// <summary>
@@ -1442,28 +1751,17 @@ namespace UIWidgets
 		/// <param name="eventData">Event data.</param>
 		protected override void OnItemMove(int index, ListViewItem item, AxisEventData eventData)
 		{
+			if (!Navigation)
+			{
+				return;
+			}
+
 			if (ListRenderer.OnItemMove(eventData, item))
 			{
 				return;
 			}
 
-			switch (eventData.moveDir)
-			{
-				case MoveDirection.Left:
-					Navigate(eventData, FindSelectableOnLeft());
-					return;
-				case MoveDirection.Right:
-					Navigate(eventData, FindSelectableOnRight());
-					return;
-				case MoveDirection.Up:
-					Navigate(eventData, FindSelectableOnUp());
-					return;
-				case MoveDirection.Down:
-					Navigate(eventData, FindSelectableOnDown());
-					return;
-				default:
-					return;
-			}
+			base.OnItemMove(index, item, eventData);
 		}
 
 		/// <summary>
@@ -1628,7 +1926,11 @@ namespace UIWidgets
 
 			if (!allowColoring && instant)
 			{
-				ComponentsPool.ForEach(DefaultColoring);
+				foreach (var component in ComponentsPool)
+				{
+					DefaultColoring(component);
+				}
+
 				return;
 			}
 
@@ -1636,12 +1938,20 @@ namespace UIWidgets
 			{
 				var old_duration = FadeDuration;
 				FadeDuration = 0f;
-				ComponentsPool.ForEach(Coloring);
+
+				foreach (var component in ComponentsPool)
+				{
+					Coloring(component);
+				}
+
 				FadeDuration = old_duration;
 			}
 			else
 			{
-				ComponentsPool.ForEach(Coloring);
+				foreach (var component in ComponentsPool)
+				{
+					Coloring(component);
+				}
 			}
 
 			ComponentsHighlightedColoring();
@@ -1671,16 +1981,21 @@ namespace UIWidgets
 
 			if (componentsPool != null)
 			{
-				componentsPool.Template = null;
+				componentsPool.Destroy();
 				componentsPool = null;
 			}
 
-			if (defaultItem != null)
-			{
-				defaultItem.gameObject.SetActive(true);
-			}
-
 			base.OnDestroy();
+		}
+
+		/// <summary>
+		/// Returns an enumerator that iterates through the <see cref="ListViewComponentPool" />.
+		/// </summary>
+		/// <param name="mode">Mode.</param>
+		/// <returns>A <see cref="ListViewBase.ListViewComponentEnumerator{TComponent, Template}" /> for the <see cref="ListViewComponentPool" />.</returns>
+		public ListViewComponentEnumerator<TComponent, Template> GetComponentsEnumerator(PoolEnumeratorMode mode)
+		{
+			return ComponentsPool.GetEnumerator(mode);
 		}
 
 		/// <summary>
@@ -1689,18 +2004,12 @@ namespace UIWidgets
 		/// <param name="func">Action.</param>
 		public override void ForEachComponent(Action<ListViewItem> func)
 		{
-			base.ForEachComponent(func);
-
-			func(DefaultItem);
-
-			if (defaultItemCopy != null)
-			{
-				func(DefaultItemCopy);
-			}
-
 			if (componentsPool != null)
 			{
-				componentsPool.ForEachCache(func);
+				foreach (var component in GetComponentsEnumerator(PoolEnumeratorMode.All))
+				{
+					func(component);
+				}
 			}
 		}
 
@@ -1708,12 +2017,15 @@ namespace UIWidgets
 		/// Calls the specified action for each component.
 		/// </summary>
 		/// <param name="func">Action.</param>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1061:DoNotHideBaseClassMethods", Justification = "Reviewed.")]
 		public virtual void ForEachComponent(Action<TComponent> func)
 		{
-			base.ForEachComponent<TComponent>(func);
-			func(DefaultItem);
-			ComponentsPool.ForEachCache(func);
+			if (componentsPool != null)
+			{
+				foreach (var component in GetComponentsEnumerator(PoolEnumeratorMode.All))
+				{
+					func(component);
+				}
+			}
 		}
 
 		/// <summary>
@@ -1736,12 +2048,30 @@ namespace UIWidgets
 		}
 
 		/// <summary>
+		/// Gets the visible indices.
+		/// </summary>
+		/// <param name="output">Output.</param>
+		public void GetVisibleIndices(List<int> output)
+		{
+			output.AddRange(DisplayedIndices);
+		}
+
+		/// <summary>
 		/// Gets the visible components.
 		/// </summary>
 		/// <returns>The visible components.</returns>
 		public List<TComponent> GetVisibleComponents()
 		{
-			return ComponentsPool.List();
+			return new List<TComponent>(Components);
+		}
+
+		/// <summary>
+		/// Gets the visible components.
+		/// </summary>
+		/// <param name="output">Output.</param>
+		public void GetVisibleComponents(List<TComponent> output)
+		{
+			output.AddRange(Components);
 		}
 
 		/// <summary>
@@ -1825,6 +2155,14 @@ namespace UIWidgets
 		}
 
 		/// <summary>
+		/// Scroll to the nearest item center.
+		/// </summary>
+		public void ScrollToItemCenter()
+		{
+			ListRenderer.ScrollToItemCenter();
+		}
+
+		/// <summary>
 		/// This function is called when the object becomes enabled and active.
 		/// </summary>
 		protected override void OnEnable()
@@ -1844,14 +2182,10 @@ namespace UIWidgets
 		IEnumerator ForceRebuild()
 		{
 			yield return null;
-			ForEachComponent(MarkLayoutForRebuild);
-		}
 
-		void MarkLayoutForRebuild(ListViewItem item)
-		{
-			if (item != null)
+			foreach (var component in ComponentsPool)
 			{
-				LayoutRebuilder.MarkLayoutForRebuild(item.transform as RectTransform);
+				LayoutRebuilder.MarkLayoutForRebuild(component.RectTransform);
 			}
 		}
 
@@ -1891,6 +2225,17 @@ namespace UIWidgets
 		{
 			Scrolling = false;
 			OnEndScrolling.Invoke();
+
+			if (ScrollInertiaUntilItemCenter && (ScrollCenter == ScrollCenterState.None) && (AutoScrollCoroutine == null))
+			{
+				ListRenderer.ScrollToItemCenter();
+				ScrollCenter = ScrollCenterState.Active;
+			}
+
+			if (ScrollCenter == ScrollCenterState.Disable)
+			{
+				ScrollCenter = ScrollCenterState.None;
+			}
 		}
 
 		/// <summary>
@@ -1917,13 +2262,6 @@ namespace UIWidgets
 		/// <param name="size">Size.</param>
 		public virtual void ChangeDefaultItemSize(Vector2 size)
 		{
-			if (defaultItemCopy != null)
-			{
-				var rt = defaultItemCopy.transform as RectTransform;
-				rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size.x);
-				rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size.y);
-			}
-
 			ComponentsPool.SetSize(size);
 
 			CalculateItemSize(true);
@@ -1973,6 +2311,127 @@ namespace UIWidgets
 
 			return selected;
 		}
+
+		#region DebugInfo
+
+		/// <summary>
+		/// Get debug information.
+		/// </summary>
+		/// <returns>Debug information.</returns>
+		public override string GetDebugInfo()
+		{
+			var sb = new System.Text.StringBuilder();
+			sb.Append("Direction: ");
+			sb.Append(EnumHelper<ListViewDirection>.ToString(Direction));
+			sb.AppendLine();
+
+			sb.Append("Type: ");
+			sb.Append(EnumHelper<ListViewType>.ToString(ListType));
+			sb.AppendLine();
+
+			sb.Append("Virtualization: ");
+			sb.Append(Virtualization);
+			sb.AppendLine();
+
+			sb.Append("DataSource.Count: ");
+			sb.Append(DataSource.Count);
+			sb.AppendLine();
+
+			sb.Append("Container Size: ");
+			sb.Append(Container.rect.size.ToString());
+			sb.AppendLine();
+
+			sb.Append("Container Scale: ");
+			sb.Append(Container.localScale.ToString());
+			sb.AppendLine();
+
+			sb.Append("DefaultItem Size: ");
+			sb.Append(ItemSize.ToString());
+			sb.AppendLine();
+
+			sb.Append("DefaultItem Scale: ");
+			sb.Append(DefaultItem.RectTransform.localScale.ToString());
+			sb.AppendLine();
+
+			sb.Append("ScrollRect Size: ");
+			sb.Append(ScrollRectSize.ToString());
+			sb.AppendLine();
+
+			sb.Append("Looped: ");
+			sb.Append(LoopedList);
+			sb.AppendLine();
+
+			sb.Append("Centered: ");
+			sb.Append(CenterTheItems);
+			sb.AppendLine();
+
+			sb.Append("Precalculate Sizes: ");
+			sb.Append(PrecalculateItemSizes);
+			sb.AppendLine();
+
+			sb.Append("DisplayedIndices (count: ");
+			sb.Append(DisplayedIndices.Count);
+			sb.Append("): ");
+			sb.Append(UtilitiesCollections.List2String(DisplayedIndices));
+			sb.AppendLine();
+
+			sb.Append("Components Indices (count: ");
+			sb.Append(Components.Count);
+			sb.Append("): ");
+			sb.AppendLine();
+			for (int i = 0; i < Components.Count; i++)
+			{
+				sb.Append(i);
+				sb.Append(" ");
+				sb.Append(Components[i].name);
+				sb.Append(": ");
+				sb.Append(Components[i].Index);
+				sb.AppendLine();
+			}
+
+			sb.Append("StopScrollAtItemCenter: ");
+			sb.Append(ScrollInertiaUntilItemCenter);
+			sb.AppendLine();
+
+			sb.Append("ScrollCenterState: ");
+			sb.Append(EnumHelper<ScrollCenterState>.ToString(ScrollCenter));
+			sb.AppendLine();
+
+			sb.Append("ScrollPosition: ");
+			sb.Append(ListRenderer.GetPosition());
+			sb.AppendLine();
+
+			sb.Append("ScrollVectorPosition: ");
+			sb.Append(ListRenderer.GetPositionVector().ToString());
+			sb.AppendLine();
+
+			sb.AppendLine();
+
+			sb.AppendLine("#############");
+			sb.AppendLine("**Renderer Info**");
+			ListRenderer.GetDebugInfo(sb);
+			sb.AppendLine();
+
+			sb.AppendLine("#############");
+			sb.AppendLine("**Layout Info**");
+			if (Layout != null)
+			{
+				sb.AppendLine("Layout: EasyLayout");
+				Layout.GetDebugInfo(sb);
+			}
+			else
+			{
+				var layout = Container.GetComponent<LayoutGroup>();
+				var layout_type = (layout != null) ? UtilitiesEditor.GetFriendlyTypeName(layout.GetType()) : "null";
+				sb.Append("Layout: ");
+				sb.Append(layout_type);
+				sb.AppendLine();
+			}
+
+			return sb.ToString();
+		}
+
+		#endregion
 
 		#region ListViewPaginator support
 
@@ -2033,9 +2492,9 @@ namespace UIWidgets
 		{
 			return GetVisibleIndices();
 		}
-#endregion
+		#endregion
 
-#region IStylable implementation
+		#region IStylable implementation
 
 		/// <summary>
 		/// Set the specified style.
@@ -2043,20 +2502,17 @@ namespace UIWidgets
 		/// <param name="style">Style data.</param>
 		protected virtual void SetStyleDefaultItem(Style style)
 		{
-			if (defaultItemCopy != null)
-			{
-				defaultItemCopy.Owner = this;
-				defaultItemCopy.SetStyle(style.Collections.DefaultItemBackground, style.Collections.DefaultItemText, style);
-			}
-
 			if (componentsPool != null)
 			{
 				componentsPool.SetStyle(style.Collections.DefaultItemBackground, style.Collections.DefaultItemText, style);
 			}
-			else if (defaultItem != null)
+			else
 			{
-				defaultItem.Owner = this;
-				defaultItem.SetStyle(style.Collections.DefaultItemBackground, style.Collections.DefaultItemText, style);
+				foreach (var template in TemplateSelector.AllTemplates())
+				{
+					template.Owner = this;
+					template.SetStyle(style.Collections.DefaultItemBackground, style.Collections.DefaultItemText, style);
+				}
 			}
 		}
 
@@ -2123,7 +2579,10 @@ namespace UIWidgets
 			}
 			else if (defaultItem != null)
 			{
-				defaultItem.SetColors(DefaultColor, DefaultBackgroundColor);
+				foreach (var template in TemplateSelector.AllTemplates())
+				{
+					template.SetColors(DefaultColor, DefaultBackgroundColor);
+				}
 			}
 
 			if (header != null)
@@ -2144,10 +2603,10 @@ namespace UIWidgets
 		/// <param name="style">Style data.</param>
 		protected virtual void GetStyleDefaultItem(Style style)
 		{
-			if (defaultItem != null)
+			foreach (var template in TemplateSelector.AllTemplates())
 			{
-				defaultItem.Owner = this;
-				defaultItem.GetStyle(style.Collections.DefaultItemBackground, style.Collections.DefaultItemText, style);
+				template.Owner = this;
+				template.GetStyle(style.Collections.DefaultItemBackground, style.Collections.DefaultItemText, style);
 			}
 		}
 
@@ -2364,12 +2823,12 @@ namespace UIWidgets
 			}
 
 			var t = go.transform;
-			for (int i = 0; i < Items.Count; i++)
+			foreach (var component in ComponentsPool)
 			{
-				var item_transform = Items[i].transform;
+				var item_transform = component.RectTransform;
 				if (t.IsChildOf(item_transform) && (t.GetInstanceID() != item_transform.GetInstanceID()))
 				{
-					return Items[i] as TComponent;
+					return component;
 				}
 			}
 
@@ -2475,11 +2934,18 @@ namespace UIWidgets
 		/// <returns>Coroutine.</returns>
 		protected override IEnumerator AutoScroll()
 		{
+			var min = 0;
+			var max = ListRenderer.CanScroll ? GetItemPositionBottom(DataSource.Count - 1) : 0f;
+
 			while (true)
 			{
 				var delta = AutoScrollSpeed * UtilitiesTime.GetDeltaTime(ScrollUnscaledTime) * AutoScrollDirection;
-				var max = GetItemPositionBottom(DataSource.Count - 1);
-				var pos = Mathf.Clamp(GetScrollPosition() + delta, 0f, max);
+
+				var pos = GetScrollPosition() + delta;
+				if (!LoopedListAvailable)
+				{
+					pos = Mathf.Clamp(pos, min, max);
+				}
 
 				ScrollToPosition(pos);
 

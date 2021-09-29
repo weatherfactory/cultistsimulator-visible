@@ -14,6 +14,7 @@
 		/// Load data from web.
 		/// </summary>
 		/// <returns>Yield instruction.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		protected override IEnumerator Search()
 		{
 			if (SearchDelay > 0)
@@ -22,7 +23,7 @@
 			}
 
 #if UNITY_2018_3_OR_NEWER
-			var url = "http://example.com/?search=" + UnityEngine.Networking.UnityWebRequest.EscapeURL(Query);
+			var url = string.Format("http://example.com/?search={0}", UnityEngine.Networking.UnityWebRequest.EscapeURL(Query));
 			using (var www = UnityEngine.Networking.UnityWebRequest.Get(new System.Uri(url)))
 			{
 				yield return www.SendWebRequest();
@@ -37,7 +38,7 @@
 				}
 			}
 #else
-			var url = "http://example.com/?search=" + WWW.EscapeURL(Query);
+			var url = string.Format("http://example.com/?search={0}", WWW.EscapeURL(Query));
 			WWW www = new WWW(url);
 			yield return www;
 
@@ -57,6 +58,8 @@
 			}
 		}
 
+		static readonly string[] LineSeparators = new string[] { "\r\n", "\r", "\n" };
+
 		/// <summary>
 		/// Convert raw data to list.
 		/// </summary>
@@ -67,7 +70,7 @@
 			var result = new ObservableList<ListViewIconsItemDescription>();
 
 			// convert text to items and add items to list
-			foreach (var line in text.Split(new string[] { "\r\n", "\r", "\n" }, System.StringSplitOptions.None))
+			foreach (var line in text.Split(LineSeparators, System.StringSplitOptions.None))
 			{
 				result.Add(new ListViewIconsItemDescription() { Name = line.TrimEnd() });
 			}

@@ -14,7 +14,7 @@ using SecretHistories.Entities;
 public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int Quantity;
-    public string Criterion;
+    
     private Element _aspect=null;
 
     [SerializeField] private LayoutElement layoutElement;
@@ -49,22 +49,11 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
         _aspect = element;
         Quantity = quantity;
-        Criterion = string.Empty;
         DisplayAImage(element);
         DisplayQuantity(quantity, hasBrightBg);
         gameObject.name = "Element - " + element.Id;
     }
 
-        public void PopulateDisplay(Element element, string criterion, bool hasBrightBg = false)
-        {
-
-            _aspect = element;
-            Quantity = 0;
-            Criterion = criterion;
-            DisplayAImage(element);
-            DisplayCriterion(criterion, hasBrightBg);
-            gameObject.name = "Element - " + element.Id;
-        }
 
     private void DisplayAImage(Element element)
     {
@@ -98,7 +87,6 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
             quantityText.gameObject.SetActive(true);
             quantityText.text = criterion.ToString();
             quantityText.color = hasBrightBG ? darkQuantityColor : brightQuantityColor;
-            layoutElement.minWidth = width0Digits + (Criterion.Length * widthPerCriterionCharacter);
         layoutElement.preferredWidth = layoutElement.minWidth;
         
     }

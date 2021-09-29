@@ -16,12 +16,59 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
     public class RequirementsDisplay : MonoBehaviour
     {
 
-        public virtual void DisplayRequirements(Dictionary<string, string> requirements, string filter)
+        public void DisplayRequirementsAndFulfilments(Recipe r, Situation situation)
         {
-            AddFilterLabel(filter);
-            foreach (string k in requirements.Keys)
-                AddAspectToDisplay(k, requirements[k], filter);
+            var aspectsInContext =
+                Watchman.Get<HornedAxe>().GetAspectsInContext(situation.GetAspects(true));
+
+            
+            foreach (var req in r.Requirements)
+            {
+                if (Recipe.CheckRequirementsSatisfiedForContext(aspectsInContext.AspectsInSituation, req))
+                    DisplayMatchedRequirement(req);
+                else
+                    DisplayUnmatchedRequirement(req);
+            }
+
+            AddFilterLabel("TAB");
+
+            foreach (var treq in r.TableReqs)
+            {
+                if (Recipe.CheckRequirementsSatisfiedForContext(aspectsInContext.AspectsOnTable, treq))
+                    DisplayMatchedRequirement(treq);
+                else
+                    DisplayUnmatchedRequirement(treq);
+            }
+
+
+            AddFilterLabel("EXT");
+
+            foreach (var ereq in r.ExtantReqs)
+            {
+                if (Recipe.CheckRequirementsSatisfiedForContext(aspectsInContext.AspectsExtant, ereq))
+                    DisplayMatchedRequirement(ereq);
+                else
+                    DisplayUnmatchedRequirement(ereq);
+            }
+
+
+
+
         }
+
+        private void DisplayMatchedRequirement(KeyValuePair<string, string> req)
+        {
+            DisplayUnmatchedRequirement(req);
+        }
+
+        private void DisplayUnmatchedRequirement(KeyValuePair<string, string> req)
+        {
+            Element reqelement = Watchman.Get<Compendium>().GetEntityById<Element>(req.Key);
+
+            ReqFrame newReqFrame = Watchman.Get<PrefabFactory>().CreateLocally<ReqFrame>(transform);
+          newReqFrame.Populate(reqelement, req.Value);
+        }
+
 
         private void AddFilterLabel(string filter)
         {
@@ -34,18 +81,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
         }
 
 
-        private void AddAspectToDisplay(string aspectId, string criterion, string filter)
-        {
-            Element aspectElement = Watchman.Get<Compendium>().GetEntityById<Element>(aspectId);
-
-
-            ElementFrame newElementFrame = Watchman.Get<PrefabFactory>().CreateLocally<ElementFrame>(transform);
-            newElementFrame.PopulateDisplay(aspectElement, criterion, false);
-
-
-        }
-
-
         public virtual void ClearCurrentlyDisplayedRequirements()
         {
             foreach (Transform child in transform)
@@ -54,5 +89,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
             }
 
         }
+
+
     }
 }

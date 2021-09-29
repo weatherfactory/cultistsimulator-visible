@@ -18,8 +18,8 @@
 			{
 				Foreground = new Graphic[]
 				{
-					Utilities.GetGraphic(NameAdapter),
-					Utilities.GetGraphic(TextAdapter),
+					UtilitiesUI.GetGraphic(NameAdapter),
+					UtilitiesUI.GetGraphic(TextAdapter),
 				};
 				GraphicsForegroundVersion = 1;
 			}

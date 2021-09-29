@@ -98,7 +98,9 @@
 			}
 			else
 			{
+				#pragma warning disable 0618
 				var autocomplete_obsolete = GetComponent<Autocomplete>();
+				#pragma warning restore 0618
 				if (autocomplete_obsolete != null)
 				{
 					autocomplete_obsolete.DataSource = data;

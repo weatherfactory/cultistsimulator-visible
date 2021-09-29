@@ -46,7 +46,10 @@ namespace UIWidgets
 		{
 			Properties.Clear();
 
-			Array.ForEach(properties, x => Properties.Add(x, serializedObject.FindProperty(x)));
+			foreach (var p in properties)
+			{
+				Properties.Add(p, serializedObject.FindProperty(p));
+			}
 		}
 
 		/// <summary>

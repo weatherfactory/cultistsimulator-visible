@@ -109,9 +109,10 @@ namespace UIWidgets
 				FindReferencesInComponent(input, input.placeholder, placeholderRefs);
 			}
 
-			foreach (Transform t in input.transform)
+			var t = input.transform;
+			for (int i = 0; i < t.childCount; i++)
 			{
-				children.Add(t as RectTransform);
+				children.Add(t.GetChild(i) as RectTransform);
 			}
 
 			textRectTransform = input.textComponent.transform as RectTransform;

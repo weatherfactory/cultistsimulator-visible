@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 22404316}
   - component: {fileID: 22204312}
   - component: {fileID: 11404296}
+  - component: {fileID: 114993424466008212}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -99,6 +100,7 @@ GameObject:
   - component: {fileID: 22404318}
   - component: {fileID: 22204322}
   - component: {fileID: 11404314}
+  - component: {fileID: 114781802371380500}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -222,6 +224,7 @@ GameObject:
   - component: {fileID: 22404332}
   - component: {fileID: 22204328}
   - component: {fileID: 11404320}
+  - component: {fileID: 114363375454102188}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -239,6 +242,7 @@ GameObject:
   - component: {fileID: 22404334}
   - component: {fileID: 22204338}
   - component: {fileID: 11404338}
+  - component: {fileID: 114271586966018804}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -314,31 +318,15 @@ MonoBehaviour:
   - ToggleObject: {fileID: 104310}
     ContentObject: {fileID: 104312}
     Open: 1
-    ContentObjectRect: {fileID: 0}
-    ContentLayoutElement: {fileID: 0}
-    ContentObjectHeight: 0
-    ContentObjectWidth: 0
   - ToggleObject: {fileID: 104324}
     ContentObject: {fileID: 104322}
     Open: 0
-    ContentObjectRect: {fileID: 0}
-    ContentLayoutElement: {fileID: 0}
-    ContentObjectHeight: 0
-    ContentObjectWidth: 0
   - ToggleObject: {fileID: 104326}
     ContentObject: {fileID: 104328}
     Open: 0
-    ContentObjectRect: {fileID: 0}
-    ContentLayoutElement: {fileID: 0}
-    ContentObjectHeight: 0
-    ContentObjectWidth: 0
   - ToggleObject: {fileID: 104340}
     ContentObject: {fileID: 104338}
     Open: 0
-    ContentObjectRect: {fileID: 0}
-    ContentLayoutElement: {fileID: 0}
-    ContentObjectHeight: 0
-    ContentObjectWidth: 0
   OnlyOneOpen: 1
   AllItemsCanBeClosed: 0
   Animate: 1
@@ -357,6 +345,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UIWidgets.AccordionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  OnDataSourceChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &11404292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1560,6 +1553,28 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104308}
   m_IsPrefabParent: 1
+--- !u!114 &114271586966018804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e6b3c9e0434ff43bb4f3722a0b0a57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114363375454102188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e6b3c9e0434ff43bb4f3722a0b0a57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114703931999686126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1583,6 +1598,32 @@ MonoBehaviour:
     FillClockwise: 1
     Material: {fileID: 0}
     PixelsPerUnitMultiplier: 1
+  defaultToggleText:
+    ChangeFont: 1
+    Font: {fileID: 0}
+    FontTMPro: {fileID: 0}
+    ChangeFontStyle: 0
+    FontStyle: 0
+    ChangeSize: 0
+    Size: 18
+    ChangeLineSpacing: 0
+    LineSpacing: 1
+    ChangeRichText: 0
+    RichText: 1
+    ChangeAlignment: 0
+    Alignment: 0
+    ChangeHorizontalOverflow: 0
+    HorizontalOverflow: 0
+    ChangeVerticalOverflow: 0
+    VerticalOverflow: 0
+    ChangeBestFit: 0
+    BestFit: 0
+    MinSize: 10
+    MaxSize: 40
+    ChangeColor: 1
+    Color: {r: 1, g: 0.84313726, b: 0.4509804, a: 1}
+    ChangeMaterial: 0
+    Material: {fileID: 0}
   activeToggleBackground:
     Sprite: {fileID: 21300000, guid: 6a407802697cec945800e004cf876249, type: 3}
     Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1595,3 +1636,51 @@ MonoBehaviour:
     FillClockwise: 1
     Material: {fileID: 0}
     PixelsPerUnitMultiplier: 1
+  activeToggleText:
+    ChangeFont: 1
+    Font: {fileID: 0}
+    FontTMPro: {fileID: 0}
+    ChangeFontStyle: 0
+    FontStyle: 0
+    ChangeSize: 0
+    Size: 18
+    ChangeLineSpacing: 0
+    LineSpacing: 1
+    ChangeRichText: 0
+    RichText: 1
+    ChangeAlignment: 0
+    Alignment: 0
+    ChangeHorizontalOverflow: 0
+    HorizontalOverflow: 0
+    ChangeVerticalOverflow: 0
+    VerticalOverflow: 0
+    ChangeBestFit: 0
+    BestFit: 0
+    MinSize: 10
+    MaxSize: 40
+    ChangeColor: 1
+    Color: {r: 1, g: 0.84313726, b: 0.4509804, a: 1}
+    ChangeMaterial: 0
+    Material: {fileID: 0}
+--- !u!114 &114781802371380500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e6b3c9e0434ff43bb4f3722a0b0a57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114993424466008212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e6b3c9e0434ff43bb4f3722a0b0a57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

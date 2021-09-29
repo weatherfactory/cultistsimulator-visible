@@ -1,3 +1,47 @@
+v1.15.1
+- COMPATIBILITY-BREAKING CHANGES: cursors fields at components (Resizable, Rotatable, Splitter, TableHeader, *DragSupport) are no more used and replaced with Cursors asset and CursorsDPISelector component
+- Accordion: added Curve property to use in animations
+- ContextMenu: fixed HotKey null bug
+- ListView: added OnComponentCreated, OnComponentEnabled, OnComponentDisabled, OnComponentDestroyed events
+- ListView: renamed StopScrollAtItemCenter to ScrollInertiaUntilItemCenter and StopScrollInertia to ScrollInertia
+- TreeView: fixed node remove bug when different nodes using the same item
+- TreeView: fixed multiple selection bug when selecting collapsed node
+- TreeViewNodeDropSupport: added "Expand Node On Hold" option with customizable delay
+- UICursors: static methods replaced to fields so they can be replaced
+
+v1.15.0
+- added ListViewEnum with ListViewEnum<T> wrapper to work with any enums
+- reduced memory allocations
+- all classes with INotifyPropertyChanged support now also implements IObservable which works without memory allocations
+- Autocomplete, Combobox: added field ParentCanvas, it used as ListView parent on open
+- Combobox: toggle-button is now full width
+- ContextMenu: now works correctly with all canvas render modes
+- DateScroller/DateTimeScroller/TimeScroller: ScrollBlock replaced with ScrollBlockBase
+- Dialog: added InactiveDialogs and AllDialogs properties to get access to the template instances
+- Dialog: DialogButton now support callback with Func<DialogBase dialog, int buttonIndex, bool closeDialog> type
+- EasyLayout: small improvements
+- EasyLayout: Filter property is obsolete and replaced with ShouldIgnore
+- Input System support: fixed bug on mobile devices
+- ListView: added property TemplateSelector, its allow to use of different templates (not only DefaultItem) depending on the item
+- ListView: added GetDebugInfo and PringDebugInfo methods
+- ListView: added "AnimationCurve animation, bool unscaledTime, Action after = null" parameters to the ScrollTo*Animated methods
+- ListView: StopScrollAtItemCenter and StopScrollInertia properties
+- ListView: fixed problem with not displayed items for ListType with variable sizes
+- ListView: added GetComponentsEnumerator to iterate through DefaultItems instances as allocation free replacement of the ForEachComponent method
+- ListView: added support of Container with custom scale
+- ListView: fixed AutoScroll bug
+- Notification: NotificationButton now support callback with Func<NotificationBase notification, int buttonIndex, bool closeNotification> type
+- Paginators: added OnMovement event
+- Popup: added content and onClose parameters to the Show method, added SetContent() method, added OnClose field, works the same way as dialog
+- Resizable: added UseCanvasScaler option, if enabled ActiveRegion will be changed according to the CanvasScaler settings
+- ScrollBlock: added OnItemChanged event to customize items depending on index and value
+- ScrollBlock: added ScrollBlockBase and ScrollBlockCustom<T> classes
+- TracksViewBase: ScrollBlock replaced with ScrollBlockBase
+- TreeView: fixed drop support bug
+- TreeView prefabs: toggle arrow now is nested
+- UICursor: added Replacement function to replace cursor (can be used to replace cursor on High DPI screens)
+- Utilities: more functions moved to the new UtilitiesUI and UtilitiesRectTransform classes
+
 v1.14.2
 - added CircularSlider widget
 - added SliderScale widget
@@ -5,16 +49,16 @@ v1.14.2
 - Accordion: added OnStartToggleAnimation and OnDataSourceChanged events
 - Accordion: added AccordionHighlight component 
 - AutoComplete: added OnItemNotFound and OnCancelInput events
-- AutoCombobox: added AddItems option (requires overrided Input2Item method)
+- AutoCombobox: added AddItems option (requires overridden Input2Item method)
 - CenteredSlider: event OnValuesChange renamed to OnValueChanged
 - Connectors: fixed bug related to "Scale With Screen Size"
 - Connectors: added rectangular lines support
 - Cursor: fixed flickering
 - DatePicker and DateTimePicker: fixed initial date
-- DirectoryTreeView: nested nodes are automatically loaded on expand from script
+- DirectoryTreeView: nested nodes are automatically loaded on node expand from a script
 - DirectoryTreeView: added ExpandPath(), Path2Node(), Path2NearestNode(), RefreshDirectories() methods
 - ListView: fixed highlight coloring on navigation
-- ListView: fixed unstoppable auto scroll bug
+- ListView: fixed unstoppable auto-scroll bug
 - ListView Drop Support: added ReceiveOnlyEmptyNode option
 - RangeSlider: event OnValuesChange renamed to OnValuesChanged
 - Resizable: fixed position change

@@ -16,7 +16,7 @@
 		{
 			if (GraphicsForegroundVersion == 0)
 			{
-				Foreground = new Graphic[] { Utilities.GetGraphic(TextAdapter), Underline, };
+				Foreground = new Graphic[] { UtilitiesUI.GetGraphic(TextAdapter), Underline, };
 				GraphicsForegroundVersion = 1;
 			}
 		}

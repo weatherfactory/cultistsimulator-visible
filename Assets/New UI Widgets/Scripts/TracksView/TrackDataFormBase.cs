@@ -10,7 +10,7 @@
 	/// <typeparam name="TPoint">Point type.</typeparam>
 	public abstract class TrackDataFormBase<TData, TPoint> : MonoBehaviour
 		where TData : ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 	{
 		/// <summary>
 		/// Data.

@@ -11,7 +11,7 @@
 	/// <summary>
 	/// Menu item.
 	/// </summary>
-	public class MenuItem : INotifyPropertyChanged
+	public class MenuItem : IObservable, INotifyPropertyChanged
 	{
 		string name;
 
@@ -30,7 +30,7 @@
 				if (name != value)
 				{
 					name = value;
-					Changed("Name");
+					NotifyPropertyChanged("Name");
 				}
 			}
 		}
@@ -52,7 +52,7 @@
 				if (template != value)
 				{
 					template = value;
-					Changed("Template");
+					NotifyPropertyChanged("Template");
 				}
 			}
 		}
@@ -74,7 +74,7 @@
 				if (isChecked != value)
 				{
 					isChecked = value;
-					Changed("Checked");
+					NotifyPropertyChanged("Checked");
 				}
 			}
 		}
@@ -96,7 +96,7 @@
 				if (icon != value)
 				{
 					icon = value;
-					Changed("Icon");
+					NotifyPropertyChanged("Icon");
 				}
 			}
 		}
@@ -123,7 +123,7 @@
 
 					CreateHotKeyAction();
 
-					Changed("HotKey");
+					NotifyPropertyChanged("HotKey");
 				}
 			}
 		}
@@ -145,7 +145,7 @@
 				if (visible != value)
 				{
 					visible = value;
-					Changed("Visible");
+					NotifyPropertyChanged("Visible");
 				}
 			}
 		}
@@ -167,7 +167,7 @@
 				if (interactable != value)
 				{
 					interactable = value;
-					Changed("Interactable");
+					NotifyPropertyChanged("Interactable");
 				}
 			}
 		}
@@ -189,7 +189,7 @@
 				if (tag != value)
 				{
 					tag = value;
-					Changed("Tag");
+					NotifyPropertyChanged("Tag");
 				}
 			}
 		}
@@ -225,7 +225,7 @@
 					items.OnCollectionChange += ItemsChanged;
 				}
 
-				Changed("Items");
+				NotifyPropertyChanged("Items");
 			}
 		}
 
@@ -246,7 +246,7 @@
 				if (action != value)
 				{
 					action = value;
-					Changed("Action");
+					NotifyPropertyChanged("Action");
 				}
 			}
 		}
@@ -278,7 +278,12 @@
 		/// <summary>
 		/// Property changed event.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = Utilities.DefaultPropertyHandler;
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Property changed event.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MenuItem"/> class.
@@ -293,16 +298,26 @@
 		/// </summary>
 		protected void ItemsChanged()
 		{
-			Changed("Items");
+			NotifyPropertyChanged("Items");
 		}
 
 		/// <summary>
 		/// Property changed.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
-		protected void Changed(string propertyName)
+		protected void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 
 		#if ENABLE_INPUT_SYSTEM
@@ -416,19 +431,19 @@
 					var index = 1;
 					if (hotKey.Ctrl)
 					{
-						composite = composite.With("Modifier" + index, "<Keyboard>/Ctrl");
+						composite = composite.With(string.Format("Modifier{0}", index.ToString()), "<Keyboard>/Ctrl");
 						index += 1;
 					}
 
 					if (hotKey.Alt)
 					{
-						composite = composite.With("Modifier" + index, "<Keyboard>/Alt");
+						composite = composite.With(string.Format("Modifier{0}", index.ToString()), "<Keyboard>/Alt");
 						index += 1;
 					}
 
 					if (hotKey.Shift)
 					{
-						composite = composite.With("Modifier" + index, "<Keyboard>/Shift");
+						composite = composite.With(string.Format("Modifier{0}", index.ToString()), "<Keyboard>/Shift");
 						index += 1;
 					}
 				}
@@ -452,14 +467,14 @@
 
 				for (int i = 0; i < group.Keys.Length; i++)
 				{
-					composite = composite.With("Button", "<Keyboard>/" + Key2String(group.Keys[i]));
+					composite = composite.With("Button", string.Format("<Keyboard>/{0}", Key2String(group.Keys[i])));
 				}
 			}
 			else
 			{
 				for (int i = 0; i < group.Keys.Length; i++)
 				{
-					HotKeyAction.AddBinding("<Keyboard>/" + Key2String(group.Keys[i]));
+					HotKeyAction.AddBinding(string.Format("<Keyboard>/{0}", Key2String(group.Keys[i])));
 				}
 			}
 
@@ -500,7 +515,7 @@
 					return "9";
 			}
 
-			return key.ToString();
+			return EnumHelper<Key>.ToString(key);
 		}
 
 		/// <summary>

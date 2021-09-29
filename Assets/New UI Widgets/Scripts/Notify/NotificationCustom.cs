@@ -150,7 +150,7 @@
 		/// <summary>
 		/// Button instance.
 		/// </summary>
-		public class ButtonInstance : DialogButtonCustom<TNotification>
+		public class ButtonInstance : DialogButtonCustom<TNotification, NotificationBase, NotificationButton>
 		{
 			/// <summary>
 			/// Initializes a new instance of the <see cref="ButtonInstance"/> class.
@@ -159,7 +159,7 @@
 			/// <param name="index">Index.</param>
 			/// <param name="info">Info.</param>
 			/// <param name="template">Template.</param>
-			public ButtonInstance(TNotification owner, int index, DialogButton info, Button template)
+			public ButtonInstance(TNotification owner, int index, NotificationButton info, Button template)
 				: base(owner, index, info, template)
 			{
 			}
@@ -168,7 +168,7 @@
 		/// <summary>
 		/// Class for the buttons instances.
 		/// </summary>
-		protected class ButtonsPool : DialogButtonsPoolCustom<TNotification, ButtonInstance>
+		protected class ButtonsPool : DialogButtonsPoolCustom<TNotification, NotificationBase, ButtonInstance, NotificationButton>
 		{
 			/// <summary>
 			/// Initializes a new instance of the <see cref="ButtonsPool"/> class.
@@ -188,7 +188,7 @@
 			/// <param name="buttonIndex">Index of the button.</param>
 			/// <param name="info">Button info.</param>
 			/// <returns>Button.</returns>
-			protected override ButtonInstance CreateButtonInstance(int buttonIndex, DialogButton info)
+			protected override ButtonInstance CreateButtonInstance(int buttonIndex, NotificationButton info)
 			{
 				return new ButtonInstance(Owner, buttonIndex, info, Templates[info.TemplateIndex]);
 			}
@@ -257,7 +257,7 @@
 			{
 				if (IsTemplate && (buttonsTemplates.Count > value.Count))
 				{
-					throw new ArgumentOutOfRangeException("value", string.Format("Buttons count cannot be decreased. Current is {0}; New is {1}", buttonsTemplates.Count, value.Count));
+					throw new ArgumentOutOfRangeException("value", string.Format("Buttons count cannot be decreased. Current is {0}; New is {1}", buttonsTemplates.Count.ToString(), value.Count.ToString()));
 				}
 
 				Buttons.Replace(value);
@@ -276,7 +276,32 @@
 		/// Creates the buttons.
 		/// </summary>
 		/// <param name="buttons">Buttons.</param>
+		[Obsolete("Notifications now use NotificationButton instead of the DialogButton.")]
 		public virtual void SetButtons(IList<DialogButton> buttons)
+		{
+			Buttons.Disable();
+
+			if (buttons == null)
+			{
+				return;
+			}
+
+			for (int index = 0; index < buttons.Count; index++)
+			{
+				var old_info = buttons[index];
+				#pragma warning disable 0618
+				var info = new NotificationButton(old_info.Label, old_info.Action, old_info.TemplateIndex);
+				#pragma warning restore 0618
+				info.TemplateIndex = GetTemplateIndex(info);
+				Buttons.Get(index, info);
+			}
+		}
+
+		/// <summary>
+		/// Creates the buttons.
+		/// </summary>
+		/// <param name="buttons">Buttons.</param>
+		public virtual void SetButtons(IList<NotificationButton> buttons)
 		{
 			Buttons.Disable();
 
@@ -298,12 +323,12 @@
 		/// </summary>
 		/// <param name="button">Button.</param>
 		/// <returns>Template index,</returns>
-		protected int GetTemplateIndex(DialogButton button)
+		protected int GetTemplateIndex(NotificationButton button)
 		{
 			var template = button.TemplateIndex;
 			if (template < 0)
 			{
-				Debug.LogWarning(string.Format("Negative button index not supported. Button: {0}. Index: {1}.", button.Label, template));
+				Debug.LogWarning(string.Format("Negative button index not supported. Button: {0}. Index: {1}.", button.Label, template.ToString()));
 				template = 0;
 			}
 
@@ -311,9 +336,9 @@
 			{
 				Debug.LogWarning(string.Format(
 					"Not found button template with index {0} for the button: {1}. Available indices: 0..{2}",
-					template,
+					template.ToString(),
 					button.Label,
-					Buttons.Count - 1));
+					(Buttons.Count - 1).ToString()));
 				template = 0;
 			}
 
@@ -670,6 +695,7 @@
 			}
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		IEnumerator HideCoroutine()
 		{
 			yield return UtilitiesTime.Wait(HideDelay, UnscaledTime);
@@ -685,7 +711,7 @@
 		/// <summary>
 		/// Hide notification.
 		/// </summary>
-		public virtual void Hide()
+		public override void Hide()
 		{
 			if (SlideUpOnHide)
 			{

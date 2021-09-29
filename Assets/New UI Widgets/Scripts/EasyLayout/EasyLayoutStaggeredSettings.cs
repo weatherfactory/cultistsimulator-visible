@@ -3,6 +3,7 @@
 	using System;
 	using System.Collections.Generic;
 	using System.ComponentModel;
+	using UIWidgets;
 	using UnityEngine;
 	using UnityEngine.Serialization;
 
@@ -10,7 +11,7 @@
 	/// Settings for the staggered layout.
 	/// </summary>
 	[Serializable]
-	public class EasyLayoutStaggeredSettings : INotifyPropertyChanged
+	public class EasyLayoutStaggeredSettings : IObservable, INotifyPropertyChanged
 	{
 		[SerializeField]
 		[FormerlySerializedAs("FixedBlocksCount")]
@@ -32,7 +33,7 @@
 				if (fixedBlocksCount != value)
 				{
 					fixedBlocksCount = value;
-					Changed("FixedBlocksCount");
+					NotifyPropertyChanged("FixedBlocksCount");
 				}
 			}
 		}
@@ -56,7 +57,7 @@
 				if (blocksCount != value)
 				{
 					blocksCount = value;
-					Changed("BlocksCount");
+					NotifyPropertyChanged("BlocksCount");
 				}
 			}
 		}
@@ -80,15 +81,55 @@
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = EasyLayout.DefaultPropertyHandler;
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Property changed.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
-		protected void Changed(string propertyName)
+		protected void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		/// <summary>
+		/// Get debug information.
+		/// </summary>
+		/// <param name="sb">String builder.</param>
+		public virtual void GetDebugInfo(System.Text.StringBuilder sb)
+		{
+			sb.Append("\tFixed Blocks Count: ");
+			sb.Append(FixedBlocksCount);
+			sb.AppendLine();
+
+			sb.Append("\tBlocks Count: ");
+			sb.Append(BlocksCount);
+			sb.AppendLine();
+
+			sb.AppendLine("\t#####");
+
+			sb.Append("\tPadding Inner Start: ");
+			sb.Append(EasyLayoutUtilities.List2String(PaddingInnerStart));
+			sb.AppendLine();
+
+			sb.Append("\tPadding Inner End: ");
+			sb.Append(EasyLayoutUtilities.List2String(PaddingInnerEnd));
+			sb.AppendLine();
 		}
 	}
 }

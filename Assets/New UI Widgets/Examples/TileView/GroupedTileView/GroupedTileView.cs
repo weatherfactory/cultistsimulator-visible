@@ -38,6 +38,14 @@
 		}
 
 		/// <inheritdoc/>
+		public override void UpdateItems()
+		{
+			base.UpdateItems();
+
+			GroupedData.ItemsPerBlock = ListRenderer.GetItemsPerBlock();
+		}
+
+		/// <inheritdoc/>
 		public override void Resize()
 		{
 			base.Resize();

@@ -121,13 +121,14 @@
 		/// </summary>
 		public void Test()
 		{
+			var now = DateTime.Now;
 			var lines = new ObservableList<ChatLine>()
 			{
 				new ChatLine()
 				{
 					UserName = "Test",
 					Message = "line 1",
-					Time = DateTime.Now,
+					Time = now,
 					Type = ChatLineType.Incoming,
 					Image = TestImage,
 				},
@@ -135,7 +136,7 @@
 				{
 					UserName = "Test",
 					Message = "line 1\nline2",
-					Time = DateTime.Now,
+					Time = now,
 					Type = ChatLineType.Incoming,
 					Audio = TestAudio,
 				},
@@ -143,28 +144,28 @@
 				{
 					UserName = "Test",
 					Message = "line 1\nline2\nline3",
-					Time = DateTime.Now,
+					Time = now,
 					Type = ChatLineType.Incoming,
 				},
 				new ChatLine()
 				{
 					UserName = "Test",
 					Message = "line 1\nline2",
-					Time = DateTime.Now,
+					Time = now,
 					Type = ChatLineType.Incoming,
 				},
 				new ChatLine()
 				{
 					UserName = "Test",
 					Message = "line 1\nline2",
-					Time = DateTime.Now,
+					Time = now,
 					Type = ChatLineType.Outgoing,
 				},
 				new ChatLine()
 				{
 					UserName = "Test",
 					Message = "line 1\nline2",
-					Time = DateTime.Now,
+					Time = now,
 					Type = ChatLineType.Outgoing,
 					Audio = TestAudio,
 				},
@@ -172,14 +173,14 @@
 				{
 					UserName = "Test",
 					Message = "line 1\nline2",
-					Time = DateTime.Now,
+					Time = now,
 					Type = ChatLineType.Incoming,
 				},
 				new ChatLine()
 				{
 					UserName = "Test",
 					Message = "line 1\nline2",
-					Time = DateTime.Now,
+					Time = now,
 					Type = ChatLineType.Outgoing,
 					Image = TestImage,
 				},
@@ -187,14 +188,14 @@
 				{
 					UserName = "Test",
 					Message = "line 1\nline2\nline3",
-					Time = DateTime.Now,
+					Time = now,
 					Type = ChatLineType.Incoming,
 				},
 				new ChatLine()
 				{
 					UserName = "Test",
 					Message = "line 1\nline2\nline3\nline4",
-					Time = DateTime.Now,
+					Time = now,
 					Type = ChatLineType.Incoming,
 					Image = TestImage,
 					Audio = TestAudio,

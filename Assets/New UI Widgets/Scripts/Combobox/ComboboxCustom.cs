@@ -2,7 +2,6 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UIWidgets.l10n;
 	using UIWidgets.Styles;
 	using UnityEngine;
@@ -94,14 +93,15 @@
 		protected bool CanSetData;
 
 		/// <summary>
-		/// OnSelect event.
+		/// Parent canvas.
 		/// </summary>
-		[Obsolete("Use Combobox.ListView.OnSelect instead.")]
-		public ComboboxCustomEvent OnSelect = new ComboboxCustomEvent();
+		[SerializeField]
+		protected RectTransform ParentCanvas;
 
-		Transform listCanvas;
-
-		Transform listParent;
+		/// <summary>
+		/// ListView parent.
+		/// </summary>
+		protected RectTransform ListViewParent;
 
 		/// <summary>
 		/// The components list.
@@ -125,6 +125,12 @@
 		public bool HideAfterItemToggle = true;
 
 		/// <summary>
+		/// OnSelect event.
+		/// </summary>
+		[Obsolete("Use Combobox.ListView.OnSelect instead.")]
+		public ComboboxCustomEvent OnSelect = new ComboboxCustomEvent();
+
+		/// <summary>
 		/// Raised when ListView opened.
 		/// </summary>
 		[SerializeField]
@@ -141,13 +147,6 @@
 		/// </summary>
 		[SerializeField]
 		public ComboboxCustomEvent OnCurrentClick = new ComboboxCustomEvent();
-
-		/// <summary>
-		/// Awake this instance.
-		/// </summary>
-		protected virtual void Awake()
-		{
-		}
 
 		[NonSerialized]
 		bool isComboboxCustomInited;
@@ -180,12 +179,19 @@
 
 			if (listView != null)
 			{
+				Current.Owner = ListView;
+
 				current.gameObject.SetActive(false);
 
 				listView.OnSelectObject.RemoveListener(UpdateView);
 				listView.OnDeselectObject.RemoveListener(UpdateView);
 
-				listCanvas = Utilities.FindTopmostCanvas(listParent);
+				ListViewParent = listView.transform.parent as RectTransform;
+
+				if (ParentCanvas == null)
+				{
+					ParentCanvas = UtilitiesUI.FindTopmostCanvas(ListViewParent);
+				}
 
 				listView.gameObject.SetActive(true);
 				listView.Init();
@@ -238,10 +244,19 @@
 		/// <param name="newCurrent">New component.</param>
 		protected virtual void SetCurrent(TComponent newCurrent)
 		{
-			components.ForEach(DeactivateComponent);
-			components.ForEach(Destroy);
+			foreach (var c in components)
+			{
+				DeactivateComponent(c);
+				Destroy(c);
+			}
+
 			components.Clear();
-			componentsCache.ForEach(Destroy);
+
+			foreach (var c in componentsCache)
+			{
+				Destroy(c);
+			}
+
 			componentsCache.Clear();
 
 			current = newCurrent;
@@ -277,7 +292,7 @@
 		{
 			if (listView != null)
 			{
-				listParent = null;
+				ListViewParent = null;
 
 				listView.OnSelectObject.RemoveListener(UpdateView);
 				listView.OnDeselectObject.RemoveListener(UpdateView);
@@ -292,9 +307,10 @@
 			}
 
 			listView = value;
+
 			if (listView != null)
 			{
-				listParent = listView.transform.parent;
+				ListViewParent = listView.transform.parent as RectTransform;
 
 				listView.OnSelectObject.AddListener(UpdateView);
 				listView.OnDeselectObject.AddListener(UpdateView);
@@ -325,7 +341,7 @@
 		/// </summary>
 		public virtual void Clear()
 		{
-			listView.Clear();
+			listView.DataSource.Clear();
 			UpdateView();
 		}
 
@@ -395,12 +411,12 @@
 				return;
 			}
 
-			ModalKey = ModalHelper.Open(this, null, new Color(0, 0, 0, 0f), HideList);
+			ModalKey = ModalHelper.Open(this, null, new Color(0, 0, 0, 0f), HideList, ParentCanvas);
 
-			if (listCanvas != null)
+			if (ParentCanvas != null)
 			{
-				listParent = listView.transform.parent;
-				listView.transform.SetParent(listCanvas, true);
+				ListViewParent = listView.transform.parent as RectTransform;
+				listView.transform.SetParent(ParentCanvas, true);
 			}
 
 			listView.gameObject.SetActive(true);
@@ -439,9 +455,9 @@
 				return;
 			}
 
-			if (listCanvas != null)
+			if (ParentCanvas != null)
 			{
-				listView.transform.SetParent(listParent);
+				listView.transform.SetParent(ListViewParent);
 			}
 
 			listView.gameObject.SetActive(false);
@@ -560,7 +576,11 @@
 		/// </summary>
 		protected void RemoveDeselectCallbacks()
 		{
-			childrenDeselect.ForEach(RemoveDeselectCallback);
+			foreach (var c in childrenDeselect)
+			{
+				RemoveDeselectCallback(c);
+			}
+
 			childrenDeselect.Clear();
 		}
 
@@ -584,18 +604,22 @@
 		/// <summary>
 		/// The current indices.
 		/// </summary>
-		protected List<int> currentIndices;
+		protected List<int> currentIndices = new List<int>();
 
 		/// <summary>
 		/// Updates the view.
 		/// </summary>
 		protected virtual void UpdateViewBase()
 		{
-			currentIndices = ListView.SelectedIndices;
+			currentIndices.Clear();
+			ListView.GetSelectedIndices(currentIndices);
 
 			UpdateComponentsCount();
 
-			components.ForEach(SetData);
+			for (int i = 0; i < components.Count; i++)
+			{
+				SetData(components[i], i);
+			}
 		}
 
 		/// <summary>
@@ -676,6 +700,7 @@
 			component.transform.SetAsLastSibling();
 			component.gameObject.SetActive(true);
 			component.onClickItem.AddListener(CurrentClick);
+			component.Owner = ListView;
 			components.Add(component);
 		}
 
@@ -776,6 +801,30 @@
 			ToggleButton = null;
 		}
 
+		#if UNITY_EDITOR
+		/// <summary>
+		/// Validate this instance.
+		/// </summary>
+		protected virtual void OnValidate()
+		{
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+
+		/// <summary>
+		/// Reset this instance.
+		/// </summary>
+		protected virtual void Reset()
+		{
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+		#endif
+
 		#region IStylable implementation
 
 		/// <summary>
@@ -807,6 +856,26 @@
 			}
 		}
 
+		/// <summary>
+		/// Get button image.
+		/// </summary>
+		/// <param name="button">Button.</param>
+		/// <returns>Image component.</returns>
+		protected virtual Image GetButtonImage(Transform button)
+		{
+			for (int i = 0; i < button.childCount; i++)
+			{
+				var child = button.GetChild(i);
+				var img = child.GetComponent<Image>();
+				if (img != null)
+				{
+					return img;
+				}
+			}
+
+			return button.GetComponent<Image>();
+		}
+
 		/// <inheritdoc/>
 		public virtual bool SetStyle(Style style)
 		{
@@ -821,7 +890,7 @@
 
 			if (toggleButton != null)
 			{
-				style.Combobox.ToggleButton.ApplyTo(toggleButton.GetComponent<Image>());
+				style.Combobox.ToggleButton.ApplyTo(GetButtonImage(toggleButton.transform));
 			}
 
 			if (current != null)
@@ -890,7 +959,7 @@
 
 			if (toggleButton != null)
 			{
-				style.Combobox.ToggleButton.GetFrom(toggleButton.GetComponent<Image>());
+				style.Combobox.ToggleButton.GetFrom(GetButtonImage(toggleButton.transform));
 			}
 
 			if (current != null)

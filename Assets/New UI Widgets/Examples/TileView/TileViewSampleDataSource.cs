@@ -35,7 +35,7 @@
 			{
 				return new TileViewItemSample()
 				{
-					Name = "Tile " + x,
+					Name = string.Format("Tile {0}", x.ToString()),
 					Capital = string.Empty,
 					Area = Random.Range(10, 10 * 6),
 					Population = Random.Range(100, 100 * 6),

@@ -1,7 +1,6 @@
 ﻿namespace UIWidgets.Examples
 {
 	using System.Collections.Generic;
-	using System.Linq;
 	using UIWidgets;
 	using UnityEngine;
 
@@ -33,18 +32,93 @@
 		/// <returns>Layout.</returns>
 		protected static UILayout Selector(List<UILayout> layouts, float displaySize, float aspectRatio)
 		{
-			// portrait mode
+			var filtered = FilterLayouts(layouts, aspectRatio);
 			if (aspectRatio < 1f)
 			{
-				var layout = layouts.Where(x => x.AspectRatioFloat >= aspectRatio).OrderBy(x => x.AspectRatioFloat).FirstOrDefault();
+				var layout = SelectPortrait(filtered);
 				if (layout != null)
 				{
 					return layout;
 				}
 			}
 
-			// landscape mode
-			return layouts.Where(x => x.AspectRatioFloat >= 1f).OrderBy(x => Mathf.Abs(aspectRatio - x.AspectRatioFloat)).FirstOrDefault();
+			return SelectLandscape(filtered, aspectRatio);
+		}
+
+		/// <summary>
+		/// Select portrait layout.
+		/// </summary>
+		/// <param name="layouts">Layouts.</param>
+		/// <returns>Layout.</returns>
+		protected static UILayout SelectPortrait(List<UILayout> layouts)
+		{
+			if (layouts.Count == 0)
+			{
+				return null;
+			}
+
+			var result = layouts[0];
+
+			for (int i = 1; i < layouts.Count; i++)
+			{
+				var layout = layouts[i];
+				if (layout.AspectRatioFloat < result.AspectRatioFloat)
+				{
+					result = layout;
+				}
+			}
+
+			return result;
+		}
+
+		/// <summary>
+		/// Select landscape layout.
+		/// </summary>
+		/// <param name="layouts">Layouts.</param>
+		/// <param name="aspectRatio">Aspect ratio.</param>
+		/// <returns>Layout.</returns>
+		protected static UILayout SelectLandscape(List<UILayout> layouts, float aspectRatio)
+		{
+			if (layouts.Count == 0)
+			{
+				return null;
+			}
+
+			var result = layouts[0];
+			var result_value = Mathf.Abs(aspectRatio - result.AspectRatioFloat);
+
+			for (int i = 1; i < layouts.Count; i++)
+			{
+				var layout = layouts[i];
+				var layout_value = Mathf.Abs(aspectRatio - layout.AspectRatioFloat);
+				if (layout_value < result_value)
+				{
+					result = layout;
+					result_value = layout_value;
+				}
+			}
+
+			return result;
+		}
+
+		/// <summary>
+		/// Filter layouts.
+		/// </summary>
+		/// <param name="layouts">Layouts.</param>
+		/// <param name="aspectRatio">Aspect ratio.</param>
+		/// <returns>Filtered layouts.</returns>
+		protected static List<UILayout> FilterLayouts(List<UILayout> layouts, float aspectRatio)
+		{
+			var result = new List<UILayout>(layouts.Count);
+			foreach (var l in layouts)
+			{
+				if (l.AspectRatioFloat >= aspectRatio)
+				{
+					result.Add(l);
+				}
+			}
+
+			return result;
 		}
 
 		/// <summary>

@@ -45,7 +45,7 @@
 		{
 			if (LabelAdapter != null)
 			{
-				var version = "v" + VersionFile.text;
+				var version = string.Format("v{0}", VersionFile.text);
 				if (LabelAdapter.text != version)
 				{
 					LabelAdapter.text = version;

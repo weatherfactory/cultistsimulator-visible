@@ -108,7 +108,10 @@
 		/// </summary>
 		public void Load()
 		{
-			Positions.ForEach(Load);
+			foreach (var p in Positions)
+			{
+				Load(p);
+			}
 		}
 
 		/// <summary>

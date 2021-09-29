@@ -10,7 +10,7 @@
 	/// <typeparam name="TPoint">Type of the points.</typeparam>
 	public class TrackLayoutTopLine<TData, TPoint> : TrackLayout<TData, TPoint>
 		where TData : class, ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 	{
 		/// <summary>
 		/// Set order for the specified items.

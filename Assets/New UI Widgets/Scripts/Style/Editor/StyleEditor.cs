@@ -70,8 +70,15 @@
 				AddProperty(property);
 			}
 
-			Fast.ForEach(AddSerializedPropery);
-			Detailed.ForEach(AddSerializedPropery);
+			foreach (var f in Fast)
+			{
+				AddSerializedPropery(f);
+			}
+
+			foreach (var d in Detailed)
+			{
+				AddSerializedPropery(d);
+			}
 		}
 
 		/// <summary>

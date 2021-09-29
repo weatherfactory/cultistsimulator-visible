@@ -36,7 +36,7 @@
 				return false;
 			}
 
-			var scrollbar_style = Utilities.IsHorizontal(scrollbar)
+			var scrollbar_style = UtilitiesUI.IsHorizontal(scrollbar)
 				? style.HorizontalScrollbar
 				: style.VerticalScrollbar;
 
@@ -65,7 +65,7 @@
 				return false;
 			}
 
-			var scrollbar_style = Utilities.IsHorizontal(scrollbar)
+			var scrollbar_style = UtilitiesUI.IsHorizontal(scrollbar)
 				? style.HorizontalScrollbar
 				: style.VerticalScrollbar;
 

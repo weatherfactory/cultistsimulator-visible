@@ -21,7 +21,7 @@
 			// if node selected
 			if (Item.Value == 1)
 			{
-				Debug.Log("selected: " + Item.Name);
+				Debug.Log(string.Format("selected: {0}", Item.Name));
 
 				// activate corresponding GameObjects
 			}
@@ -29,7 +29,7 @@
 			// if node deselected
 			else
 			{
-				Debug.Log("deselected: " + Item.Name);
+				Debug.Log(string.Format("deselected: {0}", Item.Name));
 
 				// deactivate corresponding GameObjects
 			}

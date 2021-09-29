@@ -75,7 +75,7 @@
 				/// <returns>A hash code for the current object.</returns>
 				public override int GetHashCode()
 				{
-					return base.GetHashCode();
+					return FirstVisible ^ Items;
 				}
 
 				/// <summary>
@@ -86,7 +86,7 @@
 				/// <returns>true if the data are equal; otherwise, false.</returns>
 				public static bool operator ==(Visibility obj1, Visibility obj2)
 				{
-					return Equals(obj1, obj2);
+					return obj1.Equals(obj2);
 				}
 
 				/// <summary>
@@ -97,7 +97,7 @@
 				/// <returns>true if the data not equal; otherwise, false.</returns>
 				public static bool operator !=(Visibility obj1, Visibility obj2)
 				{
-					return !Equals(obj1, obj2);
+					return !obj1.Equals(obj2);
 				}
 			}
 
@@ -124,6 +124,61 @@
 			/// Owner.
 			/// </summary>
 			protected ListViewCustom<TComponent, TItem> Owner;
+
+			/// <summary>
+			/// Default inertia state.
+			/// </summary>
+			protected bool DefaultInertia;
+
+			/// <summary>
+			/// Is looped list allowed?
+			/// </summary>
+			/// <returns>True if looped list allowed; otherwise false.</returns>
+			public virtual bool IsTileView
+			{
+				get
+				{
+					return false;
+				}
+			}
+
+			/// <summary>
+			/// Allow owner to set ContentSizeFitter settings.
+			/// </summary>
+			public virtual bool AllowSetContentSizeFitter
+			{
+				get
+				{
+					return true;
+				}
+			}
+
+			/// <summary>
+			/// Allow owner to control Container.RectTransform.
+			/// </summary>
+			public virtual bool AllowControlRectTransform
+			{
+				get
+				{
+					return true;
+				}
+			}
+
+			/// <summary>
+			/// Allow looped ListView.
+			/// </summary>
+			public abstract bool AllowLoopedList
+			{
+				get;
+			}
+
+			/// <summary>
+			/// Can scroll?
+			/// </summary>
+			public abstract bool CanScroll
+			{
+				get;
+			}
 
 			/// <summary>
 			/// Initializes a new instance of the <see cref="ListViewTypeBase"/> class.
@@ -160,6 +215,38 @@
 			/// <param name="position">Position.</param>
 			/// <returns>Validated position.</returns>
 			public abstract float ValidatePosition(float position);
+
+			/// <summary>
+			/// Toggle scroll to nearest item center.
+			/// </summary>
+			/// <param name="state">State.</param>
+			public abstract void ToggleScrollToItemCenter(bool state);
+
+			/// <summary>
+			/// Scroll to the nearest item center.
+			/// </summary>
+			[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0301:Closure Allocation Source", Justification = "Required")]
+			[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0302:Display class allocation to capture closure", Justification = "Required")]
+			public void ScrollToItemCenter()
+			{
+				var center_position = GetCenterPosition();
+				var index_at_center = ScrollPosition2Index(center_position);
+				var index = VisibleIndex2ItemIndex(index_at_center);
+				var middle_position = GetItemPositionMiddle(index);
+				var valid_position = ValidateScrollPosition(middle_position);
+
+				if (!Mathf.Approximately(GetPosition(), valid_position))
+				{
+					Owner.ScrollToPositionAnimated(valid_position, Owner.ScrollInertia, Owner.ScrollUnscaledTime, () => Owner.ScrollCenter = ScrollCenterState.Disable);
+				}
+			}
+
+			/// <summary>
+			/// Validate scroll position.
+			/// </summary>
+			/// <param name="position">Position.</param>
+			/// <returns>Validated position.</returns>
+			public abstract float ValidateScrollPosition(float position);
 
 			/// <summary>
 			/// Validate position.
@@ -207,11 +294,24 @@
 			public abstract float GetPosition();
 
 			/// <summary>
+			/// Gets the center position in ListView direction.
+			/// </summary>
+			/// <returns>Center position.</returns>
+			public abstract float GetCenterPosition();
+
+			/// <summary>
 			/// Get scroll position for the specified index.
 			/// </summary>
 			/// <param name="index">Index.</param>
 			/// <returns>Scroll position</returns>
 			public abstract Vector2 GetPosition(int index);
+
+			/// <summary>
+			/// Get item index at scroll position.
+			/// </summary>
+			/// <param name="position">Scroll position.</param>
+			/// <returns>Index.</returns>
+			public abstract int ScrollPosition2Index(float position);
 
 			/// <summary>
 			/// Is visible item with specified index.
@@ -242,48 +342,6 @@
 			}
 
 			/// <summary>
-			/// Is looped list allowed?
-			/// </summary>
-			/// <returns>True if looped list allowed; otherwise false.</returns>
-			public virtual bool IsTileView
-			{
-				get
-				{
-					return false;
-				}
-			}
-
-			/// <summary>
-			/// Allow owner to set ContentSizeFitter settings.
-			/// </summary>
-			public virtual bool AllowSetContentSizeFitter
-			{
-				get
-				{
-					return true;
-				}
-			}
-
-			/// <summary>
-			/// Allow owner to control Container.RectTransform.
-			/// </summary>
-			public virtual bool AllowControlRectTransform
-			{
-				get
-				{
-					return true;
-				}
-			}
-
-			/// <summary>
-			/// Allow looped ListView.
-			/// </summary>
-			public abstract bool AllowLoopedList
-			{
-				get;
-			}
-
-			/// <summary>
 			/// Updates the layout bridge.
 			/// </summary>
 			public abstract void UpdateLayout();
@@ -311,7 +369,7 @@
 			/// <param name="x">First LayoutElement.</param>
 			/// <param name="y">Second LayoutElement.</param>
 			/// <returns>Result of the comparison.</returns>
-			protected int LayoutElementsComparison(ILayoutElement x, ILayoutElement y)
+			protected static int LayoutElementsComparison(ILayoutElement x, ILayoutElement y)
 			{
 				return -x.layoutPriority.CompareTo(y.layoutPriority);
 			}
@@ -335,7 +393,7 @@
 
 				if ((size.x == 0f) || reset)
 				{
-					size.x = Mathf.Max(PreferredWidth(Owner.LayoutElements), rt.rect.width, 1f);
+					size.x = Mathf.Max(Mathf.Max(PreferredWidth(Owner.LayoutElements), rt.rect.width), 1f);
 					if (float.IsNaN(size.x))
 					{
 						size.x = 1f;
@@ -344,7 +402,7 @@
 
 				if ((size.y == 0f) || reset)
 				{
-					size.y = Mathf.Max(PreferredHeight(Owner.LayoutElements), rt.rect.height, 1f);
+					size.y = Mathf.Max(Mathf.Max(PreferredHeight(Owner.LayoutElements), rt.rect.height), 1f);
 					if (float.IsNaN(size.y))
 					{
 						size.y = 1f;
@@ -372,7 +430,7 @@
 						break;
 					}
 
-					result = Mathf.Max(result, elems[i].minHeight, elems[i].preferredHeight);
+					result = Mathf.Max(Mathf.Max(result, elems[i].minHeight), elems[i].preferredHeight);
 					priority = elems[i].layoutPriority;
 				}
 
@@ -395,7 +453,7 @@
 						break;
 					}
 
-					result = Mathf.Max(result, elems[i].minWidth, elems[i].preferredWidth);
+					result = Mathf.Max(Mathf.Max(result, elems[i].minWidth), elems[i].preferredWidth);
 					priority = elems[i].layoutPriority;
 				}
 
@@ -470,26 +528,34 @@
 			/// </summary>
 			/// <returns>The component size.</returns>
 			/// <param name="item">Item.</param>
-			protected virtual Vector2 CalculateComponentSize(TItem item)
+			/// <param name="template">Template.</param>
+			protected virtual Vector2 CalculateComponentSize(TItem item, Template template)
 			{
-				if (Owner.DefaultItemLayout == null)
+				Owner.SetData(template.Template, item);
+
+				LayoutRebuilder.ForceRebuildLayoutImmediate(Owner.Container);
+
+				var size = ValidateSize(template.Template.RectTransform.rect.size);
+
+				return size;
+			}
+
+			/// <summary>
+			/// Validate size.
+			/// </summary>
+			/// <param name="size">Size.</param>
+			/// <returns>Correct size.</returns>
+			protected Vector2 ValidateSize(Vector2 size)
+			{
+				if (size.x < 1f)
 				{
-					return Owner.ItemSize;
+					size.x = 1f;
 				}
 
-				Owner.SetData(Owner.DefaultItemCopy, item);
-
-				LayoutRebuilder.ForceRebuildLayoutImmediate(Owner.Container as RectTransform);
-
-				var size = Owner.DefaultItemCopyRect.rect.size;
-
-#if UNITY_EDITOR
-				var is_small = (size.x < 0.5f) || (size.y < 0.5f);
-				if (is_small && Owner.gameObject.activeInHierarchy)
+				if (size.y < 1f)
 				{
-					Debug.LogWarning(string.Format("Very small size {0} of the item {1}. Please check DefaultItem.LayoutGroup and DefaultItem.LayoutElement settings.", size, item), Owner);
+					size.y = 1f;
 				}
-#endif
 
 				return size;
 			}
@@ -499,27 +565,27 @@
 			/// </summary>
 			/// <returns>The component size.</returns>
 			/// <param name="index">Index.</param>
-			public virtual Vector2 CalculateSize(int index)
+			public virtual Vector2 GetItemFullSize(int index)
 			{
-				Owner.DefaultItemCopy.gameObject.SetActive(true);
+				return Owner.ItemSize;
+			}
 
-				if (Owner.DefaultItemLayout == null)
-				{
-					Owner.DefaultItemLayout = Owner.DefaultItemCopy.GetComponent<LayoutGroup>();
-				}
-
-				var size = CalculateComponentSize(Owner.DataSource[index]);
-
-				Owner.DefaultItemCopy.gameObject.SetActive(false);
-
-				return size;
+			/// <summary>
+			/// Gets the size of the item.
+			/// </summary>
+			/// <returns>The item size.</returns>
+			/// <param name="index">Item index.</param>
+			protected float GetItemSize(int index)
+			{
+				var size = GetItemFullSize(index);
+				return Owner.IsHorizontal() ? size.x : size.y;
 			}
 
 			/// <summary>
 			/// Adds the callback.
 			/// </summary>
 			/// <param name="item">Item.</param>
-			public virtual void AddCallback(ListViewItem item)
+			public virtual void AddCallback(TComponent item)
 			{
 			}
 
@@ -527,7 +593,7 @@
 			/// Removes the callback.
 			/// </summary>
 			/// <param name="item">Item.</param>
-			public virtual void RemoveCallback(ListViewItem item)
+			public virtual void RemoveCallback(TComponent item)
 			{
 			}
 
@@ -620,11 +686,6 @@
 			/// <returns>true if was moved to the next item; otherwise false.</returns>
 			public virtual bool OnItemMove(AxisEventData eventData, ListViewItem item)
 			{
-				if (!Owner.Navigation)
-				{
-					return false;
-				}
-
 				var step = 0;
 				switch (eventData.moveDir)
 				{
@@ -774,6 +835,73 @@
 				if (Owner.Layout != null)
 				{
 					Owner.Layout.MainAxis = !Owner.IsHorizontal() ? Axis.Horizontal : Axis.Vertical;
+				}
+			}
+
+			/// <summary>
+			/// Get debug information.
+			/// </summary>
+			/// <param name="builder">String builder.</param>
+			public virtual void GetDebugInfo(System.Text.StringBuilder builder)
+			{
+				builder.Append("IsTileView: ");
+				builder.Append(IsTileView);
+				builder.AppendLine();
+
+				builder.Append("Max Visible Items: ");
+				builder.Append(MaxVisibleItems);
+				builder.AppendLine();
+
+				builder.AppendLine("Visibility");
+
+				builder.Append("Visibility.FirstVisible: ");
+				builder.Append(Visible.FirstVisible);
+				builder.AppendLine();
+
+				builder.Append("Visibility.LastVisible: ");
+				builder.Append(Visible.LastVisible);
+				builder.AppendLine();
+
+				builder.Append("Visibility.Items: ");
+				builder.Append(Visible.Items);
+				builder.AppendLine();
+
+				builder.Append("First Visible Index: ");
+				builder.Append(GetFirstVisibleIndex());
+				builder.AppendLine();
+
+				builder.Append("Last Visible Index: ");
+				builder.Append(GetLastVisibleIndex());
+				builder.AppendLine();
+
+				builder.Append("List Size: ");
+				builder.Append(ListSize());
+				builder.AppendLine();
+
+				builder.Append("Items Per Block: ");
+				builder.Append(GetItemsPerBlock());
+				builder.AppendLine();
+
+				builder.Append("Top Filler: ");
+				builder.Append(TopFillerSize());
+				builder.AppendLine();
+
+				builder.Append("Bottom Filler: ");
+				builder.Append(BottomFillerSize());
+				builder.AppendLine();
+
+				builder.AppendLine("Items");
+				for (int index = 0; index < Owner.DataSource.Count; index++)
+				{
+					builder.Append("\t");
+					builder.Append(index);
+					builder.Append(". size: ");
+					builder.Append(GetItemFullSize(index).ToString());
+					builder.Append("; position: ");
+					builder.Append(GetItemPosition(index));
+					builder.Append("; block: ");
+					builder.Append(GetBlockIndex(index));
+					builder.AppendLine();
 				}
 			}
 		}

@@ -7,6 +7,7 @@ namespace UIWidgets.TMProSupport
 	/// Combobox with TMPro support.
 	/// http://ilih.ru/images/unity-assets/UIWidgets/Combobox.png
 	/// </summary>
+	[System.Obsolete("Replaced with ComboboxString.")]
 	public class ComboboxTMPro : Combobox
 	{
 		/// <summary>

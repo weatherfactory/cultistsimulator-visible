@@ -6,6 +6,7 @@
 	/// <summary>
 	/// PickerString.
 	/// </summary>
+	[System.Obsolete("Replaced with PickerStringV2.")]
 	public class PickerString : Picker<string, PickerString>
 	{
 		/// <summary>

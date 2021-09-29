@@ -217,55 +217,67 @@
 		/// <param name="spacing">Spacing.</param>
 		/// <param name="padding">Padding.</param>
 		/// <returns>Size.</returns>
-		public Vector2 Size(Vector2 spacing, Vector2 padding)
+		public GroupSize Size(Vector2 spacing, Vector2 padding)
 		{
-			return new Vector2(HorizontalSize(spacing.x, padding.x), VerticalSize(spacing.y, padding.y));
+			var width = HorizontalSize(spacing.x, padding.x);
+			var height = VerticalSize(spacing.y, padding.y);
+
+			return new GroupSize(width, height);
 		}
 
-		float HorizontalSize(float spacing, float padding)
+		GroupSize HorizontalSize(float spacing, float padding)
 		{
-			var size = 0f;
+			var size = default(GroupSize);
 
 			for (int i = 0; i < Rows; i++)
 			{
 				var block = GetRow(i);
-				var block_size = ((block.Count - 1) * spacing) + padding;
+				var block_size = new GroupSize(((block.Count - 1) * spacing) + padding, 0f);
 				foreach (var element in block)
 				{
-					block_size += element.Width;
+					block_size.Width += element.Width;
+					block_size.MinWidth += element.MinWidth;
+					block_size.PreferredWidth += element.PreferredWidth;
 				}
 
-				size = Mathf.Max(size, block_size);
+				size.Max(block_size);
 			}
 
 			return size;
 		}
 
-		float VerticalSize(float spacing, float padding)
+		GroupSize VerticalSize(float spacing, float padding)
 		{
-			var size = 0f;
+			var size = default(GroupSize);
 
 			for (int i = 0; i < Columns; i++)
 			{
 				var block = GetColumn(i);
-				var block_size = ((block.Count - 1) * spacing) + padding;
+				var block_size = new GroupSize(0f, ((block.Count - 1) * spacing) + padding);
 				foreach (var element in block)
 				{
-					block_size += element.Height;
+					block_size.Height += element.Height;
+					block_size.MinHeight += element.MinHeight;
+					block_size.PreferredHeight += element.PreferredHeight;
 				}
 
-				size = Mathf.Max(size, block_size);
+				size.Max(block_size);
 			}
 
 			return size;
 		}
 
 		/// <summary>
+		/// Compare elements by row and column.
+		/// </summary>
+		protected static System.Comparison<LayoutElementInfo> LayoutElementInfoComparison = Comparison;
+
+		/// <summary>
 		/// Sort elements.
 		/// </summary>
 		public void Sort()
 		{
-			Elements.Sort(Comparison);
+			Elements.Sort(LayoutElementInfoComparison);
 		}
 
 		/// <summary>

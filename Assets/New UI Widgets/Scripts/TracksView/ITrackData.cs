@@ -7,7 +7,7 @@
 	/// </summary>
 	/// <typeparam name="TPoint">Point type.</typeparam>
 	public interface ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 	{
 		/// <summary>
 		/// Start point.

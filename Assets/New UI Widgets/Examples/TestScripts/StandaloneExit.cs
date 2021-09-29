@@ -7,15 +7,15 @@
 	/// </summary>
 	public class StandaloneExit : MonoBehaviour
 	{
+		#if !UNITY_STANDALONE
 		/// <summary>
 		/// Disable gameobject if not standalone build.
 		/// </summary>
 		protected virtual void Start()
 		{
-			#if !UNITY_STANDALONE
 			gameObject.SetActive(false);
-			#endif
 		}
+		#endif
 
 		/// <summary>
 		/// Quit.

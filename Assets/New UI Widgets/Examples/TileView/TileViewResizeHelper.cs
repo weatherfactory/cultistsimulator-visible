@@ -19,6 +19,7 @@
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Start()
 		{
 			GetComponent<Resizable>().OnEndResize.AddListener(OnResize);
@@ -27,6 +28,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			var r = GetComponent<Resizable>();
@@ -42,19 +44,21 @@
 		/// <param name="item">Item.</param>
 		protected virtual void OnResize(Resizable item)
 		{
-			var size = (item.transform as RectTransform).rect.size;
-			Tiles.ForEachComponent(x =>
+			var size = item.RectTransform.rect.size;
+			foreach (var component in Tiles.GetComponentsEnumerator(PoolEnumeratorMode.All))
 			{
-				if (x.gameObject == item.gameObject)
+				var current_size = component.RectTransform.rect.size;
+
+				if (current_size.x != size.x)
 				{
-					return;
+					component.RectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size.x);
 				}
 
-				var rect = x.transform as RectTransform;
-
-				rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size.x);
-				rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size.y);
-			});
+				if (current_size.y != size.y)
+				{
+					component.RectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size.y);
+				}
+			}
 
 			Tiles.Resize();
 		}

@@ -40,7 +40,10 @@ namespace UIWidgets
 		/// </summary>
 		protected virtual void OnEnable()
 		{
-			Array.ForEach(properties, x => serializedProperties.Add(x, serializedObject.FindProperty(x)));
+			foreach (var p in properties)
+			{
+				serializedProperties.Add(p, serializedObject.FindProperty(p));
+			}
 		}
 
 		/// <summary>

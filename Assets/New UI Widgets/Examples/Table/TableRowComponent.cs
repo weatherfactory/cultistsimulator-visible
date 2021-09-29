@@ -68,9 +68,9 @@
 			{
 				Foreground = new Graphic[]
 				{
-					Utilities.GetGraphic(Cell01TextAdapter),
-					Utilities.GetGraphic(Cell02TextAdapter),
-					Utilities.GetGraphic(Cell04TextAdapter),
+					UtilitiesUI.GetGraphic(Cell01TextAdapter),
+					UtilitiesUI.GetGraphic(Cell02TextAdapter),
+					UtilitiesUI.GetGraphic(Cell04TextAdapter),
 				};
 				GraphicsForegroundVersion = 1;
 			}
@@ -129,20 +129,20 @@
 		/// <param name="cellName">Cell name.</param>
 		public void CellClicked(string cellName)
 		{
-			Debug.Log(string.Format("clicked row {0}, cell {1}", Index, cellName));
+			Debug.Log(string.Format("clicked row {0}, cell {1}", Index.ToString(), cellName));
 			switch (cellName)
 			{
 				case "Cell01":
-					Debug.Log("cell value: " + Item.Cell01);
+					Debug.Log(string.Format("cell value: {0}", Item.Cell01));
 					break;
 				case "Cell02":
-					Debug.Log("cell value: " + Item.Cell02);
+					Debug.Log(string.Format("cell value: {0}", Item.Cell02.ToString()));
 					break;
 				case "Cell03":
-					Debug.Log("cell value: " + Item.Cell03);
+					Debug.Log(string.Format("cell value: {0}", Item.Cell03));
 					break;
 				case "Cell04":
-					Debug.Log("cell value: " + Item.Cell04);
+					Debug.Log(string.Format("cell value: {0}", Item.Cell04.ToString()));
 					break;
 				default:
 					Debug.Log("cell value: <unknown cell>");

@@ -79,8 +79,13 @@
 			else
 			{
 				// else add items with name starts with specified string
-				var finded = OriginalItems.FindAll(x => x.Name.StartsWith(Search, System.StringComparison.InvariantCulture));
-				DataSource.AddRange(finded);
+				foreach (var item in OriginalItems)
+				{
+					if (item.Name.StartsWith(Search, System.StringComparison.InvariantCulture))
+					{
+						DataSource.Add(item);
+					}
+				}
 			}
 
 			DataSource.EndUpdate();

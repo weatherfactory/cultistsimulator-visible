@@ -5,6 +5,7 @@
 	/// <summary>
 	/// UI cursor settings.
 	/// </summary>
+	[System.Obsolete("Replaced with CursorsSelector.")]
 	public class UICursorSettings : MonoBehaviour
 	{
 		/// <summary>
@@ -39,8 +40,7 @@
 				return;
 			}
 
-			UICursor.DefaultCursor = DefaultCursor;
-			UICursor.DefaultCursorHotSpot = DefaultCursorHotSpot;
+			UICursor.Default = new Cursors.Cursor(DefaultCursor, DefaultCursorHotSpot);
 
 			isInited = true;
 		}

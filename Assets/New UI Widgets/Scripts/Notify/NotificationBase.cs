@@ -10,7 +10,7 @@
 	/// <summary>
 	/// Base class for notifications.
 	/// </summary>
-	public abstract class NotificationBase : MonoBehaviour, ITemplatable
+	public abstract class NotificationBase : MonoBehaviour, ITemplatable, IHideable
 	{
 		[SerializeField]
 		bool unscaledTime;
@@ -202,8 +202,24 @@
 			Replacements.Push(replacement);
 		}
 
+		/// <summary>
+		/// Hide notification.
+		/// </summary>
+		public abstract void Hide();
+
 		#region HideAnimationRotate
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Vertical rotate animation to hide notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		[Obsolete("Renamed to AnimationRotateVertical.")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationRotate = AnimationRotateMethod;
+
+		static IEnumerator AnimationRotateMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Vertical rotate animation to hide notification.
 		/// </summary>
@@ -211,30 +227,64 @@
 		/// <returns>Animation coroutine.</returns>
 		[Obsolete("Renamed to AnimationRotateVertical.")]
 		public static IEnumerator AnimationRotate(NotificationBase notification)
+#endif
 		{
 			return AnimationRotateVertical(notification);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Vertical rotate animation to hide notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationRotateVertical = AnimationRotateVerticalMethod;
+
+		static IEnumerator AnimationRotateVerticalMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Vertical rotate animation to hide notification.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator AnimationRotateVertical(NotificationBase notification)
+#endif
 		{
 			return HideAnimationRotateBase(notification, false, 0.5f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Horizontal rotate animation to hide notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationRotateHorizontal = AnimationRotateHorizontalMethod;
+
+		static IEnumerator AnimationRotateHorizontalMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Horizontal rotate animation to hide notification.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator AnimationRotateHorizontal(NotificationBase notification)
+#endif
 		{
 			return HideAnimationRotateBase(notification, true, 0.5f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Base rotate animation to hide notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		[Obsolete("Renamed to HideAnimationRotateBase.")]
+		public static readonly Func<NotificationBase, bool, float, IEnumerator> AnimationRotateBase = AnimationRotateBaseMethod;
+
+		static IEnumerator AnimationRotateBaseMethod(NotificationBase notification, bool isHorizontal, float timeLength)
+#else
 		/// <summary>
 		/// Base rotate animation to hide notification.
 		/// </summary>
@@ -244,10 +294,21 @@
 		/// <returns>Animation coroutine.</returns>
 		[Obsolete("Renamed to HideAnimationRotateBase.")]
 		public static IEnumerator AnimationRotateBase(NotificationBase notification, bool isHorizontal, float timeLength)
+#endif
 		{
 			return HideAnimationRotateBase(notification, isHorizontal, timeLength);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Base rotate animation to hide notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, bool, float, IEnumerator> HideAnimationRotateBase = HideAnimationRotateBaseMethod;
+
+		static IEnumerator HideAnimationRotateBaseMethod(NotificationBase notification, bool isHorizontal, float timeLength)
+#else
 		/// <summary>
 		/// Base rotate animation to hide notification.
 		/// </summary>
@@ -256,6 +317,7 @@
 		/// <param name="timeLength">Animation length in seconds.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator HideAnimationRotateBase(NotificationBase notification, bool isHorizontal, float timeLength)
+#endif
 		{
 			var rect = notification.transform as RectTransform;
 			var base_rotation = rect.localRotation.eulerAngles;
@@ -277,6 +339,17 @@
 			rect.localRotation = Quaternion.Euler(base_rotation);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Rotate animation to hide notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		[Obsolete("AnimationRotate() now supports UnscaledTime.")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationRotateUnscaledTime = AnimationRotateUnscaledTimeMethod;
+
+		static IEnumerator AnimationRotateUnscaledTimeMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Rotate animation to hide notification.
 		/// </summary>
@@ -284,8 +357,9 @@
 		/// <returns>Animation coroutine.</returns>
 		[Obsolete("AnimationRotate() now supports UnscaledTime.")]
 		public static IEnumerator AnimationRotateUnscaledTime(NotificationBase notification)
+#endif
 		{
-			return AnimationRotate(notification);
+			return AnimationRotateVertical(notification);
 		}
 
 		#endregion
@@ -295,16 +369,37 @@
 		/// <summary>
 		/// Base collapse animation.
 		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[Obsolete("Renamed to HideAnimationCollapseBase.")]
+#if CSHARP_7_3_OR_NEWER
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, bool, float, IEnumerator> AnimationCollapseBase = AnimationCollapseBaseMethod;
+
+		static IEnumerator AnimationCollapseBaseMethod(NotificationBase notification, bool isHorizontal, float speed)
+#else
+		/// <summary>
+		/// Base collapse animation.
+		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <param name="isHorizontal">Is horizontal?</param>
 		/// <param name="speed">Animation speed in points per second.</param>
 		/// <returns>Animation coroutine.</returns>
-		[Obsolete("Renamed to HideAnimationCollapseBase.")]
 		public static IEnumerator AnimationCollapseBase(NotificationBase notification, bool isHorizontal, float speed)
+#endif
 		{
 			return HideAnimationCollapseBase(notification, isHorizontal, speed);
 		}
 
+		/// <summary>
+		/// Base collapse animation.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+#if CSHARP_7_3_OR_NEWER
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, bool, float, IEnumerator> HideAnimationCollapseBase = HideAnimationCollapseBaseMethod;
+
+		static IEnumerator HideAnimationCollapseBaseMethod(NotificationBase notification, bool isHorizontal, float speed)
+#else
 		/// <summary>
 		/// Base collapse animation.
 		/// </summary>
@@ -313,6 +408,7 @@
 		/// <param name="speed">Animation speed in points per second.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator HideAnimationCollapseBase(NotificationBase notification, bool isHorizontal, float speed)
+#endif
 		{
 			var rect = notification.transform as RectTransform;
 			var layout = notification.GetComponentInParent<EasyLayout>();
@@ -339,6 +435,17 @@
 			rect.SetSizeWithCurrentAnchors(axis, base_size);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Vertical collapse animation.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[Obsolete("Renamed to AnimationCollapseVertical.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationCollapse = AnimationCollapseMethod;
+
+		static IEnumerator AnimationCollapseMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Vertical collapse animation.
 		/// </summary>
@@ -346,30 +453,64 @@
 		/// <returns>Animation coroutine.</returns>
 		[Obsolete("Renamed to AnimationCollapseVertical.")]
 		public static IEnumerator AnimationCollapse(NotificationBase notification)
+#endif
 		{
 			return AnimationCollapseVertical(notification);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Vertical collapse animation.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationCollapseVertical = AnimationCollapseVerticalMethod;
+
+		static IEnumerator AnimationCollapseVerticalMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Vertical collapse animation.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator AnimationCollapseVertical(NotificationBase notification)
+#endif
 		{
 			return HideAnimationCollapseBase(notification, false, 200f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Horizontal collapse animation.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationCollapseHorizontal = AnimationCollapseHorizontalMethod;
+
+		static IEnumerator AnimationCollapseHorizontalMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Horizontal collapse animation.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator AnimationCollapseHorizontal(NotificationBase notification)
+#endif
 		{
 			return HideAnimationCollapseBase(notification, true, 200f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Vertical collapse animation.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[Obsolete("AnimationCollapse now supports UnscaledTime.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationCollapseUnscaledTime = AnimationCollapseUnscaledTimeMethod;
+
+		static IEnumerator AnimationCollapseUnscaledTimeMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Vertical collapse animation.
 		/// </summary>
@@ -377,50 +518,95 @@
 		/// <returns>Animation coroutine.</returns>
 		[Obsolete("AnimationCollapse now supports UnscaledTime.")]
 		public static IEnumerator AnimationCollapseUnscaledTime(NotificationBase notification)
+#endif
 		{
-			return AnimationCollapse(notification);
+			return AnimationCollapseVertical(notification);
 		}
 
 		#endregion
 
 		#region HideAnimationSlide
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Slide animation to hide notification to right.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationSlideRight = AnimationSlideRightMethod;
+
+		static IEnumerator AnimationSlideRightMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Slide animation to hide notification to right.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator AnimationSlideRight(NotificationBase notification)
+#endif
 		{
 			return HideAnimationSlideBase(notification, true, +1f, 200f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Slide animation to hide notification to left.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationSlideLeft = AnimationSlideLeftMethod;
+
+		static IEnumerator AnimationSlideLeftMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Slide animation to hide notification to left.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator AnimationSlideLeft(NotificationBase notification)
+#endif
 		{
 			return HideAnimationSlideBase(notification, true, -1f, 200f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Slide animation to hide notification to top.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationSlideUp = AnimationSlideUpMethod;
+
+		static IEnumerator AnimationSlideUpMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Slide animation to hide notification to top.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator AnimationSlideUp(NotificationBase notification)
+#endif
 		{
 			return HideAnimationSlideBase(notification, false, +1f, 200f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Slide animation to hide notification to bottom.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> AnimationSlideDown = AnimationSlideDownMethod;
+
+		static IEnumerator AnimationSlideDownMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Slide animation to hide notification to bottom.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator AnimationSlideDown(NotificationBase notification)
+#endif
 		{
 			return HideAnimationSlideBase(notification, false, -1f, 200f);
 		}
@@ -506,42 +692,86 @@
 
 		#region ShowAnimationSlide
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Slide animation to show notification from right.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> ShowAnimationSlideRight = ShowAnimationSlideRightMethod;
+
+		static IEnumerator ShowAnimationSlideRightMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Slide animation to show notification from right.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator ShowAnimationSlideRight(NotificationBase notification)
+#endif
 		{
 			return ShowAnimationSlideBase(notification, true, +1f, 200f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Slide animation to show notification from left.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> ShowAnimationSlideLeft = ShowAnimationSlideLeftMethod;
+
+		static IEnumerator ShowAnimationSlideLeftMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Slide animation to show notification from left.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator ShowAnimationSlideLeft(NotificationBase notification)
+#endif
 		{
 			return ShowAnimationSlideBase(notification, true, -1f, 200f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Slide animation to show notification from top.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> ShowAnimationSlideUp = ShowAnimationSlideUpMethod;
+
+		static IEnumerator ShowAnimationSlideUpMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Slide animation to show notification from top.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator ShowAnimationSlideUp(NotificationBase notification)
+#endif
 		{
 			return ShowAnimationSlideBase(notification, false, +1f, 200f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Slide animation to show notification from bottom.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> ShowAnimationSlideDown = ShowAnimationSlideDownMethod;
+
+		static IEnumerator ShowAnimationSlideDownMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Slide animation to show notification from bottom.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator ShowAnimationSlideDown(NotificationBase notification)
+#endif
 		{
 			return ShowAnimationSlideBase(notification, false, -1f, 200f);
 		}
@@ -617,6 +847,16 @@
 
 		#region ShowAnimationExplode
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Base explode animation to show notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, bool, float, IEnumerator> ShowAnimationExplodeBase = ShowAnimationExplodeBaseMethod;
+
+		static IEnumerator ShowAnimationExplodeBaseMethod(NotificationBase notification, bool isHorizontal, float speed)
+#else
 		/// <summary>
 		/// Base explode animation to show notification.
 		/// </summary>
@@ -625,6 +865,7 @@
 		/// <param name="speed">Animation speed in points per second.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator ShowAnimationExplodeBase(NotificationBase notification, bool isHorizontal, float speed)
+#endif
 		{
 			var rect = notification.transform as RectTransform;
 			var layout = notification.GetComponentInParent<EasyLayout>();
@@ -651,22 +892,43 @@
 			rect.SetSizeWithCurrentAnchors(axis, base_size);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Vertical explode animation to show notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> ShowAnimationExplodeVertical = ShowAnimationExplodeVerticalMethod;
+
+		static IEnumerator ShowAnimationExplodeVerticalMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Vertical explode animation to show notification.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator ShowAnimationExplodeVertical(NotificationBase notification)
+#endif
 		{
 			return ShowAnimationExplodeBase(notification, false, 200f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Horizontal explode animation to show notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		public static readonly Func<NotificationBase, IEnumerator> ShowAnimationExplodeHorizontal = ShowAnimationExplodeHorizontalMethod;
+
+		static IEnumerator ShowAnimationExplodeHorizontalMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Horizontal explode animation to show notification.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator ShowAnimationExplodeHorizontal(NotificationBase notification)
+#endif
 		{
 			return ShowAnimationExplodeBase(notification, true, 200f);
 		}
@@ -674,26 +936,58 @@
 
 		#region ShowAnimationRotate
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Vertical rotate animation to show notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> ShowAnimationRotateVertical = ShowAnimationRotateVerticalMethod;
+
+		static IEnumerator ShowAnimationRotateVerticalMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Vertical rotate animation to show notification.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator ShowAnimationRotateVertical(NotificationBase notification)
+#endif
 		{
 			return ShowAnimationRotateBase(notification, false, 0.5f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Horizontal rotate animation to show notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, IEnumerator> ShowAnimationRotateHorizontal = ShowAnimationRotateHorizontalMethod;
+
+		static IEnumerator ShowAnimationRotateHorizontalMethod(NotificationBase notification)
+#else
 		/// <summary>
 		/// Horizontal rotate animation to show notification.
 		/// </summary>
 		/// <param name="notification">Notification.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator ShowAnimationRotateHorizontal(NotificationBase notification)
+#endif
 		{
 			return ShowAnimationRotateBase(notification, true, 0.5f);
 		}
 
+#if CSHARP_7_3_OR_NEWER
+		/// <summary>
+		/// Base rotate animation to show notification.
+		/// </summary>
+		/// <returns>Animation coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Cached")]
+		public static readonly Func<NotificationBase, bool, float, IEnumerator> ShowAnimationRotateBase = ShowAnimationRotateBaseMethod;
+
+		static IEnumerator ShowAnimationRotateBaseMethod(NotificationBase notification, bool isHorizontal, float timeLength)
+#else
 		/// <summary>
 		/// Base rotate animation to show notification.
 		/// </summary>
@@ -702,6 +996,7 @@
 		/// <param name="timeLength">Animation length in seconds.</param>
 		/// <returns>Animation coroutine.</returns>
 		public static IEnumerator ShowAnimationRotateBase(NotificationBase notification, bool isHorizontal, float timeLength)
+#endif
 		{
 			var rect = notification.transform as RectTransform;
 			var base_rotation = rect.localRotation.eulerAngles;

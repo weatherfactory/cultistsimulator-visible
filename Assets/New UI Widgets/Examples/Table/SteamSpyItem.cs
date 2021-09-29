@@ -69,5 +69,11 @@
 		/// </summary>
 		[SerializeField]
 		public int MedianTimeIn2Weeks;
+
+		/// <inheritdoc/>
+		public override string ToString()
+		{
+			return Name;
+		}
 	}
 }

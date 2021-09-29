@@ -23,6 +23,7 @@
 		/// <summary>
 		/// Show picker.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void ShowPicker()
 		{
 			currentPopup = PopupTemplate.Clone();
@@ -37,10 +38,11 @@
 			currentListView.OnSelectObject.AddListener(Callback);
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		void Callback(int index)
 		{
 			// do something with value
-			Debug.Log(currentListView.DataSource[index]);
+			Debug.Log(currentListView.DataSource[index].ToString());
 
 			currentListView.OnSelectObject.RemoveListener(Callback);
 			currentPopup.Close();

@@ -270,4 +270,26 @@
 		/// </summary>
 		Arc = 1,
 	}
+
+	/// <summary>
+	/// Resize type.
+	/// </summary>
+	[System.Flags]
+	public enum ResizeType
+	{
+		/// <summary>
+		/// None.
+		/// </summary>
+		None = 0,
+
+		/// <summary>
+		/// Horizontal resize.
+		/// </summary>
+		Horizontal = 1,
+
+		/// <summary>
+		/// Vertical resize.
+		/// </summary>
+		Vertical = 2,
+	}
 }

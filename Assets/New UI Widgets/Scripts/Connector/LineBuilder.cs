@@ -90,7 +90,7 @@
 					points = RectangularStart(Line.Start, start_point, end_point);
 					break;
 				default:
-					throw new NotSupportedException("Unsupported line type: " + line.Type);
+					throw new NotSupportedException(string.Format("Unsupported line type: {0}", EnumHelper<ConnectorType>.ToString(line.Type)));
 			}
 
 			Connector = null;
@@ -161,7 +161,7 @@
 				case ConnectorPosition.Center:
 					return RectangularCenter(startPoint, endPoint);
 				default:
-					throw new NotSupportedException("Unsupported line start: " + start);
+					throw new NotSupportedException(string.Format("Unsupported line start: {0}", EnumHelper<ConnectorPosition>.ToString(start)));
 			}
 		}
 
@@ -292,7 +292,7 @@
 
 					break;
 				default:
-					throw new NotSupportedException("Unsupported line end: " + Line.End);
+					throw new NotSupportedException(string.Format("Unsupported line end: {0}", EnumHelper<ConnectorPosition>.ToString(Line.End)));
 			}
 
 			Path.End(endPoint);
@@ -377,7 +377,7 @@
 
 					break;
 				default:
-					throw new NotSupportedException("Unsupported line end: " + Line.End);
+					throw new NotSupportedException(string.Format("Unsupported line end: {0}", EnumHelper<ConnectorPosition>.ToString(Line.End)));
 			}
 
 			Path.End(endPoint);
@@ -465,7 +465,7 @@
 
 					break;
 				default:
-					throw new NotSupportedException("Unsupported line end: " + Line.End);
+					throw new NotSupportedException(string.Format("Unsupported line end: {0}", EnumHelper<ConnectorPosition>.ToString(Line.End)));
 			}
 
 			Path.End(endPoint);
@@ -553,7 +553,7 @@
 
 					break;
 				default:
-					throw new NotSupportedException("Unsupported line end: " + Line.End);
+					throw new NotSupportedException(string.Format("Unsupported line end: {0}", EnumHelper<ConnectorPosition>.ToString(Line.End)));
 			}
 
 			Path.End(endPoint);

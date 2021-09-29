@@ -2,7 +2,6 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 	using UnityEngine.EventSystems;
 	using UnityEngine.Serialization;
@@ -216,29 +215,41 @@
 		protected Camera CurrentCamera;
 
 		/// <summary>
+		/// Cursors.
+		/// </summary>
+		[SerializeField]
+		public Cursors Cursors;
+
+		/// <summary>
 		/// The cursor texture.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D CursorTexture;
 
 		/// <summary>
 		/// The cursor hot spot.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 CursorHotSpot = new Vector2(16, 16);
 
 		/// <summary>
 		/// The default cursor texture.
 		/// </summary>
 		[SerializeField]
-		[Obsolete("Replaced with UICursorSettings component.")]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D DefaultCursorTexture;
 
 		/// <summary>
 		/// The default cursor hot spot.
 		/// </summary>
 		[SerializeField]
-		[Obsolete("Replaced with UICursorSettings component.")]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 DefaultCursorHotSpot;
 
 		/// <summary>
@@ -331,9 +342,40 @@
 			}
 		}
 
+		/// <summary>
+		/// Preferred size of the previous element.
+		/// </summary>
+		protected Vector2 PreviousPreferredSize;
+
+		/// <summary>
+		/// Minimal size of the previous element.
+		/// </summary>
+		protected Vector2 PreviousMinSize;
+
+		/// <summary>
+		/// Preferred size of the next element.
+		/// </summary>
+		protected Vector2 NextPreferredSize;
+
+		/// <summary>
+		/// Minimal size of the next element.
+		/// </summary>
+		protected Vector2 NextMinSize;
+
 		Vector2 summarySize;
 
 		bool processDrag;
+
+		List<Splitter> nestedSplitters = new List<Splitter>();
+
+		bool isInited;
+
+		bool cursorChanged;
+
+		/// <summary>
+		/// Is cursor over?
+		/// </summary>
+		protected bool IsCursorOver;
 
 		/// <summary>
 		/// Start this instance.
@@ -351,10 +393,15 @@
 		public void OnInitializePotentialDrag(PointerEventData eventData)
 		{
 			LayoutUtilities.UpdateLayout(transform.parent.GetComponent<LayoutGroup>());
-			transform.parent.GetComponentsInChildren<Splitter>().ForEach(InitSizes);
-		}
+			transform.parent.GetComponentsInChildren<Splitter>(nestedSplitters);
 
-		bool isInited;
+			foreach (var splitter in nestedSplitters)
+			{
+				InitSizes(splitter);
+			}
+
+			nestedSplitters.Clear();
+		}
 
 		/// <summary>
 		/// Init this instance.
@@ -423,13 +470,6 @@
 			}
 		}
 
-		bool cursorChanged;
-
-		/// <summary>
-		/// Is cursor over?
-		/// </summary>
-		protected bool IsCursorOver;
-
 		/// <summary>
 		/// Called by a BaseInputModule when an OnPointerEnter event occurs.
 		/// </summary>
@@ -448,7 +488,10 @@
 		{
 			IsCursorOver = false;
 
-			ResetCursor();
+			if (!processDrag)
+			{
+				ResetCursor();
+			}
 		}
 
 		/// <summary>
@@ -458,6 +501,25 @@
 		{
 			cursorChanged = false;
 			UICursor.Reset(this);
+		}
+
+		/// <summary>
+		/// Get cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetCursor()
+		{
+			if (Cursors != null)
+			{
+				return IsHorizontal() ? Cursors.NorthSouthArrow : Cursors.EastWestArrow;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return IsHorizontal() ? UICursor.Cursors.NorthSouthArrow : UICursor.Cursors.EastWestArrow;
+			}
+
+			return default(Cursors.Cursor);
 		}
 
 		/// <summary>
@@ -495,33 +557,13 @@
 			if (rect.Contains(point))
 			{
 				cursorChanged = true;
-				UICursor.Set(this, CursorTexture, CursorHotSpot);
+				UICursor.Set(this, GetCursor());
 			}
 			else if (cursorChanged)
 			{
 				ResetCursor();
 			}
 		}
-
-		/// <summary>
-		/// Preferred size of the previous element.
-		/// </summary>
-		protected Vector2 PreviousPreferredSize;
-
-		/// <summary>
-		/// Minimal size of the previous element.
-		/// </summary>
-		protected Vector2 PreviousMinSize;
-
-		/// <summary>
-		/// Preferred size of the next element.
-		/// </summary>
-		protected Vector2 NextPreferredSize;
-
-		/// <summary>
-		/// Minimal size of the next element.
-		/// </summary>
-		protected Vector2 NextMinSize;
 
 		/// <summary>
 		/// Process the begin drag event.
@@ -549,7 +591,7 @@
 				return;
 			}
 
-			UICursor.Set(this, CursorTexture, CursorHotSpot);
+			UICursor.Set(this, GetCursor());
 			cursorChanged = true;
 
 			processDrag = true;

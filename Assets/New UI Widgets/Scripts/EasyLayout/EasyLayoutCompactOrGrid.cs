@@ -9,12 +9,24 @@
 	public abstract class EasyLayoutCompactOrGrid : EasyLayoutBaseType
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="EasyLayoutCompactOrGrid"/> class.
+		/// Group position.
 		/// </summary>
-		/// <param name="layout">Layout.</param>
-		protected EasyLayoutCompactOrGrid(EasyLayout layout)
-				: base(layout)
+		protected Anchors GroupPosition;
+
+		/// <summary>
+		/// Is compact layout?
+		/// </summary>
+		protected abstract bool IsCompact
 		{
+			get;
+		}
+
+		/// <inheritdoc/>
+		public override void LoadSettings(EasyLayout layout)
+		{
+			base.LoadSettings(layout);
+
+			GroupPosition = layout.GroupPosition;
 		}
 
 		#region Position
@@ -52,7 +64,7 @@
 			for (int i = 0; i < ElementsGroup.Rows; i++)
 			{
 				var row = ElementsGroup.GetRow(i);
-				var row_width = (row.Count - 1) * Layout.Spacing.x;
+				var row_width = (row.Count - 1) * Spacing.x;
 				foreach (var element in row)
 				{
 					row_width += element.Width;
@@ -88,7 +100,7 @@
 			for (int i = 0; i < ElementsGroup.Columns; i++)
 			{
 				var column = ElementsGroup.GetColumn(i);
-				var column_height = (column.Count - 1) * Layout.Spacing.y;
+				var column_height = (column.Count - 1) * Spacing.y;
 				foreach (var element in column)
 				{
 					column_height += element.Height;
@@ -150,21 +162,19 @@
 
 		Vector2 CalculateOffset(Vector2 size)
 		{
-			var rectTransform = Layout.transform as RectTransform;
-
-			var anchor_position = GroupPositions[(int)Layout.GroupPosition];
+			var anchor_position = GroupPositions[(int)GroupPosition];
 			var start_position = new Vector2(
-				rectTransform.rect.width * (anchor_position.x - rectTransform.pivot.x),
-				rectTransform.rect.height * (anchor_position.y - rectTransform.pivot.y));
+				Target.rect.width * (anchor_position.x - Target.pivot.x),
+				Target.rect.height * (anchor_position.y - Target.pivot.y));
 
 			start_position.x -= anchor_position.x * size.x;
 			start_position.y += (1 - anchor_position.y) * size.y;
 
-			start_position.x += Layout.GetMarginLeft() * (1 - (anchor_position.x * 2));
-			start_position.y += Layout.GetMarginTop() * (1 - (anchor_position.y * 2));
+			start_position.x += MarginLeft * (1 - (anchor_position.x * 2));
+			start_position.y += MarginTop * (1 - (anchor_position.y * 2));
 
-			start_position.x += Layout.PaddingInner.Left;
-			start_position.y -= Layout.PaddingInner.Top;
+			start_position.x += PaddingInner.Left;
+			start_position.y -= PaddingInner.Top;
 
 			return start_position;
 		}
@@ -173,9 +183,9 @@
 		/// Calculate group size.
 		/// </summary>
 		/// <returns>Size.</returns>
-		protected override Vector2 CalculateGroupSize()
+		protected override GroupSize CalculateGroupSize()
 		{
-			return CalculateGroupSize(true, Layout.Spacing, new Vector2(Layout.PaddingInner.Horizontal, Layout.PaddingInner.Vertical));
+			return CalculateGroupSize(true, Spacing, new Vector2(PaddingInner.Horizontal, PaddingInner.Vertical));
 		}
 
 		/// <summary>
@@ -186,7 +196,7 @@
 		{
 			var offset = CalculateOffset(size);
 
-			if (Layout.IsHorizontal)
+			if (IsHorizontal)
 			{
 				CalculatePositionsHorizontal(size, offset);
 			}
@@ -214,11 +224,11 @@
 
 					element.PositionTopLeft = GetElementPosition(position, align);
 
-					position.x += ((Layout.LayoutType == LayoutTypes.Compact) ? element.Width : MaxColumnsWidths[element.Column]) + Layout.Spacing.x;
+					position.x += (IsCompact ? element.Width : MaxColumnsWidths[element.Column]) + Spacing.x;
 				}
 
 				position.x = offset.x;
-				position.y -= row_cell_max_size.y + Layout.Spacing.y;
+				position.y -= row_cell_max_size.y + Spacing.y;
 			}
 		}
 
@@ -240,11 +250,11 @@
 
 					element.PositionTopLeft = GetElementPosition(position, align);
 
-					position.y -= ((Layout.LayoutType == LayoutTypes.Compact) ? element.Height : MaxRowsHeights[element.Row]) + Layout.Spacing.y;
+					position.y -= (IsCompact ? element.Height : MaxRowsHeights[element.Row]) + Spacing.y;
 				}
 
 				position.y = offset.y;
-				position.x += column_cell_max_size.x + Layout.Spacing.x;
+				position.x += column_cell_max_size.x + Spacing.x;
 			}
 
 			return size;
@@ -276,14 +286,15 @@
 				return;
 			}
 
-			var size = Layout.InternalSize;
+			var size = InternalSize;
 			var rows = ElementsGroup.Rows - 1;
 			var columns = ElementsGroup.Columns - 1;
-			var size_without_spacing = new Vector2(size.x - (Layout.Spacing.x * columns), size.y - (Layout.Spacing.y * rows));
+			var size_without_spacing = new Vector2(size.x - (Spacing.x * columns), size.y - (Spacing.y * rows));
 
-			var ui_size_without_spacing = CalculateGroupSize();
-			ui_size_without_spacing.x -= Layout.Spacing.x * columns;
-			ui_size_without_spacing.x -= Layout.Spacing.y * rows;
+			var group_size = CalculateGroupSize();
+			var ui_size_without_spacing = new Vector2(group_size.Width, group_size.Height);
+			ui_size_without_spacing.x -= Spacing.x * columns;
+			ui_size_without_spacing.x -= Spacing.y * rows;
 
 			var scale = GetShrinkScale(size_without_spacing, ui_size_without_spacing);
 
@@ -310,7 +321,7 @@
 		/// </summary>
 		protected void ShrinkColumnWidthToFit()
 		{
-			ShrinkToFit(Layout.InternalSize.x, ElementsGroup, Layout.Spacing.x, RectTransform.Axis.Horizontal);
+			ShrinkToFit(InternalSize.x, ElementsGroup, Spacing.x, RectTransform.Axis.Horizontal);
 		}
 
 		/// <summary>
@@ -319,7 +330,7 @@
 		/// <param name="increaseOnly">Size can be only increased.</param>
 		protected void ResizeColumnWidthToFit(bool increaseOnly)
 		{
-			ResizeToFit(Layout.InternalSize.x, ElementsGroup, Layout.Spacing.x, RectTransform.Axis.Horizontal, increaseOnly);
+			ResizeToFit(InternalSize.x, ElementsGroup, Spacing.x, RectTransform.Axis.Horizontal, increaseOnly);
 		}
 		#endregion
 	}

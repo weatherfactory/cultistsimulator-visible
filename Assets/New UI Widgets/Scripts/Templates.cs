@@ -2,7 +2,6 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 
 	/// <summary>
@@ -53,7 +52,10 @@
 		{
 			findTemplatesCalled = true;
 
-			Resources.FindObjectsOfTypeAll<T>().ForEach(AddTemplate);
+			foreach (var template in Resources.FindObjectsOfTypeAll<T>())
+			{
+				AddTemplate(template);
+			}
 		}
 
 		void AddTemplate(T template)
@@ -67,7 +69,10 @@
 		/// </summary>
 		public void ClearCache()
 		{
-			cache.Keys.ForEach(ClearCache);
+			foreach (var k in cache.Keys)
+			{
+				ClearCache(k);
+			}
 		}
 
 		/// <summary>
@@ -81,7 +86,11 @@
 				return;
 			}
 
-			cache[name].ForEach(DestroyCached);
+			foreach (var instance in cache[name])
+			{
+				DestroyCached(instance);
+			}
+
 			cache[name].Clear();
 			cache[name].TrimExcess();
 		}
@@ -113,7 +122,7 @@
 		{
 			if (!Exists(name))
 			{
-				throw new ArgumentException("Not found template with name '" + name + "'");
+				throw new ArgumentException(string.Format("Not found template with name '{0}'", name), "name");
 			}
 
 			return templates[name];
@@ -146,7 +155,7 @@
 			{
 				if (!replace)
 				{
-					throw new ArgumentException("Template with name '" + name + "' already exists.");
+					throw new ArgumentException(string.Format("Template with name '{0}' already exists.", name), "name");
 				}
 
 				ClearCache(name);
@@ -175,7 +184,7 @@
 
 			if (!Exists(name))
 			{
-				throw new ArgumentException("Not found template with name '" + name + "'");
+				throw new ArgumentException(string.Format("Not found template with name '{0}'", name), "name");
 			}
 
 			if (templates[name] == null)

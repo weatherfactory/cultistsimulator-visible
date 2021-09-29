@@ -36,7 +36,8 @@
 		/// Simple test.
 		/// </summary>
 		/// <returns>Coroutine.</returns>
-		protected virtual IEnumerator SimpleTest()
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
+		protected IEnumerator SimpleTest()
 		{
 			yield return UtilitiesTime.Wait(5f, true);
 

@@ -179,7 +179,7 @@
 			// create new node and item
 			var newItem = new JRPGOrderLine(data.Item, data.Price)
 			{
-				Count = data.Count,
+				Quantity = data.Quantity,
 				IsPlaylist = data.IsPlaylist,
 			};
 

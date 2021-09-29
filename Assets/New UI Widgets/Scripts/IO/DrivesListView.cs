@@ -21,6 +21,12 @@
 		protected int? DrivesModalKey;
 
 		/// <summary>
+		/// Parent canvas.
+		/// </summary>
+		[SerializeField]
+		public RectTransform ParentCanvas;
+
+		/// <summary>
 		/// Parent.
 		/// </summary>
 		[HideInInspector]
@@ -76,13 +82,21 @@
 				Load();
 			}
 
-			DrivesModalKey = ModalHelper.Open(this, null, new Color(0, 0, 0, 0f), Close);
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+
+			DrivesModalKey = ModalHelper.Open(this, null, new Color(0, 0, 0, 0f), Close, ParentCanvas);
 			DrivesParent = transform.parent;
 
-			var canvas = Utilities.FindTopmostCanvas(transform);
-			transform.SetParent(canvas);
+			transform.SetParent(ParentCanvas);
 
-			SelectedIndices.ForEach(Deselect);
+			var selected = SelectedIndicesList;
+			foreach (var index in selected)
+			{
+				Deselect(index);
+			}
 
 			gameObject.SetActive(true);
 		}
@@ -120,5 +134,33 @@
 			}
 #endif
 		}
+
+		#if UNITY_EDITOR
+		/// <summary>
+		/// Validate this instance.
+		/// </summary>
+		protected override void OnValidate()
+		{
+			base.OnValidate();
+
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+
+		/// <summary>
+		/// Reset this instance.
+		/// </summary>
+		protected override void Reset()
+		{
+			base.Reset();
+
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+		#endif
 	}
 }

@@ -10,7 +10,7 @@
 	[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1619:GenericTypeParametersMustBeDocumentedPartialClass", Justification = "Reviewed.")]
 	public abstract partial class TracksViewCustom<TData, TPoint, TDataView, TTrackView, TTrackBackground, TTrackDataDialog, TTrackDataForm, TTrackDialog, TTrackForm> : TracksViewBase<TData, TPoint>
 		where TData : class, ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 		where TDataView : TrackDataViewBase<TData, TPoint>
 		where TTrackView : TrackViewBase<TData, TPoint>
 		where TTrackBackground : TrackBackgroundBase<TData, TPoint>

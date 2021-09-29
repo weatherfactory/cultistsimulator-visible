@@ -6,7 +6,6 @@ namespace UIWidgets
 	using System.Threading;
 	using EasyLayoutNS;
 	using UIWidgets.Attributes;
-	using UIWidgets.Extensions;
 	using UIWidgets.Styles;
 	using UnityEngine;
 	using UnityEngine.EventSystems;
@@ -34,8 +33,24 @@ namespace UIWidgets
 	/// http://ilih.ru/images/unity-assets/UIWidgets/ListView.png
 	/// </summary>
 	[DataBindSupport]
+	[Obsolete("Replaced with ListViewString")]
 	public class ListView : ListViewBase, IStylable, IUpgradeable
 	{
+		/// <summary>
+		/// Template.
+		/// </summary>
+		[SerializeField]
+		public class Template : ListViewItemTemplate<ListViewStringComponent>
+		{
+			/// <summary>
+			/// Initializes a new instance of the <see cref="Template"/> class.
+			/// </summary>
+			public Template()
+				: base()
+			{
+			}
+		}
+
 		[SerializeField]
 		[Obsolete("Use DataSource instead.")]
 		List<string> strings = new List<string>();
@@ -344,6 +359,13 @@ namespace UIWidgets
 		protected List<ListViewStringComponent> Components = new List<ListViewStringComponent>();
 
 		/// <summary>
+		/// The templates list.
+		/// </summary>
+		[SerializeField]
+		[HideInInspector]
+		protected List<Template> Templates = new List<Template>();
+
+		/// <summary>
 		/// The components cache list.
 		/// </summary>
 		[SerializeField]
@@ -357,26 +379,29 @@ namespace UIWidgets
 		[HideInInspector]
 		protected List<int> ComponentsDisplayedIndices = new List<int>();
 
-		ListViewComponentPool<ListViewStringComponent, string> componentsPool;
+		ListViewComponentPoolObsolete<ListViewStringComponent, string, Template> componentsPool;
 
 		/// <summary>
 		/// The components pool.
 		/// Constructor with lists needed to avoid lost connections when instantiated copy of the inited ListView.
 		/// </summary>
-		protected ListViewComponentPool<ListViewStringComponent, string> ComponentsPool
+		protected ListViewComponentPoolObsolete<ListViewStringComponent, string, Template> ComponentsPool
 		{
 			get
 			{
 				if (componentsPool == null)
 				{
-					componentsPool = new ListViewComponentPool<ListViewStringComponent, string>(Components, ComponentsCache, ComponentsDisplayedIndices)
+					componentsPool = new ListViewComponentPoolObsolete<ListViewStringComponent, string, Template>(Components, Templates, ComponentsDisplayedIndices, Index2Template)
 					{
 						Owner = this,
 						Container = Container,
 						CallbackAdd = AddCallback,
 						CallbackRemove = RemoveCallback,
-						Template = DefaultItem,
+						ComponentCreated = ComponentCreated,
+						ComponentDestroyed = ComponentDestroyed,
 					};
+
+					componentsPool.Init();
 				}
 
 				return componentsPool;
@@ -440,7 +465,13 @@ namespace UIWidgets
 		{
 			get
 			{
-				return SelectedIndices.Convert<int, string>(DataSource.Get);
+				var result = new List<string>(selectedIndices.Count);
+				foreach (var index in selectedIndices)
+				{
+					result.Add(DataSource[index]);
+				}
+
+				return result;
 			}
 		}
 
@@ -643,7 +674,7 @@ namespace UIWidgets
 			{
 				direction = value;
 
-				(Container as RectTransform).anchoredPosition = Vector2.zero;
+				ContainerAnchoredPosition = Vector2.zero;
 				if (scrollRect)
 				{
 					scrollRect.horizontal = IsHorizontal();
@@ -796,6 +827,16 @@ namespace UIWidgets
 		}
 
 		/// <summary>
+		/// Get template by index.
+		/// </summary>
+		/// <param name="index">Index.</param>
+		/// <returns>Template.</returns>
+		protected virtual ListViewStringComponent Index2Template(int index)
+		{
+			return DefaultItem;
+		}
+
+		/// <summary>
 		/// Init this instance.
 		/// </summary>
 		public override void Init()
@@ -813,9 +854,10 @@ namespace UIWidgets
 			base.Items = new List<ListViewItem>();
 
 			SelectedItemsCache.Clear();
-			for (int i = 0; i < SelectedIndices.Count; i++)
+
+			var selected = SelectedIndicesList;
+			foreach (var index in selected)
 			{
-				var index = SelectedIndices[i];
 				SelectedItemsCache.Add(DataSource[index]);
 			}
 
@@ -839,6 +881,22 @@ namespace UIWidgets
 		}
 
 		/// <summary>
+		/// Called after component instantiated.
+		/// </summary>
+		/// <param name="component">Component.</param>
+		protected virtual void ComponentCreated(ListViewStringComponent component)
+		{
+		}
+
+		/// <summary>
+		/// Called before component destroyed.
+		/// </summary>
+		/// <param name="component">Component.</param>
+		protected virtual void ComponentDestroyed(ListViewStringComponent component)
+		{
+		}
+
+		/// <summary>
 		/// Sets the default item.
 		/// </summary>
 		/// <param name="newDefaultItem">New default item.</param>
@@ -858,8 +916,6 @@ namespace UIWidgets
 
 			defaultItem.gameObject.SetActive(true);
 			CalculateItemSize();
-
-			ComponentsPool.Template = DefaultItem;
 
 			CalculateMaxVisibleItems();
 
@@ -1039,7 +1095,7 @@ namespace UIWidgets
 		{
 			if (!IsValid(index))
 			{
-				Debug.LogWarning("Incorrect index: " + index, this);
+				Debug.LogWarning(string.Format("Incorrect index: {0}", index.ToString()), this);
 			}
 
 			var item = DataSource[index];
@@ -1058,7 +1114,7 @@ namespace UIWidgets
 		{
 			if (!IsValid(index))
 			{
-				Debug.LogWarning("Incorrect index: " + index, this);
+				Debug.LogWarning(string.Format("Incorrect index: {0}", index.ToString()), this);
 			}
 
 			var item = DataSource[index];
@@ -1073,9 +1129,7 @@ namespace UIWidgets
 			}
 		}
 
-		/// <summary>
-		/// Updates the items.
-		/// </summary>
+		/// <inheritdoc/>
 		public override void UpdateItems()
 		{
 			if (Source == ListViewSources.List)
@@ -1091,12 +1145,16 @@ namespace UIWidgets
 			}
 		}
 
-		/// <summary>
-		/// Clear strings list.
-		/// </summary>
+		/// <inheritdoc/>
 		public override void Clear()
 		{
 			DataSource.Clear();
+		}
+
+		/// <inheritdoc/>
+		public override void RemoveItemAt(int index)
+		{
+			DataSource.RemoveAt(index);
 		}
 
 		/// <summary>
@@ -1292,12 +1350,12 @@ namespace UIWidgets
 		/// <param name="value">Value.</param>
 		protected void SetScrollValue(float value)
 		{
-			if (scrollRect.content == null)
+			if (scrollRect == null)
 			{
 				return;
 			}
 
-			var current_position = scrollRect.content.anchoredPosition;
+			var current_position = ContainerAnchoredPosition;
 			var new_position = new Vector2(current_position.x, value);
 
 			const float delta = 0.1f;
@@ -1307,7 +1365,7 @@ namespace UIWidgets
 			scrollRect.StopMovement();
 			if (diff)
 			{
-				scrollRect.content.anchoredPosition = new_position;
+				ContainerAnchoredPosition = new_position;
 				ScrollUpdate();
 			}
 		}
@@ -1318,7 +1376,7 @@ namespace UIWidgets
 		/// <returns>The scroll value.</returns>
 		protected float GetScrollValue()
 		{
-			var pos = scrollRect.content.anchoredPosition;
+			var pos = ContainerAnchoredPosition;
 			var result = IsHorizontal() ? -pos.x : pos.y;
 			if (LoopedListAvailable)
 			{
@@ -1495,13 +1553,12 @@ namespace UIWidgets
 		public override int GetNearestIndex(PointerEventData eventData, NearestType type)
 		{
 			Vector2 point;
-			var rectTransform = Container as RectTransform;
-			if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out point))
+			if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(Container, eventData.position, eventData.pressEventCamera, out point))
 			{
 				return -1;
 			}
 
-			var rect = rectTransform.rect;
+			var rect = Container.rect;
 			if (!rect.Contains(point))
 			{
 				return -1;
@@ -1538,7 +1595,7 @@ namespace UIWidgets
 					index = Mathf.CeilToInt(pos / GetItemSize());
 					break;
 				default:
-					throw new NotSupportedException("Unsupported NearestType: " + type);
+					throw new NotSupportedException(string.Format("Unsupported NearestType: {0}", EnumHelper<NearestType>.ToString(type)));
 			}
 
 			return Mathf.Min(index, DataSource.Count);
@@ -1718,7 +1775,7 @@ namespace UIWidgets
 					newItems.EndUpdate();
 				}
 
-				SilentDeselect(SelectedIndices);
+				SilentDeselect(SelectedIndicesList);
 
 				var new_selected_indices = new List<int>();
 				foreach (var selected_item in SelectedItemsCache)
@@ -1735,9 +1792,10 @@ namespace UIWidgets
 				SilentSelect(new_selected_indices);
 
 				SelectedItemsCache.Clear();
-				for (int i = 0; i < SelectedIndices.Count; i++)
+
+				var selected = SelectedIndicesList;
+				foreach (var index in selected)
 				{
-					var index = SelectedIndices[i];
 					SelectedItemsCache.Add(DataSource[index]);
 				}
 
@@ -1785,7 +1843,7 @@ namespace UIWidgets
 				return;
 			}
 
-			if (SelectedIndices.Contains(component.Index))
+			if (IsSelected(component.Index))
 			{
 				SelectColoring(component);
 			}
@@ -1805,12 +1863,20 @@ namespace UIWidgets
 			{
 				var old_duration = FadeDuration;
 				FadeDuration = 0f;
-				ComponentsPool.ForEach(Coloring);
+
+				foreach (var component in ComponentsPool)
+				{
+					Coloring(component);
+				}
+
 				FadeDuration = old_duration;
 			}
 			else
 			{
-				ComponentsPool.ForEach(Coloring);
+				foreach (var component in ComponentsPool)
+				{
+					Coloring(component);
+				}
 			}
 		}
 
@@ -2011,7 +2077,11 @@ namespace UIWidgets
 
 			ScrollRect = null;
 
-			ComponentsPool.Template = null;
+			if (componentsPool != null)
+			{
+				componentsPool.Destroy();
+				componentsPool = null;
+			}
 
 			base.OnDestroy();
 		}
@@ -2061,21 +2131,22 @@ namespace UIWidgets
 
 			var old = FadeDuration;
 			FadeDuration = 0f;
-			ComponentsPool.ForEach(Coloring);
+
+			foreach (var component in ComponentsPool)
+			{
+				Coloring(component);
+			}
+
 			FadeDuration = old;
 		}
 
 		System.Collections.IEnumerator ForceRebuild()
 		{
 			yield return null;
-			ForEachComponent(MarkLayoutForRebuild);
-		}
 
-		void MarkLayoutForRebuild(ListViewItem item)
-		{
-			if (item != null)
+			foreach (var component in ComponentsPool)
 			{
-				LayoutRebuilder.MarkLayoutForRebuild(item.transform as RectTransform);
+				LayoutRebuilder.MarkLayoutForRebuild(component.RectTransform);
 			}
 		}
 
@@ -2087,6 +2158,16 @@ namespace UIWidgets
 			}
 
 			NeedResize = true;
+		}
+
+		/// <summary>
+		/// Returns an enumerator that iterates through the <see cref="ListViewBase.ListViewComponentPoolObsolete{TComponent, TItem, TTemplateWrapper}" />.
+		/// </summary>
+		/// <param name="mode">Mode.</param>
+		/// <returns>A <see cref="ListViewBase.ListViewComponentEnumerator{TComponent, Template}" /> for the <see cref="ListViewBase.ListViewComponentPoolObsolete{TComponent, TItem, TComponentTemplate}" />.</returns>
+		public ListViewComponentEnumerator<ListViewStringComponent, Template> GetComponentsEnumerator(PoolEnumeratorMode mode)
+		{
+			return ComponentsPool.GetEnumerator(mode);
 		}
 
 		/// <summary>

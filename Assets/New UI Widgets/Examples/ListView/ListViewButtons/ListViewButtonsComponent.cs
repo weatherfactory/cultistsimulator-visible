@@ -74,14 +74,13 @@
 				name = Item.Name;
 				Name.Value = Item.Name;
 
-				Button1.name = Item.Name + " B1";
-				Button1.name = Item.Name + " B1";
+				Button1.name = string.Format("{0} B1", Item.Name);
 				Button1.gameObject.SetActive(Item.Button1);
 
-				Button2.name = Item.Name + " B2";
+				Button2.name = string.Format("{0} B2", Item.Name);
 				Button2.gameObject.SetActive(Item.Button2);
 
-				Button3.name = Item.Name + " B3";
+				Button3.name = string.Format("{0} B3", Item.Name);
 				Button3.gameObject.SetActive(Item.Button3);
 			}
 		}

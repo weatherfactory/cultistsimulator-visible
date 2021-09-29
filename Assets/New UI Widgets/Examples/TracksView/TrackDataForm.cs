@@ -98,8 +98,8 @@
 		/// </summary>
 		protected virtual void SetValues()
 		{
-			StartPoint.Value = Data.StartPoint.ToString(DateFormat);
-			EndPoint.Value = Data.EndPoint.ToString(DateFormat);
+			StartPoint.Value = Data.StartPoint.ToString(DateFormat, UtilitiesCompare.Culture);
+			EndPoint.Value = Data.EndPoint.ToString(DateFormat, UtilitiesCompare.Culture);
 			Name.Value = Data.Name;
 			Description.Value = Data.Description;
 		}
@@ -125,6 +125,7 @@
 		/// <summary>
 		/// Add listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public override void AddListeners()
 		{
 			if (StartPointChange != null)
@@ -153,6 +154,7 @@
 		/// <summary>
 		/// Open picker to change StartPoint.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void OpenStartPointPicker()
 		{
 			Picker.Clone().Show(Data.StartPoint, StartPointChanged);
@@ -171,6 +173,7 @@
 		/// <summary>
 		/// Open picker to change EndPoint.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void OpenEndPointPicker()
 		{
 			Picker.Clone().Show(Data.EndPoint, OnEndPointChange);
@@ -189,6 +192,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public override void RemoveListeners()
 		{
 			if (StartPointChange != null)

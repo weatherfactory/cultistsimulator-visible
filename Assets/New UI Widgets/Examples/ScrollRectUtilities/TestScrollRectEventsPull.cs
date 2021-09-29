@@ -39,6 +39,7 @@
 		/// <summary>
 		/// Start this instance.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void Start()
 		{
 #pragma warning disable 0618
@@ -53,6 +54,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void OnDestroy()
 		{
 			if (PullEvents != null)
@@ -70,7 +72,12 @@
 			switch (direction)
 			{
 				case ScrollRectEvents.PullDirection.Up:
-					items.Insert(0, new ListViewIconsItemDescription() { Name = "New item. Total: " + (items.Count + 1) });
+					items.Insert(
+						0,
+						new ListViewIconsItemDescription()
+						{
+							Name = string.Format("New item. Total: {0}", (items.Count + 1).ToString()),
+						});
 
 					InfoAdapter.text = "New item added.";
 					break;
@@ -81,6 +88,7 @@
 			}
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		IEnumerator AddItems()
 		{
 			InfoAdapter.text = "New item will added after 3 seconds.";
@@ -88,7 +96,11 @@
 			yield return UtilitiesTime.Wait(3f, true);
 
 			var items = ListView.DataSource;
-			items.Add(new ListViewIconsItemDescription() { Name = "New item. Total: " + (items.Count + 1) });
+			var item = new ListViewIconsItemDescription()
+			{
+				Name = string.Format("New item. Total: {0}", (items.Count + 1).ToString()),
+			};
+			items.Add(item);
 
 			ListView.ScrollToAnimated(items.Count - 1);
 

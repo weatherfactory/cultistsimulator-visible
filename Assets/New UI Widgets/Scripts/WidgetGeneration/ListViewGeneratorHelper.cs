@@ -16,7 +16,7 @@
 		/// <summary>
 		/// Container.
 		/// </summary>
-		public Transform Container;
+		public RectTransform Container;
 
 		/// <summary>
 		/// ScrollRect.

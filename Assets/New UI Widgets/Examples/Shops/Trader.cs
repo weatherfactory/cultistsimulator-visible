@@ -80,7 +80,7 @@
 		public float PriceFactor = 1;
 
 		/// <summary>
-		/// The delete items if Item.count = 0.
+		/// The delete items if Item.Quantity = 0.
 		/// </summary>
 		public bool DeleteIfEmpty = true;
 
@@ -137,7 +137,11 @@
 			}
 
 			Inventory.BeginUpdate();
-			order.GetOrderLines().ForEach(SellItem);
+			foreach (var line in order.GetOrderLines())
+			{
+				SellItem(line);
+			}
+
 			Inventory.EndUpdate();
 
 			Money += order.Total();
@@ -149,13 +153,13 @@
 		/// <param name="orderLine">Order line.</param>
 		void SellItem(IOrderLine orderLine)
 		{
-			var count = orderLine.Count;
+			var quantity = orderLine.Quantity;
 
-			// decrease items count
-			orderLine.Item.Count -= count;
+			// decrease items quantity
+			orderLine.Item.Quantity -= quantity;
 
-			// remove item from inventory if zero count
-			if (DeleteIfEmpty && (orderLine.Item.Count == 0))
+			// remove item from inventory if zero quantity
+			if (DeleteIfEmpty && (orderLine.Item.Quantity == 0))
 			{
 				Inventory.Remove(orderLine.Item);
 			}
@@ -173,10 +177,27 @@
 			}
 
 			Inventory.BeginUpdate();
-			order.GetOrderLines().ForEach(BuyItem);
+			foreach (var line in order.GetOrderLines())
+			{
+				BuyItem(line);
+			}
+
 			Inventory.EndUpdate();
 
 			Money -= order.Total();
+		}
+
+		Item FindItem(string name)
+		{
+			foreach (var item in Inventory)
+			{
+				if (item.Name == name)
+				{
+					return item;
+				}
+			}
+
+			return null;
 		}
 
 		/// <summary>
@@ -186,20 +207,20 @@
 		void BuyItem(IOrderLine orderLine)
 		{
 			// find item in inventory
-			var item = Inventory.Find(x => x.Name == orderLine.Item.Name);
+			var item = FindItem(orderLine.Item.Name);
 
-			var count = orderLine.Count;
+			var quantity = orderLine.Quantity;
 
 			// if not found add new item to inventory
 			if (item == null)
 			{
-				Inventory.Add(new Item(orderLine.Item.Name, count));
+				Inventory.Add(new Item(orderLine.Item.Name, quantity));
 			}
 
-			// if found increase count
+			// if found increase quantity
 			else
 			{
-				item.Count += count;
+				item.Quantity += quantity;
 			}
 		}
 

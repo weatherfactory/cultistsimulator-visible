@@ -374,33 +374,15 @@
 				RefreshLayoutElements();
 			}
 
-			if (Layout.ChildrenWidth != ChildrenSize.DoNothing)
-			{
-				var sizes = GetWidthValues();
-				MinWidth = sizes.Min;
-				PreferredWidth = sizes.Preferred;
-				FlexibleWidth = sizes.Flexible;
-			}
-			else
-			{
-				MinWidth = 0f;
-				PreferredWidth = 0f;
-				FlexibleWidth = 0f;
-			}
+			var widths = GetWidthValues();
+			MinWidth = widths.Min;
+			PreferredWidth = widths.Preferred;
+			FlexibleWidth = widths.Flexible;
 
-			if (Layout.ChildrenHeight != ChildrenSize.DoNothing)
-			{
-				var sizes = GetHeightValues();
-				MinHeight = sizes.Min;
-				PreferredHeight = sizes.Preferred;
-				FlexibleHeight = sizes.Flexible;
-			}
-			else
-			{
-				MinHeight = 0f;
-				PreferredHeight = 0f;
-				FlexibleHeight = 0f;
-			}
+			var heights = GetHeightValues();
+			MinHeight = heights.Min;
+			PreferredHeight = heights.Preferred;
+			FlexibleHeight = heights.Flexible;
 
 			Row = -1;
 			Column = -1;

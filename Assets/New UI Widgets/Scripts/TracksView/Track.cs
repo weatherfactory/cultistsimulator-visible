@@ -12,9 +12,9 @@
 	/// <typeparam name="TData">Data type.</typeparam>
 	/// <typeparam name="TPoint">Point type.</typeparam>
 	[Serializable]
-	public class Track<TData, TPoint> : INotifyPropertyChanged
+	public class Track<TData, TPoint> : IObservable, INotifyPropertyChanged
 		where TData : class, ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 	{
 		[SerializeField]
 		string name;
@@ -34,7 +34,7 @@
 				if (name != value)
 				{
 					name = value;
-					Changed("Name");
+					NotifyPropertyChanged("Name");
 				}
 			}
 		}
@@ -62,7 +62,7 @@
 
 					DataChanged();
 
-					Changed("Data");
+					NotifyPropertyChanged("Data");
 				}
 			}
 		}
@@ -219,6 +219,15 @@
 		}
 
 		/// <summary>
+		/// Get visible items.
+		/// </summary>
+		/// <param name="output">Output list.</param>
+		public void GetVisibleItems(List<TData> output)
+		{
+			output.AddRange(visibleItems);
+		}
+
+		/// <summary>
 		/// Count of the items at the specified point.
 		/// </summary>
 		/// <param name="point">Point.</param>
@@ -261,7 +270,7 @@
 
 			CalculateVisibleItems();
 
-			Changed("Data");
+			NotifyPropertyChanged("Data");
 		}
 
 		/// <summary>
@@ -422,7 +431,7 @@
 
 			MaxItemsAtSamePoint = GetMaxOrder(SortedData) + 1;
 
-			Changed("Data");
+			NotifyPropertyChanged("Data");
 		}
 
 		/// <summary>
@@ -723,15 +732,30 @@
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = Utilities.DefaultPropertyHandler;
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Raise PropertyChanged event.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
-		protected void Changed(string propertyName)
+		protected void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 
 		/// <summary>

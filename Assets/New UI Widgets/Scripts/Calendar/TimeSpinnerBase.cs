@@ -450,6 +450,7 @@
 		/// </summary>
 		/// <param name="action">Action.</param>
 		/// <returns>Hold coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		protected virtual IEnumerator HoldCreateCoroutine(Action action)
 		{
 			if (AllowHold)

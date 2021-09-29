@@ -43,10 +43,7 @@
 			{
 			}
 
-			/// <summary>
-			/// Is looped list allowed?
-			/// </summary>
-			/// <returns>True if looped list allowed; otherwise false.</returns>
+			/// <inheritdoc/>
 			public override bool IsTileView
 			{
 				get
@@ -55,10 +52,7 @@
 				}
 			}
 
-			/// <summary>
-			/// Determines whether this instance can be virtualized.
-			/// </summary>
-			/// <returns><c>true</c> if this instance can be virtualized; otherwise, <c>false</c>.</returns>
+			/// <inheritdoc/>
 			public override bool IsVirtualizationSupported()
 			{
 				var scrollRectSpecified = Owner.scrollRect != null;
@@ -72,11 +66,6 @@
 			/// <inheritdoc/>
 			public override bool OnItemMove(AxisEventData eventData, ListViewItem item)
 			{
-				if (!Owner.Navigation)
-				{
-					return false;
-				}
-
 				var step = 0;
 				switch (eventData.moveDir)
 				{
@@ -104,9 +93,7 @@
 				return Owner.Navigate(eventData, target);
 			}
 
-			/// <summary>
-			/// Calculates the maximum count of the visible items.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void CalculateMaxVisibleItems()
 			{
 				CalculateItemsSizes(Owner.DataSource, false);
@@ -114,13 +101,16 @@
 				MaxVisibleItems = CalculateMaxVisibleItems(Owner.DataSource);
 			}
 
-			/// <summary>
-			/// Calculates the maximum count of the visible items.
-			/// </summary>
-			/// <param name="items">Items.</param>
-			/// <returns>Maximum count of the visible items.</returns>
+			/// <inheritdoc/>
 			protected override int CalculateMaxVisibleItems(ObservableList<TItem> items)
 			{
+				if (ItemSizes.Count == 0)
+				{
+					ItemsPerColumn = 0;
+					ItemsPerRow = 0;
+					return 0;
+				}
+
 				var spacing_x = Owner.GetItemSpacingX();
 				var spacing_y = Owner.GetItemSpacingY();
 
@@ -258,8 +248,8 @@
 				var blocks = Mathf.CeilToInt((float)Owner.DataSource.Count / (float)perBlock);
 				for (int i = 0; i < blocks; i++)
 				{
-					var size = GetItemSize(i * perBlock);
-					for (int j = (i * perBlock) + 1; j < (i + 1) * perBlock; j++)
+					var size = 0f;
+					for (int j = i * perBlock; j < (i + 1) * perBlock; j++)
 					{
 						if (j < Owner.DataSource.Count)
 						{
@@ -271,19 +261,13 @@
 				}
 			}
 
-			/// <summary>
-			/// Calculates the size of the top filler.
-			/// </summary>
-			/// <returns>The top filler size.</returns>
+			/// <inheritdoc/>
 			public override float TopFillerSize()
 			{
 				return GetItemPosition(Visible.FirstVisible);
 			}
 
-			/// <summary>
-			/// Calculates the size of the bottom filler.
-			/// </summary>
-			/// <returns>The bottom filler size.</returns>
+			/// <inheritdoc/>
 			public override float BottomFillerSize()
 			{
 				var last = Owner.DisplayedIndexLast + 1;
@@ -357,21 +341,13 @@
 				return Owner.LoopedListAvailable ? size : Mathf.Max(0, size);
 			}
 
-			/// <summary>
-			/// Get block index by item index.
-			/// </summary>
-			/// <param name="index">Item index.</param>
-			/// <returns>Block index.</returns>
+			/// <inheritdoc/>
 			protected override int GetBlockIndex(int index)
 			{
 				return Mathf.FloorToInt((float)index / (float)GetItemsPerBlock());
 			}
 
-			/// <summary>
-			/// Gets the item position.
-			/// </summary>
-			/// <returns>The item position.</returns>
-			/// <param name="index">Index.</param>
+			/// <inheritdoc/>
 			public override float GetItemPosition(int index)
 			{
 				var block = GetBlockIndex(index);
@@ -385,11 +361,7 @@
 				return size + (Owner.LayoutBridge.GetSpacing() * block);
 			}
 
-			/// <summary>
-			/// Gets the item middle position by index.
-			/// </summary>
-			/// <returns>The item middle position.</returns>
-			/// <param name="index">Index.</param>
+			/// <inheritdoc/>
 			public override float GetItemPositionMiddle(int index)
 			{
 				var start = GetItemPosition(index);
@@ -397,11 +369,7 @@
 				return start + ((end - start) / 2);
 			}
 
-			/// <summary>
-			/// Gets the item position bottom.
-			/// </summary>
-			/// <returns>The item position bottom.</returns>
-			/// <param name="index">Index.</param>
+			/// <inheritdoc/>
 			public override float GetItemPositionBottom(int index)
 			{
 				var block = Mathf.Min(GetBlockIndex(index) + 1, BlockSizes.Count);
@@ -415,22 +383,22 @@
 				return size + (Owner.LayoutBridge.GetSpacing() * (block - 1)) + Owner.LayoutBridge.GetMargin() - GetScrollRectSize();
 			}
 
-			int GetIndexAtPosition(float total_size)
+			int GetIndexAtPosition(float position)
 			{
 				var spacing = Owner.LayoutBridge.GetSpacing();
 				int count = 0;
 
-				if (total_size >= 0f)
+				if (position >= 0f)
 				{
 					for (int index = 0; index < BlockSizes.Count; index++)
 					{
-						total_size -= BlockSizes[index];
+						position -= BlockSizes[index];
 						if (index > 0)
 						{
-							total_size -= spacing;
+							position -= spacing;
 						}
 
-						if (total_size < 0)
+						if (position < 0)
 						{
 							break;
 						}
@@ -440,17 +408,17 @@
 				}
 				else
 				{
-					total_size = -total_size;
+					position = -position;
 					for (int index = BlockSizes.Count - 1; index >= 0; index--)
 					{
-						total_size -= BlockSizes[index];
+						position -= BlockSizes[index];
 						if (index > 0)
 						{
-							total_size -= spacing;
+							position -= spacing;
 						}
 
 						count--;
-						if (total_size < 0)
+						if (position < 0)
 						{
 							break;
 						}
@@ -465,11 +433,7 @@
 				return Mathf.Min(count * GetItemsPerBlock(), Owner.DataSource.Count - 1);
 			}
 
-			/// <summary>
-			/// Gets the first index of the visible.
-			/// </summary>
-			/// <returns>The first visible index.</returns>
-			/// <param name="strict">If set to <c>true</c> strict.</param>
+			/// <inheritdoc/>
 			public override int GetFirstVisibleIndex(bool strict = false)
 			{
 				var first_visible_index = Mathf.Max(0, GetIndexAtPosition(GetPosition()));
@@ -477,11 +441,7 @@
 				return first_visible_index;
 			}
 
-			/// <summary>
-			/// Gets the last index of the visible.
-			/// </summary>
-			/// <returns>The last visible index.</returns>
-			/// <param name="strict">If set to <c>true</c> strict.</param>
+			/// <inheritdoc/>
 			public override int GetLastVisibleIndex(bool strict = false)
 			{
 				var last_visible_index = GetIndexAtPosition(GetPosition() + GetScrollRectSize());
@@ -489,12 +449,7 @@
 				return strict ? last_visible_index : last_visible_index + GetItemsPerBlock();
 			}
 
-			/// <summary>
-			/// Gets the index of the nearest item.
-			/// </summary>
-			/// <returns>The nearest item index.</returns>
-			/// <param name="point">Point.</param>
-			/// <param name="type">Preferable nearest index.</param>
+			/// <inheritdoc/>
 			public override int GetNearestIndex(Vector2 point, NearestType type)
 			{
 				var pos_block = Owner.IsHorizontal() ? point.x : Mathf.Abs(point.y);
@@ -538,25 +493,19 @@
 						index += 1;
 						break;
 					default:
-						throw new NotSupportedException("Unsupported NearestType: " + type);
+						throw new NotSupportedException(string.Format("Unsupported NearestType: {0}", EnumHelper<NearestType>.ToString(type)));
 				}
 
-				return Mathf.Min(index, Owner.DataSource.Count, start);
+				return Mathf.Min(Mathf.Min(index, Owner.DataSource.Count), start);
 			}
 
-			/// <summary>
-			/// Count of items the per block.
-			/// </summary>
-			/// <returns>The per block.</returns>
+			/// <inheritdoc/>
 			public override int GetItemsPerBlock()
 			{
 				return Owner.IsHorizontal() ? ItemsPerColumn : ItemsPerRow;
 			}
 
-			/// <summary>
-			/// Get the size of the ListView.
-			/// </summary>
-			/// <returns>The size.</returns>
+			/// <inheritdoc/>
 			public override float ListSize()
 			{
 				if (Owner.DataSource.Count == 0)
@@ -565,6 +514,22 @@
 				}
 
 				return UtilitiesCollections.Sum(BlockSizes) + (BlockSizes.Count * Owner.LayoutBridge.GetSpacing()) - Owner.LayoutBridge.GetSpacing();
+			}
+
+			/// <inheritdoc/>
+			public override void GetDebugInfo(System.Text.StringBuilder builder)
+			{
+				builder.Append("ItemsPerRow: ");
+				builder.Append(ItemsPerRow);
+				builder.AppendLine();
+
+				builder.Append("ItemsPerColumn: ");
+				builder.Append(ItemsPerColumn);
+				builder.AppendLine();
+
+				builder.Append("BlockSizes: ");
+				builder.Append(UtilitiesCollections.List2String(BlockSizes));
+				builder.AppendLine();
 			}
 		}
 	}

@@ -7,39 +7,13 @@
 	using UnityEngine.UI;
 
 	/// <summary>
-	/// Scroll button type.
-	/// </summary>
-	public enum ScrollButtonType
-	{
-		/// <summary>
-		/// Scroll to top.
-		/// </summary>
-		Top = 0,
-
-		/// <summary>
-		/// Scroll to bottom.
-		/// </summary>
-		Bottom = 1,
-
-		/// <summary>
-		/// Scroll to left.
-		/// </summary>
-		Left = 2,
-
-		/// <summary>
-		/// Scroll to right.
-		/// </summary>
-		Right = 3,
-	}
-
-	/// <summary>
 	/// Scroll buttons.
 	/// </summary>
 	[RequireComponent(typeof(ScrollRect))]
 	public class ScrollButtons : MonoBehaviour
 	{
 		/// <summary>
-		/// Is the ScrollButtons eligable for interaction?
+		/// Is the ScrollButtons eligible for interaction?
 		/// </summary>
 		[SerializeField]
 		public bool Interactable = true;
@@ -203,7 +177,7 @@
 			set
 			{
 				curve = value;
-				AnimationLength = curve.keys[curve.keys.Length - 1].time;
+				AnimationLength = curve[curve.length - 1].time;
 			}
 		}
 
@@ -505,7 +479,7 @@
 					position.x -= value;
 					break;
 				default:
-					throw new NotSupportedException("Unknown ScrollButtonType: " + type);
+					throw new NotSupportedException(string.Format("Unknown ScrollButtonType: {0}", EnumHelper<ScrollButtonType>.ToString(type)));
 			}
 
 			return position;

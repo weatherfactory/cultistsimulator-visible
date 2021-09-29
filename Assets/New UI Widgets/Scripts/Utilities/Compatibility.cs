@@ -146,11 +146,11 @@
 
 			if (lines[lines.Count - 1].StartsWith(prefix, StringComparison.InvariantCulture))
 			{
-				lines[lines.Count - 1] = prefix + DateTime.Now;
+				lines[lines.Count - 1] = prefix + DateTime.Now.ToString();
 			}
 			else
 			{
-				lines.Add(prefix + DateTime.Now);
+				lines.Add(prefix + DateTime.Now.ToString());
 			}
 
 			File.WriteAllText(filepath, string.Join("\r\n", lines.ToArray()));

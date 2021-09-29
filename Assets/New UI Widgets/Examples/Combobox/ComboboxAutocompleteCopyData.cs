@@ -9,6 +9,7 @@
 	/// </summary>
 	[RequireComponent(typeof(Autocomplete))]
 	[RequireComponent(typeof(Combobox))]
+	[System.Obsolete]
 	public class ComboboxAutocompleteCopyData : MonoBehaviour
 	{
 		/// <summary>

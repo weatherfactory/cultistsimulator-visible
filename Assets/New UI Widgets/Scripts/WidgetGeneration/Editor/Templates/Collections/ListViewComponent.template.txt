@@ -37,7 +37,7 @@
 		{{
 			if (GraphicsForegroundVersion == 0)
 			{{
-				Foreground = new UnityEngine.UI.Graphic[] {{ {0:TextFields@UIWidgets.Utilities.GetGraphic([0:WidgetFieldName]), } }};
+				Foreground = new UnityEngine.UI.Graphic[] {{ {0:TextFields@UIWidgets.UtilitiesUI.GetGraphic([0:WidgetFieldName]), } }};
 				if (!UIWidgets.UtilitiesCollections.AllNull(Foreground))
 				{{
 					GraphicsForegroundVersion = 1;
@@ -60,22 +60,6 @@
 		}}
 
 		/// <summary>
-		/// Remove current item.
-		/// </summary>
-		public void Remove()
-		{{
-			(Owner as {0:ListViewClass}).DataSource.RemoveAt(Index);
-		}}
-
-		/// <summary>
-		/// Deselect current item.
-		/// </summary>
-		public void Deselect()
-		{{
-			Owner.Deselect(Index);
-		}}
-
-		/// <summary>
 		/// Sets component data with specified item.
 		/// </summary>
 		/// <param name="item">Item.</param>
@@ -84,7 +68,7 @@
 			Item = item;
 
 			#if UNITY_EDITOR
-			{0:IfAutocomplete@name = Item == null ? "DefaultItem " + Index : Item.[0:AutocompleteField];}{0:!IfAutocomplete@name = "DefaultItem " + Index;}
+			{0:IfAutocomplete@name = Item == null ? "DefaultItem " + Index.ToString() : Item.[0:AutocompleteField];}{0:!IfAutocomplete@name = "DefaultItem " + Index;}
 			#endif
 
 			UpdateView();

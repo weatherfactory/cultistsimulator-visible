@@ -1,6 +1,5 @@
 ﻿namespace UIWidgets.Examples
 {
-	using System.ComponentModel;
 	using UIWidgets;
 	using UnityEngine;
 	using UnityEngine.UI;
@@ -61,7 +60,7 @@
 				if (currentItem != null)
 				{
 					// unsubscribe
-					currentItem.PropertyChanged -= ItemPropertyChanged;
+					currentItem.OnChange -= UpdateInputFields;
 				}
 
 				currentItem = value;
@@ -69,19 +68,13 @@
 				if (currentItem != null)
 				{
 					// subscribe to event
-					// when item properties changed ItemPropertyChanged will called
-					currentItem.PropertyChanged += ItemPropertyChanged;
+					// when item properties changed OnChange will called
+					currentItem.OnChange += UpdateInputFields;
 
 					// and update InputFields values
 					UpdateInputFields();
 				}
 			}
-		}
-
-		void ItemPropertyChanged(object sender, PropertyChangedEventArgs e)
-		{
-			// item is changed, so InputFields values will be changed
-			UpdateInputFields();
 		}
 
 		void UpdateInputFields()

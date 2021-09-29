@@ -35,7 +35,7 @@
 		}
 
 		/// <summary>
-		/// This function is called when the behaviour becomes disabled or inactive.
+		/// This function is called when the behavior becomes disabled or inactive.
 		/// </summary>
 		protected virtual void OnDisable()
 		{

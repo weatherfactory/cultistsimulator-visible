@@ -6,7 +6,7 @@
 	/// <summary>
 	/// Create ListView data from hierarchy.
 	/// </summary>
-	public class ListViewDataFromHierarchy
+	public class ListViewDataFromHierarchy : MonoBehaviour
 	{
 		/// <summary>
 		/// ListView.
@@ -25,8 +25,9 @@
 		{
 			var data = new ObservableList<ListViewIconsItemDescription>();
 
-			foreach (Transform child in source)
+			for (int i = 0; i < source.childCount; i++)
 			{
+				var child = source.GetChild(i);
 				var is_default_item = child.gameObject.GetInstanceID() == ListView.DefaultItem.gameObject.GetInstanceID();
 				if (is_default_item)
 				{
@@ -38,7 +39,7 @@
 				data.Add(new ListViewIconsItemDescription() { Name = child.name, });
 
 				// destroy gameobject
-				Object.Destroy(child.gameObject);
+				Destroy(child.gameObject);
 			}
 
 			return data;

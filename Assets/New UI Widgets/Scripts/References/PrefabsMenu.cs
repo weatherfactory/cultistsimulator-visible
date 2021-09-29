@@ -61,6 +61,18 @@
 		public GameObject Combobox;
 
 		/// <summary>
+		/// ComboboxEnum.
+		/// </summary>
+		[SerializeField]
+		public GameObject ComboboxEnum;
+
+		/// <summary>
+		/// ComboboxEnumMultiselect.
+		/// </summary>
+		[SerializeField]
+		public GameObject ComboboxEnumMultiselect;
+
+		/// <summary>
 		/// ComboboxIcons.
 		/// </summary>
 		[SerializeField]
@@ -101,6 +113,12 @@
 		/// </summary>
 		[SerializeField]
 		public GameObject ListViewColors;
+
+		/// <summary>
+		/// ListViewEnum.
+		/// </summary>
+		[SerializeField]
+		public GameObject ListViewEnum;
 
 		/// <summary>
 		/// ListViewInt.

@@ -9,11 +9,66 @@
 	public static class EasyLayoutUtilities
 	{
 		/// <summary>
+		/// Convert list to string.
+		/// </summary>
+		/// <typeparam name="T">Value type.</typeparam>
+		/// <param name="values">Values.</param>
+		/// <returns>String.</returns>
+		public static string List2String<T>(List<T> values)
+		{
+			var sb = new System.Text.StringBuilder();
+
+			for (int i = 0; i < values.Count; i++)
+			{
+				var v = values[i];
+				if (i == 0)
+				{
+					sb.Append(v.ToString());
+				}
+				else
+				{
+					sb.Append("; ");
+					sb.Append(v.ToString());
+				}
+			}
+
+			return sb.ToString();
+		}
+
+		/// <summary>
+		/// Convert list to string.
+		/// </summary>
+		/// <typeparam name="T">Value type.</typeparam>
+		/// <param name="values">Values.</param>
+		/// <returns>String.</returns>
+		public static string List2String<T>(T[] values)
+		{
+			var sb = new System.Text.StringBuilder();
+
+			for (int i = 0; i < values.Length; i++)
+			{
+				var v = values[i];
+				if (i == 0)
+				{
+					sb.Append(v.ToString());
+				}
+				else
+				{
+					sb.Append("; ");
+					sb.Append(v.ToString());
+				}
+			}
+
+			return sb.ToString();
+		}
+
+		/// <summary>
 		/// Maximum count of items in group.
 		/// </summary>
+		/// <typeparam name="T">Type of item.</typeparam>
 		/// <param name="group">Group.</param>
 		/// <returns>Maximum count.</returns>
-		public static int MaxCount(List<List<LayoutElementInfo>> group)
+		public static int MaxCount<T>(List<List<T>> group)
 		{
 			int result = 0;
 

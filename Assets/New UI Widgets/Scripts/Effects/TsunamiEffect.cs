@@ -45,7 +45,7 @@
 		protected virtual void Update()
 		{
 			var rt = transform as RectTransform;
-			var canvas = Utilities.FindCanvas(rt).GetComponent<Canvas>();
+			var canvas = UtilitiesUI.FindCanvas(rt).GetComponent<Canvas>();
 
 			Vector2 point;
 			float distance;

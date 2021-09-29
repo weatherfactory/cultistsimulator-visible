@@ -3,7 +3,6 @@
 	using System;
 	using System.Collections;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 
 	/// <summary>
 	/// Linked HashSet.
@@ -28,11 +27,61 @@
 		/// Initializes a new instance of the <see cref="LinkedHashSet{T}"/> class.
 		/// </summary>
 		/// <param name="source">Source.</param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Required.")]
 		public LinkedHashSet(IEnumerable<T> source)
 		{
 			list = new LinkedList<T>();
 			dict = new Dictionary<T, LinkedListNode<T>>();
-			source.ForEach(Add);
+
+			foreach (var item in source)
+			{
+				Add(item);
+			}
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="LinkedHashSet{T}"/> class.
+		/// </summary>
+		/// <param name="source">Source.</param>
+		public LinkedHashSet(T[] source)
+		{
+			list = new LinkedList<T>();
+			dict = new Dictionary<T, LinkedListNode<T>>();
+
+			foreach (var item in source)
+			{
+				Add(item);
+			}
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="LinkedHashSet{T}"/> class.
+		/// </summary>
+		/// <param name="source">Source.</param>
+		public LinkedHashSet(List<T> source)
+		{
+			list = new LinkedList<T>();
+			dict = new Dictionary<T, LinkedListNode<T>>();
+
+			foreach (var item in source)
+			{
+				Add(item);
+			}
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="LinkedHashSet{T}"/> class.
+		/// </summary>
+		/// <param name="source">Source.</param>
+		public LinkedHashSet(ObservableList<T> source)
+		{
+			list = new LinkedList<T>();
+			dict = new Dictionary<T, LinkedListNode<T>>();
+
+			foreach (var item in source)
+			{
+				Add(item);
+			}
 		}
 
 		/// <summary>
@@ -42,6 +91,15 @@
 		public List<T> Items()
 		{
 			return new List<T>(list);
+		}
+
+		/// <summary>
+		/// Get items.
+		/// </summary>
+		/// <param name="output">Output.</param>
+		public void GetItems(List<T> output)
+		{
+			output.AddRange(list);
 		}
 
 		/// <summary>
@@ -177,6 +235,16 @@
 		/// Returns an enumerator that iterates through the collection.
 		/// </summary>
 		/// <returns>An enumerator that can be used to iterate through the collection.</returns>
+		public LinkedList<T>.Enumerator GetEnumerator()
+		{
+			return list.GetEnumerator();
+		}
+
+		/// <summary>
+		/// Returns an enumerator that iterates through the collection.
+		/// </summary>
+		/// <returns>An enumerator that can be used to iterate through the collection.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0601:Value type to reference type conversion causing boxing allocation", Justification = "Required.")]
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
 			return list.GetEnumerator();
@@ -189,9 +257,10 @@
 		/// Returns an enumerator that iterates through the collection.
 		/// </summary>
 		/// <returns>An enumerator that can be used to iterate through the collection.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0601:Value type to reference type conversion causing boxing allocation", Justification = "Required.")]
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return (list as IEnumerable).GetEnumerator();
+			return list.GetEnumerator();
 		}
 		#endregion
 	}

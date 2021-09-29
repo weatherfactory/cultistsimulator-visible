@@ -33,7 +33,10 @@ namespace UIWidgets
 		/// </summary>
 		protected virtual void OnEnable()
 		{
-			Array.ForEach(properties, x => serializedProperties.Add(x, serializedObject.FindProperty(x)));
+			foreach (var p in properties)
+			{
+				serializedProperties.Add(p, serializedObject.FindProperty(p));
+			}
 		}
 
 		/// <summary>
@@ -45,7 +48,10 @@ namespace UIWidgets
 
 			serializedObject.Update();
 
-			Array.ForEach(properties, x => { EditorGUILayout.PropertyField(serializedProperties[x], true); });
+			foreach (var p in properties)
+			{
+				EditorGUILayout.PropertyField(serializedProperties[p], true);
+			}
 
 			serializedObject.ApplyModifiedProperties();
 

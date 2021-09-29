@@ -2,7 +2,6 @@
 namespace UIWidgets
 {
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UnityEditor;
 	using UnityEngine;
 
@@ -39,6 +38,8 @@ namespace UIWidgets
 			"DefaultCursorHotSpot",
 		};
 
+		GUILayoutOption[] toggleOptions = new GUILayoutOption[] { GUILayout.ExpandWidth(true) };
+
 		/// <summary>
 		/// Init.
 		/// </summary>
@@ -55,8 +56,15 @@ namespace UIWidgets
 				AddProperty(property);
 			}
 
-			Properties.ForEach(x => SerializedProperties.Add(x, serializedObject.FindProperty(x)));
-			Cursors.ForEach(x => SerializedCursors.Add(x, serializedObject.FindProperty(x)));
+			foreach (var p in Properties)
+			{
+				SerializedProperties.Add(p, serializedObject.FindProperty(p));
+			}
+
+			foreach (var c in Cursors)
+			{
+				SerializedCursors.Add(c, serializedObject.FindProperty(c));
+			}
 		}
 
 		void AddProperty(SerializedProperty property)
@@ -87,19 +95,21 @@ namespace UIWidgets
 			EditorGUILayout.PropertyField(SerializedProperties["UpdateLayoutElements"], true);
 			EditorGUILayout.PropertyField(SerializedProperties["Mode"], true);
 
-			// compact layout
 			if (SerializedProperties["Mode"].enumValueIndex == 1)
 			{
-				EditorGUILayout.PropertyField(SerializedProperties["leftTarget"], true);
-				EditorGUILayout.PropertyField(SerializedProperties["rightTarget"], true);
+				EditorGUILayout.PropertyField(SerializedProperties["PreviousObject"], true);
+				EditorGUILayout.PropertyField(SerializedProperties["NextObject"], true);
 			}
 
 			EditorGUILayout.BeginVertical();
 
-			ShowCursors = GUILayout.Toggle(ShowCursors, "Cursors", EditorStyles.foldout, GUILayout.ExpandWidth(true));
+			ShowCursors = GUILayout.Toggle(ShowCursors, "Cursors", EditorStyles.foldout, toggleOptions);
 			if (ShowCursors)
 			{
-				SerializedCursors.ForEach(x => EditorGUILayout.PropertyField(x.Value, true));
+				foreach (var sc in SerializedCursors)
+				{
+					EditorGUILayout.PropertyField(sc.Value, true);
+				}
 			}
 
 			EditorGUILayout.EndVertical();

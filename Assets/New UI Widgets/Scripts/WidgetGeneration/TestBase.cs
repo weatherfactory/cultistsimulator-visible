@@ -118,12 +118,22 @@
 		/// <returns>List.</returns>
 		protected ObservableList<T> GenerateList(int count)
 		{
+			var result = new ObservableList<T>();
 			if (!CanGenerateItems)
 			{
-				return new ObservableList<T>();
+				return result;
 			}
 
-			return UtilitiesCollections.CreateList<T>(count, GenerateItem);
+			result.BeginUpdate();
+
+			for (int i = 0; i < count; i++)
+			{
+				result.Add(GenerateItem(i + 1));
+			}
+
+			result.EndUpdate();
+
+			return result;
 		}
 
 		/// <summary>
@@ -165,11 +175,11 @@
 		/// <returns>Node.</returns>
 		protected TreeNode<T> GenerateNode(int index, List<int> config, string namePrefix, int start)
 		{
-			var item_name = namePrefix + index;
+			var item_name = string.Format("{0}{1}", namePrefix, index.ToString());
 			var item = GenerateItem(item_name, index);
 
 			var nodes = config.Count > (start + 1)
-				? GenerateNodes(config, item_name + " - ", start + 1)
+				? GenerateNodes(config, string.Format("{0} - ", item_name), start + 1)
 				: null;
 
 			return new TreeNode<T>(item, nodes, true);

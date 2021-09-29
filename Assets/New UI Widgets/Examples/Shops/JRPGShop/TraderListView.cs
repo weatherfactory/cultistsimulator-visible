@@ -12,22 +12,28 @@
 		/// <summary>
 		/// Item name.
 		/// </summary>
-		ItemName,
+		ItemName = 0,
 
 		/// <summary>
 		/// Item available.
 		/// </summary>
-		ItemAvailable,
+		ItemAvailable = 1,
 
 		/// <summary>
 		/// Price.
 		/// </summary>
-		Price,
+		Price = 2,
 
 		/// <summary>
-		/// Count.
+		/// Quantity.
 		/// </summary>
-		Count,
+		[Obsolete("Renamed to Quantity.")]
+		Count = 3,
+
+		/// <summary>
+		/// Quantity.
+		/// </summary>
+		Quantity = 3,
 	}
 
 	/// <summary>
@@ -49,7 +55,7 @@
 				{ (int)TraderListViewSortFields.ItemName, ItemNameComparer },
 				{ (int)TraderListViewSortFields.ItemAvailable, ItemAvailableComparer },
 				{ (int)TraderListViewSortFields.Price, PriceComparer },
-				{ (int)TraderListViewSortFields.Count, CountComparer },
+				{ (int)TraderListViewSortFields.Quantity, QuantityComparer },
 			};
 
 			base.Init();
@@ -100,12 +106,22 @@
 		}
 
 		/// <summary>
-		/// Sort by Count.
+		/// Sort by Quantity.
 		/// </summary>
+		[Obsolete("Renamed to SortByQuantity().")]
 		public void SortByCount()
 		{
-			ToggleSort(TraderListViewSortFields.Count);
+			SortByQuantity();
 		}
+
+		/// <summary>
+		/// Sort by Quantity.
+		/// </summary>
+		public void SortByQuantity()
+		{
+			ToggleSort(TraderListViewSortFields.Quantity);
+		}
+
 		#endregion
 
 		#region Items comparers
@@ -129,22 +145,22 @@
 		/// <returns>A 32-bit signed integer that indicates whether X precedes, follows, or appears in the same position in the sort order as the Y parameter.</returns>
 		protected static int ItemAvailableComparer(JRPGOrderLine x, JRPGOrderLine y)
 		{
-			if (x.Item.Count == y.Item.Count)
+			if (x.Item.Quantity == y.Item.Quantity)
 			{
 				return 0;
 			}
 
-			if (x.Item.Count == -1)
+			if (x.Item.Quantity == -1)
 			{
 				return 1;
 			}
 
-			if (y.Item.Count == -1)
+			if (y.Item.Quantity == -1)
 			{
 				return -1;
 			}
 
-			return x.Item.Count.CompareTo(y.Item.Count);
+			return x.Item.Quantity.CompareTo(y.Item.Quantity);
 		}
 
 		/// <summary>
@@ -159,14 +175,14 @@
 		}
 
 		/// <summary>
-		/// Count comparer.
+		/// Quantity comparer.
 		/// </summary>
 		/// <param name="x">First JRPGOrderLine.</param>
 		/// <param name="y">Second JRPGOrderLine.</param>
 		/// <returns>A 32-bit signed integer that indicates whether X precedes, follows, or appears in the same position in the sort order as the Y parameter.</returns>
-		protected static int CountComparer(JRPGOrderLine x, JRPGOrderLine y)
+		protected static int QuantityComparer(JRPGOrderLine x, JRPGOrderLine y)
 		{
-			return x.Count.CompareTo(y.Count);
+			return x.Quantity.CompareTo(y.Quantity);
 		}
 		#endregion
 	}

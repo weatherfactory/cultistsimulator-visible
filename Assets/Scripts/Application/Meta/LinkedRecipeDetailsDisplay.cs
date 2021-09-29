@@ -18,7 +18,6 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
    public class LinkedRecipeDetailsDisplay: MonoBehaviour
    {
 #pragma warning disable 649
-       [SerializeField] private CanvasGroupFader _showEligibility;
        [SerializeField] private RequirementsDisplay _requirements;
        [SerializeField] private Button _slotMarkerButton;
        [SerializeField] private TextMeshProUGUI _additional;
@@ -32,24 +31,19 @@ namespace SecretHistories.Assets.Scripts.Application.Meta
        private const string trimmedMarker = "...";
         public void Populate(LinkedRecipeDetails details,Situation situation)
        {
-           
-           var r = Watchman.Get<Compendium>().GetEntityById<Recipe>(details.Id);
-            
+
            _requirements.ClearCurrentlyDisplayedRequirements();
-           if(r.Requirements.Any())
-            _requirements.DisplayRequirements(r.Requirements,"REQS");
-           if(r.TableReqs.Any())
-               _requirements.DisplayRequirements(r.TableReqs, "TABLE");
-           if(r.ExtantReqs.Any())
-            _requirements.DisplayRequirements(r.ExtantReqs, "EXTANT");
 
-           var aspectsInContext =
-               Watchman.Get<HornedAxe>().GetAspectsInContext(situation.GetAspects(true));
+            var r = Watchman.Get<Compendium>().GetEntityById<Recipe>(details.Id);
+            _requirements.DisplayRequirementsAndFulfilments(r,situation);
 
-            if (r.RequirementsSatisfiedBy(aspectsInContext))
-                 _showEligibility.Show();
-            else
-                _showEligibility.Hide();
+            
+
+
+            //if (r.RequirementsSatisfiedBy(aspectsInContext))
+            //     _showEligibility.Show();
+            //else
+            //    _showEligibility.Hide();
 
             string linkProperties=String.Empty;
            string possibilityDescription=string.Empty;

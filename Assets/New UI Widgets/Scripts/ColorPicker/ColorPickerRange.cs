@@ -317,7 +317,7 @@
 		/// </summary>
 		protected virtual void UpdateMaterial()
 		{
-			var shader = Utilities.IsHorizontal(slider) ? defaultShaderHorizontal : DefaultShaderVertical;
+			var shader = UtilitiesUI.IsHorizontal(slider) ? defaultShaderHorizontal : DefaultShaderVertical;
 			if (shader == null)
 			{
 				return;
@@ -378,7 +378,7 @@
 		{
 			if (slider != null)
 			{
-				var colorpicker_style = Utilities.IsHorizontal(slider)
+				var colorpicker_style = UtilitiesUI.IsHorizontal(slider)
 					? style.ColorPickerRangeHorizontal
 					: style.ColorPickerRangeVertical;
 				colorpicker_style.Background.ApplyTo(GetComponent<Image>());
@@ -396,7 +396,7 @@
 		{
 			if (slider != null)
 			{
-				var colorpicker_style = Utilities.IsHorizontal(slider)
+				var colorpicker_style = UtilitiesUI.IsHorizontal(slider)
 					? style.ColorPickerRangeHorizontal
 					: style.ColorPickerRangeVertical;
 				colorpicker_style.Background.GetFrom(GetComponent<Image>());

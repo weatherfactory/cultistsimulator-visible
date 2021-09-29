@@ -215,6 +215,7 @@
 		/// <param name="position">Position.</param>
 		/// <param name="fillMethod">Fill method.</param>
 		/// <param name="fillOrigin">Fill origin.</param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0601:Value type to reference type conversion causing boxing allocation", Justification = "Required.")]
 		protected Rect DrawFillOrigin(Rect position, Image.FillMethod fillMethod, SerializedProperty fillOrigin)
 		{
 			var height = EditorGUI.GetPropertyHeight(fillOrigin, new GUIContent(Labels[fillOrigin.name]));

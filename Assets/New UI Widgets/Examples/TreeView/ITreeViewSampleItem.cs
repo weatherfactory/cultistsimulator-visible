@@ -4,9 +4,9 @@
 	using UIWidgets;
 
 	/// <summary>
-	/// TreeViewSampleItem interace.
+	/// TreeViewSampleItem interface.
 	/// </summary>
-	public interface ITreeViewSampleItem : INotifyPropertyChanged
+	public interface ITreeViewSampleItem : IObservable, INotifyPropertyChanged
 	{
 		/// <summary>
 		/// Display item data using specified component.

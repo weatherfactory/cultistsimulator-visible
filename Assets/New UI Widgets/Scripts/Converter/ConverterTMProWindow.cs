@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR && UIWIDGETS_TMPRO_SUPPORT
 namespace UIWidgets
 {
+	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
 	using UnityEditor;
 	using UnityEngine;
@@ -87,8 +88,8 @@ namespace UIWidgets
 
 			errorsScrollPosition = ShowMessages("Errors", converter.Errors, errorsScrollPosition);
 
-			GUILayout.Label("<b>Convertible InputFields:</b> " + converter.InputFieldsCount, styleLabel);
-			GUILayout.Label("<b>Convertible Texts:</b> " + converter.TextsCount, styleLabel);
+			GUILayout.Label("<b>Convertible InputFields:</b> " + converter.InputFieldsCount.ToString(), styleLabel);
+			GUILayout.Label("<b>Convertible Texts:</b> " + converter.TextsCount.ToString(), styleLabel);
 
 			GUILayout.Space(15);
 
@@ -112,7 +113,7 @@ namespace UIWidgets
 			}
 		}
 
-		Vector2 ShowMessages(string header, ReadOnlyCollection<ConverterTMPro.Message> messages, Vector2 scroll, float height = 350f)
+		Vector2 ShowMessages(string header, List<ConverterTMPro.Message> messages, Vector2 scroll, float height = 350f)
 		{
 			if (messages.Count == 0)
 			{
@@ -120,7 +121,8 @@ namespace UIWidgets
 			}
 
 			GUILayout.Label("<b>" + header + ":</b>", styleLabel);
-			scroll = EditorGUILayout.BeginScrollView(scroll, GUILayout.Height(height), GUILayout.ExpandHeight(true));
+			var options = new GUILayoutOption[] { GUILayout.Height(height), GUILayout.ExpandHeight(true) };
+			scroll = EditorGUILayout.BeginScrollView(scroll, options);
 			foreach (var message in messages)
 			{
 				var is_selected = (message.Target != null) && (Selection.activeObject == message.Target);

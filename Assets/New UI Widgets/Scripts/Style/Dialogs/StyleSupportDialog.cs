@@ -49,7 +49,10 @@
 
 			if (Buttons != null)
 			{
-				Buttons.ForEach(style.Dialog.Button.ApplyTo);
+				foreach (var button in Buttons)
+				{
+					style.Dialog.Button.ApplyTo(button);
+				}
 			}
 
 			CloseButton.SetStyle(style);
@@ -65,7 +68,10 @@
 
 			if (Buttons != null)
 			{
-				Buttons.ForEach(style.Dialog.Button.GetFrom);
+				foreach (var button in Buttons)
+				{
+					style.Dialog.Button.GetFrom(button);
+				}
 			}
 
 			CloseButton.GetStyle(style);

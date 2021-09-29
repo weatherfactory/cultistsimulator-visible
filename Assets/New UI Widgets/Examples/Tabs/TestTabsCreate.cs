@@ -1,9 +1,7 @@
 ﻿namespace UIWidgets.Examples
 {
 	using UIWidgets;
-	using UIWidgets.Extensions;
 	using UnityEngine;
-	using UnityEngine.UI;
 
 	/// <summary>
 	/// Test Tabs creation.
@@ -37,7 +35,11 @@
 		/// </summary>
 		public void ClearTabs()
 		{
-			Tabs.TabObjects.ForEach(x => Destroy(x.TabObject));
+			foreach (var tab in Tabs.TabObjects)
+			{
+				Destroy(tab.TabObject);
+			}
+
 			Tabs.TabObjects = Compatibility.EmptyArray<Tab>();
 		}
 
@@ -47,7 +49,7 @@
 
 			for (int i = 0; i < count; i++)
 			{
-				var tab_name = "Tab " + (i + 1);
+				var tab_name = string.Format("Tab {0}", (i + 1).ToString());
 				tabs[i] = new Tab()
 				{
 					Name = tab_name,

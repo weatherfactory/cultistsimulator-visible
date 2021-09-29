@@ -161,15 +161,16 @@
 		/// <param name="input">Input.</param>
 		protected virtual void InputChanged(string input)
 		{
-			Color32 color;
-			if (UtilitiesColor.TryHexToRGBA(input, out color))
+			Color color;
+			if (ColorUtility.TryParseHtmlString(input, out color))
 			{
+				Color32 color32 = color;
 				if (!WithAlpha)
 				{
-					color.a = currentColor.a;
+					color32.a = currentColor.a;
 				}
 
-				currentColor = color;
+				currentColor = color32;
 				OnChangeRGB.Invoke(currentColor);
 			}
 		}

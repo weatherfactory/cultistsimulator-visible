@@ -69,7 +69,10 @@
 		protected static ObservableList<TreeNode<ITreeViewSampleItem>> Data2Country(List<TreeViewSampleDataCountry> data)
 		{
 			var countries = new ObservableList<TreeNode<ITreeViewSampleItem>>();
-			data.ForEach(x => countries.Add(Node(new TreeViewSampleItemCountry(x.Name, x.Flag))));
+			foreach (var item in data)
+			{
+				countries.Add(Node(new TreeViewSampleItemCountry(item.Name, item.Flag)));
+			}
 
 			return countries;
 		}

@@ -4,7 +4,7 @@ namespace UIWidgets.WidgetGeneration
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
-	using System.Linq;
+	using System.Text;
 	using UIWidgets.Extensions;
 	using UnityEditor;
 	using UnityEngine;
@@ -144,6 +144,11 @@ namespace UIWidgets.WidgetGeneration
 		protected bool AllowItem;
 
 		/// <summary>
+		/// String builder.
+		/// </summary>
+		protected StringBuilder StrBuilder = new StringBuilder();
+
+		/// <summary>
 		/// Add script data.
 		/// </summary>
 		/// <param name="type">Type.</param>
@@ -263,6 +268,7 @@ namespace UIWidgets.WidgetGeneration
 		/// <summary>
 		/// Generate files.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		public void Generate()
 		{
 			SetAvailableScripts();
@@ -290,7 +296,19 @@ namespace UIWidgets.WidgetGeneration
 			}
 
 			var menu = ScriptableObject.CreateInstance<PrefabsMenuGenerated>();
-			var menu_path = PrefabSavePath + Path.DirectorySeparatorChar + "PrefabsMenu" + Info.ShortTypeName + ".asset";
+
+			StrBuilder.Append(PrefabSavePath);
+			StrBuilder.Append(Path.DirectorySeparatorChar);
+			StrBuilder.Append("PrefabsMenu");
+			StrBuilder.Append(Info.ShortTypeName);
+			StrBuilder.Append(".asset");
+			var menu_path = StrBuilder.ToString();
+#if CSHARP_7_3_OR_NEWER
+			StrBuilder.Clear();
+#else
+			StrBuilder = new StringBuilder();
+#endif
+
 			AssetDatabase.CreateAsset(menu, menu_path);
 			Info.PrefabsMenuGUID = AssetDatabase.AssetPathToGUID(menu_path);
 
@@ -362,7 +380,20 @@ namespace UIWidgets.WidgetGeneration
 		/// <returns>Filename.</returns>
 		public string Prefab2Filename(string type)
 		{
-			return PrefabSavePath + "/" + type + Info.ShortTypeName + ".prefab";
+			StrBuilder.Append(PrefabSavePath);
+			StrBuilder.Append("/");
+			StrBuilder.Append(type);
+			StrBuilder.Append(Info.ShortTypeName);
+			StrBuilder.Append(".prefab");
+
+			var filename = StrBuilder.ToString();
+#if CSHARP_7_3_OR_NEWER
+			StrBuilder.Clear();
+#else
+			StrBuilder = new StringBuilder();
+#endif
+
+			return filename;
 		}
 
 		/// <summary>
@@ -443,6 +474,8 @@ namespace UIWidgets.WidgetGeneration
 			typeof(double),
 		};
 
+		List<ClassField> tempFilteredFields = new List<ClassField>();
+
 		/// <summary>
 		/// Formats the value of the current instance using the specified format.
 		/// </summary>
@@ -482,111 +515,163 @@ namespace UIWidgets.WidgetGeneration
 				case "TableFieldFirst":
 					return Info.TableFieldFirst.ToString(template[1], this, formatProvider);
 				case "ImageFields":
-					var fields_image = Info.Fields.Where(IsImage).ToList();
-					return fields_image.ToString(template[1], this, formatProvider);
+					FilterFieldsImage(tempFilteredFields);
+					return tempFilteredFields.ToString(template[1], this, formatProvider);
 				case "ImageFieldsNullable":
-					var fields_image_nullable = Info.Fields.Where(IsImageNullable).ToList();
-					return fields_image_nullable.ToString(template[1], this, formatProvider);
+					FilterFieldsImageNullable(tempFilteredFields);
+					return tempFilteredFields.ToString(template[1], this, formatProvider);
 				case "TreeViewFields":
-					var fields_tree = Info.Fields.Where(IsTreeViewField).ToList();
-					return fields_tree.ToString(template[1], this, formatProvider);
+					FilterFieldsTreeView(tempFilteredFields);
+					return tempFilteredFields.ToString(template[1], this, formatProvider);
 				case "FieldsString":
-					var fields_string = Info.Fields.Where(IsType<string>).ToList();
-					return fields_string.ToString(template[1], this, formatProvider);
+					FilterFieldsType<string>(tempFilteredFields);
+					return tempFilteredFields.ToString(template[1], this, formatProvider);
 				case "FieldsStringFirst":
-					var fields_string_first = Info.Fields.Where(IsType<string>).Take(1).ToList();
-					return fields_string_first.ToString(template[1], this, formatProvider);
+					FilterFieldsType<string>(tempFilteredFields, true);
+					return tempFilteredFields.ToString(template[1], this, formatProvider);
 				case "FieldsInt":
-					var fields_int = Info.Fields.Where(IsInt).ToList();
-					return fields_int.ToString(template[1], this, formatProvider);
+					FilterFieldsInt(tempFilteredFields);
+					return tempFilteredFields.ToString(template[1], this, formatProvider);
 				case "FieldsFloat":
-					var fields_float = Info.Fields.Where(IsFloat).ToList();
-					return fields_float.ToString(template[1], this, formatProvider);
+					FilterFieldsFloat(tempFilteredFields);
+					return tempFilteredFields.ToString(template[1], this, formatProvider);
 				case "FieldsSprite":
-					var fields_sprite = Info.Fields.Where(IsType<Sprite>).ToList();
-					return fields_sprite.ToString(template[1], this, formatProvider);
+					FilterFieldsType<Sprite>(tempFilteredFields);
+					return tempFilteredFields.ToString(template[1], this, formatProvider);
 				case "FieldsTexture2D":
-					var fields_texture = Info.Fields.Where(IsType<Texture2D>).ToList();
-					return fields_texture.ToString(template[1], this, formatProvider);
+					FilterFieldsType<Texture2D>(tempFilteredFields);
+					return tempFilteredFields.ToString(template[1], this, formatProvider);
 				case "FieldsColor":
-					var fields_color = Info.Fields.Where(IsType<Color, Color32>).ToList();
-					return fields_color.ToString(template[1], this, formatProvider);
+					FilterFieldsType<Color, Color32>(tempFilteredFields);
+					return tempFilteredFields.ToString(template[1], this, formatProvider);
 				default:
 					throw new ArgumentOutOfRangeException("Unsupported format: " + format);
 			}
 		}
 
 		/// <summary>
-		/// Is field used with TreeViewComponent?
+		/// Get fields with enabled IsImage field.
 		/// </summary>
-		/// <param name="field">Field.</param>
-		/// <returns>true if field used with TreeViewComponent; otherwise false.</returns>
-		protected bool IsTreeViewField(ClassField field)
+		/// <param name="filtered">Filtered fields.</param>
+		protected void FilterFieldsImage(List<ClassField> filtered)
 		{
-			return field.WidgetFieldName != "TextAdapter" && field.WidgetFieldName != "Icon";
+			filtered.Clear();
+			foreach (var field in Info.Fields)
+			{
+				if (field.IsImage)
+				{
+					filtered.Add(field);
+				}
+			}
 		}
 
 		/// <summary>
-		/// Is field is image type?
+		/// Get fields with both enabled IsImage and IsNullable fields.
 		/// </summary>
-		/// <param name="field">Field.</param>
-		/// <returns>true if field is image type; otherwise false.</returns>
-		protected bool IsImage(ClassField field)
+		/// <param name="filtered">Filtered fields.</param>
+		protected void FilterFieldsImageNullable(List<ClassField> filtered)
 		{
-			return field.IsImage;
+			filtered.Clear();
+			foreach (var field in Info.Fields)
+			{
+				if (field.IsImage && field.IsNullable)
+				{
+					filtered.Add(field);
+				}
+			}
 		}
 
 		/// <summary>
-		/// Is field is image and null-able type?
+		/// Get fields excluding existed TreeView fields.
 		/// </summary>
-		/// <param name="field">Field.</param>
-		/// <returns>true if field is image and null-able type; otherwise false.</returns>
-		protected bool IsImageNullable(ClassField field)
+		/// <param name="filtered">Filtered fields.</param>
+		protected void FilterFieldsTreeView(List<ClassField> filtered)
 		{
-			return field.IsImage && field.IsNullable;
+			filtered.Clear();
+			foreach (var field in Info.Fields)
+			{
+				if (field.WidgetFieldName != "TextAdapter" && field.WidgetFieldName != "Icon")
+				{
+					filtered.Add(field);
+				}
+			}
 		}
 
 		/// <summary>
-		/// Is field is integer type?
+		/// Get fields of the int types.
 		/// </summary>
-		/// <param name="field">Field.</param>
-		/// <returns>true if field is integer type; otherwise false.</returns>
-		protected bool IsInt(ClassField field)
+		/// <param name="filtered">Filtered fields.</param>
+		protected void FilterFieldsInt(List<ClassField> filtered)
 		{
-			return TypesInt.Contains(field.FieldType);
+			filtered.Clear();
+			foreach (var field in Info.Fields)
+			{
+				if (TypesInt.Contains(field.FieldType))
+				{
+					filtered.Add(field);
+				}
+			}
 		}
 
 		/// <summary>
-		/// Is field is float type?
+		/// Get fields of the float types.
 		/// </summary>
-		/// <param name="field">Field.</param>
-		/// <returns>true if field is float type; otherwise false.</returns>
-		protected bool IsFloat(ClassField field)
+		/// <param name="filtered">Filtered fields.</param>
+		protected void FilterFieldsFloat(List<ClassField> filtered)
 		{
-			return TypesFloat.Contains(field.FieldType);
+			filtered.Clear();
+			foreach (var field in Info.Fields)
+			{
+				if (TypesFloat.Contains(field.FieldType))
+				{
+					filtered.Add(field);
+				}
+			}
 		}
 
 		/// <summary>
-		/// Is field type is the specified type?
+		/// Get fields of the specified type.
 		/// </summary>
-		/// <typeparam name="T">Type.</typeparam>
-		/// <param name="field">Field.</param>
-		/// <returns>true if field type is the specified type; otherwise false.</returns>
-		protected bool IsType<T>(ClassField field)
+		/// <typeparam name="T">Field type.</typeparam>
+		/// <param name="filtered">Filtered fields.</param>
+		/// <param name="onlyFirst">Return only first field.</param>
+		protected void FilterFieldsType<T>(List<ClassField> filtered, bool onlyFirst = false)
 		{
-			return field.FieldType == typeof(T);
+			filtered.Clear();
+			foreach (var field in Info.Fields)
+			{
+				if (field.FieldType == typeof(T))
+				{
+					filtered.Add(field);
+					if (onlyFirst)
+					{
+						break;
+					}
+				}
+			}
 		}
 
 		/// <summary>
-		/// Is field type is one of the specified types?
+		/// Get fields of the specified types.
 		/// </summary>
-		/// <typeparam name="T1">First type.</typeparam>
-		/// <typeparam name="T2">Second type.</typeparam>
-		/// <param name="field">Field.</param>
-		/// <returns>true if field type is on of the specified types; otherwise false.</returns>
-		protected bool IsType<T1, T2>(ClassField field)
+		/// <typeparam name="T1">The first type.</typeparam>
+		/// <typeparam name="T2">The second type.</typeparam>
+		/// <param name="filtered">Filtered fields.</param>
+		/// <param name="onlyFirst">Return only first field.</param>
+		protected void FilterFieldsType<T1, T2>(List<ClassField> filtered, bool onlyFirst = false)
 		{
-			return field.FieldType == typeof(T1) || field.FieldType == typeof(T2);
+			filtered.Clear();
+			foreach (var field in Info.Fields)
+			{
+				if (field.FieldType == typeof(T1) || field.FieldType == typeof(T2))
+				{
+					filtered.Add(field);
+					if (onlyFirst)
+					{
+						break;
+					}
+				}
+			}
 		}
 	}
 }

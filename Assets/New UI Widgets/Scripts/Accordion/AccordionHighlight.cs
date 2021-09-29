@@ -2,6 +2,7 @@ namespace UIWidgets
 {
 	using UIWidgets.Styles;
 	using UnityEngine;
+	using UnityEngine.Serialization;
 
 	/// <summary>
 	/// Highlight accordion.
@@ -30,6 +31,27 @@ namespace UIWidgets
 		}
 
 		[SerializeField]
+		[FormerlySerializedAs("defaultText")]
+		StyleText defaultToggleText;
+
+		/// <summary>
+		/// Default text.
+		/// </summary>
+		public StyleText DefaultToggleText
+		{
+			get
+			{
+				return defaultToggleText;
+			}
+
+			set
+			{
+				defaultToggleText = value;
+				UpdateHighlights();
+			}
+		}
+
+		[SerializeField]
 		StyleImage activeToggleBackground;
 
 		/// <summary>
@@ -45,6 +67,27 @@ namespace UIWidgets
 			set
 			{
 				activeToggleBackground = value;
+				UpdateHighlights();
+			}
+		}
+
+		[SerializeField]
+		[FormerlySerializedAs("activeText")]
+		StyleText activeToggleText;
+
+		/// <summary>
+		/// Active text.
+		/// </summary>
+		public StyleText ActiveToggleText
+		{
+			get
+			{
+				return activeToggleText;
+			}
+
+			set
+			{
+				activeToggleText = value;
 				UpdateHighlights();
 			}
 		}
@@ -90,6 +133,7 @@ namespace UIWidgets
 			isInited = true;
 
 			Accordion.OnStartToggleAnimation.AddListener(OnToggle);
+			Accordion.OnToggleItem.AddListener(OnToggle);
 			Accordion.OnDataSourceChanged.AddListener(UpdateHighlights);
 
 			UpdateHighlights();
@@ -103,6 +147,7 @@ namespace UIWidgets
 			if (accordion != null)
 			{
 				accordion.OnStartToggleAnimation.RemoveListener(OnToggle);
+				Accordion.OnToggleItem.RemoveListener(OnToggle);
 				accordion.OnDataSourceChanged.RemoveListener(UpdateHighlights);
 			}
 		}
@@ -125,10 +170,18 @@ namespace UIWidgets
 			if (item.Open)
 			{
 				ActiveToggleBackground.ApplyTo(item.ToggleObject);
+				if (item.ToggleLabel != null)
+				{
+					ActiveToggleText.ApplyTo(item.ToggleLabel.gameObject);
+				}
 			}
 			else
 			{
 				DefaultToggleBackground.ApplyTo(item.ToggleObject);
+				if (item.ToggleLabel != null)
+				{
+					DefaultToggleText.ApplyTo(item.ToggleLabel.gameObject);
+				}
 			}
 		}
 
@@ -137,14 +190,19 @@ namespace UIWidgets
 		/// </summary>
 		public virtual void UpdateHighlights()
 		{
-			Accordion.DataSource.ForEach(UpdateHighlight);
+			foreach (var item in Accordion.DataSource)
+			{
+				UpdateHighlight(item);
+			}
 		}
 
 		/// <inheritdoc/>
 		public virtual bool SetStyle(Style style)
 		{
-			defaultToggleBackground = style.Accordion.ToggleBackground;
+			defaultToggleBackground = style.Accordion.ToggleDefaultBackground;
 			activeToggleBackground = style.Accordion.ToggleActiveBackground;
+			defaultToggleText = style.Accordion.ToggleDefaultText;
+			activeToggleText = style.Accordion.ToggleActiveText;
 
 			UpdateHighlights();
 
@@ -154,8 +212,10 @@ namespace UIWidgets
 		/// <inheritdoc/>
 		public virtual bool GetStyle(Style style)
 		{
-			style.Accordion.ToggleBackground = defaultToggleBackground;
+			style.Accordion.ToggleDefaultBackground = defaultToggleBackground;
 			style.Accordion.ToggleActiveBackground = activeToggleBackground;
+			style.Accordion.ToggleDefaultText = defaultToggleText;
+			style.Accordion.ToggleActiveText = activeToggleText;
 
 			return true;
 		}

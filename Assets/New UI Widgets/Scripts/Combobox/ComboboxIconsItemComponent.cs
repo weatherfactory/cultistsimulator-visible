@@ -1,10 +1,7 @@
 ﻿namespace UIWidgets
 {
-	using UnityEngine;
-
 	/// <summary>
 	/// ComboboxIcons item component.
-	/// Demonstrate how to remove selected item - add Remove() call on Button.OnClick().
 	/// </summary>
 	public class ComboboxIconsItemComponent : ListViewIconsItemComponent
 	{
@@ -14,11 +11,12 @@
 		public ComboboxIcons ComboboxIcons;
 
 		/// <summary>
-		/// Remove this instance.
+		/// Deselect this instance.
 		/// </summary>
+		[System.Obsolete("Renamed to DeselectItem()")]
 		public void Remove()
 		{
-			ComboboxIcons.ListView.Deselect(Index);
+			DeselectItem();
 		}
 	}
 }

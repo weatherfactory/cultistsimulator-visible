@@ -41,6 +41,7 @@
 		/// <summary>
 		/// Show picker and log selected value.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void Test()
 		{
 			// create picker from template
@@ -53,7 +54,7 @@
 		void ValueSelected(string value)
 		{
 			CurrentValue = value;
-			Debug.Log("value: " + value);
+			Debug.Log(string.Format("value: {0}", value));
 		}
 
 		void Canceled()
@@ -64,6 +65,7 @@
 		/// <summary>
 		/// Show picker and display selected value.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void TestShow()
 		{
 			// create picker from template
@@ -76,7 +78,7 @@
 		void ShowValueSelected(string value)
 		{
 			CurrentValue = value;
-			InfoAdapter.text = "Value: " + value;
+			InfoAdapter.text = string.Format("Value: {0}", value);
 		}
 
 		void ShowCanceled()

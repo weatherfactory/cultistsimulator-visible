@@ -2,6 +2,7 @@
 {
 	using System;
 	using UnityEngine;
+	using UnityEngine.Serialization;
 
 	/// <summary>
 	/// Harbor order line.
@@ -42,34 +43,89 @@
 		public int SellPrice;
 
 		/// <summary>
-		/// The buy count.
+		/// The buy quantity.
 		/// </summary>
 		[SerializeField]
-		public int BuyCount;
+		[FormerlySerializedAs("BuyCount")]
+		public int BuyQuantity;
 
 		/// <summary>
-		/// The sell count.
+		/// The buy quantity.
 		/// </summary>
-		[SerializeField]
-		public int SellCount;
-
-		[SerializeField]
-		int count;
-
-		/// <summary>
-		/// Gets or sets the count.
-		/// </summary>
-		/// <value>The count.</value>
-		public int Count
+		[Obsolete("Renamed to BuyQuantity.")]
+		public int BuyCount
 		{
 			get
 			{
-				return count;
+				return BuyQuantity;
 			}
 
 			set
 			{
-				count = value;
+				BuyQuantity = value;
+			}
+		}
+
+		/// <summary>
+		/// The sell quantity.
+		/// </summary>
+		[SerializeField]
+		[FormerlySerializedAs("SellCount")]
+		public int SellQuantity;
+
+		/// <summary>
+		/// The buy quantity.
+		/// </summary>
+		[Obsolete("Renamed to SellQuantity.")]
+		public int SellCount
+		{
+			get
+			{
+				return SellQuantity;
+			}
+
+			set
+			{
+				SellQuantity = value;
+			}
+		}
+
+		[SerializeField]
+		[FormerlySerializedAs("count")]
+		int quantity;
+
+		/// <summary>
+		/// Gets or sets the quantity.
+		/// </summary>
+		/// <value>The quantity.</value>
+		public int Quantity
+		{
+			get
+			{
+				return quantity;
+			}
+
+			set
+			{
+				quantity = value;
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the quantity.
+		/// </summary>
+		/// <value>The quantity.</value>
+		[Obsolete("Renamed to Quantity.")]
+		public int Count
+		{
+			get
+			{
+				return quantity;
+			}
+
+			set
+			{
+				quantity = value;
 			}
 		}
 
@@ -79,15 +135,15 @@
 		/// <param name="newItem">New item.</param>
 		/// <param name="buyPrice">Buy price.</param>
 		/// <param name="sellPrice">Sell price.</param>
-		/// <param name="buyCount">Buy count.</param>
-		/// <param name="sellCount">Sell count.</param>
-		public HarborOrderLine(Item newItem, int buyPrice, int sellPrice, int buyCount, int sellCount)
+		/// <param name="buyQuantity">Buy quantity.</param>
+		/// <param name="sellQuantity">Sell quantity.</param>
+		public HarborOrderLine(Item newItem, int buyPrice, int sellPrice, int buyQuantity, int sellQuantity)
 		{
 			item = newItem;
 			BuyPrice = buyPrice;
 			SellPrice = sellPrice;
-			BuyCount = buyCount;
-			SellCount = sellCount;
+			BuyQuantity = buyQuantity;
+			SellQuantity = sellQuantity;
 		}
 	}
 }

@@ -3,13 +3,13 @@
 	using System;
 	using System.Collections;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 
 	/// <summary>
 	/// Dialog actions.
 	/// Key - button name.
 	/// Value - action on click.
 	/// </summary>
+	[Obsolete("No more used. Replaced with DialogButton[].")]
 	public class DialogActions : IList<DialogButton>
 	{
 		readonly List<DialogButton> buttons = new List<DialogButton>();
@@ -74,17 +74,18 @@
 		/// Gets an ICollection{string} containing the keys of the dictionary.
 		/// </summary>
 		/// <value>The keys.</value>
-		public ICollection<string> Keys
+		public List<string> Keys
 		{
 			get
 			{
-				return buttons.Convert<DialogButton, string>(GetKey);
-			}
-		}
+				var result = new List<string>();
+				foreach (var button in buttons)
+				{
+					result.Add(button.Label);
+				}
 
-		string GetKey(DialogButton item)
-		{
-			return item.Label;
+				return result;
+			}
 		}
 
 		/// <summary>
@@ -92,18 +93,18 @@
 		/// </summary>
 		/// <value>The values.</value>
 		[Obsolete("Should not be used.")]
-		public ICollection<Func<bool>> Values
+		public List<Func<bool>> Values
 		{
 			get
 			{
-				return buttons.Convert<DialogButton, Func<bool>>(GetValue);
-			}
-		}
+				var result = new List<Func<bool>>();
+				foreach (var button in buttons)
+				{
+					result.Add(button.ActionBool);
+				}
 
-		[Obsolete("Should not be used.")]
-		Func<bool> GetValue(DialogButton item)
-		{
-			return item.ActionBool;
+				return result;
+			}
 		}
 
 		/// <summary>
@@ -158,7 +159,7 @@
 
 			if (ContainsKey(key))
 			{
-				throw new ArgumentException(string.Format("An element with the same key ({0}) already exists.", key));
+				throw new ArgumentException(string.Format("An element with the same key ({0}) already exists.", key), "key");
 			}
 
 #pragma warning disable 0618
@@ -226,6 +227,26 @@
 		/// Returns an enumerator that iterates through the collection.
 		/// </summary>
 		/// <returns>Returns an enumerator that iterates through a collection.</returns>
+		public List<DialogButton>.Enumerator GetEnumerator()
+		{
+			return buttons.GetEnumerator();
+		}
+
+		/// <summary>
+		/// Returns an enumerator that iterates through the DialogActions{T}.
+		/// </summary>
+		/// <returns>A DialogActions{T}.Enumerator for the DialogActions{T}.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0601:Value type to reference type conversion causing boxing allocation", Justification = "Required.")]
+		IEnumerator<DialogButton> IEnumerable<DialogButton>.GetEnumerator()
+		{
+			return buttons.GetEnumerator();
+		}
+
+		/// <summary>
+		/// Returns an enumerator that iterates through the collection.
+		/// </summary>
+		/// <returns>Returns an enumerator that iterates through a collection.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0601:Value type to reference type conversion causing boxing allocation", Justification = "Required.")]
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return buttons.GetEnumerator();
@@ -359,15 +380,6 @@
 		public bool Remove(DialogButton item)
 		{
 			return buttons.Remove(item);
-		}
-
-		/// <summary>
-		/// Returns an enumerator that iterates through the DialogActions{T}.
-		/// </summary>
-		/// <returns>A DialogActions{T}.Enumerator for the DialogActions{T}.</returns>
-		IEnumerator<DialogButton> IEnumerable<DialogButton>.GetEnumerator()
-		{
-			return buttons.GetEnumerator();
 		}
 	}
 }

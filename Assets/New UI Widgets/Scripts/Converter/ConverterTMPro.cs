@@ -219,22 +219,22 @@
 		/// <summary>
 		/// Errors.
 		/// </summary>
-		public ReadOnlyCollection<Message> Errors
+		public List<Message> Errors
 		{
 			get
 			{
-				return errors.AsReadOnly();
+				return errors;
 			}
 		}
 
 		/// <summary>
 		/// Warnings.
 		/// </summary>
-		public ReadOnlyCollection<Message> Warnings
+		public List<Message> Warnings
 		{
 			get
 			{
-				return warnings.AsReadOnly();
+				return warnings;
 			}
 		}
 
@@ -331,7 +331,7 @@
 			var fonts = Resources.FindObjectsOfTypeAll<TMPro.TMP_FontAsset>();
 			if (fonts.Length == 0)
 			{
-				errors.Add(new Message("TextMeshPro fonts not found.\nPlease install with \"Window / TextMeshPro / Import TMPro Essential Resources\"."));
+				errors.Add(new Message("TextMeshPro fonts not found or fonts not loaded.\nPlease install with \"Window / TextMeshPro / Import TMPro Essential Resources\"\nor select font in the Project window to load it."));
 				return;
 			}
 
@@ -444,16 +444,10 @@
 		{
 			var components = new List<IUpgradeable>();
 			Compatibility.GetComponentsInChildren<IUpgradeable>(Target.transform, true, components);
-			components.ForEach(Upgrade);
-		}
-
-		/// <summary>
-		/// Upgrade component to the latest version.
-		/// </summary>
-		/// <param name="component">Component.</param>
-		protected static void Upgrade(IUpgradeable component)
-		{
-			component.Upgrade();
+			foreach (var c in components)
+			{
+				c.Upgrade();
+			}
 		}
 
 		/// <summary>

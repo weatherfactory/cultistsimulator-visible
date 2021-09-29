@@ -74,6 +74,7 @@
 			Init();
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		void Init()
 		{
 			if (isInited)
@@ -98,6 +99,7 @@
 		}
 
 		/// <inheritdoc/>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		protected override void OnDestroy()
 		{
 			if (Toggle != null)

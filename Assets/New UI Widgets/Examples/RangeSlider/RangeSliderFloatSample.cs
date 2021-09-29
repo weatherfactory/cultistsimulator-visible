@@ -29,6 +29,7 @@
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Start()
 		{
 			slider = GetComponent<RangeSliderFloat>();
@@ -50,11 +51,11 @@
 			{
 				if (slider.WholeNumberOfSteps)
 				{
-					TextAdapter.text = string.Format("Range: {0:000.00} - {1:000.00}; Step: {2:0.00}", min, max, slider.Step);
+					TextAdapter.text = string.Format("Range: {0} - {1}; Step: {2}", min.ToString("000.00"), max.ToString("000.00"), slider.Step.ToString("0.00"));
 				}
 				else
 				{
-					TextAdapter.text = string.Format("Range: {0:000.00} - {1:000.00}", min, max);
+					TextAdapter.text = string.Format("Range: {0} - {1}", min.ToString("000.00"), max.ToString("000.00"));
 				}
 			}
 		}
@@ -62,6 +63,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			if (slider != null)

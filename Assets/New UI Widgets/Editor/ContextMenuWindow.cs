@@ -262,7 +262,8 @@ namespace UIWidgets
 
 			GUILayout.Space(fields.Width(Spacing));
 
-			if (GUILayout.Button(show_action.boolValue ? "Hide Action" : "Show Action", GUILayout.Width(ActionWidth), GUILayout.Height(info.Height)))
+			var options = new GUILayoutOption[] { GUILayout.Width(ActionWidth), GUILayout.Height(info.Height) };
+			if (GUILayout.Button(show_action.boolValue ? "Hide Action" : "Show Action", options))
 			{
 				show_action.boolValue = !show_action.boolValue;
 			}

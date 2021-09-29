@@ -26,21 +26,44 @@
 
 			bool isEnabled;
 
-			/// <summary>
-			/// Allow looped ListView.
-			/// </summary>
+			/// <inheritdoc/>
 			public override bool AllowLoopedList
 			{
 				get
 				{
-					return !IsTileView && (GetScrollRectSize() < ListSize());
+					return !IsTileView && CanScroll;
 				}
 			}
 
-			/// <summary>
-			/// Determines whether is required center the list items.
-			/// </summary>
-			/// <returns><c>true</c> if required center the list items; otherwise, <c>false</c>.</returns>
+			/// <inheritdoc/>
+			public override bool CanScroll
+			{
+				get
+				{
+					return GetScrollRectSize() < ListSize();
+				}
+			}
+
+			/// <inheritdoc/>
+			public override void ToggleScrollToItemCenter(bool enable)
+			{
+				if (Owner.ScrollRect == null)
+				{
+					return;
+				}
+
+				if (enable)
+				{
+					DefaultInertia = Owner.ScrollRect.inertia;
+					Owner.ScrollRect.inertia = false;
+				}
+				else
+				{
+					Owner.ScrollRect.inertia = DefaultInertia;
+				}
+			}
+
+			/// <inheritdoc/>
 			public override bool IsRequiredCenterTheItems()
 			{
 				if (!Owner.CenterTheItems)
@@ -51,27 +74,34 @@
 				return GetScrollRectSize() > ListSize();
 			}
 
+			/// <inheritdoc/>
+			public override float ValidateScrollPosition(float position)
+			{
+				if (Owner.LoopedListAvailable)
+				{
+					return ValidatePosition(position);
+				}
+
+				return Mathf.Clamp(position, 0, ListSize() - GetScrollRectSize());
+			}
+
 			/// <summary>
 			/// Gets the size of the scroll.
 			/// </summary>
 			/// <returns>The scroll size.</returns>
 			protected float GetScrollRectSize()
 			{
-				return Owner.IsHorizontal() ? Owner.ScrollRectSize.x : Owner.ScrollRectSize.y;
+				var scale = Owner.Container.localScale;
+				return Owner.IsHorizontal() ? Owner.ScrollRectSize.x / scale.x : Owner.ScrollRectSize.y / scale.y;
 			}
 
-			/// <summary>
-			/// Get the top filler size to center the items.
-			/// </summary>
-			/// <returns>Size.</returns>
+			/// <inheritdoc/>
 			public override float CenteredFillerSize()
 			{
 				return (GetScrollRectSize() - ListSize() - Owner.LayoutBridge.GetFullMargin()) / 2f;
 			}
 
-			/// <summary>
-			/// Enable this instance.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void Enable()
 			{
 				if (isEnabled)
@@ -86,9 +116,7 @@
 				}
 			}
 
-			/// <summary>
-			/// Disable this instance.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void Disable()
 			{
 				if (!isEnabled)
@@ -103,17 +131,16 @@
 				}
 			}
 
-			/// <summary>
-			/// Reset position.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void ResetPosition()
 			{
+				Owner.ContainerAnchoredPosition = Vector2.zero;
+
 				if (Owner.scrollRect != null)
 				{
 					Owner.scrollRect.horizontal = Owner.IsHorizontal();
 					Owner.scrollRect.vertical = !Owner.IsHorizontal();
 					Owner.scrollRect.StopMovement();
-					Owner.scrollRect.content.anchoredPosition = Vector2.zero;
 				}
 			}
 
@@ -126,24 +153,19 @@
 				UpdateView();
 			}
 
-			/// <summary>
-			/// Validate position.
-			/// </summary>
+			/// <inheritdoc/>
 			protected override void ValidatePosition()
 			{
-				var base_position = GetPosition();
-				var position = ValidatePosition(base_position);
-				if (!Mathf.Approximately(base_position, position))
+				var current_position = GetPosition();
+				var position = ValidatePosition(current_position);
+
+				if (!Mathf.Approximately(current_position, position))
 				{
 					SetPosition(position, false);
 				}
 			}
 
-			/// <summary>
-			/// Validate position.
-			/// </summary>
-			/// <param name="position">Position.</param>
-			/// <returns>Validated position.</returns>
+			/// <inheritdoc/>
 			public override float ValidatePosition(float position)
 			{
 				if (!Owner.LoopedListAvailable)
@@ -178,11 +200,7 @@
 				return position;
 			}
 
-			/// <summary>
-			/// Sets the scroll value.
-			/// </summary>
-			/// <param name="value">Value.</param>
-			/// <param name="updateView">Update view if position changed.</param>
+			/// <inheritdoc/>
 			public override void SetPosition(float value, bool updateView = true)
 			{
 				if ((Owner.ScrollRect == null) || Owner.ScrollRect.content == null)
@@ -190,7 +208,7 @@
 					return;
 				}
 
-				var current_position = Owner.ScrollRect.content.anchoredPosition;
+				var current_position = Owner.ContainerAnchoredPosition;
 				var new_position = Owner.IsHorizontal()
 					? new Vector2(-value, current_position.y)
 					: new Vector2(current_position.x, value);
@@ -198,29 +216,18 @@
 				SetPosition(new_position, updateView);
 			}
 
-			/// <summary>
-			/// Sets the scroll value.
-			/// </summary>
-			/// <param name="newPosition">Value.</param>
-			/// <param name="updateView">Update view if position changed.</param>
+			/// <inheritdoc/>
 			public override void SetPosition(Vector2 newPosition, bool updateView = true)
 			{
-				if ((Owner.ScrollRect == null) || Owner.ScrollRect.content == null)
-				{
-					return;
-				}
-
 				newPosition = ValidatePosition(newPosition);
 
-				var current_position = Owner.ScrollRect.content.anchoredPosition;
+				var current_position = Owner.ContainerAnchoredPosition;
 				var diff = (Owner.IsHorizontal() && !Mathf.Approximately(current_position.x, newPosition.x))
 						|| (!Owner.IsHorizontal() && !Mathf.Approximately(current_position.y, newPosition.y));
 
-				Owner.ScrollRect.StopMovement();
-
 				if (diff)
 				{
-					Owner.ScrollRect.content.anchoredPosition = newPosition;
+					Owner.ContainerAnchoredPosition = newPosition;
 
 					if (updateView)
 					{
@@ -228,16 +235,16 @@
 					}
 				}
 
-				Owner.ScrollRect.StopMovement();
+				if (Owner.ScrollRect != null)
+				{
+					Owner.ScrollRect.StopMovement();
+				}
 			}
 
-			/// <summary>
-			/// Gets the scroll value in ListView direction.
-			/// </summary>
-			/// <returns>The scroll value.</returns>
+			/// <inheritdoc/>
 			public override Vector2 GetPositionVector()
 			{
-				var result = Owner.ScrollRect.content.anchoredPosition;
+				var result = Owner.ContainerAnchoredPosition;
 				if (Owner.IsHorizontal())
 				{
 					result.x = -result.x;
@@ -261,21 +268,20 @@
 				return result;
 			}
 
-			/// <summary>
-			/// Gets the scroll value in ListView direction.
-			/// </summary>
-			/// <returns>The scroll value.</returns>
+			/// <inheritdoc/>
 			public override float GetPosition()
 			{
 				var pos = GetPositionVector();
 				return Owner.IsHorizontal() ? pos.x : pos.y;
 			}
 
-			/// <summary>
-			/// Get scroll position for the specified index.
-			/// </summary>
-			/// <param name="index">Index.</param>
-			/// <returns>Scroll position</returns>
+			/// <inheritdoc/>
+			public override float GetCenterPosition()
+			{
+				return GetPosition() + (GetScrollRectSize() / 2f) - Owner.LayoutBridge.GetMargin();
+			}
+
+			/// <inheritdoc/>
 			public override Vector2 GetPosition(int index)
 			{
 				var scroll_main = GetPosition();
@@ -301,12 +307,14 @@
 				return position;
 			}
 
-			/// <summary>
-			/// Is visible item with specified index.
-			/// </summary>
-			/// <param name="index">Index.</param>
-			/// <param name="minVisiblePart">The minimal visible part of the item to consider item visible.</param>
-			/// <returns>true if item visible; false otherwise.</returns>
+			/// <inheritdoc/>
+			public override int ScrollPosition2Index(float position)
+			{
+				var v = Owner.IsHorizontal() ? new Vector2(position, 0f) : new Vector2(0f, position);
+				return GetNearestIndex(v, NearestType.Auto);
+			}
+
+			/// <inheritdoc/>
 			public override bool IsVisible(int index, float minVisiblePart)
 			{
 				if (!Owner.IsValid(index))
@@ -344,15 +352,14 @@
 				return false;
 			}
 
-			/// <summary>
-			/// Updates the layout bridge.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void UpdateLayout()
 			{
 				if (!Owner.Virtualization)
 				{
 					Owner.LayoutBridge.SetFiller(0f, 0f);
-					Owner.LayoutBridge.UpdateLayout();
+
+					// Owner.LayoutBridge.UpdateLayout();
 					return;
 				}
 
@@ -368,7 +375,7 @@
 					Owner.LayoutBridge.SetFiller(top, bottom);
 				}
 
-				Owner.LayoutBridge.UpdateLayout();
+				// Owner.LayoutBridge.UpdateLayout();
 			}
 		}
 	}

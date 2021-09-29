@@ -1,6 +1,6 @@
 ﻿namespace UIWidgets
 {
-	using System.Collections;
+	using System.Collections.Generic;
 	using UIWidgets.l10n;
 	using UnityEngine;
 	using UnityEngine.EventSystems;
@@ -33,13 +33,34 @@
 		[SerializeField]
 		public Vector3 DragInfoOffset = new Vector3(-5, 5, 0);
 
-		int index;
+		/// <summary>
+		/// Index of the dragged item.
+		/// </summary>
+		protected int Index;
 
 		/// <summary>
 		/// Delete item from ListView after drop.
 		/// </summary>
 		[SerializeField]
 		public bool DeleteAfterDrop = true;
+
+		TComponent source;
+
+		/// <summary>
+		/// Source component.
+		/// </summary>
+		public TComponent Source
+		{
+			get
+			{
+				if (source == null)
+				{
+					source = GetComponent<TComponent>();
+				}
+
+				return source;
+			}
+		}
 
 		/// <summary>
 		/// Start this instance.
@@ -104,10 +125,9 @@
 		/// <param name="eventData">Current event data.</param>
 		protected override void InitDrag(PointerEventData eventData)
 		{
-			var component = GetComponent<TComponent>();
-			component.IsDragged = true;
-			Data = GetData(component);
-			index = component.Index;
+			Source.IsDragged = true;
+			Data = GetData(Source);
+			Index = Source.Index;
 
 			ShowDragInfo();
 		}
@@ -169,13 +189,13 @@
 			{
 				var first_index = ListView.DataSource.IndexOf(Data);
 				var last_index = ListView.DataSource.LastIndexOf(Data);
-				if (index == first_index)
+				if (Index == first_index)
 				{
-					ListView.DataSource.RemoveAt(index);
+					ListView.DataSource.RemoveAt(Index);
 				}
-				else if ((index + 1) == last_index)
+				else if ((Index + 1) == last_index)
 				{
-					ListView.DataSource.RemoveAt(index + 1);
+					ListView.DataSource.RemoveAt(Index + 1);
 				}
 				else
 				{
@@ -183,8 +203,7 @@
 				}
 			}
 
-			var component = GetComponent<TComponent>();
-			component.IsDragged = false;
+			Source.IsDragged = false;
 
 			base.Dropped(success);
 		}

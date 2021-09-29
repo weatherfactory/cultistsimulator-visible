@@ -27,6 +27,7 @@
 		/// <summary>
 		/// Show dialog.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void ShowDialog()
 		{
 			ContentParent = CustomContent.parent;
@@ -34,10 +35,11 @@
 
 			var actions = new DialogButton[]
 			{
-				new DialogButton("Close", Dialog.AlwaysClose),
+				new DialogButton("Close", DialogBase.DefaultClose),
 			};
 
-			DialogTemplate.Clone().Show(
+			var dialog = DialogTemplate.Clone();
+			dialog.Show(
 				title: "Dialog With Custom Content",
 				buttons: actions,
 				focusButton: "Close",

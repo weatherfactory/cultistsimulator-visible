@@ -28,34 +28,42 @@
 		{
 			var friendly_name = type.Name;
 
-			if (type.IsGenericType)
+			if (!type.IsGenericType)
 			{
-				var backtick_index = friendly_name.IndexOf('`');
-				if (backtick_index > 0)
-				{
-					friendly_name = friendly_name.Remove(backtick_index);
-				}
-
-				var arguments = new StringBuilder();
-				arguments.Append('<');
-
-				var type_parameters = type.GetGenericArguments();
-				for (int i = 0; i < type_parameters.Length; ++i)
-				{
-					var type_param_name = GetFriendlyTypeName(type_parameters[i]);
-					if (i > 0)
-					{
-						arguments.Append(',');
-					}
-
-					arguments.Append(type_param_name);
-				}
-
-				arguments.Append('>');
-				friendly_name += arguments.ToString();
+				return string.IsNullOrEmpty(type.Namespace) ? friendly_name : string.Format("{0}.{1}", type.Namespace, friendly_name);
 			}
 
-			return string.IsNullOrEmpty(type.Namespace) ? friendly_name : type.Namespace + "." + friendly_name;
+			var backtick_index = friendly_name.IndexOf('`');
+			if (backtick_index > 0)
+			{
+				friendly_name = friendly_name.Remove(backtick_index);
+			}
+
+			var sb = new StringBuilder();
+			if (!string.IsNullOrEmpty(type.Namespace))
+			{
+				sb.Append(type.Namespace);
+				sb.Append(".");
+			}
+
+			sb.Append(friendly_name);
+			sb.Append('<');
+
+			var type_parameters = type.GetGenericArguments();
+			for (int i = 0; i < type_parameters.Length; ++i)
+			{
+				var type_param_name = GetFriendlyTypeName(type_parameters[i]);
+				if (i > 0)
+				{
+					sb.Append(',');
+				}
+
+				sb.Append(type_param_name);
+			}
+
+			sb.Append('>');
+
+			return sb.ToString();
 		}
 
 		/// <summary>
@@ -198,7 +206,7 @@
 			var path = AssetDatabase.GUIDToAssetPath(guid);
 			if (string.IsNullOrEmpty(path))
 			{
-				Debug.LogError("Path not found for the GUID: " + guid);
+				Debug.LogWarning("Path not found for the GUID: " + guid);
 				return null;
 			}
 
@@ -278,7 +286,7 @@
 			var guids = AssetDatabase.FindAssets(key);
 			if (guids.Length == 0)
 			{
-				Debug.LogError("Label not found: " + label);
+				Debug.LogWarning("Label not found: " + label);
 				return null;
 			}
 
@@ -422,6 +430,7 @@
 		/// Replace Close button callback on Cancel instead of the Hide for the Dialog components in the specified GameObject.
 		/// </summary>
 		/// <param name="go">GameObject.</param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public static void FixDialogCloseButton(GameObject go)
 		{
 			var dialogs = go.GetComponentsInChildren<Dialog>(true);

@@ -16,6 +16,7 @@
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Start()
 		{
 			Tree.NodeSelected.AddListener(NodeSelected);
@@ -28,7 +29,7 @@
 		/// <param name="node">Node.</param>
 		public virtual void NodeSelected(TreeNode<TreeViewItem> node)
 		{
-			Debug.Log(node.Item.Name + " selected");
+			Debug.Log(string.Format("{0} selected", node.Item.Name));
 		}
 
 		/// <summary>
@@ -37,12 +38,13 @@
 		/// <param name="node">Node.</param>
 		public virtual void NodeDeselected(TreeNode<TreeViewItem> node)
 		{
-			Debug.Log(node.Item.Name + " deselected");
+			Debug.Log(string.Format("{0} deselected", node.Item.Name));
 		}
 
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			if (Tree != null)

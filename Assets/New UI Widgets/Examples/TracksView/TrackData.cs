@@ -8,7 +8,7 @@
 	/// Track data.
 	/// </summary>
 	[Serializable]
-	public class TrackData : ITrackData<DateTime>, INotifyPropertyChanged
+	public class TrackData : ITrackData<DateTime>, IObservable, INotifyPropertyChanged
 	{
 		[SerializeField]
 		DateTime startPoint;
@@ -28,7 +28,7 @@
 				if (startPoint != value)
 				{
 					startPoint = value;
-					Changed("StartPoint");
+					NotifyPropertyChanged("StartPoint");
 				}
 			}
 		}
@@ -51,7 +51,7 @@
 				if (endPoint != value)
 				{
 					endPoint = value;
-					Changed("EndPoint");
+					NotifyPropertyChanged("EndPoint");
 				}
 			}
 		}
@@ -121,7 +121,7 @@
 				if (name != value)
 				{
 					name = value;
-					Changed("Name");
+					NotifyPropertyChanged("Name");
 				}
 			}
 		}
@@ -144,7 +144,7 @@
 				if (description != value)
 				{
 					description = value;
-					Changed("Description");
+					NotifyPropertyChanged("Description");
 				}
 			}
 		}
@@ -161,15 +161,30 @@
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = (x, y) => { };
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Raise PropertyChanged event.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
-		protected void Changed(string propertyName)
+		protected void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 
 		/// <summary>
@@ -205,7 +220,7 @@
 			{
 				startPoint = newStart;
 				endPoint = newEnd;
-				Changed("StartPoint");
+				NotifyPropertyChanged("StartPoint");
 			}
 		}
 

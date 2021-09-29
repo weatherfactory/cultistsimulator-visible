@@ -1,8 +1,7 @@
-﻿namespace UIWidgets.Examples
+﻿namespace UIWidgets
 {
 	using System;
 	using System.Collections.Generic;
-	using UIWidgets;
 	using UIWidgets.Styles;
 	using UnityEngine;
 	using UnityEngine.UI;
@@ -156,13 +155,19 @@
 		/// AdditionalButtons parent.
 		/// </summary>
 		[NonSerialized]
-		protected Transform Parent;
+		protected RectTransform OriginalParent;
 
 		/// <summary>
 		/// Sibling index.
 		/// </summary>
 		[NonSerialized]
 		protected int SiblingIndex;
+
+		/// <summary>
+		/// Parent canvas.
+		/// </summary>
+		[SerializeField]
+		protected RectTransform ParentCanvas;
 
 		/// <summary>
 		/// Start this instance.
@@ -310,16 +315,20 @@
 
 			IsOpen = true;
 
-			var parent = Utilities.FindTopmostCanvas(gameObject.transform);
-			if (parent != null)
+			if (ParentCanvas == null)
 			{
-				Parent = transform.parent;
-				transform.SetParent(parent, true);
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+
+			if (ParentCanvas != null)
+			{
+				OriginalParent = transform.parent as RectTransform;
+				transform.SetParent(ParentCanvas, true);
 			}
 
 			SiblingIndex = transform.GetSiblingIndex();
 
-			ModalKey = ModalHelper.Open(this, ModalSprite, ModalColor, Close);
+			ModalKey = ModalHelper.Open(this, ModalSprite, ModalColor, Close, ParentCanvas);
 
 			transform.SetAsLastSibling();
 			AdditionalButtonsBlock.SetActive(true);
@@ -344,7 +353,7 @@
 
 			AdditionalButtonsBlock.SetActive(false);
 
-			transform.SetParent(Parent, true);
+			transform.SetParent(OriginalParent, true);
 			transform.SetSiblingIndex(SiblingIndex);
 		}
 
@@ -398,5 +407,29 @@
 			return true;
 		}
 		#endregion
+
+		#if UNITY_EDITOR
+		/// <summary>
+		/// Validate this instance.
+		/// </summary>
+		protected virtual void OnValidate()
+		{
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+
+		/// <summary>
+		/// Reset this instance.
+		/// </summary>
+		protected virtual void Reset()
+		{
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+		#endif
 	}
 }

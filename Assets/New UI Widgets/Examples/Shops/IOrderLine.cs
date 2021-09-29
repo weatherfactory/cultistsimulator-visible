@@ -12,9 +12,9 @@
 		Item Item { get; set; }
 
 		/// <summary>
-		/// Gets or sets the count.
+		/// Gets or sets the quantity.
 		/// </summary>
-		/// <value>The count.</value>
-		int Count { get; set; }
+		/// <value>The quantity.</value>
+		int Quantity { get; set; }
 	}
 }

@@ -413,6 +413,7 @@ namespace UIWidgets
 		/// <summary>
 		/// Set text value.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0102:Non-overridden virtual method call on value type", Justification = "Required.")]
 		protected virtual void SetTextValue()
 		{
 			InputFieldAdapter.Value = SpinnerValue.ToString();
@@ -422,6 +423,7 @@ namespace UIWidgets
 		/// Hold Plus coroutine.
 		/// </summary>
 		/// <returns>IEnumerator.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		protected virtual IEnumerator HoldPlus()
 		{
 			if (AllowHold)
@@ -439,6 +441,7 @@ namespace UIWidgets
 		/// Hold Minus coroutine.
 		/// </summary>
 		/// <returns>IEnumerator.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		protected virtual IEnumerator HoldMinus()
 		{
 			if (AllowHold)

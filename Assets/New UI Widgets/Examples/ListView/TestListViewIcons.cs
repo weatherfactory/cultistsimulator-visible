@@ -25,6 +25,7 @@
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void Start()
 		{
 			ListView.OnSelectObject.AddListener(Notification);
@@ -33,6 +34,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void OnDestroy()
 		{
 			ListView.OnSelectObject.RemoveListener(Notification);
@@ -51,7 +53,7 @@
 
 			var message = ListView.SelectedIndex == -1
 				? "Nothing selected"
-				: "Selected: " + ListView.SelectedItem.Name;
+				: string.Format("Selected: {0}", ListView.SelectedItem.Name);
 
 			NotifyTemplate.Clone().Show(
 				message,

@@ -80,13 +80,19 @@
 				PrefabUtility.RecordPrefabInstancePropertyModifications(target);
 
 				target.GetComponents(Components);
-				Components.ForEach(PrefabUtility.RecordPrefabInstancePropertyModifications);
+
+				foreach (var c in Components)
+				{
+					PrefabUtility.RecordPrefabInstancePropertyModifications(c);
+				}
+
 				Components.Clear();
 			}
 
-			foreach (Transform child in target.transform)
+			var t = target.transform;
+			for (int i = 0; i < t.childCount; i++)
 			{
-				RecordPrefabInstanceModifications(child.gameObject);
+				RecordPrefabInstanceModifications(t.GetChild(i).gameObject);
 			}
 		}
 

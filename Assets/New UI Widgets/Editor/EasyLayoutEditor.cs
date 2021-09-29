@@ -13,14 +13,14 @@ namespace EasyLayoutNS
 	{
 		void Upgrade()
 		{
-			Array.ForEach(targets, x =>
+			foreach (var t in targets)
 			{
-				var l = x as EasyLayout;
+				var l = t as EasyLayout;
 				if (l != null)
 				{
 					l.Upgrade();
 				}
-			});
+			}
 		}
 
 		static readonly Dictionary<string, Func<SerializedProperty, bool>> IsCompactOrGrid = new Dictionary<string, Func<SerializedProperty, bool>>()
@@ -140,9 +140,8 @@ namespace EasyLayoutNS
 			{
 				var script = (EasyLayout)target;
 
-				EditorGUILayout.LabelField("Block size", string.Format("{0}x{1}", script.BlockSize.x, script.BlockSize.y));
-				EditorGUILayout.LabelField("UI size", string.Format("{0}x{1}", script.UISize.x, script.UISize.y));
-				EditorGUILayout.LabelField("Size", string.Format("{0}x{1}", script.Size.x, script.Size.y));
+				EditorGUILayout.LabelField("Block size", string.Format("{0}x{1}", script.BlockSize.x.ToString(), script.BlockSize.y.ToString()));
+				EditorGUILayout.LabelField("UI size", string.Format("{0}x{1}", script.UISize.x.ToString(), script.UISize.y.ToString()));
 			}
 		}
 	}

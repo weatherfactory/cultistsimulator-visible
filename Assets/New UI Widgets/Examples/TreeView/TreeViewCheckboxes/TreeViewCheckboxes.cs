@@ -21,9 +21,10 @@
 		/// Add callback.
 		/// </summary>
 		/// <param name="item">Item.</param>
-		protected override void AddCallback(ListViewItem item)
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected override void AddCallback(TreeViewCheckboxesComponent item)
 		{
-			(item as TreeViewCheckboxesComponent).NodeCheckboxChanged.AddListener(NodeCheckboxChanged);
+			item.NodeCheckboxChanged.AddListener(NodeCheckboxChanged);
 			base.AddCallback(item);
 		}
 
@@ -31,9 +32,10 @@
 		/// Remove callback.
 		/// </summary>
 		/// <param name="item">Item.</param>
-		protected override void RemoveCallback(ListViewItem item)
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected override void RemoveCallback(TreeViewCheckboxesComponent item)
 		{
-			(item as TreeViewCheckboxesComponent).NodeCheckboxChanged.RemoveListener(NodeCheckboxChanged);
+			item.NodeCheckboxChanged.RemoveListener(NodeCheckboxChanged);
 			base.RemoveCallback(item);
 		}
 	}

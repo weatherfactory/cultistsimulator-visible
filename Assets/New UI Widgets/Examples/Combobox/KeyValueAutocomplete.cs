@@ -15,7 +15,7 @@
 		/// <returns>true if beginning of value matches the Query; otherwise, false.</returns>
 		public override bool Startswith(KeyValuePair<string, string> value)
 		{
-			var str = value.Key + ";" + value.Value;
+			var str = GetStringValue(value);
 			return UtilitiesCompare.StartsWith(str, Query, CaseSensitive);
 		}
 
@@ -26,7 +26,7 @@
 		/// <returns>true if the Query occurs within value parameter; otherwise, false.</returns>
 		public override bool Contains(KeyValuePair<string, string> value)
 		{
-			var str = value.Key + ";" + value.Value;
+			var str = GetStringValue(value);
 			return UtilitiesCompare.Contains(str, Query, CaseSensitive);
 		}
 
@@ -37,7 +37,7 @@
 		/// <param name="value">Value.</param>
 		protected override string GetStringValue(KeyValuePair<string, string> value)
 		{
-			return value.Key + ";" + value.Value;
+			return string.Format("0;{1}", value.Key, value.Value);
 		}
 	}
 }

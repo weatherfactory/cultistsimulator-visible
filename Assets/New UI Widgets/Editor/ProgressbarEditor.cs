@@ -38,11 +38,11 @@ namespace UIWidgets
 		/// </summary>
 		protected void OnEnable()
 		{
-			Array.ForEach(properties, x =>
+			foreach (var p in properties)
 			{
-				var p = serializedObject.FindProperty(x);
-				serializedProperties.Add(x, p);
-			});
+				var sp = serializedObject.FindProperty(p);
+				serializedProperties.Add(p, sp);
+			}
 		}
 
 		/// <summary>
@@ -85,7 +85,10 @@ namespace UIWidgets
 
 			serializedObject.ApplyModifiedProperties();
 
-			Array.ForEach(targets, x => ((Progressbar)x).Refresh());
+			foreach (var t in targets)
+			{
+				((Progressbar)t).Refresh();
+			}
 
 			ValidateTargets();
 		}

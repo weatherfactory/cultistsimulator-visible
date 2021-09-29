@@ -50,16 +50,25 @@
 		/// <returns>Nodes.</returns>
 		public static ObservableList<TreeNode<TreeViewItem>> GenerateTreeNodes(List<int> items, string nameStartsWith = "Node ", bool isExpanded = true, int start = 0)
 		{
-			return UtilitiesCollections.CreateList(items[start], x =>
+			var count = items[start];
+			var result = new ObservableList<TreeNode<TreeViewItem>>(true, count);
+
+			result.BeginUpdate();
+
+			for (int i = 0; i < count; i++)
 			{
-				var item_name = nameStartsWith + x;
+				var item_name = string.Format("{0}{1}", nameStartsWith, (i + 1).ToString());
 				var item = new TreeViewItem(item_name, null);
 				var nodes = items.Count > (start + 1)
-					? GenerateTreeNodes(items, item_name + " - ", isExpanded, start + 1)
+					? GenerateTreeNodes(items, string.Format("{0} - ", item_name), isExpanded, start + 1)
 					: null;
 
-				return new TreeNode<TreeViewItem>(item, nodes, isExpanded);
-			});
+				result.Add(new TreeNode<TreeViewItem>(item, nodes, isExpanded));
+			}
+
+			result.EndUpdate();
+
+			return result;
 		}
 	}
 }

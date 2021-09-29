@@ -2,11 +2,9 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UIWidgets.l10n;
 	using UIWidgets.Styles;
 	using UnityEngine;
-	using UnityEngine.Events;
 	using UnityEngine.EventSystems;
 	using UnityEngine.UI;
 
@@ -436,11 +434,19 @@
 			}
 			else
 			{
-				tabObjects.ForEach(DeactivateTab);
+				foreach (var tab in tabObjects)
+				{
+					DeactivateTab(tab);
+				}
+
 				tabObjects[index].TabObject.SetActive(true);
 			}
 
-			Buttons.ForEach(DefaultState);
+			foreach (var button in Buttons)
+			{
+				DefaultState(button);
+			}
+
 			Buttons[index].Active();
 
 			SelectedTab = tabObjects[index];
@@ -479,7 +485,10 @@
 		/// </summary>
 		protected virtual void CreateButtons()
 		{
-			Buttons.ForEach(EnableInteractable);
+			foreach (var button in Buttons)
+			{
+				EnableInteractable(button);
+			}
 
 			if (tabObjects.Length > Buttons.Count)
 			{
@@ -504,7 +513,10 @@
 				}
 			}
 
-			Buttons.ForEach(SetButtonName);
+			for (int i = 0; i < Buttons.Count; i++)
+			{
+				SetButtonName(Buttons[i], i);
+			}
 		}
 
 		/// <summary>

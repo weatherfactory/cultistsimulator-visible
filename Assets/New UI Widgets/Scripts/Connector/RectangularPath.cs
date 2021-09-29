@@ -7,7 +7,7 @@
 	/// <summary>
 	/// Path builder for the rectangular line.
 	/// </summary>
-	public struct RectangularPath
+	public class RectangularPath
 	{
 		List<Vector3> points;
 
@@ -25,7 +25,7 @@
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="RectangularPath"/> struct.
+		/// Initializes a new instance of the <see cref="RectangularPath"/> class.
 		/// </summary>
 		/// <param name="points">Points/</param>
 		public RectangularPath(List<Vector3> points)

@@ -30,7 +30,7 @@
 			/// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a hash table.</returns>
 			public override int GetHashCode()
 			{
-				return Mathf.RoundToInt(Offset) ^ Mathf.RoundToInt(Spacing);
+				return Offset.GetHashCode() ^ Spacing.GetHashCode();
 			}
 
 			/// <summary>
@@ -89,74 +89,65 @@
 		/// <summary>
 		/// Sizes of blocks at the sub axis.
 		/// </summary>
-		protected List<float> SubAxisSizes = new List<float>();
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="EasyLayoutFlexOrStaggered"/> class.
-		/// </summary>
-		/// <param name="layout">Layout.</param>
-		protected EasyLayoutFlexOrStaggered(EasyLayout layout)
-				: base(layout)
-		{
-		}
+		protected List<GroupSize> SubAxisSizes = new List<GroupSize>();
 
 		/// <summary>
 		/// Calculate sizes of the elements.
 		/// </summary>
 		protected override void CalculateSizes()
 		{
-			if (Layout.IsHorizontal)
+			if (IsHorizontal)
 			{
-				if (Layout.ChildrenWidth == ChildrenSize.FitContainer)
+				if (ChildrenWidth == ChildrenSize.FitContainer)
 				{
 					ResizeWidthToFit(false);
 				}
-				else if (Layout.ChildrenWidth == ChildrenSize.SetPreferredAndFitContainer)
+				else if (ChildrenWidth == ChildrenSize.SetPreferredAndFitContainer)
 				{
 					ResizeWidthToFit(true);
 				}
-				else if (Layout.ChildrenWidth == ChildrenSize.ShrinkOnOverflow)
+				else if (ChildrenWidth == ChildrenSize.ShrinkOnOverflow)
 				{
 					ShrinkWidthToFit();
 				}
 
-				if (Layout.ChildrenHeight == ChildrenSize.FitContainer)
+				if (ChildrenHeight == ChildrenSize.FitContainer)
 				{
 					ResizeRowHeightToFit(false);
 				}
-				else if (Layout.ChildrenHeight == ChildrenSize.SetPreferredAndFitContainer)
+				else if (ChildrenHeight == ChildrenSize.SetPreferredAndFitContainer)
 				{
 					ResizeRowHeightToFit(true);
 				}
-				else if (Layout.ChildrenHeight == ChildrenSize.ShrinkOnOverflow)
+				else if (ChildrenHeight == ChildrenSize.ShrinkOnOverflow)
 				{
 					ShrinkRowHeightToFit();
 				}
 			}
 			else
 			{
-				if (Layout.ChildrenWidth == ChildrenSize.FitContainer)
+				if (ChildrenWidth == ChildrenSize.FitContainer)
 				{
 					ResizeColumnWidthToFit(false);
 				}
-				else if (Layout.ChildrenWidth == ChildrenSize.SetPreferredAndFitContainer)
+				else if (ChildrenWidth == ChildrenSize.SetPreferredAndFitContainer)
 				{
 					ResizeColumnWidthToFit(true);
 				}
-				else if (Layout.ChildrenWidth == ChildrenSize.ShrinkOnOverflow)
+				else if (ChildrenWidth == ChildrenSize.ShrinkOnOverflow)
 				{
 					ShrinkColumnWidthToFit();
 				}
 
-				if (Layout.ChildrenHeight == ChildrenSize.FitContainer)
+				if (ChildrenHeight == ChildrenSize.FitContainer)
 				{
 					ResizeHeightToFit(false);
 				}
-				else if (Layout.ChildrenHeight == ChildrenSize.SetPreferredAndFitContainer)
+				else if (ChildrenHeight == ChildrenSize.SetPreferredAndFitContainer)
 				{
 					ResizeHeightToFit(true);
 				}
-				else if (Layout.ChildrenHeight == ChildrenSize.ShrinkOnOverflow)
+				else if (ChildrenHeight == ChildrenSize.ShrinkOnOverflow)
 				{
 					ShrinkHeightToFit();
 				}
@@ -165,29 +156,29 @@
 
 		void ResizeColumnWidthToFit(bool increaseOnly)
 		{
-			ResizeToFit(Layout.InternalSize.x, ElementsGroup, Layout.Spacing.x, RectTransform.Axis.Horizontal, increaseOnly);
+			ResizeToFit(InternalSize.x, ElementsGroup, Spacing.x, RectTransform.Axis.Horizontal, increaseOnly);
 		}
 
 		void ShrinkColumnWidthToFit()
 		{
-			ShrinkToFit(Layout.InternalSize.x, ElementsGroup, Layout.Spacing.x, RectTransform.Axis.Horizontal);
+			ShrinkToFit(InternalSize.x, ElementsGroup, Spacing.x, RectTransform.Axis.Horizontal);
 		}
 
 		void ResizeHeightToFit(bool increaseOnly)
 		{
-			var height = Layout.InternalSize.y;
+			var height = InternalSize.y;
 			for (int column = 0; column < ElementsGroup.Columns; column++)
 			{
-				ResizeToFit(height, ElementsGroup.GetColumn(column), Layout.Spacing.y, RectTransform.Axis.Vertical, increaseOnly);
+				ResizeToFit(height, ElementsGroup.GetColumn(column), Spacing.y, RectTransform.Axis.Vertical, increaseOnly);
 			}
 		}
 
 		void ShrinkHeightToFit()
 		{
-			var height = Layout.InternalSize.y;
+			var height = InternalSize.y;
 			for (int column = 0; column < ElementsGroup.Columns; column++)
 			{
-				ShrinkToFit(height, ElementsGroup.GetColumn(column), Layout.Spacing.y, RectTransform.Axis.Vertical);
+				ShrinkToFit(height, ElementsGroup.GetColumn(column), Spacing.y, RectTransform.Axis.Vertical);
 			}
 		}
 
@@ -198,19 +189,19 @@
 		/// <returns>Converted input.</returns>
 		protected Vector2 ByAxis(Vector2 input)
 		{
-			return Layout.IsHorizontal ? input : new Vector2(input.y, input.x);
+			return IsHorizontal ? input : new Vector2(input.y, input.x);
 		}
 
 		/// <summary>
 		/// Calculate group size.
 		/// </summary>
 		/// <returns>Size.</returns>
-		protected override Vector2 CalculateGroupSize()
+		protected override GroupSize CalculateGroupSize()
 		{
-			var spacing = ByAxis(Layout.Spacing);
-			var padding = ByAxis(new Vector2(Layout.PaddingInner.Horizontal, Layout.PaddingInner.Vertical));
+			var spacing = ByAxis(Spacing);
+			var padding = ByAxis(new Vector2(PaddingInner.Horizontal, PaddingInner.Vertical));
 
-			return CalculateGroupSize(Layout.IsHorizontal, spacing, padding);
+			return CalculateGroupSize(IsHorizontal, spacing, padding);
 		}
 
 		/// <summary>
@@ -220,15 +211,16 @@
 		protected override void CalculatePositions(Vector2 size)
 		{
 			var sub_axis = SubAxisData();
-			var axis_direction = Layout.IsHorizontal ? -1f : 1f;
+			var axis_direction = IsHorizontal ? -1f : 1f;
 
 			var sub_position = sub_axis.Offset * axis_direction;
-			var count = Layout.IsHorizontal ? ElementsGroup.Rows : ElementsGroup.Columns;
+			var count = IsHorizontal ? ElementsGroup.Rows : ElementsGroup.Columns;
 			for (int i = 0; i < count; i++)
 			{
-				CalculatePositions(i, sub_position, SubAxisSizes[i]);
+				var sub_size = IsHorizontal ? SubAxisSizes[i].Height : SubAxisSizes[i].Width;
+				CalculatePositions(i, sub_position, sub_size);
 
-				sub_position += (SubAxisSizes[i] + sub_axis.Spacing) * axis_direction;
+				sub_position += (sub_size + sub_axis.Spacing) * axis_direction;
 			}
 		}
 
@@ -239,14 +231,15 @@
 		{
 			SubAxisSizes.Clear();
 
-			var count = Layout.IsHorizontal ? ElementsGroup.Rows : ElementsGroup.Columns;
+			var count = IsHorizontal ? ElementsGroup.Rows : ElementsGroup.Columns;
 			for (int i = 0; i < count; i++)
 			{
-				var block = Layout.IsHorizontal ? ElementsGroup.GetRow(i) : ElementsGroup.GetColumn(i);
-				var block_size = 0f;
+				var block = IsHorizontal ? ElementsGroup.GetRow(i) : ElementsGroup.GetColumn(i);
+				var block_size = default(GroupSize);
+
 				foreach (var element in block)
 				{
-					block_size = Mathf.Max(block_size, element.SubAxisSize);
+					block_size.Max(element);
 				}
 
 				SubAxisSizes.Add(block_size);
@@ -265,7 +258,7 @@
 			var axis = new AxisData()
 			{
 				Offset = BaseOffset(isMainAxis),
-				Spacing = isMainAxis ? ByAxis(Layout.Spacing).x : ByAxis(Layout.Spacing).y,
+				Spacing = isMainAxis ? ByAxis(Spacing).x : ByAxis(Spacing).y,
 			};
 
 			return axis;
@@ -278,11 +271,9 @@
 		/// <returns>Base offset.</returns>
 		protected float BaseOffset(bool isMainAxis)
 		{
-			var rectTransform = Layout.transform as RectTransform;
-
-			return Layout.IsHorizontal == isMainAxis
-				? (rectTransform.rect.width * (-rectTransform.pivot.x)) + Layout.GetMarginLeft()
-				: (rectTransform.rect.height * (rectTransform.pivot.y - 1f)) + Layout.GetMarginTop();
+			return IsHorizontal == isMainAxis
+				? (Target.rect.width * (-Target.pivot.x)) + MarginLeft
+				: (Target.rect.height * (Target.pivot.y - 1f)) + MarginTop;
 		}
 
 		/// <summary>
@@ -293,7 +284,8 @@
 		{
 			CalculateSubAxisSizes();
 
-			return GetAxisData(false, SubAxisSizes.Count, Sum(SubAxisSizes));
+			var size = Sum(SubAxisSizes);
+			return GetAxisData(false, SubAxisSizes.Count, IsHorizontal ? size.Height : size.Width);
 		}
 
 		/// <summary>
@@ -303,9 +295,9 @@
 		/// <returns>Main axis data.</returns>
 		protected virtual AxisData MainAxisData(int blockIndex)
 		{
-			var block = Layout.IsHorizontal ? ElementsGroup.GetRow(blockIndex) : ElementsGroup.GetColumn(blockIndex);
-
+			var block = IsHorizontal ? ElementsGroup.GetRow(blockIndex) : ElementsGroup.GetColumn(blockIndex);
 			var size = 0f;
+
 			foreach (var element in block)
 			{
 				size += element.AxisSize;
@@ -322,9 +314,9 @@
 		/// <param name="maxSubSize">Maximum size of the sub axis.</param>
 		protected void CalculatePositions(int blockIndex, float subAxisOffset, float maxSubSize)
 		{
-			var block = Layout.IsHorizontal ? ElementsGroup.GetRow(blockIndex) : ElementsGroup.GetColumn(blockIndex);
+			var block = IsHorizontal ? ElementsGroup.GetRow(blockIndex) : ElementsGroup.GetColumn(blockIndex);
 
-			var axis_direction = Layout.IsHorizontal ? 1f : -1f;
+			var axis_direction = IsHorizontal ? 1f : -1f;
 			var axis = MainAxisData(blockIndex);
 
 			var position = new Vector2(axis.Offset, subAxisOffset);

@@ -1,10 +1,12 @@
 ﻿namespace UIWidgets
 {
+	using System;
+
 	/// <summary>
 	/// List node.
 	/// </summary>
 	/// <typeparam name="TItem">Type of item.</typeparam>
-	public class ListNode<TItem>
+	public class ListNode<TItem> : IEquatable<ListNode<TItem>>
 	{
 		/// <summary>
 		/// The depth.
@@ -28,24 +30,71 @@
 		}
 
 		/// <summary>
+		/// Replace fields with new data.
+		/// </summary>
+		/// <param name="node">Node.</param>
+		/// <param name="depth">Depth.</param>
+		public void Replace(TreeNode<TItem> node, int depth)
+		{
+			Node = node;
+			Depth = depth;
+		}
+
+		/// <summary>
 		/// Determines whether the specified object is equal to the current object.
 		/// </summary>
-		/// <param name="obj">The object to compare with the current object.</param>
+		/// <param name="other">The object to compare with the current object.</param>
 		/// <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
-		public override bool Equals(object obj)
+		public override bool Equals(object other)
 		{
-			var nodeObj = obj as ListNode<TItem>;
-			if (nodeObj == null)
+			if (other is ListNode<TItem>)
 			{
-				return this == null;
+				return Equals((ListNode<TItem>)other);
 			}
 
-			if (this == null)
+			return false;
+		}
+
+		/// <summary>
+		/// Determines whether the specified object is equal to the current object.
+		/// </summary>
+		/// <param name="other">The object to compare with the current object.</param>
+		/// <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+		public virtual bool Equals(ListNode<TItem> other)
+		{
+			if (ReferenceEquals(other, null))
 			{
 				return false;
 			}
 
-			return Node.Equals(nodeObj.Node);
+			return (Depth == other.Depth) && ReferenceEquals(Node, other.Node);
+		}
+
+		/// <summary>
+		/// Returns true if the nodes items are equal, false otherwise.
+		/// </summary>
+		/// <param name="a">The first object.</param>
+		/// <param name="b">The second object.</param>
+		/// <returns>true if the objects equal; otherwise, false.</returns>
+		public static bool operator ==(ListNode<TItem> a, ListNode<TItem> b)
+		{
+			if (ReferenceEquals(a, null))
+			{
+				return ReferenceEquals(b, null);
+			}
+
+			return a.Equals(b);
+		}
+
+		/// <summary>
+		/// Returns true if the nodes items are not equal, false otherwise.
+		/// </summary>
+		/// <param name="a">The first object.</param>
+		/// <param name="b">The second object.</param>
+		/// <returns>true if the objects not equal; otherwise, false.</returns>
+		public static bool operator !=(ListNode<TItem> a, ListNode<TItem> b)
+		{
+			return !(a == b);
 		}
 
 		/// <summary>
@@ -54,52 +103,16 @@
 		/// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a hash table.</returns>
 		public override int GetHashCode()
 		{
-			return base.GetHashCode();
+			return Depth ^ Node.GetHashCode();
 		}
 
 		/// <summary>
-		/// Returns true if the nodes items are equal, false otherwise.
+		/// Convert this instance to string.
 		/// </summary>
-		/// <param name="a">The alpha component.</param>
-		/// <param name="b">The blue component.</param>
-		public static bool operator ==(ListNode<TItem> a, ListNode<TItem> b)
+		/// <returns>String.</returns>
+		public override string ToString()
 		{
-			var a_null = object.ReferenceEquals(null, a);
-			var b_null = object.ReferenceEquals(null, b);
-			if (a_null && b_null)
-			{
-				return true;
-			}
-
-			if (a_null != b_null)
-			{
-				return false;
-			}
-
-			return a.Node.Equals(b.Node);
-		}
-
-		/// <summary>
-		/// Returns true if the nodes items are not equal, false otherwise.
-		/// </summary>
-		/// <param name="a">The alpha component.</param>
-		/// <param name="b">The blue component.</param>
-		public static bool operator !=(ListNode<TItem> a, ListNode<TItem> b)
-		{
-			var a_null = object.ReferenceEquals(null, a);
-			var b_null = object.ReferenceEquals(null, b);
-
-			if (a_null && b_null)
-			{
-				return false;
-			}
-
-			if (a_null != b_null)
-			{
-				return true;
-			}
-
-			return !a.Node.Equals(b.Node);
+			return string.Format("ListNode(Node = {0}; Depth = {1})", Node.ToString(), Depth.ToString());
 		}
 	}
 }

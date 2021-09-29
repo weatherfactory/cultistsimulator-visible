@@ -24,14 +24,10 @@
 			{
 				if (dataSourceExt == null)
 				{
-					#pragma warning disable 0618
-					dataSourceExt = new ObservableList<ListViewIconsItemDescriptionExt>(DataSource);
+					dataSourceExt = new ObservableList<ListViewIconsItemDescriptionExt>(dataSource);
 					dataSourceExt.OnChange += CollectionChanged;
 
-					DataSource = new ObservableList<ListViewIconsItemDescriptionExt>(false);
 					CollectionChanged();
-
-					#pragma warning restore 0618
 				}
 
 				return dataSourceExt;
@@ -47,7 +43,6 @@
 				dataSourceExt = value;
 				dataSourceExt.OnChange += CollectionChanged;
 
-				DataSource = new ObservableList<ListViewIconsItemDescriptionExt>(false);
 				CollectionChanged();
 			}
 		}
@@ -59,16 +54,21 @@
 		{
 			if (dataSourceExt == null)
 			{
-				#pragma warning disable 0618
-				dataSourceExt = new ObservableList<ListViewIconsItemDescriptionExt>(DataSource);
+				if (dataSource == null)
+				{
+					dataSource = new ObservableList<ListViewIconsItemDescriptionExt>(customItems);
+					dataSource.OnChange += UpdateItems;
+				}
+
+				dataSourceExt = new ObservableList<ListViewIconsItemDescriptionExt>(dataSource);
 				dataSourceExt.OnChange += CollectionChanged;
 
-				DataSource = new ObservableList<ListViewIconsItemDescriptionExt>(false);
 				CollectionChanged();
-				#pragma warning restore 0618
 			}
 
 			base.Init();
+
+			DataSource.ObserveItems = false;
 		}
 
 		/// <summary>
@@ -156,7 +156,7 @@
 				return;
 			}
 
-			if (DataSourceExt[component.Index].Interactable)
+			if (DataSource[component.Index].Interactable)
 			{
 				base.HighlightColoring(component);
 			}
@@ -177,7 +177,7 @@
 				return;
 			}
 
-			if (DataSourceExt[component.Index].Interactable)
+			if (DataSource[component.Index].Interactable)
 			{
 				base.SelectColoring(component);
 			}
@@ -198,7 +198,7 @@
 				return;
 			}
 
-			if (DataSourceExt[component.Index].Interactable)
+			if (DataSource[component.Index].Interactable)
 			{
 				base.DefaultColoring(component);
 			}

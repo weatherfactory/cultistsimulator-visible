@@ -155,7 +155,7 @@
 			NotifyAutoHideTemplate.Clone().Show("Achievement unlocked. Hide after 3 seconds.", customHideDelay: 3f);
 		}
 
-		bool CallShowNotifyAutohide(int buttonIndex)
+		bool CallShowNotifyAutohide(DialogBase dialog, int buttonIndex)
 		{
 			ShowNotifyAutohide();
 			return true;
@@ -169,7 +169,7 @@
 			NotifyAutoHideTemplate.Clone().Show(
 				"Achievement unlocked. Hide after 4 seconds.",
 				customHideDelay: 4f,
-				hideAnimation: Notify.AnimationRotateVertical);
+				hideAnimation: NotificationBase.AnimationRotateVertical);
 		}
 
 		/// <summary>
@@ -180,17 +180,17 @@
 			NotifyAutoHideTemplate.Clone().Show(
 				"Another Notification. Hide after 5 seconds or click on the × above to close.",
 				customHideDelay: 5f,
-				hideAnimation: Notify.AnimationCollapseVertical,
+				hideAnimation: NotificationBase.AnimationCollapseVertical,
 				slideUpOnHide: false);
 		}
 
-		bool ShowNotifyYes(int buttonIndex)
+		bool ShowNotifyYes(DialogBase dialog, int buttonIndex)
 		{
 			NotifyAutoHideTemplate.Clone().Show("Action on 'Yes' button click.", customHideDelay: 3f);
 			return true;
 		}
 
-		bool ShowNotifyNo(int buttonIndex)
+		bool ShowNotifyNo(DialogBase dialog, int buttonIndex)
 		{
 			NotifyAutoHideTemplate.Clone().Show("Action on 'No' button click.", customHideDelay: 3f);
 			return true;
@@ -201,13 +201,13 @@
 		/// </summary>
 		public void ShowDialogSimple()
 		{
-			var canvas = Utilities.FindTopmostCanvas(transform).GetComponent<Canvas>();
+			var canvas = UtilitiesUI.FindTopmostCanvas(transform).GetComponent<Canvas>();
 
 			var dialog = DialogSampleTemplate.Clone();
 
 			var actions = new DialogButton[]
 			{
-				new DialogButton("Close", Dialog.AlwaysClose),
+				new DialogButton("Close", DialogBase.DefaultClose),
 			};
 
 			dialog.Show(
@@ -227,7 +227,7 @@
 
 			var actions = new DialogButton[]
 			{
-				new DialogButton("Close", (index) => Close(dialog, index)),
+				new DialogButton("Close", Close),
 			};
 
 			dialog.Show(
@@ -241,15 +241,15 @@
 		/// <summary>
 		/// Check if dialog can be closed.
 		/// </summary>
-		/// <param name="currentInstance">Current dialog.</param>
+		/// <param name="dialog">Current dialog.</param>
 		/// <param name="buttonIndex">Index of the clicked button.</param>
 		/// <returns>true if dialog can be closed; otherwise, false.</returns>
-		public virtual bool Close(Dialog currentInstance, int buttonIndex)
+		public virtual bool Close(DialogBase dialog, int buttonIndex)
 		{
 			return true;
 		}
 
-		bool CallShowDialogSimple(int buttonIndex)
+		bool CallShowDialogSimple(DialogBase dialog, int buttonIndex)
 		{
 			ShowDialogSimple();
 			return true;
@@ -262,7 +262,7 @@
 		{
 			var actions = new DialogButton[]
 			{
-				new DialogButton("OK", Dialog.AlwaysClose),
+				new DialogButton("OK", DialogBase.DefaultClose),
 			};
 
 			DialogSampleTemplate.Clone().Show(
@@ -282,7 +282,7 @@
 			{
 				new DialogButton("Yes", ShowNotifyYes),
 				new DialogButton("No", ShowNotifyNo),
-				new DialogButton("Cancel", Dialog.AlwaysClose),
+				new DialogButton("Cancel", DialogBase.DefaultClose),
 			};
 
 			DialogSampleTemplate.Clone().Show(
@@ -302,7 +302,7 @@
 			{
 				new DialogButton("Show notification", CallShowNotifyAutohide),
 				new DialogButton("Open simple dialog", CallShowDialogSimple),
-				new DialogButton("Close", Dialog.AlwaysClose),
+				new DialogButton("Close", DialogBase.DefaultClose),
 			};
 
 			DialogSampleTemplate.Clone().Show(
@@ -320,7 +320,7 @@
 		{
 			var actions = new DialogButton[]
 			{
-				new DialogButton("Close", Dialog.AlwaysClose),
+				new DialogButton("Close", DialogBase.DefaultClose),
 			};
 
 			DialogSampleTemplate.Clone().Show(
@@ -335,6 +335,8 @@
 		/// <summary>
 		/// Show sing-in dialog.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0302:Display class allocation to capture closure", Justification = "Required.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0301:Closure Allocation Source", Justification = "Required.")]
 		public void ShowDialogSignIn()
 		{
 			// create dialog from template
@@ -349,10 +351,10 @@
 			var actions = new DialogButton[]
 			{
 				// on click call SignInNotify
-				new DialogButton("Sign in", (index) => SignInNotify(helper)),
+				new DialogButton("Sign in", SignInNotify),
 
 				// on click close dialog
-				new DialogButton("Cancel", Dialog.AlwaysClose),
+				new DialogButton("Cancel", DialogBase.DefaultClose),
 			};
 
 			// open dialog
@@ -365,8 +367,10 @@
 		}
 
 		// using dialog
-		bool SignInNotify(DialogInputHelper helper)
+		bool SignInNotify(DialogBase dialog, int index)
 		{
+			var helper = dialog.GetComponent<DialogInputHelper>();
+
 			// return true if Username.text and Password not empty; otherwise, false
 			if (!helper.Validate())
 			{
@@ -375,7 +379,7 @@
 			}
 
 			// using dialog input
-			var message = "Sign in.\nUsername: " + helper.UsernameAdapter.text + "\nPassword: <hidden>";
+			var message = string.Format("Sign in.\nUsername: {0}\nPassword: <hidden>", helper.UsernameAdapter.text);
 			NotifyAutoHideTemplate.Clone().Show(message, customHideDelay: 3f);
 
 			// return true to close dialog
@@ -396,7 +400,7 @@
 			var actions = new DialogButton[]
 			{
 				// on click close dialog
-				new DialogButton("Close", Dialog.AlwaysClose),
+				new DialogButton("Close", DialogBase.DefaultClose),
 			};
 
 			// open dialog

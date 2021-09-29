@@ -30,7 +30,7 @@
 		{
 			if (GraphicsForegroundVersion == 0)
 			{
-				graphicsForeground = new Graphic[] { Utilities.GetGraphic(NameAdapter), };
+				graphicsForeground = new Graphic[] { UtilitiesUI.GetGraphic(NameAdapter), };
 				GraphicsForegroundVersion = 1;
 			}
 		}

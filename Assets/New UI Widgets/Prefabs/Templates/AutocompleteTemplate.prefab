@@ -5,10 +5,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Component:
-  - component: {fileID: 22402780}
-  - component: {fileID: 11402784}
+  - 224: {fileID: 22402780}
+  - 114: {fileID: 11402784}
   m_Layer: 5
   m_Name: AutocompleteTemplate
   m_TagString: Untagged
@@ -21,11 +21,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Component:
-  - component: {fileID: 22402782}
-  - component: {fileID: 22202782}
-  - component: {fileID: 11402786}
+  - 224: {fileID: 22402782}
+  - 222: {fileID: 22202782}
+  - 114: {fileID: 11402786}
   m_Layer: 5
   m_Name: Autocomplete
   m_TagString: Untagged
@@ -38,10 +38,10 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Component:
-  - component: {fileID: 22402778}
-  - component: {fileID: 22202784}
+  - 224: {fileID: 22402778}
+  - 222: {fileID: 22202784}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -54,10 +54,10 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Component:
-  - component: {fileID: 22402784}
-  - component: {fileID: 22202786}
+  - 224: {fileID: 22402784}
+  - 222: {fileID: 22202786}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -70,9 +70,9 @@ GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Component:
-  - component: {fileID: 22402786}
+  - 224: {fileID: 22402786}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -108,12 +108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: ef781d40b12dc42478afc8df9c4a8fa9, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -152,12 +146,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22402786}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22402780
 RectTransform:
   m_ObjectHideFlags: 1
@@ -171,11 +164,10 @@ RectTransform:
   - {fileID: 22402782}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 610, y: 200}
+  m_SizeDelta: {x: 510, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &22402782
 RectTransform:
@@ -190,11 +182,10 @@ RectTransform:
   - {fileID: 22402786}
   m_Father: {fileID: 22402780}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 340, y: 30}
+  m_SizeDelta: {x: 240, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &22402784
 RectTransform:
@@ -208,12 +199,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22402786}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22402786
 RectTransform:
   m_ObjectHideFlags: 1
@@ -228,12 +218,11 @@ RectTransform:
   - {fileID: 22402784}
   m_Father: {fileID: 22402782}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.5}
+  m_AnchoredPosition: {x: 0, y: -.5}
   m_SizeDelta: {x: -20, y: -13}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -245,3 +234,4 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102778}
   m_IsPrefabParent: 1
+  m_IsExploded: 1

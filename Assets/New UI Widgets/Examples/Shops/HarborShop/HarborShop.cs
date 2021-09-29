@@ -65,6 +65,7 @@
 		/// <summary>
 		/// Start this instance.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Start()
 		{
 			Harbor = new Trader(false);
@@ -135,16 +136,34 @@
 
 		static ObservableList<HarborOrderLine> CreateOrderLines(Trader harbor, Trader player)
 		{
-			return harbor.Inventory.Convert(item =>
+			var result = new ObservableList<HarborOrderLine>(harbor.Inventory.Count);
+
+			foreach (var item in harbor.Inventory)
 			{
-				var playerItem = player.Inventory.Find(x => x.Name == item.Name);
-				return new HarborOrderLine(
+				var playerItem = FindItemByName(player.Inventory, item.Name);
+				var order_line = new HarborOrderLine(
 					item,
 					Prices.GetPrice(item, harbor.PriceFactor),
 					Prices.GetPrice(item, player.PriceFactor),
-					item.Count,
-					(playerItem == null) ? 0 : playerItem.Count);
-			});
+					item.Quantity,
+					(playerItem == null) ? 0 : playerItem.Quantity);
+				result.Add(order_line);
+			}
+
+			return result;
+		}
+
+		static Item FindItemByName(ObservableList<Item> items, string name)
+		{
+			foreach (var item in items)
+			{
+				if (item.Name == name)
+				{
+					return item;
+				}
+			}
+
+			return null;
 		}
 
 		void UpdateTraderItems()
@@ -168,7 +187,7 @@
 			}
 			else
 			{
-				var message = string.Format("Not enough money to buy items. Available: {0}; Required: {1}", Player.Money, order.Total());
+				var message = string.Format("Not enough money to buy items. Available: {0}; Required: {1}", Player.Money.ToString(), order.Total().ToString());
 				NotifyTemplate.Clone().Show(message, customHideDelay: 3f, sequenceType: NotifySequence.First, clearSequence: true);
 			}
 		}
@@ -176,6 +195,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			if (BuyButton != null)

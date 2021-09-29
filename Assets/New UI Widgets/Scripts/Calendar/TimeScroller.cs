@@ -85,7 +85,7 @@
 		[SerializeField]
 		[EditorConditionBool("hours")]
 		[FormerlySerializedAs("HoursScroller")]
-		protected ScrollBlock HoursScrollBlock;
+		protected ScrollBlockBase HoursScrollBlock;
 
 		/// <summary>
 		/// Step to change hour.
@@ -124,7 +124,7 @@
 		[SerializeField]
 		[EditorConditionBool("minutes")]
 		[FormerlySerializedAs("MinutesScroller")]
-		protected ScrollBlock MinutesScrollBlock;
+		protected ScrollBlockBase MinutesScrollBlock;
 
 		/// <summary>
 		/// Step to change minutes.
@@ -163,7 +163,7 @@
 		[SerializeField]
 		[EditorConditionBool("seconds")]
 		[FormerlySerializedAs("SecondsScroller")]
-		protected ScrollBlock SecondsScrollBlock;
+		protected ScrollBlockBase SecondsScrollBlock;
 
 		/// <summary>
 		/// Step to change seconds.
@@ -202,7 +202,7 @@
 		[SerializeField]
 		[EditorConditionBool("ampm")]
 		[FormerlySerializedAs("AMPMScroller")]
-		protected ScrollBlock AMPMScrollBlock;
+		protected ScrollBlockBase AMPMScrollBlock;
 
 		/// <summary>
 		/// Looped clamp the specified time.
@@ -430,7 +430,7 @@
 				case Precision.Ticks:
 					return Time;
 				default:
-					throw new NotSupportedException("Unknown precision: " + precision);
+					throw new NotSupportedException(string.Format("Unknown precision: {0}", EnumHelper<Precision>.ToString(precision)));
 			}
 		}
 
@@ -458,7 +458,7 @@
 				case Precision.Ticks:
 					return time1 == time2;
 				default:
-					throw new NotSupportedException("Unknown precision: " + precision);
+					throw new NotSupportedException(string.Format("Unknown precision: {0}", EnumHelper<Precision>.ToString(precision)));
 			}
 		}
 

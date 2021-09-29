@@ -21,7 +21,7 @@
 		{
 			if (GraphicsForegroundVersion == 0)
 			{
-				Foreground = new Graphic[] { Utilities.GetGraphic(NameAdapter), };
+				Foreground = new Graphic[] { UtilitiesUI.GetGraphic(NameAdapter), };
 				GraphicsForegroundVersion = 1;
 			}
 		}

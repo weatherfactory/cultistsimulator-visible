@@ -13,13 +13,13 @@
 		/// <summary>
 		/// Date comparer.
 		/// </summary>
-		protected struct DateComparer : IEquatable<DateComparer>
+		protected class DateComparer : IEquatable<DateComparer>
 		{
 			readonly CalendarBase Calendar;
 			readonly DateTime Date;
 
 			/// <summary>
-			/// Initializes a new instance of the <see cref="DateComparer"/> struct.
+			/// Initializes a new instance of the <see cref="DateComparer"/> class.
 			/// </summary>
 			/// <param name="calendar">Calender.</param>
 			/// <param name="date">Date to compare with.</param>
@@ -61,6 +61,11 @@
 			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
 			public bool Equals(DateComparer other)
 			{
+				if (ReferenceEquals(other, null))
+				{
+					return false;
+				}
+
 				return Calendar == other.Calendar && Date == other.Date;
 			}
 
@@ -81,6 +86,11 @@
 			/// <returns>true if the instances are equal; otherwise, false.</returns>
 			public static bool operator ==(DateComparer left, DateComparer right)
 			{
+				if (ReferenceEquals(left, null))
+				{
+					return ReferenceEquals(right, null);
+				}
+
 				return left.Equals(right);
 			}
 

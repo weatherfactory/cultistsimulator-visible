@@ -100,9 +100,9 @@
 		/// </summary>
 		public void Test()
 		{
-			Debug.Log(string.Format("Start: {0} samples; {1} seconds", GetTrackStart(), GetTrackStartInSeconds()));
-			Debug.Log(string.Format("Length: {0} samples; {1} seconds", GetTrackLength(), GetTrackLengthInSeconds()));
-			Debug.Log(string.Format("End: {0} samples; {1} seconds", GetTrackEnd(), GetTrackEndInSeconds()));
+			Debug.Log(string.Format("Start: {0} samples; {1} seconds", GetTrackStart().ToString(), GetTrackStartInSeconds().ToString()));
+			Debug.Log(string.Format("Length: {0} samples; {1} seconds", GetTrackLength().ToString(), GetTrackLengthInSeconds().ToString()));
+			Debug.Log(string.Format("End: {0} samples; {1} seconds", GetTrackEnd().ToString(), GetTrackEndInSeconds().ToString()));
 		}
 	}
 }

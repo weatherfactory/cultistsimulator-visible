@@ -19,7 +19,7 @@
 		public static string GameObjectPath(GameObject go)
 		{
 			var parent = go.transform.parent;
-			return parent == null ? go.name : GameObjectPath(parent.gameObject) + "/" + go.name;
+			return parent == null ? go.name : string.Format("{0}/{1}", GameObjectPath(parent.gameObject), go.name);
 		}
 
 		/// <summary>
@@ -131,193 +131,6 @@
 		}
 
 		/// <summary>
-		/// Finds the canvas.
-		/// </summary>
-		/// <returns>The canvas.</returns>
-		/// <param name="currentObject">Current object.</param>
-		public static Transform FindCanvas(Transform currentObject)
-		{
-			var canvas = currentObject.GetComponentInParent<Canvas>();
-			if (canvas == null)
-			{
-				return null;
-			}
-
-			return canvas.transform;
-		}
-
-		/// <summary>
-		/// Finds the topmost canvas.
-		/// </summary>
-		/// <returns>The canvas.</returns>
-		/// <param name="currentObject">Current object.</param>
-		public static Transform FindTopmostCanvas(Transform currentObject)
-		{
-			var canvases = currentObject.GetComponentsInParent<Canvas>(true);
-			if (canvases.Length == 0)
-			{
-				return null;
-			}
-
-			return canvases[canvases.Length - 1].transform;
-		}
-
-		/// <summary>
-		/// Calculates the drag position.
-		/// </summary>
-		/// <returns>The drag position.</returns>
-		/// <param name="screenPosition">Screen position.</param>
-		/// <param name="canvas">Canvas.</param>
-		/// <param name="canvasRect">Canvas RectTransform.</param>
-		public static Vector3 CalculateDragPosition(Vector3 screenPosition, Canvas canvas, RectTransform canvasRect)
-		{
-			Vector3 result;
-			var canvasSize = canvasRect.sizeDelta;
-			Vector2 min = Vector2.zero;
-			Vector2 max = canvasSize;
-
-			var isOverlay = canvas.renderMode == RenderMode.ScreenSpaceOverlay;
-			var noCamera = canvas.renderMode == RenderMode.ScreenSpaceCamera && canvas.worldCamera == null;
-			if (isOverlay || noCamera)
-			{
-				result = screenPosition;
-			}
-			else
-			{
-				var ray = canvas.worldCamera.ScreenPointToRay(screenPosition);
-				var plane = new Plane(canvasRect.forward, canvasRect.position);
-
-				float distance;
-				plane.Raycast(ray, out distance);
-
-				result = canvasRect.InverseTransformPoint(ray.origin + (ray.direction * distance));
-
-				min = -Vector2.Scale(max, canvasRect.pivot);
-				max = canvasSize - min;
-			}
-
-			result.x = Mathf.Clamp(result.x, min.x, max.y);
-			result.y = Mathf.Clamp(result.y, min.x, max.y);
-
-			return result;
-		}
-
-		/// <summary>
-		/// Updates the layout.
-		/// </summary>
-		/// <param name="layout">Layout.</param>
-		[Obsolete("Use LayoutUtilities.UpdateLayout() instead.")]
-		public static void UpdateLayout(LayoutGroup layout)
-		{
-			LayoutUtilities.UpdateLayout(layout);
-		}
-
-		/// <summary>
-		/// Get top left corner anchored position of the specified RectTransform.
-		/// </summary>
-		/// <param name="target">RectTransform.</param>
-		/// <returns>Top left corner anchored position.</returns>
-		public static Vector2 GetTopLeftCorner(RectTransform target)
-		{
-			var size = target.rect.size;
-			var pos = target.anchoredPosition;
-			var pivot = target.pivot;
-
-			pos.x -= size.x * pivot.x;
-			pos.y += size.y * (1f - pivot.y);
-
-			return pos;
-		}
-
-		/// <summary>
-		/// Set top left corner position of the specified RectTransform.
-		/// </summary>
-		/// <param name="target">RectTransform.</param>
-		/// <param name="position">Top left corner position.</param>
-		public static void SetTopLeftCorner(RectTransform target, Vector2 position)
-		{
-			var delta = position - GetTopLeftCorner(target);
-			target.anchoredPosition += delta;
-		}
-
-		/// <summary>
-		/// Get top left corner global position of the specified RectTransform.
-		/// </summary>
-		/// <param name="target">Target.</param>
-		/// <returns>Top left corner global position.</returns>
-		public static Vector2 GetTopLeftCornerGlobalPosition(RectTransform target)
-		{
-			var size = target.rect.size;
-			var pivot = target.pivot;
-			var position = target.position;
-
-			position.x -= size.x * pivot.x;
-			position.y += size.y * (1f - pivot.y);
-
-			return position;
-		}
-
-		/// <summary>
-		/// Get top right corner global position of the specified RectTransform.
-		/// </summary>
-		/// <param name="target">Target.</param>
-		/// <returns>Top right corner global position.</returns>
-		public static Vector3 GetTopRightCornerGlobalPosition(RectTransform target)
-		{
-			var size = target.rect.size;
-			var pivot = target.pivot;
-			var position = target.position;
-
-			position.x -= (size.x * pivot.x) - size.x;
-			position.y += size.y * (1f - pivot.y);
-
-			return position;
-		}
-
-		/// <summary>
-		/// Determines if slider is horizontal.
-		/// </summary>
-		/// <returns><c>true</c> if slider is horizontal; otherwise, <c>false</c>.</returns>
-		/// <param name="slider">Slider.</param>
-		public static bool IsHorizontal(Slider slider)
-		{
-			return slider.direction == Slider.Direction.LeftToRight || slider.direction == Slider.Direction.RightToLeft;
-		}
-
-		/// <summary>
-		/// Determines if scrollbar is horizontal.
-		/// </summary>
-		/// <returns><c>true</c> if scrollbar is horizontal; otherwise, <c>false</c>.</returns>
-		/// <param name="scrollbar">Scrollbar.</param>
-		public static bool IsHorizontal(Scrollbar scrollbar)
-		{
-			return scrollbar.direction == Scrollbar.Direction.LeftToRight || scrollbar.direction == Scrollbar.Direction.RightToLeft;
-		}
-
-		/// <summary>
-		/// Is two float values is nearly equal?
-		/// </summary>
-		/// <param name="a">First value.</param>
-		/// <param name="b">Second value.</param>
-		/// <param name="epsilon">Epsilon.</param>
-		/// <returns>true if two float values is nearly equal; otherwise false.</returns>
-		[Obsolete("Replaced with Mathf.Approximately(a, b)")]
-		public static bool NearlyEqual(float a, float b, float epsilon)
-		{
-			return Mathf.Approximately(a, b);
-		}
-
-		/// <summary>
-		/// Get graphic component from TextAdapter.
-		/// </summary>
-		/// <param name="adapter">Adapter.</param>
-		/// <returns>Graphic component.</returns>
-		public static Graphic GetGraphic(TextAdapter adapter)
-		{
-			return (adapter != null) ? adapter.Graphic : null;
-		}
-
-		/// <summary>
 		/// Default handle for the property changed event.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
@@ -333,21 +146,159 @@
 		{
 		}
 
+		#region Obsolete misc
+
+		/// <summary>
+		/// Updates the layout.
+		/// </summary>
+		/// <param name="layout">Layout.</param>
+		[Obsolete("Use LayoutUtilities.UpdateLayout() instead.")]
+		public static void UpdateLayout(LayoutGroup layout)
+		{
+			LayoutUtilities.UpdateLayout(layout);
+		}
+
+		/// <summary>
+		/// Is two float values is nearly equal?
+		/// </summary>
+		/// <param name="a">First value.</param>
+		/// <param name="b">Second value.</param>
+		/// <param name="epsilon">Epsilon.</param>
+		/// <returns>true if two float values is nearly equal; otherwise false.</returns>
+		[Obsolete("Replaced with Mathf.Approximately(a, b)")]
+		public static bool NearlyEqual(float a, float b, float epsilon)
+		{
+			return Mathf.Approximately(a, b);
+		}
+		#endregion
+
+		#region Obsolete UI
+
+		/// <summary>
+		/// Get graphic component from TextAdapter.
+		/// </summary>
+		/// <param name="adapter">Adapter.</param>
+		/// <returns>Graphic component.</returns>
+		public static Graphic GetGraphic(TextAdapter adapter)
+		{
+			return UtilitiesUI.GetGraphic(adapter);
+		}
+
+		/// <summary>
+		/// Finds the canvas.
+		/// </summary>
+		/// <returns>The canvas.</returns>
+		/// <param name="currentObject">Current object.</param>
+		[Obsolete("Replaced with UtilitiesUI.FindCanvas()")]
+		public static Transform FindCanvas(Transform currentObject)
+		{
+			return UtilitiesUI.FindCanvas(currentObject);
+		}
+
+		/// <summary>
+		/// Finds the topmost canvas.
+		/// </summary>
+		/// <returns>The canvas.</returns>
+		/// <param name="currentObject">Current object.</param>
+		[Obsolete("Replaced with UtilitiesUI.FindTopmostCanvas()")]
+		public static Transform FindTopmostCanvas(Transform currentObject)
+		{
+			return UtilitiesUI.FindTopmostCanvas(currentObject);
+		}
+
+		/// <summary>
+		/// Calculates the drag position.
+		/// </summary>
+		/// <returns>The drag position.</returns>
+		/// <param name="screenPosition">Screen position.</param>
+		/// <param name="canvas">Canvas.</param>
+		/// <param name="canvasRect">Canvas RectTransform.</param>
+		[Obsolete("Replaced with UtilitiesUI.CalculateDragPosition()")]
+		public static Vector3 CalculateDragPosition(Vector3 screenPosition, Canvas canvas, RectTransform canvasRect)
+		{
+			return UtilitiesUI.CalculateDragPosition(screenPosition, canvas, canvasRect);
+		}
+
+		/// <summary>
+		/// Determines if slider is horizontal.
+		/// </summary>
+		/// <returns><c>true</c> if slider is horizontal; otherwise, <c>false</c>.</returns>
+		/// <param name="slider">Slider.</param>
+		[Obsolete("Replaced with UtilitiesUI.IsHorizontal()")]
+		public static bool IsHorizontal(Slider slider)
+		{
+			return UtilitiesUI.IsHorizontal(slider);
+		}
+
+		/// <summary>
+		/// Determines if scrollbar is horizontal.
+		/// </summary>
+		/// <returns><c>true</c> if scrollbar is horizontal; otherwise, <c>false</c>.</returns>
+		/// <param name="scrollbar">Scrollbar.</param>
+		[Obsolete("Replaced with UtilitiesUI.IsHorizontal()")]
+		public static bool IsHorizontal(Scrollbar scrollbar)
+		{
+			return UtilitiesUI.IsHorizontal(scrollbar);
+		}
+		#endregion
+
+		#region Obsolete RectTransform
+
+		/// <summary>
+		/// Get top left corner anchored position of the specified RectTransform.
+		/// </summary>
+		/// <param name="target">RectTransform.</param>
+		/// <returns>Top left corner anchored position.</returns>
+		[Obsolete("Replaced with UtilitiesRectTransform.GetTopLeftCorner()")]
+		public static Vector2 GetTopLeftCorner(RectTransform target)
+		{
+			return UtilitiesRectTransform.GetTopLeftCorner(target);
+		}
+
+		/// <summary>
+		/// Set top left corner position of the specified RectTransform.
+		/// </summary>
+		/// <param name="target">RectTransform.</param>
+		/// <param name="position">Top left corner position.</param>
+		[Obsolete("Replaced with UtilitiesRectTransform.SetTopLeftCorner()")]
+		public static void SetTopLeftCorner(RectTransform target, Vector2 position)
+		{
+			UtilitiesRectTransform.SetTopLeftCorner(target, position);
+		}
+
+		/// <summary>
+		/// Get top left corner global position of the specified RectTransform.
+		/// </summary>
+		/// <param name="target">Target.</param>
+		/// <returns>Top left corner global position.</returns>
+		[Obsolete("Replaced with UtilitiesRectTransform.GetTopLeftCornerGlobalPosition()")]
+		public static Vector2 GetTopLeftCornerGlobalPosition(RectTransform target)
+		{
+			return UtilitiesRectTransform.GetTopLeftCornerGlobalPosition(target);
+		}
+
+		/// <summary>
+		/// Get top right corner global position of the specified RectTransform.
+		/// </summary>
+		/// <param name="target">Target.</param>
+		/// <returns>Top right corner global position.</returns>
+		[Obsolete("Replaced with UtilitiesRectTransform.GetTopRightCornerGlobalPosition()")]
+		public static Vector3 GetTopRightCornerGlobalPosition(RectTransform target)
+		{
+			return UtilitiesRectTransform.GetTopRightCornerGlobalPosition(target);
+		}
+
 		/// <summary>
 		/// Copy RectTransform values.
 		/// </summary>
 		/// <param name="source">Source.</param>
 		/// <param name="target">Target.</param>
+		[Obsolete("Replaced with UtilitiesRectTransform.CopyValues()")]
 		public static void CopyRectTransformValues(RectTransform source, RectTransform target)
 		{
-			target.anchorMin = source.anchorMin;
-			target.anchorMax = source.anchorMax;
-			target.pivot = source.pivot;
-			target.sizeDelta = source.sizeDelta;
-			target.localPosition = source.localPosition;
-			target.localRotation = source.localRotation;
-			target.localScale = source.localScale;
+			UtilitiesRectTransform.CopyValues(source, target);
 		}
+		#endregion
 
 		#region Obsolete Input
 
@@ -423,6 +374,7 @@
 		/// <param name="seconds">Delay in seconds.</param>
 		/// <returns>Yield instruction to wait.</returns>
 		[Obsolete("Replaced with UtilitiesTime.Wait(seconds, true).")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		public static IEnumerator WaitForSecondsUnscaled(float seconds)
 		{
 			return UtilitiesTime.Wait(seconds, true);
@@ -482,7 +434,7 @@
 		/// <returns><c>true</c> if hex was converted successfully; otherwise, <c>false</c>.</returns>
 		/// <param name="hex">A string containing a color to convert.</param>
 		/// <param name="result">When this method returns, contains the color value equivalent to the color contained in hex if the conversion succeeded, or Color.black if the conversion failed. The conversion fails if the hex parameter is null or String.Empty, is not of the correct format. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.</param>
-		[Obsolete("Replaced with UtilitiesColor.TryHexToRGBA().")]
+		[Obsolete("Use ColorUtility.TryParseHtmlString().")]
 		public static bool TryHexToRGBA(string hex, out Color32 result)
 		{
 			return UtilitiesColor.TryHexToRGBA(hex, out result);
@@ -711,7 +663,7 @@
 		/// <param name="source">Items.</param>
 		/// <param name="match">The Predicate{T} delegate that defines the conditions of the elements to search for.</param>
 		/// <returns>A List{T} containing all the elements that match the conditions defined by the specified predicate, if found; otherwise, an empty List{T}.</returns>
-		[Obsolete("Replaced with UtilitiesCollections.Log<T>().")]
+		[Obsolete("Replaced with UtilitiesCollections.FindAll<T>().")]
 		public static ObservableList<T> FindAll<T>(List<T> source, Func<T, bool> match)
 		{
 			return UtilitiesCollections.FindAll(source, match);
@@ -722,7 +674,7 @@
 		/// </summary>
 		/// <param name="source">List to sum.</param>
 		/// <returns>Sum.</returns>
-		[Obsolete("Replaced with UtilitiesCollections.Log<T>().")]
+		[Obsolete("Replaced with UtilitiesCollections.Sum<T>().")]
 		public static float Sum(List<float> source)
 		{
 			return UtilitiesCollections.Sum(source);
@@ -734,8 +686,9 @@
 		/// <typeparam name="T">Type of value.</typeparam>
 		/// <param name="arr">Input array.</param>
 		/// <returns>true if input array not empty and all values are null; otherwise false.</returns>
-		[Obsolete("Replaced with UtilitiesCollections.Log<T>().")]
+		[Obsolete("Replaced with UtilitiesCollections.AllNull<T>().")]
 		public static bool AllNull<T>(T[] arr)
+			where T : class
 		{
 			return UtilitiesCollections.AllNull(arr);
 		}

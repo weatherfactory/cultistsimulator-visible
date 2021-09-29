@@ -1,5 +1,6 @@
 ﻿namespace EasyLayoutNS
 {
+	using UIWidgets;
 	using UnityEngine;
 
 	/// <summary>
@@ -8,12 +9,16 @@
 	public class EasyLayoutFlex : EasyLayoutFlexOrStaggered
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="EasyLayoutFlex"/> class.
+		/// Settings.
 		/// </summary>
-		/// <param name="layout">Layout.</param>
-		public EasyLayoutFlex(EasyLayout layout)
-				: base(layout)
+		protected EasyLayoutFlexSettings Settings;
+
+		/// <inheritdoc/>
+		public override void LoadSettings(EasyLayout layout)
 		{
+			base.LoadSettings(layout);
+
+			Settings = layout.FlexSettings;
 		}
 
 		/// <summary>
@@ -21,19 +26,19 @@
 		/// </summary>
 		protected override void Group()
 		{
-			if (!Layout.FlexSettings.Wrap)
+			if (!Settings.Wrap)
 			{
 				for (int i = 0; i < ElementsGroup.Count; i++)
 				{
-					ElementsGroup.SetPosition(i, Layout.IsHorizontal ? 0 : i, Layout.IsHorizontal ? i : 0);
+					ElementsGroup.SetPosition(i, IsHorizontal ? 0 : i, IsHorizontal ? i : 0);
 				}
 
 				return;
 			}
 
-			var base_size = Layout.MainAxisSize;
+			var base_size = MainAxisSize;
 			var size = base_size;
-			var spacing = Layout.IsHorizontal ? Layout.Spacing.x : Layout.Spacing.y;
+			var spacing = IsHorizontal ? Spacing.x : Spacing.y;
 
 			int main_axis_index = 0;
 			int sub_axis_index = 0;
@@ -57,7 +62,7 @@
 					sub_axis_index = 0;
 				}
 
-				if (Layout.IsHorizontal)
+				if (IsHorizontal)
 				{
 					ElementsGroup.SetPosition(i, main_axis_index, sub_axis_index);
 				}
@@ -69,12 +74,12 @@
 				sub_axis_index++;
 			}
 
-			if (!Layout.TopToBottom)
+			if (!TopToBottom)
 			{
 				ElementsGroup.BottomToTop();
 			}
 
-			if (Layout.RightToLeft)
+			if (RightToLeft)
 			{
 				ElementsGroup.RightToLeft();
 			}
@@ -87,28 +92,44 @@
 		/// <param name="spacing">Spacing.</param>
 		/// <param name="padding">Padding,</param>
 		/// <returns>Size.</returns>
-		protected override Vector2 CalculateGroupSize(bool isHorizontal, Vector2 spacing, Vector2 padding)
+		protected override GroupSize CalculateGroupSize(bool isHorizontal, Vector2 spacing, Vector2 padding)
 		{
 			var size = base.CalculateGroupSize(isHorizontal, spacing, padding);
 
+			var internal_size = ByAxis(InternalSize);
+
 			// add is_horizontal check
-			var stretch_main_axis = (Layout.FlexSettings.JustifyContent == EasyLayoutFlexSettings.Content.SpaceAround)
-				|| (Layout.FlexSettings.JustifyContent == EasyLayoutFlexSettings.Content.SpaceBetween)
-				|| (Layout.FlexSettings.JustifyContent == EasyLayoutFlexSettings.Content.SpaceEvenly);
+			var stretch_main_axis = (Settings.JustifyContent == EasyLayoutFlexSettings.Content.SpaceAround)
+				|| (Settings.JustifyContent == EasyLayoutFlexSettings.Content.SpaceBetween)
+				|| (Settings.JustifyContent == EasyLayoutFlexSettings.Content.SpaceEvenly);
 			if (stretch_main_axis)
 			{
-				size.x = ByAxis(Layout.InternalSize).x;
+				if (isHorizontal)
+				{
+					size.Width = internal_size.x;
+				}
+				else
+				{
+					size.Height = internal_size.x;
+				}
 			}
 
-			var stretch_sub_axis = (Layout.FlexSettings.AlignContent == EasyLayoutFlexSettings.Content.SpaceAround)
-				|| (Layout.FlexSettings.AlignContent == EasyLayoutFlexSettings.Content.SpaceBetween)
-				|| (Layout.FlexSettings.AlignContent == EasyLayoutFlexSettings.Content.SpaceEvenly);
+			var stretch_sub_axis = (Settings.AlignContent == EasyLayoutFlexSettings.Content.SpaceAround)
+				|| (Settings.AlignContent == EasyLayoutFlexSettings.Content.SpaceBetween)
+				|| (Settings.AlignContent == EasyLayoutFlexSettings.Content.SpaceEvenly);
 			if (stretch_sub_axis)
 			{
-				size.y = ByAxis(Layout.InternalSize).y;
+				if (isHorizontal)
+				{
+					size.Height = internal_size.y;
+				}
+				else
+				{
+					size.Width = internal_size.y;
+				}
 			}
 
-			return ByAxis(size);
+			return size;
 		}
 
 		/// <summary>
@@ -122,8 +143,8 @@
 		{
 			var axis = base.GetAxisData(isMainAxis, elements, size);
 
-			var outer_size = isMainAxis ? ByAxis(Layout.InternalSize).x : ByAxis(Layout.InternalSize).y;
-			var align = isMainAxis ? Layout.FlexSettings.JustifyContent : Layout.FlexSettings.AlignContent;
+			var outer_size = isMainAxis ? ByAxis(InternalSize).x : ByAxis(InternalSize).y;
+			var align = isMainAxis ? Settings.JustifyContent : Settings.AlignContent;
 
 			if (align == EasyLayoutFlexSettings.Content.End)
 			{
@@ -162,7 +183,7 @@
 		/// <returns>Align rate.</returns>
 		protected override float GetItemsAlignRate()
 		{
-			switch (Layout.FlexSettings.AlignItems)
+			switch (Settings.AlignItems)
 			{
 				case EasyLayoutFlexSettings.Items.Start:
 					return 0f;
@@ -171,7 +192,7 @@
 				case EasyLayoutFlexSettings.Items.End:
 					return 1f;
 				default:
-					Debug.LogWarning("Unknown items align: " + Layout.FlexSettings.AlignItems);
+					Debug.LogWarning(string.Format("Unknown items align: {0}", EnumHelper<EasyLayoutFlexSettings.Items>.ToString(Settings.AlignItems)));
 					break;
 			}
 

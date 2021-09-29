@@ -8,7 +8,7 @@
 	/// Connector line.
 	/// </summary>
 	[Serializable]
-	public class ConnectorLine : INotifyPropertyChanged
+	public class ConnectorLine : IObservable, INotifyPropertyChanged
 	{
 		[SerializeField]
 		RectTransform target;
@@ -27,7 +27,7 @@
 			set
 			{
 				target = value;
-				Changed("Target");
+				NotifyPropertyChanged("Target");
 			}
 		}
 
@@ -48,7 +48,7 @@
 			set
 			{
 				start = value;
-				Changed("Start");
+				NotifyPropertyChanged("Start");
 			}
 		}
 
@@ -69,7 +69,7 @@
 			set
 			{
 				end = value;
-				Changed("End");
+				NotifyPropertyChanged("End");
 			}
 		}
 
@@ -91,7 +91,7 @@
 			set
 			{
 				arrow = value;
-				Changed("Arrow");
+				NotifyPropertyChanged("Arrow");
 			}
 		}
 
@@ -112,7 +112,7 @@
 			set
 			{
 				type = value;
-				Changed("Type");
+				NotifyPropertyChanged("Type");
 			}
 		}
 
@@ -133,7 +133,7 @@
 			set
 			{
 				thickness = value;
-				Changed("Thickness");
+				NotifyPropertyChanged("Thickness");
 			}
 		}
 
@@ -154,28 +154,37 @@
 			set
 			{
 				margin = value;
-				Changed("Margin");
+				NotifyPropertyChanged("Margin");
 			}
 		}
 
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = Utilities.DefaultPropertyHandler;
+		public event OnChange OnChange;
 
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event OnChange OnChange = Utilities.DefaultHandler;
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Changed the specified propertyName.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
-		protected void Changed(string propertyName)
+		protected void NotifyPropertyChanged(string propertyName)
 		{
-			OnChange();
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

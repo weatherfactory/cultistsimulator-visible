@@ -10,6 +10,17 @@ namespace UIWidgets
 	public class TextTMPro : ITextProxy
 	{
 		/// <summary>
+		/// Is enum value has specified flag?
+		/// </summary>
+		/// <param name="value">Enum value.</param>
+		/// <param name="flag">Flag.</param>
+		/// <returns>true if enum has flag; otherwise false.</returns>
+		public static bool IsSet(TMPro.FontStyles value, TMPro.FontStyles flag)
+		{
+			return (value & flag) == flag;
+		}
+
+		/// <summary>
 		/// Text component.
 		/// </summary>
 		protected TMPro.TextMeshProUGUI Component;
@@ -107,7 +118,7 @@ namespace UIWidgets
 		{
 			get
 			{
-				return Component.fontStyle.HasFlag(TMPro.FontStyles.Bold);
+				return IsSet(Component.fontStyle, TMPro.FontStyles.Bold);
 			}
 
 			set
@@ -135,7 +146,7 @@ namespace UIWidgets
 		{
 			get
 			{
-				return Component.fontStyle.HasFlag(TMPro.FontStyles.Italic);
+				return IsSet(Component.fontStyle, TMPro.FontStyles.Italic);
 			}
 
 			set

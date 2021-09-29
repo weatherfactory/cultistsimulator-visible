@@ -279,7 +279,7 @@
 					case PullDirection.None:
 						break;
 					default:
-						Debug.LogWarning("Unsupported pull direction: " + pullDirection);
+						Debug.LogWarning(string.Format("Unsupported pull direction: {0}", EnumHelper<PullDirection>.ToString(pullDirection)));
 						break;
 				}
 			}

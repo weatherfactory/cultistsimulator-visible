@@ -8,12 +8,37 @@
 	public class EasyLayoutCompact : EasyLayoutCompactOrGrid
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="EasyLayoutCompact"/> class.
+		/// Constraint type.
 		/// </summary>
-		/// <param name="layout">Layout.</param>
-		public EasyLayoutCompact(EasyLayout layout)
-				: base(layout)
+		protected CompactConstraints Constraint;
+
+		/// <summary>
+		/// Row align.
+		/// </summary>
+		protected HorizontalAligns RowAlign;
+
+		/// <summary>
+		/// Inner align.
+		/// </summary>
+		protected InnerAligns InnerAlign;
+
+		/// <inheritdoc/>
+		protected override bool IsCompact
 		{
+			get
+			{
+				return true;
+			}
+		}
+
+		/// <inheritdoc/>
+		public override void LoadSettings(EasyLayout layout)
+		{
+			base.LoadSettings(layout);
+
+			Constraint = layout.CompactConstraint;
+			RowAlign = layout.RowAlign;
+			InnerAlign = layout.InnerAlign;
 		}
 
 		/// <summary>
@@ -26,7 +51,7 @@
 				return;
 			}
 
-			if (Layout.IsHorizontal)
+			if (IsHorizontal)
 			{
 				GroupHorizontal();
 			}
@@ -38,23 +63,23 @@
 			var rows = ElementsGroup.Rows;
 			var columns = ElementsGroup.Columns;
 
-			if ((Layout.CompactConstraint == CompactConstraints.MaxRowCount) && (rows > Layout.ConstraintCount))
+			if ((Constraint == CompactConstraints.MaxRowCount) && (rows > ConstraintCount))
 			{
 				ElementsGroup.Clear();
 				GroupByRows();
 			}
-			else if ((Layout.CompactConstraint == CompactConstraints.MaxColumnCount) && (columns > Layout.ConstraintCount))
+			else if ((Constraint == CompactConstraints.MaxColumnCount) && (columns > ConstraintCount))
 			{
 				ElementsGroup.Clear();
 				GroupByColumns();
 			}
 
-			if (!Layout.TopToBottom)
+			if (!TopToBottom)
 			{
 				ElementsGroup.BottomToTop();
 			}
 
-			if (Layout.RightToLeft)
+			if (RightToLeft)
 			{
 				ElementsGroup.RightToLeft();
 			}
@@ -62,9 +87,9 @@
 
 		void GroupHorizontal()
 		{
-			var base_length = Layout.MainAxisSize;
+			var base_length = MainAxisSize;
 			var length = base_length;
-			var spacing = Layout.Spacing.x;
+			var spacing = Spacing.x;
 
 			int row = 0;
 			int column = 0;
@@ -94,9 +119,9 @@
 
 		void GroupVertical()
 		{
-			var base_length = Layout.MainAxisSize;
+			var base_length = MainAxisSize;
 			var length = base_length;
-			var spacing = Layout.Spacing.y;
+			var spacing = Spacing.y;
 
 			int row = 0;
 			int column = 0;
@@ -130,64 +155,64 @@
 		/// </summary>
 		protected override void CalculateSizes()
 		{
-			if ((Layout.ChildrenWidth == ChildrenSize.ShrinkOnOverflow) && (Layout.ChildrenHeight == ChildrenSize.ShrinkOnOverflow))
+			if ((ChildrenWidth == ChildrenSize.ShrinkOnOverflow) && (ChildrenHeight == ChildrenSize.ShrinkOnOverflow))
 			{
 				ShrinkOnOverflow();
 			}
 			else
 			{
-				if (Layout.IsHorizontal)
+				if (IsHorizontal)
 				{
-					if (Layout.ChildrenWidth == ChildrenSize.FitContainer)
+					if (ChildrenWidth == ChildrenSize.FitContainer)
 					{
 						ResizeWidthToFit(false);
 					}
-					else if (Layout.ChildrenWidth == ChildrenSize.SetPreferredAndFitContainer)
+					else if (ChildrenWidth == ChildrenSize.SetPreferredAndFitContainer)
 					{
 						ResizeWidthToFit(true);
 					}
-					else if (Layout.ChildrenWidth == ChildrenSize.ShrinkOnOverflow)
+					else if (ChildrenWidth == ChildrenSize.ShrinkOnOverflow)
 					{
 						ShrinkWidthToFit();
 					}
 
-					if (Layout.ChildrenHeight == ChildrenSize.FitContainer)
+					if (ChildrenHeight == ChildrenSize.FitContainer)
 					{
 						ResizeRowHeightToFit(false);
 					}
-					else if (Layout.ChildrenHeight == ChildrenSize.SetPreferredAndFitContainer)
+					else if (ChildrenHeight == ChildrenSize.SetPreferredAndFitContainer)
 					{
 						ResizeRowHeightToFit(true);
 					}
-					else if (Layout.ChildrenHeight == ChildrenSize.ShrinkOnOverflow)
+					else if (ChildrenHeight == ChildrenSize.ShrinkOnOverflow)
 					{
 						ShrinkRowHeightToFit();
 					}
 				}
 				else
 				{
-					if (Layout.ChildrenWidth == ChildrenSize.FitContainer)
+					if (ChildrenWidth == ChildrenSize.FitContainer)
 					{
 						ResizeColumnWidthToFit(false);
 					}
-					else if (Layout.ChildrenWidth == ChildrenSize.SetPreferredAndFitContainer)
+					else if (ChildrenWidth == ChildrenSize.SetPreferredAndFitContainer)
 					{
 						ResizeColumnWidthToFit(true);
 					}
-					else if (Layout.ChildrenWidth == ChildrenSize.ShrinkOnOverflow)
+					else if (ChildrenWidth == ChildrenSize.ShrinkOnOverflow)
 					{
 						ShrinkColumnWidthToFit();
 					}
 
-					if (Layout.ChildrenHeight == ChildrenSize.FitContainer)
+					if (ChildrenHeight == ChildrenSize.FitContainer)
 					{
 						ResizeHeightToFit(false);
 					}
-					else if (Layout.ChildrenHeight == ChildrenSize.SetPreferredAndFitContainer)
+					else if (ChildrenHeight == ChildrenSize.SetPreferredAndFitContainer)
 					{
 						ResizeHeightToFit(true);
 					}
-					else if (Layout.ChildrenHeight == ChildrenSize.ShrinkOnOverflow)
+					else if (ChildrenHeight == ChildrenSize.ShrinkOnOverflow)
 					{
 						ShrinkHeightToFit();
 					}
@@ -197,19 +222,19 @@
 
 		void ResizeHeightToFit(bool increaseOnly)
 		{
-			var height = Layout.InternalSize.y;
+			var height = InternalSize.y;
 			for (int column = 0; column < ElementsGroup.Columns; column++)
 			{
-				ResizeToFit(height, ElementsGroup.GetColumn(column), Layout.Spacing.y, RectTransform.Axis.Vertical, increaseOnly);
+				ResizeToFit(height, ElementsGroup.GetColumn(column), Spacing.y, RectTransform.Axis.Vertical, increaseOnly);
 			}
 		}
 
 		void ShrinkHeightToFit()
 		{
-			var height = Layout.InternalSize.y;
+			var height = InternalSize.y;
 			for (int column = 0; column < ElementsGroup.Columns; column++)
 			{
-				ShrinkToFit(height, ElementsGroup.GetColumn(column), Layout.Spacing.y, RectTransform.Axis.Vertical);
+				ShrinkToFit(height, ElementsGroup.GetColumn(column), Spacing.y, RectTransform.Axis.Vertical);
 			}
 		}
 
@@ -220,7 +245,7 @@
 		/// <param name="spacing">Spacing.</param>
 		/// <param name="padding">Padding,</param>
 		/// <returns>Size.</returns>
-		protected override Vector2 CalculateGroupSize(bool isHorizontal, Vector2 spacing, Vector2 padding)
+		protected override GroupSize CalculateGroupSize(bool isHorizontal, Vector2 spacing, Vector2 padding)
 		{
 			return ElementsGroup.Size(spacing, padding);
 		}
@@ -236,8 +261,8 @@
 		protected override Vector2 GetAlignByWidth(LayoutElementInfo element, float maxWidth, Vector2 cellMaxSize, float emptyWidth)
 		{
 			return new Vector2(
-				emptyWidth * RowAligns[(int)Layout.RowAlign],
-				(cellMaxSize.y - element.Height) * InnerAligns[(int)Layout.InnerAlign]);
+				emptyWidth * RowAligns[(int)RowAlign],
+				(cellMaxSize.y - element.Height) * InnerAligns[(int)InnerAlign]);
 		}
 
 		/// <summary>
@@ -251,8 +276,8 @@
 		protected override Vector2 GetAlignByHeight(LayoutElementInfo element, float maxHeight, Vector2 cellMaxSize, float emptyHeight)
 		{
 			return new Vector2(
-				(cellMaxSize.x - element.Width) * InnerAligns[(int)Layout.InnerAlign],
-				emptyHeight * RowAligns[(int)Layout.RowAlign]);
+				(cellMaxSize.x - element.Width) * InnerAligns[(int)InnerAlign],
+				emptyHeight * RowAligns[(int)RowAlign]);
 		}
 	}
 }

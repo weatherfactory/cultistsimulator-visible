@@ -22,13 +22,23 @@
 		protected Image Image;
 
 		/// <summary>
-		/// Adds listeners.
+		/// Process the start event.
 		/// </summary>
-		protected virtual void Start()
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected void Start()
 		{
 			ColorRange.OnChange.AddListener(ColorChanged);
 
 			ColorChanged(ColorRange.Color);
+		}
+
+		/// <summary>
+		/// Process the destroy event.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected void OnDestroy()
+		{
+			ColorRange.OnChange.RemoveListener(ColorChanged);
 		}
 
 		void ColorChanged(Color32 color)

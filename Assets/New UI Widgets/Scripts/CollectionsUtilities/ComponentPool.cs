@@ -2,7 +2,6 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 
 	/// <summary>
@@ -82,7 +81,10 @@
 		/// <param name="action">Action.</param>
 		public void ForEachCache(Action<T> action)
 		{
-			Cache.ForEach(action);
+			foreach (var c in Cache)
+			{
+				action(c);
+			}
 		}
 	}
 }

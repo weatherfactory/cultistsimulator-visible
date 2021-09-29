@@ -13,6 +13,100 @@
 	/// </summary>
 	public class ColorPickerImagePalette : MonoBehaviour
 	{
+		/// <summary>
+		/// Coordinates.
+		/// </summary>
+		protected struct Coordinates : IEquatable<Coordinates>
+		{
+			/// <summary>
+			/// X.
+			/// </summary>
+			public readonly int X;
+
+			/// <summary>
+			/// Y.
+			/// </summary>
+			public readonly int Y;
+
+			/// <summary>
+			/// Is valid?
+			/// </summary>
+			public bool Valid
+			{
+				get
+				{
+					return (X > -1) && (Y > -1);
+				}
+			}
+
+			/// <summary>
+			/// Initializes a new instance of the <see cref="Coordinates"/> struct.
+			/// </summary>
+			/// <param name="x">X.</param>
+			/// <param name="y">Y.</param>
+			public Coordinates(int x, int y)
+			{
+				X = x;
+				Y = y;
+			}
+
+			/// <summary>
+			/// Determines whether the specified object is equal to the current object.
+			/// </summary>
+			/// <param name="obj">The object to compare with the current object.</param>
+			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+			public override bool Equals(object obj)
+			{
+				if (obj is Coordinates)
+				{
+					return Equals((Coordinates)obj);
+				}
+
+				return false;
+			}
+
+			/// <summary>
+			/// Determines whether the specified object is equal to the current object.
+			/// </summary>
+			/// <param name="other">The object to compare with the current object.</param>
+			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+			public bool Equals(Coordinates other)
+			{
+				return (X == other.X) && (Y == other.Y);
+			}
+
+			/// <summary>
+			/// Hash function.
+			/// </summary>
+			/// <returns>A hash code for the current object.</returns>
+			public override int GetHashCode()
+			{
+				return X ^ Y;
+			}
+
+			/// <summary>
+			/// Compare specified instances.
+			/// </summary>
+			/// <param name="a">First instance.</param>
+			/// <param name="b">Second instance.</param>
+			/// <returns>true if the instances are equal; otherwise, false.</returns>
+			public static bool operator ==(Coordinates a, Coordinates b)
+			{
+				return a.Equals(b);
+			}
+
+			/// <summary>
+			/// Compare specified instances.
+			/// </summary>
+			/// <param name="a">First instance.</param>
+			/// <param name="b">Second instance.</param>
+			/// <returns>true if the instances not equal; otherwise, false.</returns>
+			public static bool operator !=(Coordinates a, Coordinates b)
+			{
+				return !a.Equals(b);
+			}
+		}
+
 		[SerializeField]
 		[Tooltip("The texture must have the Read/Write Enabled flag set in the import settings, otherwise this function will fail.")]
 		Image image;
@@ -323,41 +417,71 @@
 		/// <summary>
 		/// Cached texture pixels.
 		/// </summary>
-		protected Color[] CachedTexturePixels = Compatibility.EmptyArray<Color>();
+#if UNITY_2018_4_OR_NEWER
+		protected Unity.Collections.NativeArray<Color> CachedTexturePixels;
+#else
+		protected Color[] CachedTexturePixels;
+#endif
 
 		/// <summary>
-		/// Get color coords with specified texture.
+		/// Get index of color in texture.
 		/// </summary>
-		/// <returns>The texture coords, [-1, -1] if not found.</returns>
+		/// <param name="color">Color.</param>
+		/// <returns>Index.</returns>
+		protected int ColorIndex(Color color)
+		{
+			for (int i = 0; i < CachedTexturePixels.Length; i++)
+			{
+				if (CachedTexturePixels[i] == color)
+				{
+					return i;
+				}
+			}
+
+			return -1;
+		}
+
+		/// <summary>
+		/// Get color coordinates with specified texture.
+		/// </summary>
+		/// <returns>The texture coordinates, [-1, -1] if not found.</returns>
 		/// <param name="color">Color.</param>
 		/// <param name="texture">Texture.</param>
 		/// <param name="diff">Allowable difference between colors.</param>
-		protected int[] Color2TextureCoords(Color color, Texture2D texture, float diff = 0f)
+		protected Coordinates Color2TextureCoords(Color color, Texture2D texture, float diff = 0f)
 		{
 			if (CacheTextureData)
 			{
 				if ((CachedTextureId != texture.GetInstanceID()) || (CachedTexturePixels.Length == 0))
 				{
+#if UNITY_2018_4_OR_NEWER
+					CachedTexturePixels = texture.GetRawTextureData<Color>();
+#else
 					CachedTexturePixels = texture.GetPixels();
+#endif
 				}
 
-				var pos = Array.IndexOf<Color>(CachedTexturePixels, color);
+				var pos = ColorIndex(color);
 
 				if (pos != -1)
 				{
 					int texture_y = pos / texture.width;
 					int texture_x = pos - (texture_y * texture.width);
 
-					return new int[] { texture_x, texture_y };
+					return new Coordinates(texture_x, texture_y);
 				}
 				else
 				{
-					return new int[] { -1, -1 };
+					return new Coordinates(-1, -1);
 				}
 			}
 			else
 			{
+#if UNITY_2018_4_OR_NEWER
+				var pixels = texture.GetRawTextureData<Color>();
+#else
 				var pixels = texture.GetPixels();
+#endif
 				int pos = 0;
 				float delta = ColorDelta(color, pixels[0]);
 
@@ -382,11 +506,11 @@
 					int texture_y = pos / texture.width;
 					int texture_x = pos - (texture_y * texture.width);
 
-					return new int[] { texture_x, texture_y };
+					return new Coordinates(texture_x, texture_y);
 				}
 				else
 				{
-					return new int[] { -1, -1 };
+					return new Coordinates(-1, -1);
 				}
 			}
 		}
@@ -410,16 +534,15 @@
 
 				var coords = Color2TextureCoords(currentColor, texture);
 
-				// if coords not found hide cursor
-				if ((coords[0] == -1) && (coords[1] == -1))
+				if (!coords.Valid)
 				{
 					imageCursor.gameObject.SetActive(false);
 				}
 				else
 				{
 					var size = imageRect.rect.size;
-					var x = (float)coords[0] / (float)texture.width;
-					var y = (float)coords[1] / (float)texture.height;
+					var x = coords.X / (float)texture.width;
+					var y = coords.Y / (float)texture.height;
 
 					imageCursor.gameObject.SetActive(true);
 					imageCursor.localPosition = new Vector3(x * size.x, (y - 1) * size.y, 0);

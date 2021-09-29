@@ -14,21 +14,21 @@
 		/// </summary>
 		protected static Dictionary<int, RectTransform> DragPoints = new Dictionary<int, RectTransform>();
 
-		Transform canvasTransform;
+		RectTransform parentCanvas;
 
 		/// <summary>
 		/// Gets a canvas transform of current gameobject.
 		/// </summary>
-		protected Transform CanvasTransform
+		protected RectTransform ParentCanvas
 		{
 			get
 			{
-				if (canvasTransform == null)
+				if (parentCanvas == null)
 				{
-					canvasTransform = Utilities.FindTopmostCanvas(transform);
+					parentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
 				}
 
-				return canvasTransform;
+				return parentCanvas;
 			}
 		}
 
@@ -39,19 +39,19 @@
 		{
 			get
 			{
-				var contains_key = DragPoints.ContainsKey(CanvasTransform.GetInstanceID());
-				if (!contains_key || (DragPoints[CanvasTransform.GetInstanceID()] == null))
+				var contains_key = DragPoints.ContainsKey(ParentCanvas.GetInstanceID());
+				if (!contains_key || (DragPoints[ParentCanvas.GetInstanceID()] == null))
 				{
 					var go = new GameObject("DragPoint");
 					var dragPoint = go.AddComponent<RectTransform>();
-					dragPoint.SetParent(CanvasTransform, false);
+					dragPoint.SetParent(ParentCanvas, false);
 					dragPoint.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 0f);
 					dragPoint.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0f);
 
-					DragPoints[CanvasTransform.GetInstanceID()] = dragPoint;
+					DragPoints[ParentCanvas.GetInstanceID()] = dragPoint;
 				}
 
-				return DragPoints[CanvasTransform.GetInstanceID()];
+				return DragPoints[ParentCanvas.GetInstanceID()];
 			}
 		}
 	}

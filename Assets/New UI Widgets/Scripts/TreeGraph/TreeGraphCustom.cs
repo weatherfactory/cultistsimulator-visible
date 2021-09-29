@@ -273,7 +273,14 @@
 						rt.pivot = new Vector2(0.5f, 0.5f);
 
 						ResetInstances();
-						Cache.ForEach(DestroyGameObject);
+
+						foreach (var c in Cache)
+						{
+							DestroyGameObject(c);
+						}
+
+						Cache.Clear();
+
 						ComponentSize = GetComponentSize(value);
 
 						Refresh();
@@ -302,7 +309,13 @@
 					ChangeContainer(value);
 
 					ResetInstances();
-					Cache.ForEach(DestroyGameObject);
+
+					foreach (var c in Cache)
+					{
+						DestroyGameObject(c);
+					}
+
+					Cache.Clear();
 
 					Refresh();
 				}
@@ -633,7 +646,7 @@
 #if NETFX_CORE
 					throw new ArgumentException("Unsupported direction: " + Direction);
 #else
-					throw new InvalidEnumArgumentException("Unsupported direction: " + Direction);
+					throw new InvalidEnumArgumentException(string.Format("Unsupported direction: {0}", EnumHelper<TreeGraphDirections>.ToString(Direction)));
 #endif
 			}
 		}
@@ -673,7 +686,7 @@
 #if NETFX_CORE
 					throw new ArgumentException("Unsupported direction: " + Direction);
 #else
-					throw new InvalidEnumArgumentException("Unsupported direction: " + Direction);
+					throw new InvalidEnumArgumentException(string.Format("Unsupported direction: {0}", EnumHelper<TreeGraphDirections>.ToString(Direction)));
 #endif
 			}
 		}
@@ -756,9 +769,9 @@
 						break;
 					default:
 #if NETFX_CORE
-						throw new ArgumentException("Unsupported direction: " + Direction);
+						throw new ArgumentException(string.Format("Unsupported direction: {0}", Direction.ToString()));
 #else
-						throw new InvalidEnumArgumentException("Unsupported direction: " + Direction);
+						throw new InvalidEnumArgumentException(string.Format("Unsupported direction: {0}", EnumHelper<TreeGraphDirections>.ToString(Direction)));
 #endif
 				}
 
@@ -838,7 +851,11 @@
 		/// </summary>
 		protected void ResetInstances()
 		{
-			InstancesList.ForEach(ResetInstance);
+			foreach (var i in InstancesList)
+			{
+				ResetInstance(i);
+			}
+
 			InstancesList.Clear();
 			Instances.Clear();
 		}

@@ -12,7 +12,7 @@
 	[RequireComponent(typeof(RectTransform))]
 	public abstract class TrackDataViewBase<TData, TPoint> : MonoBehaviour, IMovableToCache
 		where TData : class, ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 	{
 		/// <summary>
 		/// Resizable component.
@@ -173,6 +173,11 @@
 		/// <param name="eventData">Event data.</param>
 		protected virtual void OnDoubleClick(PointerEventData eventData)
 		{
+			if (!Owner.IsInteractable())
+			{
+				return;
+			}
+
 			if (!AllowDialog)
 			{
 				return;

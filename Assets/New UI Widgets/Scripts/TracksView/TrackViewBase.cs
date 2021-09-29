@@ -11,7 +11,7 @@
 	/// <typeparam name="TPoint">Point type.</typeparam>
 	public abstract class TrackViewBase<TData, TPoint> : MonoBehaviour, IMovableToCache
 		where TData : class, ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 	{
 		RectTransform rt;
 
@@ -90,6 +90,11 @@
 		/// <param name="eventData">Event data.</param>
 		protected virtual void OnDoubleClick(PointerEventData eventData)
 		{
+			if (!Owner.IsInteractable())
+			{
+				return;
+			}
+
 			if (!AllowDialog)
 			{
 				return;

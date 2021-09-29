@@ -194,7 +194,8 @@ namespace UIWidgets.WidgetGeneration
 				GUILayout.ExpandWidth(false),
 			};
 
-			scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Height(GetHeight() - 17), GUILayout.ExpandHeight(true));
+			var options = new GUILayoutOption[] { GUILayout.Height(GetHeight() - 17), GUILayout.ExpandHeight(true) };
+			scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, options);
 			if (requestScripts.Count > 0)
 			{
 				EditorGUILayout.LabelField("Overwrite scripts:", header_style);

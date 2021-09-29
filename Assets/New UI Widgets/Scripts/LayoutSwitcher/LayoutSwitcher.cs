@@ -178,12 +178,12 @@
 		/// <summary>
 		/// Display size comparer.
 		/// </summary>
-		protected struct DisplaySizeComparer : IEquatable<DisplaySizeComparer>
+		protected class DisplaySizeComparer : IEquatable<DisplaySizeComparer>
 		{
 			readonly float DisplaySize;
 
 			/// <summary>
-			/// Initializes a new instance of the <see cref="DisplaySizeComparer"/> struct.
+			/// Initializes a new instance of the <see cref="DisplaySizeComparer"/> class.
 			/// </summary>
 			/// <param name="displaySize">Display size.</param>
 			public DisplaySizeComparer(float displaySize)
@@ -227,6 +227,11 @@
 			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
 			public bool Equals(DisplaySizeComparer other)
 			{
+				if (ReferenceEquals(other, null))
+				{
+					return false;
+				}
+
 				return DisplaySize == other.DisplaySize;
 			}
 
@@ -247,6 +252,11 @@
 			/// <returns>true if the instances are equal; otherwise, false.</returns>
 			public static bool operator ==(DisplaySizeComparer left, DisplaySizeComparer right)
 			{
+				if (ReferenceEquals(left, null))
+				{
+					return ReferenceEquals(right, null);
+				}
+
 				return left.Equals(right);
 			}
 
@@ -258,7 +268,7 @@
 			/// <returns>true if the instances are now equal; otherwise, false.</returns>
 			public static bool operator !=(DisplaySizeComparer left, DisplaySizeComparer right)
 			{
-				return !left.Equals(right);
+				return !(left == right);
 			}
 		}
 

@@ -1,6 +1,7 @@
 ﻿namespace UIWidgets.Menu
 {
 	using System;
+	using System.Collections.Generic;
 	using System.Text;
 	using UnityEngine;
 
@@ -186,6 +187,11 @@
 		/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
 		public bool Equals(HotKey other)
 		{
+			if (ReferenceEquals(other, null))
+			{
+				return false;
+			}
+
 			return (key == other.key) && (ctrl == other.ctrl) && (shift == other.shift) && (alt == other.alt);
 		}
 
@@ -195,7 +201,8 @@
 		/// <returns>A hash code for the current object.</returns>
 		public override int GetHashCode()
 		{
-			return key.GetHashCode() ^ ctrl.GetHashCode() ^ shift.GetHashCode() ^ alt.GetHashCode();
+			var code = EqualityComparer<HotKeyCode>.Default.GetHashCode(key);
+			return code ^ ctrl.GetHashCode() ^ shift.GetHashCode() ^ alt.GetHashCode();
 		}
 
 		/// <summary>
@@ -206,7 +213,12 @@
 		/// <returns>true if the hot keys are equal; otherwise, false.</returns>
 		public static bool operator ==(HotKey hotkey1, HotKey hotkey2)
 		{
-			return Equals(hotkey1, hotkey2);
+			if (ReferenceEquals(hotkey1, null))
+			{
+				return ReferenceEquals(hotkey2, null);
+			}
+
+			return hotkey1.Equals(hotkey2);
 		}
 
 		/// <summary>
@@ -217,7 +229,7 @@
 		/// <returns>true if the hot keys not equal; otherwise, false.</returns>
 		public static bool operator !=(HotKey hotkey1, HotKey hotkey2)
 		{
-			return !Equals(hotkey1, hotkey2);
+			return !(hotkey1 == hotkey2);
 		}
 
 		/// <summary>

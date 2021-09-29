@@ -83,7 +83,7 @@
 		protected TextAdapter PlayerTotalAdapter;
 
 		/// <summary>
-		/// Notifaction template.
+		/// Notification template.
 		/// </summary>
 		[SerializeField]
 		[FormerlySerializedAs("notify")]
@@ -92,6 +92,7 @@
 		/// <summary>
 		/// Start and adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Start()
 		{
 			Shop = new Trader();
@@ -177,7 +178,13 @@
 
 		static ObservableList<JRPGOrderLine> CreateOrderLines(Trader trader)
 		{
-			return trader.Inventory.Convert(item => new JRPGOrderLine(item, Prices.GetPrice(item, trader.PriceFactor)));
+			var result = new ObservableList<JRPGOrderLine>(trader.Inventory.Count);
+			foreach (var item in trader.Inventory)
+			{
+				result.Add(new JRPGOrderLine(item, Prices.GetPrice(item, trader.PriceFactor)));
+			}
+
+			return result;
 		}
 
 		void UpdateShopItems()
@@ -206,7 +213,7 @@
 			}
 			else
 			{
-				var message = string.Format("Not enough money to buy items. Available: {0}; Required: {1}", Player.Money, order.Total());
+				var message = string.Format("Not enough money to buy items. Available: {0}; Required: {1}", Player.Money.ToString(), order.Total().ToString());
 				NotifyTemplate.Clone().Show(message, customHideDelay: 3f, sequenceType: NotifySequence.First, clearSequence: true);
 			}
 		}
@@ -222,7 +229,7 @@
 			}
 			else
 			{
-				var message = string.Format("Not enough money in shop to sell items. Available: {0}; Required: {1}", Shop.Money, order.Total());
+				var message = string.Format("Not enough money in shop to sell items. Available: {0}; Required: {1}", Shop.Money.ToString(), order.Total().ToString());
 				NotifyTemplate.Clone().Show(message, customHideDelay: 3f, sequenceType: NotifySequence.First, clearSequence: true);
 			}
 		}
@@ -230,6 +237,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			if (BuyButton != null)

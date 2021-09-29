@@ -706,16 +706,26 @@
 				return;
 			}
 
-			if (!allowColoring)
+			FindHighlightedIndices();
+			foreach (var index in highlightedIndices)
 			{
-				return;
-			}
+				var item = GetComponent(index);
+				if (item == null)
+				{
+					continue;
+				}
 
-			foreach (var index in HighlightedIndices)
-			{
-				HighlightColoring(GetComponent(index));
+				if (allowColoring)
+				{
+					HighlightColoring(item);
+				}
+
+				item.StateHighlighted();
 			}
 		}
+
+		PointerEventData ItemUnderPointerEventData;
+		EventSystem ItemUnderPointerEventSystem;
 
 		/// <summary>
 		/// Find item under pointer.
@@ -723,16 +733,18 @@
 		/// <returns>Item.</returns>
 		protected ListViewItem FindItemUnderPointer()
 		{
-			raycastResults.Clear();
-
 			if (EventSystem.current != null)
 			{
-				var event_data = new PointerEventData(EventSystem.current)
+				var es = EventSystem.current;
+				if ((ItemUnderPointerEventData == null) || (ItemUnderPointerEventSystem != es))
 				{
-					position = CompatibilityInput.MousePosition,
-				};
+					ItemUnderPointerEventSystem = es;
+					ItemUnderPointerEventData = new PointerEventData(es);
+				}
 
-				EventSystem.current.RaycastAll(event_data, raycastResults);
+				ItemUnderPointerEventData.position = CompatibilityInput.MousePosition;
+
+				EventSystem.current.RaycastAll(ItemUnderPointerEventData, raycastResults);
 			}
 
 			foreach (var raycastResult in raycastResults)
@@ -743,11 +755,13 @@
 				}
 
 				var item = raycastResult.gameObject.GetComponent<ListViewItem>();
-				if ((item != null) && (item.Owner.GetInstanceID() == GetInstanceID()))
+				if ((item != null) && (item.Owner != null) && (item.Owner.GetInstanceID() == GetInstanceID()) && Items.Contains(item))
 				{
 					return item;
 				}
 			}
+
+			raycastResults.Clear();
 
 			return null;
 		}
@@ -811,7 +825,8 @@
 		/// Sets the direction.
 		/// </summary>
 		/// <param name="newDirection">New direction.</param>
-		protected abstract void SetDirection(ListViewDirection newDirection);
+		/// <param name="updateView">Update view.</param>
+		protected abstract void SetDirection(ListViewDirection newDirection, bool updateView = true);
 
 		/// <summary>
 		/// Updates the view.
@@ -846,7 +861,7 @@
 		/// <returns>Secondary scroll position.</returns>
 		protected virtual float GetScrollPositionSecondary(int index)
 		{
-			var current_position = scrollRect.content.anchoredPosition;
+			var current_position = ContainerAnchoredPosition;
 
 			return IsHorizontal() ? current_position.y : current_position.x;
 		}

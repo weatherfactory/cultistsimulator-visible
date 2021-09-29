@@ -246,26 +246,6 @@
 		protected AutocompleteResult Result = AutocompleteResult.Replace;
 
 		/// <summary>
-		/// Option selected event.
-		/// </summary>
-		public UnityEvent OnOptionSelected = new UnityEvent();
-
-		/// <summary>
-		/// Item selected event.
-		/// </summary>
-		public SelectEvent OnOptionSelectedItem = new SelectEvent();
-
-		/// <summary>
-		/// Item not found event.
-		/// </summary>
-		public NotFoundEvent OnItemNotFound = new NotFoundEvent();
-
-		/// <summary>
-		/// Cancel event.
-		/// </summary>
-		public UnityEvent OnCancelInput = new UnityEvent();
-
-		/// <summary>
 		/// Current query - word in input or whole input for autocomplete.
 		/// </summary>
 		[HideInInspector]
@@ -334,6 +314,22 @@
 		public bool UnscaledTime = true;
 
 		/// <summary>
+		/// Canvas will be used as parent for DisplayListView.
+		/// </summary>
+		[SerializeField]
+		protected RectTransform ParentCanvas;
+
+		/// <summary>
+		/// To keep DisplayListView position if InputField inside scrollable area.
+		/// </summary>
+		protected Vector2 DisplayListViewAnchoredPosition;
+
+		/// <summary>
+		/// Default parent for DisplayListView.
+		/// </summary>
+		protected RectTransform DisplayListViewParent;
+
+		/// <summary>
 		/// Coroutine to performs search.
 		/// </summary>
 		protected IEnumerator SearchCoroutine;
@@ -342,6 +338,26 @@
 		/// The modal key.
 		/// </summary>
 		protected int? ModalKey;
+
+		/// <summary>
+		/// Option selected event.
+		/// </summary>
+		public UnityEvent OnOptionSelected = new UnityEvent();
+
+		/// <summary>
+		/// Item selected event.
+		/// </summary>
+		public SelectEvent OnOptionSelectedItem = new SelectEvent();
+
+		/// <summary>
+		/// Item not found event.
+		/// </summary>
+		public NotFoundEvent OnItemNotFound = new NotFoundEvent();
+
+		/// <summary>
+		/// Cancel event.
+		/// </summary>
+		public UnityEvent OnCancelInput = new UnityEvent();
 
 		/// <summary>
 		/// Determines whether the beginning of value matches the Input.
@@ -489,21 +505,6 @@
 		}
 
 		/// <summary>
-		/// Canvas will be used as parent for DisplayListView.
-		/// </summary>
-		protected Transform CanvasTransform;
-
-		/// <summary>
-		/// To keep DisplayListView position if InputField inside scrollable area.
-		/// </summary>
-		protected Vector2 DisplayListViewAnchoredPosition;
-
-		/// <summary>
-		/// Default parent for DisplayListView.
-		/// </summary>
-		protected Transform DisplayListViewParent;
-
-		/// <summary>
 		/// Closes the options.
 		/// </summary>
 		/// <param name="input">Input.</param>
@@ -523,7 +524,7 @@
 				ModalKey = null;
 			}
 
-			if (CanvasTransform != null)
+			if (ParentCanvas != null)
 			{
 				Utilities.GetOrAddComponent<HierarchyToggle>(DisplayListView).Restore();
 			}
@@ -558,15 +559,19 @@
 		/// </summary>
 		protected virtual void ShowOptions()
 		{
-			if (!ModalKey.HasValue)
+			if (ParentCanvas == null)
 			{
-				ModalKey = ModalHelper.Open(this, null, new Color(0, 0, 0, 0f), Cancel);
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(DisplayListView.transform);
 			}
 
-			CanvasTransform = Utilities.FindTopmostCanvas(DisplayListView.transform);
-			if (CanvasTransform != null)
+			if (!ModalKey.HasValue)
 			{
-				Utilities.GetOrAddComponent<HierarchyToggle>(DisplayListView).SetParent(CanvasTransform);
+				ModalKey = ModalHelper.Open(this, null, new Color(0, 0, 0, 0f), Cancel, ParentCanvas);
+			}
+
+			if (ParentCanvas != null)
+			{
+				Utilities.GetOrAddComponent<HierarchyToggle>(DisplayListView).SetParent(ParentCanvas);
 			}
 
 			DisplayListView.gameObject.transform.SetAsLastSibling();
@@ -679,6 +684,7 @@
 		/// Performs search with delay.
 		/// </summary>
 		/// <returns>Yield instruction.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		protected virtual IEnumerator Search()
 		{
 			if (SearchDelay > 0)
@@ -814,7 +820,7 @@
 				var text = InputFieldAdapter.text.Substring(0, end_position);
 				var start_position = text.LastIndexOfAny(DelimiterChars) + 1;
 
-				InputFieldAdapter.text = InputFieldAdapter.text.Substring(0, start_position) + value + InputFieldAdapter.text.Substring(end_position);
+				InputFieldAdapter.text = string.Format("{0}{1}{2}", InputFieldAdapter.text.Substring(0, start_position), value, InputFieldAdapter.text.Substring(end_position));
 
 				InputFieldAdapter.caretPosition = start_position + value.Length;
 #if UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_3_OR_NEWER
@@ -876,15 +882,32 @@
 #pragma warning restore 0618
 		}
 
-#if UNITY_EDITOR
+		#if UNITY_EDITOR
 		/// <summary>
 		/// Validate this instance.
 		/// </summary>
 		protected virtual void OnValidate()
 		{
 			Compatibility.Upgrade(this);
+
+			if (ParentCanvas == null)
+			{
+				var t = (DisplayListView != null) ? DisplayListView.transform : transform;
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(t);
+			}
 		}
-#endif
+
+		/// <summary>
+		/// Reset this instance.
+		/// </summary>
+		protected virtual void Reset()
+		{
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+		#endif
 
 		/// <summary>
 		/// This function is called when the MonoBehaviour will be destroyed.

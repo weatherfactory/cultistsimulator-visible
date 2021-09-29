@@ -2,6 +2,7 @@
 {
 	using System;
 	using UnityEngine;
+	using UnityEngine.Serialization;
 	using UnityEngine.UI;
 
 	/// <summary>
@@ -11,22 +12,54 @@
 	public class StyleAccordion : IStyleDefaultValues
 	{
 		/// <summary>
-		/// Style for the toggle background.
+		/// Style for the inactive toggle background.
 		/// </summary>
 		[SerializeField]
-		public StyleImage ToggleBackground;
+		[FormerlySerializedAs("ToggleBackground")]
+		public StyleImage ToggleDefaultBackground;
 
 		/// <summary>
-		/// Style for the toggle background.
+		/// Style for the inactive toggle background.
+		/// </summary>
+		[Obsolete("Renamed to ToggleDefaultBackground.")]
+		public StyleImage ToggleBackground
+		{
+			get
+			{
+				return ToggleDefaultBackground;
+			}
+		}
+
+		/// <summary>
+		/// Style for the active toggle background.
 		/// </summary>
 		[SerializeField]
 		public StyleImage ToggleActiveBackground;
 
 		/// <summary>
-		/// Style for the toggle text.
+		/// Style for the inactive toggle text.
 		/// </summary>
 		[SerializeField]
-		public StyleText ToggleText;
+		[FormerlySerializedAs("ToggleText")]
+		public StyleText ToggleDefaultText;
+
+		/// <summary>
+		/// Style for the inactive toggle text.
+		/// </summary>
+		[Obsolete("Renamed to ToggleDefaultText.")]
+		public StyleText ToggleText
+		{
+			get
+			{
+				return ToggleDefaultText;
+			}
+		}
+
+		/// <summary>
+		/// Style for the active toggle text.
+		/// </summary>
+		[SerializeField]
+		public StyleText ToggleActiveText;
 
 		/// <summary>
 		/// Style for the content background.
@@ -59,10 +92,10 @@
 				}
 				else
 				{
-					ToggleBackground.ApplyTo(item.ToggleObject.GetComponent<Image>());
+					ToggleDefaultBackground.ApplyTo(item.ToggleObject.GetComponent<Image>());
 				}
 
-				ToggleText.ApplyTo(item.ToggleObject.transform.Find("Text"));
+				ToggleDefaultText.ApplyTo(item.ToggleObject.transform.Find("Text"));
 			}
 
 			if (item.ContentObject != null)
@@ -91,10 +124,10 @@
 				}
 				else
 				{
-					ToggleBackground.GetFrom(item.ToggleObject.GetComponent<Image>());
+					ToggleDefaultBackground.GetFrom(item.ToggleObject.GetComponent<Image>());
 				}
 
-				ToggleText.GetFrom(item.ToggleObject.transform.Find("Text"));
+				ToggleDefaultText.GetFrom(item.ToggleObject.transform.Find("Text"));
 			}
 
 			if (item.ContentObject != null)
@@ -108,9 +141,10 @@
 		/// <inheritdoc/>
 		public void SetDefaultValues()
 		{
-			ToggleBackground.SetDefaultValues();
+			ToggleDefaultBackground.SetDefaultValues();
 			ToggleActiveBackground.SetDefaultValues();
-			ToggleText.SetDefaultValues();
+			ToggleDefaultText.SetDefaultValues();
+			ToggleActiveText.SetDefaultValues();
 			ContentBackground.SetDefaultValues();
 			ContentText.SetDefaultValues();
 		}

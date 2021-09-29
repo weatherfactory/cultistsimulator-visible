@@ -13,7 +13,7 @@ namespace UIWidgets
 		/// <summary>
 		/// Display info.
 		/// </summary>
-		public struct DisplayInfo
+		public struct DisplayInfo : IEquatable<DisplayInfo>
 		{
 			/// <summary>
 			/// Depth.
@@ -29,6 +29,62 @@ namespace UIWidgets
 			/// Count.
 			/// </summary>
 			public int Count;
+
+			/// <summary>
+			/// Determines whether the specified object is equal to the current object.
+			/// </summary>
+			/// <param name="obj">The object to compare with the current object.</param>
+			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+			public override bool Equals(object obj)
+			{
+				if (obj is DisplayInfo)
+				{
+					return Equals((DisplayInfo)obj);
+				}
+
+				return false;
+			}
+
+			/// <summary>
+			/// Determines whether the specified object is equal to the current object.
+			/// </summary>
+			/// <param name="other">The object to compare with the current object.</param>
+			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+			public bool Equals(DisplayInfo other)
+			{
+				return (Depth == other.Depth) && (Height == other.Height) && (Count == other.Count);
+			}
+
+			/// <summary>
+			/// Hash function.
+			/// </summary>
+			/// <returns>A hash code for the current object.</returns>
+			public override int GetHashCode()
+			{
+				return Depth ^ Height.GetHashCode() ^ Count;
+			}
+
+			/// <summary>
+			/// Compare specified instances.
+			/// </summary>
+			/// <param name="a">First instance.</param>
+			/// <param name="b">Second instance.</param>
+			/// <returns>true if the instances are equal; otherwise, false.</returns>
+			public static bool operator ==(DisplayInfo a, DisplayInfo b)
+			{
+				return a.Equals(b);
+			}
+
+			/// <summary>
+			/// Compare specified instances.
+			/// </summary>
+			/// <param name="a">First instance.</param>
+			/// <param name="b">Second instance.</param>
+			/// <returns>true if the instances not equal; otherwise, false.</returns>
+			public static bool operator !=(DisplayInfo a, DisplayInfo b)
+			{
+				return !a.Equals(b);
+			}
 		}
 
 		/// <summary>
@@ -222,7 +278,8 @@ namespace UIWidgets
 			public DisplayInfo Show(int index, DisplayInfo info)
 			{
 				GUI.enabled = Enabled;
-				if (GUILayout.Button(Name, GUILayout.Width(Width), GUILayout.Height(info.Height)))
+				var options = new GUILayoutOption[] { GUILayout.Width(Width), GUILayout.Height(info.Height) };
+				if (GUILayout.Button(Name, options))
 				{
 					info = OnClick(index, info);
 				}
@@ -444,6 +501,11 @@ namespace UIWidgets
 		public Buttons ListButtons;
 
 		/// <summary>
+		/// AddButton layout options.
+		/// </summary>
+		protected static readonly GUILayoutOption[] AddButtonOptions = new GUILayoutOption[] { GUILayout.ExpandWidth(true) };
+
+		/// <summary>
 		/// Set title.
 		/// </summary>
 		protected abstract void OnEnable();
@@ -535,7 +597,7 @@ namespace UIWidgets
 
 			FixTreeList(info.Count);
 
-			if (GUILayout.Button(AddLabel, GUILayout.ExpandWidth(true)))
+			if (GUILayout.Button(AddLabel, AddButtonOptions))
 			{
 				List.InsertArrayElementAtIndex(List.arraySize);
 			}

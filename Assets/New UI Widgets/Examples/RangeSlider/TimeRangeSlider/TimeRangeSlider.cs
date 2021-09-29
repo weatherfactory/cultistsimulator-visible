@@ -142,6 +142,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			if (currentRangeSlider != null)
@@ -163,6 +164,7 @@
 		/// <summary>
 		/// Init.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void Init()
 		{
 			CurrentRangeSlider.WholeNumberOfSteps = true;

@@ -10,6 +10,7 @@ namespace UIWidgets
 	using UnityEditorInternal;
 #endif
 	using UnityEngine;
+	using UnityEngine.Events;
 	using UnityEngine.UI;
 
 	/// <summary>
@@ -30,6 +31,21 @@ namespace UIWidgets
 		AnimBool m_ShowAnimTransition = new AnimBool();
 
 		string[] m_PropertyPathToExcludeForChildClasses;
+
+		UnityAction repaintDelegate;
+
+		UnityAction RepaintDelegate
+		{
+			get
+			{
+				if (repaintDelegate == null)
+				{
+					repaintDelegate = Repaint;
+				}
+
+				return repaintDelegate;
+			}
+		}
 
 		/// <summary>
 		/// Init.
@@ -57,8 +73,8 @@ namespace UIWidgets
 			m_ShowSpriteTrasition.value = (trans == Selectable.Transition.SpriteSwap);
 			m_ShowAnimTransition.value = (trans == Selectable.Transition.Animation);
 
-			m_ShowColorTint.valueChanged.AddListener(Repaint);
-			m_ShowSpriteTrasition.valueChanged.AddListener(Repaint);
+			m_ShowColorTint.valueChanged.AddListener(RepaintDelegate);
+			m_ShowSpriteTrasition.valueChanged.AddListener(RepaintDelegate);
 		}
 
 		/// <summary>
@@ -66,8 +82,8 @@ namespace UIWidgets
 		/// </summary>
 		protected virtual void OnDisable()
 		{
-			m_ShowColorTint.valueChanged.RemoveListener(Repaint);
-			m_ShowSpriteTrasition.valueChanged.RemoveListener(Repaint);
+			m_ShowColorTint.valueChanged.RemoveListener(RepaintDelegate);
+			m_ShowSpriteTrasition.valueChanged.RemoveListener(RepaintDelegate);
 		}
 
 		static Selectable.Transition GetTransition(SerializedProperty transition)

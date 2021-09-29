@@ -26,33 +26,45 @@
 		public bool Open;
 
 		/// <summary>
+		/// Label.
+		/// </summary>
+		[HideInInspector]
+		[NonSerialized]
+		public TextAdapter ToggleLabel;
+
+		/// <summary>
 		/// The current coroutine.
 		/// </summary>
 		[HideInInspector]
+		[NonSerialized]
 		public Coroutine CurrentCoroutine;
 
 		/// <summary>
 		/// The content object RectTransform.
 		/// </summary>
 		[HideInInspector]
+		[NonSerialized]
 		public RectTransform ContentObjectRect;
 
 		/// <summary>
 		/// The content LayoutElement.
 		/// </summary>
 		[HideInInspector]
+		[NonSerialized]
 		public LayoutElement ContentLayoutElement;
 
 		/// <summary>
 		/// The height of the content object.
 		/// </summary>
 		[HideInInspector]
+		[NonSerialized]
 		public float ContentObjectHeight;
 
 		/// <summary>
 		/// The width of the content object.
 		/// </summary>
 		[HideInInspector]
+		[NonSerialized]
 		public float ContentObjectWidth;
 	}
 }

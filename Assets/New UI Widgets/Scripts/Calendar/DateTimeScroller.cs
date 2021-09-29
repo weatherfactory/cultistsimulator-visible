@@ -41,7 +41,7 @@
 		[SerializeField]
 		[EditorConditionBool("hours")]
 		[FormerlySerializedAs("HoursScroller")]
-		protected ScrollBlock HoursScrollBlock;
+		protected ScrollBlockBase HoursScrollBlock;
 
 		/// <summary>
 		/// Step to change hour.
@@ -94,7 +94,7 @@
 		[SerializeField]
 		[EditorConditionBool("minutes")]
 		[FormerlySerializedAs("MinutesScroller")]
-		protected ScrollBlock MinutesScrollBlock;
+		protected ScrollBlockBase MinutesScrollBlock;
 
 		/// <summary>
 		/// Step to change minutes.
@@ -140,7 +140,7 @@
 		[SerializeField]
 		[EditorConditionBool("seconds")]
 		[FormerlySerializedAs("SecondsScroller")]
-		protected ScrollBlock SecondsScrollBlock;
+		protected ScrollBlockBase SecondsScrollBlock;
 
 		/// <summary>
 		/// Step to change seconds.
@@ -186,7 +186,7 @@
 		[SerializeField]
 		[EditorConditionBool("ampm")]
 		[FormerlySerializedAs("AMPMScroller")]
-		protected ScrollBlock AMPMScrollBlock;
+		protected ScrollBlockBase AMPMScrollBlock;
 
 		/// <summary>
 		/// Format to display AM-PM.

@@ -40,7 +40,7 @@
 		public void GetSelected()
 		{
 			// Get last selected index
-			Debug.Log(ComboboxIcons.ListView.SelectedIndex);
+			Debug.Log(ComboboxIcons.ListView.SelectedIndex.ToString());
 
 			// Get last selected string
 			Debug.Log(ComboboxIcons.ListView.SelectedItem.Name);

@@ -6,7 +6,6 @@ namespace UIWidgets
 	using System;
 	using System.Reflection;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UIWidgets.Styles;
 	using UnityEngine;
 	using UnityEngine.Events;
@@ -23,33 +22,6 @@ namespace UIWidgets
 			ISubmitHandler, ICancelHandler,
 			IStylable, IUpgradeable
 	{
-		/// <summary>
-		/// Selectable target.
-		/// </summary>
-		protected struct SelectableTarget
-		{
-			/// <summary>
-			/// Score.
-			/// </summary>
-			public float Score;
-
-			/// <summary>
-			/// Target.
-			/// </summary>
-			public Selectable Target;
-
-			/// <summary>
-			/// Constructor.
-			/// </summary>
-			/// <param name="score">Score.</param>
-			/// <param name="target">Target.</param>
-			public SelectableTarget(float score, Selectable target = null)
-			{
-				Score = score;
-				Target = target;
-			}
-		}
-
 		[SerializeField]
 		[HideInInspector]
 		List<ListViewItem> items = new List<ListViewItem>();
@@ -58,7 +30,7 @@ namespace UIWidgets
 		/// Gets or sets the items.
 		/// </summary>
 		/// <value>Items.</value>
-		public List<ListViewItem> Items
+		protected List<ListViewItem> Items
 		{
 			get
 			{
@@ -97,7 +69,7 @@ namespace UIWidgets
 			{
 				if (!value && selectedIndices.Count > 1)
 				{
-					var deselect = SelectedIndices;
+					var deselect = SelectedIndicesList;
 					for (int i = 0; i < deselect.Count - 1; i++)
 					{
 						Deselect(deselect[i]);
@@ -168,9 +140,18 @@ namespace UIWidgets
 			}
 		}
 
+		/// <summary>
+		/// Selected indices.
+		/// </summary>
 		[SerializeField]
 		[FormerlySerializedAs("selectedIndicies")]
-		LinkedHashSet<int> selectedIndices = new LinkedHashSet<int>();
+		protected LinkedHashSet<int> selectedIndices = new LinkedHashSet<int>();
+
+		List<int> selectedIndicesList = new List<int>();
+
+		List<int> tempDeselect = new List<int>();
+
+		List<int> tempSelect = new List<int>();
 
 		/// <summary>
 		/// Gets or sets indices of the selected items.
@@ -185,26 +166,33 @@ namespace UIWidgets
 
 			set
 			{
-				var deselect = new List<int>();
 				foreach (var index in selectedIndices)
 				{
 					if (!value.Contains(index))
 					{
-						deselect.Add(index);
+						tempDeselect.Add(index);
 					}
 				}
 
-				var select = new List<int>();
 				foreach (var index in value)
 				{
 					if (!selectedIndices.Contains(index))
 					{
-						select.Add(index);
+						tempSelect.Add(index);
 					}
 				}
 
-				deselect.ForEach(Deselect);
-				select.ForEach(Select);
+				foreach (var index in tempDeselect)
+				{
+					Deselect(index);
+				}
+				tempDeselect.Clear();
+
+				foreach (var index in tempSelect)
+				{
+					Select(index);
+				}
+				tempSelect.Clear();
 			}
 		}
 
@@ -223,6 +211,20 @@ namespace UIWidgets
 			set
 			{
 				SelectedIndices = value;
+			}
+		}
+
+		/// <summary>
+		/// Reusable selected indices list.
+		/// </summary>
+		protected List<int> SelectedIndicesList
+		{
+			get
+			{
+				selectedIndicesList.Clear();
+				selectedIndices.GetItems(selectedIndicesList);
+
+				return selectedIndicesList;
 			}
 		}
 
@@ -270,12 +272,6 @@ namespace UIWidgets
 		public bool Navigation = true;
 
 		/// <summary>
-		/// Navigation settings.
-		/// </summary>
-		[SerializeField]
-		public Navigation NavigationSettings = UnityEngine.UI.Navigation.defaultNavigation;
-
-		/// <summary>
 		/// OnSelect event.
 		/// </summary>
 		[SerializeField]
@@ -317,7 +313,26 @@ namespace UIWidgets
 		/// The container for items objects.
 		/// </summary>
 		[SerializeField]
-		public Transform Container;
+		public RectTransform Container;
+
+		/// <summary>
+		/// Container.anchoredPosition wrapper.
+		/// </summary>
+		protected Vector2 ContainerAnchoredPosition
+		{
+			get
+			{
+				var pos = Container.anchoredPosition;
+				var scale = Container.localScale;
+				return new Vector2(pos.x / scale.x, pos.y / scale.y);
+			}
+
+			set
+			{
+				var scale = Container.localScale;
+				Container.anchoredPosition = new Vector2(value.x * scale.x, value.y * scale.y);
+			}
+		}
 
 		/// <summary>
 		/// OnFocusIn event.
@@ -351,10 +366,6 @@ namespace UIWidgets
 		[Obsolete("Replaced with ItemsEvents.PointerExit.")]
 		public ListViewCustomEvent OnPointerExitObject = new ListViewCustomEvent();
 
-		[SerializeField]
-		[HideInInspector]
-		GameObject Unused;
-
 		[NonSerialized]
 		bool isListViewBaseInited;
 
@@ -373,6 +384,25 @@ namespace UIWidgets
 		/// </summary>
 		[SerializeField]
 		public ListViewItemEvents ItemsEvents = new ListViewItemEvents();
+
+		[NonSerialized]
+		Selectable selectable;
+
+		/// <summary>
+		/// Selectable.
+		/// </summary>
+		protected Selectable Selectable
+		{
+			get
+			{
+				if (selectable == null)
+				{
+					selectable = GetComponent<Selectable>();
+				}
+
+				return selectable;
+			}
+		}
 
 		/// <summary>
 		/// Default function to check if index can be selected or deselected.
@@ -409,13 +439,6 @@ namespace UIWidgets
 
 			Upgrade();
 
-			if (Unused == null)
-			{
-				Unused = new GameObject("unused base");
-				Unused.SetActive(false);
-				Unused.transform.SetParent(transform, false);
-			}
-
 			if ((selectedIndex != -1) && (selectedIndices.Count == 0))
 			{
 				selectedIndices.Add(selectedIndex);
@@ -430,6 +453,14 @@ namespace UIWidgets
 			OnCanvasGroupChanged();
 
 			AddCallbacks();
+		}
+
+		/// <summary>
+		/// Gets indices of the selected items.
+		/// </summary>
+		public void GetSelectedIndices(List<int> output)
+		{
+			selectedIndices.GetItems(output);
 		}
 
 		/// <summary>
@@ -651,218 +682,10 @@ namespace UIWidgets
 				return;
 			}
 
-			switch (eventData.moveDir)
+			if (Selectable != null)
 			{
-				case MoveDirection.Left:
-					Navigate(eventData, FindSelectableOnLeft());
-					break;
-				case MoveDirection.Right:
-					Navigate(eventData, FindSelectableOnRight());
-					break;
-				case MoveDirection.Up:
-					if (!Navigate(eventData, item.Index - 1))
-					{
-						Navigate(eventData, FindSelectableOnUp());
-					}
-					break;
-				case MoveDirection.Down:
-					if (Navigate(eventData, item.Index + 1))
-					{
-						Navigate(eventData, FindSelectableOnDown());
-					}
-					break;
+				Selectable.OnMove(eventData);
 			}
-		}
-
-		/// <summary>
-		/// Get Selectables components.
-		/// </summary>
-		/// <returns>Selectables components.</returns>
-		protected static Selectable[] GetSelectables()
-		{
-			var field = typeof(Selectable).GetField("s_Selectables", BindingFlags.Static | BindingFlags.NonPublic);
-			return field.GetValue(null) as Selectable[];
-		}
-
-		/// <summary>
-		/// Find Selectable component at specified direction.
-		/// </summary>
-		/// <param name="direction">Direction.</param>
-		/// <returns>Selectable.</returns>
-		protected virtual Selectable FindSelectable(Vector3 direction)
-		{
-			var target = new SelectableTarget(float.NegativeInfinity);
-			var furthest_target = new SelectableTarget(float.NegativeInfinity);
-
-			direction = direction.normalized;
-			var local_direction = Quaternion.Inverse(transform.rotation) * direction;
-			var position = transform.TransformPoint(GetPointOnRectEdge(transform as RectTransform, local_direction));
-
-			#if UNITY_2020_3_OR_NEWER
-			var one_axis = (NavigationSettings.mode == UnityEngine.UI.Navigation.Mode.Vertical)
-				|| (NavigationSettings.mode == UnityEngine.UI.Navigation.Mode.Horizontal);
-			var wrap = NavigationSettings.wrapAround && one_axis;
-			#else
-			var wrap = false;
-			#endif
-
-			var selectables = GetSelectables();
-			if (selectables == null)
-			{
-				return null;
-			}
-
-			var current = GetComponent<Selectable>();
-
-			foreach (var selectable in selectables)
-			{
-				if (selectable == null)
-				{
-					continue;
-				}
-
-				if (selectable == current)
-				{
-					continue;
-				}
-
-				if (!selectable.IsInteractable())
-				{
-					continue;
-				}
-
-				if (selectable.navigation.mode == UnityEngine.UI.Navigation.Mode.None)
-				{
-					continue;
-				}
-
-				var rt = selectable.transform as RectTransform;
-
-				var center = (rt != null) ? (Vector3)rt.rect.center : Vector3.zero;
-				var distance = selectable.transform.TransformPoint(center) - position;
-				var dot = Vector3.Dot(direction, distance);
-
-				if (wrap && dot < 0f)
-				{
-					var score = -dot * distance.sqrMagnitude;
-					if (score > furthest_target.Score)
-					{
-						furthest_target = new SelectableTarget(score, selectable);
-					}
-				}
-				else if (dot > 0f)
-				{
-					var score = dot / distance.sqrMagnitude;
-					if (score > target.Score)
-					{
-						target = new SelectableTarget(score, selectable);
-					}
-				}
-			}
-
-			if (wrap && (target.Target == null))
-			{
-				return furthest_target.Target;
-			}
-
-			return target.Target;
-		}
-
-		/// <summary>
-		/// Get point on rect edge.
-		/// </summary>
-		/// <param name="rect">Rect.</param>
-		/// <param name="dir">Direction.</param>
-		/// <returns>Point.</returns>
-		protected static Vector3 GetPointOnRectEdge(RectTransform rect, Vector2 dir)
-		{
-			if (rect == null)
-			{
-				return Vector3.zero;
-			}
-
-			if (dir != Vector2.zero)
-			{
-				dir /= Mathf.Max(Mathf.Abs(dir.x), Mathf.Abs(dir.y));
-			}
-
-			return rect.rect.center + Vector2.Scale(rect.rect.size, dir * 0.5f);
-		}
-
-		/// <summary>
-		/// Find selectable on the left.
-		/// </summary>
-		/// <returns>Selectable.</returns>
-		public virtual Selectable FindSelectableOnLeft()
-		{
-			if (NavigationSettings.mode == UnityEngine.UI.Navigation.Mode.Explicit)
-			{
-				return NavigationSettings.selectOnLeft;
-			}
-
-			if ((NavigationSettings.mode & UnityEngine.UI.Navigation.Mode.Horizontal) != UnityEngine.UI.Navigation.Mode.None)
-			{
-				return FindSelectable(transform.rotation * Vector3.left);
-			}
-
-			return null;
-		}
-
-		/// <summary>
-		/// Find selectable on the right.
-		/// </summary>
-		/// <returns>Selectable.</returns>
-		public virtual Selectable FindSelectableOnRight()
-		{
-			if (NavigationSettings.mode == UnityEngine.UI.Navigation.Mode.Explicit)
-			{
-				return NavigationSettings.selectOnRight;
-			}
-
-			if ((NavigationSettings.mode & UnityEngine.UI.Navigation.Mode.Horizontal) != UnityEngine.UI.Navigation.Mode.None)
-			{
-				return FindSelectable(transform.rotation * Vector3.right);
-			}
-
-			return null;
-		}
-
-		/// <summary>
-		/// Find selectable on the top.
-		/// </summary>
-		/// <returns>Selectable.</returns>
-		public virtual Selectable FindSelectableOnUp()
-		{
-			if (NavigationSettings.mode == UnityEngine.UI.Navigation.Mode.Explicit)
-			{
-				return NavigationSettings.selectOnUp;
-			}
-
-			if ((NavigationSettings.mode & UnityEngine.UI.Navigation.Mode.Vertical) != UnityEngine.UI.Navigation.Mode.None)
-			{
-				return FindSelectable(transform.rotation * Vector3.up);
-			}
-
-			return null;
-		}
-
-		/// <summary>
-		/// Find selectable on the bottom.
-		/// </summary>
-		/// <returns>Selectable.</returns>
-		public virtual Selectable FindSelectableOnDown()
-		{
-			if (NavigationSettings.mode == UnityEngine.UI.Navigation.Mode.Explicit)
-			{
-				return NavigationSettings.selectOnDown;
-			}
-
-			if ((NavigationSettings.mode & UnityEngine.UI.Navigation.Mode.Vertical) != UnityEngine.UI.Navigation.Mode.None)
-			{
-				return FindSelectable(transform.rotation * Vector3.down);
-			}
-
-			return null;
 		}
 
 		/// <summary>
@@ -897,9 +720,14 @@ namespace UIWidgets
 		/// </summary>
 		public virtual void Clear()
 		{
-			items.Clear();
 			UpdateComponents(items);
 		}
+
+		/// <summary>
+		/// Remove the item with the specified index.
+		/// </summary>
+		/// <param name="index">Index.</param>
+		public abstract void RemoveItemAt(int index);
 
 		/// <summary>
 		/// Remove the specified item.
@@ -910,8 +738,8 @@ namespace UIWidgets
 		{
 			var index = item.Index;
 
-			var prev_selected_indices = selectedIndices;
-			selectedIndices = new LinkedHashSet<int>();
+			var prev_selected_indices = SelectedIndicesList;
+			selectedIndices.Clear();
 			foreach (var old_index in prev_selected_indices)
 			{
 				if (old_index != index)
@@ -947,13 +775,7 @@ namespace UIWidgets
 				return;
 			}
 
-			if ((item.transform == null) || (Unused == null) || (Unused.transform == null))
-			{
-				return;
-			}
-
 			item.Owner = null;
-			item.transform.SetParent(Unused.transform, false);
 		}
 
 		/// <summary>
@@ -965,38 +787,24 @@ namespace UIWidgets
 		/// Updates the items.
 		/// </summary>
 		/// <param name="newItems">New items.</param>
-		protected virtual void UpdateComponents<TItem>(IList<TItem> newItems)
+		protected virtual void UpdateComponents<TItem>(List<TItem> newItems)
 			where TItem : ListViewItem
 		{
-			if (!ReferenceEquals(items, newItems))
+			for (int i = 0; i < items.Count; i++)
 			{
-				for (int i = 0; i < items.Count; i++)
+				if ((items[i] != null) && (!newItems.Contains(items[i] as TItem)))
 				{
-					if ((items[i] != null) && (!newItems.Contains(items[i] as TItem)))
-					{
-						Free(items[i]);
-					}
+					Free(items[i]);
 				}
 			}
-
-			newItems.ForEach(UpdateItem);
 
 			items.Clear();
 			for (int i = 0; i < newItems.Count; i++)
 			{
+				newItems[i].transform.SetParent(Container, false);
 				newItems[i].Owner = this;
 				items.Add(newItems[i]);
 			}
-		}
-
-		void UpdateItem(ListViewItem item, int index)
-		{
-			if (item == null)
-			{
-				return;
-			}
-
-			item.transform.SetParent(Container, false);
 		}
 
 		/// <summary>
@@ -1050,7 +858,7 @@ namespace UIWidgets
 
 			if (!IsValid(index))
 			{
-				var message = string.Format("Index must be between 0 and Items.Count ({0}), but {2}, Gameobject {1}.", items.Count - 1, name, index);
+				var message = string.Format("Index must be between 0 and Items.Count ({0}), but {2}, Gameobject {1}.", (items.Count - 1).ToString(), name, index.ToString());
 				throw new IndexOutOfRangeException(message);
 			}
 
@@ -1111,7 +919,7 @@ namespace UIWidgets
 		{
 			if (!IsValid(index))
 			{
-				Debug.LogWarning("Incorrect index: " + index, this);
+				Debug.LogWarning(string.Format("Incorrect index: {0}", index.ToString()), this);
 			}
 
 			if (raiseEvents)
@@ -1129,7 +937,7 @@ namespace UIWidgets
 		{
 			if (!IsValid(index))
 			{
-				Debug.LogWarning("Incorrect index: " + index, this);
+				Debug.LogWarning(string.Format("Incorrect index: {0}", index.ToString()), this);
 			}
 
 			if (raiseEvents)
@@ -1142,7 +950,7 @@ namespace UIWidgets
 		/// Deselect specified indices without raising corresponding events (OnDeselect, etc).
 		/// </summary>
 		/// <param name="indices">Indices.</param>
-		protected virtual void SilentDeselect(IEnumerable<int> indices)
+		protected virtual void SilentDeselect(List<int> indices)
 		{
 			if (indices == null)
 			{
@@ -1160,15 +968,19 @@ namespace UIWidgets
 		/// <summary>
 		/// Select specified indices without raising corresponding events (OnSelect, etc).
 		/// </summary>
-		/// <param name="indixes">Indices.</param>
-		protected virtual void SilentSelect(IEnumerable<int> indixes)
+		/// <param name="indices">Indices.</param>
+		protected virtual void SilentSelect(List<int> indices)
 		{
-			if (indixes == null)
+			if (indices == null)
 			{
 				return;
 			}
 
-			indixes.ForEach(selectedIndices.Add);
+			foreach (var index in indices)
+			{
+				selectedIndices.Add(index);
+			}
+
 			selectedIndex = (selectedIndices.Count > 0) ? selectedIndices.Last() : -1;
 		}
 
@@ -1179,6 +991,22 @@ namespace UIWidgets
 		public void Deselect(int index)
 		{
 			Deselect(index, true);
+		}
+
+		/// <summary>
+		/// Deselect all items.
+		/// </summary>
+		/// <param name="raiseEvents">Raise select events?</param>
+		public void DeselectAll(bool raiseEvents = true)
+		{
+			GetSelectedIndices(tempSelect);
+
+			foreach (var index in tempSelect)
+			{
+				Deselect(index, raiseEvents);
+			}
+
+			tempSelect.Clear();
 		}
 
 		/// <summary>
@@ -1252,7 +1080,12 @@ namespace UIWidgets
 			if (MultipleSelect && shift_pressed && have_selected && last_selected != index)
 			{
 				// deselect all items except first
-				selectedIndices.Items().ForEach(Deselect);
+				tempDeselect.AddRange(selectedIndices);
+				foreach (var i in tempDeselect)
+				{
+					Deselect(i);
+				}
+				tempDeselect.Clear();
 
 				// find min and max indices
 				var min = Mathf.Min(last_selected, index);
@@ -1347,7 +1180,10 @@ namespace UIWidgets
 
 			RemoveCallbacks();
 
-			items.ForEach(Free);
+			foreach (var item in items)
+			{
+				Free(item);
+			}
 			items.Clear();
 		}
 
@@ -1523,7 +1359,10 @@ namespace UIWidgets
 		/// <param name="func">Function to apply for each component.</param>
 		public virtual void ForEachComponent(Action<ListViewItem> func)
 		{
-			items.ForEach(func);
+			foreach (var item in items)
+			{
+				func(item);
+			}
 		}
 
 		/// <summary>
@@ -1539,6 +1378,26 @@ namespace UIWidgets
 				func(items[i] as T);
 			}
 		}
+
+		#region DebugInfo
+
+		/// <summary>
+		/// Print debug information to console log.
+		/// </summary>
+		public void PrintDebugInfo()
+		{
+			Debug.Log(GetDebugInfo(), this);
+		}
+
+		/// <summary>
+		/// Get debug information.
+		/// </summary>
+		/// <returns>Debug information.</returns>
+		public virtual string GetDebugInfo()
+		{
+			throw new NotSupportedException();
+		}
+		#endregion
 
 		#region ListViewPaginator support
 
@@ -1724,6 +1583,18 @@ namespace UIWidgets
 		}
 
 		/// <summary>
+		/// Scroll to specified index with time.
+		/// </summary>
+		/// <param name="index">Index.</param>
+		/// <param name="animation">Animation curve.</param>
+		/// <param name="unscaledTime">Unscaled time.</param>
+		/// <param name="after">Action to run after animation.</param>
+		public virtual void ScrollToAnimated(int index, AnimationCurve animation, bool unscaledTime, Action after = null)
+		{
+			throw new NotSupportedException();
+		}
+
+		/// <summary>
 		/// Scrolls to specified position with time.
 		/// </summary>
 		/// <param name="target">Position.</param>
@@ -1736,7 +1607,31 @@ namespace UIWidgets
 		/// Scrolls to specified position with time.
 		/// </summary>
 		/// <param name="target">Position.</param>
+		/// <param name="animation">Animation curve.</param>
+		/// <param name="unscaledTime">Unscaled time.</param>
+		/// <param name="after">Action to run after animation.</param>
+		public virtual void ScrollToPositionAnimated(float target, AnimationCurve animation, bool unscaledTime, Action after = null)
+		{
+			throw new NotSupportedException();
+		}
+
+		/// <summary>
+		/// Scrolls to specified position with time.
+		/// </summary>
+		/// <param name="target">Position.</param>
 		public virtual void ScrollToPositionAnimated(Vector2 target)
+		{
+			throw new NotSupportedException();
+		}
+
+		/// <summary>
+		/// Scrolls to specified position with time.
+		/// </summary>
+		/// <param name="target">Position.</param>
+		/// <param name="animation">Animation curve.</param>
+		/// <param name="unscaledTime">Unscaled time.</param>
+		/// <param name="after">Action to run after animation.</param>
+		public virtual void ScrollToPositionAnimated(Vector2 target, AnimationCurve animation, bool unscaledTime, Action after = null)
 		{
 			throw new NotSupportedException();
 		}

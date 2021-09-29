@@ -25,15 +25,16 @@
 				return false;
 			}
 
-			var result = data.Nodes == null || data.Nodes.Count == 0;
-
-			if (result)
+			var has_subnodes = (data.Nodes != null) && (data.Nodes.Count > 0);
+			if (ReceiveOnlyEmptyNode && has_subnodes)
 			{
-				var index = ListView.GetNearestIndex(eventData);
-				ShowDropIndicator(index);
+				return false;
 			}
 
-			return result;
+			var index = ListView.GetNearestIndex(eventData);
+			ShowDropIndicator(index);
+
+			return true;
 		}
 
 		/// <summary>

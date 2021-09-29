@@ -40,10 +40,8 @@
 
 		bool isListViewPaginatorInited;
 
-		/// <summary>
-		/// Init this instance.
-		/// </summary>
-		protected override void Init()
+		/// <inheritdoc/>
+		public override void Init()
 		{
 			if (isListViewPaginatorInited)
 			{
@@ -58,10 +56,22 @@
 			base.Init();
 		}
 
-		/// <summary>
-		/// Get margin to change the last page size to full-page size.
-		/// </summary>
-		/// <returns>Margin.</returns>
+		/// <inheritdoc/>
+		protected override void MovementInvoke()
+		{
+			var position = GetCalculatedPosition();
+			var v_pos = IsHorizontal()
+				? new Vector2(position, 0f)
+				: new Vector2(0f, position);
+
+			var prev_page = Index2Page(ListView.GetNearestIndex(v_pos, NearestType.Before));
+			var page_size = Page2Position(prev_page + 1) - Page2Position(prev_page);
+			var ratio = (position % page_size) / page_size;
+
+			OnMovement.Invoke(prev_page,  ratio);
+		}
+
+		/// <inheritdoc/>
 		protected override float GetLastPageMargin()
 		{
 			var items_per_block = ListView.GetItemsPerBlock();
@@ -72,7 +82,7 @@
 
 			var size = ListView.GetDefaultItemSize();
 
-			var margin = 0f;
+			float margin;
 			if (IsHorizontal())
 			{
 				margin = unexisted_blocks * size.x;
@@ -93,28 +103,10 @@
 			return margin;
 		}
 
-		/// <summary>
-		/// Get current page.
-		/// </summary>
-		/// <returns>Page.</returns>
+		/// <inheritdoc/>
 		protected override int GetPage()
 		{
-			var position = GetPosition();
-			var delta = ScrollRectSize() - GetPageSize();
-			switch (ForcedPosition)
-			{
-				case PaginatorPagePosition.None:
-				case PaginatorPagePosition.OnStart:
-					break;
-				case PaginatorPagePosition.OnCenter:
-					position += (IsHorizontal() ? -delta : delta) / 2f;
-					break;
-				case PaginatorPagePosition.OnEnd:
-					position += IsHorizontal() ? -delta : delta;
-					break;
-				default:
-					throw new NotSupportedException("Unknown forced position: " + ForcedPosition);
-			}
+			var position = GetCalculatedPosition();
 
 			var v_pos = IsHorizontal()
 				? new Vector2(position, 0f)
@@ -136,18 +128,13 @@
 			return Mathf.Min(page, Pages - 1);
 		}
 
-		/// <summary>
-		/// Determines whether direction is horizontal.
-		/// </summary>
-		/// <returns><c>true</c> if this instance is horizontal; otherwise, <c>false</c>.</returns>
-		protected override bool IsHorizontal()
+		/// <inheritdoc/>
+		public override bool IsHorizontal()
 		{
 			return ListView.IsHorizontal();
 		}
 
-		/// <summary>
-		/// Recalculate the pages count.
-		/// </summary>
+		/// <inheritdoc/>
 		protected override void RecalculatePages()
 		{
 			SetScrollRectMaxDrag();
@@ -182,33 +169,31 @@
 				case PaginatorPagePosition.OnEnd:
 					return ListView.GetItemPositionBottom(index);
 				default:
-					throw new NotSupportedException("Unknown forced position: " + ForcedPosition);
+					throw new NotSupportedException(string.Format("Unknown forced position: {0}", EnumHelper<PaginatorPagePosition>.ToString(ForcedPosition)));
 			}
 		}
 
-		/// <summary>
-		/// Set ScrollRect content position.
-		/// </summary>
-		/// <returns>Position.</returns>
-		protected override float GetPosition()
+		/// <inheritdoc/>
+		public override float GetPosition()
 		{
 			return ListView.GetScrollPosition();
 		}
 
-		/// <summary>
-		/// Set ScrollRect content position.
-		/// </summary>
-		/// <param name="position">Position.</param>
-		/// <param name="isHorizontal">Is horizontal direction.</param>
+		/// <inheritdoc/>
 		protected override void SetPosition(float position, bool isHorizontal)
 		{
 			ListView.ScrollToPosition(position);
+
+			MovementInvoke();
 		}
 
-		/// <summary>
-		/// Start animation.
-		/// </summary>
-		/// <param name="target">Target position.</param>
+		/// <inheritdoc/>
+		public override void SetPosition(float position)
+		{
+			SetPosition(position, IsHorizontal());
+		}
+
+		/// <inheritdoc/>
 		protected override void StartAnimation(float target)
 		{
 			ListView.ScrollToPositionAnimated(target);

@@ -1,11 +1,5 @@
 namespace UIWidgets
 {
-	using System.Collections.Generic;
-	using EasyLayoutNS;
-	using UIWidgets.Styles;
-	using UnityEngine;
-	using UnityEngine.UI;
-
 	/// <summary>
 	/// Item position info.
 	/// Should be nested inside TileViewStaggered, but impossible due to a bug.
@@ -65,7 +59,7 @@ namespace UIWidgets
 		/// <returns>A hash code for the current object.</returns>
 		public override int GetHashCode()
 		{
-			return base.GetHashCode();
+			return Position.GetHashCode() ^ Block;
 		}
 
 		/// <summary>
@@ -76,7 +70,7 @@ namespace UIWidgets
 		/// <returns>true if the data are equal; otherwise, false.</returns>
 		public static bool operator ==(TileViewStaggeredItemPosition obj1, TileViewStaggeredItemPosition obj2)
 		{
-			return Equals(obj1, obj2);
+			return obj1.Equals(obj2);
 		}
 
 		/// <summary>
@@ -87,7 +81,7 @@ namespace UIWidgets
 		/// <returns>true if the data not equal; otherwise, false.</returns>
 		public static bool operator !=(TileViewStaggeredItemPosition obj1, TileViewStaggeredItemPosition obj2)
 		{
-			return !Equals(obj1, obj2);
+			return !obj1.Equals(obj2);
 		}
 	}
 }

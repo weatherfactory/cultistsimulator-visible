@@ -3,6 +3,7 @@ namespace UIWidgets
 	using System;
 	using System.Collections.Generic;
 	using UIWidgets.Attributes;
+	using UIWidgets.Extensions;
 	using UnityEngine;
 	using UnityEngine.Events;
 
@@ -22,9 +23,6 @@ namespace UIWidgets
 		{
 		}
 
-		#if !UNITY_2020_1_OR_NEWER
-		[SerializeField]
-		#endif
 		ObservableList<TreeNode<TItem>> nodes;
 
 		/// <summary>
@@ -46,11 +44,7 @@ namespace UIWidgets
 					Init();
 				}
 
-				if (nodes != null)
-				{
-					nodes.OnChange -= NodesChanged;
-					nodes.ForEach(RemoveParent);
-				}
+				RemoveNodes(nodes);
 
 				nodes = value;
 				RootNode.Nodes = value;
@@ -73,14 +67,13 @@ namespace UIWidgets
 		{
 			get
 			{
-				TreeNode<TItem> result = null;
-
-				foreach (var node in selectedNodes)
+				var n = selectedNodes.Count;
+				if (n == 0)
 				{
-					result = node;
+					return null;
 				}
 
-				return result;
+				return selectedNodes[n - 1];
 			}
 		}
 
@@ -104,7 +97,7 @@ namespace UIWidgets
 		/// <summary>
 		/// The selected nodes.
 		/// </summary>
-		protected HashSet<TreeNode<TItem>> selectedNodes = new HashSet<TreeNode<TItem>>();
+		protected List<TreeNode<TItem>> selectedNodes = new List<TreeNode<TItem>>();
 
 		/// <summary>
 		/// Gets or sets the selected nodes.
@@ -121,7 +114,10 @@ namespace UIWidgets
 			set
 			{
 				selectedNodes.Clear();
-				SelectedIndices = Nodes2Indices(value);
+
+				Nodes2Indices(value, tempIndices);
+				SelectedIndices = tempIndices;
+				tempIndices.Clear();
 			}
 		}
 
@@ -144,10 +140,10 @@ namespace UIWidgets
 				if (value)
 				{
 					selectedNodes.Clear();
-					var items = SelectedItems;
-					for (int i = 0; i < items.Count; i++)
+					var selected = SelectedIndicesList;
+					foreach (var index in selected)
 					{
-						selectedNodes.Add(items[i].Node);
+						selectedNodes.Add(DataSource[index].Node);
 					}
 				}
 			}
@@ -194,6 +190,31 @@ namespace UIWidgets
 		}
 
 		/// <summary>
+		/// Require EasyLayout.
+		/// </summary>
+		protected override bool RequireEasyLayout
+		{
+			get
+			{
+				return true;
+			}
+		}
+
+		/// <summary>
+		/// Cache.
+		/// </summary>
+		protected List<ListNode<TItem>> Cache = new List<ListNode<TItem>>();
+
+		/// <summary>
+		/// Delegate of the ToggleNode.
+		/// </summary>
+		protected UnityAction<int, ListViewItem> ToggleNodeDelegate;
+
+		readonly Queue<TreeNode<TItem>> tempQueue = new Queue<TreeNode<TItem>>();
+
+		readonly List<int> tempIndices = new List<int>();
+
+		/// <summary>
 		/// Init this instance.
 		/// </summary>
 		public override void Init()
@@ -228,6 +249,9 @@ namespace UIWidgets
 
 			setContentSizeFitter = false;
 
+			ToggleNodeDelegate = OnToggleNode;
+			ItemsEvents.NodeToggleClick.AddListener(ToggleNodeDelegate);
+
 			base.Init();
 
 			Refresh();
@@ -238,21 +262,34 @@ namespace UIWidgets
 		}
 
 		/// <summary>
-		/// Require EasyLayout.
+		/// Get selected nodes.
 		/// </summary>
-		protected override bool RequireEasyLayout
+		/// <param name="output">Output.</param>
+		public void GetSelectedNodes(List<TreeNode<TItem>> output)
 		{
-			get
-			{
-				return true;
-			}
+			output.AddRange(selectedNodes);
 		}
 
 		/// <summary>
-		/// Get the rendered of the specified ListView type.
+		/// Get ListNode.
 		/// </summary>
-		/// <param name="type">ListView type</param>
-		/// <returns>Renderer.</returns>
+		/// <param name="node">Node.</param>
+		/// <param name="depth">Depth.</param>
+		/// <returns>New ListNode.</returns>
+		protected ListNode<TItem> GetListNode(TreeNode<TItem> node, int depth)
+		{
+			if (Cache.Count > 0)
+			{
+				var ln = Cache.Pop();
+				ln.Replace(node, depth);
+
+				return ln;
+			}
+
+			return new ListNode<TItem>(node, depth);
+		}
+
+		/// <inheritdoc/>
 		protected override ListViewTypeBase GetRenderer(ListViewType type)
 		{
 			switch (type)
@@ -261,24 +298,25 @@ namespace UIWidgets
 					return new ListViewTypeFixed(this);
 				case ListViewType.ListViewWithVariableSize:
 					return new ListViewTypeSize(this);
+				case ListViewType.ListViewEllipse:
+					throw new NotSupportedException("ListViewType.ListViewEllipse not supported for the TreeView");
 				case ListViewType.TileViewWithFixedSize:
-					throw new NotSupportedException("ListViewType.TileViewWithFixedSize unsupported for TreeView");
+					throw new NotSupportedException("ListViewType.TileViewWithFixedSize not supported for the TreeView");
 				case ListViewType.TileViewWithVariableSize:
-					throw new NotSupportedException("ListViewType.TileViewWithVariableSize unsupported for TreeView");
+					throw new NotSupportedException("ListViewType.TileViewWithVariableSize not supported for the TreeView");
+				case ListViewType.TileViewStaggered:
+					throw new NotSupportedException("ListViewType.TileViewStaggered not supported for the TreeView");
 				default:
-					throw new NotSupportedException("Unknown ListView type: " + type);
+					throw new NotSupportedException(string.Format("Unknown ListView type: {0}", EnumHelper<ListViewType>.ToString(type)));
 			}
 		}
 
-		/// <summary>
-		/// Sets the direction.
-		/// </summary>
-		/// <param name="newDirection">New direction.</param>
-		protected override void SetDirection(ListViewDirection newDirection)
+		/// <inheritdoc/>
+		protected override void SetDirection(ListViewDirection newDirection, bool updateView = true)
 		{
 			direction = newDirection;
 
-			(Container as RectTransform).anchoredPosition = Vector2.zero;
+			ContainerAnchoredPosition = Vector2.zero;
 
 			if (ListRenderer.IsVirtualizationSupported())
 			{
@@ -287,7 +325,10 @@ namespace UIWidgets
 				CalculateMaxVisibleItems();
 			}
 
-			UpdateView();
+			if (updateView)
+			{
+				UpdateView();
+			}
 		}
 
 		/// <summary>
@@ -310,7 +351,7 @@ namespace UIWidgets
 					continue;
 				}
 
-				list.Add(new ListNode<TItem>(node, depth));
+				list.Add(GetListNode(node, depth));
 				node.Index = list.Count - 1;
 
 				if (node.IsExpanded && (node.Nodes != null) && (node.Nodes.Count > 0))
@@ -353,7 +394,8 @@ namespace UIWidgets
 		/// Process the toggle node event.
 		/// </summary>
 		/// <param name="index">Index.</param>
-		protected void OnToggleNode(int index)
+		/// <param name="component">Component.</param>
+		protected void OnToggleNode(int index, ListViewItem component)
 		{
 			ToggleNode(index);
 			NodeToggle.Invoke(NodesList[index].Node);
@@ -405,6 +447,14 @@ namespace UIWidgets
 			}
 			else if (index == -1 && !DeselectCollapsedNodes)
 			{
+				if (!MultipleSelect)
+				{
+					foreach (var n in SelectedNodes)
+					{
+						Deselect(n);
+					}
+				}
+
 				selectedNodes.Add(node);
 			}
 		}
@@ -429,12 +479,11 @@ namespace UIWidgets
 				return;
 			}
 
-			var queue = new Queue<TreeNode<TItem>>();
-			queue.Enqueue(node);
+			tempQueue.Enqueue(node);
 
-			while (queue.Count > 0)
+			while (tempQueue.Count > 0)
 			{
-				var current_node = queue.Dequeue();
+				var current_node = tempQueue.Dequeue();
 
 				var index = Node2Index(current_node);
 
@@ -443,7 +492,10 @@ namespace UIWidgets
 					Select(index);
 					if (current_node.Nodes != null)
 					{
-						current_node.Nodes.ForEach(queue.Enqueue);
+						foreach (var n in current_node.Nodes)
+						{
+							tempQueue.Enqueue(n);
+						}
 					}
 				}
 				else if (!DeselectCollapsedNodes)
@@ -451,7 +503,10 @@ namespace UIWidgets
 					selectedNodes.Add(current_node);
 					if (current_node.Nodes != null)
 					{
-						current_node.Nodes.ForEach(queue.Enqueue);
+						foreach (var n in current_node.Nodes)
+						{
+							tempQueue.Enqueue(n);
+						}
 					}
 				}
 			}
@@ -499,12 +554,11 @@ namespace UIWidgets
 				return;
 			}
 
-			var queue = new Queue<TreeNode<TItem>>();
-			queue.Enqueue(node);
+			tempQueue.Enqueue(node);
 
-			while (queue.Count > 0)
+			while (tempQueue.Count > 0)
 			{
-				var current_node = queue.Dequeue();
+				var current_node = tempQueue.Dequeue();
 
 				var index = Node2Index(current_node);
 
@@ -513,7 +567,10 @@ namespace UIWidgets
 					Deselect(index);
 					if (current_node.Nodes != null)
 					{
-						current_node.Nodes.ForEach(queue.Enqueue);
+						foreach (var n in current_node.Nodes)
+						{
+							tempQueue.Enqueue(n);
+						}
 					}
 				}
 				else if (!DeselectCollapsedNodes)
@@ -521,7 +578,10 @@ namespace UIWidgets
 					selectedNodes.Remove(current_node);
 					if (current_node.Nodes != null)
 					{
-						current_node.Nodes.ForEach(queue.Enqueue);
+						foreach (var n in current_node.Nodes)
+						{
+							tempQueue.Enqueue(n);
+						}
 					}
 				}
 			}
@@ -532,7 +592,7 @@ namespace UIWidgets
 		{
 			if (!IsValid(index))
 			{
-				Debug.LogWarning("Incorrect index: " + index, this);
+				Debug.LogWarning(string.Format("Incorrect index: {0}", index.ToString()), this);
 			}
 
 			var node = NodesList[index].Node;
@@ -552,7 +612,7 @@ namespace UIWidgets
 		{
 			if (!IsValid(index))
 			{
-				Debug.LogWarning("Incorrect index: " + index, this);
+				Debug.LogWarning(string.Format("Incorrect index: {0}", index.ToString()), this);
 			}
 
 			var node = NodesList[index].Node;
@@ -570,31 +630,18 @@ namespace UIWidgets
 			}
 		}
 
-		/// <summary>
-		/// Recalculates the selected indices.
-		/// </summary>
-		/// <returns>The selected indices.</returns>
-		/// <param name="newItems">New items.</param>
-		protected override List<int> RecalculateSelectedIndices(ObservableList<ListNode<TItem>> newItems)
+		/// <inheritdoc/>
+		protected override void RecalculateSelectedIndices(ObservableList<ListNode<TItem>> newItems)
 		{
-			if (DeselectCollapsedNodes)
-			{
-				return base.RecalculateSelectedIndices(newItems);
-			}
-			else
-			{
-				var indices = new List<int>();
+			NewSelectedIndices.Clear();
 
-				foreach (var node in selectedNodes)
+			foreach (var node in selectedNodes)
+			{
+				var index = Node2Index(newItems, node);
+				if (index != -1)
 				{
-					var index = Node2Index(newItems, node);
-					if (index != -1)
-					{
-						indices.Add(index);
-					}
+					NewSelectedIndices.Add(index);
 				}
-
-				return indices;
 			}
 		}
 
@@ -645,8 +692,19 @@ namespace UIWidgets
 		/// <param name="targetNodes">Target nodes.</param>
 		protected List<int> Nodes2Indices(List<TreeNode<TItem>> targetNodes)
 		{
-			var indices = new List<int>();
+			tempIndices.Clear();
+			Nodes2Indices(targetNodes, tempIndices);
 
+			return tempIndices;
+		}
+
+		/// <summary>
+		/// Get indices of specified nodes.
+		/// </summary>
+		/// <param name="targetNodes">Target nodes.</param>
+		/// <param name="output">Indices.</param>
+		protected void Nodes2Indices(List<TreeNode<TItem>> targetNodes, List<int> output)
+		{
 			for (int i = 0; i < targetNodes.Count; i++)
 			{
 				var node = targetNodes[i];
@@ -659,11 +717,9 @@ namespace UIWidgets
 
 				if (index != -1)
 				{
-					indices.Add(index);
+					output.Add(index);
 				}
 			}
-
-			return indices;
 		}
 
 		/// <summary>
@@ -685,13 +741,28 @@ namespace UIWidgets
 		}
 
 		/// <summary>
+		/// Clear NodesList.
+		/// </summary>
+		protected void NodesListClear()
+		{
+			foreach (var node in NodesList)
+			{
+				node.Node = null;
+				node.Depth = -1;
+			}
+
+			Cache.AddRange(NodesList);
+			NodesList.Clear();
+		}
+
+		/// <summary>
 		/// Refresh this instance.
 		/// </summary>
 		public virtual void Refresh()
 		{
 			if (nodes == null)
 			{
-				NodesList.Clear();
+				NodesListClear();
 
 				return;
 			}
@@ -699,24 +770,25 @@ namespace UIWidgets
 			NodesList.BeginUpdate();
 
 			var selected_nodes = SelectedNodes;
-			NodesList.Clear();
+			NodesListClear();
 
 			Nodes2List(nodes, 0, NodesList);
 
-			SilentDeselect(SelectedIndices);
-			var indices = Nodes2Indices(selected_nodes);
+			SilentDeselect(SelectedIndicesList);
 
-			SilentSelect(indices);
+			Nodes2Indices(selected_nodes, tempIndices);
+			SilentSelect(tempIndices);
+			tempIndices.Clear();
 
 			NodesList.EndUpdate();
 
 			if (DeselectCollapsedNodes)
 			{
 				selectedNodes.Clear();
-				var items = SelectedItems;
-				for (var i = 0; i < items.Count; i++)
+				var selected = SelectedIndicesList;
+				foreach (var index in selected)
 				{
-					selectedNodes.Add(items[i].Node);
+					selectedNodes.Add(DataSource[index].Node);
 				}
 			}
 		}
@@ -753,7 +825,7 @@ namespace UIWidgets
 		}
 
 		/// <summary>
-		/// [Not supported for TreeView] Remove item by specifieitemsex.
+		/// [Not supported for TreeView] Remove item by specified index.
 		/// </summary>
 		/// <param name="index">Index.</param>
 		public override void Remove(int index)
@@ -831,26 +903,6 @@ namespace UIWidgets
 		}
 
 		/// <summary>
-		/// Removes the callback.
-		/// </summary>
-		/// <param name="item">Item.</param>
-		protected override void RemoveCallback(ListViewItem item)
-		{
-			(item as TreeViewComponentBase<TItem>).ToggleEvent.RemoveListener(OnToggleNode);
-			base.RemoveCallback(item);
-		}
-
-		/// <summary>
-		/// Adds the callback.
-		/// </summary>
-		/// <param name="item">Item.</param>
-		protected override void AddCallback(ListViewItem item)
-		{
-			(item as TreeViewComponentBase<TItem>).ToggleEvent.AddListener(OnToggleNode);
-			base.AddCallback(item);
-		}
-
-		/// <summary>
 		/// Scroll to the specified node immediately.
 		/// </summary>
 		/// <param name="node">Node.</param>
@@ -915,7 +967,7 @@ namespace UIWidgets
 			{
 				var scroll_value = IsHorizontal() ? ScrollRectSize.y : ScrollRectSize.x;
 
-				var item_size = ListRenderer.CalculateSize(index);
+				var item_size = ListRenderer.GetItemFullSize(index);
 				var item_value = IsHorizontal()
 					? (item_size.y + LayoutBridge.GetFullMarginY())
 					: (item_size.x + LayoutBridge.GetFullMarginX());
@@ -975,9 +1027,22 @@ namespace UIWidgets
 			return null;
 		}
 
-		static void RemoveParent(TreeNode<TItem> node)
+		/// <summary>
+		/// Remove nodes parent.
+		/// </summary>
+		/// <param name="nodes">Nodes.</param>
+		protected void RemoveNodes(ObservableList<TreeNode<TItem>> nodes)
 		{
-			node.Parent = null;
+			if (nodes == null)
+			{
+				return;
+			}
+
+			nodes.OnChange -= NodesChanged;
+			for (int i = nodes.Count - 1; i >= 0; i--)
+			{
+				nodes[i].Parent = null;
+			}
 		}
 
 		/// <summary>
@@ -985,11 +1050,12 @@ namespace UIWidgets
 		/// </summary>
 		protected override void OnDestroy()
 		{
-			if (nodes != null)
+			if (ItemsEvents != null)
 			{
-				nodes.OnChange -= NodesChanged;
-				nodes.ForEach(RemoveParent);
+				ItemsEvents.NodeToggleClick.RemoveListener(ToggleNodeDelegate);
 			}
+
+			RemoveNodes(nodes);
 
 			base.OnDestroy();
 		}

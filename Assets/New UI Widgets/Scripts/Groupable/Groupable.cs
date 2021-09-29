@@ -3,7 +3,6 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 	using UnityEngine.Events;
 	using UnityEngine.EventSystems;
@@ -246,7 +245,7 @@
 				{
 					highlightTemplate = value;
 
-					HighlightsPool.DefaultItem = highlightTemplate;
+					HighlightsPool.Template = highlightTemplate;
 				}
 			}
 		}
@@ -454,9 +453,9 @@
 			if (GroupRotation)
 			{
 				var highlight = HighlightTemplate != null;
-				for (int i = 0; i < Selected.Count; i++)
+				for (int i = 0; i < selected.Count; i++)
 				{
-					Selected[i].SetParent(RectTransform, true);
+					selected[i].SetParent(RectTransform, true);
 
 					if (highlight)
 					{
@@ -476,9 +475,9 @@
 			{
 				var rotation = RectTransform.localRotation;
 
-				for (int i = 0; i < Selected.Count; i++)
+				for (int i = 0; i < selected.Count; i++)
 				{
-					Selected[i].localRotation = rotation;
+					selected[i].localRotation = rotation;
 				}
 
 				UpdateHighlights();
@@ -494,9 +493,9 @@
 			if (GroupRotation)
 			{
 				var highlight = HighlightTemplate != null;
-				for (int i = 0; i < Selected.Count; i++)
+				for (int i = 0; i < selected.Count; i++)
 				{
-					Selected[i].SetParent(ParentRectTransform, true);
+					selected[i].SetParent(ParentRectTransform, true);
 
 					if (highlight)
 					{
@@ -831,12 +830,12 @@
 		{
 			SelectedResizable.Clear();
 
-			for (int i = 0; i < Selected.Count; i++)
+			for (int i = 0; i < selected.Count; i++)
 			{
-				var resizable = Selected[i].GetComponent<Resizable>();
+				var resizable = selected[i].GetComponent<Resizable>();
 				if (resizable == null)
 				{
-					resizable = Selected[i].gameObject.AddComponent<Resizable>();
+					resizable = selected[i].gameObject.AddComponent<Resizable>();
 					resizable.Interactable = false;
 				}
 
@@ -883,11 +882,11 @@
 				return;
 			}
 
-			HighlightsPool.Require(Selected.Count);
+			HighlightsPool.Require(selected.Count);
 
 			for (int i = 0; i < HighlightsPool.Count; i++)
 			{
-				SetHighlighted(Selected[i], HighlightsPool[i]);
+				SetHighlighted(selected[i], HighlightsPool[i]);
 			}
 		}
 
@@ -898,7 +897,7 @@
 		/// <param name="highlight">Highlight.</param>
 		protected virtual void SetHighlighted(RectTransform element, RectTransform highlight)
 		{
-			Utilities.CopyRectTransformValues(element, highlight);
+			UtilitiesRectTransform.CopyValues(element, highlight);
 			highlight.SetAsLastSibling();
 		}
 
@@ -909,7 +908,11 @@
 		/// </summary>
 		public void AlignLeft()
 		{
-			Selected.ForEach(UtilitiesAlign.Left);
+			foreach (var s in selected)
+			{
+				UtilitiesAlign.Left(s);
+			}
+
 			UpdateHighlights();
 		}
 
@@ -918,7 +921,11 @@
 		/// </summary>
 		public void AlignCenter()
 		{
-			Selected.ForEach(UtilitiesAlign.Center);
+			foreach (var s in selected)
+			{
+				UtilitiesAlign.Center(s);
+			}
+
 			UpdateHighlights();
 		}
 
@@ -927,7 +934,11 @@
 		/// </summary>
 		public void AlignRight()
 		{
-			Selected.ForEach(UtilitiesAlign.Right);
+			foreach (var s in selected)
+			{
+				UtilitiesAlign.Right(s);
+			}
+
 			UpdateHighlights();
 		}
 
@@ -936,7 +947,11 @@
 		/// </summary>
 		public void AlignTop()
 		{
-			Selected.ForEach(UtilitiesAlign.Top);
+			foreach (var s in selected)
+			{
+				UtilitiesAlign.Top(s);
+			}
+
 			UpdateHighlights();
 		}
 
@@ -945,7 +960,11 @@
 		/// </summary>
 		public void AlignMiddle()
 		{
-			Selected.ForEach(UtilitiesAlign.Middle);
+			foreach (var s in selected)
+			{
+				UtilitiesAlign.Middle(s);
+			}
+
 			UpdateHighlights();
 		}
 
@@ -954,7 +973,11 @@
 		/// </summary>
 		public void AlignBottom()
 		{
-			Selected.ForEach(UtilitiesAlign.Bottom);
+			foreach (var s in selected)
+			{
+				UtilitiesAlign.Bottom(s);
+			}
+
 			UpdateHighlights();
 		}
 #endregion

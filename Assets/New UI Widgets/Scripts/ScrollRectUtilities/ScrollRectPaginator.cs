@@ -11,69 +11,6 @@
 	using UnityEngine.UI;
 
 	/// <summary>
-	/// Paginator direction.
-	/// </summary>
-	public enum PaginatorDirection
-	{
-		/// <summary>
-		/// Auto detect direction using ScrollRect.Direction and size of ScrollRect.Content.
-		/// </summary>
-		Auto = 0,
-
-		/// <summary>
-		/// Horizontal.
-		/// </summary>
-		Horizontal = 1,
-
-		/// <summary>
-		/// Vertical.
-		/// </summary>
-		Vertical = 2,
-	}
-
-	/// <summary>
-	/// Page size type.
-	/// </summary>
-	public enum PageSizeType
-	{
-		/// <summary>
-		/// Use ScrollRect size.
-		/// </summary>
-		Auto = 0,
-
-		/// <summary>
-		/// Fixed size.
-		/// </summary>
-		Fixed = 1,
-	}
-
-	/// <summary>
-	/// Paginator page positions.
-	/// </summary>
-	public enum PaginatorPagePosition
-	{
-		/// <summary>
-		/// Do not auto scroll.
-		/// </summary>
-		None = 0,
-
-		/// <summary>
-		/// Scroll to start of the page after user scroll or drag.
-		/// </summary>
-		OnStart = 1,
-
-		/// <summary>
-		/// Scroll to center of the page after user scroll or drag.
-		/// </summary>
-		OnCenter = 2,
-
-		/// <summary>
-		/// Scroll to end of the page after user scroll or drag.
-		/// </summary>
-		OnEnd = 3,
-	}
-
-	/// <summary>
 	/// ScrollRect Paginator.
 	/// </summary>
 	public class ScrollRectPaginator : MonoBehaviour, IStylable, IUpgradeable
@@ -316,6 +253,15 @@
 		public ScrollRectPageSelect OnPageSelect = new ScrollRectPageSelect();
 
 		/// <summary>
+		/// OnMovement event.
+		/// Params:
+		/// - page
+		/// - relative distance between this page and next page in range 0..1
+		/// </summary>
+		[SerializeField]
+		public PaginatorMovement OnMovement = new PaginatorMovement();
+
+		/// <summary>
 		/// The default pages.
 		/// </summary>
 		[SerializeField]
@@ -395,7 +341,7 @@
 		/// <summary>
 		/// Init this instance.
 		/// </summary>
-		protected virtual void Init()
+		public virtual void Init()
 		{
 			if (isInited)
 			{
@@ -457,11 +403,38 @@
 		}
 
 		/// <summary>
+		/// Get ScrollRect.
+		/// </summary>
+		/// <returns>ScrollRect</returns>
+		public ScrollRect GetScrollRect()
+		{
+			return ScrollRect;
+		}
+
+		/// <summary>
+		/// Invoke OnMovement event.
+		/// </summary>
+		protected virtual void MovementInvoke()
+		{
+			var position = Mathf.Round(GetCalculatedPosition());
+			var page_size = GetPageSize();
+			var prev_page = Mathf.FloorToInt(position / page_size);
+			var ratio = (position - (page_size * prev_page)) / page_size;
+
+			OnMovement.Invoke(prev_page, ratio);
+		}
+
+		/// <summary>
 		/// Update layout margin to change the last page size to full-page size.
 		/// </summary>
 		protected virtual void UpdateLastPageMargin()
 		{
-			if (LastPageFullSize && (Layout == null))
+			if (!LastPageFullSize)
+			{
+				return;
+			}
+
+			if (Layout == null)
 			{
 				Debug.LogWarning("LastPageFullSize requires EasyLayout component at the ScrollRect.content gameobject.");
 				return;
@@ -633,7 +606,7 @@
 		/// Determines whether direction is horizontal.
 		/// </summary>
 		/// <returns><c>true</c> if this instance is horizontal; otherwise, <c>false</c>.</returns>
-		protected virtual bool IsHorizontal()
+		public virtual bool IsHorizontal()
 		{
 			if (Direction == PaginatorDirection.Horizontal)
 			{
@@ -821,6 +794,8 @@
 		/// <param name="eventData">Event data.</param>
 		protected virtual void OnScrollRectDrag(PointerEventData eventData)
 		{
+			MovementInvoke();
+
 			if (!IsValidDrag(eventData))
 			{
 				return;
@@ -866,8 +841,10 @@
 
 			if (ForcedPosition != PaginatorPagePosition.None)
 			{
-				// ScrollChanged();
+				ScrollChanged();
 			}
+
+			MovementInvoke();
 		}
 
 		/// <summary>
@@ -876,28 +853,7 @@
 		/// <returns>Page.</returns>
 		protected virtual int GetPage()
 		{
-			var position = GetPosition();
-			if (IsHorizontal())
-			{
-				position *= -1;
-			}
-
-			var delta = ScrollRectSize() - GetPageSize();
-			switch (ForcedPosition)
-			{
-				case PaginatorPagePosition.None:
-				case PaginatorPagePosition.OnStart:
-					break;
-				case PaginatorPagePosition.OnCenter:
-					position -= (IsHorizontal() ? -delta : delta) / 2f;
-					break;
-				case PaginatorPagePosition.OnEnd:
-					position -= IsHorizontal() ? -delta : delta;
-					break;
-				default:
-					throw new NotSupportedException("Unknown forced position: " + ForcedPosition);
-			}
-
+			var position = GetCalculatedPosition();
 			var page = Mathf.RoundToInt(position / GetPageSize());
 			if (page >= Pages)
 			{
@@ -946,7 +902,7 @@
 		/// Gets the size of the content.
 		/// </summary>
 		/// <returns>The content size.</returns>
-		protected virtual float GetContentSize()
+		public virtual float GetContentSize()
 		{
 			return IsHorizontal() ? ScrollRect.content.rect.width : ScrollRect.content.rect.height;
 		}
@@ -1020,10 +976,10 @@
 					result += delta;
 					break;
 				default:
-					throw new NotSupportedException("Unknown forced position: " + ForcedPosition);
+					throw new NotSupportedException(string.Format("Unknown forced position: {0}", EnumHelper<PaginatorPagePosition>.ToString(ForcedPosition)));
 			}
 
-			return IsHorizontal() ? -result : result;
+			return result;
 		}
 
 		/// <summary>
@@ -1043,7 +999,7 @@
 				currentAnimation = null;
 
 				var position = Page2Position(currentPage);
-				SetPosition(position);
+				SetPosition(position, IsHorizontal());
 
 				ScrollRectRestore();
 			}
@@ -1081,7 +1037,7 @@
 			}
 			else
 			{
-				SetPosition(end_position);
+				SetPosition(end_position, IsHorizontal());
 			}
 
 			UpdateObjects(page);
@@ -1138,9 +1094,35 @@
 		/// Set ScrollRect content position.
 		/// </summary>
 		/// <returns>Position.</returns>
-		protected virtual float GetPosition()
+		public virtual float GetPosition()
 		{
-			return IsHorizontal() ? ScrollRect.content.anchoredPosition.x : ScrollRect.content.anchoredPosition.y;
+			return IsHorizontal() ? -ScrollRect.content.anchoredPosition.x : ScrollRect.content.anchoredPosition.y;
+		}
+
+		/// <summary>
+		/// Get position with PaginatorPagePosition included.
+		/// </summary>
+		/// <returns>Position.</returns>
+		protected virtual float GetCalculatedPosition()
+		{
+			var position = GetPosition();
+			var delta = ScrollRectSize() - GetPageSize();
+			switch (ForcedPosition)
+			{
+				case PaginatorPagePosition.None:
+				case PaginatorPagePosition.OnStart:
+					break;
+				case PaginatorPagePosition.OnCenter:
+					position -= (IsHorizontal() ? -delta : delta) / 2f;
+					break;
+				case PaginatorPagePosition.OnEnd:
+					position -= IsHorizontal() ? -delta : delta;
+					break;
+				default:
+					throw new NotSupportedException(string.Format("Unknown forced position: {0}", EnumHelper<PaginatorPagePosition>.ToString(ForcedPosition)));
+			}
+
+			return position;
 		}
 
 		/// <summary>
@@ -1151,15 +1133,17 @@
 		protected virtual void SetPosition(float position, bool isHorizontal)
 		{
 			ScrollRect.content.anchoredPosition = isHorizontal
-				? new Vector2(position, ScrollRect.content.anchoredPosition.y)
+				? new Vector2(-position, ScrollRect.content.anchoredPosition.y)
 				: new Vector2(ScrollRect.content.anchoredPosition.x, position);
+
+			MovementInvoke();
 		}
 
 		/// <summary>
 		/// Set ScrollRect content position.
 		/// </summary>
 		/// <param name="position">Position.</param>
-		protected virtual void SetPosition(float position)
+		public virtual void SetPosition(float position)
 		{
 			SetPosition(position, IsHorizontal());
 		}
@@ -1230,7 +1214,7 @@
 		{
 			float delta;
 
-			var animation_length = Movement.keys[Movement.keys.Length - 1].time;
+			var animation_length = Movement[Movement.length - 1].time;
 			var start_time = UtilitiesTime.GetTime(unscaledTime);
 			do
 			{
@@ -1268,10 +1252,16 @@
 		protected virtual void OnDestroy()
 		{
 			DefaultPages.RemoveAll(IsNullComponent);
-			DefaultPages.ForEach(RemoveCallback);
+			foreach (var p in DefaultPages)
+			{
+				RemoveCallback(p);
+			}
 
 			DefaultPagesCache.RemoveAll(IsNullComponent);
-			DefaultPagesCache.ForEach(RemoveCallback);
+			foreach (var p in DefaultPagesCache)
+			{
+				RemoveCallback(p);
+			}
 
 			if (ScrollRect != null)
 			{

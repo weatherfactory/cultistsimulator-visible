@@ -2,7 +2,6 @@
 {
 	using System;
 	using UIWidgets;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 
 	/// <summary>
@@ -28,7 +27,10 @@
 
 			for (int i = 0; i < UnityEngine.Random.Range(0, 4); i++)
 			{
-				var item = new ListViewIconsItemDescription() { Name = tabName + ": item " + (i + 1) };
+				var item = new ListViewIconsItemDescription()
+				{
+					Name = string.Format("{0} : item {1}", tabName, (i + 1).ToString()),
+				};
 				result.Add(item);
 			}
 
@@ -99,7 +101,10 @@
 			if (Tabs.gameObject.activeInHierarchy)
 			{
 				// destroy existing tileviews
-				Tabs.TabObjects.ForEach(x => Destroy(x.TabObject));
+				foreach (var tab in Tabs.TabObjects)
+				{
+					Destroy(tab.TabObject);
+				}
 			}
 			else
 			{
@@ -118,7 +123,7 @@
 
 			for (int i = 0; i < count; i++)
 			{
-				var tab_name = "Tab " + (i + 1);
+				var tab_name = string.Format("Tab {0}", (i + 1).ToString());
 				tabs[i] = new TabIcons()
 				{
 					Name = tab_name,

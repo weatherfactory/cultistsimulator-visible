@@ -32,7 +32,11 @@
 		/// </summary>
 		public void TestAdd()
 		{
-			ListView.DataSource.Add(new ListViewIconsItemDescription() { Name = "test " + ListView.DataSource.Count });
+			var item = new ListViewIconsItemDescription()
+			{
+				Name = string.Format("test {0}", ListView.DataSource.Count.ToString()),
+			};
+			ListView.DataSource.Add(item);
 		}
 
 		/// <summary>

@@ -77,8 +77,15 @@
 		/// </summary>
 		protected virtual void AddListeners()
 		{
-			ObjectsOnLeft.ForEach(AddListener);
-			ObjectsOnRight.ForEach(AddListener);
+			foreach (var obj in ObjectsOnLeft)
+			{
+				AddListener(obj);
+			}
+
+			foreach (var obj in ObjectsOnRight)
+			{
+				AddListener(obj);
+			}
 		}
 
 		/// <summary>
@@ -99,8 +106,15 @@
 		/// </summary>
 		protected virtual void RemoveListeners()
 		{
-			ObjectsOnLeft.ForEach(RemoveListener);
-			ObjectsOnRight.ForEach(RemoveListener);
+			foreach (var obj in ObjectsOnLeft)
+			{
+				RemoveListener(obj);
+			}
+
+			foreach (var obj in ObjectsOnRight)
+			{
+				RemoveListener(obj);
+			}
 		}
 
 		/// <summary>

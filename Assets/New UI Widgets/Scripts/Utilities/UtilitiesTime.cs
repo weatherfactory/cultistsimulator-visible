@@ -12,18 +12,21 @@
 		/// Function to get time to use with animations.
 		/// Can be replaced with custom function.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		public static Func<bool, float> GetTime = DefaultGetTime;
 
 		/// <summary>
 		/// Function to get delta time to use with animations.
 		/// Can be replaced with custom function.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		public static Func<bool, float> GetDeltaTime = DefaultGetDeltaTime;
 
 		/// <summary>
 		/// Function to get frame count.
 		/// Can be replaced with custom function.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		public static Func<int> GetFrameCount = DefaultGetFrameCount;
 
 		/// <summary>
@@ -49,6 +52,7 @@
 		/// Suspends the coroutine execution for the given amount of seconds.
 		/// Can be replaced with custom function.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		public static Func<float, bool, CustomYieldInstruction> Wait = DefaultWait;
 
 		/// <summary>
@@ -57,9 +61,10 @@
 		/// <param name="seconds">Seconds.</param>
 		/// <param name="unscaledTime">Use unscaled time.</param>
 		/// <returns>Coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		public static CustomYieldInstruction DefaultWait(float seconds, bool unscaledTime = false)
 		{
-			return new WaitForSecondsCustom(seconds, unscaledTime);
+			return WaitForSecondsCustom.Instance(seconds, unscaledTime);
 		}
 
 		/// <summary>
@@ -86,6 +91,7 @@
 		/// </summary>
 		/// <param name="action">Action.</param>
 		/// <param name="log">Text to add to log.</param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0101:Array allocation for params parameter", Justification = "Required.")]
 		public static void CheckRunTime(Action action, string log = "")
 		{
 			var sw = new System.Diagnostics.Stopwatch();
@@ -96,8 +102,14 @@
 			sw.Stop();
 			var ts = sw.Elapsed;
 
-			string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:0000}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-			Debug.Log("RunTime " + elapsedTime + "; " + log);
+			string result = string.Format(
+				"RunTime {0}:{1}:{2}.{3}; {4}",
+				ts.Hours.ToString("00"),
+				ts.Minutes.ToString("00"),
+				ts.Seconds.ToString("00"),
+				(ts.Milliseconds / 10).ToString("0000"),
+				log);
+			Debug.Log(result);
 		}
 	}
 }

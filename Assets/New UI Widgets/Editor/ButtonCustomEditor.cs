@@ -1,10 +1,8 @@
 ﻿#if UNITY_EDITOR
 namespace UIWidgets
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Reflection;
-	using UIWidgets.Extensions;
 	using UnityEditor;
 	using UnityEditor.UI;
 	using UnityEngine.Events;
@@ -56,22 +54,23 @@ namespace UIWidgets
 		{
 			FillProperties();
 
-			Properties.ForEach(x =>
+			foreach (var p in Properties)
 			{
-				var property = serializedObject.FindProperty(x);
+				var property = serializedObject.FindProperty(p);
 				if (property != null)
 				{
-					SerializedProperties.Add(x, property);
+					SerializedProperties.Add(p, property);
 				}
-			});
-			Events.ForEach(x =>
+			}
+
+			foreach (var ev in Events)
 			{
-				var property = serializedObject.FindProperty(x);
+				var property = serializedObject.FindProperty(ev);
 				if (property != null)
 				{
-					SerializedEvents.Add(x, property);
+					SerializedEvents.Add(ev, property);
 				}
-			});
+			}
 
 			base.OnEnable();
 		}
@@ -142,14 +141,14 @@ namespace UIWidgets
 		/// </summary>
 		protected virtual void ValidateTargets()
 		{
-			Array.ForEach(targets, x =>
+			foreach (var t in targets)
 			{
-				var v = x as IValidateable;
+				var v = t as IValidateable;
 				if (v != null)
 				{
 					v.Validate();
 				}
-			});
+			}
 		}
 
 		/// <summary>
@@ -159,12 +158,20 @@ namespace UIWidgets
 		{
 			ValidateTargets();
 
-			SerializedProperties.ForEach(x => EditorGUILayout.PropertyField(x.Value));
+			foreach (var sp in SerializedProperties)
+			{
+				EditorGUILayout.PropertyField(sp.Value);
+			}
+
 			serializedObject.ApplyModifiedProperties();
 
 			base.OnInspectorGUI();
 
-			SerializedEvents.ForEach(x => EditorGUILayout.PropertyField(x.Value));
+			foreach (var se in SerializedEvents)
+			{
+				EditorGUILayout.PropertyField(se.Value);
+			}
+
 			serializedObject.ApplyModifiedProperties();
 
 			ValidateTargets();

@@ -4,7 +4,6 @@ namespace UIWidgets
 	using System;
 	using System.Collections.Generic;
 	using System.Reflection;
-	using UIWidgets.Extensions;
 	using UnityEditor;
 	using UnityEngine;
 	using UnityEngine.Events;
@@ -36,6 +35,8 @@ namespace UIWidgets
 		/// </summary>
 		protected List<string> Events = new List<string>();
 
+		GUILayoutOption[] toggleOptions = new GUILayoutOption[] { GUILayout.ExpandWidth(true) };
+
 		/// <summary>
 		/// Init.
 		/// </summary>
@@ -55,8 +56,15 @@ namespace UIWidgets
 
 			Events.Sort();
 
-			Properties.ForEach(x => SerializedProperties.Add(x, serializedObject.FindProperty(x)));
-			Events.ForEach(x => SerializedEvents.Add(x, serializedObject.FindProperty(x)));
+			foreach (var p in Properties)
+			{
+				SerializedProperties.Add(p, serializedObject.FindProperty(p));
+			}
+
+			foreach (var ev in Events)
+			{
+				SerializedEvents.Add(ev, serializedObject.FindProperty(ev));
+			}
 		}
 
 		/// <summary>
@@ -178,15 +186,21 @@ namespace UIWidgets
 			}
 			else
 			{
-				SerializedProperties.ForEach(x => EditorGUILayout.PropertyField(x.Value, true));
+				foreach (var sp in SerializedProperties)
+				{
+					EditorGUILayout.PropertyField(sp.Value, true);
+				}
 			}
 
 			EditorGUILayout.BeginVertical();
 
-			ShowEvents = GUILayout.Toggle(ShowEvents, "Events", EditorStyles.foldout, GUILayout.ExpandWidth(true));
+			ShowEvents = GUILayout.Toggle(ShowEvents, "Events", EditorStyles.foldout, toggleOptions);
 			if (ShowEvents)
 			{
-				SerializedEvents.ForEach(x => EditorGUILayout.PropertyField(x.Value, true));
+				foreach (var se in SerializedEvents)
+				{
+					EditorGUILayout.PropertyField(se.Value, true);
+				}
 			}
 
 			EditorGUILayout.EndVertical();

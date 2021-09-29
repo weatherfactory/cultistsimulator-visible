@@ -4,7 +4,6 @@ namespace UIWidgets
 	using System;
 	using System.Collections.Generic;
 	using System.Reflection;
-	using UIWidgets.Extensions;
 	using UnityEditor;
 	using UnityEngine;
 	using UnityEngine.Events;
@@ -56,7 +55,6 @@ namespace UIWidgets
 			// other
 			"EndScrollDelay",
 			"Navigation",
-			"NavigationSettings",
 			"loopedList",
 		};
 
@@ -100,21 +98,6 @@ namespace UIWidgets
 			// obsolete
 			"LimitScrollValue",
 		};
-
-		/// <summary>
-		/// Visualize navigation.
-		/// </summary>
-		protected GUIContent NavigationVisualize;
-
-		/// <summary>
-		/// ShowNavigation field.
-		/// </summary>
-		protected static FieldInfo NavigationShow;
-
-		/// <summary>
-		/// ShowNavigationKey field.
-		/// </summary>
-		protected static FieldInfo NavigationShowKey;
 
 		static bool DetectGenericType(object instance, string name)
 		{
@@ -188,22 +171,13 @@ namespace UIWidgets
 			return typeof(UnityEventBase).IsAssignableFrom(property_type.FieldType);
 		}
 
+		GUILayoutOption[] toggleOptions = new GUILayoutOption[] { GUILayout.ExpandWidth(true) };
+
 		/// <summary>
 		/// Init.
 		/// </summary>
 		protected virtual void OnEnable()
 		{
-			// NavigationVisualize = EditorGUIUtility.TrTextContent("Visualize", "Show navigation flows between selectable UI elements.");
-			if (NavigationShow == null)
-			{
-				NavigationShow = typeof(UnityEditor.UI.SelectableEditor).GetField("s_ShowNavigation", BindingFlags.NonPublic | BindingFlags.Static);
-			}
-
-			if (NavigationShowKey == null)
-			{
-				NavigationShowKey = typeof(UnityEditor.UI.SelectableEditor).GetField("s_ShowNavigationKey", BindingFlags.NonPublic | BindingFlags.Static);
-			}
-
 			FillProperties();
 
 			if (!IsListViewCustom)
@@ -225,23 +199,23 @@ namespace UIWidgets
 
 			if (IsListViewCustom)
 			{
-				Properties.ForEach(x =>
+				foreach (var p in Properties)
 				{
-					var property = serializedObject.FindProperty(x);
+					var property = serializedObject.FindProperty(p);
 					if (property != null)
 					{
-						SerializedProperties[x] = property;
+						SerializedProperties[p] = property;
 					}
-				});
+				}
 
-				Events.ForEach(x =>
+				foreach (var ev in Events)
 				{
-					var property = serializedObject.FindProperty(x);
+					var property = serializedObject.FindProperty(ev);
 					if (property != null)
 					{
-						SerializedEvents[x] = property;
+						SerializedEvents[ev] = property;
 					}
-				});
+				}
 			}
 		}
 
@@ -252,14 +226,14 @@ namespace UIWidgets
 
 		void Upgrade()
 		{
-			Array.ForEach(targets, x =>
+			foreach (var t in targets)
 			{
-				var lv = x as ListViewBase;
+				var lv = t as ListViewBase;
 				if (lv != null)
 				{
 					lv.Upgrade();
 				}
-			});
+			}
 		}
 
 		/// <summary>
@@ -278,21 +252,21 @@ namespace UIWidgets
 			{
 				serializedObject.Update();
 
-				SerializedProperties.ForEach(property =>
+				foreach (var property in SerializedProperties)
 				{
 					if (property.Key == "ItemsEvents")
 					{
-						return;
+						continue;
 					}
 
 					if (is_tile_view && (property.Key == "loopedList"))
 					{
-						return;
+						continue;
 					}
 
 					if (ColoringFields.Contains(property.Key))
 					{
-						return;
+						continue;
 					}
 
 					if (property.Key == "customItems")
@@ -305,44 +279,32 @@ namespace UIWidgets
 						EditorGUILayout.PropertyField(property.Value, true);
 						EditorGUI.indentLevel -= 1;
 					}
-					else if (property.Key == "NavigationSettings")
-					{
-						EditorGUI.indentLevel += 1;
-
-						EditorGUILayout.PropertyField(property.Value, new GUIContent("Settings"), true);
-						EditorGUI.BeginChangeCheck();
-
-						/*
-						var toggleRect = EditorGUILayout.GetControlRect();
-						toggleRect.xMin += EditorGUIUtility.labelWidth;
-
-						var visualize = GUI.Toggle(toggleRect, (bool)NavigationShow.GetValue(null), NavigationVisualize, EditorStyles.miniButton);
-						NavigationShow.SetValue(null, visualize);
-						if (EditorGUI.EndChangeCheck())
-						{
-							EditorPrefs.SetBool((string)NavigationShowKey.GetValue(null), visualize);
-							SceneView.RepaintAll();
-						}
-						*/
-
-						EditorGUI.indentLevel -= 1;
-					}
 					else
 					{
 						EditorGUILayout.PropertyField(property.Value, true);
 
 						if ((property.Key == "allowColoring") && property.Value.boolValue)
 						{
-							ColoringFields.ForEach(color_field => EditorGUILayout.PropertyField(SerializedProperties[color_field], true));
+							EditorGUI.indentLevel += 1;
+
+							foreach (var color_field in ColoringFields)
+							{
+								EditorGUILayout.PropertyField(SerializedProperties[color_field], true);
+							}
+
+							EditorGUI.indentLevel -= 1;
 						}
 					}
-				});
+				}
 
-				ShowEvents = GUILayout.Toggle(ShowEvents, "Events", EditorStyles.foldout, GUILayout.ExpandWidth(true));
+				ShowEvents = GUILayout.Toggle(ShowEvents, "Events", EditorStyles.foldout, toggleOptions);
 
 				if (ShowEvents)
 				{
-					SerializedEvents.ForEach(x => EditorGUILayout.PropertyField(x.Value, true));
+					foreach (var se in SerializedEvents)
+					{
+						EditorGUILayout.PropertyField(se.Value, true);
+					}
 				}
 
 				EditorGUI.indentLevel += 1;
@@ -352,16 +314,17 @@ namespace UIWidgets
 				serializedObject.ApplyModifiedProperties();
 
 				var show_warning = false;
-				Array.ForEach(targets, x =>
+
+				foreach (var t in targets)
 				{
-					var type = x.GetType();
+					var type = t.GetType();
 					var method = type.GetMethod("IsVirtualizationPossible", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 					if (method != null)
 					{
-						var virtualization = (Func<bool>)Delegate.CreateDelegate(typeof(Func<bool>), x, method);
+						var virtualization = (Func<bool>)Delegate.CreateDelegate(typeof(Func<bool>), t, method);
 						show_warning |= !virtualization.Invoke();
 					}
-				});
+				}
 
 				if (show_warning)
 				{

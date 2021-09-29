@@ -15,7 +15,7 @@
 		/// <param name="c">Color.</param>
 		public static string RGB2Hex(Color32 c)
 		{
-			return string.Format("#{0:X2}{1:X2}{2:X2}", c.r, c.g, c.b);
+			return string.Format("#{0}", ColorUtility.ToHtmlStringRGB(c));
 		}
 
 		/// <summary>
@@ -25,7 +25,7 @@
 		/// <param name="c">Color.</param>
 		public static string RGBA2Hex(Color32 c)
 		{
-			return string.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", c.r, c.g, c.b, c.a);
+			return string.Format("#{0}", ColorUtility.ToHtmlStringRGBA(c));
 		}
 
 		/// <summary>
@@ -39,12 +39,15 @@
 			return byte.TryParse(hex, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out result);
 		}
 
+		static char[] HexTrimChars = new char[] { '#', ';' };
+
 		/// <summary>
 		/// Converts the string representation of a color to its Color equivalent. A return value indicates whether the conversion succeeded or failed.
 		/// </summary>
 		/// <returns><c>true</c> if hex was converted successfully; otherwise, <c>false</c>.</returns>
 		/// <param name="hex">A string containing a color to convert.</param>
 		/// <param name="result">When this method returns, contains the color value equivalent to the color contained in hex if the conversion succeeded, or Color.black if the conversion failed. The conversion fails if the hex parameter is null or String.Empty, is not of the correct format. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.</param>
+		[System.Obsolete("Use ColorUtility.TryParseHtmlString")]
 		public static bool TryHexToRGBA(string hex, out Color32 result)
 		{
 			result = Color.black;
@@ -54,7 +57,7 @@
 				return false;
 			}
 
-			var h = hex.Trim('#', ';');
+			var h = hex.Trim(HexTrimChars);
 			byte r, g, b, a;
 
 			if (h.Length == 8)

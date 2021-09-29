@@ -2,7 +2,6 @@ namespace UIWidgets
 {
 	using System;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 
 	/// <summary>
@@ -152,17 +151,25 @@ namespace UIWidgets
 			return new List<GameObject>(temp);
 		}
 
-		/// <summary>
-		/// Clear items of this instance.
-		/// </summary>
+		/// <inheritdoc/>
 		public override void Clear()
 		{
 			if (DestroyGameObjects)
 			{
-				objects.ForEach(Destroy);
+				foreach (var obj in objects)
+				{
+					Destroy(obj);
+				}
 			}
 
 			UpdateItems(new List<GameObject>());
+		}
+
+		/// <inheritdoc/>
+		public override void RemoveItemAt(int index)
+		{
+			objects.RemoveAt(index);
+			UpdateItems(objects);
 		}
 
 		/// <summary>
@@ -174,7 +181,7 @@ namespace UIWidgets
 			newItems = SortItems(newItems);
 
 			var new_selected_indices = new List<int>();
-			var old_selected_indices = SelectedIndices;
+			var old_selected_indices = SelectedIndicesList;
 
 			foreach (var index in old_selected_indices)
 			{
@@ -190,7 +197,11 @@ namespace UIWidgets
 			}
 
 			objects = newItems;
-			Items = newItems.Convert<GameObject, ListViewItem>(Utilities.GetOrAddComponent<ListViewItem>);
+			Items.Clear();
+			foreach (var item in newItems)
+			{
+				Items.Add(Utilities.GetOrAddComponent<ListViewItem>(item));
+			}
 
 			SelectedIndices = new_selected_indices;
 		}

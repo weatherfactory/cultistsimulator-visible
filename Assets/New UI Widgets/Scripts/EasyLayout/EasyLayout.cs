@@ -3,6 +3,7 @@
 	using System;
 	using System.Collections.Generic;
 	using System.ComponentModel;
+	using UIWidgets;
 	using UnityEngine;
 	using UnityEngine.Events;
 	using UnityEngine.Serialization;
@@ -15,7 +16,7 @@
 	[ExecuteInEditMode]
 	[RequireComponent(typeof(RectTransform))]
 	[AddComponentMenu("UI/New UI Widgets/Layout/EasyLayout")]
-	public class EasyLayout : LayoutGroup, INotifyPropertyChanged
+	public class EasyLayout : LayoutGroup, IObservable, INotifyPropertyChanged
 	{
 		readonly List<LayoutElementInfo> elements = new List<LayoutElementInfo>();
 
@@ -24,7 +25,12 @@
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = DefaultPropertyHandler;
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Occurs when a properties values changed except PaddingInner property.
@@ -51,7 +57,7 @@
 				if (groupPosition != value)
 				{
 					groupPosition = value;
-					Changed("GroupPosition");
+					NotifyPropertyChanged("GroupPosition");
 				}
 			}
 		}
@@ -97,7 +103,7 @@
 				if (mainAxis != value)
 				{
 					mainAxis = value;
-					Changed("Axis");
+					NotifyPropertyChanged("Axis");
 				}
 			}
 		}
@@ -120,9 +126,9 @@
 			{
 				if (layoutType != value)
 				{
-					layoutGroup = null;
+					LayoutGroup = null;
 					layoutType = value;
-					Changed("LayoutType");
+					NotifyPropertyChanged("LayoutType");
 				}
 			}
 		}
@@ -139,9 +145,25 @@
 				if (layoutGroup == null)
 				{
 					layoutGroup = GetLayoutGroup();
+					layoutGroup.OnElementChanged += ElementChanged;
 				}
 
 				return layoutGroup;
+			}
+
+			set
+			{
+				if (layoutGroup != null)
+				{
+					layoutGroup.OnElementChanged -= ElementChanged;
+				}
+
+				layoutGroup = value;
+
+				if (layoutGroup != null)
+				{
+					layoutGroup.OnElementChanged += ElementChanged;
+				}
 			}
 		}
 
@@ -164,7 +186,7 @@
 				if (compactConstraint != value)
 				{
 					compactConstraint = value;
-					Changed("CompactConstraint");
+					NotifyPropertyChanged("CompactConstraint");
 				}
 			}
 		}
@@ -188,7 +210,7 @@
 				if (compactConstraintCount != value)
 				{
 					compactConstraintCount = value;
-					Changed("CompactConstraintCount");
+					NotifyPropertyChanged("CompactConstraintCount");
 				}
 			}
 		}
@@ -212,7 +234,7 @@
 				if (gridConstraint != value)
 				{
 					gridConstraint = value;
-					Changed("GridConstraint");
+					NotifyPropertyChanged("GridConstraint");
 				}
 			}
 		}
@@ -236,7 +258,7 @@
 				if (gridConstraintCount != value)
 				{
 					gridConstraintCount = value;
-					Changed("GridConstraintCount");
+					NotifyPropertyChanged("GridConstraintCount");
 				}
 			}
 		}
@@ -278,7 +300,7 @@
 				if (rowAlign != value)
 				{
 					rowAlign = value;
-					Changed("RowAlign");
+					NotifyPropertyChanged("RowAlign");
 				}
 			}
 		}
@@ -302,7 +324,7 @@
 				if (innerAlign != value)
 				{
 					innerAlign = value;
-					Changed("InnerAlign");
+					NotifyPropertyChanged("InnerAlign");
 				}
 			}
 		}
@@ -326,7 +348,7 @@
 				if (cellAlign != value)
 				{
 					cellAlign = value;
-					Changed("CellAlign");
+					NotifyPropertyChanged("CellAlign");
 				}
 			}
 		}
@@ -350,7 +372,7 @@
 				if (spacing != value)
 				{
 					spacing = value;
-					Changed("Spacing");
+					NotifyPropertyChanged("Spacing");
 				}
 			}
 		}
@@ -374,7 +396,7 @@
 				if (symmetric != value)
 				{
 					symmetric = value;
-					Changed("Symmetric");
+					NotifyPropertyChanged("Symmetric");
 				}
 			}
 		}
@@ -398,7 +420,7 @@
 				if (margin != value)
 				{
 					margin = value;
-					Changed("Margin");
+					NotifyPropertyChanged("Margin");
 				}
 			}
 		}
@@ -423,7 +445,7 @@
 				if (marginInner != value)
 				{
 					marginInner = value;
-					Changed("MarginInner");
+					NotifyPropertyChanged("MarginInner");
 				}
 			}
 		}
@@ -449,7 +471,7 @@
 				if (paddingInner != value)
 				{
 					paddingInner = value;
-					Changed("PaddingInner", false);
+					NotifyPropertyChanged("PaddingInner", false);
 				}
 			}
 		}
@@ -473,7 +495,7 @@
 				if (marginTop != value)
 				{
 					marginTop = value;
-					Changed("MarginTop");
+					NotifyPropertyChanged("MarginTop");
 				}
 			}
 		}
@@ -497,7 +519,7 @@
 				if (marginBottom != value)
 				{
 					marginBottom = value;
-					Changed("MarginBottom");
+					NotifyPropertyChanged("MarginBottom");
 				}
 			}
 		}
@@ -521,7 +543,7 @@
 				if (marginLeft != value)
 				{
 					marginLeft = value;
-					Changed("MarginLeft");
+					NotifyPropertyChanged("MarginLeft");
 				}
 			}
 		}
@@ -545,7 +567,7 @@
 				if (marginRight != value)
 				{
 					marginRight = value;
-					Changed("MarginRight");
+					NotifyPropertyChanged("MarginRight");
 				}
 			}
 		}
@@ -569,7 +591,7 @@
 				if (rightToLeft != value)
 				{
 					rightToLeft = value;
-					Changed("RightToLeft");
+					NotifyPropertyChanged("RightToLeft");
 				}
 			}
 		}
@@ -593,7 +615,7 @@
 				if (topToBottom != value)
 				{
 					topToBottom = value;
-					Changed("TopToBottom");
+					NotifyPropertyChanged("TopToBottom");
 				}
 			}
 		}
@@ -617,7 +639,7 @@
 				if (skipInactive != value)
 				{
 					skipInactive = value;
-					Changed("SkipInactive");
+					NotifyPropertyChanged("SkipInactive");
 				}
 			}
 		}
@@ -640,29 +662,46 @@
 				if (resetRotation != value)
 				{
 					resetRotation = value;
-					Changed("ResetRotation");
+					NotifyPropertyChanged("ResetRotation");
 				}
 			}
 		}
 
-		Func<IEnumerable<GameObject>, IEnumerable<GameObject>> filter;
-
 		/// <summary>
 		/// The filter.
 		/// </summary>
+		[Obsolete("Replaced with ShouldIgnore")]
 		public Func<IEnumerable<GameObject>, IEnumerable<GameObject>> Filter
 		{
 			get
 			{
-				return filter;
+				throw new NotSupportedException("Obsolete.");
 			}
 
 			set
 			{
-				if (filter != value)
+				throw new NotSupportedException("Obsolete.");
+			}
+		}
+
+		Func<RectTransform, bool> shouldIgnore;
+
+		/// <summary>
+		/// The filter.
+		/// </summary>
+		public Func<RectTransform, bool> ShouldIgnore
+		{
+			get
+			{
+				return shouldIgnore;
+			}
+
+			set
+			{
+				if (shouldIgnore != value)
 				{
-					filter = value;
-					Changed("Filter");
+					shouldIgnore = value;
+					NotifyPropertyChanged("ShouldIgnore");
 				}
 			}
 		}
@@ -686,7 +725,7 @@
 				if (childrenWidth != value)
 				{
 					childrenWidth = value;
-					Changed("ChildrenWidth");
+					NotifyPropertyChanged("ChildrenWidth");
 				}
 			}
 		}
@@ -710,7 +749,7 @@
 				if (childrenHeight != value)
 				{
 					childrenHeight = value;
-					Changed("ChildrenHeight");
+					NotifyPropertyChanged("ChildrenHeight");
 				}
 			}
 		}
@@ -732,10 +771,10 @@
 			{
 				if (flexSettings != value)
 				{
-					flexSettings.PropertyChanged -= FlexSettingsChanged;
+					flexSettings.OnChange -= FlexSettingsChanged;
 					flexSettings = value;
-					flexSettings.PropertyChanged += FlexSettingsChanged;
-					Changed("FlexSettings");
+					flexSettings.OnChange += FlexSettingsChanged;
+					NotifyPropertyChanged("FlexSettings");
 				}
 			}
 		}
@@ -757,10 +796,10 @@
 			{
 				if (staggeredSettings != value)
 				{
-					staggeredSettings.PropertyChanged -= StaggeredSettingsChanged;
+					staggeredSettings.OnChange -= StaggeredSettingsChanged;
 					staggeredSettings = value;
-					staggeredSettings.PropertyChanged += StaggeredSettingsChanged;
-					Changed("StaggeredSettings");
+					staggeredSettings.OnChange += StaggeredSettingsChanged;
+					NotifyPropertyChanged("StaggeredSettings");
 				}
 			}
 		}
@@ -782,10 +821,10 @@
 			{
 				if (ellipseSettings != value)
 				{
-					ellipseSettings.PropertyChanged -= EllipseSettingsChanged;
+					ellipseSettings.OnChange -= EllipseSettingsChanged;
 					ellipseSettings = value;
-					ellipseSettings.PropertyChanged += EllipseSettingsChanged;
-					Changed("EllipseSettings");
+					ellipseSettings.OnChange += EllipseSettingsChanged;
+					NotifyPropertyChanged("EllipseSettings");
 				}
 			}
 		}
@@ -833,11 +872,21 @@
 			get
 			{
 				var size = rectTransform.rect.size;
-				size.x -= MarginFullHorizontal + PaddingInner.Horizontal;
-				size.y -= MarginFullVertical + PaddingInner.Vertical;
+				var padding = PaddingInner;
+				size.x -= MarginFullHorizontal + padding.Horizontal;
+				size.y -= MarginFullVertical + padding.Vertical;
 
 				return size;
 			}
+		}
+
+		/// <summary>
+		/// Current sizes info.
+		/// </summary>
+		public GroupSize CurrentSize
+		{
+			get;
+			protected set;
 		}
 
 		/// <summary>
@@ -870,18 +919,6 @@
 		}
 
 		/// <summary>
-		/// Gets the minimum height.
-		/// </summary>
-		/// <value>The minimum height.</value>
-		public override float minHeight
-		{
-			get
-			{
-				return BlockSize[1];
-			}
-		}
-
-		/// <summary>
 		/// Gets the minimum width.
 		/// </summary>
 		/// <value>The minimum width.</value>
@@ -889,19 +926,19 @@
 		{
 			get
 			{
-				return BlockSize[0];
+				return (ChildrenWidth == ChildrenSize.DoNothing) ? CurrentSize.Width : CurrentSize.MinWidth;
 			}
 		}
 
 		/// <summary>
-		/// Gets the preferred height.
+		/// Gets the minimum height.
 		/// </summary>
-		/// <value>The preferred height.</value>
-		public override float preferredHeight
+		/// <value>The minimum height.</value>
+		public override float minHeight
 		{
 			get
 			{
-				return BlockSize[1];
+				return (ChildrenHeight == ChildrenSize.DoNothing) ? CurrentSize.Height : CurrentSize.MinHeight;
 			}
 		}
 
@@ -913,7 +950,19 @@
 		{
 			get
 			{
-				return BlockSize[0];
+				return (ChildrenWidth == ChildrenSize.DoNothing) ? CurrentSize.Width : CurrentSize.PreferredWidth;
+			}
+		}
+
+		/// <summary>
+		/// Gets the preferred height.
+		/// </summary>
+		/// <value>The preferred height.</value>
+		public override float preferredHeight
+		{
+			get
+			{
+				return (ChildrenHeight == ChildrenSize.DoNothing) ? CurrentSize.Height : CurrentSize.PreferredHeight;
 			}
 		}
 
@@ -1006,15 +1055,31 @@
 		protected DrivenRectTransformTracker PropertiesTracker;
 
 		/// <summary>
+		/// Children list.
+		/// Used if SkipInactive disabled.
+		/// </summary>
+		protected List<RectTransform> Children = new List<RectTransform>();
+
+		/// <summary>
 		/// Property changed.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
 		/// <param name="invokeSettingsChanged">Should invoke SettingsChanged event?</param>
-		protected void Changed(string propertyName, bool invokeSettingsChanged = true)
+		protected void NotifyPropertyChanged(string propertyName, bool invokeSettingsChanged = true)
 		{
 			SetDirty();
 
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 
 			if (invokeSettingsChanged)
 			{
@@ -1022,19 +1087,19 @@
 			}
 		}
 
-		void FlexSettingsChanged(object sender, PropertyChangedEventArgs e)
+		void FlexSettingsChanged()
 		{
-			Changed("FlexSettings");
+			NotifyPropertyChanged("FlexSettings");
 		}
 
-		void StaggeredSettingsChanged(object sender, PropertyChangedEventArgs e)
+		void StaggeredSettingsChanged()
 		{
-			Changed("StaggeredSettings");
+			NotifyPropertyChanged("StaggeredSettings");
 		}
 
-		void EllipseSettingsChanged(object sender, PropertyChangedEventArgs e)
+		void EllipseSettingsChanged()
 		{
-			Changed("EllipseSettings");
+			NotifyPropertyChanged("EllipseSettings");
 		}
 
 		/// <summary>
@@ -1042,9 +1107,9 @@
 		/// </summary>
 		protected override void Start()
 		{
-			flexSettings.PropertyChanged += FlexSettingsChanged;
-			staggeredSettings.PropertyChanged += StaggeredSettingsChanged;
-			ellipseSettings.PropertyChanged += EllipseSettingsChanged;
+			flexSettings.OnChange += FlexSettingsChanged;
+			staggeredSettings.OnChange += StaggeredSettingsChanged;
+			ellipseSettings.OnChange += EllipseSettingsChanged;
 		}
 
 		/// <summary>
@@ -1064,18 +1129,20 @@
 		{
 			if (flexSettings != null)
 			{
-				flexSettings.PropertyChanged -= FlexSettingsChanged;
+				flexSettings.OnChange -= FlexSettingsChanged;
 			}
 
 			if (ellipseSettings != null)
 			{
-				ellipseSettings.PropertyChanged -= EllipseSettingsChanged;
+				ellipseSettings.OnChange -= EllipseSettingsChanged;
 			}
 
 			if (staggeredSettings != null)
 			{
-				staggeredSettings.PropertyChanged -= StaggeredSettingsChanged;
+				staggeredSettings.OnChange -= StaggeredSettingsChanged;
 			}
+
+			LayoutGroup = null;
 
 			base.OnDestroy();
 		}
@@ -1093,7 +1160,9 @@
 		/// </summary>
 		public override void SetLayoutHorizontal()
 		{
-			RepositionElements();
+			UpdateElements();
+
+			PerformLayout(true, ResizeType.Horizontal);
 		}
 
 		/// <summary>
@@ -1101,7 +1170,9 @@
 		/// </summary>
 		public override void SetLayoutVertical()
 		{
-			RepositionElements();
+			UpdateElements();
+
+			PerformLayout(true, ResizeType.Vertical);
 		}
 
 		/// <summary>
@@ -1110,7 +1181,9 @@
 		public override void CalculateLayoutInputHorizontal()
 		{
 			base.CalculateLayoutInputHorizontal();
-			CalculateLayoutSize();
+			UpdateElements();
+
+			PerformLayout(false, ResizeType.None);
 		}
 
 		/// <summary>
@@ -1118,7 +1191,9 @@
 		/// </summary>
 		public override void CalculateLayoutInputVertical()
 		{
-			CalculateLayoutSize();
+			UpdateElements();
+
+			PerformLayout(false, ResizeType.None);
 		}
 
 		/// <summary>
@@ -1140,16 +1215,6 @@
 		}
 
 		/// <summary>
-		/// Repositions the user interface elements.
-		/// </summary>
-		void RepositionElements()
-		{
-			UpdateElements();
-
-			PerformLayout(true);
-		}
-
-		/// <summary>
 		/// Updates the layout.
 		/// </summary>
 		public void UpdateLayout()
@@ -1158,46 +1223,23 @@
 		}
 
 		/// <summary>
-		/// Is IgnoreLayout enabled?
-		/// </summary>
-		/// <param name="rect">RectTransform</param>
-		/// <returns>true if IgnoreLayout enabled; otherwise, false.</returns>
-		protected static bool IsIgnoreLayout(Transform rect)
-		{
-			#if UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_3_OR_NEWER
-			var ignorer = rect.GetComponent<ILayoutIgnorer>();
-			#else
-			var ignorer = rect.GetComponent(typeof(ILayoutIgnorer)) as ILayoutIgnorer;
-			#endif
-			return (ignorer != null) && ignorer.ignoreLayout;
-		}
-
-		/// <summary>
 		/// Get children.
 		/// </summary>
 		/// <returns>Children.</returns>
 		protected List<RectTransform> GetChildren()
 		{
-			var children = rectChildren;
-
-			if (!SkipInactive)
+			if (SkipInactive)
 			{
-				children = new List<RectTransform>();
-				foreach (Transform child in transform)
-				{
-					if (!IsIgnoreLayout(child))
-					{
-						children.Add(child as RectTransform);
-					}
-				}
+				return rectChildren;
 			}
 
-			if (Filter != null)
+			Children.Clear();
+			for (int i = 0; i < rectTransform.childCount; i++)
 			{
-				children = ApplyFilter(children);
+				Children.Add(rectTransform.GetChild(i) as RectTransform);
 			}
 
-			return children;
+			return Children;
 		}
 
 		/// <summary>
@@ -1208,9 +1250,15 @@
 			ClearElements();
 
 			var children = GetChildren();
-			for (int i = 0; i < children.Count; i++)
+			var ignore = ShouldIgnore != null;
+			foreach (var rt in children)
 			{
-				elements.Add(CreateElement(children[i]));
+				if (ignore && ShouldIgnore(rt))
+				{
+					continue;
+				}
+
+				elements.Add(CreateElement(rt));
 			}
 		}
 
@@ -1243,29 +1291,6 @@
 			}
 
 			return info;
-		}
-
-		/// <summary>
-		/// Apply filter.
-		/// </summary>
-		/// <param name="input">Original list.</param>
-		/// <returns>Filtered list.</returns>
-		protected List<RectTransform> ApplyFilter(List<RectTransform> input)
-		{
-			var objects = new GameObject[input.Count];
-
-			for (int i = 0; i < input.Count; i++)
-			{
-				objects[i] = input[i].gameObject;
-			}
-
-			var result = new List<RectTransform>();
-			foreach (var elem in Filter(objects))
-			{
-				result.Add(elem.transform as RectTransform);
-			}
-
-			return result;
 		}
 
 		/// <summary>
@@ -1313,17 +1338,17 @@
 			switch (LayoutType)
 			{
 				case LayoutTypes.Compact:
-					return new EasyLayoutCompact(this);
+					return new EasyLayoutCompact();
 				case LayoutTypes.Grid:
-					return new EasyLayoutGrid(this);
+					return new EasyLayoutGrid();
 				case LayoutTypes.Flex:
-					return new EasyLayoutFlex(this);
+					return new EasyLayoutFlex();
 				case LayoutTypes.Staggered:
-					return new EasyLayoutStaggered(this);
+					return new EasyLayoutStaggered();
 				case LayoutTypes.Ellipse:
-					return new EasyLayoutEllipse(this);
+					return new EasyLayoutEllipse();
 				default:
-					Debug.LogWarning("Unknown layout type: " + LayoutType);
+					Debug.LogWarning(string.Format("Unknown layout type: {0}", EnumHelper<LayoutTypes>.ToString(LayoutType)));
 					break;
 			}
 
@@ -1334,25 +1359,41 @@
 		/// Perform layout.
 		/// </summary>
 		/// <param name="setPositions">Is need to set elements position?</param>
-		protected void PerformLayout(bool setPositions)
+		/// <param name="resizeType">Resize type.</param>
+		protected void PerformLayout(bool setPositions, ResizeType resizeType = ResizeType.Horizontal | ResizeType.Vertical)
 		{
 			if (LayoutGroup == null)
 			{
-				Debug.LogWarning("Layout group not found: " + LayoutType);
+				Debug.LogWarning(string.Format("Layout group not found: {0}", EnumHelper<LayoutTypes>.ToString(LayoutType)));
 				return;
 			}
 
 			PropertiesTracker.Clear();
-			var size = LayoutGroup.PerformLayout(elements, setPositions);
 
-			UISize = elements.Count > 0 ? new Vector2(size.x, size.y) : Vector2.zero;
-			BlockSize = new Vector2(UISize.x + MarginFullHorizontal, UISize.y + MarginFullVertical);
+			LayoutGroup.LoadSettings(this);
+			CurrentSize = LayoutGroup.PerformLayout(elements, setPositions, resizeType);
+
+			BlockSize = elements.Count > 0 ? new Vector2(CurrentSize.Width, CurrentSize.Height) : Vector2.zero;
+
+			CurrentSize += new Vector2(MarginFullHorizontal, MarginFullVertical);
+			UISize = new Vector2(CurrentSize.Width, CurrentSize.Height);
+		}
+
+		/// <summary>
+		/// Process element changed event.
+		/// </summary>
+		/// <param name="element">Element.</param>
+		/// <param name="properties">Properties.</param>
+		protected virtual void ElementChanged(RectTransform element, DrivenTransformProperties properties)
+		{
+			PropertiesTracker.Add(this, element, properties);
 		}
 
 		/// <summary>
 		/// Set element size.
 		/// </summary>
 		/// <param name="element">Element.</param>
+		[Obsolete("No more used.")]
 		public void SetElementSize(LayoutElementInfo element)
 		{
 			var driven_properties = DrivenTransformProperties.AnchoredPosition | DrivenTransformProperties.AnchoredPositionZ;
@@ -1409,7 +1450,7 @@
 		/// </summary>
 		protected override void OnValidate()
 		{
-			layoutGroup = null;
+			LayoutGroup = null;
 
 			SetDirty();
 		}
@@ -1419,13 +1460,12 @@
 		[HideInInspector]
 		int version = 0;
 
-		#pragma warning disable 0618
 		/// <summary>
 		/// Upgrade to keep compatibility between versions.
 		/// </summary>
 		public virtual void Upgrade()
 		{
-			// upgrade to 1.6
+			#pragma warning disable 0618
 			if (version == 0)
 			{
 				if (ControlWidth)
@@ -1437,19 +1477,169 @@
 				{
 					ChildrenHeight = MaxHeight ? ChildrenSize.SetMaxFromPreferred : ChildrenSize.SetPreferred;
 				}
-			}
 
-			version = 1;
+				version = 1;
+			}
+			#pragma warning restore 0618
 		}
-		#pragma warning restore 0618
 
 		/// <summary>
-		/// Default property handler.
+		/// Get debug information.
 		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		public static void DefaultPropertyHandler(object sender, PropertyChangedEventArgs e)
+		/// <returns>Debug information.</returns>
+		public virtual string GetDebugInfo()
 		{
+			var sb = new System.Text.StringBuilder();
+			GetDebugInfo(sb);
+
+			return sb.ToString();
+		}
+
+		/// <summary>
+		/// Get debug information.
+		/// </summary>
+		/// <param name="sb">String builder.</param>
+		public virtual void GetDebugInfo(System.Text.StringBuilder sb)
+		{
+			sb.Append("RectTransform.size: ");
+			sb.Append(rectTransform.rect.size.ToString());
+			sb.AppendLine();
+
+			sb.Append("localScale: ");
+			sb.Append(rectTransform.localScale.ToString());
+			sb.AppendLine();
+
+			sb.Append("Main Axis: ");
+			sb.Append(EnumHelper<Axis>.ToString(MainAxis));
+			sb.AppendLine();
+
+			sb.Append("Type: ");
+			sb.Append(EnumHelper<LayoutTypes>.ToString(LayoutType));
+			sb.AppendLine();
+
+			switch (LayoutType)
+			{
+				case LayoutTypes.Compact:
+					sb.Append("\tGroup Position: ");
+					sb.Append(EnumHelper<Anchors>.ToString(GroupPosition));
+					sb.AppendLine();
+
+					sb.Append("\tRow Align: ");
+					sb.Append(EnumHelper<HorizontalAligns>.ToString(RowAlign));
+					sb.AppendLine();
+
+					sb.Append("\tInner Align: ");
+					sb.Append(EnumHelper<InnerAligns>.ToString(InnerAlign));
+					sb.AppendLine();
+
+					sb.Append("\tCompact Constraint: ");
+					sb.Append(EnumHelper<CompactConstraints>.ToString(CompactConstraint));
+					sb.AppendLine();
+
+					sb.Append("\tCompact Constraint Count: ");
+					sb.Append(CompactConstraintCount);
+					sb.AppendLine();
+					break;
+				case LayoutTypes.Grid:
+					sb.Append("\tGroup Position: ");
+					sb.Append(EnumHelper<Anchors>.ToString(GroupPosition));
+					sb.AppendLine();
+
+					sb.Append("\tCell Align: ");
+					sb.Append(EnumHelper<Anchors>.ToString(CellAlign));
+					sb.AppendLine();
+
+					sb.Append("\tGrid Constraint: ");
+					sb.Append(EnumHelper<GridConstraints>.ToString(GridConstraint));
+					sb.AppendLine();
+
+					sb.Append("\tGrid Constraint Count: ");
+					sb.Append(GridConstraintCount);
+					sb.AppendLine();
+					break;
+				case LayoutTypes.Flex:
+					FlexSettings.GetDebugInfo(sb);
+					break;
+				case LayoutTypes.Staggered:
+					StaggeredSettings.GetDebugInfo(sb);
+					break;
+				case LayoutTypes.Ellipse:
+					EllipseSettings.GetDebugInfo(sb);
+					break;
+				default:
+					sb.AppendLine("\tUnknown type: no details");
+					break;
+			}
+
+			sb.Append("PaddingInner: ");
+			sb.Append(PaddingInner.ToString());
+			sb.AppendLine();
+
+			sb.Append("Spacing: ");
+			sb.Append(Spacing.ToString());
+			sb.AppendLine();
+
+			sb.Append("Margin Symmetric: ");
+			sb.Append(Symmetric);
+			sb.AppendLine();
+
+			if (Symmetric)
+			{
+				sb.Append("Margin: ");
+				sb.Append(Margin.ToString());
+				sb.AppendLine();
+			}
+			else
+			{
+				sb.Append("Margin Left: ");
+				sb.Append(MarginLeft);
+				sb.AppendLine();
+
+				sb.Append("Margin Right: ");
+				sb.Append(MarginRight);
+				sb.AppendLine();
+
+				sb.Append("Margin Top: ");
+				sb.Append(MarginTop);
+				sb.AppendLine();
+
+				sb.Append("Margin Bottom: ");
+				sb.Append(MarginBottom);
+				sb.AppendLine();
+			}
+
+			sb.Append("TopToBottom: ");
+			sb.Append(TopToBottom);
+			sb.AppendLine();
+
+			sb.Append("RightToLeft: ");
+			sb.Append(RightToLeft);
+			sb.AppendLine();
+
+			sb.Append("Skip Inactive: ");
+			sb.Append(SkipInactive);
+			sb.AppendLine();
+
+			sb.Append("Reset Rotation: ");
+			sb.Append(ResetRotation);
+			sb.AppendLine();
+
+			sb.Append("Children Width: ");
+			sb.Append(EnumHelper<ChildrenSize>.ToString(ChildrenWidth));
+			sb.AppendLine();
+
+			sb.Append("Children Height: ");
+			sb.Append(EnumHelper<ChildrenSize>.ToString(ChildrenHeight));
+			sb.AppendLine();
+
+			sb.Append("Children: ");
+			foreach (var c in elements)
+			{
+				sb.Append(c.Rect.name);
+				sb.Append(": ");
+				sb.Append(c.Rect.rect.size.ToString());
+				sb.AppendLine();
+			}
 		}
 	}
 }

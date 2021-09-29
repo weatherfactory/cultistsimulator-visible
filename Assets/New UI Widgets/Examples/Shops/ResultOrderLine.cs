@@ -16,10 +16,10 @@
 		}
 
 		/// <summary>
-		/// Gets or sets the count.
+		/// Gets or sets the quantity.
 		/// </summary>
-		/// <value>The count.</value>
-		public int Count
+		/// <value>The quantity.</value>
+		public int Quantity
 		{
 			get;
 			set;

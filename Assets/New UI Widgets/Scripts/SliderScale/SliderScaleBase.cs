@@ -1,7 +1,6 @@
 ﻿namespace UIWidgets
 {
 	using System;
-	using System.ComponentModel;
 	using UIWidgets.Attributes;
 	using UIWidgets.Styles;
 	using UnityEngine;
@@ -100,6 +99,24 @@
 			}
 		}
 
+		Func<float, Scale.MarkData> value2MarkDataDelegate;
+
+		/// <summary>
+		/// Delegate for the Value2MarkData method.
+		/// </summary>
+		protected Func<float, Scale.MarkData> Value2MarkDataDelegate
+		{
+			get
+			{
+				if (value2MarkDataDelegate == null)
+				{
+					value2MarkDataDelegate = Value2MarkData;
+				}
+
+				return value2MarkDataDelegate;
+			}
+		}
+
 		bool isInited;
 
 		/// <summary>
@@ -132,7 +149,7 @@
 		/// </summary>
 		protected virtual void AddListeners()
 		{
-			Scale.PropertyChanged += ScalePropertyChanged;
+			Scale.OnChange += UpdateScale;
 		}
 
 		/// <summary>
@@ -140,17 +157,7 @@
 		/// </summary>
 		protected virtual void RemoveListeners()
 		{
-			Scale.PropertyChanged -= ScalePropertyChanged;
-		}
-
-		/// <summary>
-		/// Process Scale property changes.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="property">Property.</param>
-		protected virtual void ScalePropertyChanged(object sender, PropertyChangedEventArgs property)
-		{
-			UpdateScale();
+			Scale.OnChange -= UpdateScale;
 		}
 
 		/// <summary>

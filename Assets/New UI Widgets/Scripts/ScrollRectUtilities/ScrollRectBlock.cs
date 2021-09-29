@@ -157,7 +157,7 @@
 					Reveal(position);
 					break;
 				default:
-					throw new NotSupportedException("Unknown ScrollRectHeaderType: " + DisplayType);
+					throw new NotSupportedException(string.Format("Unknown ScrollRectHeaderType: {0}", EnumHelper<ScrollRectHeaderType>.ToString(DisplayType)));
 			}
 
 			LastPosition = position;

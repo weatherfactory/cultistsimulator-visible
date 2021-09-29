@@ -100,7 +100,7 @@
 				var nearest_node = Source.DataSource[index].Node;
 				var nearest_parent = nearest_node.Parent;
 
-				if (!data.CanBeParent(nearest_parent))
+				if ((nearest_parent != null) && !data.CanBeParent(nearest_parent))
 				{
 					index = -1;
 				}
@@ -129,7 +129,13 @@
 			{
 				var nearest_node = Source.DataSource[index].Node;
 				var nearest_parent = nearest_node.Parent;
-				if (data.CanBeParent(nearest_parent))
+				if (nearest_parent == null)
+				{
+					data.Parent = null;
+					Source.Nodes.Insert(index, data);
+					dropped = true;
+				}
+				else if (data.CanBeParent(nearest_parent))
 				{
 					index = nearest_parent.Nodes.IndexOf(nearest_node);
 					data.Parent = null;
@@ -213,7 +219,7 @@
 			if (Source.IsValid(index))
 			{
 				var nearest_node = Source.DataSource[index].Node;
-				var nearest_parent = nearest_node.Parent;
+				var nearest_parent = nearest_node.RealParent;
 
 				index = nearest_parent.Nodes.IndexOf(nearest_node);
 				nearest_parent.Nodes.Insert(index, node);

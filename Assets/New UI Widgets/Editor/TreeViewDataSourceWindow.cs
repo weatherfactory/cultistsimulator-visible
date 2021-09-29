@@ -63,7 +63,8 @@ namespace UIWidgets
 			/// <inheritdoc/>
 			public override void Show()
 			{
-				if (GUILayout.Button(IsExpanded.Property.boolValue ? "-" : "+", GUILayout.Width(Button.Width), GUILayout.Height(height)))
+				var options = new GUILayoutOption[] { GUILayout.Width(Button.Width), GUILayout.Height(height) };
+				if (GUILayout.Button(IsExpanded.Property.boolValue ? "-" : "+", options))
 				{
 					IsExpanded.Property.boolValue = !IsExpanded.Property.boolValue;
 				}

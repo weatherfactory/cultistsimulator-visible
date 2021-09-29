@@ -16,7 +16,8 @@
 		/// <summary>
 		/// Start this instance.
 		/// </summary>
-		protected virtual void Start()
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected void Start()
 		{
 			DateScroller.OnDateChanged.AddListener(ProcessDate);
 
@@ -28,9 +29,18 @@
 			DateScroller.Culture.DateTimeFormat.Calendar = new System.Globalization.JapaneseCalendar();
 		}
 
+		/// <summary>
+		/// Process the destroy event.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected void OnDestroy()
+		{
+			DateScroller.OnDateChanged.RemoveListener(ProcessDate);
+		}
+
 		void ProcessDate(System.DateTime dt)
 		{
-			Debug.Log(dt);
+			Debug.Log(dt.ToString());
 		}
 	}
 }

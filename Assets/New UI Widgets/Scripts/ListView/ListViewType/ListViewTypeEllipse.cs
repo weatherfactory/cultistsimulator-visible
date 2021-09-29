@@ -16,6 +16,29 @@
 		/// </summary>
 		protected class ListViewTypeEllipse : ListViewTypeBase
 		{
+			bool isEnabled;
+
+			ScrollListener scrollListener;
+
+			EasyLayoutNS.EasyLayoutEllipseScroll ellipseScroll;
+
+			/// <summary>
+			/// Ellipse scroll listener.
+			/// </summary>
+			protected EasyLayoutNS.EasyLayoutEllipseScroll EllipseScroll
+			{
+				get
+				{
+					if (ellipseScroll == null)
+					{
+						ellipseScroll = Utilities.GetOrAddComponent<EasyLayoutNS.EasyLayoutEllipseScroll>(Owner.Container);
+						DefaultInertia = ellipseScroll.Inertia;
+					}
+
+					return ellipseScroll;
+				}
+			}
+
 			/// <summary>
 			/// Initializes a new instance of the <see cref="ListViewTypeEllipse"/> class.
 			/// </summary>
@@ -48,9 +71,7 @@
 				}
 			}
 
-			/// <summary>
-			/// Allow owner to set ContentSizeFitter settings.
-			/// </summary>
+			/// <inheritdoc/>
 			public override bool AllowSetContentSizeFitter
 			{
 				get
@@ -59,9 +80,7 @@
 				}
 			}
 
-			/// <summary>
-			/// Allow owner to control Container.RectTransform.
-			/// </summary>
+			/// <inheritdoc/>
 			public override bool AllowControlRectTransform
 			{
 				get
@@ -81,10 +100,7 @@
 					: Owner.ItemSize.y + Owner.LayoutBridge.GetSpacing();
 			}
 
-			/// <summary>
-			/// Calculates the size of the top filler.
-			/// </summary>
-			/// <returns>The top filler size.</returns>
+			/// <inheritdoc/>
 			public override float TopFillerSize()
 			{
 				var settings = Owner.Layout.EllipseSettings;
@@ -95,20 +111,13 @@
 				return steps * settings.AngleStep;
 			}
 
-			/// <summary>
-			/// Calculates the size of the bottom filler.
-			/// </summary>
-			/// <returns>The bottom filler size.</returns>
+			/// <inheritdoc/>
 			public override float BottomFillerSize()
 			{
 				return 0f;
 			}
 
-			/// <summary>
-			/// Gets the first index of the visible.
-			/// </summary>
-			/// <returns>The first visible index.</returns>
-			/// <param name="strict">If set to <c>true</c> strict.</param>
+			/// <inheritdoc/>
 			public override int GetFirstVisibleIndex(bool strict = false)
 			{
 				var length = Owner.Layout.EllipseSettings.AngleScroll;
@@ -143,11 +152,7 @@
 				return first_visible_index;
 			}
 
-			/// <summary>
-			/// Gets the last visible index.
-			/// </summary>
-			/// <returns>The last visible index.</returns>
-			/// <param name="strict">If set to <c>true</c> strict.</param>
+			/// <inheritdoc/>
 			public override int GetLastVisibleIndex(bool strict = false)
 			{
 				var length = Owner.Layout.EllipseSettings.AngleScroll + Owner.Layout.EllipseSettings.ArcLength;
@@ -160,50 +165,32 @@
 				return last_visible_index - 1;
 			}
 
-			/// <summary>
-			/// Gets the position of the start border of the item.
-			/// </summary>
-			/// <returns>The position.</returns>
-			/// <param name="index">Index.</param>
+			/// <inheritdoc/>
 			public override float GetItemPosition(int index)
 			{
 				var block_index = GetBlockIndex(index);
 				return block_index * Owner.Layout.EllipseSettings.AngleStep;
 			}
 
-			/// <summary>
-			/// Gets the position of the end border of the item.
-			/// </summary>
-			/// <returns>The position.</returns>
-			/// <param name="index">Index.</param>
+			/// <inheritdoc/>
 			public override float GetItemPositionBorderEnd(int index)
 			{
 				return GetItemPosition(index + 1);
 			}
 
-			/// <summary>
-			/// Gets the position to display item at the center of the ScrollRect viewport.
-			/// </summary>
-			/// <returns>The position.</returns>
-			/// <param name="index">Index.</param>
+			/// <inheritdoc/>
 			public override float GetItemPositionMiddle(int index)
 			{
 				return GetItemPosition(index) - (Owner.Layout.EllipseSettings.ArcLength / 2f);
 			}
 
-			/// <summary>
-			/// Gets the position to display item at the bottom of the ScrollRect viewport.
-			/// </summary>
-			/// <returns>The position.</returns>
-			/// <param name="index">Index.</param>
+			/// <inheritdoc/>
 			public override float GetItemPositionBottom(int index)
 			{
 				return GetItemPosition(index) - Owner.Layout.EllipseSettings.ArcLength;
 			}
 
-			/// <summary>
-			/// Calculates the maximum count of the visible items.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void CalculateMaxVisibleItems()
 			{
 				if (!Owner.Virtualization)
@@ -220,12 +207,7 @@
 				MaxVisibleItems = Mathf.Max(max + 2, MinVisibleItems);
 			}
 
-			/// <summary>
-			/// Gets the index of the nearest item.
-			/// </summary>
-			/// <returns>The nearest item index.</returns>
-			/// <param name="point">Point.</param>
-			/// <param name="type">Preferable nearest index.</param>
+			/// <inheritdoc/>
 			public override int GetNearestIndex(Vector2 point, NearestType type)
 			{
 				if (Owner.IsSortEnabled())
@@ -249,7 +231,7 @@
 						case NearestType.After:
 							return 1;
 						default:
-							throw new NotSupportedException("Unknown position: " + type);
+							throw new NotSupportedException(string.Format("Unknown position: {0}", EnumHelper<NearestType>.ToString(type)));
 					}
 				}
 
@@ -300,7 +282,7 @@
 						index = Owner.Components[nearest].Index + 1;
 						break;
 					default:
-						throw new NotSupportedException("Unsupported NearestType: " + type);
+						throw new NotSupportedException(string.Format("Unsupported NearestType: {0}", EnumHelper<NearestType>.ToString(type)));
 				}
 
 				return index;
@@ -319,10 +301,7 @@
 				return Vector2.Distance(pos, point);
 			}
 
-			/// <summary>
-			/// Gets the index of the nearest item.
-			/// </summary>
-			/// <returns>The nearest item index.</returns>
+			/// <inheritdoc/>
 			public override int GetNearestItemIndex()
 			{
 				if (Owner.DataSource.Count == 0)
@@ -333,10 +312,7 @@
 				return VisibleIndex2ItemIndex(Visible.FirstVisible);
 			}
 
-			/// <summary>
-			/// Get the size of the ListView.
-			/// </summary>
-			/// <returns>The size.</returns>
+			/// <inheritdoc/>
 			public override float ListSize()
 			{
 				if (Owner.DataSource.Count == 0)
@@ -347,47 +323,30 @@
 				return (Owner.DataSource.Count - 1) * Owner.Layout.EllipseSettings.AngleStep;
 			}
 
-			/// <summary>
-			/// Validates the content size and item size.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void ValidateContentSize()
 			{
 			}
 
-			bool isEnabled;
-
-			EasyLayoutNS.EasyLayoutEllipseScroll ellipseScroll;
-
-			/// <summary>
-			/// Ellipse scroll listener.
-			/// </summary>
-			protected EasyLayoutNS.EasyLayoutEllipseScroll EllipseScroll
-			{
-				get
-				{
-					if (ellipseScroll == null)
-					{
-						ellipseScroll = Utilities.GetOrAddComponent<EasyLayoutNS.EasyLayoutEllipseScroll>(Owner.Container);
-					}
-
-					return ellipseScroll;
-				}
-			}
-
-			/// <summary>
-			/// Allow looped ListView.
-			/// </summary>
+			/// <inheritdoc/>
 			public override bool AllowLoopedList
 			{
 				get
 				{
-					return !IsTileView && (Owner.Layout.EllipseSettings.ArcLength < ListSize());
+					return !IsTileView && CanScroll;
 				}
 			}
 
-			/// <summary>
-			/// Enable this instance.
-			/// </summary>
+			/// <inheritdoc/>
+			public override bool CanScroll
+			{
+				get
+				{
+					return Owner.Layout.EllipseSettings.ArcLength < ListSize();
+				}
+			}
+
+			/// <inheritdoc/>
 			public override void Enable()
 			{
 				if (isEnabled)
@@ -395,13 +354,11 @@
 					return;
 				}
 
-				EllipseScroll.OnScrollEvent.AddListener(UpdateView);
+				EllipseScroll.OnScrollEvent.AddListener(Scroll);
 				isEnabled = true;
 			}
 
-			/// <summary>
-			/// Disable this instance.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void Disable()
 			{
 				if (!isEnabled)
@@ -409,33 +366,60 @@
 					return;
 				}
 
-				EllipseScroll.OnScrollEvent.RemoveListener(UpdateView);
+				EllipseScroll.OnScrollEvent.RemoveListener(Scroll);
 				isEnabled = false;
 			}
 
-			ScrollListener scrollListener;
+			/// <inheritdoc/>
+			public override void ToggleScrollToItemCenter(bool state)
+			{
+				if (state)
+				{
+					DefaultInertia = EllipseScroll.Inertia;
+					EllipseScroll.Inertia = false;
+				}
+				else
+				{
+					EllipseScroll.Inertia = DefaultInertia;
+				}
+			}
 
 			/// <summary>
-			/// Update view.
+			/// Process the scroll event.
 			/// </summary>
+			protected void Scroll()
+			{
+				Owner.StopScrollCoroutine();
+				Owner.StartScrolling();
+
+				UpdateView();
+			}
+
+			PointerEventData pointerEventData;
+
+			/// <inheritdoc/>
 			public override void UpdateView()
 			{
 				base.UpdateView();
 
-				scrollListener.ScrollEvent.Invoke(new PointerEventData(EventSystem.current));
+				if (pointerEventData == null)
+				{
+					pointerEventData = new PointerEventData(EventSystem.current);
+				}
+
+				scrollListener.ScrollEvent.Invoke(pointerEventData);
 			}
 
-			/// <summary>
-			/// Reset position.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void ResetPosition()
 			{
+				Owner.ContainerAnchoredPosition = Vector2.zero;
+
 				if (Owner.scrollRect != null)
 				{
 					Owner.scrollRect.horizontal = false;
 					Owner.scrollRect.vertical = false;
 					Owner.scrollRect.StopMovement();
-					Owner.scrollRect.content.anchoredPosition = Vector2.zero;
 					scrollListener = Utilities.GetOrAddComponent<ScrollListener>(Owner.ScrollRect);
 				}
 
@@ -445,56 +429,96 @@
 				}
 			}
 
-			/// <summary>
-			/// Validate position.
-			/// </summary>
+			/// <inheritdoc/>
 			protected override void ValidatePosition()
 			{
-				var base_position = GetPosition();
-				var position = ValidatePosition(base_position);
-				if (base_position != position)
-				{
-					SetPosition(position, false);
-				}
+				var position = ClampPosition(GetPosition(), Owner.LoopedListAvailable);
+				SetPosition(position);
 			}
 
-			/// <summary>
-			/// Validate position.
-			/// </summary>
-			/// <param name="position">Position.</param>
-			/// <returns>Validated position.</returns>
+			float ClampPosition(float position, bool looped)
+			{
+				var size = ListSize();
+				if (looped)
+				{
+					size += Owner.Layout.EllipseSettings.AngleStep;
+				}
+
+				if (position < 0)
+				{
+					position += Mathf.CeilToInt(-position / size) * size;
+				}
+
+				if (position > size)
+				{
+					position -= Mathf.CeilToInt(position / size) * size;
+				}
+
+				return position;
+			}
+
+			/// <inheritdoc/>
+			public override float ValidateScrollPosition(float position)
+			{
+				return ValidatePosition(position);
+			}
+
+			/// <inheritdoc/>
 			public override float ValidatePosition(float position)
 			{
-				var list_size = ListSize();
 				if (IsRequiredCenterTheItems())
 				{
 					position = 0f;
 				}
 				else if (Owner.LoopedListAvailable)
 				{
+					ValidatePosition();
+
+					var size = ListSize() + Owner.Layout.EllipseSettings.AngleStep;
+					var half = size / 2f;
+					var current = GetPosition();
+					var new_position = ClampPosition(position, true);
+
+					if (Mathf.Abs(new_position - current) > half)
+					{
+						if (new_position > current)
+						{
+							new_position -= size;
+						}
+						else
+						{
+							new_position += size;
+						}
+					}
+
+					if (new_position != position)
+					{
+						position = new_position;
+					}
 				}
 				else
 				{
 					var half_arc = Owner.Layout.EllipseSettings.ArcLength / 2f;
-					list_size -= half_arc;
-					if (position > list_size)
-					{
-						position = list_size;
-					}
-					else if (position < -half_arc)
-					{
-						position = -half_arc;
-					}
+					position += half_arc;
+
+					position = ClampPosition(position, false);
+
+					position -= half_arc;
 				}
 
 				return position;
 			}
 
 			/// <summary>
-			/// Set the position.
+			/// Set position directly without update view.
 			/// </summary>
-			/// <param name="value">Value.</param>
-			/// <param name="updateView">Update view if position changed.</param>
+			/// <param name="value">Position.</param>
+			protected void SetPosition(float value)
+			{
+				Owner.Layout.EllipseSettings.AngleScroll = value;
+			}
+
+			/// <inheritdoc/>
 			public override void SetPosition(float value, bool updateView = true)
 			{
 				value = ValidatePosition(value);
@@ -509,21 +533,14 @@
 				}
 			}
 
-			/// <summary>
-			/// Set the position.
-			/// </summary>
-			/// <param name="newPosition">Value.</param>
-			/// <param name="updateView">Update view if position changed.</param>
+			/// <inheritdoc/>
 			public override void SetPosition(Vector2 newPosition, bool updateView = true)
 			{
 				var value = Owner.IsHorizontal() ? newPosition.x : newPosition.y;
 				SetPosition(value, updateView);
 			}
 
-			/// <summary>
-			/// Get the position.
-			/// </summary>
-			/// <returns>Position.</returns>
+			/// <inheritdoc/>
 			public override Vector2 GetPositionVector()
 			{
 				return Owner.IsHorizontal()
@@ -531,20 +548,19 @@
 					: new Vector2(0f, Owner.Layout.EllipseSettings.AngleScroll);
 			}
 
-			/// <summary>
-			/// Get the position.
-			/// </summary>
-			/// <returns>Position.</returns>
+			/// <inheritdoc/>
 			public override float GetPosition()
 			{
 				return Owner.Layout.EllipseSettings.AngleScroll;
 			}
 
-			/// <summary>
-			/// Get the position for the specified index.
-			/// </summary>
-			/// <param name="index">Index.</param>
-			/// <returns>Position.</returns>
+			/// <inheritdoc/>
+			public override float GetCenterPosition()
+			{
+				return GetPosition() + (Owner.Layout.EllipseSettings.ArcLength / 2f);
+			}
+
+			/// <inheritdoc/>
 			public override Vector2 GetPosition(int index)
 			{
 				var pos = ValidatePosition(GetItemPosition(index));
@@ -554,30 +570,27 @@
 					: new Vector2(0f, pos);
 			}
 
-			/// <summary>
-			/// Is visible item with specified index.
-			/// </summary>
-			/// <param name="index">Index.</param>
-			/// <param name="minVisiblePart">The minimal visible part of the item to consider item visible.</param>
-			/// <returns>true if item visible; false otherwise.</returns>
+			/// <inheritdoc/>
+			public override int ScrollPosition2Index(float position)
+			{
+				var index = Mathf.RoundToInt(position / Owner.Layout.EllipseSettings.AngleStep);
+
+				return index;
+			}
+
+			/// <inheritdoc/>
 			public override bool IsVisible(int index, float minVisiblePart)
 			{
 				return Owner.DisplayedIndices.Contains(index);
 			}
 
-			/// <summary>
-			/// Get the top filler size to center the items.
-			/// </summary>
-			/// <returns>Size.</returns>
+			/// <inheritdoc/>
 			public override float CenteredFillerSize()
 			{
 				return -(Owner.Layout.EllipseSettings.ArcLength - ListSize()) / 2f;
 			}
 
-			/// <summary>
-			/// Determines whether is required center the list items.
-			/// </summary>
-			/// <returns><c>true</c> if required center the list items; otherwise, <c>false</c>.</returns>
+			/// <inheritdoc/>
 			public override bool IsRequiredCenterTheItems()
 			{
 				if (!Owner.CenterTheItems)
@@ -588,9 +601,7 @@
 				return Owner.Layout.EllipseSettings.ArcLength > ListSize();
 			}
 
-			/// <summary>
-			/// Updates the layout bridge.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void UpdateLayout()
 			{
 				if (Owner.LayoutBridge == null)

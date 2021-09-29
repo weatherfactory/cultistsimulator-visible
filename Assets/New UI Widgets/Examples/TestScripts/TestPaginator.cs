@@ -22,7 +22,7 @@
 		public void Test()
 		{
 			// pages count
-			Debug.Log(Paginator.Pages);
+			Debug.Log(Paginator.Pages.ToString());
 
 			// navigate to page
 			Paginator.CurrentPage = 2;

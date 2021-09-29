@@ -48,6 +48,7 @@
 		/// <summary>
 		/// Init this instance.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Init()
 		{
 			Spinner.Min = -1;

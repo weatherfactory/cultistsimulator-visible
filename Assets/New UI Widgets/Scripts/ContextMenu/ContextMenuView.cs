@@ -205,7 +205,10 @@
 		/// </summary>
 		protected void SubscribersReset()
 		{
-			Subscribers.ForEach(ResetItems);
+			foreach (var s in Subscribers)
+			{
+				ResetItems(s);
+			}
 		}
 
 		/// <summary>
@@ -222,7 +225,10 @@
 		/// </summary>
 		protected void SubscribersUpdate()
 		{
-			Subscribers.ForEach(UpdateItems);
+			foreach (var s in Subscribers)
+			{
+				UpdateItems(s);
+			}
 		}
 
 		/// <summary>
@@ -246,7 +252,7 @@
 			}
 
 			menu.IsPointerOver = false;
-			menu.transform.SetParent(RectTransform);
+			menu.transform.SetParent(RectTransform, false);
 			menu.gameObject.SetActive(false);
 
 			Cache.Add(menu);
@@ -282,6 +288,7 @@
 			else
 			{
 				menu = Instantiate(EmptyTemplate);
+				Utilities.FixInstantiated(EmptyTemplate, menu);
 				menu.Init();
 			}
 
@@ -297,8 +304,10 @@
 		protected virtual void CreateEmptyTemplate()
 		{
 			EmptyTemplate = Instantiate(this);
+			Utilities.FixInstantiated(this, EmptyTemplate);
+
 			EmptyTemplate.gameObject.SetActive(false);
-			EmptyTemplate.name = name + "EmptyTemplate";
+			EmptyTemplate.name = string.Format("{0}EmptyTemplate", name);
 
 			// destroy nested defaultItem
 			if (EmptyTemplate.defaultItem.RectTransform.IsChildOf(EmptyTemplate.RectTransform))
@@ -308,7 +317,7 @@
 					EmptyTemplate.defaultItemTemplate.Clear();
 				}
 
-				EmptyTemplate.defaultItem.transform.SetParent(null);
+				EmptyTemplate.defaultItem.transform.SetParent(null, false);
 				Destroy(EmptyTemplate.defaultItem.gameObject);
 			}
 
@@ -320,7 +329,7 @@
 				{
 					item.Clear();
 
-					item.Template.transform.SetParent(null);
+					item.Template.transform.SetParent(null, false);
 					Destroy(item.Template.gameObject);
 				}
 			}

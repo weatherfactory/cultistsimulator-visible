@@ -95,7 +95,7 @@
 		[SerializeField]
 		[EditorConditionBool("years")]
 		[FormerlySerializedAs("YearsScroller")]
-		protected ScrollBlock YearsScrollBlock;
+		protected ScrollBlockBase YearsScrollBlock;
 
 		/// <summary>
 		/// Step to change year.
@@ -141,7 +141,7 @@
 		[SerializeField]
 		[EditorConditionBool("months")]
 		[FormerlySerializedAs("MonthsScroller")]
-		protected ScrollBlock MonthsScrollBlock;
+		protected ScrollBlockBase MonthsScrollBlock;
 
 		/// <summary>
 		/// Step to change month.
@@ -187,7 +187,7 @@
 		[SerializeField]
 		[EditorConditionBool("days")]
 		[FormerlySerializedAs("DaysScroller")]
-		protected ScrollBlock DaysScrollBlock;
+		protected ScrollBlockBase DaysScrollBlock;
 
 		/// <summary>
 		/// Step to change day.
@@ -504,7 +504,7 @@
 				case Precision.Ticks:
 					return date1 == date2;
 				default:
-					throw new NotSupportedException("Unknown precision: " + precision);
+					throw new NotSupportedException(string.Format("Unknown precision: {0}", EnumHelper<Precision>.ToString(precision)));
 			}
 		}
 

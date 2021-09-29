@@ -21,13 +21,16 @@
 		[SerializeField]
 		public ComboboxChangesEvent OnChange = new ComboboxChangesEvent();
 
-		List<int> selected;
+		List<int> oldSelected = new List<int>();
+
+		List<int> newSelected = new List<int>();
 
 		bool isShow;
 
 		/// <summary>
 		/// Start this instance.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void Start()
 		{
 			if (Combobox != null)
@@ -40,7 +43,9 @@
 		void ShowList()
 		{
 			isShow = true;
-			selected = Combobox.ListView.SelectedIndices;
+
+			oldSelected.Clear();
+			Combobox.ListView.GetSelectedIndices(oldSelected);
 		}
 
 		void HideList()
@@ -52,26 +57,23 @@
 
 			isShow = false;
 
-			var new_selected = Combobox.ListView.SelectedIndices;
+			newSelected.Clear();
+			Combobox.ListView.GetSelectedIndices(newSelected);
 
-			var added = new_selected.Except(selected).ToArray();
-			var removed = selected.Except(new_selected).ToArray();
+			var added = newSelected.Except(oldSelected).ToArray();
+			var removed = oldSelected.Except(newSelected).ToArray();
 
 			OnChange.Invoke(added, removed);
 
-			Debug.Log("Selected indices: " + Indices2String(new_selected));
-			Debug.Log("New selected indices: " + Indices2String(added));
-			Debug.Log("Unselected indices: " + Indices2String(removed));
-		}
-
-		static string Indices2String(IList<int> indices)
-		{
-			return string.Join(", ", indices.Select(x => x.ToString()).ToArray());
+			Debug.Log(string.Format("All selected indices: {0}", UtilitiesCollections.List2String(newSelected)));
+			Debug.Log(string.Format("New selected indices: {0}", UtilitiesCollections.List2String(added)));
+			Debug.Log(string.Format("Deselected indices: {0}", UtilitiesCollections.List2String(removed)));
 		}
 
 		/// <summary>
 		/// Destroy this instance.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void OnDestroy()
 		{
 			if (Combobox != null)

@@ -2,7 +2,6 @@
 {
 	using System.Collections;
 	using UIWidgets;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 
 	/// <summary>
@@ -11,6 +10,10 @@
 	[RequireComponent(typeof(ScrollRectEvents))]
 	public class TestScrollRectEvents : MonoBehaviour
 	{
+		static char[] LineEnd = new char[] { '\n' };
+
+		static char[] Separator = new char[] { '\t' };
+
 		/// <summary>
 		/// ListView.
 		/// </summary>
@@ -35,6 +38,7 @@
 		/// <summary>
 		/// Init this instance.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Init()
 		{
 			if (isInited)
@@ -82,7 +86,7 @@
 
 			var lines = Compatibility.EmptyArray<string>();
 
-			var url = "https://ilih.ru/steamspy/?start=" + start.ToString();
+			var url = string.Format("https://ilih.ru/steamspy/?start={0}", start.ToString());
 #if UNITY_2018_3_OR_NEWER
 			using (var www = UnityEngine.Networking.UnityWebRequest.Get(new System.Uri(url)))
 			{
@@ -94,21 +98,24 @@
 				}
 				else
 				{
-					lines = www.downloadHandler.text.Split('\n');
+					lines = www.downloadHandler.text.Split(LineEnd);
 				}
 			}
 #else
 			WWW www = new WWW(url);
 			yield return www;
 
-			lines = www.text.Split('\n');
+			lines = www.text.Split(LineEnd);
 
 			www.Dispose();
 #endif
 
 			Data.BeginUpdate();
 
-			lines.ForEach(ParseLine);
+			foreach (var line in lines)
+			{
+				ParseLine(line);
+			}
 
 			Data.EndUpdate();
 		}
@@ -124,9 +131,9 @@
 				return;
 			}
 
-			var info = line.Split('\t');
+			var info = line.Split(Separator);
 
-			var item = new ListViewIconsItemDescription() { Name = string.Format("{0}. {1}", Data.Count + 1, info[0]), };
+			var item = new ListViewIconsItemDescription() { Name = string.Format("{0}. {1}", (Data.Count + 1).ToString(), info[0]), };
 			Data.Add(item);
 		}
 
@@ -149,6 +156,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			var scrollRectEvents = GetComponent<ScrollRectEvents>();

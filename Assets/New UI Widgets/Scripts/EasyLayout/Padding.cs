@@ -74,9 +74,10 @@
 		/// Returns a string that represents the current object.
 		/// </summary>
 		/// <returns>A string that represents the current object.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0101:Array allocation for params parameter", Justification = "Required.")]
 		public override string ToString()
 		{
-			return string.Format("Padding(left: {0}, right: {1}, top: {2}, bottom: {3})", Left, Right, Top, Bottom);
+			return string.Format("Padding(left: {0}, right: {1}, top: {2}, bottom: {3})", Left.ToString(), Right.ToString(), Top.ToString(), Bottom.ToString());
 		}
 
 		/// <summary>
@@ -110,7 +111,7 @@
 		/// <returns>A hash code for the current object.</returns>
 		public override int GetHashCode()
 		{
-			return base.GetHashCode();
+			return Left.GetHashCode() ^ Right.GetHashCode() ^ Top.GetHashCode() ^ Bottom.GetHashCode();
 		}
 
 		/// <summary>
@@ -121,7 +122,7 @@
 		/// <returns>true if the paddings are equal; otherwise, false.</returns>
 		public static bool operator ==(Padding padding1, Padding padding2)
 		{
-			return Equals(padding1, padding2);
+			return padding1.Equals(padding2);
 		}
 
 		/// <summary>
@@ -132,7 +133,7 @@
 		/// <returns>true if the paddings not equal; otherwise, false.</returns>
 		public static bool operator !=(Padding padding1, Padding padding2)
 		{
-			return !Equals(padding1, padding2);
+			return !padding1.Equals(padding2);
 		}
 	}
 }

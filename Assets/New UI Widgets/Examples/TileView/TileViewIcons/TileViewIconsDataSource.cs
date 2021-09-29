@@ -25,11 +25,22 @@
 			var tiles = GetComponent<TileViewIcons>();
 			tiles.Init();
 
-			tiles.DataSource = UtilitiesCollections.CreateList(140, x => new ListViewIconsItemDescription()
+			var count = 140;
+			var items = new ObservableList<ListViewIconsItemDescription>(count);
+			items.BeginUpdate();
+			for (int i = 0; i < count; i++)
 			{
-				Name = "Tile " + x,
-				Icon = Icons.Count > 0 ? Icons[Random.Range(0, n)] : null,
-			});
+				var item = new ListViewIconsItemDescription()
+				{
+					Name = string.Format("Tile {0}", i.ToString()),
+					Icon = Icons.Count > 0 ? Icons[Random.Range(0, n)] : null,
+				};
+				items.Add(item);
+			}
+
+			items.EndUpdate();
+
+			tiles.DataSource = items;
 		}
 	}
 }

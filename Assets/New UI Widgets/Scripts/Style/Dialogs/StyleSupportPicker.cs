@@ -70,7 +70,10 @@
 
 			style.Dialog.Delimiter.ApplyTo(Delimiter);
 
-			Buttons.ForEach(style.Dialog.Button.ApplyTo);
+			foreach (var button in Buttons)
+			{
+				style.Dialog.Button.ApplyTo(button);
+			}
 
 			for (int i = 0; i < Stylables.Count; i++)
 			{
@@ -93,7 +96,10 @@
 
 			style.Dialog.Delimiter.GetFrom(Delimiter);
 
-			Buttons.ForEach(style.Dialog.Button.GetFrom);
+			foreach (var button in Buttons)
+			{
+				style.Dialog.Button.GetFrom(button);
+			}
 
 			for (int i = 0; i < Stylables.Count; i++)
 			{

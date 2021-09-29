@@ -75,7 +75,7 @@
 
 			if (System.Array.IndexOf(culture.OptionalCalendars, calendar) == -1)
 			{
-				Debug.Log("Calendar " + calendar.GetType().Name + " not supported by culture " + cultureCode);
+				Debug.Log(string.Format("Calendar {0} not supported by culture {1}", calendar.GetType().Name, cultureCode));
 				return;
 			}
 

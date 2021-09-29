@@ -2,7 +2,6 @@
 {
 	using System.Collections.Generic;
 	using UIWidgets;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 	using UnityEngine.UI;
 
@@ -36,7 +35,7 @@
 
 				for (int i = 0; i < TextAdapterComponents.Count; i++)
 				{
-					Foreground[i] = Utilities.GetGraphic(TextAdapterComponents[i]);
+					Foreground[i] = UtilitiesUI.GetGraphic(TextAdapterComponents[i]);
 				}
 
 				GraphicsForegroundVersion = 1;
@@ -95,7 +94,10 @@
 		/// </summary>
 		public void UpdateView()
 		{
-			TextAdapterComponents.ForEach(SetData);
+			for (int i = 0; i < TextAdapterComponents.Count; i++)
+			{
+				SetData(TextAdapterComponents[i], i);
+			}
 		}
 
 		/// <summary>

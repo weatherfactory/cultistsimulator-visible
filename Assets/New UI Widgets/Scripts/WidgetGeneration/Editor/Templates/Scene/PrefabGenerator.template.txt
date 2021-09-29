@@ -49,7 +49,7 @@ namespace {0:WidgetsNamespace}
 			Info = info;
 		}}
 
-		{0:TextType} AddLabel(UnityEngine.GameObject go, string text, int fontSize = 26)
+		{0:TextType} AddLabel(UnityEngine.GameObject go, string text, int fontSize = 26, bool addAdapter = false)
 		{{
 			var rt = go.transform as UnityEngine.RectTransform;
 			var sd = rt.sizeDelta;
@@ -59,6 +59,11 @@ namespace {0:WidgetsNamespace}
 			label.text = text;
 			label.fontSize = fontSize;
 			label.color = UnityEngine.Color.white;
+
+			if (addAdapter)
+			{{
+				go.AddComponent<UIWidgets.TextAdapter>();
+			}}
 
 			return label;
 		}}
@@ -350,7 +355,7 @@ namespace {0:WidgetsNamespace}
 			AddComboboxMultiselectLayoutGroup(helper.DefaultItem);
 			helper.DefaultItem.SetActive(true);
 
-			AddListener(helper.DefaultItemRemove.onClick, target.Current.Deselect);
+			AddListener(helper.DefaultItemRemove.onClick, target.Current.DeselectItem);
 
 			var lv_prefab = PrefabsMenu.ListView;
 			var lv = UnityEngine.Object.Instantiate(lv_prefab) as UnityEngine.GameObject;

@@ -81,10 +81,14 @@
 		{
 			columns += 1;
 
-			Table.ForEachComponent(AddCellToRow);
+			foreach (var component in Table.GetComponentsEnumerator(PoolEnumeratorMode.All))
+			{
+				AddCellToRow(component);
+			}
+
 			Table.ComponentsColoring();
 
-			AddCellToHeader(columnName + " " + columns);
+			AddCellToHeader(string.Format("{0} {1}", columnName, columns.ToString()));
 		}
 
 		/// <summary>
@@ -121,7 +125,11 @@
 		public void RemoveColumn(int index)
 		{
 			cellToDelete = index;
-			Table.ForEachComponent(RemoveCellFromRow);
+
+			foreach (var component in Table.GetComponentsEnumerator(PoolEnumeratorMode.All))
+			{
+				RemoveCellFromRow(component);
+			}
 
 			RemoveCellFromHeader(index);
 		}

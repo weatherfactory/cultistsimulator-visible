@@ -66,9 +66,8 @@
 		/// <param name="color">Color.</param>
 		public ColorHSV(Color color)
 		{
-			var colors = new float[] { color.r, color.g, color.b };
-			float max = Mathf.Max(colors);
-			float min = Mathf.Min(colors);
+			float max = Mathf.Max(Mathf.Max(color.r, color.g), color.b);
+			float min = Mathf.Min(Mathf.Min(color.r, color.g), color.b);
 			var delta = max - min;
 
 			H = 0;
@@ -204,7 +203,7 @@
 		/// <returns>A hash code for the current object.</returns>
 		public override int GetHashCode()
 		{
-			return base.GetHashCode();
+			return H ^ S ^ V ^ A.GetHashCode();
 		}
 
 		/// <summary>
@@ -215,7 +214,7 @@
 		/// <returns>true if the colors are equal; otherwise, false.</returns>
 		public static bool operator ==(ColorHSV color1, ColorHSV color2)
 		{
-			return Equals(color1, color2);
+			return color1.Equals(color2);
 		}
 
 		/// <summary>
@@ -226,16 +225,17 @@
 		/// <returns>true if the colors not equal; otherwise, false.</returns>
 		public static bool operator !=(ColorHSV color1, ColorHSV color2)
 		{
-			return !Equals(color1, color2);
+			return !color1.Equals(color2);
 		}
 
 		/// <summary>
 		/// Returns a string that represents the current object.
 		/// </summary>
 		/// <returns>A string that represents the current object.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0101:Array allocation for params parameter", Justification = "Required.")]
 		public override string ToString()
 		{
-			return string.Format("HSVA({0}, {1}, {2}, {3})", H, S, V, A);
+			return string.Format("HSVA({0}, {1}, {2}, {3})", H.ToString(), S.ToString(), V.ToString(), A.ToString());
 		}
 
 		/// <summary>
@@ -243,6 +243,7 @@
 		/// </summary>
 		/// <returns>A string that represents the current object.</returns>
 		/// <param name="format">Format.</param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0101:Array allocation for params parameter", Justification = "Required.")]
 		public string ToString(string format)
 		{
 			return string.Format("HSVA({0}, {1}, {2}, {3})", H.ToString(format), S.ToString(format), V.ToString(format), A.ToString(format));

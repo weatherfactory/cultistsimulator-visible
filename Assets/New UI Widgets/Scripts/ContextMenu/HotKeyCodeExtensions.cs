@@ -67,7 +67,7 @@
 				case HotKeyCode.LeftArrow:
 					return "←";
 				default:
-					return code.ToString();
+					return EnumHelper<HotKeyCode>.ToString(code);
 			}
 		}
 	}

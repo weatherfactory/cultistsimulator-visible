@@ -66,19 +66,20 @@
 				return CultureInfo.InvariantCulture;
 			}
 
+			var new_code = string.Format("{0}-{1}", code, code.ToUpperInvariant());
 			try
 			{
 				var culture = new CultureInfo(code);
 				if (culture.IsNeutralCulture)
 				{
-					return new CultureInfo(code + "-" + code.ToUpperInvariant());
+					return new CultureInfo(new_code);
 				}
 			}
 			catch (NotSupportedException)
 			{
 				try
 				{
-					return new CultureInfo(code + "-" + code.ToUpperInvariant());
+					return new CultureInfo(new_code);
 				}
 				catch (NotSupportedException)
 				{

@@ -23,6 +23,7 @@
 		/// <summary>
 		/// Add listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected override void AddListeners()
 		{
 			base.AddListeners();
@@ -37,6 +38,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected override void RemoveListeners()
 		{
 			base.RemoveListeners();

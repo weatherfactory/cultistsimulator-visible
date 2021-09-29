@@ -1,5 +1,6 @@
 ﻿namespace UIWidgets.Examples
 {
+	using System;
 	using UIWidgets;
 	using UnityEngine;
 	using UnityEngine.UI;
@@ -9,6 +10,86 @@
 	/// </summary>
 	public class ChatLineComponent : ListViewItem, IViewData<ChatLine>
 	{
+		/// <summary>
+		/// Username.
+		/// </summary>
+		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with UserNameAdapter.")]
+		public Text UserName;
+
+		/// <summary>
+		/// Message.
+		/// </summary>
+		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with MessageAdapter.")]
+		public Text Message;
+
+		/// <summary>
+		/// Message time.
+		/// </summary>
+		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with TimeAdapter.")]
+		public Text Time;
+
+		/// <summary>
+		/// Username.
+		/// </summary>
+		[SerializeField]
+		public TextAdapter UserNameAdapter;
+
+		/// <summary>
+		/// Message.
+		/// </summary>
+		[SerializeField]
+		public TextAdapter MessageAdapter;
+
+		/// <summary>
+		/// Message time.
+		/// </summary>
+		[SerializeField]
+		public TextAdapter TimeAdapter;
+
+		/// <summary>
+		/// Image.
+		/// </summary>
+		[SerializeField]
+		public Image Image;
+
+		/// <summary>
+		/// AudioPlayer.
+		/// </summary>
+		[SerializeField]
+		public AudioPlayer Audio;
+
+		/// <summary>
+		/// Lightbox to display image.
+		/// </summary>
+		[SerializeField]
+		public Lightbox Lightbox;
+
+		/// <summary>
+		/// Message data.
+		/// </summary>
+		protected ChatLine Item;
+
+		/// <summary>
+		/// Chat.
+		/// </summary>
+		[SerializeField]
+		public ChatView Chat;
+
+		/// <summary>
+		/// Invoke chat event.
+		/// </summary>
+		public void ChatEventInvoke()
+		{
+			Chat.MyEvent.Invoke();
+			Debug.Log("Chat.MyEvent.Invoke()");
+		}
+
 		/// <summary>
 		/// Init graphics background.
 		/// </summary>
@@ -22,95 +103,52 @@
 		}
 
 		/// <summary>
-		/// Template for incoming message.
-		/// </summary>
-		[SerializeField]
-		protected ChatLineIncoming IncomingTemplate;
-
-		/// <summary>
-		/// Template for outgoing message.
-		/// </summary>
-		[SerializeField]
-		protected ChatLineOutgoing OutgoingTemplate;
-
-		/// <summary>
-		/// Current component.
-		/// </summary>
-		public IChatLineComponent CurrentComponent;
-
-		/// <summary>
-		/// Init templates.
-		/// </summary>
-		protected override void Awake()
-		{
-			base.Awake();
-
-			IncomingTemplate.gameObject.SetActive(false);
-			OutgoingTemplate.gameObject.SetActive(false);
-		}
-
-		/// <summary>
-		/// Gets the template.
-		/// </summary>
-		/// <returns>The template.</returns>
-		/// <param name="type">Type.</param>
-		protected virtual IChatLineComponent GetTemplate(ChatLineType type)
-		{
-			if (type == ChatLineType.Incoming)
-			{
-				return IncomingTemplate;
-			}
-
-			if (type == ChatLineType.Outgoing)
-			{
-				return OutgoingTemplate;
-			}
-
-			return null;
-		}
-
-		/// <summary>
-		/// Current message type.
-		/// </summary>
-		protected int CurrentItemType = -1;
-
-		/// <summary>
-		/// Item.
-		/// </summary>
-		protected ChatLine Item;
-
-		/// <summary>
-		/// Set data.
+		/// Display ChatLine.
 		/// </summary>
 		/// <param name="item">Item.</param>
-		public void SetData(ChatLine item)
+		public virtual void SetData(ChatLine item)
 		{
 			Item = item;
 
-			if ((CurrentItemType != (int)item.Type) || (CurrentComponent == null))
-			{
-				MovedToCache();
+			UserNameAdapter.text = item.UserName;
+			MessageAdapter.text = item.Message;
+			TimeAdapter.text = item.Time.ToString("[HH:mm:ss]");
 
-				CurrentItemType = (int)item.Type;
-				CurrentComponent = GetTemplate(item.Type).IInstance(transform);
+			MessageAdapter.gameObject.SetActive(item.Message != null);
+
+			if (Image != null)
+			{
+				Image.gameObject.SetActive(item.Image != null);
+				Image.sprite = item.Image;
 			}
 
-			CurrentComponent.SetData(item);
+			if (Audio != null)
+			{
+				Audio.gameObject.SetActive(item.Audio != null);
+				Audio.SetAudioClip(item.Audio);
+			}
 		}
 
 		/// <summary>
-		/// Free current component.
+		/// Show lightbox with image.
 		/// </summary>
-		public override void MovedToCache()
+		public void ShowLightbox()
 		{
-			if (CurrentComponent != null)
-			{
-				var template = GetTemplate(Item.Type);
-				var parent = (template as MonoBehaviour).transform.parent;
+			Lightbox.Show(Item.Image);
+		}
 
-				CurrentComponent.Free(parent);
-				CurrentComponent = null;
-			}
+		/// <summary>
+		/// Upgrade this instance.
+		/// </summary>
+		public override void Upgrade()
+		{
+			base.Upgrade();
+
+#pragma warning disable 0612, 0618
+			Utilities.GetOrAddComponent(UserName, ref UserNameAdapter);
+			Utilities.GetOrAddComponent(Message, ref MessageAdapter);
+			Utilities.GetOrAddComponent(Time, ref TimeAdapter);
+#pragma warning restore 0612, 0618
 		}
 	}
 }

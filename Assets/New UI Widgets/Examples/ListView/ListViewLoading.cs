@@ -46,6 +46,7 @@
 			return null_data;
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		IEnumerator Loading()
 		{
 			var actual_item = (DefaultItemActual != null)

@@ -86,7 +86,7 @@
 			CurrentLayoutGroup = parent.GetComponent<HorizontalOrVerticalLayoutGroup>();
 			if (CurrentLayoutGroup == null)
 			{
-				Debug.LogWarning("Horizontal or Vertical Layout Group component not found on " + parent, this);
+				Debug.LogWarning(string.Format("Horizontal or Vertical Layout Group component not found on {0}", parent), this);
 				return;
 			}
 
@@ -134,7 +134,7 @@
 		/// </summary>
 		public virtual void Hide()
 		{
-			var canvas = Utilities.FindTopmostCanvas(gameObject.transform);
+			var canvas = UtilitiesUI.FindTopmostCanvas(gameObject.transform);
 			gameObject.transform.SetParent(canvas, false);
 			gameObject.SetActive(false);
 		}

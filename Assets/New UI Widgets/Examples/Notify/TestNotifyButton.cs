@@ -20,10 +20,10 @@
 		/// </summary>
 		public void ShowNotify()
 		{
-			var actions = new DialogButton[]
+			var actions = new NotificationButton[]
 			{
-				new DialogButton("Close", NotificationClose),
-				new DialogButton("Log", NotificationClick),
+				new NotificationButton("Close", NotificationClose),
+				new NotificationButton("Log", NotificationClick),
 			};
 
 			var instance = NotificationTemplate.Clone();
@@ -31,13 +31,13 @@
 			instance.SetButtons(actions);
 		}
 
-		bool NotificationClose(int index)
+		bool NotificationClose(NotificationBase notification, int index)
 		{
 			Debug.Log("close notification");
 			return true;
 		}
 
-		bool NotificationClick(int index)
+		bool NotificationClick(NotificationBase notification, int index)
 		{
 			Debug.Log("click notification button");
 			return false;

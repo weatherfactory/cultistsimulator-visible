@@ -89,10 +89,10 @@
 		/// </summary>
 		/// <returns>The canvas.</returns>
 		/// <param name="currentObject">Current object.</param>
-		[Obsolete("Replaced with Utilities.FindCanvas().")]
+		[Obsolete("Replaced with UtilitiesUI.FindCanvas().")]
 		public static Transform FindCanvas(Transform currentObject)
 		{
-			return Utilities.FindCanvas(currentObject);
+			return UtilitiesUI.FindCanvas(currentObject);
 		}
 
 		/// <summary>
@@ -100,10 +100,10 @@
 		/// </summary>
 		/// <returns>The canvas.</returns>
 		/// <param name="currentObject">Current object.</param>
-		[Obsolete("Replaced with Utilities.FindTopmostCanvas().")]
+		[Obsolete("Replaced with UtilitiesUI.FindTopmostCanvas().")]
 		public static Transform FindTopmostCanvas(Transform currentObject)
 		{
-			return Utilities.FindTopmostCanvas(currentObject);
+			return UtilitiesUI.FindTopmostCanvas(currentObject);
 		}
 
 		/// <summary>
@@ -113,10 +113,10 @@
 		/// <param name="screenPosition">Screen position.</param>
 		/// <param name="canvas">Canvas.</param>
 		/// <param name="canvasRect">Canvas RectTransform.</param>
-		[Obsolete("Replaced with Utilities.CalculateDragPosition().")]
+		[Obsolete("Replaced with UtilitiesUI.CalculateDragPosition().")]
 		public static Vector3 CalculateDragPosition(Vector3 screenPosition, Canvas canvas, RectTransform canvasRect)
 		{
-			return Utilities.CalculateDragPosition(screenPosition, canvas, canvasRect);
+			return UtilitiesUI.CalculateDragPosition(screenPosition, canvas, canvasRect);
 		}
 
 		/// <summary>
@@ -134,10 +134,10 @@
 		/// </summary>
 		/// <param name="rect">RectTransform.</param>
 		/// <returns>Top left corner position.</returns>
-		[Obsolete("Replaced with Utilities.GetTopLeftCorner().")]
+		[Obsolete("Replaced with UtilitiesRectTransform.GetTopLeftCorner().")]
 		public static Vector2 GetTopLeftCorner(RectTransform rect)
 		{
-			return Utilities.GetTopLeftCorner(rect);
+			return UtilitiesRectTransform.GetTopLeftCorner(rect);
 		}
 
 		/// <summary>
@@ -145,10 +145,10 @@
 		/// </summary>
 		/// <param name="rect">RectTransform.</param>
 		/// <param name="position">Top left corner position.</param>
-		[Obsolete("Replaced with Utilities.SetTopLeftCorner().")]
+		[Obsolete("Replaced with UtilitiesRectTransform.SetTopLeftCorner().")]
 		public static void SetTopLeftCorner(RectTransform rect, Vector2 position)
 		{
-			Utilities.SetTopLeftCorner(rect, position);
+			UtilitiesRectTransform.SetTopLeftCorner(rect, position);
 		}
 
 		/// <summary>
@@ -156,10 +156,10 @@
 		/// </summary>
 		/// <returns><c>true</c> if slider is horizontal; otherwise, <c>false</c>.</returns>
 		/// <param name="slider">Slider.</param>
-		[Obsolete("Replaced with Utilities.IsHorizontal().")]
+		[Obsolete("Replaced with UtilitiesUI.IsHorizontal().")]
 		public static bool IsHorizontal(Slider slider)
 		{
-			return Utilities.IsHorizontal(slider);
+			return UtilitiesUI.IsHorizontal(slider);
 		}
 
 		/// <summary>
@@ -167,10 +167,10 @@
 		/// </summary>
 		/// <returns><c>true</c> if scrollbar is horizontal; otherwise, <c>false</c>.</returns>
 		/// <param name="scrollbar">Scrollbar.</param>
-		[Obsolete("Replaced with Utilities.IsHorizontal().")]
+		[Obsolete("Replaced with UtilitiesUI.IsHorizontal().")]
 		public static bool IsHorizontal(Scrollbar scrollbar)
 		{
-			return Utilities.IsHorizontal(scrollbar);
+			return UtilitiesUI.IsHorizontal(scrollbar);
 		}
 
 		/// <summary>
@@ -191,10 +191,10 @@
 		/// </summary>
 		/// <param name="adapter">Adapter.</param>
 		/// <returns>Graphic component.</returns>
-		[Obsolete("Replaced with Utilities.GetGraphic().")]
+		[Obsolete("Replaced with UtilitiesUI.GetGraphic().")]
 		public static Graphic GetGraphic(TextAdapter adapter)
 		{
-			return Utilities.GetGraphic(adapter);
+			return UtilitiesUI.GetGraphic(adapter);
 		}
 
 		/// <summary>
@@ -302,6 +302,7 @@
 		/// <param name="seconds">Delay in seconds.</param>
 		/// <returns>Yield instruction to wait.</returns>
 		[Obsolete("Replaced with UtilitiesTime.Wait(seconds, true).")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		public static IEnumerator WaitForSecondsUnscaled(float seconds)
 		{
 			return UtilitiesTime.Wait(seconds, true);
@@ -361,7 +362,7 @@
 		/// <returns><c>true</c> if hex was converted successfully; otherwise, <c>false</c>.</returns>
 		/// <param name="hex">A string containing a color to convert.</param>
 		/// <param name="result">When this method returns, contains the color value equivalent to the color contained in hex if the conversion succeeded, or Color.black if the conversion failed. The conversion fails if the hex parameter is null or String.Empty, is not of the correct format. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.</param>
-		[Obsolete("Replaced with UtilitiesColor.TryHexToRGBA().")]
+		[Obsolete("Use ColorUtility.TryParseHtmlString().")]
 		public static bool TryHexToRGBA(string hex, out Color32 result)
 		{
 			return UtilitiesColor.TryHexToRGBA(hex, out result);
@@ -590,7 +591,7 @@
 		/// <param name="source">Items.</param>
 		/// <param name="match">The Predicate{T} delegate that defines the conditions of the elements to search for.</param>
 		/// <returns>A List{T} containing all the elements that match the conditions defined by the specified predicate, if found; otherwise, an empty List{T}.</returns>
-		[Obsolete("Replaced with UtilitiesCollections.Log<T>().")]
+		[Obsolete("Replaced with UtilitiesCollections.FindAll<T>().")]
 		public static ObservableList<T> FindAll<T>(List<T> source, Func<T, bool> match)
 		{
 			return UtilitiesCollections.FindAll(source, match);
@@ -601,7 +602,7 @@
 		/// </summary>
 		/// <param name="source">List to sum.</param>
 		/// <returns>Sum.</returns>
-		[Obsolete("Replaced with UtilitiesCollections.Log<T>().")]
+		[Obsolete("Replaced with UtilitiesCollections.Sum<T>().")]
 		public static float Sum(List<float> source)
 		{
 			return UtilitiesCollections.Sum(source);
@@ -613,8 +614,9 @@
 		/// <typeparam name="T">Type of value.</typeparam>
 		/// <param name="arr">Input array.</param>
 		/// <returns>true if input array not empty and all values are null; otherwise false.</returns>
-		[Obsolete("Replaced with UtilitiesCollections.Log<T>().")]
+		[Obsolete("Replaced with UtilitiesCollections.AllNull<T>().")]
 		public static bool AllNull<T>(T[] arr)
+			where T : class
 		{
 			return UtilitiesCollections.AllNull(arr);
 		}

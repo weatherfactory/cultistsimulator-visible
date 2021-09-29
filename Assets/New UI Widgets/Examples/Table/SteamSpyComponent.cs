@@ -18,12 +18,12 @@
 			{
 				Foreground = new Graphic[]
 				{
-					Utilities.GetGraphic(NameAdapter),
-					Utilities.GetGraphic(ScoreRankAdapter),
-					Utilities.GetGraphic(OwnersAdapter),
-					Utilities.GetGraphic(PlayersAdapter),
-					Utilities.GetGraphic(PlayersIn2WeekAdapter),
-					Utilities.GetGraphic(TimeIn2WeekAdapter),
+					UtilitiesUI.GetGraphic(NameAdapter),
+					UtilitiesUI.GetGraphic(ScoreRankAdapter),
+					UtilitiesUI.GetGraphic(OwnersAdapter),
+					UtilitiesUI.GetGraphic(PlayersAdapter),
+					UtilitiesUI.GetGraphic(PlayersIn2WeekAdapter),
+					UtilitiesUI.GetGraphic(TimeIn2WeekAdapter),
 				};
 				GraphicsForegroundVersion = 1;
 			}
@@ -176,15 +176,15 @@
 			NameAdapter.text = item.Name;
 			TooltipTextAdapter.text = item.Name;
 			ScoreRankAdapter.text = (item.ScoreRank == -1) ? string.Empty : item.ScoreRank.ToString();
-			OwnersAdapter.text = item.Owners.ToString("N0") + "\n±" + item.OwnersVariance.ToString("N0");
-			PlayersAdapter.text = item.Players.ToString("N0") + "\n±" + item.PlayersVariance.ToString("N0");
-			PlayersIn2WeekAdapter.text = item.PlayersIn2Week.ToString("N0") + "\n±" + item.PlayersIn2WeekVariance.ToString("N0");
-			TimeIn2WeekAdapter.text = Minutes2String(item.AverageTimeIn2Weeks) + "\n(" + Minutes2String(item.MedianTimeIn2Weeks) + ")";
+			OwnersAdapter.text = string.Format("{0}\n±{1}", item.Owners.ToString("N0"), item.OwnersVariance.ToString("N0"));
+			PlayersAdapter.text = string.Format("{0}\n±{1}", item.Players.ToString("N0"), item.PlayersVariance.ToString("N0"));
+			PlayersIn2WeekAdapter.text = string.Format("{0}\n±{1}", item.PlayersIn2Week.ToString("N0"), item.PlayersIn2WeekVariance.ToString("N0"));
+			TimeIn2WeekAdapter.text = string.Format("{0}\n({1})", Minutes2String(item.AverageTimeIn2Weeks), Minutes2String(item.MedianTimeIn2Weeks));
 		}
 
 		static string Minutes2String(int minutes)
 		{
-			return string.Format("{0:00}:{1:00}", minutes / 60, minutes % 60);
+			return string.Format("{0}:{1}", (minutes / 60).ToString("00"), (minutes % 60).ToString("00"));
 		}
 
 		/// <summary>

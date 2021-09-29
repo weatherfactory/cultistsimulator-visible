@@ -10,7 +10,9 @@ namespace UIWidgets
 	/// ListView editor.
 	/// </summary>
 	[CanEditMultipleObjects]
+	#pragma warning disable 0618
 	[CustomEditor(typeof(ListView), true)]
+	#pragma warning restore 0618
 	public class ListViewEditor : UIWidgetsMonoEditor
 	{
 		readonly Dictionary<string, SerializedProperty> serializedProperties = new Dictionary<string, SerializedProperty>();
@@ -72,21 +74,21 @@ namespace UIWidgets
 		/// </summary>
 		protected virtual void OnEnable()
 		{
-			Array.ForEach(properties, x =>
+			foreach (var p in properties)
 			{
-				var p = serializedObject.FindProperty(x);
-				if (p == null)
+				var sp = serializedObject.FindProperty(p);
+				if (sp == null)
 				{
-					return;
+					continue;
 				}
 
-				if (serializedProperties.ContainsKey(x))
+				if (serializedProperties.ContainsKey(p))
 				{
-					return;
+					continue;
 				}
 
-				serializedProperties.Add(x, p);
-			});
+				serializedProperties.Add(p, sp);
+			}
 		}
 
 		/// <summary>

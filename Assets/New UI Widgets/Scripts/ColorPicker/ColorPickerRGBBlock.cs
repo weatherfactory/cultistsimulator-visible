@@ -665,25 +665,25 @@ namespace UIWidgets
 		{
 			if ((rSlider != null) && (rSlider.handleRect != null))
 			{
-				var handle_style = Utilities.IsHorizontal(rSlider)
-					? styleColorPicker.SliderVerticalHandle
-					: styleColorPicker.SliderHorizontalHandle;
+				var handle_style = UtilitiesUI.IsHorizontal(rSlider)
+					? styleColorPicker.SliderHorizontalHandle
+					: styleColorPicker.SliderVerticalHandle;
 				handle_style.ApplyTo(rSlider.handleRect.GetComponent<Image>());
 			}
 
 			if ((gSlider != null) && (gSlider.handleRect != null))
 			{
-				var handle_style = Utilities.IsHorizontal(gSlider)
-					? styleColorPicker.SliderVerticalHandle
-					: styleColorPicker.SliderHorizontalHandle;
+				var handle_style = UtilitiesUI.IsHorizontal(gSlider)
+					? styleColorPicker.SliderHorizontalHandle
+					: styleColorPicker.SliderVerticalHandle;
 				handle_style.ApplyTo(gSlider.handleRect.GetComponent<Image>());
 			}
 
 			if ((bSlider != null) && (bSlider.handleRect != null))
 			{
-				var handle_style = Utilities.IsHorizontal(bSlider)
-					? styleColorPicker.SliderVerticalHandle
-					: styleColorPicker.SliderHorizontalHandle;
+				var handle_style = UtilitiesUI.IsHorizontal(bSlider)
+					? styleColorPicker.SliderHorizontalHandle
+					: styleColorPicker.SliderVerticalHandle;
 				handle_style.ApplyTo(bSlider.handleRect.GetComponent<Image>());
 			}
 
@@ -712,25 +712,25 @@ namespace UIWidgets
 		{
 			if ((rSlider != null) && (rSlider.handleRect != null))
 			{
-				var handle_style = Utilities.IsHorizontal(rSlider)
-					? styleColorPicker.SliderVerticalHandle
-					: styleColorPicker.SliderHorizontalHandle;
+				var handle_style = UtilitiesUI.IsHorizontal(rSlider)
+					? styleColorPicker.SliderHorizontalHandle
+					: styleColorPicker.SliderVerticalHandle;
 				handle_style.GetFrom(rSlider.handleRect.GetComponent<Image>());
 			}
 
 			if ((gSlider != null) && (gSlider.handleRect != null))
 			{
-				var handle_style = Utilities.IsHorizontal(gSlider)
-					? styleColorPicker.SliderVerticalHandle
-					: styleColorPicker.SliderHorizontalHandle;
+				var handle_style = UtilitiesUI.IsHorizontal(gSlider)
+					? styleColorPicker.SliderHorizontalHandle
+					: styleColorPicker.SliderVerticalHandle;
 				handle_style.GetFrom(gSlider.handleRect.GetComponent<Image>());
 			}
 
 			if ((bSlider != null) && (bSlider.handleRect != null))
 			{
-				var handle_style = Utilities.IsHorizontal(bSlider)
-					? styleColorPicker.SliderVerticalHandle
-					: styleColorPicker.SliderHorizontalHandle;
+				var handle_style = UtilitiesUI.IsHorizontal(bSlider)
+					? styleColorPicker.SliderHorizontalHandle
+					: styleColorPicker.SliderVerticalHandle;
 				handle_style.GetFrom(bSlider.handleRect.GetComponent<Image>());
 			}
 

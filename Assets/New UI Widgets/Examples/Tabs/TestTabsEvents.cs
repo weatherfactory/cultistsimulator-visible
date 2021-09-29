@@ -20,6 +20,7 @@
 		/// <summary>
 		/// Process start.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void Start()
 		{
 			currentTabIndex = Array.IndexOf(Tabs.TabObjects, Tabs.SelectedTab);
@@ -29,8 +30,8 @@
 
 		void TabChanged(int newTabIndex)
 		{
-			Debug.Log("deselected tab: " + GetTabName(currentTabIndex) + "; index " + currentTabIndex);
-			Debug.Log("selected tab: " + GetTabName(newTabIndex) + "; index " + newTabIndex);
+			Debug.Log(string.Format("deselected tab: {0}; index {1}", GetTabName(currentTabIndex), currentTabIndex.ToString()));
+			Debug.Log(string.Format("selected tab: {0}; index {1}", GetTabName(newTabIndex), newTabIndex.ToString()));
 
 			currentTabIndex = newTabIndex;
 		}
@@ -48,6 +49,7 @@
 		/// <summary>
 		/// Process destroy.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void OnDestroy()
 		{
 			Tabs.OnTabSelect.RemoveListener(TabChanged);

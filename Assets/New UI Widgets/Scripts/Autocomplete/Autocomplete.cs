@@ -15,6 +15,7 @@
 	/// TargetListView - if specified selected value will be added to this list.
 	/// DataSource - list of values.
 	/// </summary>
+	[Obsolete("Replaced with AutocompleteString.")]
 	public class Autocomplete : MonoBehaviour, IStylable, IUpgradeable
 	{
 		/// <summary>
@@ -356,7 +357,7 @@
 		/// </summary>
 		protected virtual void ShowOptions()
 		{
-			CanvasTransform = Utilities.FindTopmostCanvas(DisplayListView.transform);
+			CanvasTransform = UtilitiesUI.FindTopmostCanvas(DisplayListView.transform);
 			if (CanvasTransform != null)
 			{
 				Utilities.GetOrAddComponent<HierarchyToggle>(DisplayListView).SetParent(CanvasTransform);
@@ -465,6 +466,7 @@
 		/// Performs search with delay.
 		/// </summary>
 		/// <returns>Yield instruction.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		protected virtual IEnumerator Search()
 		{
 			if (SearchDelay > 0)
@@ -598,7 +600,7 @@
 				var text = InputFieldAdapter.text.Substring(0, end_position);
 				var start_position = text.LastIndexOfAny(DelimiterChars) + 1;
 
-				InputFieldAdapter.text = InputFieldAdapter.text.Substring(0, start_position) + value + InputFieldAdapter.text.Substring(end_position);
+				InputFieldAdapter.text = string.Format("{0}{1}{2}", InputFieldAdapter.text.Substring(0, start_position), value, InputFieldAdapter.text.Substring(end_position));
 
 				InputFieldAdapter.caretPosition = start_position + value.Length;
 #if UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_3_OR_NEWER

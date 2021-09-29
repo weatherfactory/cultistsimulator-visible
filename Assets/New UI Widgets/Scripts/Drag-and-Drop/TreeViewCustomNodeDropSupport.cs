@@ -1,5 +1,6 @@
 ﻿namespace UIWidgets
 {
+	using System.Collections;
 	using UnityEngine;
 	using UnityEngine.EventSystems;
 
@@ -13,6 +14,29 @@
 		where TTreeView : TreeViewCustom<TTreeViewComponent, TTreeViewItem>
 		where TTreeViewComponent : TreeViewComponentBase<TTreeViewItem>
 	{
+		/// <summary>
+		/// Hold coroutine.
+		/// </summary>
+		protected IEnumerator HoldCoroutine;
+
+		/// <summary>
+		/// Expand node on hold?
+		/// </summary>
+		[SerializeField]
+		public bool ExpandNodeOnHold = true;
+
+		/// <summary>
+		/// Delay in seconds before node expanded.
+		/// </summary>
+		[SerializeField]
+		public float ExpandNodeDelay = 1f;
+
+		/// <summary>
+		/// Delay is unscaled time.
+		/// </summary>
+		[SerializeField]
+		public bool ExpandNodeUnscaledTime = true;
+
 		TTreeViewComponent source;
 
 		/// <summary>
@@ -92,7 +116,7 @@
 		/// </summary>
 		/// <param name="eventData">Event data.</param>
 		/// <returns>Drop type.</returns>
-		protected TreeNodeDropType GetDropType(PointerEventData eventData)
+		protected virtual TreeNodeDropType GetDropType(PointerEventData eventData)
 		{
 			Vector2 point;
 			if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(RectTransform, eventData.position, eventData.pressEventCamera, out point))
@@ -115,6 +139,50 @@
 			}
 
 			return TreeNodeDropType.Child;
+		}
+
+		/// <summary>
+		/// Start hold.
+		/// </summary>
+		protected virtual void HoldStart()
+		{
+			if (Source.Node.IsExpanded)
+			{
+				return;
+			}
+
+			if (HoldCoroutine != null)
+			{
+				return;
+			}
+
+			HoldCoroutine = Hold();
+			StartCoroutine(HoldCoroutine);
+		}
+
+		/// <summary>
+		/// Cancel hold.
+		/// </summary>
+		protected virtual void HoldCancel()
+		{
+			if (HoldCoroutine != null)
+			{
+				StopCoroutine(HoldCoroutine);
+				HoldCoroutine = null;
+			}
+		}
+
+		/// <summary>
+		/// Process hold.
+		/// </summary>
+		/// <returns>Hold coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Required.")]
+		protected virtual IEnumerator Hold()
+		{
+			yield return UtilitiesTime.Wait(ExpandNodeDelay, ExpandNodeUnscaledTime);
+
+			Source.Node.IsExpanded = true;
+			HoldCoroutine = null;
 		}
 
 		#region IDropSupport<TreeNode<TItem>>
@@ -153,6 +221,8 @@
 			var index = DropIndicatorIndex(type);
 			ShowDropIndicator(index);
 
+			HoldStart();
+
 			return true;
 		}
 
@@ -168,7 +238,7 @@
 			TreeView.Nodes.BeginUpdate();
 
 			var current = Source.Node;
-			var parent = current.Parent;
+			var parent = current.RealParent;
 			int index;
 
 			switch (type)
@@ -192,6 +262,8 @@
 			TreeView.Nodes.EndUpdate();
 
 			HideDropIndicator();
+
+			HoldCancel();
 		}
 
 		/// <summary>
@@ -202,6 +274,8 @@
 		public virtual void DropCanceled(TreeNode<TTreeViewItem> data, PointerEventData eventData)
 		{
 			HideDropIndicator();
+
+			HoldCancel();
 		}
 		#endregion
 
@@ -229,6 +303,8 @@
 			var index = DropIndicatorIndex(type);
 			ShowDropIndicator(index);
 
+			HoldStart();
+
 			return true;
 		}
 
@@ -245,6 +321,7 @@
 			AddNewNode(new_node, type);
 
 			HideDropIndicator();
+			HoldCancel();
 		}
 
 		/// <summary>
@@ -255,7 +332,7 @@
 		protected virtual void AddNewNode(TreeNode<TTreeViewItem> node, TreeNodeDropType type)
 		{
 			var current = Source.Node;
-			var parent = current.Parent;
+			var parent = current.RealParent;
 			int index;
 
 			switch (type)
@@ -287,6 +364,7 @@
 		public virtual void DropCanceled(TTreeViewItem data, PointerEventData eventData)
 		{
 			HideDropIndicator();
+			HoldCancel();
 		}
 		#endregion
 

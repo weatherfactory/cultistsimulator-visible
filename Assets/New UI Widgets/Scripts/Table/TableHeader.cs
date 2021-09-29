@@ -187,53 +187,73 @@
 		protected Camera CurrentCamera;
 
 		/// <summary>
+		/// Cursors.
+		/// </summary>
+		[SerializeField]
+		public Cursors Cursors;
+
+		/// <summary>
 		/// The cursor texture.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D CursorTexture;
 
 		/// <summary>
 		/// The cursor hot spot.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 CursorHotSpot = new Vector2(16, 16);
 
 		/// <summary>
 		/// The cursor texture.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D AllowDropCursor;
 
 		/// <summary>
 		/// The cursor hot spot.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 AllowDropCursorHotSpot = new Vector2(4, 2);
 
 		/// <summary>
 		/// The cursor texture.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D DeniedDropCursor;
 
 		/// <summary>
 		/// The cursor hot spot.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 DeniedDropCursorHotSpot = new Vector2(4, 2);
 
 		/// <summary>
 		/// The default cursor texture.
 		/// </summary>
 		[SerializeField]
-		[Obsolete("Replaced with UICursorSettings component.")]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D DefaultCursorTexture;
 
 		/// <summary>
 		/// The default cursor hot spot.
 		/// </summary>
 		[SerializeField]
-		[Obsolete("Replaced with UICursorSettings component.")]
+		[HideInInspector]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 DefaultCursorHotSpot;
 
 		/// <summary>
@@ -401,6 +421,8 @@
 
 		List<Transform> tempList = new List<Transform>();
 
+		List<int> tempReverseOrder = new List<int>();
+
 		/// <summary>
 		/// Set the columns order.
 		/// </summary>
@@ -411,43 +433,37 @@
 			RestoreColumnsOrder();
 
 			// convert list of the new positions to list of the old positions
-			var reverse_order = new List<int>();
 			for (int i = 0; i < order.Count; i++)
 			{
-				reverse_order.Add(order.IndexOf(i));
+				tempReverseOrder.Add(order.IndexOf(i));
 			}
 
 			// restore list components cells order
 			List.Init();
+			List.ForEachComponent(SetItemColumnOrder);
 
-#if CSHARP_7_3_OR_NEWER
-			void Action(ListViewItem component)
-#else
-			Action<ListViewItem> Action = component =>
-#endif
+			for (int new_position = 0; new_position < tempReverseOrder.Count; new_position++)
 			{
-				tempList.Clear();
-				foreach (Transform child in component.transform)
-				{
-					tempList.Add(child);
-				}
-
-				for (int i = 0; i < reverse_order.Count; i++)
-				{
-					tempList[i].SetAsLastSibling();
-				}
-			}
-#if !CSHARP_7_3_OR_NEWER
-			;
-#endif
-
-			List.ForEachComponent(Action);
-
-			for (int new_position = 0; new_position < reverse_order.Count; new_position++)
-			{
-				var old_position = reverse_order[new_position];
+				var old_position = tempReverseOrder[new_position];
 				CellsInfo[old_position].Position = new_position;
 				CellsInfo[old_position].Rect.SetAsLastSibling();
+			}
+
+			tempReverseOrder.Clear();
+		}
+
+		void SetItemColumnOrder(ListViewItem component)
+		{
+			tempList.Clear();
+			var t = component.transform;
+			for (int i = 0; i < t.childCount; i++)
+			{
+				tempList.Add(t.GetChild(i));
+			}
+
+			for (int i = 0; i < tempReverseOrder.Count; i++)
+			{
+				tempList[i].SetAsLastSibling();
 			}
 		}
 
@@ -458,9 +474,11 @@
 		protected void RestoreColumnsOrder(ListViewItem component)
 		{
 			tempList.Clear();
-			foreach (Transform child in component.transform)
+
+			var t = component.RectTransform;
+			for (int i = 0; i < t.childCount; i++)
 			{
-				tempList.Add(child);
+				tempList.Add(t.GetChild(i));
 			}
 
 			foreach (var cell in CellsInfo)
@@ -501,9 +519,10 @@
 			CellsInfo.Clear();
 
 			// clear cell settings and events
-			foreach (Transform child in transform)
+			for (int i = 0; i < RectTransform.childCount; i++)
 			{
-				transform.gameObject.SetActive(true);
+				var child = RectTransform.GetChild(i);
+				child.gameObject.SetActive(true);
 
 				var cell = Utilities.GetOrAddComponent<TableHeaderDragCell>(child);
 				cell.Position = -1;
@@ -547,18 +566,23 @@
 		/// </summary>
 		protected void InitCells()
 		{
-			foreach (Transform child in transform)
+			for (int i = 0; i < RectTransform.childCount; i++)
 			{
+				var child = RectTransform.GetChild(i);
 				var cell = Utilities.GetOrAddComponent<TableHeaderDragCell>(child);
 
 				if (cell.Position == -1)
 				{
 					cell.Position = CellsInfo.Count;
 					cell.TableHeader = this;
+
+					cell.Cursors = Cursors;
+					#pragma warning disable 0618
 					cell.AllowDropCursor = AllowDropCursor;
 					cell.AllowDropCursorHotSpot = AllowDropCursorHotSpot;
 					cell.DeniedDropCursor = DeniedDropCursor;
 					cell.DeniedDropCursorHotSpot = DeniedDropCursorHotSpot;
+					#pragma warning restore 0618
 
 					var events = Utilities.GetOrAddComponent<TableHeaderCell>(child);
 					events.OnInitializePotentialDragEvent.AddListener(OnInitializePotentialDrag);
@@ -643,13 +667,32 @@
 
 			if (InActiveRegion)
 			{
-				UICursor.Set(this, CursorTexture, CursorHotSpot);
+				UICursor.Set(this, GetCursor());
 				cursorChanged = true;
 			}
 			else if (cursorChanged)
 			{
 				ResetCursor();
 			}
+		}
+
+		/// <summary>
+		/// Get cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetCursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.EastWestArrow;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.EastWestArrow;
+			}
+
+			return default(Cursors.Cursor);
 		}
 
 		/// <summary>
@@ -667,7 +710,7 @@
 		/// <summary>
 		/// CellInfo sorted by position.
 		/// </summary>
-		protected ReadOnlyCollection<TableHeaderCellInfo> CellsInfoOrdered
+		protected List<TableHeaderCellInfo> CellsInfoOrdered
 		{
 			get
 			{
@@ -675,7 +718,7 @@
 				cellsInfoOrdered.AddRange(CellsInfo);
 				cellsInfoOrdered.Sort(CellComparison);
 
-				return cellsInfoOrdered.AsReadOnly();
+				return cellsInfoOrdered;
 			}
 		}
 
@@ -685,7 +728,7 @@
 		/// <param name="x">First cell.</param>
 		/// <param name="y">Second cell.</param>
 		/// <returns>Comparison result.</returns>
-		protected virtual int CellComparison(TableHeaderCellInfo x, TableHeaderCellInfo y)
+		protected static int CellComparison(TableHeaderCellInfo x, TableHeaderCellInfo y)
 		{
 			return x.Position.CompareTo(y.Position);
 		}
@@ -931,7 +974,7 @@
 			}
 
 			cursorChanged = true;
-			UICursor.Set(this, CursorTexture, CursorHotSpot);
+			UICursor.Set(this, GetCursor());
 
 			Vector2 current_point;
 			Vector2 original_point;
@@ -964,7 +1007,10 @@
 		/// </summary>
 		void ResetChildren()
 		{
-			CellsInfo.ForEach(ResetChildrenWidth);
+			foreach (var cell in CellsInfo)
+			{
+				ResetChildrenWidth(cell);
+			}
 		}
 
 		void ResetChildrenWidth(TableHeaderCellInfo cell)
@@ -1177,8 +1223,9 @@
 			base.OnDestroy();
 
 			CellsInfo.Clear();
-			foreach (Transform child in transform)
+			for (int i = 0; i < RectTransform.childCount; i++)
 			{
+				var child = RectTransform.GetChild(i);
 				var events = child.GetComponent<TableHeaderCell>();
 				if (events == null)
 				{
@@ -1345,8 +1392,9 @@
 			// apply style for header
 			style.Table.Border.ApplyTo(gameObject);
 
-			foreach (Transform cell in transform)
+			for (int i = 0; i < RectTransform.childCount; i++)
 			{
+				var cell = RectTransform.GetChild(i);
 				var style_support = cell.GetComponent<StyleSupportHeaderCell>();
 
 				if (style_support != null)
@@ -1371,8 +1419,9 @@
 			{
 				style.Table.Border.ApplyTo(component);
 
-				foreach (Transform child in component.transform)
+				for (int i = 0; i < component.RectTransform.childCount; i++)
 				{
+					var child = component.RectTransform.GetChild(i);
 					style.Table.Background.ApplyTo(child.gameObject);
 				}
 			}
@@ -1391,8 +1440,9 @@
 			// got style from header
 			style.Table.Border.GetFrom(gameObject);
 
-			foreach (Transform cell in transform)
+			for (int i = 0; i < RectTransform.childCount; i++)
 			{
+				var cell = RectTransform.GetChild(i);
 				var style_support = cell.GetComponent<StyleSupportHeaderCell>();
 
 				if (style_support != null)

@@ -1,4 +1,4 @@
-- New UI Widgets - version 1.14.2
+- New UI Widgets - version 1.15.0
 
 New UI Widgets is a set of widgets and UI interactions; it also includes a widget generator for the custom data types and converter from default Text to TextMeshPro.
 

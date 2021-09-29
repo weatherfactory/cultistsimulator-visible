@@ -9,11 +9,17 @@ namespace UIWidgets
 
 	/// <summary>
 	/// Drag support.
-	/// Drop component should implement IDropSupport{T} with same type.
+	/// Drop component should implement IDropSupport{TItem} with same type.
 	/// </summary>
-	/// <typeparam name="T">Type of draggable data.</typeparam>
-	public abstract class DragSupport<T> : BaseDragSupport, ICancelHandler
+	/// <typeparam name="TItem">Type of draggable data.</typeparam>
+	public abstract class DragSupport<TItem> : BaseDragSupport, ICancelHandler
 	{
+		/// <summary>
+		/// Raycast results.
+		/// </summary>
+		[NonSerialized]
+		protected readonly List<RaycastResult> RaycastResults = new List<RaycastResult>();
+
 		/// <summary>
 		/// Allow drag.
 		/// </summary>
@@ -25,48 +31,58 @@ namespace UIWidgets
 		/// Data will be passed to Drop component.
 		/// </summary>
 		/// <value>The data.</value>
-		public T Data
+		public TItem Data
 		{
 			get;
 			protected set;
 		}
 
 		/// <summary>
+		/// Cursors.
+		/// </summary>
+		[SerializeField]
+		public Cursors Cursors;
+
+		/// <summary>
 		/// The Allow drop cursor texture.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D AllowDropCursor;
 
 		/// <summary>
 		/// The Allow drop cursor hot spot.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 AllowDropCursorHotSpot = new Vector2(4, 2);
 
 		/// <summary>
 		/// The Denied drop cursor texture.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D DeniedDropCursor;
 
 		/// <summary>
 		/// The Denied drop cursor hot spot.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 DeniedDropCursorHotSpot = new Vector2(4, 2);
 
 		/// <summary>
 		/// The default cursor texture.
 		/// </summary>
 		[SerializeField]
-		[Obsolete("Replaced with UICursorSettings component.")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D DefaultCursorTexture;
 
 		/// <summary>
 		/// The default cursor hot spot.
 		/// </summary>
 		[SerializeField]
-		[Obsolete("Replaced with UICursorSettings component.")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 DefaultCursorHotSpot;
 
 		[SerializeField]
@@ -141,12 +157,17 @@ namespace UIWidgets
 		/// <summary>
 		/// The current drop target.
 		/// </summary>
-		protected IDropSupport<T> CurrentTarget;
+		protected IDropSupport<TItem> CurrentTarget;
 
 		/// <summary>
 		/// The current drop target.
 		/// </summary>
 		protected IAutoScroll CurrentAutoScrollTarget;
+
+		/// <summary>
+		/// If this object is dragged?
+		/// </summary>
+		protected bool IsDragged;
 
 		/// <summary>
 		/// Init this instance.
@@ -170,6 +191,28 @@ namespace UIWidgets
 #pragma warning restore 0618
 
 			Handle = handle;
+		}
+
+		/// <summary>
+		/// Set target.
+		/// </summary>
+		/// <param name="newTarget">New target.</param>
+		/// <param name="eventData">Event data.</param>
+		protected virtual void SetTarget(IDropSupport<TItem> newTarget, PointerEventData eventData)
+		{
+			if (CurrentTarget == newTarget)
+			{
+				return;
+			}
+
+			if (CurrentTarget != null)
+			{
+				CurrentTarget.DropCanceled(Data, eventData);
+			}
+
+			OnTargetChanged(CurrentTarget, newTarget);
+
+			CurrentTarget = newTarget;
 		}
 
 		/// <summary>
@@ -202,13 +245,8 @@ namespace UIWidgets
 		/// <param name="success"><c>true</c> if Drop component received data; otherwise, <c>false</c>.</param>
 		public virtual void Dropped(bool success)
 		{
-			Data = default(T);
+			Data = default(TItem);
 		}
-
-		/// <summary>
-		/// If this object is dragged?
-		/// </summary>
-		protected bool IsDragged;
 
 		/// <summary>
 		/// Process OnInitializePotentialDrag event.
@@ -216,7 +254,7 @@ namespace UIWidgets
 		/// <param name="eventData">Current event data.</param>
 		protected virtual void OnInitializePotentialDrag(PointerEventData eventData)
 		{
-			CurrentTarget = null;
+			SetTarget(null, eventData);
 		}
 
 		/// <summary>
@@ -233,7 +271,8 @@ namespace UIWidgets
 				IsDragged = true;
 				InitDrag(eventData);
 
-				FindCurrentTarget(eventData);
+				FillRaycasts(eventData, RaycastResults);
+				FindCurrentTarget(eventData, RaycastResults);
 			}
 		}
 
@@ -241,35 +280,56 @@ namespace UIWidgets
 		/// Find current target.
 		/// </summary>
 		/// <param name="eventData">Event data.</param>
-		protected virtual void FindCurrentTarget(PointerEventData eventData)
+		/// <param name="raycasts">Raycast results.</param>
+		protected virtual void FindCurrentTarget(PointerEventData eventData, List<RaycastResult> raycasts)
 		{
-			var new_target = FindTarget(eventData);
+			var new_target = FindTarget(eventData, RaycastResults);
 
-			if (new_target != CurrentTarget)
-			{
-				if (CurrentTarget != null)
-				{
-					CurrentTarget.DropCanceled(Data, eventData);
-				}
-
-				OnTargetChanged(CurrentTarget, new_target);
-			}
+			SetTarget(new_target, eventData);
 
 			if (UICursor.CanSet(this))
 			{
-				if (new_target != null)
-				{
-					// set cursor can drop
-					UICursor.Set(this, AllowDropCursor, AllowDropCursorHotSpot);
-				}
-				else
-				{
-					// set cursor fail drop
-					UICursor.Set(this, DeniedDropCursor, DeniedDropCursorHotSpot);
-				}
+				var cursor = (CurrentTarget != null) ? GetAllowedCursor() : GetDeniedCursor();
+				UICursor.Set(this, cursor);
+			}
+		}
+
+		/// <summary>
+		/// Get allowed cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetAllowedCursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.Allowed;
 			}
 
-			CurrentTarget = new_target;
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.Allowed;
+			}
+
+			return default(Cursors.Cursor);
+		}
+
+		/// <summary>
+		/// Get denied cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetDeniedCursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.Denied;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.Denied;
+			}
+
+			return default(Cursors.Cursor);
 		}
 
 		/// <summary>
@@ -283,22 +343,28 @@ namespace UIWidgets
 				return;
 			}
 
-			FindCurrentTarget(eventData);
+			FillRaycasts(eventData, RaycastResults);
+			FindCurrentTarget(eventData, RaycastResults);
 
 			Vector2 point;
-			if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasTransform as RectTransform, eventData.position, eventData.pressEventCamera, out point))
+			if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(ParentCanvas as RectTransform, eventData.position, eventData.pressEventCamera, out point))
 			{
 				return;
 			}
 
 			DragPoint.localPosition = point;
 
-			if (CurrentAutoScrollTarget != null)
-			{
-				CurrentAutoScrollTarget.AutoScrollStop();
-			}
+			var target = FindAutoScrollTarget(eventData, RaycastResults);
 
-			CurrentAutoScrollTarget = FindAutoScrollTarget(eventData);
+			if (target != CurrentAutoScrollTarget)
+			{
+				if (CurrentAutoScrollTarget != null)
+				{
+					CurrentAutoScrollTarget.AutoScrollStop();
+				}
+
+				CurrentAutoScrollTarget = target;
+			}
 
 			if (CurrentAutoScrollTarget != null)
 			{
@@ -311,34 +377,41 @@ namespace UIWidgets
 		/// </summary>
 		/// <param name="old">Previous drop target.</param>
 		/// <param name="current">Current drop target.</param>
-		protected virtual void OnTargetChanged(IDropSupport<T> old, IDropSupport<T> current)
+		protected virtual void OnTargetChanged(IDropSupport<TItem> old, IDropSupport<TItem> current)
 		{
 		}
 
-		readonly List<RaycastResult> raycastResults = new List<RaycastResult>();
+		/// <summary>
+		/// Fill raycast results.
+		/// </summary>
+		/// <param name="eventData">Event data.</param>
+		/// <param name="raycasts">Output.</param>
+		protected virtual void FillRaycasts(PointerEventData eventData, List<RaycastResult> raycasts)
+		{
+			raycasts.Clear();
+
+			EventSystem.current.RaycastAll(eventData, raycasts);
+		}
 
 		/// <summary>
 		/// Finds the target.
 		/// </summary>
 		/// <returns>The target.</returns>
 		/// <param name="eventData">Event data.</param>
-		protected virtual IDropSupport<T> FindTarget(PointerEventData eventData)
+		/// <param name="raycasts">Raycast results.</param>
+		protected virtual IDropSupport<TItem> FindTarget(PointerEventData eventData, List<RaycastResult> raycasts)
 		{
-			raycastResults.Clear();
-
-			EventSystem.current.RaycastAll(eventData, raycastResults);
-
-			foreach (var raycastResult in raycastResults)
+			foreach (var raycast in raycasts)
 			{
-				if (!raycastResult.isValid)
+				if (!raycast.isValid)
 				{
 					continue;
 				}
 
 				#if UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_3_OR_NEWER
-				var target = raycastResult.gameObject.GetComponent<IDropSupport<T>>();
+				var target = raycast.gameObject.GetComponent<IDropSupport<TItem>>();
 				#else
-				var target = raycastResult.gameObject.GetComponent(typeof(IDropSupport<T>)) as IDropSupport<T>;
+				var target = raycast.gameObject.GetComponent(typeof(IDropSupport<T>)) as IDropSupport<T>;
 				#endif
 				if (target != null)
 				{
@@ -354,23 +427,20 @@ namespace UIWidgets
 		/// </summary>
 		/// <returns>The auto-scroll  target.</returns>
 		/// <param name="eventData">Event data.</param>
-		protected virtual IAutoScroll FindAutoScrollTarget(PointerEventData eventData)
+		/// <param name="raycasts">Raycast results.</param>
+		protected virtual IAutoScroll FindAutoScrollTarget(PointerEventData eventData, List<RaycastResult> raycasts)
 		{
-			raycastResults.Clear();
-
-			EventSystem.current.RaycastAll(eventData, raycastResults);
-
-			foreach (var raycastResult in raycastResults)
+			foreach (var raycast in raycasts)
 			{
-				if (!raycastResult.isValid)
+				if (!raycast.isValid)
 				{
 					continue;
 				}
 
 #if UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_3_OR_NEWER
-				var target = raycastResult.gameObject.GetComponent<IAutoScroll>();
+				var target = raycast.gameObject.GetComponent<IAutoScroll>();
 #else
-				var target = raycastResult.gameObject.GetComponent(typeof(IAutoScroll)) as IAutoScroll;
+				var target = raycast.gameObject.GetComponent(typeof(IAutoScroll)) as IAutoScroll;
 #endif
 				if (target != null)
 				{
@@ -387,7 +457,7 @@ namespace UIWidgets
 		/// <param name="target">Target.</param>
 		/// <param name="eventData">Event data.</param>
 		/// <returns>true if target can receive drop; otherwise false.</returns>
-		protected virtual bool CheckTarget(IDropSupport<T> target, PointerEventData eventData)
+		protected virtual bool CheckTarget(IDropSupport<TItem> target, PointerEventData eventData)
 		{
 			return target.CanReceiveDrop(Data, eventData);
 		}
@@ -403,7 +473,8 @@ namespace UIWidgets
 				return;
 			}
 
-			FindCurrentTarget(eventData);
+			FillRaycasts(eventData, RaycastResults);
+			FindCurrentTarget(eventData, RaycastResults);
 
 			if (CurrentTarget != null)
 			{
@@ -469,9 +540,9 @@ namespace UIWidgets
 		/// </summary>
 		protected virtual void OnDestroy()
 		{
-			if ((DragPoints != null) && (CanvasTransform != null) && DragPoints.ContainsKey(CanvasTransform.GetInstanceID()))
+			if ((DragPoints != null) && (ParentCanvas != null) && DragPoints.ContainsKey(ParentCanvas.GetInstanceID()))
 			{
-				DragPoints.Remove(CanvasTransform.GetInstanceID());
+				DragPoints.Remove(ParentCanvas.GetInstanceID());
 			}
 		}
 

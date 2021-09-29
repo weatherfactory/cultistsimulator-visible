@@ -7,6 +7,7 @@
 	/// <summary>
 	/// Autocomplete as Combobox.
 	/// </summary>
+	[System.Obsolete("Replaced with AutoComboboxString.")]
 	public class AutocompleteCombobox : MonoBehaviour, IStylable
 	{
 		/// <summary>

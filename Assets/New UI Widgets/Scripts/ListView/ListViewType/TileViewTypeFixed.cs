@@ -37,9 +37,7 @@
 			{
 			}
 
-			/// <summary>
-			/// Enable this instance.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void Enable()
 			{
 				base.Enable();
@@ -59,10 +57,7 @@
 				}
 			}
 
-			/// <summary>
-			/// Is looped list allowed?
-			/// </summary>
-			/// <returns>True if looped list allowed; otherwise false.</returns>
+			/// <inheritdoc/>
 			public override bool IsTileView
 			{
 				get
@@ -83,9 +78,7 @@
 					: Mathf.CeilToInt((float)items / (float)GetItemsPerBlock());
 			}
 
-			/// <summary>
-			/// Calculates the maximum count of the visible items.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void CalculateMaxVisibleItems()
 			{
 				var spacing_x = Owner.GetItemSpacingX();
@@ -116,11 +109,7 @@
 				MaxVisibleItems = Owner.Virtualization ? (ItemsPerRow * ItemsPerColumn) : Owner.DataSource.Count;
 			}
 
-			/// <summary>
-			/// Gets the index of first visible item.
-			/// </summary>
-			/// <returns>The first visible index.</returns>
-			/// <param name="strict">If set to <c>true</c> strict.</param>
+			/// <inheritdoc/>
 			public override int GetFirstVisibleIndex(bool strict = false)
 			{
 				var first = base.GetFirstVisibleIndex(strict) * GetItemsPerBlock();
@@ -133,20 +122,13 @@
 				return Mathf.Max(0, first);
 			}
 
-			/// <summary>
-			/// Gets the index of last visible item.
-			/// </summary>
-			/// <returns>The last visible index.</returns>
-			/// <param name="strict">If set to <c>true</c> strict.</param>
+			/// <inheritdoc/>
 			public override int GetLastVisibleIndex(bool strict = false)
 			{
 				return ((base.GetLastVisibleIndex(strict) + 1) * GetItemsPerBlock()) - 1;
 			}
 
-			/// <summary>
-			/// Calculates the size of the bottom filler.
-			/// </summary>
-			/// <returns>The bottom filler size.</returns>
+			/// <inheritdoc/>
 			public override float BottomFillerSize()
 			{
 				var last = Owner.DisplayedIndexLast;
@@ -155,12 +137,7 @@
 				return (blocks == 0) ? 0f : blocks * GetItemSize();
 			}
 
-			/// <summary>
-			/// Gets the index of the nearest item.
-			/// </summary>
-			/// <returns>The nearest item index.</returns>
-			/// <param name="point">Point.</param>
-			/// <param name="type">Preferable nearest index.</param>
+			/// <inheritdoc/>
 			public override int GetNearestIndex(Vector2 point, NearestType type)
 			{
 				// block index
@@ -185,44 +162,31 @@
 						k = Mathf.CeilToInt(pos_elem / size);
 						break;
 					default:
-						throw new NotSupportedException("Unsupported NearestType: " + type);
+						throw new NotSupportedException(string.Format("Unsupported NearestType: {0}", EnumHelper<NearestType>.ToString(type)));
 				}
 
 				return (block * GetItemsPerBlock()) + k;
 			}
 
-			/// <summary>
-			/// Gets the index of the nearest item.
-			/// </summary>
-			/// <returns>The nearest item index.</returns>
+			/// <inheritdoc/>
 			public override int GetNearestItemIndex()
 			{
 				return base.GetNearestItemIndex() * GetItemsPerBlock();
 			}
 
-			/// <summary>
-			/// Count of items the per block.
-			/// </summary>
-			/// <returns>The per block.</returns>
+			/// <inheritdoc/>
 			public override int GetItemsPerBlock()
 			{
 				return Owner.IsHorizontal() ? ItemsPerColumn : ItemsPerRow;
 			}
 
-			/// <summary>
-			/// Get block index by item index.
-			/// </summary>
-			/// <param name="index">Item index.</param>
-			/// <returns>Block index.</returns>
+			/// <inheritdoc/>
 			protected override int GetBlockIndex(int index)
 			{
 				return Mathf.FloorToInt((float)index / (float)GetItemsPerBlock());
 			}
 
-			/// <summary>
-			/// Determines whether this instance can be virtualized.
-			/// </summary>
-			/// <returns><c>true</c> if this instance can be virtualized; otherwise, <c>false</c>.</returns>
+			/// <inheritdoc/>
 			public override bool IsVirtualizationSupported()
 			{
 				var scrollRectSpecified = Owner.scrollRect != null;
@@ -236,11 +200,6 @@
 			/// <inheritdoc/>
 			public override bool OnItemMove(AxisEventData eventData, ListViewItem item)
 			{
-				if (!Owner.Navigation)
-				{
-					return false;
-				}
-
 				var step = 0;
 				switch (eventData.moveDir)
 				{
@@ -268,11 +227,21 @@
 				return Owner.Navigate(eventData, target);
 			}
 
-			/// <summary>
-			/// Validates the content size and item size.
-			/// </summary>
+			/// <inheritdoc/>
 			public override void ValidateContentSize()
 			{
+			}
+
+			/// <inheritdoc/>
+			public override void GetDebugInfo(System.Text.StringBuilder builder)
+			{
+				builder.Append("ItemsPerRow: ");
+				builder.Append(ItemsPerRow);
+				builder.AppendLine();
+
+				builder.Append("ItemsPerColumn: ");
+				builder.Append(ItemsPerColumn);
+				builder.AppendLine();
 			}
 		}
 	}

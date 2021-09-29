@@ -18,6 +18,7 @@
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Start()
 		{
 			Tabs.OnTabSelect.AddListener(Test2);
@@ -26,6 +27,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			if (Tabs != null)
@@ -40,9 +42,9 @@
 		/// <param name="index">Index.</param>
 		public void Test2(int index)
 		{
-			Debug.Log("Name: " + Tabs.SelectedTab.Name);
-			Debug.Log("Index: " + index);
-			Debug.Log("Index: " + Array.IndexOf(Tabs.TabObjects, Tabs.SelectedTab));
+			Debug.Log(string.Format("Name: {0}", Tabs.SelectedTab.Name));
+			Debug.Log(string.Format("Index: {0}", index.ToString()));
+			Debug.Log(string.Format("Index: {0}", Array.IndexOf(Tabs.TabObjects, Tabs.SelectedTab).ToString()));
 		}
 	}
 }

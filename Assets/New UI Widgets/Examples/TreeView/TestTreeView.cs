@@ -48,12 +48,12 @@
 		/// </summary>
 		public void ProcessSelectedNodes()
 		{
-			Tree.SelectedNodes.ForEach(x =>
+			foreach (var node in Tree.SelectedNodes)
 			{
 				// do something with selected node
-				Debug.Log(x.Item.Name);
+				Debug.Log(node.Item.Name);
 
-				var component = Tree.GetItemComponent(x.Index);
+				var component = Tree.GetItemComponent(node.Index);
 
 				// not visible component will be null
 				if (component != null)
@@ -62,7 +62,7 @@
 					// component.ToggleEye();
 					Debug.Log(component);
 				}
-			});
+			}
 		}
 
 		/// <summary>
@@ -96,22 +96,14 @@
 		/// </summary>
 		public void TestSelect()
 		{
-			Debug.Log(Tree.SelectedIndex);
+			Debug.Log(Tree.SelectedIndex.ToString());
 			Debug.Log(Tree.SelectedItem.Node.Item.Name);
-		}
-
-		/// <summary>
-		/// Toggle node IsExpanded and measure how much time it's takes.
-		/// </summary>
-		/// <param name="node">Node.</param>
-		protected virtual void NodeToggle(TreeNode<TreeViewItem> node)
-		{
-			UtilitiesTime.CheckRunTime(() => node.IsExpanded = !node.IsExpanded, "nodes: " + node.TotalNodesCount);
 		}
 
 		/// <summary>
 		/// Add listener.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void TestSelectAll()
 		{
 			Tree.NodeDeselected.AddListener(OnNodeDeselected);
@@ -173,7 +165,7 @@
 		/// </summary>
 		public void SelectFirstNodeWithSubnodes()
 		{
-			UtilitiesTime.CheckRunTime(() => Tree.SelectNodeWithSubnodes(Nodes[0]));
+			Tree.SelectNodeWithSubnodes(Nodes[0]);
 		}
 
 		/// <summary>
@@ -276,6 +268,8 @@
 		/// Test find node.
 		/// </summary>
 		/// <param name="id">Node id.</param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0301:Closure Allocation Source", Justification = "Required")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0302:Display class allocation to capture closure", Justification = "Required")]
 		public void TestFindNode(int id)
 		{
 			var node = Tree.FindNode(x => x.Item.Value == id);
@@ -415,12 +409,15 @@
 		/// </summary>
 		public void GetSelectedNodes()
 		{
-			Debug.Log(Tree.SelectedIndex);
-			Debug.Log(string.Join(", ", Tree.SelectedIndices.Select(x => x.ToString()).ToArray()));
+			Debug.Log(Tree.SelectedIndex.ToString());
+			Debug.Log(UtilitiesCollections.List2String(Tree.SelectedIndices));
 			var selectedNodes = Tree.SelectedNodes;
 			if (selectedNodes != null)
 			{
-				selectedNodes.ForEach(node => Debug.Log(node.Item.Name));
+				foreach (var node in selectedNodes)
+				{
+					Debug.Log(node.Item.Name);
+				}
 			}
 		}
 
@@ -430,7 +427,10 @@
 		public void GetNodePath()
 		{
 			var path = Nodes[0].Nodes[0].Nodes[0].Path;
-			path.ForEach(node => Debug.Log(node.Item.Name));
+			foreach (var node in path)
+			{
+				Debug.Log(node.Item.Name);
+			}
 		}
 
 		/// <summary>
@@ -487,10 +487,15 @@
 
 		void GetChildrenNodes(TreeNode<TreeViewItem> node, List<TreeNode<TreeViewItem>> children)
 		{
-			if (node.Nodes != null)
+			if (node.Nodes == null)
 			{
-				children.AddRange(node.Nodes);
-				node.Nodes.ForEach(x => GetChildrenNodes(x, children));
+				return;
+			}
+
+			children.AddRange(node.Nodes);
+			foreach (var n in node.Nodes)
+			{
+				GetChildrenNodes(n, children);
 			}
 		}
 
@@ -555,13 +560,13 @@
 		public static void ApplyNodesSort<T>(ObservableList<TreeNode<T>> nodes, Comparison<TreeNode<T>> comparison)
 		{
 			nodes.Sort(comparison);
-			nodes.ForEach(node =>
+			foreach (var node in nodes)
 			{
 				if (node.Nodes != null)
 				{
 					ApplyNodesSort(node.Nodes, comparison);
 				}
-			});
+			}
 		}
 
 		/// <summary>
@@ -578,6 +583,8 @@
 		/// </summary>
 		/// <param name="nodes">Nodes.</param>
 		/// <param name="name">Name.</param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0301:Closure Allocation Source", Justification = "Required")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0302:Display class allocation to capture closure", Justification = "Required")]
 		public static void RemoveByName(ObservableList<TreeNode<TreeViewItem>> nodes, string name)
 		{
 			Remove(nodes, x => x.Item.Name == name);
@@ -632,6 +639,8 @@
 		/// <param name="nodes">Nodes.</param>
 		/// <param name="name">Node name.</param>
 		/// <param name="position">New position.</param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0301:Closure Allocation Source", Justification = "Required")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0302:Display class allocation to capture closure", Justification = "Required")]
 		public static void ChangePositionByName(ObservableList<TreeNode<TreeViewItem>> nodes, string name, int position)
 		{
 			ChangePosition(nodes, x => x.Item.Name == name, position);
@@ -789,7 +798,10 @@
 		{
 			Nodes.BeginUpdate();
 
-			Nodes.ForEach(SetVisible);
+			foreach (var node in Nodes)
+			{
+				SetVisible(node);
+			}
 
 			Nodes.EndUpdate();
 		}
@@ -798,7 +810,10 @@
 		{
 			if (node.Nodes != null)
 			{
-				node.Nodes.ForEach(SetVisible);
+				foreach (var n in node.Nodes)
+				{
+					SetVisible(n);
+				}
 			}
 
 			node.IsVisible = true;
@@ -818,11 +833,11 @@
 
 			nodes.BeginUpdate();
 
-			nodes.ForEach(node =>
+			foreach (var node in nodes)
 			{
 				node.IsExpanded = isExpanded;
 				ToggleNodes(node.Nodes, isExpanded);
-			});
+			}
 
 			nodes.EndUpdate();
 		}
@@ -831,6 +846,8 @@
 		/// Filter nodes by name.
 		/// </summary>
 		/// <param name="nameContains">Name.</param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0301:Closure Allocation Source", Justification = "Required")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0302:Display class allocation to capture closure", Justification = "Required")]
 		public void Filter(string nameContains)
 		{
 			Nodes.BeginUpdate();
@@ -882,16 +899,25 @@
 		/// <returns>Nodes.</returns>
 		public static ObservableList<TreeNode<TreeViewItem>> GenerateTreeNodes(List<int> items, string nameStartsWith = "Node ", bool isExpanded = true, Sprite icon = null, int start = 0)
 		{
-			return UtilitiesCollections.CreateList(items[start], x =>
+			var count = items[start];
+			var result = new ObservableList<TreeNode<TreeViewItem>>(true, count);
+
+			result.BeginUpdate();
+
+			for (int i = 0; i < count; i++)
 			{
-				var item_name = nameStartsWith + x;
-				var item = new TreeViewItem(item_name, icon);
+				var item_name = string.Format("{0}{1}", nameStartsWith, (i + 1).ToString());
+				var item = new TreeViewItem(item_name, null);
 				var nodes = items.Count > (start + 1)
-					? GenerateTreeNodes(items, item_name + " - ", isExpanded, icon, start + 1)
+					? GenerateTreeNodes(items, string.Format("{0} - ", item_name), isExpanded, icon, start + 1)
 					: null;
 
-				return new TreeNode<TreeViewItem>(item, nodes, isExpanded);
-			});
+				result.Add(new TreeNode<TreeViewItem>(item, nodes, isExpanded));
+			}
+
+			result.EndUpdate();
+
+			return result;
 		}
 
 		/// <summary>

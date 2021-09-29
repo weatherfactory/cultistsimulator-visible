@@ -12,7 +12,7 @@
 	public class TrackDialogBase<TData, TPoint, TTrackForm> : MonoBehaviour
 		where TTrackForm : TrackFormBase<TData, TPoint>
 		where TData : class, ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 	{
 		/// <summary>
 		/// Dialog template.
@@ -88,9 +88,9 @@
 		protected void OpenDialog(Dialog dialog, TTrackForm form, string title, string okButton, Action<Track<TData, TPoint>> onSuccess)
 		{
 #if CSHARP_7_3_OR_NEWER
-			bool OkAction(int index)
+			bool OkAction(DialogBase dialogInstance, int index)
 #else
-			Func<int, bool> OkAction = (index) =>
+			Func<DialogBase, int, bool> OkAction = (dialogInstance, index) =>
 #endif
 			{
 				onSuccess(form.Data);
@@ -103,7 +103,7 @@
 			var actions = new DialogButton[]
 			{
 				new DialogButton(okButton, OkAction),
-				new DialogButton(ButtonCancel, Dialog.AlwaysClose),
+				new DialogButton(ButtonCancel, DialogBase.DefaultClose),
 			};
 
 			dialog.Show(

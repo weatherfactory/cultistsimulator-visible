@@ -75,7 +75,7 @@
 			{
 				var track = new Track<TrackData, DateTime>()
 				{
-					Name = "Track " + i,
+					Name = string.Format("Track {0}", i.ToString()),
 				};
 				schedule.Tracks.Add(track);
 			}

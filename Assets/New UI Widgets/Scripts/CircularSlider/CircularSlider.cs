@@ -35,7 +35,10 @@ namespace UIWidgets
 		protected override int ClampValue(int v)
 		{
 			v = Mathf.Clamp(v, MinValue, MaxValue);
-			v = Mathf.RoundToInt((v - MinValue) / Step) * Step;
+			if (Step != 0)
+			{
+				v = Mathf.RoundToInt((v - MinValue) / Step) * Step;
+			}
 
 			if (v > MaxValue)
 			{

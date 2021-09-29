@@ -17,7 +17,8 @@
 		/// <summary>
 		/// Starts this instance.
 		/// </summary>
-		public void Start()
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected void Start()
 		{
 			// Set nodes with specified tag
 			Tree.Nodes[0].Item.Tag = GameObject.Find("Test GameObject");
@@ -25,6 +26,16 @@
 			// Add callbacks
 			Tree.NodeSelected.AddListener(OnSelect);
 			Tree.NodeDeselected.AddListener(OnDeselect);
+		}
+
+		/// <summary>
+		/// Process the destroy event.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected void OnDestroy()
+		{
+			Tree.NodeSelected.RemoveListener(OnSelect);
+			Tree.NodeDeselected.RemoveListener(OnDeselect);
 		}
 
 		void OnSelect(TreeNode<TreeViewItem> node)

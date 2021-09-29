@@ -405,6 +405,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1518470198455712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4747460487859412}
+  - component: {fileID: 20427171942482518}
+  - component: {fileID: 124940166362298620}
+  - component: {fileID: 81984133548908932}
+  m_Layer: 5
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1555560417353582
 GameObject:
   m_ObjectHideFlags: 1
@@ -685,6 +703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224697761001611922}
   - component: {fileID: 114074041476535098}
+  - component: {fileID: 114452611553157506}
   m_Layer: 5
   m_Name: Accordion
   m_TagString: Untagged
@@ -739,6 +758,7 @@ GameObject:
   - component: {fileID: 114406303391087138}
   - component: {fileID: 222048878070667006}
   - component: {fileID: 114693903249006104}
+  - component: {fileID: 114192945012991400}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -806,9 +826,66 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224669924245103298}
+  - {fileID: 4747460487859412}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4747460487859412
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518470198455712}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 460.375, y: 455, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4075699261388290}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &20427171942482518
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518470198455712}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &81984133548908932
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518470198455712}
+  m_Enabled: 1
 --- !u!114 &114000809678931382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -865,35 +942,37 @@ MonoBehaviour:
   - ToggleObject: {fileID: 1104196535641396}
     ContentObject: {fileID: 1133393079058734}
     Open: 1
-    ContentObjectRect: {fileID: 0}
-    ContentLayoutElement: {fileID: 0}
-    ContentObjectHeight: 0
-    ContentObjectWidth: 0
   - ToggleObject: {fileID: 1285400080733960}
     ContentObject: {fileID: 1481676379547078}
     Open: 0
-    ContentObjectRect: {fileID: 0}
-    ContentLayoutElement: {fileID: 0}
-    ContentObjectHeight: 0
-    ContentObjectWidth: 0
   - ToggleObject: {fileID: 1612055076984636}
     ContentObject: {fileID: 1505110289340266}
     Open: 0
-    ContentObjectRect: {fileID: 0}
-    ContentLayoutElement: {fileID: 0}
-    ContentObjectHeight: 0
-    ContentObjectWidth: 0
   - ToggleObject: {fileID: 1460645387986084}
     ContentObject: {fileID: 1885241292367446}
     Open: 0
-    ContentObjectRect: {fileID: 0}
-    ContentLayoutElement: {fileID: 0}
-    ContentObjectHeight: 0
-    ContentObjectWidth: 0
   OnlyOneOpen: 1
   AllItemsCanBeClosed: 0
   Animate: 0
   AnimationDuration: 0.5
+  Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   UnscaledTime: 0
   Direction: 1
   ResizeMethod: 0
@@ -903,6 +982,16 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UIWidgets.AccordionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  OnStartToggleAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UIWidgets.AccordionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDataSourceChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114086993325927448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1016,6 +1105,19 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 114731753811171060}
+--- !u!114 &114192945012991400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927790775152218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96d92904c214b14d99e7046ec2f0d0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultCursors: {fileID: 11400000, guid: c5a411f09528d2642a908e3ad11fbc0f, type: 2}
+  CursorsPerDPI: []
 --- !u!114 &114194988522505712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1314,6 +1416,93 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &114452611553157506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842730047875256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17dde95164d75b43aa257a5e65be93f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultToggleBackground:
+    Sprite: {fileID: 21300000, guid: ef781d40b12dc42478afc8df9c4a8fa9, type: 3}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    ImageType: 1
+    PreserveAspect: 0
+    FillCenter: 1
+    FillMethod: 4
+    FillOrigin: 0
+    FillAmount: 0
+    FillClockwise: 1
+    Material: {fileID: 0}
+    PixelsPerUnitMultiplier: 1
+  defaultToggleText:
+    ChangeFont: 1
+    Font: {fileID: 0}
+    FontTMPro: {fileID: 0}
+    ChangeFontStyle: 0
+    FontStyle: 0
+    ChangeSize: 0
+    Size: 18
+    ChangeLineSpacing: 0
+    LineSpacing: 1
+    ChangeRichText: 0
+    RichText: 1
+    ChangeAlignment: 0
+    Alignment: 0
+    ChangeHorizontalOverflow: 0
+    HorizontalOverflow: 0
+    ChangeVerticalOverflow: 0
+    VerticalOverflow: 0
+    ChangeBestFit: 0
+    BestFit: 0
+    MinSize: 10
+    MaxSize: 40
+    ChangeColor: 1
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    ChangeMaterial: 0
+    Material: {fileID: 0}
+  activeToggleBackground:
+    Sprite: {fileID: 21300000, guid: 6a407802697cec945800e004cf876249, type: 3}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    ImageType: 1
+    PreserveAspect: 0
+    FillCenter: 1
+    FillMethod: 4
+    FillOrigin: 0
+    FillAmount: 0
+    FillClockwise: 1
+    Material: {fileID: 0}
+    PixelsPerUnitMultiplier: 1
+  activeToggleText:
+    ChangeFont: 1
+    Font: {fileID: 0}
+    FontTMPro: {fileID: 0}
+    ChangeFontStyle: 0
+    FontStyle: 0
+    ChangeSize: 0
+    Size: 18
+    ChangeLineSpacing: 0
+    LineSpacing: 1
+    ChangeRichText: 0
+    RichText: 1
+    ChangeAlignment: 0
+    Alignment: 0
+    ChangeHorizontalOverflow: 0
+    HorizontalOverflow: 0
+    ChangeVerticalOverflow: 0
+    VerticalOverflow: 0
+    ChangeBestFit: 0
+    BestFit: 0
+    MinSize: 10
+    MaxSize: 40
+    ChangeColor: 1
+    Color: {r: 1, g: 0.84313726, b: 0.4509804, a: 1}
+    ChangeMaterial: 0
+    Material: {fileID: 0}
 --- !u!114 &114452801230614044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2203,6 +2392,13 @@ MonoBehaviour:
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!124 &124940166362298620
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518470198455712}
+  m_Enabled: 1
 --- !u!222 &222026812448183048
 CanvasRenderer:
   m_ObjectHideFlags: 1

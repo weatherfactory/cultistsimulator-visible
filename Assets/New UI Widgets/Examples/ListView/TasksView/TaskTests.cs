@@ -32,6 +32,7 @@
 		/// <param name="time">Time.</param>
 		/// <param name="delta">Delta.</param>
 		/// <returns>IEnumerator.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		protected virtual IEnumerator UpdateProgress(Task task, float time, int delta)
 		{
 			while (task.Progress < 100)

@@ -8,8 +8,11 @@
 	/// Button instance.
 	/// </summary>
 	/// <typeparam name="TOwner">Type of the owner.</typeparam>
-	public class DialogButtonCustom<TOwner>
-		where TOwner : MonoBehaviour, IHideable
+	/// <typeparam name="TOwnerBase">Base type of the owner.</typeparam>
+	/// <typeparam name="TButtonConfig">Type of the button configuration.</typeparam>
+	public class DialogButtonCustom<TOwner, TOwnerBase, TButtonConfig>
+		where TOwner : class, IHideable, TOwnerBase
+		where TButtonConfig : ButtonConfiguration<TOwnerBase>
 	{
 		/// <summary>
 		/// Button.
@@ -57,20 +60,20 @@
 		/// <summary>
 		/// Button info.
 		/// </summary>
-		public DialogButton Info
+		public TButtonConfig Info
 		{
 			get;
 			protected set;
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DialogButtonCustom{TOwner}"/> class.
+		/// Initializes a new instance of the <see cref="DialogButtonCustom{TOwner, TOwnerBase, TButtonConfig}"/> class.
 		/// </summary>
 		/// <param name="owner">Owner.</param>
 		/// <param name="index">Button index.</param>
 		/// <param name="info">Button info.</param>
 		/// <param name="template">Template.</param>
-		public DialogButtonCustom(TOwner owner, int index, DialogButton info, Button template)
+		public DialogButtonCustom(TOwner owner, int index, TButtonConfig info, Button template)
 		{
 			Owner = owner;
 			Index = index;
@@ -89,7 +92,7 @@
 		/// </summary>
 		/// <param name="index">Button index.</param>
 		/// <param name="info">Button info.</param>
-		public void Change(int index, DialogButton info)
+		public void Change(int index, TButtonConfig info)
 		{
 			Index = index;
 			Info = info;
@@ -144,7 +147,7 @@
 		/// </summary>
 		protected void Click()
 		{
-			if (Info.Action(Index))
+			if (Info.Process(Owner, Index))
 			{
 				Owner.Hide();
 			}
@@ -164,7 +167,7 @@
 			if (Button != null)
 			{
 				Button.onClick.RemoveListener(Click);
-				UnityEngine.Object.Destroy(Button);
+				Object.Destroy(Button);
 			}
 		}
 	}

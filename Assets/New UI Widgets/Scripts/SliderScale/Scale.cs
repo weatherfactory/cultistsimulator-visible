@@ -12,12 +12,12 @@ namespace UIWidgets
 	/// Scale widget.
 	/// </summary>
 	[RequireComponent(typeof(RectTransform))]
-	public class Scale : MonoBehaviourConditional, INotifyPropertyChanged, IStylable
+	public class Scale : MonoBehaviourConditional, IObservable, INotifyPropertyChanged, IStylable
 	{
 		/// <summary>
 		/// Mark data.
 		/// </summary>
-		public struct MarkData
+		public struct MarkData : IEquatable<MarkData>
 		{
 			/// <summary>
 			/// Position.
@@ -95,6 +95,68 @@ namespace UIWidgets
 
 				Value2Label = value2label;
 			}
+
+			/// <summary>
+			/// Determines whether the specified object is equal to the current object.
+			/// </summary>
+			/// <param name="obj">The object to compare with the current object.</param>
+			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+			public override bool Equals(object obj)
+			{
+				if (obj is MarkData)
+				{
+					return Equals((MarkData)obj);
+				}
+
+				return false;
+			}
+
+			/// <summary>
+			/// Determines whether the specified object is equal to the current object.
+			/// </summary>
+			/// <param name="other">The object to compare with the current object.</param>
+			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+			public bool Equals(MarkData other)
+			{
+				return (Position == other.Position)
+					&& (Rotation == other.Rotation)
+					&& (AnchorMin == other.AnchorMin)
+					&& (AnchorMax == other.AnchorMax)
+					&& (Pivot == other.Pivot)
+					&& (Value == other.Value)
+					&& (Value2Label == other.Value2Label);
+			}
+
+			/// <summary>
+			/// Hash function.
+			/// </summary>
+			/// <returns>A hash code for the current object.</returns>
+			public override int GetHashCode()
+			{
+				return Position.GetHashCode() ^ Rotation.GetHashCode() ^ AnchorMin.GetHashCode() ^ AnchorMax.GetHashCode() ^ Pivot.GetHashCode() ^ Value.GetHashCode() ^ Value2Label.GetHashCode();
+			}
+
+			/// <summary>
+			/// Compare specified instances.
+			/// </summary>
+			/// <param name="a">First instance.</param>
+			/// <param name="b">Second instance.</param>
+			/// <returns>true if the instances are equal; otherwise, false.</returns>
+			public static bool operator ==(MarkData a, MarkData b)
+			{
+				return a.Equals(b);
+			}
+
+			/// <summary>
+			/// Compare specified instances.
+			/// </summary>
+			/// <param name="a">First instance.</param>
+			/// <param name="b">Second instance.</param>
+			/// <returns>true if the instances not equal; otherwise, false.</returns>
+			public static bool operator !=(MarkData a, MarkData b)
+			{
+				return !a.Equals(b);
+			}
 		}
 
 		[SerializeField]
@@ -115,7 +177,7 @@ namespace UIWidgets
 				if (container != value)
 				{
 					container = value;
-					Changed("Container");
+					NotifyPropertyChanged("Container");
 				}
 			}
 		}
@@ -138,7 +200,7 @@ namespace UIWidgets
 				if (mainLine != value)
 				{
 					mainLine = value;
-					Changed("MainLine");
+					NotifyPropertyChanged("MainLine");
 				}
 			}
 		}
@@ -161,7 +223,7 @@ namespace UIWidgets
 				if (showCurrentValue != value)
 				{
 					showCurrentValue = value;
-					Changed("ShowCurrentValue");
+					NotifyPropertyChanged("ShowCurrentValue");
 				}
 			}
 		}
@@ -185,7 +247,7 @@ namespace UIWidgets
 				if (currentMarkTemplate != value)
 				{
 					currentMarkTemplate = value;
-					Changed("CurrentTemplate");
+					NotifyPropertyChanged("CurrentTemplate");
 				}
 			}
 		}
@@ -208,7 +270,7 @@ namespace UIWidgets
 				if (showMinValue != value)
 				{
 					showMinValue = value;
-					Changed("ShowMinValue");
+					NotifyPropertyChanged("ShowMinValue");
 				}
 			}
 		}
@@ -232,7 +294,7 @@ namespace UIWidgets
 				if (minMark != value)
 				{
 					minMark = value;
-					Changed("MinTemplate");
+					NotifyPropertyChanged("MinTemplate");
 				}
 			}
 		}
@@ -255,7 +317,7 @@ namespace UIWidgets
 				if (showMaxValue != value)
 				{
 					showMaxValue = value;
-					Changed("ShowMaxValue");
+					NotifyPropertyChanged("ShowMaxValue");
 				}
 			}
 		}
@@ -279,7 +341,7 @@ namespace UIWidgets
 				if (maxMark != value)
 				{
 					maxMark = value;
-					Changed("MaxTemplate");
+					NotifyPropertyChanged("MaxTemplate");
 				}
 			}
 		}
@@ -440,7 +502,12 @@ namespace UIWidgets
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = Utilities.DefaultPropertyHandler;
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Mark values, temporary list.
@@ -479,9 +546,19 @@ namespace UIWidgets
 		/// Raise PropertyChanged event.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
-		protected virtual void Changed(string propertyName)
+		protected virtual void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 
 		/// <summary>
@@ -490,7 +567,7 @@ namespace UIWidgets
 		protected virtual void MarksChanged()
 		{
 			Clear();
-			Changed("Marks");
+			NotifyPropertyChanged("Marks");
 		}
 
 		/// <summary>
@@ -623,6 +700,22 @@ namespace UIWidgets
 		/// <param name="current">Current values.</param>
 		public virtual void Set(Func<float, MarkData> value2mark, float min, float max, params float[] current)
 		{
+			Set(value2mark, min, max);
+
+			if (ShowCurrentValue)
+			{
+				SetCurrent(value2mark, current);
+			}
+		}
+
+		/// <summary>
+		/// Set base scale data.
+		/// </summary>
+		/// <param name="value2mark">Convert value to mark data.</param>
+		/// <param name="min">Min value.</param>
+		/// <param name="max">Max value.</param>
+		public virtual void Set(Func<float, MarkData> value2mark, float min, float max)
+		{
 			Init();
 			Clear();
 
@@ -675,17 +768,137 @@ namespace UIWidgets
 
 				MarkValues.Clear();
 			}
+		}
+
+		/// <summary>
+		/// Set scale data.
+		/// </summary>
+		/// <param name="value2mark">Convert value to mark data.</param>
+		/// <param name="min">Min value.</param>
+		/// <param name="max">Max value.</param>
+		/// <param name="current">Current value 0.</param>
+		public virtual void Set(Func<float, MarkData> value2mark, float min, float max, float current)
+		{
+			Set(value2mark, min, max);
 
 			if (ShowCurrentValue)
 			{
-				foreach (var value in current)
-				{
-					var instance = CurrentMarkTemplate.GetInstance(Container);
-					Set(instance, value2mark(value));
-
-					MarksInstances.Add(instance);
-				}
+				SetCurrent(value2mark, current);
 			}
+		}
+
+		/// <summary>
+		/// Set scale data.
+		/// </summary>
+		/// <param name="value2mark">Convert value to mark data.</param>
+		/// <param name="min">Min value.</param>
+		/// <param name="max">Max value.</param>
+		/// <param name="current0">Current value 0.</param>
+		/// <param name="current1">Current value 1.</param>
+		public virtual void Set(Func<float, MarkData> value2mark, float min, float max, float current0, float current1)
+		{
+			Set(value2mark, min, max);
+
+			if (ShowCurrentValue)
+			{
+				SetCurrent(value2mark, current0);
+				SetCurrent(value2mark, current1);
+			}
+		}
+
+		/// <summary>
+		/// Set scale data.
+		/// </summary>
+		/// <param name="value2mark">Convert value to mark data.</param>
+		/// <param name="min">Min value.</param>
+		/// <param name="max">Max value.</param>
+		/// <param name="current0">Current value 0.</param>
+		/// <param name="current1">Current value 1.</param>
+		/// <param name="current2">Current value 2.</param>
+		public virtual void Set(Func<float, MarkData> value2mark, float min, float max, float current0, float current1, float current2)
+		{
+			Set(value2mark, min, max);
+
+			if (ShowCurrentValue)
+			{
+				SetCurrent(value2mark, current0);
+				SetCurrent(value2mark, current1);
+				SetCurrent(value2mark, current2);
+			}
+		}
+
+		/// <summary>
+		/// Set scale data.
+		/// </summary>
+		/// <param name="value2mark">Convert value to mark data.</param>
+		/// <param name="min">Min value.</param>
+		/// <param name="max">Max value.</param>
+		/// <param name="current0">Current value 0.</param>
+		/// <param name="current1">Current value 1.</param>
+		/// <param name="current2">Current value 2.</param>
+		/// <param name="current3">Current value 3.</param>
+		public virtual void Set(Func<float, MarkData> value2mark, float min, float max, float current0, float current1, float current2, float current3)
+		{
+			Set(value2mark, min, max);
+
+			if (ShowCurrentValue)
+			{
+				SetCurrent(value2mark, current0);
+				SetCurrent(value2mark, current1);
+				SetCurrent(value2mark, current2);
+				SetCurrent(value2mark, current3);
+			}
+		}
+
+		/// <summary>
+		/// Set scale data.
+		/// </summary>
+		/// <param name="value2mark">Convert value to mark data.</param>
+		/// <param name="min">Min value.</param>
+		/// <param name="max">Max value.</param>
+		/// <param name="current0">Current value 0.</param>
+		/// <param name="current1">Current value 1.</param>
+		/// <param name="current2">Current value 2.</param>
+		/// <param name="current3">Current value 3.</param>
+		/// <param name="current4">Current value 4.</param>
+		public virtual void Set(Func<float, MarkData> value2mark, float min, float max, float current0, float current1, float current2, float current3, float current4)
+		{
+			Set(value2mark, min, max);
+
+			if (ShowCurrentValue)
+			{
+				SetCurrent(value2mark, current0);
+				SetCurrent(value2mark, current1);
+				SetCurrent(value2mark, current2);
+				SetCurrent(value2mark, current3);
+				SetCurrent(value2mark, current4);
+			}
+		}
+
+		/// <summary>
+		/// Set current marks.
+		/// </summary>
+		/// <param name="value2mark">Convert value to mark data.</param>
+		/// <param name="current">Current values.</param>
+		protected virtual void SetCurrent(Func<float, MarkData> value2mark, params float[] current)
+		{
+			foreach (var value in current)
+			{
+				SetCurrent(value2mark, value);
+			}
+		}
+
+		/// <summary>
+		/// Set current mark.
+		/// </summary>
+		/// <param name="value2mark">Convert value to mark data.</param>
+		/// <param name="current">Current value.</param>
+		protected virtual void SetCurrent(Func<float, MarkData> value2mark, float current)
+		{
+			var instance = CurrentMarkTemplate.GetInstance(Container);
+			Set(instance, value2mark(current));
+
+			MarksInstances.Add(instance);
 		}
 
 		#region IStylable implementation

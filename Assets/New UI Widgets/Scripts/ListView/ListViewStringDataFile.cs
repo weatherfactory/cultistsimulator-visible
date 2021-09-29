@@ -84,6 +84,11 @@
 		/// </summary>
 		protected virtual void Start()
 		{
+			if (ListView == null)
+			{
+				return;
+			}
+
 			if (File != null)
 			{
 				var items = GetItemsFromFile(File);

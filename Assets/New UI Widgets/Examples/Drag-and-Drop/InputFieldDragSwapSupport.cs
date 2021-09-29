@@ -21,7 +21,8 @@
 				return;
 			}
 
-			var target = FindTarget(eventData);
+			FillRaycasts(eventData, RaycastResults);
+			var target = FindTarget(eventData, RaycastResults);
 			if (target != null)
 			{
 				target.Drop(Data, eventData);

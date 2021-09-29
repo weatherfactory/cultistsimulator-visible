@@ -3,7 +3,6 @@
 	using System;
 	using System.Collections;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UIWidgets.Styles;
 	using UnityEngine;
 	using UnityEngine.Events;
@@ -288,17 +287,22 @@
 			{
 				if (scrollRectSupport)
 				{
-					GetComponentsInChildren<ScrollRect>().ForEach(RemoveHandleEvents);
+					RemoveScrollRectHandle();
 				}
 
 				scrollRectSupport = value;
 
 				if (scrollRectSupport)
 				{
-					GetComponentsInChildren<ScrollRect>().ForEach(AddHandleEvents);
+					AddScrollRectHandle();
 				}
 			}
 		}
+
+		/// <summary>
+		/// Nested ScrollRects.
+		/// </summary>
+		protected List<ScrollRect> NestedScrollRects = new List<ScrollRect>();
 
 		/// <summary>
 		/// The content.
@@ -370,6 +374,12 @@
 				}
 			}
 		}
+
+		/// <summary>
+		/// Parent canvas.
+		/// </summary>
+		[SerializeField]
+		protected RectTransform ParentCanvas;
 
 		/// <summary>
 		/// Use unscaled time.
@@ -482,10 +492,9 @@
 				return "Content value cannot not be Sidebar gameobject.";
 			}
 
-			var keys = Curve.keys;
-			if (keys[0].value >= keys[keys.Length - 1].value)
+			if (Curve[0].value >= Curve[Curve.length - 1].value)
 			{
-				return string.Format("Curve requirements: start value (current: {0}) should be less than end value (current: {1}).", keys[0].value, keys[keys.Length - 1].value);
+				return string.Format("Curve requirements: start value (current: {0}) should be less than end value (current: {1}).", Curve[0].value.ToString(), Curve[Curve.length - 1].value.ToString());
 			}
 
 			return string.Empty;
@@ -513,6 +522,11 @@
 			}
 
 			isInited = true;
+
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
 
 			InitActions();
 
@@ -613,7 +627,7 @@
 			{
 				ContentPosition = Content.anchoredPosition;
 				ContentSize = Content.rect.size;
-				ContentTopLeftCorner = Utilities.GetTopLeftCorner(Content);
+				ContentTopLeftCorner = UtilitiesRectTransform.GetTopLeftCorner(Content);
 				LayoutPadding = GetLayoutPadding();
 			}
 		}
@@ -623,7 +637,14 @@
 		/// </summary>
 		protected void AddScrollRectHandle()
 		{
-			GetComponentsInChildren<ScrollRect>().ForEach(AddHandleEvents);
+			GetComponentsInChildren<ScrollRect>(NestedScrollRects);
+
+			foreach (var s in NestedScrollRects)
+			{
+				AddHandleEvents(s);
+			}
+
+			NestedScrollRects.Clear();
 		}
 
 		/// <summary>
@@ -631,7 +652,14 @@
 		/// </summary>
 		protected void RemoveScrollRectHandle()
 		{
-			GetComponentsInChildren<ScrollRect>().ForEach(RemoveHandleEvents);
+			GetComponentsInChildren<ScrollRect>(NestedScrollRects);
+
+			foreach (var s in NestedScrollRects)
+			{
+				RemoveHandleEvents(s);
+			}
+
+			NestedScrollRects.Clear();
 		}
 
 		/// <summary>
@@ -684,7 +712,11 @@
 		/// </summary>
 		protected void StopAnimations()
 		{
-			Animations.ForEach(StopCoroutine);
+			foreach (var a in Animations)
+			{
+				StopCoroutine(a);
+			}
+
 			Animations.Clear();
 			AnimationsFinished = 0;
 		}
@@ -745,7 +777,7 @@
 			if (modal && (ModalKey == null))
 			{
 				var parent = (Content != null) ? Content.parent : transform.parent;
-				ModalKey = ModalHelper.Open(this, null, new Color(1f, 1f, 1f, 0f), Close);
+				ModalKey = ModalHelper.Open(this, null, new Color(1f, 1f, 1f, 0f), Close, ParentCanvas);
 
 				var modal_rt = ModalHelper.GetInstance(ModalKey.Value).transform as RectTransform;
 				modal_rt.SetParent(parent, false);
@@ -772,7 +804,7 @@
 		{
 			if (ModalKey.HasValue)
 			{
-				ModalHelper.GetInstance(ModalKey.Value).transform.SetParent(Utilities.FindTopmostCanvas(transform), false);
+				ModalHelper.GetInstance(ModalKey.Value).transform.SetParent(UtilitiesUI.FindTopmostCanvas(transform), false);
 				ModalHelper.Close(ModalKey.Value);
 
 				ModalKey = null;
@@ -1102,7 +1134,7 @@
 				case SidebarAxis.BottomToTop:
 					return new Vector2(rect.anchoredPosition.x, position.y + (SidebarSize() * rate));
 				default:
-					throw new NotSupportedException("Unknown sidebar axis: " + Direction);
+					throw new NotSupportedException(string.Format("Unknown sidebar axis: {0}", EnumHelper<SidebarAxis>.ToString(Direction)));
 			}
 		}
 
@@ -1164,7 +1196,7 @@
 					rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, ty);
 					break;
 				default:
-					throw new NotSupportedException("Unknown sidebar axis: " + Direction);
+					throw new NotSupportedException(string.Format("Unknown sidebar axis: {0}", EnumHelper<SidebarAxis>.ToString(Direction)));
 			}
 		}
 
@@ -1208,7 +1240,7 @@
 		/// <returns>Coroutine.</returns>
 		protected IEnumerator AnimationCoroutine(RectTransform rect, Vector2 endPos, float rectSpeed)
 		{
-			var animation_length = Curve.keys[Curve.keys.Length - 1].time;
+			var animation_length = Curve[Curve.length - 1].time;
 			var size = SidebarSize();
 
 			var start_position = IsHorizontal() ? rect.anchoredPosition.x : rect.anchoredPosition.y;
@@ -1490,7 +1522,7 @@
 		/// <returns>Animation coroutine.</returns>
 		protected IEnumerator ScaleDownAnimationCoroutine()
 		{
-			var animation_length = Curve.keys[Curve.keys.Length - 1].time;
+			var animation_length = Curve[Curve.length - 1].time;
 
 			var scale_size = ContentScale() - 1f;
 			var start_scale = Content.localScale.x;
@@ -1747,10 +1779,10 @@
 		/// <returns>Movement coroutine.</returns>
 		protected IEnumerator ResizeMovementCoroutine()
 		{
-			var animation_length = Curve.keys[Curve.keys.Length - 1].time;
+			var animation_length = Curve[Curve.length - 1].time;
 			var sidebar_size = SidebarSize();
 
-			var start_pos = Utilities.GetTopLeftCorner(Content);
+			var start_pos = UtilitiesRectTransform.GetTopLeftCorner(Content);
 			var start_position = IsHorizontal() ? start_pos.x : start_pos.y;
 			var end_position = IsHorizontal() ? ContentTopLeftCorner.x : ContentTopLeftCorner.y;
 			if (!isOpen)
@@ -1782,7 +1814,7 @@
 				var pos = IsHorizontal()
 					? new Vector2(start_position + value, start_pos.y)
 					: new Vector2(start_pos.x, start_position + value);
-				Utilities.SetTopLeftCorner(Content, pos);
+				UtilitiesRectTransform.SetTopLeftCorner(Content, pos);
 
 				yield return null;
 			}
@@ -1798,7 +1830,7 @@
 		protected IEnumerator ResizeCoroutine()
 		{
 			var axis = IsHorizontal() ? RectTransform.Axis.Horizontal : RectTransform.Axis.Vertical;
-			var animation_length = Curve.keys[Curve.keys.Length - 1].time;
+			var animation_length = Curve[Curve.length - 1].time;
 			var sidebar_size = SidebarSize();
 
 			var start_size = IsHorizontal() ? Content.rect.width : Content.rect.height;
@@ -1837,7 +1869,7 @@
 		/// <returns>Resize layout coroutine.</returns>
 		protected IEnumerator ResizeWithLayoutCoroutine()
 		{
-			var animation_length = Curve.keys[Curve.keys.Length - 1].time;
+			var animation_length = Curve[Curve.length - 1].time;
 			var sidebar_size = SidebarSize();
 
 			var start_size = GetLayoutPadding();
@@ -1882,7 +1914,7 @@
 				case SidebarAxis.BottomToTop:
 					return LayoutUtilities.GetPaddingBottom(ContentLayout);
 				default:
-					throw new NotSupportedException("Unknown sidebar axis: " + Direction);
+					throw new NotSupportedException(string.Format("Unknown sidebar axis: {0}", EnumHelper<SidebarAxis>.ToString(Direction)));
 			}
 		}
 
@@ -1907,7 +1939,7 @@
 					LayoutUtilities.SetPaddingBottom(ContentLayout, padding);
 					break;
 				default:
-					throw new NotSupportedException("Unknown sidebar axis: " + Direction);
+					throw new NotSupportedException(string.Format("Unknown sidebar axis: {0}", EnumHelper<SidebarAxis>.ToString(Direction)));
 			}
 		}
 
@@ -1947,7 +1979,7 @@
 				}
 			}
 
-			Utilities.SetTopLeftCorner(Content, pos);
+			UtilitiesRectTransform.SetTopLeftCorner(Content, pos);
 		}
 
 		/// <summary>
@@ -1986,7 +2018,7 @@
 					resize_delta = delta.y * direction;
 					break;
 				default:
-					throw new NotSupportedException("Unknown sidebar axis: " + Direction);
+					throw new NotSupportedException(string.Format("Unknown sidebar axis: {0}", EnumHelper<SidebarAxis>.ToString(Direction)));
 			}
 
 			resize_delta = Mathf.Clamp(resize_delta, 0, sidebar_size);
@@ -2026,12 +2058,12 @@
 				case SidebarAxis.BottomToTop:
 					break;
 				default:
-					throw new NotSupportedException("Unknown sidebar axis: " + Direction);
+					throw new NotSupportedException(string.Format("Unknown sidebar axis: {0}", EnumHelper<SidebarAxis>.ToString(Direction)));
 			}
 
 			Content.SetSizeWithCurrentAnchors(axis, size - size_delta);
 
-			Utilities.SetTopLeftCorner(Content, cur_pos);
+			UtilitiesRectTransform.SetTopLeftCorner(Content, cur_pos);
 		}
 		#endregion
 
@@ -2135,7 +2167,7 @@
 		/// <returns>Animation coroutine.</returns>
 		protected IEnumerator ScaleDownAndPushAnimationCoroutine()
 		{
-			var animation_length = Curve.keys[Curve.keys.Length - 1].time;
+			var animation_length = Curve[Curve.length - 1].time;
 
 			var scale_size = ContentScale() - 1f;
 			var start_scale = Content.localScale.x;
@@ -2175,6 +2207,24 @@
 		{
 			base.OnValidate();
 			ScaleDownLimit = Mathf.Clamp01(ScaleDownLimit);
+
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+
+		/// <summary>
+		/// Reset this instance.
+		/// </summary>
+		protected override void Reset()
+		{
+			base.Reset();
+
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
 		}
 		#endif
 

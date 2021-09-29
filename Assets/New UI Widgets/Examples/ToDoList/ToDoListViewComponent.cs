@@ -61,7 +61,7 @@
 		{
 			if (GraphicsForegroundVersion == 0)
 			{
-				Foreground = new Graphic[] { Utilities.GetGraphic(TaskAdapter), };
+				Foreground = new Graphic[] { UtilitiesUI.GetGraphic(TaskAdapter), };
 				GraphicsForegroundVersion = 1;
 			}
 		}
@@ -69,6 +69,7 @@
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected override void Start()
 		{
 			base.Start();
@@ -103,6 +104,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();

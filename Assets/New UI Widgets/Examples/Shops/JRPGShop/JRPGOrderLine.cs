@@ -2,6 +2,7 @@
 {
 	using System;
 	using UnityEngine;
+	using UnityEngine.Serialization;
 
 	/// <summary>
 	/// JRPG order line.
@@ -36,22 +37,41 @@
 		public int Price;
 
 		[SerializeField]
-		int count;
+		[FormerlySerializedAs("count")]
+		int quantity;
 
 		/// <summary>
-		/// Gets or sets the count.
+		/// Gets or sets the quantity.
 		/// </summary>
-		/// <value>The count.</value>
-		public int Count
+		/// <value>The quantity.</value>
+		public int Quantity
 		{
 			get
 			{
-				return count;
+				return quantity;
 			}
 
 			set
 			{
-				count = value;
+				quantity = value;
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the quantity.
+		/// </summary>
+		/// <value>The quantity.</value>
+		[Obsolete("Renamed to Quantity.")]
+		public int Count
+		{
+			get
+			{
+				return quantity;
+			}
+
+			set
+			{
+				quantity = value;
 			}
 		}
 

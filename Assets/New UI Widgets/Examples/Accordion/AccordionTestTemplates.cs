@@ -53,7 +53,7 @@
 			header.gameObject.SetActive(true);
 
 			// set header data
-			header.GetComponentInChildren<TextAdapter>().text = "Header " + i;
+			header.GetComponentInChildren<TextAdapter>().text = string.Format("Header {0}", i.ToString());
 
 			var content = Compatibility.Instantiate(ContentTemplate);
 			content.transform.SetParent(Accordion.transform);

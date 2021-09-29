@@ -17,10 +17,20 @@
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		protected virtual void Start()
 		{
 			// OptionSelected will be called when user select value
 			Autocomplete.OnOptionSelectedItem.AddListener(OptionSelected);
+		}
+
+		/// <summary>
+		/// Process destroy event.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
+		protected virtual void OnDestroy()
+		{
+			Autocomplete.OnOptionSelectedItem.RemoveListener(OptionSelected);
 		}
 
 		/// <summary>
@@ -30,15 +40,7 @@
 		protected virtual void OptionSelected(string text)
 		{
 			// do something with text
-			Debug.Log("Autocomplete selected value = " + text);
-		}
-
-		/// <summary>
-		/// Process destroy event.
-		/// </summary>
-		protected virtual void OnDestroy()
-		{
-			Autocomplete.OnOptionSelectedItem.RemoveListener(OptionSelected);
+			Debug.Log(string.Format("Autocomplete selected value = {0}", text));
 		}
 	}
 }

@@ -46,6 +46,10 @@ namespace UIWidgets.WidgetGeneration
 
 		ClassInfo info;
 
+		GUILayoutOption[] scrollOptions = new GUILayoutOption[] { GUILayout.Height(100) };
+
+		GUILayoutOption[] errorOptions = new GUILayoutOption[] { GUILayout.ExpandHeight(true), GUILayout.MaxHeight(100) };
+
 		/// <summary>
 		/// Set styles.
 		/// </summary>
@@ -74,7 +78,7 @@ namespace UIWidgets.WidgetGeneration
 				currentType = info.FullTypeName;
 			}
 
-			currentType = EditorGUILayout.TextField("Data Type", currentType, new GUILayoutOption[] { });
+			currentType = EditorGUILayout.TextField("Data Type", currentType);
 
 			if (previousType != currentType)
 			{
@@ -88,10 +92,10 @@ namespace UIWidgets.WidgetGeneration
 			if (!info.IsValid)
 			{
 				GUILayout.Label("<b>Errors:</b>", styleLabel);
-				scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Height(100));
+				scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, scrollOptions);
 				foreach (var error in info.Errors)
 				{
-					GUILayout.Label(error, styleLabel, GUILayout.ExpandHeight(true), GUILayout.MaxHeight(100));
+					GUILayout.Label(error, styleLabel, errorOptions);
 				}
 
 				EditorGUILayout.EndScrollView();

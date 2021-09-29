@@ -2,7 +2,6 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
 	using UIWidgets.Attributes;
 	using UnityEngine;
 	using UnityEngine.EventSystems;
@@ -14,11 +13,124 @@
 	/// </summary>
 	/// <typeparam name="TData">Data type.</typeparam>
 	/// <typeparam name="TPoint">Point type.</typeparam>
-	public abstract class TracksViewBase<TData, TPoint> : MonoBehaviourConditional
+	public abstract class TracksViewBase<TData, TPoint> : UIBehaviourConditional
 		where TData : class, ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 	{
+		#region Interactable
+
+		/// <summary>
+		/// The CanvasGroup cache.
+		/// </summary>
+		protected readonly List<CanvasGroup> CanvasGroupCache = new List<CanvasGroup>();
+
 		[SerializeField]
+		bool interactable = true;
+
+		/// <summary>
+		/// Is widget interactable.
+		/// </summary>
+		/// <value><c>true</c> if interactable; otherwise, <c>false</c>.</value>
+		public bool Interactable
+		{
+			get
+			{
+				return interactable;
+			}
+
+			set
+			{
+				if (interactable != value)
+				{
+					interactable = value;
+					InteractableChanged();
+				}
+			}
+		}
+
+		/// <summary>
+		/// If the canvas groups allow interaction.
+		/// </summary>
+		protected bool GroupsAllowInteraction = true;
+
+		/// <summary>
+		/// Process the CanvasGroupChanged event.
+		/// </summary>
+		protected override void OnCanvasGroupChanged()
+		{
+			var groupAllowInteraction = true;
+			var t = transform;
+			while (t != null)
+			{
+				t.GetComponents(CanvasGroupCache);
+				var shouldBreak = false;
+				foreach (var canvas_group in CanvasGroupCache)
+				{
+					if (!canvas_group.interactable)
+					{
+						groupAllowInteraction = false;
+						shouldBreak = true;
+					}
+
+					shouldBreak |= canvas_group.ignoreParentGroups;
+				}
+
+				if (shouldBreak)
+				{
+					break;
+				}
+
+				t = t.parent;
+			}
+
+			if (groupAllowInteraction != GroupsAllowInteraction)
+			{
+				GroupsAllowInteraction = groupAllowInteraction;
+				InteractableChanged();
+			}
+		}
+
+		/// <summary>
+		/// Determines whether this widget is interactable.
+		/// </summary>
+		/// <returns><c>true</c> if this instance is interactable; otherwise, <c>false</c>.</returns>
+		public virtual bool IsInteractable()
+		{
+			return GroupsAllowInteraction && Interactable;
+		}
+
+		/// <summary>
+		/// Process interactable change.
+		/// </summary>
+		protected virtual void InteractableChanged()
+		{
+			if (IsInteractable())
+			{
+				OnInteractableEnabled();
+			}
+			else
+			{
+				OnInteractableDisabled();
+			}
+		}
+
+		/// <summary>
+		/// What to do when widget became interactable.
+		/// </summary>
+		protected virtual void OnInteractableEnabled()
+		{
+		}
+
+		/// <summary>
+		/// What to do when widget became not interactable.
+		/// </summary>
+		protected virtual void OnInteractableDisabled()
+		{
+		}
+		#endregion
+
+		[SerializeField]
+		[HideInInspector]
 		ObservableList<Track<TData, TPoint>> tracks = new ObservableList<Track<TData, TPoint>>();
 
 		/// <summary>
@@ -105,12 +217,12 @@
 		}
 
 		[SerializeField]
-		ScrollBlock pointNamesView;
+		ScrollBlockBase pointNamesView;
 
 		/// <summary>
 		/// Points names view.
 		/// </summary>
-		public ScrollBlock PointsNamesView
+		public ScrollBlockBase PointsNamesView
 		{
 			get
 			{
@@ -194,9 +306,9 @@
 		public float TracksSpacing;
 
 		/// <summary>
-		/// Allow to drag data outside of the DataView.
+		/// Allow to drag data outside of the TrackDataView.
 		/// </summary>
-		[Tooltip("Allow to drag data outside of the DataView")]
+		[Tooltip("Allow to drag data outside of the TrackDataView")]
 		public bool AllowDragOutside = true;
 
 		/// <summary>
@@ -232,7 +344,7 @@
 		}
 
 		/// <summary>
-		/// Set minimal order of the items.
+		/// Compact items layout.
 		/// </summary>
 		[SerializeField]
 		protected bool compact = true;
@@ -292,8 +404,9 @@
 		/// <summary>
 		/// Start this instance.
 		/// </summary>
-		protected virtual void Start()
+		protected override void Start()
 		{
+			base.Start();
 			Init();
 		}
 
@@ -317,7 +430,7 @@
 		/// <summary>
 		/// Process destroy event.
 		/// </summary>
-		protected virtual void OnDestroy()
+		protected override void OnDestroy()
 		{
 			if (tracks != null)
 			{
@@ -327,6 +440,8 @@
 			DisableDataView(TracksDataView);
 			DisableTracksView(TracksNamesView);
 			DisablePointsView(PointsNamesView);
+
+			base.OnDestroy();
 		}
 
 		/// <summary>
@@ -380,7 +495,10 @@
 				Layout = GetLayout();
 			}
 
-			Tracks.ForEach(SetTrackSettings);
+			foreach (var track in Tracks)
+			{
+				SetTrackSettings(track);
+			}
 
 			var half = (PointsNamesView.Count / 2) + 1;
 
@@ -545,7 +663,7 @@
 		/// <param name="order">Order.</param>
 		/// <param name="target">Target.</param>
 		/// <param name="output">List of the possible intersections,</param>
-		protected virtual void GetPossibleIntersections(IList<TData> items, int order, TData target, List<TData> output)
+		protected virtual void GetPossibleIntersections(ObservableList<TData> items, int order, TData target, List<TData> output)
 		{
 			foreach (var item in items)
 			{
@@ -565,7 +683,7 @@
 		/// <param name="order">New order of the target item.</param>
 		/// <param name="target">Target item. Will be ignored if presents in the items list.</param>
 		/// <returns>true if any items has intersection with specified points; otherwise false.</returns>
-		protected virtual bool ListIntersection(IList<TData> items, TPoint start, TPoint end, int order, TData target)
+		protected virtual bool ListIntersection(List<TData> items, TPoint start, TPoint end, int order, TData target)
 		{
 			foreach (var item in items)
 			{
@@ -628,8 +746,8 @@
 		/// <returns>Width of the point names header.</returns>
 		protected virtual float GetPointHeaderWidth()
 		{
-			var point_header = PointsNamesView.DefaultItem.transform as RectTransform;
-			return point_header.rect.width;
+			PointsNamesView.Init();
+			return PointsNamesView.DefaultItemSize.x;
 		}
 
 		/// <summary>
@@ -642,7 +760,8 @@
 		/// </summary>
 		protected virtual void OnResize()
 		{
-			DataHeaderSize = (PointsNamesView.DefaultItem.transform as RectTransform).rect.size;
+			PointsNamesView.Init();
+			DataHeaderSize = PointsNamesView.DefaultItemSize;
 
 			UpdateView();
 		}
@@ -752,20 +871,20 @@
 		/// Enable points view.
 		/// </summary>
 		/// <param name="pointsView">Points view.</param>
-		protected virtual void EnablePointsView(ScrollBlock pointsView)
+		protected virtual void EnablePointsView(ScrollBlockBase pointsView)
 		{
 			if (pointsView == null)
 			{
 				return;
 			}
 
-			DataHeaderSize = (pointsView.DefaultItem.transform as RectTransform).rect.size;
-
 			pointsView.AlwaysCenter = false;
 			pointsView.Increase = Increase;
 			pointsView.Decrease = Decrease;
 			pointsView.Value = Value2Text;
 			pointsView.UpdateView();
+
+			DataHeaderSize = pointsView.DefaultItemSize;
 
 			var points_drag = Utilities.GetOrAddComponent<DragListener>(pointsView);
 			points_drag.OnInitializePotentialDragEvent.AddListener(OnPointsDragInit);
@@ -779,16 +898,16 @@
 		/// Disable points view.
 		/// </summary>
 		/// <param name="pointsView">Points view.</param>
-		protected virtual void DisablePointsView(ScrollBlock pointsView)
+		protected virtual void DisablePointsView(ScrollBlockBase pointsView)
 		{
 			if (pointsView == null)
 			{
 				return;
 			}
 
-			pointsView.Increase = ScrollBlock.DoNothing;
-			pointsView.Decrease = ScrollBlock.DoNothing;
-			pointsView.Value = ScrollBlock.DefaultValue;
+			pointsView.Increase = ScrollBlockBase.DoNothing;
+			pointsView.Decrease = ScrollBlockBase.DoNothing;
+			pointsView.Value = ScrollBlockBase.DefaultValue;
 
 			var points_drag = pointsView.GetComponent<DragListener>();
 			if (points_drag != null)
@@ -1039,7 +1158,7 @@
 		/// Action to run when auto-scroll executed.
 		/// </summary>
 		[NonSerialized]
-		protected Action OnAutoScrollAction = Utilities.DefaultHandler;
+		protected Action OnAutoScrollAction;
 
 		/// <summary>
 		/// Start auto-scroll.
@@ -1129,7 +1248,10 @@
 
 			UpdateView();
 
-			OnAutoScrollAction();
+			if (OnAutoScrollAction != null)
+			{
+				OnAutoScrollAction();
+			}
 		}
 
 		/// <summary>

@@ -34,7 +34,7 @@
 		/// <returns>String.</returns>
 		public override string ToString()
 		{
-			return Field1 + " | " + Field2 + " | " + Field3;
+			return string.Format("{0} | {1} | {2}", Field1, Field2, Field3);
 		}
 	}
 }

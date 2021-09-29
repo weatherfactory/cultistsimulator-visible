@@ -235,7 +235,7 @@
 			OnSelect = onSelect;
 			OnCancel = onCancel;
 
-			var parent = (canvas != null) ? canvas.transform : Utilities.FindTopmostCanvas(gameObject.transform);
+			var parent = (canvas != null) ? canvas.transform as RectTransform : UtilitiesUI.FindTopmostCanvas(gameObject.transform);
 			if (parent != null)
 			{
 				transform.SetParent(parent, false);
@@ -246,7 +246,7 @@
 				modalColor = new Color(0, 0, 0, 0.8f);
 			}
 
-			ModalKey = ModalHelper.Open(this, modalSprite, modalColor, Close);
+			ModalKey = ModalHelper.Open(this, modalSprite, modalColor, Close, parent);
 
 			transform.SetAsLastSibling();
 

@@ -9,18 +9,17 @@
 	/// Tree view item.
 	/// </summary>
 	[Serializable]
-	public class TreeViewItem : INotifyPropertyChanged
+	public class TreeViewItem : IObservable, INotifyPropertyChanged
 	{
 		/// <summary>
-		/// OnChange event.
+		/// Occurs when a property value changes.
 		/// </summary>
-		[Obsolete("Use PropertyChanged.")]
-		public event OnChange OnChange = Utilities.DefaultHandler;
+		public event OnChange OnChange;
 
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = Utilities.DefaultPropertyHandler;
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// The icon.
@@ -42,7 +41,7 @@
 			set
 			{
 				icon = value;
-				Changed("Icon");
+				NotifyPropertyChanged("Icon");
 			}
 		}
 
@@ -66,7 +65,7 @@
 			set
 			{
 				name = value;
-				Changed("Name");
+				NotifyPropertyChanged("Name");
 			}
 		}
 
@@ -86,7 +85,7 @@
 			set
 			{
 				localizedName = value;
-				Changed("LocalizedName");
+				NotifyPropertyChanged("LocalizedName");
 			}
 		}
 
@@ -108,7 +107,7 @@
 			set
 			{
 				itemValue = value;
-				Changed("Value");
+				NotifyPropertyChanged("Value");
 			}
 		}
 
@@ -129,7 +128,7 @@
 			set
 			{
 				tag = value;
-				Changed("Tag");
+				NotifyPropertyChanged("Tag");
 			}
 		}
 
@@ -148,12 +147,28 @@
 		/// Raise OnChange event.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
-		protected void Changed(string propertyName)
+		protected void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			#pragma warning disable 0618
-			OnChange();
-			#pragma warning restore 0618
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		/// <summary>
+		/// Convert this instance to string.
+		/// </summary>
+		/// <returns>String.</returns>
+		public override string ToString()
+		{
+			return LocalizedName ?? Name;
 		}
 	}
 }

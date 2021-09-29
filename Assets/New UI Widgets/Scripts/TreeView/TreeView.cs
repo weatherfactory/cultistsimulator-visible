@@ -28,5 +28,13 @@
 
 			NodeToggle.AddListener(NodeToggleProxy.Invoke);
 		}
+
+		/// <inheritdoc/>
+		protected override void OnDestroy()
+		{
+			NodeToggle.RemoveListener(NodeToggleProxy.Invoke);
+
+			base.OnDestroy();
+		}
 	}
 }

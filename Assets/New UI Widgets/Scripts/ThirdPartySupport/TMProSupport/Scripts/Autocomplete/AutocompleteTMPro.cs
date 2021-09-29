@@ -2,7 +2,6 @@
 namespace UIWidgets.TMProSupport
 {
 	using TMPro;
-	using UIWidgets.Styles;
 	using UnityEngine;
 
 	/// <summary>
@@ -12,6 +11,7 @@ namespace UIWidgets.TMProSupport
 	/// TargetListView - if specified selected value will be added to this list.
 	/// DataSource - list of values.
 	/// </summary>
+	[System.Obsolete("Replaced with AutocompleteString.")]
 	public class AutocompleteTMPro : Autocomplete
 	{
 		/// <summary>

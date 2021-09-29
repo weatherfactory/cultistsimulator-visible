@@ -100,6 +100,9 @@ namespace UIWidgets
 				return true;
 			}
 
+			static readonly char[] NameSeparator = new char[] { '.' };
+			static readonly char[] ArrayTrimChars = new char[] { ']' };
+
 			/// <summary>
 			/// Initializes a new instance of the <see cref="UIWidgets.ConverterTMPro.FieldData"/> class.
 			/// </summary>
@@ -111,13 +114,13 @@ namespace UIWidgets
 				Object = obj;
 
 				Type = type;
-				var fields = path.Split('.');
+				var fields = path.Split(NameSeparator);
 				for (int i = 0; i < fields.Length; i++)
 				{
 					var field = fields[i];
 					if (field == "Array")
 					{
-						var index = int.Parse(fields[i + 1].Substring(5).TrimEnd(']'));
+						var index = int.Parse(fields[i + 1].Substring(5).TrimEnd(ArrayTrimChars));
 						if (Type.IsGenericType && (Type.GetGenericTypeDefinition() == typeof(System.Collections.Generic.List<>)))
 						{
 							var list = Object as IList;

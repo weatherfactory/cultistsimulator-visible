@@ -73,6 +73,15 @@
 		[Tooltip("Allow only nodes without nested nodes.")]
 		public bool ReceiveOnlyEmptyNode = true;
 
+		/// <summary>
+		/// Index of the last inserted item.
+		/// </summary>
+		public int LastInsertedIndex
+		{
+			get;
+			protected set;
+		}
+
 		#region IDropSupport<TItem>
 
 		/// <summary>
@@ -227,6 +236,8 @@
 			{
 				index = ListView.DataSource.Count;
 			}
+
+			LastInsertedIndex = index;
 
 			if (index == -1)
 			{

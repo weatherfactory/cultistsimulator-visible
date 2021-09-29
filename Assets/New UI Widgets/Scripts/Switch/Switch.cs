@@ -491,6 +491,35 @@
 			CallChanged();
 		}
 
+		/// <summary>
+		/// Process the dimensions changed event.
+		/// </summary>
+		protected override void OnRectTransformDimensionsChange()
+		{
+			base.OnRectTransformDimensionsChange();
+
+			if (!IsActive())
+			{
+				return;
+			}
+
+			SetMarkPosition(false);
+			SetBackgroundColor();
+			SetMarkColor();
+		}
+
+		/// <summary>
+		/// Process the enable event.
+		/// </summary>
+		protected override void OnEnable()
+		{
+			base.OnEnable();
+
+			SetMarkPosition(false);
+			SetBackgroundColor();
+			SetMarkColor();
+		}
+
 		#if UNITY_EDITOR
 		/// <summary>
 		/// Handle validate event.

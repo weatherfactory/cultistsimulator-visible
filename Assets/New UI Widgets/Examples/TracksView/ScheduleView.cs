@@ -2,7 +2,6 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Collections.ObjectModel;
 	using UnityEngine;
 	using UnityEngine.Serialization;
 
@@ -70,7 +69,7 @@
 			{
 				weekendHighlightsDefaultItem = value;
 				weekendHighlightsDefaultItem.pivot = new Vector2(0f, 1f);
-				weekendHighlights.DefaultItem = value;
+				weekendHighlights.Template = value;
 				UpdateDateHighlights();
 			}
 		}
@@ -282,7 +281,7 @@
 		/// <returns>String representation of value at specified distance.</returns>
 		protected override string Value2Text(int distance)
 		{
-			return ChangeValue(distance).ToString(DateFormat);
+			return ChangeValue(distance).ToString(DateFormat, UtilitiesCompare.Culture);
 		}
 
 		/// <summary>
@@ -367,7 +366,7 @@
 		/// <param name="order">Order.</param>
 		/// <param name="target">Target.</param>
 		/// <param name="output">List of the possible intersections,</param>
-		protected override void GetPossibleIntersections(IList<TrackData> items, int order, TrackData target, List<TrackData> output)
+		protected override void GetPossibleIntersections(ObservableList<TrackData> items, int order, TrackData target, List<TrackData> output)
 		{
 			if (GroupByName)
 			{
@@ -389,8 +388,10 @@
 		/// <summary>
 		/// Validate data.
 		/// </summary>
-		protected virtual void OnValidate()
+		protected override void OnValidate()
 		{
+			base.OnValidate();
+
 			if (MinHours < 1)
 			{
 				MinHours = 1;

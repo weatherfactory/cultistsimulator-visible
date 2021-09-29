@@ -22,6 +22,7 @@
 		/// <summary>
 		/// Start this instance.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void Start()
 		{
 			ListView.MultipleSelect = false;
@@ -33,6 +34,7 @@
 		/// <summary>
 		/// Process destroy event.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void OnDestroy()
 		{
 			Paginator.OnPageSelect.RemoveListener(ListView.Select);

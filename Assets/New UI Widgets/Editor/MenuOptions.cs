@@ -10,6 +10,7 @@ namespace UIWidgets
 	/// </summary>
 	public static class MenuOptions
 	{
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		static void Create(GameObject prefab)
 		{
 			UtilitiesEditor.CreateWidgetFromPrefab(prefab, true, ConverterTMPro.Widget2TMPro);
@@ -51,6 +52,24 @@ namespace UIWidgets
 		public static void CreateCombobox()
 		{
 			Create(PrefabsMenu.Instance.Combobox);
+		}
+
+		/// <summary>
+		/// Create ComboboxEnum.
+		/// </summary>
+		[MenuItem("GameObject/UI/New UI Widgets/Collections/ComboboxEnum", false, 1007)]
+		public static void CreateComboboxEnum()
+		{
+			Create(PrefabsMenu.Instance.ComboboxEnum);
+		}
+
+		/// <summary>
+		/// Create ComboboxEnumMultiselect.
+		/// </summary>
+		[MenuItem("GameObject/UI/New UI Widgets/Collections/ComboboxEnumMultiselect", false, 1008)]
+		public static void CreateComboboxEnumMultiselect()
+		{
+			Create(PrefabsMenu.Instance.ComboboxEnumMultiselect);
 		}
 
 		/// <summary>
@@ -114,6 +133,15 @@ namespace UIWidgets
 		public static void CreateListViewColors()
 		{
 			Create(PrefabsMenu.Instance.ListViewColors);
+		}
+
+		/// <summary>
+		/// Create ListViewEnum.
+		/// </summary>
+		[MenuItem("GameObject/UI/New UI Widgets/Collections/ListViewEnum", false, 1057)]
+		public static void CreateListViewEnum()
+		{
+			Create(PrefabsMenu.Instance.ListViewEnum);
 		}
 
 		/// <summary>

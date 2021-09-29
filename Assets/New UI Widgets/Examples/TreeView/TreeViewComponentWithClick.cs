@@ -15,7 +15,7 @@
 		public void ProcessClick()
 		{
 			// do something with Node or Item
-			Debug.Log(Node.Item.Name + " clicked");
+			Debug.Log(string.Format("{0} clicked", Node.Item.Name));
 		}
 	}
 }

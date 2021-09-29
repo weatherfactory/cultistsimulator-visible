@@ -14,15 +14,28 @@
 		/// <summary>
 		/// Start this instance.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected void Start()
 		{
 			listView = GetComponent<ListViewBase>();
 			listView.MultipleSelect = true;
-			listView.OnSelect.AddListener(SelectListener);
+			listView.OnSelect.AddListener(Select);
 			DeselectAllExceptLast();
 		}
 
-		void SelectListener(int index, ListViewItem component)
+		/// <summary>
+		/// Destroy this instance.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		protected void OnDestroy()
+		{
+			if (listView != null)
+			{
+				listView.OnSelect.RemoveListener(Select);
+			}
+		}
+
+		void Select(int index, ListViewItem component)
 		{
 			DeselectAllExceptLast();
 		}
@@ -33,17 +46,6 @@
 			for (int i = 0; i < (indices.Count - 1); i++)
 			{
 				listView.Deselect(indices[i]);
-			}
-		}
-
-		/// <summary>
-		/// Destroy this instance.
-		/// </summary>
-		protected void OnDestroy()
-		{
-			if (listView != null)
-			{
-				listView.OnSelect.RemoveListener(SelectListener);
 			}
 		}
 	}

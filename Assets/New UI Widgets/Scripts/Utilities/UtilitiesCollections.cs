@@ -10,6 +10,62 @@
 	public static class UtilitiesCollections
 	{
 		/// <summary>
+		/// Convert list to string.
+		/// </summary>
+		/// <typeparam name="T">Value type.</typeparam>
+		/// <param name="values">Values.</param>
+		/// <param name="separator">Values separator.</param>
+		/// <returns>String.</returns>
+		public static string List2String<T>(List<T> values, string separator = "; ")
+		{
+			var sb = new System.Text.StringBuilder();
+
+			for (int i = 0; i < values.Count; i++)
+			{
+				var v = values[i];
+				if (i == 0)
+				{
+					sb.Append(v.ToString());
+				}
+				else
+				{
+					sb.Append(separator);
+					sb.Append(v.ToString());
+				}
+			}
+
+			return sb.ToString();
+		}
+
+		/// <summary>
+		/// Convert list to string.
+		/// </summary>
+		/// <typeparam name="T">Value type.</typeparam>
+		/// <param name="values">Values.</param>
+		/// <param name="separator">Values separator.</param>
+		/// <returns>String.</returns>
+		public static string List2String<T>(T[] values, string separator = "; ")
+		{
+			var sb = new System.Text.StringBuilder();
+
+			for (int i = 0; i < values.Length; i++)
+			{
+				var v = values[i];
+				if (i == 0)
+				{
+					sb.Append(v.ToString());
+				}
+				else
+				{
+					sb.Append(separator);
+					sb.Append(v.ToString());
+				}
+			}
+
+			return sb.ToString();
+		}
+
+		/// <summary>
 		/// Create list.
 		/// </summary>
 		/// <typeparam name="T">Type of the item.</typeparam>
@@ -78,6 +134,7 @@
 		/// <param name="arr">Input array.</param>
 		/// <returns>true if input array not empty and all values are null; otherwise false.</returns>
 		public static bool AllNull<T>(T[] arr)
+			where T : class
 		{
 			if (arr.Length == 0)
 			{

@@ -390,7 +390,7 @@
 		{
 			float delta;
 
-			var animation_length = Movement.keys[Movement.keys.Length - 1].time;
+			var animation_length = Movement[Movement.length - 1].time;
 			var start_time = UtilitiesTime.GetTime(unscaledTime);
 			do
 			{

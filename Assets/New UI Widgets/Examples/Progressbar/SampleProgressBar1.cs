@@ -21,6 +21,7 @@
 		/// <summary>
 		/// Adds listener.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Start()
 		{
 			button = GetComponent<Button>();
@@ -48,6 +49,7 @@
 		/// <summary>
 		/// Remove listener.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			if (button != null)

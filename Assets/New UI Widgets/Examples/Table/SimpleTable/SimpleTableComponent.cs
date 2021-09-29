@@ -61,9 +61,9 @@
 			{
 				Foreground = new Graphic[]
 				{
-					Utilities.GetGraphic(Field1Adapter),
-					Utilities.GetGraphic(Field2Adapter),
-					Utilities.GetGraphic(Field3Adapter),
+					UtilitiesUI.GetGraphic(Field1Adapter),
+					UtilitiesUI.GetGraphic(Field2Adapter),
+					UtilitiesUI.GetGraphic(Field3Adapter),
 				};
 				GraphicsForegroundVersion = 1;
 			}

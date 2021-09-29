@@ -1,6 +1,7 @@
 ﻿namespace UIWidgets
 {
 	using System;
+	using System.Collections.Generic;
 	using UnityEngine;
 	using UnityEngine.Events;
 	using UnityEngine.EventSystems;
@@ -14,7 +15,7 @@
 	public abstract class TrackDataCustomDragSupport<TData, TPoint, TDataView> : DragSupport<TData>
 		where TDataView : TrackDataViewBase<TData, TPoint>
 		where TData : class, ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 	{
 		/// <summary>
 		/// Track.
@@ -46,8 +47,12 @@
 		protected Track<TData, TPoint> CurrentTargetTrack;
 
 		/// <summary>
-		/// Start this instance.
+		/// Distance from left border of the item to pointer press position.
+		/// Needed to correctly determine StartPoint.
 		/// </summary>
+		protected float DragPositionPadding;
+
+		/// <inheritdoc/>
 		protected override void Start()
 		{
 			base.Start();
@@ -66,16 +71,7 @@
 			}
 		}
 
-		/// <summary>
-		/// Distance from left border of the item to pointer press position.
-		/// Needed to correctly determine StartPoint.
-		/// </summary>
-		protected float DragPositionPadding;
-
-		/// <summary>
-		/// Process OnInitializePotentialDrag event.
-		/// </summary>
-		/// <param name="eventData">Current event data.</param>
+		/// <inheritdoc/>
 		protected override void OnInitializePotentialDrag(PointerEventData eventData)
 		{
 			base.OnInitializePotentialDrag(eventData);
@@ -83,13 +79,10 @@
 			CurrentTargetTrack = Track;
 		}
 
-		/// <summary>
-		/// Find current target.
-		/// </summary>
-		/// <param name="eventData">Event data.</param>
-		protected override void FindCurrentTarget(PointerEventData eventData)
+		/// <inheritdoc/>
+		protected override void FindCurrentTarget(PointerEventData eventData, List<RaycastResult> raycasts)
 		{
-			base.FindCurrentTarget(eventData);
+			base.FindCurrentTarget(eventData, RaycastResults);
 
 			var target = CurrentTarget as TrackBackgroundBase<TData, TPoint>;
 
@@ -100,10 +93,7 @@
 			}
 		}
 
-		/// <summary>
-		/// Set Data, which will be passed to Drop component.
-		/// </summary>
-		/// <param name="eventData">Current event data.</param>
+		/// <inheritdoc/>
 		protected override void InitDrag(PointerEventData eventData)
 		{
 			Vector2 point;
@@ -123,12 +113,7 @@
 			ShowDragInfo();
 		}
 
-		/// <summary>
-		/// Check if target can receive drop.
-		/// </summary>
-		/// <param name="target">Target.</param>
-		/// <param name="eventData">Event data.</param>
-		/// <returns>true if target can receive drop; otherwise false.</returns>
+		/// <inheritdoc/>
 		protected override bool CheckTarget(IDropSupport<TData> target, PointerEventData eventData)
 		{
 			var track_bg = CurrentTarget as TrackBackgroundBase<TData, TPoint>;
@@ -140,10 +125,7 @@
 			return base.CheckTarget(target, eventData);
 		}
 
-		/// <summary>
-		/// Process OnDrag event.
-		/// </summary>
-		/// <param name="eventData">Current event data.</param>
+		/// <inheritdoc/>
 		protected override void OnDrag(PointerEventData eventData)
 		{
 			if ((Owner != null) && (CurrentTarget != null))
@@ -177,10 +159,7 @@
 			base.OnDrag(eventData);
 		}
 
-		/// <summary>
-		/// Process OnEndDrag event.
-		/// </summary>
-		/// <param name="eventData">Current event data.</param>
+		/// <inheritdoc/>
 		protected override void OnEndDrag(PointerEventData eventData)
 		{
 			if (Owner != null)
@@ -223,10 +202,7 @@
 			DragInfo.gameObject.SetActive(false);
 		}
 
-		/// <summary>
-		/// Called when drop completed.
-		/// </summary>
-		/// <param name="success"><c>true</c> if Drop component received data; otherwise, <c>false</c>.</param>
+		/// <inheritdoc/>
 		public override void Dropped(bool success)
 		{
 			Data.IsDragged = false;
@@ -236,9 +212,7 @@
 			base.Dropped(success);
 		}
 
-		/// <summary>
-		/// Process OnDisable event.
-		/// </summary>
+		/// <inheritdoc/>
 		protected override void OnDisable()
 		{
 			if (IsDragged)

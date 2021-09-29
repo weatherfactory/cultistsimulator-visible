@@ -1,6 +1,7 @@
 ﻿namespace EasyLayoutNS
 {
 	using System.Collections.Generic;
+	using EasyLayoutNS.Extensions;
 	using UnityEngine;
 
 	/// <summary>
@@ -9,9 +10,91 @@
 	public abstract class EasyLayoutBaseType
 	{
 		/// <summary>
-		/// Layout.
+		/// Element changed delegate.
 		/// </summary>
-		protected EasyLayout Layout;
+		/// <param name="element">Element.</param>
+		/// <param name="properties">Properties.</param>
+		public delegate void ElementChanged(RectTransform element, DrivenTransformProperties properties);
+
+		/// <summary>
+		/// Element changed event.
+		/// </summary>
+		public event ElementChanged OnElementChanged;
+
+		/// <summary>
+		/// Target.
+		/// </summary>
+		protected RectTransform Target;
+
+		/// <summary>
+		/// Is horizontal layout?
+		/// </summary>
+		protected bool IsHorizontal;
+
+		/// <summary>
+		/// Available size.
+		/// </summary>
+		protected Vector2 InternalSize;
+
+		/// <summary>
+		/// Spacing.
+		/// </summary>
+		protected Vector2 Spacing;
+
+		/// <summary>
+		/// Constraint count.
+		/// </summary>
+		protected int ConstraintCount;
+
+		/// <summary>
+		/// Main axis size.
+		/// </summary>
+		protected float MainAxisSize;
+
+		/// <summary>
+		/// Sub axis size.
+		/// </summary>
+		protected float SubAxisSize;
+
+		/// <summary>
+		/// Children width resize setting.
+		/// </summary>
+		protected ChildrenSize ChildrenWidth;
+
+		/// <summary>
+		/// Children height resize setting.
+		/// </summary>
+		protected ChildrenSize ChildrenHeight;
+
+		/// <summary>
+		/// Inner padding.
+		/// </summary>
+		protected Padding PaddingInner;
+
+		/// <summary>
+		/// Place element from top to bottom.
+		/// </summary>
+		protected bool TopToBottom;
+
+		/// <summary>
+		/// Place element from right to left.
+		/// </summary>
+		protected bool RightToLeft;
+
+		/// <summary>
+		/// Left margin.
+		/// </summary>
+		protected float MarginLeft;
+
+		/// <summary>
+		/// Top margin.
+		/// </summary>
+		protected float MarginTop;
+
+		/// <summary>
+		/// Reset elements rotation.
+		/// </summary>
+		protected bool ResetElementsRotation;
 
 		/// <summary>
 		/// Elements group.
@@ -37,12 +120,33 @@
 		};
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="EasyLayoutBaseType"/> class.
+		/// Load layout settings.
 		/// </summary>
 		/// <param name="layout">Layout.</param>
-		protected EasyLayoutBaseType(EasyLayout layout)
+		public virtual void LoadSettings(EasyLayout layout)
 		{
-			Layout = layout;
+			Target = layout.transform as RectTransform;
+
+			IsHorizontal = layout.IsHorizontal;
+
+			Spacing = layout.Spacing;
+			InternalSize = layout.InternalSize;
+			MainAxisSize = layout.MainAxisSize;
+			SubAxisSize = layout.SubAxisSize;
+
+			PaddingInner = layout.PaddingInner;
+
+			ConstraintCount = layout.ConstraintCount;
+			ChildrenWidth = layout.ChildrenWidth;
+			ChildrenHeight = layout.ChildrenHeight;
+
+			TopToBottom = layout.TopToBottom;
+			RightToLeft = layout.RightToLeft;
+
+			MarginLeft = layout.GetMarginLeft();
+			MarginTop = layout.GetMarginTop();
+
+			ResetElementsRotation = layout.ResetRotation;
 		}
 
 		/// <summary>
@@ -50,8 +154,9 @@
 		/// </summary>
 		/// <param name="elements">Elements.</param>
 		/// <param name="setPositions">Set elements positions.</param>
+		/// <param name="resizeType">Resize type.</param>
 		/// <returns>Size of the group.</returns>
-		public Vector2 PerformLayout(List<LayoutElementInfo> elements, bool setPositions)
+		public GroupSize PerformLayout(List<LayoutElementInfo> elements, bool setPositions, ResizeType resizeType)
 		{
 			ElementsGroup.SetElements(elements);
 
@@ -61,8 +166,8 @@
 
 			CalculateSizes();
 			var size = CalculateGroupSize();
-			CalculatePositions(size);
-			SetSizes();
+			CalculatePositions(new Vector2(size.Width, size.Height));
+			SetElementsProperties(resizeType);
 
 			if (setPositions)
 			{
@@ -102,9 +207,9 @@
 		/// Calculate group size.
 		/// </summary>
 		/// <returns>Size.</returns>
-		protected abstract Vector2 CalculateGroupSize();
+		protected abstract GroupSize CalculateGroupSize();
 
-		readonly List<float> mainAxisSizes = new List<float>();
+		readonly List<GroupSize> mainAxisSize = new List<GroupSize>();
 
 		/// <summary>
 		/// Calculate size of the group.
@@ -113,42 +218,103 @@
 		/// <param name="spacing">Spacing.</param>
 		/// <param name="padding">Padding,</param>
 		/// <returns>Size.</returns>
-		protected virtual Vector2 CalculateGroupSize(bool isHorizontal, Vector2 spacing, Vector2 padding)
+		protected virtual GroupSize CalculateGroupSize(bool isHorizontal, Vector2 spacing, Vector2 padding)
 		{
 			var per_block = isHorizontal ? ElementsGroup.Rows : ElementsGroup.Columns;
-			var sub_axis_size = ((per_block - 1) * spacing.y) + padding.y;
+
+			var sub_size = ((per_block - 1) * spacing.y) + padding.y;
+			var sub_axis_size = isHorizontal ? new GroupSize(0, sub_size) : new GroupSize(sub_size, 0);
 			for (int i = 0; i < per_block; i++)
 			{
 				var block = isHorizontal ? ElementsGroup.GetRow(i) : ElementsGroup.GetColumn(i);
-				var block_sub_size = 0f;
+				var block_sub_size = default(GroupSize);
 				for (var j = 0; j < block.Count; j++)
 				{
-					if (mainAxisSizes.Count == j)
+					if (mainAxisSize.Count == j)
 					{
-						mainAxisSizes.Add(0);
+						mainAxisSize.Add(default(GroupSize));
 					}
 
-					mainAxisSizes[j] = Mathf.Max(mainAxisSizes[j], isHorizontal ? block[j].Width : block[j].Height);
-					block_sub_size = Mathf.Max(block_sub_size, isHorizontal ? block[j].Height : block[j].Width);
+					mainAxisSize[j] = mainAxisSize[j].Max(block[j]);
+
+					block_sub_size.Max(block[j]);
 				}
 
 				sub_axis_size += block_sub_size;
 			}
 
-			var main_axis_size = Sum(mainAxisSizes) + ((mainAxisSizes.Count - 1) * spacing.x) + padding.x;
-			mainAxisSizes.Clear();
+			var main_size = ((mainAxisSize.Count - 1) * spacing.x) + padding.x;
+			var main_axis_size = isHorizontal ? new GroupSize(main_size, 0) : new GroupSize(0, main_size);
+			main_axis_size += Sum(mainAxisSize);
 
-			return new Vector2(main_axis_size, sub_axis_size);
+			mainAxisSize.Clear();
+
+			return isHorizontal
+				? new GroupSize(main_axis_size, sub_axis_size)
+				: new GroupSize(sub_axis_size, main_axis_size);
 		}
 
 		/// <summary>
-		/// Set elements sizes.
+		/// Set elements properties.
 		/// </summary>
-		protected void SetSizes()
+		/// <param name="resizeType">Resize type.</param>
+		protected void SetElementsProperties(ResizeType resizeType)
 		{
 			foreach (var element in ElementsGroup.Elements)
 			{
-				Layout.SetElementSize(element);
+				SetElementProperties(element, resizeType);
+			}
+		}
+
+		/// <summary>
+		/// Set element properties.
+		/// </summary>
+		/// <param name="element">Element.</param>
+		/// <param name="resizeType">Resize type.</param>
+		protected virtual void SetElementProperties(LayoutElementInfo element, ResizeType resizeType)
+		{
+			var driven_properties = DrivenTransformProperties.AnchoredPosition | DrivenTransformProperties.AnchoredPositionZ;
+
+			if (ChildrenWidth != ChildrenSize.DoNothing)
+			{
+				driven_properties |= DrivenTransformProperties.SizeDeltaX;
+
+				if (resizeType.IsSet(ResizeType.Horizontal))
+				{
+					element.Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, element.NewWidth);
+				}
+			}
+
+			if (ChildrenHeight != ChildrenSize.DoNothing)
+			{
+				driven_properties |= DrivenTransformProperties.SizeDeltaY;
+
+				if (resizeType.IsSet(ResizeType.Vertical))
+				{
+					element.Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, element.NewHeight);
+				}
+			}
+
+			if (ResetElementsRotation)
+			{
+				driven_properties |= DrivenTransformProperties.Rotation;
+				element.Rect.localEulerAngles = element.NewEulerAngles;
+			}
+
+			OnElementChangedInvoke(element.Rect, driven_properties);
+		}
+
+		/// <summary>
+		/// Invoke OnElementChanged event.
+		/// </summary>
+		/// <param name="element">Element.</param>
+		/// <param name="properties">Properties.</param>
+		protected void OnElementChangedInvoke(RectTransform element, DrivenTransformProperties properties)
+		{
+			var handlers = OnElementChanged;
+			if (handlers != null)
+			{
+				handlers(element, properties);
 			}
 		}
 
@@ -171,12 +337,28 @@
 		/// </summary>
 		/// <param name="list">List.</param>
 		/// <returns>Sum.</returns>
+		protected static GroupSize Sum(List<GroupSize> list)
+		{
+			var result = default(GroupSize);
+			foreach (var item in list)
+			{
+				result += item;
+			}
+
+			return result;
+		}
+
+		/// <summary>
+		/// Sum values of the list.
+		/// </summary>
+		/// <param name="list">List.</param>
+		/// <returns>Sum.</returns>
 		protected static float Sum(List<float> list)
 		{
 			var result = 0f;
-			for (int i = 0; i < list.Count; i++)
+			foreach (var item in list)
 			{
-				result += list[i];
+				result += item;
 			}
 
 			return result;
@@ -278,13 +460,13 @@
 		/// </summary>
 		protected void GroupByColumns()
 		{
-			if (Layout.IsHorizontal)
+			if (IsHorizontal)
 			{
-				GroupByColumnsHorizontal(Layout.ConstraintCount);
+				GroupByColumnsHorizontal(ConstraintCount);
 			}
 			else
 			{
-				GroupByColumnsVertical(Layout.ConstraintCount);
+				GroupByColumnsVertical(ConstraintCount);
 			}
 		}
 
@@ -293,13 +475,13 @@
 		/// </summary>
 		protected void GroupByRows()
 		{
-			if (Layout.IsHorizontal)
+			if (IsHorizontal)
 			{
-				GroupByRowsHorizontal(Layout.ConstraintCount);
+				GroupByRowsHorizontal(ConstraintCount);
 			}
 			else
 			{
-				GroupByRowsVertical(Layout.ConstraintCount);
+				GroupByRowsVertical(ConstraintCount);
 			}
 		}
 		#endregion
@@ -311,7 +493,7 @@
 		/// </summary>
 		protected virtual void SetInitialSizes()
 		{
-			if (Layout.ChildrenWidth == ChildrenSize.DoNothing && Layout.ChildrenHeight == ChildrenSize.DoNothing)
+			if (ChildrenWidth == ChildrenSize.DoNothing && ChildrenHeight == ChildrenSize.DoNothing)
 			{
 				return;
 			}
@@ -339,12 +521,12 @@
 				max_size.y = Mathf.Max(max_size.y, element.PreferredHeight);
 			}
 
-			if (Layout.ChildrenWidth != ChildrenSize.SetMaxFromPreferred)
+			if (ChildrenWidth != ChildrenSize.SetMaxFromPreferred)
 			{
 				max_size.x = -1f;
 			}
 
-			if (Layout.ChildrenHeight != ChildrenSize.SetMaxFromPreferred)
+			if (ChildrenHeight != ChildrenSize.SetMaxFromPreferred)
 			{
 				max_size.y = -1f;
 			}
@@ -354,12 +536,12 @@
 
 		void SetInitialSize(LayoutElementInfo element, Vector2 max_size)
 		{
-			if (Layout.ChildrenWidth != ChildrenSize.DoNothing)
+			if (ChildrenWidth != ChildrenSize.DoNothing)
 			{
 				element.NewWidth = (max_size.x != -1f) ? max_size.x : element.PreferredWidth;
 			}
 
-			if (Layout.ChildrenHeight != ChildrenSize.DoNothing)
+			if (ChildrenHeight != ChildrenSize.DoNothing)
 			{
 				element.NewHeight = (max_size.y != -1f) ? max_size.y : element.PreferredHeight;
 			}
@@ -371,10 +553,10 @@
 		/// <param name="increaseOnly">Size can be only increased.</param>
 		protected void ResizeWidthToFit(bool increaseOnly)
 		{
-			var width = Layout.InternalSize.x;
+			var width = InternalSize.x;
 			for (int row = 0; row < ElementsGroup.Rows; row++)
 			{
-				ResizeToFit(width, ElementsGroup.GetRow(row), Layout.Spacing.x, RectTransform.Axis.Horizontal, increaseOnly);
+				ResizeToFit(width, ElementsGroup.GetRow(row), Spacing.x, RectTransform.Axis.Horizontal, increaseOnly);
 			}
 		}
 
@@ -418,10 +600,10 @@
 		/// </summary>
 		protected void ShrinkWidthToFit()
 		{
-			var width = Layout.InternalSize.x;
+			var width = InternalSize.x;
 			for (int row = 0; row < ElementsGroup.Rows; row++)
 			{
-				ShrinkToFit(width, ElementsGroup.GetRow(row), Layout.Spacing.x, RectTransform.Axis.Horizontal);
+				ShrinkToFit(width, ElementsGroup.GetRow(row), Spacing.x, RectTransform.Axis.Horizontal);
 			}
 		}
 
@@ -431,7 +613,7 @@
 		/// <param name="increaseOnly">Size can be only increased.</param>
 		protected void ResizeRowHeightToFit(bool increaseOnly)
 		{
-			ResizeToFit(Layout.InternalSize.y, ElementsGroup, Layout.Spacing.y, RectTransform.Axis.Vertical, increaseOnly);
+			ResizeToFit(InternalSize.y, ElementsGroup, Spacing.y, RectTransform.Axis.Vertical, increaseOnly);
 		}
 
 		/// <summary>
@@ -439,7 +621,7 @@
 		/// </summary>
 		protected void ShrinkRowHeightToFit()
 		{
-			ShrinkToFit(Layout.InternalSize.y, ElementsGroup, Layout.Spacing.y, RectTransform.Axis.Vertical);
+			ShrinkToFit(InternalSize.y, ElementsGroup, Spacing.y, RectTransform.Axis.Vertical);
 		}
 
 		/// <summary>

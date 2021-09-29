@@ -2,17 +2,15 @@
 {
 	using System.Collections.Generic;
 	using UIWidgets;
-	using UIWidgets.Extensions;
 
 	/// <summary>
 	/// Harbor order.
 	/// </summary>
 	public class HarborOrder : IOrder
 	{
-		/// <summary>
-		/// The order lines.
-		/// </summary>
-		readonly List<HarborOrderLine> OrderLines = new List<HarborOrderLine>();
+		readonly List<IOrderLine> BaseOrderLines = new List<IOrderLine>();
+
+		readonly int total;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UIWidgets.Examples.Shops.HarborOrder"/> class.
@@ -20,14 +18,15 @@
 		/// <param name="orderLines">Order lines.</param>
 		public HarborOrder(ObservableList<HarborOrderLine> orderLines)
 		{
-			OrderLines.Clear();
-
-			foreach (var ol in orderLines)
+			foreach (var line in orderLines)
 			{
-				if (ol.Count != 0)
+				if (line.Quantity == 0)
 				{
-					OrderLines.Add(ol);
+					continue;
 				}
+
+				total += line.Quantity * ((line.Quantity > 0) ? line.BuyPrice : line.SellPrice);
+				BaseOrderLines.Add(line);
 			}
 		}
 
@@ -37,7 +36,7 @@
 		/// <returns>The order lines.</returns>
 		public List<IOrderLine> GetOrderLines()
 		{
-			return OrderLines.Convert(x => x as IOrderLine);
+			return BaseOrderLines;
 		}
 
 		/// <summary>
@@ -46,7 +45,7 @@
 		/// <returns>The lines count.</returns>
 		public int OrderLinesCount()
 		{
-			return OrderLines.Count;
+			return BaseOrderLines.Count;
 		}
 
 		/// <summary>
@@ -55,13 +54,6 @@
 		/// <returns>Total sum.</returns>
 		public int Total()
 		{
-			var total = 0;
-
-			foreach (var ol in OrderLines)
-			{
-				total += ol.Count * ((ol.Count > 0) ? ol.BuyPrice : ol.SellPrice);
-			}
-
 			return total;
 		}
 	}

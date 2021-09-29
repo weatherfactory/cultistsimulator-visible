@@ -1,5 +1,6 @@
 ﻿namespace UIWidgets
 {
+	using System;
 	using UIWidgets.Menu;
 	using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
@@ -19,7 +20,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Mouse.current.position.ReadValue();
+				return MousePresent ? Mouse.current.position.ReadValue() : Vector2.zero;
 #else
 				return Input.mousePosition;
 #endif
@@ -49,7 +50,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Mouse.current.leftButton.isPressed;
+				return MousePresent && Mouse.current.leftButton.isPressed;
 #else
 				return Input.GetMouseButton(0);
 #endif
@@ -64,7 +65,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Mouse.current.rightButton.isPressed;
+				return MousePresent && Mouse.current.rightButton.isPressed;
 #else
 				return Input.GetMouseButton(1);
 #endif
@@ -79,7 +80,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Mouse.current.middleButton.isPressed;
+				return MousePresent && Mouse.current.middleButton.isPressed;
 #else
 				return Input.GetMouseButton(2);
 #endif
@@ -159,6 +160,21 @@
 		}
 
 		/// <summary>
+		/// Is keyboard present?
+		/// </summary>
+		public static bool KeyboardPresent
+		{
+			get
+			{
+#if ENABLE_INPUT_SYSTEM
+				return Keyboard.current != null;
+#else
+				return true;
+#endif
+			}
+		}
+
+		/// <summary>
 		/// Is left arrow down?
 		/// </summary>
 		public static bool IsLeftArrowDown
@@ -166,7 +182,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.leftArrowKey.wasPressedThisFrame;
+				return KeyboardPresent && Keyboard.current.leftArrowKey.wasPressedThisFrame;
 #else
 				return Input.GetKeyDown(KeyCode.LeftArrow);
 #endif
@@ -181,7 +197,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.rightArrowKey.wasPressedThisFrame;
+				return KeyboardPresent && Keyboard.current.rightArrowKey.wasPressedThisFrame;
 #else
 				return Input.GetKeyDown(KeyCode.RightArrow);
 #endif
@@ -196,7 +212,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.upArrowKey.wasPressedThisFrame;
+				return KeyboardPresent && Keyboard.current.upArrowKey.wasPressedThisFrame;
 #else
 				return Input.GetKeyDown(KeyCode.UpArrow);
 #endif
@@ -211,7 +227,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.downArrowKey.wasPressedThisFrame;
+				return KeyboardPresent && Keyboard.current.downArrowKey.wasPressedThisFrame;
 #else
 				return Input.GetKeyDown(KeyCode.DownArrow);
 #endif
@@ -226,7 +242,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.tabKey.wasPressedThisFrame;
+				return KeyboardPresent && Keyboard.current.tabKey.wasPressedThisFrame;
 #else
 				return Input.GetKeyDown(KeyCode.Tab);
 #endif
@@ -241,7 +257,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame;
+				return KeyboardPresent && (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame);
 #else
 				return Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter);
 #endif
@@ -256,7 +272,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.enterKey.isPressed || Keyboard.current.numpadEnterKey.isPressed;
+				return KeyboardPresent && (Keyboard.current.enterKey.isPressed || Keyboard.current.numpadEnterKey.isPressed);
 #else
 				return Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter);
 #endif
@@ -271,7 +287,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.shiftKey.isPressed;
+				return KeyboardPresent && Keyboard.current.shiftKey.isPressed;
 #else
 				return Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 #endif
@@ -313,7 +329,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.contextMenuKey.isPressed;
+				return KeyboardPresent && Keyboard.current.contextMenuKey.isPressed;
 #else
 				return Input.GetKey(KeyCode.Menu);
 #endif
@@ -328,7 +344,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.contextMenuKey.wasReleasedThisFrame;
+				return KeyboardPresent && Keyboard.current.contextMenuKey.wasReleasedThisFrame;
 #else
 				return Input.GetKeyUp(KeyCode.Menu);
 #endif
@@ -343,7 +359,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.ctrlKey.isPressed;
+				return KeyboardPresent && Keyboard.current.ctrlKey.isPressed;
 #else
 				return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 #endif
@@ -358,7 +374,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.shiftKey.isPressed;
+				return KeyboardPresent && Keyboard.current.shiftKey.isPressed;
 #else
 				return Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 #endif
@@ -373,7 +389,7 @@
 			get
 			{
 #if ENABLE_INPUT_SYSTEM
-				return Keyboard.current.altKey.isPressed;
+				return KeyboardPresent && Keyboard.current.altKey.isPressed;
 #else
 				return Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt);
 #endif
@@ -384,7 +400,7 @@
 		/// <summary>
 		/// Keys group for InputSystem.
 		/// </summary>
-		public struct InputSystemKeysGroup
+		public struct InputSystemKeysGroup : IEquatable<InputSystemKeysGroup>
 		{
 			/// <summary>
 			/// Keys.
@@ -407,6 +423,11 @@
 			{
 				get
 				{
+					if (!KeyboardPresent)
+					{
+						return false;
+					}
+
 					for (int i = 0; i < Keys.Length; i++)
 					{
 						var key = Keys[i];
@@ -418,6 +439,62 @@
 
 					return false;
 				}
+			}
+
+			/// <summary>
+			/// Determines whether the specified object is equal to the current object.
+			/// </summary>
+			/// <param name="obj">The object to compare with the current object.</param>
+			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+			public override bool Equals(object obj)
+			{
+				if (obj is InputSystemKeysGroup)
+				{
+					return Equals((InputSystemKeysGroup)obj);
+				}
+
+				return false;
+			}
+
+			/// <summary>
+			/// Determines whether the specified object is equal to the current object.
+			/// </summary>
+			/// <param name="other">The object to compare with the current object.</param>
+			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+			public bool Equals(InputSystemKeysGroup other)
+			{
+				return Keys == other.Keys;
+			}
+
+			/// <summary>
+			/// Hash function.
+			/// </summary>
+			/// <returns>A hash code for the current object.</returns>
+			public override int GetHashCode()
+			{
+				return Keys.GetHashCode();
+			}
+
+			/// <summary>
+			/// Compare specified instances.
+			/// </summary>
+			/// <param name="a">First instance.</param>
+			/// <param name="b">Second instance.</param>
+			/// <returns>true if the instances are equal; otherwise, false.</returns>
+			public static bool operator ==(InputSystemKeysGroup a, InputSystemKeysGroup b)
+			{
+				return a.Equals(b);
+			}
+
+			/// <summary>
+			/// Compare specified instances.
+			/// </summary>
+			/// <param name="a">First instance.</param>
+			/// <param name="b">Second instance.</param>
+			/// <returns>true if the instances not equal; otherwise, false.</returns>
+			public static bool operator !=(InputSystemKeysGroup a, InputSystemKeysGroup b)
+			{
+				return !a.Equals(b);
 			}
 		}
 
@@ -533,7 +610,7 @@
 		/// <summary>
 		/// Keys group for legacy input.
 		/// </summary>
-		public struct LegacyInputKeysGroup
+		public struct LegacyInputKeysGroup : IEquatable<LegacyInputKeysGroup>
 		{
 			/// <summary>
 			/// Keys.
@@ -567,6 +644,62 @@
 
 					return false;
 				}
+			}
+
+			/// <summary>
+			/// Determines whether the specified object is equal to the current object.
+			/// </summary>
+			/// <param name="obj">The object to compare with the current object.</param>
+			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+			public override bool Equals(object obj)
+			{
+				if (obj is LegacyInputKeysGroup)
+				{
+					return Equals((LegacyInputKeysGroup)obj);
+				}
+
+				return false;
+			}
+
+			/// <summary>
+			/// Determines whether the specified object is equal to the current object.
+			/// </summary>
+			/// <param name="obj">The object to compare with the current object.</param>
+			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
+			public bool Equals(LegacyInputKeysGroup other)
+			{
+				return Keys == other.Keys;
+			}
+
+			/// <summary>
+			/// Hash function.
+			/// </summary>
+			/// <returns>A hash code for the current object.</returns>
+			public override int GetHashCode()
+			{
+				return Keys.GetHashCode();
+			}
+
+			/// <summary>
+			/// Compare specified instances.
+			/// </summary>
+			/// <param name="color1">First instance.</param>
+			/// <param name="color2">Second instance.</param>
+			/// <returns>true if the instances are equal; otherwise, false.</returns>
+			public static bool operator ==(LegacyInputKeysGroup a, LegacyInputKeysGroup b)
+			{
+				return a.Equals(b);
+			}
+
+			/// <summary>
+			/// Compare specified instances.
+			/// </summary>
+			/// <param name="color1">First instance.</param>
+			/// <param name="color2">Second instance.</param>
+			/// <returns>true if the instances not equal; otherwise, false.</returns>
+			public static bool operator !=(LegacyInputKeysGroup a, LegacyInputKeysGroup b)
+			{
+				return !a.Equals(b);
 			}
 		}
 

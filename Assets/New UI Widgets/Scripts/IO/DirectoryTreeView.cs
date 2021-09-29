@@ -12,6 +12,11 @@
 	public class DirectoryTreeView : TreeViewCustom<DirectoryTreeViewComponent, FileSystemEntry>
 	{
 		/// <summary>
+		/// Path separators.
+		/// </summary>
+		protected static char[] PathSeparators = new char[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar };
+
+		/// <summary>
 		/// Root directory, if not specified drives will be used as root.
 		/// </summary>
 		[SerializeField]
@@ -62,7 +67,12 @@
 			if (Nodes != null)
 			{
 				Nodes.OnChange -= NodesChanged;
-				Nodes.ForEach(EnsureSubNodesLoaded);
+
+				foreach (var node in Nodes)
+				{
+					EnsureSubNodesLoaded(node);
+				}
+
 				Nodes.OnChange += NodesChanged;
 			}
 
@@ -75,20 +85,25 @@
 		/// <param name="node">Node.</param>
 		protected virtual void EnsureSubNodesLoaded(TreeNode<FileSystemEntry> node)
 		{
-			if (node.IsExpanded)
+			if (!node.IsExpanded)
 			{
-				var nodes = node.Nodes;
-				nodes.BeginUpdate();
-
-				// force update because node observation was disabled and if nothing found update will not be called
-				nodes.CollectionChanged();
-
-				LoadNodes(nodes);
-
-				nodes.ForEach(EnsureSubNodesLoaded);
-
-				nodes.EndUpdate();
+				return;
 			}
+
+			var nodes = node.Nodes;
+			nodes.BeginUpdate();
+
+			// force update because node observation was disabled and if nothing found update will not be called
+			nodes.CollectionChanged();
+
+			LoadNodes(nodes);
+
+			foreach (var n in nodes)
+			{
+				EnsureSubNodesLoaded(n);
+			}
+
+			nodes.EndUpdate();
 		}
 
 		/// <summary>
@@ -98,7 +113,7 @@
 		/// <returns>Normalized path.</returns>
 		public static string NormalizePath(string path)
 		{
-			return Path.GetFullPath(new Uri(path).LocalPath).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+			return Path.GetFullPath(new Uri(path).LocalPath).TrimEnd(PathSeparators);
 		}
 
 		/// <summary>
@@ -182,7 +197,7 @@
 				start = StartOfPath(path, start_index);
 				start_index = start.Length + 1;
 
-				var node = nodes.Find(x => x.Item.FullName == start);
+				var node = FindNodeByFullName(nodes, start);
 				if (node != null)
 				{
 					result = node;
@@ -192,6 +207,19 @@
 			}
 
 			return result;
+		}
+
+		TreeNode<FileSystemEntry> FindNodeByFullName(ObservableList<TreeNode<FileSystemEntry>> nodes, string name)
+		{
+			foreach (var node in nodes)
+			{
+				if (node.Item.FullName == name)
+				{
+					return node;
+				}
+			}
+
+			return null;
 		}
 
 		/// <summary>
@@ -413,7 +441,10 @@
 
 			try
 			{
-				nodes.ForEach(LoadNode);
+				foreach (var node in nodes)
+				{
+					LoadNode(node);
+				}
 			}
 			finally
 			{

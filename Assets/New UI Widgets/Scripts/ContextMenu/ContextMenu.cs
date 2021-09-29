@@ -332,6 +332,12 @@
 		public bool UnscaledTime = true;
 
 		/// <summary>
+		/// Parent canvas.
+		/// </summary>
+		[SerializeField]
+		protected RectTransform ParentCanvas;
+
+		/// <summary>
 		/// Event on menu open.
 		/// </summary>
 		[SerializeField]
@@ -370,7 +376,12 @@
 			{
 				if (instance == null)
 				{
-					instance = new MenuInstance(this, Template, MenuItems.AsReadOnly());
+					if (ParentCanvas == null)
+					{
+						ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+					}
+
+					instance = new MenuInstance(this, Template, MenuItems.AsReadOnly(), ParentCanvas);
 				}
 
 				return instance;
@@ -422,6 +433,11 @@
 				return;
 			}
 
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+
 			Template.Init();
 
 			isInited = true;
@@ -438,9 +454,9 @@
 		/// </summary>
 		public virtual void LocaleChanged()
 		{
-			if (Instance != null)
+			if (instance != null)
 			{
-				Instance.LocaleChanged();
+				instance.LocaleChanged();
 			}
 		}
 
@@ -552,7 +568,7 @@
 		/// <param name="eventData">Event data.</param>
 		public virtual void Open(PointerEventData eventData)
 		{
-			var canvas = Utilities.FindTopmostCanvas(RectTransform) as RectTransform;
+			var canvas = UtilitiesUI.FindTopmostCanvas(RectTransform);
 
 			Vector2 position;
 			RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas, eventData.position, eventData.pressEventCamera, out position);
@@ -592,10 +608,10 @@
 		/// <returns>Position.</returns>
 		protected virtual Vector2 GetDefaultPosition()
 		{
-			var canvas = Utilities.FindTopmostCanvas(RectTransform) as RectTransform;
+			var canvas = UtilitiesUI.FindTopmostCanvas(RectTransform);
 
-			var canvas_position = Utilities.GetTopLeftCornerGlobalPosition(canvas);
-			var rt_position = Utilities.GetTopLeftCornerGlobalPosition(RectTransform);
+			var canvas_position = UtilitiesRectTransform.GetTopLeftCornerGlobalPosition(canvas);
+			var rt_position = UtilitiesRectTransform.GetTopLeftCornerGlobalPosition(RectTransform);
 
 			return rt_position - canvas_position;
 		}
@@ -807,19 +823,19 @@
 			return -x_depth.CompareTo(y_depth);
 		}
 
-#if UNITY_2019_3_OR_NEWER
+		#if UNITY_2019_3_OR_NEWER
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
 		static void StaticInit()
 		{
 			LastToggledByKey = -2;
 			NestedMenu.Clear();
-#if ENABLE_INPUT_SYSTEM
+			#if ENABLE_INPUT_SYSTEM
 			ToggleAction = null;
-#endif
+			#endif
 		}
-#endif
+		#endif
 
-#if ENABLE_INPUT_SYSTEM
+		#if ENABLE_INPUT_SYSTEM
 		/// <summary>
 		/// Input action.
 		/// </summary>
@@ -833,7 +849,7 @@
 			if (ToggleAction == null)
 			{
 				ToggleAction = new InputAction(name);
-				ToggleAction.AddBinding("<Keyboard>/" + Key.ContextMenu);
+				ToggleAction.AddBinding(string.Format("<Keyboard>/{0}", EnumHelper<Key>.ToString(Key.ContextMenu)));
 				ToggleAction.performed += Toggle;
 				ToggleAction.Enable();
 			}
@@ -847,7 +863,7 @@
 		{
 			ToggleActiveMenuByKey();
 		}
-#else
+		#else
 		/// <summary>
 		/// Create toggle action.
 		/// </summary>
@@ -888,6 +904,34 @@
 				{
 					CheckHotKeys(item.Items);
 				}
+			}
+		}
+		#endif
+
+		#if UNITY_EDITOR
+		/// <summary>
+		/// Validate this instance.
+		/// </summary>
+		protected override void OnValidate()
+		{
+			base.OnValidate();
+
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+
+		/// <summary>
+		/// Reset this instance.
+		/// </summary>
+		protected override void Reset()
+		{
+			base.Reset();
+
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
 			}
 		}
 		#endif

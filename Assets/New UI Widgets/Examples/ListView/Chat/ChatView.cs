@@ -11,6 +11,39 @@
 	public class ChatView : ListViewCustomHeight<ChatLineComponent, ChatLine>
 	{
 		/// <summary>
+		/// Template selector.
+		/// </summary>
+		protected class Selector : IListViewTemplateSelector<ChatLineComponent, ChatLine>
+		{
+			/// <summary>
+			/// Incoming template.
+			/// </summary>
+			public ChatLineComponent IncomingTemplate;
+
+			/// <summary>
+			/// Outgoing template.
+			/// </summary>
+			public ChatLineComponent OutgoingTemplate;
+
+			/// <inheritdoc/>
+			public ChatLineComponent[] AllTemplates()
+			{
+				return new[] { IncomingTemplate, OutgoingTemplate };
+			}
+
+			/// <inheritdoc/>
+			public ChatLineComponent Select(int index, ChatLine item)
+			{
+				if (item.Type == ChatLineType.Incoming)
+				{
+					return IncomingTemplate;
+				}
+
+				return OutgoingTemplate;
+			}
+		}
+
+		/// <summary>
 		/// Chat event.
 		/// </summary>
 		[SerializeField]
@@ -91,6 +124,20 @@
 			DataSource.EndUpdate();
 		}
 
+		/// <summary>
+		/// IncomingTemplate.
+		/// </summary>
+		[SerializeField]
+		protected ChatLineComponent IncomingTemplate;
+
+		/// <summary>
+		/// OutgoingTemplate.
+		/// </summary>
+		[SerializeField]
+		protected ChatLineComponent OutgoingTemplate;
+
+		Selector ChatTemplateSelector;
+
 		bool isInited;
 
 		/// <summary>
@@ -104,6 +151,14 @@
 			}
 
 			isInited = true;
+
+			ChatTemplateSelector = new Selector()
+			{
+				IncomingTemplate = IncomingTemplate,
+				OutgoingTemplate = OutgoingTemplate,
+			};
+
+			TemplateSelector = ChatTemplateSelector;
 
 			base.Init();
 

@@ -5,7 +5,6 @@
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
 	using System.ComponentModel;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 
 	/// <summary>
@@ -18,22 +17,22 @@
 		/// <summary>
 		/// Occurs when data changed.
 		/// </summary>
-		public event OnChange OnChange = Utilities.DefaultHandler;
+		public event OnChange OnChange;
 
 		/// <summary>
 		/// Occurs when changed collection (added item, removed item, replaced item).
 		/// </summary>
-		public event OnChange OnCollectionChange = Utilities.DefaultHandler;
+		public event OnChange OnCollectionChange;
 
 		/// <summary>
 		/// Occurs when changed data of the item in the collection.
 		/// </summary>
-		public event OnChange OnCollectionItemChange = Utilities.DefaultHandler;
+		public event OnChange OnCollectionItemChange;
 
 		/// <summary>
 		/// Occurs when data changed.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = Utilities.DefaultPropertyHandler;
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Re-sort items when collection changed.
@@ -82,14 +81,24 @@
 		[SerializeField]
 		protected List<T> Items;
 
-		readonly bool isItemsObservable;
-
-		readonly bool isItemsSupportNotifyPropertyChanged;
-
 		/// <summary>
 		/// Observe items.
 		/// </summary>
 		public bool ObserveItems = true;
+
+		private static readonly bool IsValueType;
+
+		private static readonly bool IsItemsObservable;
+
+		private static readonly bool IsItemsSupportNotifyPropertyChanged;
+
+		static ObservableList()
+		{
+			var type = typeof(T);
+			IsValueType = type.IsValueType;
+			IsItemsObservable = !IsValueType && typeof(IObservable).IsAssignableFrom(type);
+			IsItemsSupportNotifyPropertyChanged = !IsValueType && typeof(INotifyPropertyChanged).IsAssignableFrom(type);
+		}
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ObservableList{T}"/> class.
@@ -116,10 +125,36 @@
 		public ObservableList(bool observeItems, int capacity = 0)
 		{
 			ObserveItems = observeItems;
-			isItemsObservable = typeof(IObservable).IsAssignableFrom(typeof(T));
-			isItemsSupportNotifyPropertyChanged = typeof(INotifyPropertyChanged).IsAssignableFrom(typeof(T));
 
 			Items = new List<T>(capacity);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ObservableList{T}"/> class.
+		/// </summary>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="observeItems">Is need to observe items? If true ObservableList.OnChange will be raised on item OnChange or PropertyChanged.</param>
+		public ObservableList(List<T> enumerable, bool observeItems = true)
+		{
+			ObserveItems = observeItems;
+
+			Items = new List<T>(enumerable);
+
+			AddCallbacks(Items);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ObservableList{T}"/> class.
+		/// </summary>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="observeItems">Is need to observe items? If true ObservableList.OnChange will be raised on item OnChange or PropertyChanged.</param>
+		public ObservableList(ObservableList<T> enumerable, bool observeItems = true)
+		{
+			ObserveItems = observeItems;
+
+			Items = new List<T>(enumerable.Items);
+
+			AddCallbacks(Items);
 		}
 
 		/// <summary>
@@ -130,8 +165,6 @@
 		public ObservableList(IEnumerable<T> enumerable, bool observeItems = true)
 		{
 			ObserveItems = observeItems;
-			isItemsObservable = typeof(IObservable).IsAssignableFrom(typeof(T));
-			isItemsSupportNotifyPropertyChanged = typeof(INotifyPropertyChanged).IsAssignableFrom(typeof(T));
 
 			Items = new List<T>(enumerable);
 
@@ -149,23 +182,87 @@
 			}
 		}
 
+		/// <summary>
+		/// Check if item is null.
+		/// </summary>
+		/// <param name="item">Item.</param>
+		/// <returns>true if item is null; otherwise false.</returns>
+		protected static bool IsNull(T item)
+		{
+			if (IsValueType)
+			{
+				return false;
+			}
+
+			return item == null;
+		}
+
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Required.")]
 		void AddCallbacks(IEnumerable<T> items)
 		{
-			if (isItemsObservable)
+			if (IsItemsObservable)
 			{
 				foreach (var item in items)
 				{
-					if (item != null)
+					if (!IsNull(item))
 					{
 						(item as IObservable).OnChange += CollectionItemChanged;
 					}
 				}
 			}
-			else if (isItemsSupportNotifyPropertyChanged)
+			else if (IsItemsSupportNotifyPropertyChanged)
 			{
 				foreach (var item in items)
 				{
-					if (item != null)
+					if (!IsNull(item))
+					{
+						(item as INotifyPropertyChanged).PropertyChanged += ItemPropertyChanged;
+					}
+				}
+			}
+		}
+
+		void AddCallbacks(List<T> items)
+		{
+			if (IsItemsObservable)
+			{
+				foreach (var item in items)
+				{
+					if (!IsNull(item))
+					{
+						(item as IObservable).OnChange += CollectionItemChanged;
+					}
+				}
+			}
+			else if (IsItemsSupportNotifyPropertyChanged)
+			{
+				foreach (var item in items)
+				{
+					if (!IsNull(item))
+					{
+						(item as INotifyPropertyChanged).PropertyChanged += ItemPropertyChanged;
+					}
+				}
+			}
+		}
+
+		void AddCallbacks(T[] items)
+		{
+			if (IsItemsObservable)
+			{
+				foreach (var item in items)
+				{
+					if (!IsNull(item))
+					{
+						(item as IObservable).OnChange += CollectionItemChanged;
+					}
+				}
+			}
+			else if (IsItemsSupportNotifyPropertyChanged)
+			{
+				foreach (var item in items)
+				{
+					if (!IsNull(item))
 					{
 						(item as INotifyPropertyChanged).PropertyChanged += ItemPropertyChanged;
 					}
@@ -175,38 +272,38 @@
 
 		void AddCallback(T item)
 		{
-			if (item == null)
+			if (IsNull(item))
 			{
 				return;
 			}
 
-			if (isItemsObservable)
+			if (IsItemsObservable)
 			{
 				(item as IObservable).OnChange += CollectionItemChanged;
 			}
-			else if (isItemsSupportNotifyPropertyChanged)
+			else if (IsItemsSupportNotifyPropertyChanged)
 			{
 				(item as INotifyPropertyChanged).PropertyChanged += ItemPropertyChanged;
 			}
 		}
 
-		void RemoveCallbacks(IEnumerable<T> items)
+		void RemoveCallbacks(List<T> items)
 		{
-			if (isItemsObservable)
+			if (IsItemsObservable)
 			{
 				foreach (var item in items)
 				{
-					if (item != null)
+					if (!IsNull(item))
 					{
 						(item as IObservable).OnChange -= CollectionItemChanged;
 					}
 				}
 			}
-			else if (isItemsSupportNotifyPropertyChanged)
+			else if (IsItemsSupportNotifyPropertyChanged)
 			{
 				foreach (var item in items)
 				{
-					if (item != null)
+					if (!IsNull(item))
 					{
 						(item as INotifyPropertyChanged).PropertyChanged -= ItemPropertyChanged;
 					}
@@ -216,16 +313,16 @@
 
 		void RemoveCallback(T item)
 		{
-			if (item == null)
+			if (IsNull(item))
 			{
 				return;
 			}
 
-			if (isItemsObservable)
+			if (IsItemsObservable)
 			{
 				(item as IObservable).OnChange -= CollectionItemChanged;
 			}
-			else if (isItemsSupportNotifyPropertyChanged)
+			else if (IsItemsSupportNotifyPropertyChanged)
 			{
 				(item as INotifyPropertyChanged).PropertyChanged -= ItemPropertyChanged;
 			}
@@ -261,9 +358,23 @@
 					Items.Sort(comparison);
 				}
 
-				OnCollectionChange();
-				OnChange();
-				PropertyChanged(this, new PropertyChangedEventArgs("Collection"));
+				var cc_handlers = OnCollectionChange;
+				if (cc_handlers != null)
+				{
+					cc_handlers();
+				}
+
+				var c_handlers = OnChange;
+				if (c_handlers != null)
+				{
+					c_handlers();
+				}
+
+				var handlers = PropertyChanged;
+				if (handlers != null)
+				{
+					handlers(this, new PropertyChangedEventArgs("Collection"));
+				}
 			}
 		}
 
@@ -279,7 +390,7 @@
 		/// Changed data of item in collection.
 		/// </summary>
 		/// <param name="property">Property name.</param>
-		public void CollectionItemChanged(string property)
+		void CollectionItemChanged(string property)
 		{
 			if (!ObserveItems)
 			{
@@ -298,26 +409,23 @@
 					Items.Sort(comparison);
 				}
 
-				OnCollectionItemChange();
-				OnChange();
-				PropertyChanged(this, new PropertyChangedEventArgs(property ?? "Collection"));
-			}
-		}
+				var ci_handlers = OnCollectionItemChange;
+				if (ci_handlers != null)
+				{
+					ci_handlers();
+				}
 
-		/// <summary>
-		/// Changed this instance.
-		/// </summary>
-		[Obsolete("Use CollectionChanged() or CollectionItemChanged()")]
-		public void Changed()
-		{
-			if (inUpdate)
-			{
-				isChanged = true;
-			}
-			else
-			{
-				OnChange();
-				PropertyChanged(this, new PropertyChangedEventArgs("Collection"));
+				var c_handlers = OnChange;
+				if (c_handlers != null)
+				{
+					c_handlers();
+				}
+
+				var handlers = PropertyChanged;
+				if (handlers != null)
+				{
+					handlers(this, new PropertyChangedEventArgs(property ?? "Collection"));
+				}
 			}
 		}
 
@@ -354,20 +462,39 @@
 			if (isCollectionChanged && (OnCollectionChange != null))
 			{
 				isCollectionChanged = false;
-				OnCollectionChange();
+
+				var c_handlers = OnCollectionChange;
+				if (c_handlers != null)
+				{
+					c_handlers();
+				}
 			}
 
 			if (isCollectionItemChanged && (OnCollectionItemChange != null))
 			{
 				isCollectionItemChanged = false;
-				OnCollectionItemChange();
+
+				var c_handlers = OnCollectionItemChange;
+				if (c_handlers != null)
+				{
+					c_handlers();
+				}
 			}
 
 			if (isChanged && (OnChange != null))
 			{
 				isChanged = false;
-				OnChange();
-				PropertyChanged(this, new PropertyChangedEventArgs("Collection"));
+				var c_handlers = OnChange;
+				if (c_handlers != null)
+				{
+					c_handlers();
+				}
+
+				var handlers = PropertyChanged;
+				if (handlers != null)
+				{
+					handlers(this, new PropertyChangedEventArgs("Collection"));
+				}
 			}
 		}
 
@@ -477,7 +604,17 @@
 		/// <summary>
 		/// Returns an enumerator that iterates through the ObservableList{T}.
 		/// </summary>
-		/// <returns>A ObservableList{T}.Enumerator for the ObservableList{T}.</returns>
+		/// <returns>A List{T}.Enumerator for the ObservableList{T}.</returns>
+		public List<T>.Enumerator GetEnumerator()
+		{
+			return Items.GetEnumerator();
+		}
+
+		/// <summary>
+		/// Returns an enumerator that iterates through the ObservableList{T}.
+		/// </summary>
+		/// <returns>A IEnumerator{T} for the ObservableList{T}.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0601:Value type to reference type conversion causing boxing allocation", Justification = "Required.")]
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
 			return Items.GetEnumerator();
@@ -487,9 +624,10 @@
 		/// Returns an enumerator that iterates through a collection.
 		/// </summary>
 		/// <returns>An IEnumerator object that can be used to iterate through the collection.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0601:Value type to reference type conversion causing boxing allocation", Justification = "Required.")]
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return (Items as IEnumerable).GetEnumerator();
+			return Items.GetEnumerator();
 		}
 
 		/// <summary>
@@ -552,6 +690,42 @@
 		/// </summary>
 		/// <param name="items">The collection whose elements should be added to the end of the ObservableList{T}. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
 		public void AddRange(IEnumerable<T> items)
+		{
+			Items.AddRange(items);
+			AddCallbacks(items);
+
+			CollectionChanged();
+		}
+
+		/// <summary>
+		/// Adds the elements of the specified collection to the end of the ObservableList{T}.
+		/// </summary>
+		/// <param name="items">The collection whose elements should be added to the end of the ObservableList{T}. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+		public void AddRange(List<T> items)
+		{
+			Items.AddRange(items);
+			AddCallbacks(items);
+
+			CollectionChanged();
+		}
+
+		/// <summary>
+		/// Adds the elements of the specified collection to the end of the ObservableList{T}.
+		/// </summary>
+		/// <param name="items">The collection whose elements should be added to the end of the ObservableList{T}. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+		public void AddRange(ObservableList<T> items)
+		{
+			Items.AddRange(items.Items);
+			AddCallbacks(items.Items);
+
+			CollectionChanged();
+		}
+
+		/// <summary>
+		/// Adds the elements of the specified collection to the end of the ObservableList{T}.
+		/// </summary>
+		/// <param name="items">The collection whose elements should be added to the end of the ObservableList{T}. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+		public void AddRange(T[] items)
 		{
 			Items.AddRange(items);
 			AddCallbacks(items);
@@ -643,7 +817,13 @@
 		/// <returns>A ObservableList{T} of the target type containing the converted elements from the current ObservableList{T}.</returns>
 		public ObservableList<TOutput> Convert<TOutput>(Converter<T, TOutput> converter, bool observeItems = true)
 		{
-			return new ObservableList<TOutput>(Items.Convert<T, TOutput>(converter), observeItems);
+			var result = new ObservableList<TOutput>(observeItems, Items.Count);
+			foreach (var item in Items)
+			{
+				result.Add(converter(item));
+			}
+
+			return result;
 		}
 
 		/// <summary>
@@ -827,6 +1007,48 @@
 		/// <param name="index">The zero-based index at which the new elements should be inserted.</param>
 		/// <param name="collection">The collection whose elements should be inserted into the ObservableList{T}. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
 		public void InsertRange(int index, IEnumerable<T> collection)
+		{
+			Items.InsertRange(index, collection);
+
+			AddCallbacks(collection);
+
+			CollectionChanged();
+		}
+
+		/// <summary>
+		/// Inserts the elements of a collection into the ObservableList{T} at the specified index.
+		/// </summary>
+		/// <param name="index">The zero-based index at which the new elements should be inserted.</param>
+		/// <param name="collection">The collection whose elements should be inserted into the ObservableList{T}. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+		public void InsertRange(int index, List<T> collection)
+		{
+			Items.InsertRange(index, collection);
+
+			AddCallbacks(collection);
+
+			CollectionChanged();
+		}
+
+		/// <summary>
+		/// Inserts the elements of a collection into the ObservableList{T} at the specified index.
+		/// </summary>
+		/// <param name="index">The zero-based index at which the new elements should be inserted.</param>
+		/// <param name="collection">The collection whose elements should be inserted into the ObservableList{T}. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+		public void InsertRange(int index, ObservableList<T> collection)
+		{
+			Items.InsertRange(index, collection.Items);
+
+			AddCallbacks(collection.Items);
+
+			CollectionChanged();
+		}
+
+		/// <summary>
+		/// Inserts the elements of a collection into the ObservableList{T} at the specified index.
+		/// </summary>
+		/// <param name="index">The zero-based index at which the new elements should be inserted.</param>
+		/// <param name="collection">The collection whose elements should be inserted into the ObservableList{T}. The collection itself cannot be null, but it can contain elements that are null, if type T is a reference type.</param>
+		public void InsertRange(int index, T[] collection)
 		{
 			Items.InsertRange(index, collection);
 

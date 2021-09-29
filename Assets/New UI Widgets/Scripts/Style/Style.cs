@@ -480,7 +480,7 @@
 				return false;
 			}
 
-			var scrollbar_style = Utilities.IsHorizontal(component) ? HorizontalScrollbar : VerticalScrollbar;
+			var scrollbar_style = UtilitiesUI.IsHorizontal(component) ? HorizontalScrollbar : VerticalScrollbar;
 			scrollbar_style.ApplyTo(component);
 
 			return true;
@@ -537,9 +537,10 @@
 
 			if (!children_processed)
 			{
-				foreach (Transform child in target.transform)
+				var t = target.transform;
+				for (int i = 0; i < t.childCount; i++)
 				{
-					ApplyTo(child.gameObject, stylableOnly);
+					ApplyTo(t.GetChild(i).gameObject, stylableOnly);
 				}
 			}
 		}
@@ -551,9 +552,10 @@
 		/// <param name="stylableOnly">Is style should be applied only for objects with IStylable component?</param>
 		public virtual void ApplyForChildren(GameObject parent, bool stylableOnly = false)
 		{
-			foreach (Transform child in parent.transform)
+			var t = parent.transform;
+			for (int i = 0; i < t.childCount; i++)
 			{
-				ApplyTo(child.gameObject, stylableOnly);
+				ApplyTo(t.GetChild(i).gameObject, stylableOnly);
 			}
 		}
 
@@ -703,7 +705,7 @@
 				return false;
 			}
 
-			var scrollbar_style = Utilities.IsHorizontal(component) ? HorizontalScrollbar : VerticalScrollbar;
+			var scrollbar_style = UtilitiesUI.IsHorizontal(component) ? HorizontalScrollbar : VerticalScrollbar;
 			scrollbar_style.GetFrom(component);
 
 			return true;
@@ -758,9 +760,10 @@
 
 			if (!children_processed)
 			{
-				foreach (Transform child in target.transform)
+				var t = target.transform;
+				for (int i = 0; i < t.childCount; i++)
 				{
-					GetFrom(child.gameObject, stylableOnly);
+					GetFrom(t.GetChild(i).gameObject, stylableOnly);
 				}
 			}
 		}
@@ -772,9 +775,10 @@
 		/// <param name="stylableOnly">Is style should be got only for objects with IStylable component?</param>
 		public virtual void GetFromChildren(GameObject parent, bool stylableOnly = false)
 		{
-			foreach (Transform child in parent.transform)
+			var t = parent.transform;
+			for (int i = 0; i < t.childCount; i++)
 			{
-				GetFrom(child.gameObject, stylableOnly);
+				GetFrom(t.GetChild(i).gameObject, stylableOnly);
 			}
 		}
 
@@ -925,6 +929,12 @@
 			Time.HourLabel.Color = Collections.DefaultColor;
 		}
 
+		void UpgradeV8()
+		{
+			Accordion.ToggleActiveText = Accordion.ToggleDefaultText.Clone();
+			Accordion.ToggleActiveText.Color = Collections.DefaultColor;
+		}
+
 		/// <inheritdoc/>
 		public virtual void Upgrade()
 		{
@@ -968,6 +978,12 @@
 			{
 				UpgradeV7();
 				version = 7;
+			}
+
+			if (version == 7)
+			{
+				UpgradeV8();
+				version = 8;
 			}
 		}
 

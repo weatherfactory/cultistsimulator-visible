@@ -9,12 +9,31 @@
 	public class EasyLayoutGrid : EasyLayoutCompactOrGrid
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="EasyLayoutGrid"/> class.
+		/// Constraint type.
 		/// </summary>
-		/// <param name="layout">Layout.</param>
-		public EasyLayoutGrid(EasyLayout layout)
-				: base(layout)
+		protected GridConstraints Constraint;
+
+		/// <summary>
+		/// Cell align.
+		/// </summary>
+		protected Anchors CellAlign;
+
+		/// <inheritdoc/>
+		protected override bool IsCompact
 		{
+			get
+			{
+				return false;
+			}
+		}
+
+		/// <inheritdoc/>
+		public override void LoadSettings(EasyLayout layout)
+		{
+			base.LoadSettings(layout);
+
+			Constraint = layout.GridConstraint;
+			CellAlign = layout.CellAlign;
 		}
 
 		/// <summary>
@@ -24,9 +43,9 @@
 		/// <param name="maxColumns">Max columns.</param>
 		int GetMaxColumnsCount(int maxColumns)
 		{
-			var base_length = Layout.MainAxisSize;
+			var base_length = MainAxisSize;
 			var length = base_length;
-			var spacing = Layout.IsHorizontal ? Layout.Spacing.x : Layout.Spacing.y;
+			var spacing = IsHorizontal ? Spacing.x : Spacing.y;
 
 			bool min_columns_setted = false;
 			int min_columns = maxColumns;
@@ -79,25 +98,25 @@
 		/// </summary>
 		protected override void Group()
 		{
-			if (Layout.GridConstraint == GridConstraints.Flexible)
+			if (Constraint == GridConstraints.Flexible)
 			{
 				GroupFlexible();
 			}
-			else if (Layout.GridConstraint == GridConstraints.FixedRowCount)
+			else if (Constraint == GridConstraints.FixedRowCount)
 			{
 				GroupByRows();
 			}
-			else if (Layout.GridConstraint == GridConstraints.FixedColumnCount)
+			else if (Constraint == GridConstraints.FixedColumnCount)
 			{
 				GroupByColumns();
 			}
 
-			if (!Layout.TopToBottom)
+			if (!TopToBottom)
 			{
 				ElementsGroup.BottomToTop();
 			}
 
-			if (Layout.RightToLeft)
+			if (RightToLeft)
 			{
 				ElementsGroup.RightToLeft();
 			}
@@ -121,7 +140,7 @@
 				max_columns = new_max_columns;
 			}
 
-			if (Layout.IsHorizontal)
+			if (IsHorizontal)
 			{
 				GroupByColumnsHorizontal(max_columns);
 			}
@@ -136,34 +155,34 @@
 		/// </summary>
 		protected override void CalculateSizes()
 		{
-			if ((Layout.ChildrenWidth == ChildrenSize.ShrinkOnOverflow) && (Layout.ChildrenHeight == ChildrenSize.ShrinkOnOverflow))
+			if ((ChildrenWidth == ChildrenSize.ShrinkOnOverflow) && (ChildrenHeight == ChildrenSize.ShrinkOnOverflow))
 			{
 				ShrinkOnOverflow();
 			}
 			else
 			{
-				if (Layout.ChildrenWidth == ChildrenSize.FitContainer)
+				if (ChildrenWidth == ChildrenSize.FitContainer)
 				{
 					ResizeColumnWidthToFit(false);
 				}
-				else if (Layout.ChildrenWidth == ChildrenSize.SetPreferredAndFitContainer)
+				else if (ChildrenWidth == ChildrenSize.SetPreferredAndFitContainer)
 				{
 					ResizeColumnWidthToFit(true);
 				}
-				else if (Layout.ChildrenWidth == ChildrenSize.ShrinkOnOverflow)
+				else if (ChildrenWidth == ChildrenSize.ShrinkOnOverflow)
 				{
 					ShrinkColumnWidthToFit();
 				}
 
-				if (Layout.ChildrenHeight == ChildrenSize.FitContainer)
+				if (ChildrenHeight == ChildrenSize.FitContainer)
 				{
 					ResizeRowHeightToFit(false);
 				}
-				else if (Layout.ChildrenHeight == ChildrenSize.SetPreferredAndFitContainer)
+				else if (ChildrenHeight == ChildrenSize.SetPreferredAndFitContainer)
 				{
 					ResizeRowHeightToFit(true);
 				}
-				else if (Layout.ChildrenHeight == ChildrenSize.ShrinkOnOverflow)
+				else if (ChildrenHeight == ChildrenSize.ShrinkOnOverflow)
 				{
 					ShrinkRowHeightToFit();
 				}
@@ -180,7 +199,7 @@
 		/// <returns>Aligned width.</returns>
 		protected override Vector2 GetAlignByWidth(LayoutElementInfo element, float maxWidth, Vector2 cellMaxSize, float emptyWidth)
 		{
-			var cell_align = GroupPositions[(int)Layout.CellAlign];
+			var cell_align = GroupPositions[(int)CellAlign];
 
 			return new Vector2(
 				(maxWidth - element.Width) * cell_align.x,
@@ -197,7 +216,7 @@
 		/// <returns>Aligned height.</returns>
 		protected override Vector2 GetAlignByHeight(LayoutElementInfo element, float maxHeight, Vector2 cellMaxSize, float emptyHeight)
 		{
-			var cell_align = GroupPositions[(int)Layout.CellAlign];
+			var cell_align = GroupPositions[(int)CellAlign];
 
 			return new Vector2(
 				(cellMaxSize.x - element.Width) * cell_align.x,

@@ -34,6 +34,8 @@
 			var index = DropIndicatorIndex(type);
 			ShowDropIndicator(index);
 
+			HoldStart();
+
 			return true;
 		}
 
@@ -56,6 +58,7 @@
 			AddNewNode(new_node, type);
 
 			HideDropIndicator();
+			HoldCancel();
 		}
 
 		/// <summary>
@@ -66,6 +69,7 @@
 		public virtual void DropCanceled(ListViewIconsItemDescription data, PointerEventData eventData)
 		{
 			HideDropIndicator();
+			HoldCancel();
 		}
 		#endregion
 	}

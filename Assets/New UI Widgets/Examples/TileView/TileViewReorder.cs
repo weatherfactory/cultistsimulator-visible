@@ -43,13 +43,14 @@
 		/// <summary>
 		/// Start this instance.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Start()
 		{
 			OriginalItems = UtilitiesCollections.CreateList(40, x =>
 			{
 				return new TileViewItemSample()
 				{
-					Name = "Tile " + x,
+					Name = string.Format("Tile {0}", x.ToString()),
 					Capital = string.Empty,
 					Area = Random.Range(10, 10 * 6),
 					Population = Random.Range(100, 100 * 6),
@@ -103,6 +104,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			if (OriginalItems != null)
@@ -113,7 +115,10 @@
 			if ((Tiles != null) && (Tiles.ScrollRect != null))
 			{
 				var listener = Tiles.ScrollRect.GetComponent<ResizeListener>();
-				listener.OnResize.RemoveListener(SizeChanged);
+				if (listener != null)
+				{
+					listener.OnResize.RemoveListener(SizeChanged);
+				}
 			}
 		}
 	}

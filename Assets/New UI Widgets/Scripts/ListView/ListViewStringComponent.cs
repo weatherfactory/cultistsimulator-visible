@@ -29,7 +29,7 @@
 		{
 			if (GraphicsForegroundVersion == 0)
 			{
-				Foreground = new Graphic[] { Utilities.GetGraphic(TextAdapter), };
+				Foreground = new Graphic[] { UtilitiesUI.GetGraphic(TextAdapter), };
 				GraphicsForegroundVersion = 1;
 			}
 		}

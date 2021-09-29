@@ -17,7 +17,56 @@
 		/// <param name="enumerable">Enumerable.</param>
 		/// <param name="handler">Handler.</param>
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Required.")]
 		public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T, int> handler)
+		{
+			int i = 0;
+			foreach (T item in enumerable)
+			{
+				handler(item, i);
+				i++;
+			}
+		}
+
+		/// <summary>
+		/// For each with index.
+		/// </summary>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="handler">Handler.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public static void ForEach<T>(this T[] enumerable, Action<T, int> handler)
+		{
+			int i = 0;
+			foreach (T item in enumerable)
+			{
+				handler(item, i);
+				i++;
+			}
+		}
+
+		/// <summary>
+		/// For each with index.
+		/// </summary>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="handler">Handler.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public static void ForEach<T>(this List<T> enumerable, Action<T, int> handler)
+		{
+			int i = 0;
+			foreach (T item in enumerable)
+			{
+				handler(item, i);
+				i++;
+			}
+		}
+
+		/// <summary>
+		/// For each with index.
+		/// </summary>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="handler">Handler.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public static void ForEach<T>(this ObservableList<T> enumerable, Action<T, int> handler)
 		{
 			int i = 0;
 			foreach (T item in enumerable)
@@ -33,7 +82,50 @@
 		/// <param name="enumerable">Enumerable.</param>
 		/// <param name="handler">Handler.</param>
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Required.")]
 		public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> handler)
+		{
+			foreach (T item in enumerable)
+			{
+				handler(item);
+			}
+		}
+
+		/// <summary>
+		/// For each.
+		/// </summary>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="handler">Handler.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public static void ForEach<T>(this T[] enumerable, Action<T> handler)
+		{
+			foreach (T item in enumerable)
+			{
+				handler(item);
+			}
+		}
+
+		/// <summary>
+		/// For each.
+		/// </summary>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="handler">Handler.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public static void ForEach<T>(this List<T> enumerable, Action<T> handler)
+		{
+			foreach (T item in enumerable)
+			{
+				handler(item);
+			}
+		}
+
+		/// <summary>
+		/// For each.
+		/// </summary>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="handler">Handler.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public static void ForEach<T>(this ObservableList<T> enumerable, Action<T> handler)
 		{
 			foreach (T item in enumerable)
 			{
@@ -49,6 +141,42 @@
 		/// <param name="observeItems">Is need to observe items?</param>
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
 		public static ObservableList<T> ToObservableList<T>(this IEnumerable<T> enumerable, bool observeItems = true)
+		{
+			return new ObservableList<T>(enumerable, observeItems);
+		}
+
+		/// <summary>
+		/// Convert IEnumerable{T} to ObservableList{T}.
+		/// </summary>
+		/// <returns>The observable list.</returns>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="observeItems">Is need to observe items?</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public static ObservableList<T> ToObservableList<T>(this T[] enumerable, bool observeItems = true)
+		{
+			return new ObservableList<T>(enumerable, observeItems);
+		}
+
+		/// <summary>
+		/// Convert IEnumerable{T} to ObservableList{T}.
+		/// </summary>
+		/// <returns>The observable list.</returns>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="observeItems">Is need to observe items?</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public static ObservableList<T> ToObservableList<T>(this List<T> enumerable, bool observeItems = true)
+		{
+			return new ObservableList<T>(enumerable, observeItems);
+		}
+
+		/// <summary>
+		/// Convert IEnumerable{T} to ObservableList{T}.
+		/// </summary>
+		/// <returns>The observable list.</returns>
+		/// <param name="enumerable">Enumerable.</param>
+		/// <param name="observeItems">Is need to observe items?</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		public static ObservableList<T> ToObservableList<T>(this ObservableList<T> enumerable, bool observeItems = true)
 		{
 			return new ObservableList<T>(enumerable, observeItems);
 		}
@@ -75,23 +203,6 @@
 		/// </summary>
 		/// <returns>The float.</returns>
 		/// <param name="list">List.</param>
-		[Obsolete("Will be removed in next releases.")]
-		public static float SumFloat(this IEnumerable<float> list)
-		{
-			var result = 0f;
-			foreach (var value in list)
-			{
-				result += value;
-			}
-
-			return result;
-		}
-
-		/// <summary>
-		/// Sums the float.
-		/// </summary>
-		/// <returns>The float.</returns>
-		/// <param name="list">List.</param>
 		/// <param name="calculate">Calculate.</param>
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
 		[Obsolete("Will be removed in next releases.")]
@@ -101,25 +212,6 @@
 			for (int i = 0; i < list.Count; i++)
 			{
 				result += calculate(list[i]);
-			}
-
-			return result;
-		}
-
-		/// <summary>
-		/// Sums the float.
-		/// </summary>
-		/// <returns>The float.</returns>
-		/// <param name="list">List.</param>
-		/// <param name="calculate">Calculate.</param>
-		/// <typeparam name="T">The 1st type parameter.</typeparam>
-		[Obsolete("Will be removed in next releases.")]
-		public static float SumFloat<T>(this IEnumerable<T> list, Func<T, float> calculate)
-		{
-			var result = 0f;
-			foreach (var item in list)
-			{
-				result += calculate(item);
 			}
 
 			return result;
@@ -137,9 +229,9 @@
 		{
 			#if NETFX_CORE
 			var output = new List<TOutput>(input.Count);
-			for (int i = 0; i < input.Count; i++)
+			foreach (var item in input)
 			{
-				output.Add(converter(input[i]));
+				output.Add(converter(item));
 			}
 			
 			return output;
@@ -218,7 +310,7 @@
 			var result = new StringBuilder(list.Count);
 			for (int i = 0; i < list.Count; i++)
 			{
-				result.Append(string.Format(format, list[i], formatProvider));
+				result.Append(string.Format(format, list[i].ToString(), formatProvider));
 			}
 
 			return result.ToString();
@@ -233,6 +325,7 @@
 		/// <param name="arg1">Argument 1 object.</param>
 		/// <param name="formatProvider">Format provider.</param>
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0601:Value type to reference type conversion causing boxing allocation", Justification = "Required.")]
 		public static string ToString<T>(this IList<T> list, string format, object arg1, IFormatProvider formatProvider)
 			where T : IFormattable
 		{
@@ -258,9 +351,9 @@
 		/// <returns>Last item.</returns>
 		public static T Pop<T>(this IList<T> list)
 		{
-			var result = list[list.Count - 1];
-
-			list.RemoveAt(list.Count - 1);
+			var n = list.Count - 1;
+			var result = list[n];
+			list.RemoveAt(n);
 
 			return result;
 		}

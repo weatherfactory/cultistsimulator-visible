@@ -9,7 +9,7 @@
 	/// ListViewIcons item description.
 	/// </summary>
 	[Serializable]
-	public class ListViewIconsItemDescription : INotifyPropertyChanged
+	public class ListViewIconsItemDescription : IObservable, INotifyPropertyChanged
 	{
 		[SerializeField]
 		[FormerlySerializedAs("Icon")]
@@ -109,7 +109,12 @@
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = Utilities.DefaultPropertyHandler;
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Raise PropertyChanged event.
@@ -117,7 +122,26 @@
 		/// <param name="propertyName">Property name.</param>
 		protected void Changed(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		/// <summary>
+		/// Convert this instance to string.
+		/// </summary>
+		/// <returns>String.</returns>
+		public override string ToString()
+		{
+			return LocalizedName ?? Name;
 		}
 	}
 }

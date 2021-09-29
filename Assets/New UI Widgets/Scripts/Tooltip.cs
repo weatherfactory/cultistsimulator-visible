@@ -62,9 +62,10 @@
 			set
 			{
 				tooltipObject = value;
+
 				if (tooltipObject != null)
 				{
-					tooltipObjectParent = tooltipObject.transform.parent;
+					TooltipParent = tooltipObject.transform.parent as RectTransform;
 				}
 			}
 		}
@@ -78,14 +79,14 @@
 		/// <summary>
 		/// Canvas transform.
 		/// </summary>
-		[HideInInspector]
-		protected Transform canvasTransform;
+		[SerializeField]
+		protected RectTransform ParentCanvas;
 
 		/// <summary>
 		/// Tooltip parent object.
 		/// </summary>
 		[HideInInspector]
-		protected Transform tooltipObjectParent;
+		protected RectTransform TooltipParent;
 
 		/// <summary>
 		/// Show event.
@@ -116,7 +117,11 @@
 
 			if (TooltipObject != null)
 			{
-				canvasTransform = Utilities.FindTopmostCanvas(tooltipObjectParent);
+				if (ParentCanvas == null)
+				{
+					ParentCanvas = UtilitiesUI.FindTopmostCanvas(TooltipParent);
+				}
+
 				TooltipObject.SetActive(false);
 			}
 		}
@@ -130,21 +135,19 @@
 		/// Show coroutine.
 		/// </summary>
 		/// <returns>Coroutine.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		protected virtual IEnumerator ShowCoroutine()
 		{
 			yield return UtilitiesTime.Wait(ShowDelay, UnscaledTime);
 
-			if (canvasTransform == null)
-			{
-				Init();
-			}
+			Init();
 
-			if ((canvasTransform != null) && BringToFront && (!IsAtFront))
+			if ((ParentCanvas != null) && BringToFront && (!IsAtFront))
 			{
 				IsAtFront = true;
 				anchoredPosition = (TooltipObject.transform as RectTransform).anchoredPosition;
-				tooltipObjectParent = tooltipObject.transform.parent;
-				TooltipObject.transform.SetParent(canvasTransform);
+				TooltipParent = tooltipObject.transform.parent as RectTransform;
+				TooltipObject.transform.SetParent(ParentCanvas);
 			}
 
 			TooltipObject.SetActive(true);
@@ -185,7 +188,7 @@
 				if (IsAtFront)
 				{
 					IsAtFront = false;
-					TooltipObject.transform.SetParent(tooltipObjectParent);
+					TooltipObject.transform.SetParent(TooltipParent);
 					if (anchoredPosition != null)
 					{
 						(TooltipObject.transform as RectTransform).anchoredPosition = (Vector2)anchoredPosition;
@@ -246,7 +249,7 @@
 			if (IsAtFront)
 			{
 				IsAtFront = false;
-				TooltipObject.transform.SetParent(tooltipObjectParent);
+				TooltipObject.transform.SetParent(TooltipParent);
 				if (anchoredPosition != null)
 				{
 					(TooltipObject.transform as RectTransform).anchoredPosition = anchoredPosition.Value;
@@ -303,7 +306,7 @@
 		}
 		#endregion
 
-#if UNITY_EDITOR
+		#if UNITY_EDITOR
 		/// <summary>
 		/// Create tooltip object.
 		/// </summary>
@@ -330,7 +333,23 @@
 			{
 				CreateTooltipObject();
 			}
+
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
 		}
-#endif
+
+		/// <summary>
+		/// Validate this instance.
+		/// </summary>
+		protected virtual void OnValidate()
+		{
+			if (ParentCanvas == null)
+			{
+				ParentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+		#endif
 	}
 }

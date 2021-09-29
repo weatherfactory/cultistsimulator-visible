@@ -2,7 +2,6 @@
 {
 	using System.Collections;
 	using UIWidgets;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 	using UnityEngine.Serialization;
 
@@ -11,6 +10,10 @@
 	/// </summary>
 	public class SteamSpyData : MonoBehaviour
 	{
+		static char[] LineEnd = new char[] { '\n' };
+
+		static char[] Separator = new char[] { '\t' };
+
 		/// <summary>
 		/// SteamSpyView.
 		/// </summary>
@@ -54,14 +57,14 @@
 				}
 				else
 				{
-					lines = www.downloadHandler.text.Split('\n');
+					lines = www.downloadHandler.text.Split(LineEnd);
 				}
 			}
 #else
 			WWW www = new WWW(url);
 			yield return www;
 
-			lines = www.text.Split('\n');
+			lines = www.text.Split(LineEnd);
 
 			www.Dispose();
 #endif
@@ -70,14 +73,14 @@
 
 			SteamSpyView.DataSource.Clear();
 
-			lines.ForEach(x =>
+			foreach (var line in lines)
 			{
-				var item = ParseLine(x);
+				var item = ParseLine(line);
 				if (item != null)
 				{
 					SteamSpyView.DataSource.Add(item);
 				}
-			});
+			}
 
 			SteamSpyView.DataSource.EndUpdate();
 		}
@@ -94,7 +97,7 @@
 				return null;
 			}
 
-			var info = line.Split('\t');
+			var info = line.Split(Separator);
 
 			var item = new SteamSpyItem()
 			{

@@ -9,15 +9,19 @@
 	/// </summary>
 	public class EasyLayoutStaggered : EasyLayoutFlexOrStaggered
 	{
-		readonly List<float> BlocksSizes = new List<float>();
+		readonly List<GroupSize> BlocksSizes = new List<GroupSize>();
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="EasyLayoutStaggered"/> class.
+		/// Settings.
 		/// </summary>
-		/// <param name="layout">Layout.</param>
-		public EasyLayoutStaggered(EasyLayout layout)
-				: base(layout)
+		protected EasyLayoutStaggeredSettings Settings;
+
+		/// <inheritdoc/>
+		public override void LoadSettings(EasyLayout layout)
 		{
+			base.LoadSettings(layout);
+
+			Settings = layout.StaggeredSettings;
 		}
 
 		int GetBlockSizes()
@@ -27,15 +31,15 @@
 				return 0;
 			}
 
-			if (Layout.StaggeredSettings.FixedBlocksCount)
+			if (Settings.FixedBlocksCount)
 			{
-				return Mathf.Max(1, Layout.StaggeredSettings.BlocksCount);
+				return Mathf.Max(1, Settings.BlocksCount);
 			}
 
 			var blocks = 1;
 
-			var size = Layout.SubAxisSize - ElementsGroup[0].SubAxisSize;
-			var spacing = !Layout.IsHorizontal ? Layout.Spacing.x : Layout.Spacing.y;
+			var size = SubAxisSize - ElementsGroup[0].SubAxisSize;
+			var spacing = !IsHorizontal ? Spacing.x : Spacing.y;
 
 			foreach (var element in ElementsGroup.Elements)
 			{
@@ -56,13 +60,14 @@
 			BlocksSizes.Clear();
 
 			EnsureListSize(BlocksSizes, blocks);
-			EnsureListSize(Layout.StaggeredSettings.PaddingInnerStart, blocks);
-			EnsureListSize(Layout.StaggeredSettings.PaddingInnerEnd, blocks);
+			EnsureListSize(Settings.PaddingInnerStart, blocks);
+			EnsureListSize(Settings.PaddingInnerEnd, blocks);
 
-			var padding = Layout.StaggeredSettings.PaddingInnerStart;
+			var padding = Settings.PaddingInnerStart;
 			for (int i = 0; i < blocks; i++)
 			{
-				BlocksSizes[i] = padding[i];
+				var p = IsHorizontal ? new Vector2(padding[i], 0) : new Vector2(0, padding[i]);
+				BlocksSizes[i] += p;
 			}
 		}
 
@@ -82,7 +87,8 @@
 			for (int i = 1; i < BlocksSizes.Count; i++)
 			{
 				var size = BlocksSizes[i];
-				if (size < min_size)
+				var is_lower = IsHorizontal ? size.Width < min_size.Width : size.Height < min_size.Height;
+				if (is_lower)
 				{
 					index = i;
 					min_size = size;
@@ -94,10 +100,10 @@
 
 		void InsertToBlock(int block_index, LayoutElementInfo element)
 		{
-			var block = Layout.IsHorizontal
+			var block = IsHorizontal
 				? ElementsGroup.GetRow(block_index)
 				: ElementsGroup.GetColumn(block_index);
-			if (Layout.IsHorizontal)
+			if (IsHorizontal)
 			{
 				ElementsGroup.SetPosition(element, block_index, block.Count);
 			}
@@ -106,11 +112,10 @@
 				ElementsGroup.SetPosition(element, block.Count, block_index);
 			}
 
-			BlocksSizes[block_index] += element.AxisSize;
+			BlocksSizes[block_index] += element;
 			if (block.Count > 0)
 			{
-				var spacing = Layout.IsHorizontal ? Layout.Spacing.x : Layout.Spacing.y;
-				BlocksSizes[block_index] += spacing;
+				BlocksSizes[block_index] += Spacing;
 			}
 		}
 
@@ -127,12 +132,12 @@
 				InsertToBlock(NextBlockIndex(), element);
 			}
 
-			if (!Layout.TopToBottom)
+			if (!TopToBottom)
 			{
 				ElementsGroup.BottomToTop();
 			}
 
-			if (Layout.RightToLeft)
+			if (RightToLeft)
 			{
 				ElementsGroup.RightToLeft();
 			}
@@ -145,27 +150,29 @@
 		/// <param name="spacing">Spacing.</param>
 		/// <param name="padding">Padding,</param>
 		/// <returns>Size.</returns>
-		protected override Vector2 CalculateGroupSize(bool isHorizontal, Vector2 spacing, Vector2 padding)
+		protected override GroupSize CalculateGroupSize(bool isHorizontal, Vector2 spacing, Vector2 padding)
 		{
-			var size = default(Vector2);
+			var main_axis_size = default(GroupSize);
 
-			var padding_end = Layout.StaggeredSettings.PaddingInnerEnd;
+			var padding_end = Settings.PaddingInnerEnd;
+
 			for (int i = 0; i < BlocksSizes.Count; i++)
 			{
-				size.x = Mathf.Max(size.x, BlocksSizes[i] + padding_end[i]);
+				var p = IsHorizontal ? new Vector2(padding_end[i], 0) : new Vector2(0, padding_end[i]);
+				main_axis_size.Max(BlocksSizes[i] + p);
 			}
 
-			size.y = GetSubAxisSize();
-
-			return ByAxis(size);
-		}
-
-		float GetSubAxisSize()
-		{
 			CalculateSubAxisSizes();
-			var spacing = !Layout.IsHorizontal ? Layout.Spacing.x : Layout.Spacing.y;
+			var sub_spacing = !IsHorizontal ? Spacing.x : Spacing.y;
 
-			return Sum(SubAxisSizes) + ((SubAxisSizes.Count - 1) * spacing);
+			var sub_size = (SubAxisSizes.Count - 1) * sub_spacing;
+
+			var sub_axis_size = IsHorizontal ? new GroupSize(0, sub_size) : new GroupSize(sub_size, 0);
+			sub_axis_size += Sum(SubAxisSizes);
+
+			return IsHorizontal
+				? new GroupSize(main_axis_size, sub_axis_size)
+				: new GroupSize(sub_axis_size, main_axis_size);
 		}
 
 		/// <summary>
@@ -176,7 +183,7 @@
 		protected override AxisData MainAxisData(int blockIndex)
 		{
 			var axis = base.MainAxisData(blockIndex);
-			axis.Offset += Layout.StaggeredSettings.PaddingInnerStart[blockIndex];
+			axis.Offset += Settings.PaddingInnerStart[blockIndex];
 
 			return axis;
 		}

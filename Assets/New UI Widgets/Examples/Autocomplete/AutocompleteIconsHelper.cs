@@ -53,6 +53,7 @@
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		protected virtual void Start()
 		{
 			InputAdapter.onEndEdit.AddListener(ResetItem);
@@ -62,6 +63,7 @@
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		protected virtual void OnDestroy()
 		{
 			InputAdapter.onEndEdit.RemoveListener(ResetItem);

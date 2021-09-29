@@ -28,6 +28,12 @@
 		public ListViewItemPointerEvent DoubleClick = new ListViewItemPointerEvent();
 
 		/// <summary>
+		/// Node toggle event.
+		/// </summary>
+		[SerializeField]
+		public ListViewBaseEvent NodeToggleClick = new ListViewBaseEvent();
+
+		/// <summary>
 		/// Pointer up event.
 		/// </summary>
 		[SerializeField]

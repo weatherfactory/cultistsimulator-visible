@@ -1,8 +1,8 @@
 ﻿namespace UIWidgets
 {
 	using System;
+	using System.Collections.Generic;
 	using EasyLayoutNS;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 	using UnityEngine.UI;
 
@@ -28,6 +28,8 @@
 			layout.SetLayoutVertical();
 		}
 
+		static List<LayoutGroup> layouts = new List<LayoutGroup>();
+
 		/// <summary>
 		/// Updates the layouts for component and all children components.
 		/// </summary>
@@ -40,7 +42,15 @@
 				return;
 			}
 
-			LayoutRebuilder.ForceRebuildLayoutImmediate(component.transform as RectTransform);
+			component.GetComponentsInChildren(layouts);
+			layouts.Reverse();
+
+			foreach (var l in layouts)
+			{
+				UpdateLayout(l);
+			}
+
+			layouts.Clear();
 		}
 
 		/// <summary>

@@ -8,83 +8,13 @@
 	/// <summary>
 	/// ListView with dynamic items heights.
 	/// </summary>
+	[Obsolete("Replaced with ListViewString")]
 	public class ListViewHeight : ListView
 	{
 		/// <summary>
 		/// Items heights.
 		/// </summary>
 		protected Dictionary<string, float> Heights = new Dictionary<string, float>();
-
-		[SerializeField]
-		[HideInInspector]
-		ListViewStringComponent defaultItemCopy;
-
-		RectTransform defaultItemCopyRect;
-
-		/// <summary>
-		/// Gets the default item copy.
-		/// </summary>
-		/// <value>The default item copy.</value>
-		protected ListViewStringComponent DefaultItemCopy
-		{
-			get
-			{
-				if (defaultItemCopy == null)
-				{
-					var copy = Compatibility.Instantiate(DefaultItem);
-					copy.gameObject.SetActive(true);
-					defaultItemCopy = copy.GetComponent<ListViewStringComponent>();
-					defaultItemCopy.transform.SetParent(DefaultItem.transform.parent, false);
-					defaultItemCopy.gameObject.name = "DefaultItemCopy";
-					defaultItemCopy.gameObject.SetActive(false);
-
-					Utilities.FixInstantiated(DefaultItem, defaultItemCopy);
-				}
-
-				return defaultItemCopy;
-			}
-		}
-
-		/// <summary>
-		/// Gets the RectTransform of DefaultItemCopy.
-		/// </summary>
-		/// <value>RectTransform.</value>
-		protected RectTransform DefaultItemCopyRect
-		{
-			get
-			{
-				if (defaultItemCopyRect == null)
-				{
-					defaultItemCopyRect = defaultItemCopy.transform as RectTransform;
-				}
-
-				return defaultItemCopyRect;
-			}
-		}
-
-		/// <summary>
-		/// Sets the default item.
-		/// </summary>
-		/// <param name="newDefaultItem">New default item.</param>
-		protected override void SetDefaultItem(ListViewStringComponent newDefaultItem)
-		{
-			if (newDefaultItem != null)
-			{
-				if (defaultItemCopy != null)
-				{
-					Destroy(defaultItemCopy.gameObject);
-					defaultItemCopy = null;
-				}
-
-				if (defaultItemCopyRect != null)
-				{
-					Destroy(defaultItemCopyRect.gameObject);
-					defaultItemCopyRect = null;
-				}
-			}
-
-			base.SetDefaultItem(newDefaultItem);
-		}
 
 		/// <summary>
 		/// Calculates the maximum count of the visible items.
@@ -173,7 +103,7 @@
 
 			foreach (var elem in elements)
 			{
-				result = Mathf.Max(result, elem.minHeight, elem.preferredHeight);
+				result = Mathf.Max(Mathf.Max(result, elem.minHeight), elem.preferredHeight);
 			}
 
 			return result;
@@ -185,7 +115,7 @@
 
 			foreach (var elem in elements)
 			{
-				result = Mathf.Max(result, elem.minWidth, elem.preferredWidth);
+				result = Mathf.Max(Mathf.Max(result, elem.minWidth), elem.preferredWidth);
 			}
 
 			return result;
@@ -488,33 +418,23 @@
 		{
 			if (defaultItemLayoutGroup == null)
 			{
-				defaultItemLayoutGroup = DefaultItemCopy.GetComponent<LayoutGroup>();
+				defaultItemLayoutGroup = DefaultItem.GetComponent<LayoutGroup>();
 			}
 
 			var height = 0f;
 			if (defaultItemLayoutGroup != null)
 			{
-				DefaultItemCopy.gameObject.SetActive(true);
+				DefaultItem.gameObject.SetActive(true);
 
-				DefaultItemCopy.SetData(item);
+				DefaultItem.SetData(item);
 				LayoutUtilities.UpdateLayout(defaultItemLayoutGroup);
 
-				height = LayoutUtility.GetPreferredHeight(DefaultItemCopyRect);
+				height = LayoutUtility.GetPreferredHeight(DefaultItem.RectTransform);
 
-				DefaultItemCopy.gameObject.SetActive(false);
+				DefaultItem.gameObject.SetActive(false);
 			}
 
 			return height;
-		}
-
-		/// <summary>
-		/// Calls specified function with each component.
-		/// </summary>
-		/// <param name="func">Action.</param>
-		public override void ForEachComponent(Action<ListViewItem> func)
-		{
-			base.ForEachComponent(func);
-			func(DefaultItemCopy);
 		}
 
 		#region ListViewPaginator support

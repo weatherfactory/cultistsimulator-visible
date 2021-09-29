@@ -2,7 +2,6 @@
 {
 	using System.Collections.Generic;
 	using UIWidgets;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 
 	/// <summary>
@@ -22,11 +21,11 @@
 		public void GetSelected()
 		{
 			// Get last selected index
-			Debug.Log(Combobox.ListView.SelectedIndex);
+			Debug.Log(Combobox.ListView.SelectedIndex.ToString());
 
 			// Get selected indices
 			var indices = Combobox.ListView.SelectedIndices;
-			Debug.Log(string.Join(", ", indices.Convert(x => x.ToString()).ToArray()));
+			Debug.Log(UtilitiesCollections.List2String(indices));
 
 			// Get last selected string
 			if (Combobox.ListView.SelectedIndex != -1)
@@ -34,9 +33,7 @@
 				Debug.Log(Combobox.ListView.DataSource[Combobox.ListView.SelectedIndex]);
 			}
 
-			// Get selected strings
-			var selected_strings = Combobox.ListView.SelectedIndices.Convert(x => Combobox.ListView.DataSource[x]);
-			Debug.Log(string.Join(", ", selected_strings.ToArray()));
+			Debug.Log(UtilitiesCollections.List2String(Combobox.ListView.SelectedItems));
 		}
 
 		/// <summary>

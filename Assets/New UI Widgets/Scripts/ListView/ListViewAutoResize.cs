@@ -6,7 +6,7 @@
 	using UnityEngine.UI;
 
 	/// <summary>
-	/// Auto-resize ListView or TileView according to items counts until specified maximum size reached.
+	/// Auto-resizes ListView or TileView according to item counts until specified maximum size reached.
 	/// </summary>
 	[RequireComponent(typeof(ListViewBase))]
 	public class ListViewAutoResize : MonoBehaviour, ILayoutElement
@@ -220,8 +220,8 @@
 			if (UpdateRectTransform)
 			{
 				var property_type = ListView.IsHorizontal()
-				? DrivenTransformProperties.SizeDeltaX
-				: DrivenTransformProperties.SizeDeltaY;
+					? DrivenTransformProperties.SizeDeltaX
+					: DrivenTransformProperties.SizeDeltaY;
 				PropertiesTracker.Add(this, RectTransform, property_type);
 			}
 		}

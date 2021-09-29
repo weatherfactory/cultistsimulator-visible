@@ -8,7 +8,7 @@ namespace UIWidgets
 	/// Scale mark.
 	/// </summary>
 	[Serializable]
-	public class ScaleMark : INotifyPropertyChanged
+	public class ScaleMark : IObservable, INotifyPropertyChanged
 	{
 		[SerializeField]
 		float step;
@@ -28,7 +28,7 @@ namespace UIWidgets
 				if (step != value)
 				{
 					step = value;
-					Changed("Step");
+					NotifyPropertyChanged("Step");
 				}
 			}
 		}
@@ -51,7 +51,7 @@ namespace UIWidgets
 				if (template != value)
 				{
 					template = value;
-					Changed("Template");
+					NotifyPropertyChanged("Template");
 				}
 			}
 		}
@@ -59,15 +59,30 @@ namespace UIWidgets
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = Utilities.DefaultPropertyHandler;
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Raise PropertyChanged event.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
-		protected void Changed(string propertyName)
+		protected void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

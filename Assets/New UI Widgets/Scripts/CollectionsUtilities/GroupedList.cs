@@ -46,8 +46,11 @@
 
 			set
 			{
-				itemsPerBlock = value;
-				Update();
+				if (itemsPerBlock != value)
+				{
+					itemsPerBlock = value;
+					Update();
+				}
 			}
 		}
 
@@ -65,8 +68,11 @@
 
 			set
 			{
-				emptyGroupItem = value;
-				Update();
+				if (!IsItemsEquals(emptyGroupItem, value))
+				{
+					emptyGroupItem = value;
+					Update();
+				}
 			}
 		}
 
@@ -84,9 +90,17 @@
 
 			set
 			{
-				emptyItem = value;
-				Update();
+				if (!IsItemsEquals(emptyItem, value))
+				{
+					emptyItem = value;
+					Update();
+				}
 			}
+		}
+
+		static bool IsItemsEquals(T a, T b)
+		{
+			return EqualityComparer<T>.Default.Equals(a, b);
 		}
 
 		/// <summary>

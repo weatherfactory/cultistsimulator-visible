@@ -145,9 +145,7 @@
 			/// <param name="index">Index.</param>
 			public override float GetItemPositionMiddle(int index)
 			{
-				var start = GetItemPosition(index);
-				var end = GetItemPositionBottom(index);
-				return start + ((end - start) / 2f);
+				return GetItemPosition(index) + (GetItemSize(index) / 2f) - (GetScrollRectSize() / 2f);
 			}
 
 			/// <summary>
@@ -157,7 +155,7 @@
 			/// <param name="index">Index.</param>
 			public override float GetItemPositionBottom(int index)
 			{
-				return GetItemPosition(index) + GetItemSize() + Owner.LayoutBridge.GetMargin() - Owner.LayoutBridge.GetSpacing() - GetScrollRectSize();
+				return GetItemPosition(index) + GetItemSize(index) + Owner.LayoutBridge.GetMargin() - Owner.LayoutBridge.GetSpacing() - GetScrollRectSize();
 			}
 
 			/// <summary>
@@ -201,7 +199,7 @@
 						index = Mathf.CeilToInt(pos / GetItemSize());
 						break;
 					default:
-						throw new NotSupportedException("Unsupported NearestType: " + type);
+						throw new NotSupportedException(string.Format("Unsupported NearestType: {0}", EnumHelper<NearestType>.ToString(type)));
 				}
 
 				return Mathf.Min(index, Owner.DataSource.Count);

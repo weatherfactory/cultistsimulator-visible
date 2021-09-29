@@ -19,7 +19,7 @@ namespace UIWidgets
 			}
 
 			Scale.gameObject.SetActive(true);
-			Scale.Set(Value2MarkData, Slider.LimitMin, Slider.LimitMax, Slider.ValueMin, Slider.ValueMax);
+			Scale.Set(Value2MarkDataDelegate, Slider.LimitMin, Slider.LimitMax, Slider.ValueMin, Slider.ValueMax);
 		}
 	}
 }

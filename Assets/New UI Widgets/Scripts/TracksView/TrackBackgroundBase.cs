@@ -13,7 +13,7 @@
 	[RequireComponent(typeof(Graphic))]
 	public class TrackBackgroundBase<TData, TPoint> : TrackViewBase<TData, TPoint>, IDropSupport<TData>
 		where TData : class, ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 	{
 		/// <summary>
 		/// Padding from start drag point to left border of the item.
@@ -28,6 +28,11 @@
 		/// <param name="eventData">Event data.</param>
 		protected override void OnDoubleClick(PointerEventData eventData)
 		{
+			if (!Owner.IsInteractable())
+			{
+				return;
+			}
+
 			if (!AllowDialog)
 			{
 				return;

@@ -18,6 +18,7 @@
 		/// <summary>
 		/// Show dialog.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void ShowDialog()
 		{
 			var actions = new DialogButton[]
@@ -26,19 +27,20 @@
 				new DialogButton("Main Button", Close, 1),
 			};
 
-			DialogTemplate.Clone().Show(
+			var dialog = DialogTemplate.Clone();
+			dialog.Show(
 				title: "Dialog With Different Buttons",
 				message: "Test",
 				buttons: actions,
 				focusButton: "Close",
 				modal: true,
-				modalColor: new Color(0, 0, 0, 0.8f),
-				onCancel: Close);
+				modalColor: new Color(0, 0, 0, 0.8f));
+			dialog.OnDialogCancel = Close;
 		}
 
-		bool Close(int buttonIndex)
+		bool Close(DialogBase dialog, int buttonIndex)
 		{
-			Debug.Log("clicked: " + buttonIndex);
+			Debug.Log(string.Format("clicked: {0}", buttonIndex.ToString()));
 			return true;
 		}
 	}

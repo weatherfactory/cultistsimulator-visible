@@ -19,11 +19,11 @@
 			{
 				Foreground = new Graphic[]
 				{
-					Utilities.GetGraphic(NameAdapter),
-					Utilities.GetGraphic(CapitalAdapter),
-					Utilities.GetGraphic(AreaAdapter),
-					Utilities.GetGraphic(PopulationAdapter),
-					Utilities.GetGraphic(DensityAdapter),
+					UtilitiesUI.GetGraphic(NameAdapter),
+					UtilitiesUI.GetGraphic(CapitalAdapter),
+					UtilitiesUI.GetGraphic(AreaAdapter),
+					UtilitiesUI.GetGraphic(PopulationAdapter),
+					UtilitiesUI.GetGraphic(DensityAdapter),
 				};
 				GraphicsForegroundVersion = 1;
 			}
@@ -191,23 +191,25 @@
 
 				if (CapitalAdapter != null)
 				{
-					CapitalAdapter.text = "Capital: " + Item.Capital;
+					CapitalAdapter.text = string.Format("Capital: {0}", Item.Capital);
 				}
 
 				if (AreaAdapter != null)
 				{
-					AreaAdapter.text = "Area: " + Item.Area.ToString("N0") + " sq. km";
+					AreaAdapter.text = string.Format("Area: {0} sq. km", Item.Area.ToString("N0"));
 				}
 
 				if (PopulationAdapter != null)
 				{
-					PopulationAdapter.text = "Population: " + Item.Population.ToString("N0");
+					PopulationAdapter.text = string.Format("Population: {0}", Item.Population.ToString("N0"));
 				}
 
 				if (DensityAdapter != null)
 				{
-					var density = Item.Area == 0 ? "n/a" : Mathf.CeilToInt(((float)Item.Population) / Item.Area).ToString("N") + " / sq. km";
-					DensityAdapter.text = "Density: " + density;
+					var density = Item.Area == 0
+						? "n/a"
+						: string.Format("{0} / sq. km", Mathf.CeilToInt(((float)Item.Population) / Item.Area).ToString("N"));
+					DensityAdapter.text = string.Format("Density: {0}", density);
 				}
 			}
 

@@ -3,6 +3,7 @@
 	using UIWidgets;
 	using UnityEngine;
 	using UnityEngine.EventSystems;
+	using UnityEngine.Serialization;
 	using UnityEngine.UI;
 
 	/// <summary>
@@ -81,10 +82,11 @@
 		public TextAdapter AvailableSellCountAdapter;
 
 		/// <summary>
-		/// Count slider.
+		/// Quantity slider.
 		/// </summary>
 		[SerializeField]
-		protected CenteredSlider Count;
+		[FormerlySerializedAs("Count")]
+		protected CenteredSlider Quantity;
 
 		/// <summary>
 		/// Current order line.
@@ -100,11 +102,11 @@
 			{
 				Foreground = new Graphic[]
 				{
-					Utilities.GetGraphic(NameAdapter),
-					Utilities.GetGraphic(BuyPriceAdapter),
-					Utilities.GetGraphic(SellPriceAdapter),
-					Utilities.GetGraphic(AvailableBuyCountAdapter),
-					Utilities.GetGraphic(AvailableSellCountAdapter),
+					UtilitiesUI.GetGraphic(NameAdapter),
+					UtilitiesUI.GetGraphic(BuyPriceAdapter),
+					UtilitiesUI.GetGraphic(SellPriceAdapter),
+					UtilitiesUI.GetGraphic(AvailableBuyCountAdapter),
+					UtilitiesUI.GetGraphic(AvailableSellCountAdapter),
 				};
 				GraphicsForegroundVersion = 1;
 			}
@@ -113,9 +115,10 @@
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected override void Start()
 		{
-			Count.OnValueChanged.AddListener(ChangeCount);
+			Quantity.OnValueChanged.AddListener(ChangeCount);
 			base.Start();
 		}
 
@@ -128,10 +131,10 @@
 			switch (eventData.moveDir)
 			{
 				case MoveDirection.Left:
-					Count.Value -= 1;
+					Quantity.Value -= 1;
 					break;
 				case MoveDirection.Right:
-					Count.Value += 1;
+					Quantity.Value += 1;
 					break;
 				default:
 					base.OnMove(eventData);
@@ -152,27 +155,28 @@
 			BuyPriceAdapter.text = OrderLine.BuyPrice.ToString();
 			SellPriceAdapter.text = OrderLine.SellPrice.ToString();
 
-			AvailableBuyCountAdapter.text = OrderLine.BuyCount.ToString();
-			AvailableSellCountAdapter.text = OrderLine.SellCount.ToString();
+			AvailableBuyCountAdapter.text = OrderLine.BuyQuantity.ToString();
+			AvailableSellCountAdapter.text = OrderLine.SellQuantity.ToString();
 
-			Count.LimitMin = -OrderLine.SellCount;
-			Count.LimitMax = OrderLine.BuyCount;
-			Count.Value = OrderLine.Count;
+			Quantity.LimitMin = -OrderLine.SellQuantity;
+			Quantity.LimitMax = OrderLine.BuyQuantity;
+			Quantity.Value = OrderLine.Quantity;
 		}
 
 		void ChangeCount(int value)
 		{
-			OrderLine.Count = value;
+			OrderLine.Quantity = value;
 		}
 
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected override void OnDestroy()
 		{
-			if (Count != null)
+			if (Quantity != null)
 			{
-				Count.OnValueChanged.RemoveListener(ChangeCount);
+				Quantity.OnValueChanged.RemoveListener(ChangeCount);
 			}
 		}
 

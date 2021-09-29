@@ -2,13 +2,14 @@
 {
 	using System;
 	using System.ComponentModel;
+	using UIWidgets;
 	using UnityEngine;
 
 	/// <summary>
 	/// Settings for the staggered layout.
 	/// </summary>
 	[Serializable]
-	public class EasyLayoutEllipseSettings : INotifyPropertyChanged
+	public class EasyLayoutEllipseSettings : IObservable, INotifyPropertyChanged
 	{
 		[SerializeField]
 		private bool widthAuto = true;
@@ -28,7 +29,7 @@
 				if (widthAuto != value)
 				{
 					widthAuto = value;
-					Changed("WidthAuto");
+					NotifyPropertyChanged("WidthAuto");
 				}
 			}
 		}
@@ -51,7 +52,7 @@
 				if (width != value)
 				{
 					width = value;
-					Changed("Width");
+					NotifyPropertyChanged("Width");
 				}
 			}
 		}
@@ -74,7 +75,7 @@
 				if (heightAuto != value)
 				{
 					heightAuto = value;
-					Changed("HeightAuto");
+					NotifyPropertyChanged("HeightAuto");
 				}
 			}
 		}
@@ -97,7 +98,7 @@
 				if (height != value)
 				{
 					height = value;
-					Changed("Height");
+					NotifyPropertyChanged("Height");
 				}
 			}
 		}
@@ -120,7 +121,7 @@
 				if (angleStart != value)
 				{
 					angleStart = value;
-					Changed("AngleStart");
+					NotifyPropertyChanged("AngleStart");
 				}
 			}
 		}
@@ -143,7 +144,7 @@
 				if (angleStepAuto != value)
 				{
 					angleStepAuto = value;
-					Changed("AngleStepAuto");
+					NotifyPropertyChanged("AngleStepAuto");
 				}
 			}
 		}
@@ -166,7 +167,7 @@
 				if (angleStep != value)
 				{
 					angleStep = value;
-					Changed("AngleStep");
+					NotifyPropertyChanged("AngleStep");
 				}
 			}
 		}
@@ -189,7 +190,7 @@
 				if (fill != value)
 				{
 					fill = value;
-					Changed("Fill");
+					NotifyPropertyChanged("Fill");
 				}
 			}
 		}
@@ -212,7 +213,7 @@
 				if (arcLength != value)
 				{
 					arcLength = value;
-					Changed("Length");
+					NotifyPropertyChanged("Length");
 				}
 			}
 		}
@@ -235,7 +236,7 @@
 				if (align != value)
 				{
 					align = value;
-					Changed("Align");
+					NotifyPropertyChanged("Align");
 				}
 			}
 		}
@@ -259,7 +260,7 @@
 				if (angleScroll != value)
 				{
 					angleScroll = value;
-					Changed("AngleScroll");
+					NotifyPropertyChanged("AngleScroll");
 				}
 			}
 		}
@@ -283,7 +284,7 @@
 				if (angleFiller != value)
 				{
 					angleFiller = value;
-					Changed("AngleFiller");
+					NotifyPropertyChanged("AngleFiller");
 				}
 			}
 		}
@@ -306,7 +307,7 @@
 				if (elementsRotate != value)
 				{
 					elementsRotate = value;
-					Changed("ElementsRotate");
+					NotifyPropertyChanged("ElementsRotate");
 				}
 			}
 		}
@@ -329,7 +330,7 @@
 				if (elementsRotationStart != value)
 				{
 					elementsRotationStart = value;
-					Changed("ElementsRotationStart");
+					NotifyPropertyChanged("ElementsRotationStart");
 				}
 			}
 		}
@@ -337,15 +338,95 @@
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = EasyLayout.DefaultPropertyHandler;
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Property changed.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
-		protected void Changed(string propertyName)
+		protected void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		/// <summary>
+		/// Get debug information.
+		/// </summary>
+		/// <param name="sb">String builder.</param>
+		public virtual void GetDebugInfo(System.Text.StringBuilder sb)
+		{
+			sb.Append("\tWidth Auto: ");
+			sb.Append(WidthAuto);
+			sb.AppendLine();
+
+			sb.Append("\tWidth: ");
+			sb.Append(Width);
+			sb.AppendLine();
+
+			sb.Append("\tHeight Auto: ");
+			sb.Append(HeightAuto);
+			sb.AppendLine();
+
+			sb.Append("\tHeight: ");
+			sb.Append(Height);
+			sb.AppendLine();
+
+			sb.Append("\tAngle Start: ");
+			sb.Append(AngleStart);
+			sb.AppendLine();
+
+			sb.Append("\tAngle Step Auto: ");
+			sb.Append(AngleStepAuto);
+			sb.AppendLine();
+
+			sb.Append("\tAngle Step: ");
+			sb.Append(AngleStep);
+			sb.AppendLine();
+
+			sb.Append("\tAlign: ");
+			sb.Append(EnumHelper<EllipseAlign>.ToString(Align));
+			sb.AppendLine();
+
+			sb.Append("\tElements Rotate: ");
+			sb.Append(ElementsRotate);
+			sb.AppendLine();
+
+			sb.Append("\tElements Rotation Start: ");
+			sb.Append(ElementsRotationStart);
+			sb.AppendLine();
+
+			sb.AppendLine("\t#####");
+
+			sb.Append("\tFill: ");
+			sb.Append(EnumHelper<EllipseFill>.ToString(Fill));
+			sb.AppendLine();
+
+			sb.Append("\tAngle Filler: ");
+			sb.Append(AngleFiller);
+			sb.AppendLine();
+
+			sb.Append("\tAngle Scroll: ");
+			sb.Append(AngleScroll);
+			sb.AppendLine();
+
+			sb.Append("\tArc Length: ");
+			sb.Append(ArcLength);
+			sb.AppendLine();
 		}
 	}
 }

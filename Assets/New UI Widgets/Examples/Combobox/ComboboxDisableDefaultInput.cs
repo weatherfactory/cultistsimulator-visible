@@ -8,6 +8,7 @@
 	/// Disable Combobox input.
 	/// </summary>
 	[RequireComponent(typeof(Combobox))]
+	[System.Obsolete]
 	public class ComboboxDisableDefaultInput : MonoBehaviour
 	{
 		/// <summary>

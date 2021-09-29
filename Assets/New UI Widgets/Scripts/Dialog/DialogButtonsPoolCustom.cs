@@ -12,10 +12,14 @@
 	/// Class for the buttons instances.
 	/// </summary>
 	/// <typeparam name="TOwner">Type of the owner.</typeparam>
+	/// <typeparam name="TOwnerBase">Base type of the owner.</typeparam>
 	/// <typeparam name="TButtonInstance">Type of the button instance.</typeparam>
-	public abstract class DialogButtonsPoolCustom<TOwner, TButtonInstance>
-		where TOwner : MonoBehaviour, IHideable
-		where TButtonInstance : DialogButtonCustom<TOwner>
+	/// <typeparam name="TButtonConfig">Type of the button configuration.</typeparam>
+	public abstract class DialogButtonsPoolCustom<TOwner, TOwnerBase, TButtonInstance, TButtonConfig>
+		where TOwner : class, IHideable, TOwnerBase
+		where TOwnerBase : class, IHideable
+		where TButtonInstance : DialogButtonCustom<TOwner, TOwnerBase, TButtonConfig>
+		where TButtonConfig : ButtonConfiguration<TOwnerBase>
 	{
 		/// <summary>
 		/// Owner.
@@ -49,7 +53,7 @@
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DialogButtonsPoolCustom{TOwner, TButtonInstance}"/> class.
+		/// Initializes a new instance of the <see cref="DialogButtonsPoolCustom{TOwner, TOwnerBase, TButtonInstance, TButtonConfig}"/> class.
 		/// </summary>
 		/// <param name="owner">Dialog.</param>
 		/// <param name="templates">Templates.</param>
@@ -124,7 +128,7 @@
 		/// <param name="buttonIndex">Index of the button.</param>
 		/// <param name="info">Button info.</param>
 		/// <returns>Button.</returns>
-		public TButtonInstance Get(int buttonIndex, DialogButton info)
+		public TButtonInstance Get(int buttonIndex, TButtonConfig info)
 		{
 			TButtonInstance instance;
 			if (Cache[info.TemplateIndex].Count > 0)
@@ -150,7 +154,7 @@
 		/// <param name="buttonIndex">Index of the button.</param>
 		/// <param name="info">Button info.</param>
 		/// <returns>Button.</returns>
-		protected abstract TButtonInstance CreateButtonInstance(int buttonIndex, DialogButton info);
+		protected abstract TButtonInstance CreateButtonInstance(int buttonIndex, TButtonConfig info);
 
 		/// <summary>
 		/// Replace buttons templates.

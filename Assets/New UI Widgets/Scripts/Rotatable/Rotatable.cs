@@ -165,7 +165,7 @@ namespace UIWidgets
 			/// <returns>true if the directions are equal; otherwise, false.</returns>
 			public static bool operator ==(Directions directions1, Directions directions2)
 			{
-				return Equals(directions1, directions2);
+				return directions1.Equals(directions2);
 			}
 
 			/// <summary>
@@ -176,7 +176,7 @@ namespace UIWidgets
 			/// <returns>true if the directions not equal; otherwise, false.</returns>
 			public static bool operator !=(Directions directions1, Directions directions2)
 			{
-				return !Equals(directions1, directions2);
+				return !directions1.Equals(directions2);
 			}
 		}
 
@@ -394,75 +394,99 @@ namespace UIWidgets
 		protected Camera CurrentCamera;
 
 		/// <summary>
+		/// Cursors.
+		/// </summary>
+		[SerializeField]
+		public Cursors Cursors;
+
+		/// <summary>
 		/// The cursor NW texture.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
 		[EditorConditionBlock("Cursors")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D CursorTopLeftTexture;
 
 		/// <summary>
 		/// The cursor NW hot spot.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
 		[EditorConditionBlock("Cursors")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 CursorTopLeftHotSpot = new Vector2(16, 16);
 
 		/// <summary>
 		/// The cursor NE texture.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
 		[EditorConditionBlock("Cursors")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D CursorTopRightTexture;
 
 		/// <summary>
 		/// The cursor NE hot spot.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
 		[EditorConditionBlock("Cursors")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 CursorTopRightHotSpot = new Vector2(16, 16);
 
 		/// <summary>
 		/// The cursor SW texture.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
 		[EditorConditionBlock("Cursors")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D CursorBottomLeftTexture;
 
 		/// <summary>
 		/// The cursor SW hot spot.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
 		[EditorConditionBlock("Cursors")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 CursorBottomLeftHotSpot = new Vector2(16, 16);
 
 		/// <summary>
 		/// The cursor SE texture.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
 		[EditorConditionBlock("Cursors")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D CursorBottomRightTexture;
 
 		/// <summary>
 		/// The cursor SE hot spot.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
 		[EditorConditionBlock("Cursors")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 CursorBottomRightHotSpot = new Vector2(16, 16);
 
 		/// <summary>
 		/// The default cursor texture.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
 		[EditorConditionBlock("Cursors")]
-		[Obsolete("Replaced with UICursorSettings component.")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D DefaultCursorTexture;
 
 		/// <summary>
 		/// The default cursor hot spot.
 		/// </summary>
 		[SerializeField]
+		[HideInInspector]
 		[EditorConditionBlock("Cursors")]
-		[Obsolete("Replaced with UICursorSettings component.")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 DefaultCursorHotSpot;
 
 		/// <summary>
@@ -715,27 +739,103 @@ namespace UIWidgets
 			if (regions.TopLeft && RotateDirections.TopLeft)
 			{
 				cursorChanged = true;
-				UICursor.Set(this, CursorTopLeftTexture, CursorTopLeftHotSpot);
+				UICursor.Set(this, GetTopLeftCursor());
 			}
 			else if (regions.TopRight && RotateDirections.TopRight)
 			{
 				cursorChanged = true;
-				UICursor.Set(this, CursorTopRightTexture, CursorTopRightHotSpot);
+				UICursor.Set(this, GetTopRightCursor());
 			}
 			else if (regions.BottomLeft && RotateDirections.BottomLeft)
 			{
 				cursorChanged = true;
-				UICursor.Set(this, CursorBottomLeftTexture, CursorBottomLeftHotSpot);
+				UICursor.Set(this, GetBottomLeftCursor());
 			}
 			else if (regions.BottomRight && RotateDirections.BottomRight)
 			{
 				cursorChanged = true;
-				UICursor.Set(this, CursorBottomRightTexture, CursorBottomRightHotSpot);
+				UICursor.Set(this, GetBottomRightCursor());
 			}
 			else if (cursorChanged)
 			{
 				ResetCursor();
 			}
+		}
+
+		/// <summary>
+		/// Get top left cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetTopLeftCursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.NorthWestRotateArrow;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.NorthWestRotateArrow;
+			}
+
+			return default(Cursors.Cursor);
+		}
+
+		/// <summary>
+		/// Get top right cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetTopRightCursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.NorthEastRotateArrow;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.NorthEastRotateArrow;
+			}
+
+			return default(Cursors.Cursor);
+		}
+
+		/// <summary>
+		/// Get bottom left cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetBottomLeftCursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.SouthWestRotateArrow;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.SouthWestRotateArrow;
+			}
+
+			return default(Cursors.Cursor);
+		}
+
+		/// <summary>
+		/// Get bottom right cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetBottomRightCursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.SouthEastRotateArrow;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.SouthEastRotateArrow;
+			}
+
+			return default(Cursors.Cursor);
 		}
 
 		/// <summary>
@@ -1055,7 +1155,7 @@ namespace UIWidgets
 		{
 			if (!IsTargetSelf)
 			{
-				Utilities.CopyRectTransformValues(Target, RectTransform);
+				UtilitiesRectTransform.CopyValues(Target, RectTransform);
 			}
 		}
 

@@ -2,6 +2,7 @@
 {
 	using System;
 	using System.ComponentModel;
+	using UIWidgets;
 	using UnityEngine;
 	using UnityEngine.Serialization;
 
@@ -9,7 +10,7 @@
 	/// Flex settings.
 	/// </summary>
 	[Serializable]
-	public class EasyLayoutFlexSettings : INotifyPropertyChanged
+	public class EasyLayoutFlexSettings : IObservable, INotifyPropertyChanged
 	{
 		/// <summary>
 		/// Content positions.
@@ -89,7 +90,7 @@
 				if (wrap != value)
 				{
 					wrap = value;
-					Changed("Wrap");
+					NotifyPropertyChanged("Wrap");
 				}
 			}
 		}
@@ -113,7 +114,7 @@
 				if (justifyContent != value)
 				{
 					justifyContent = value;
-					Changed("JustifyContent");
+					NotifyPropertyChanged("JustifyContent");
 				}
 			}
 		}
@@ -137,7 +138,7 @@
 				if (alignContent != value)
 				{
 					alignContent = value;
-					Changed("AlignContent");
+					NotifyPropertyChanged("AlignContent");
 				}
 			}
 		}
@@ -161,7 +162,7 @@
 				if (alignItems != value)
 				{
 					alignItems = value;
-					Changed("AlignItems");
+					NotifyPropertyChanged("AlignItems");
 				}
 			}
 		}
@@ -169,15 +170,53 @@
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = EasyLayout.DefaultPropertyHandler;
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Property changed.
 		/// </summary>
 		/// <param name="propertyName">Property name.</param>
-		protected void Changed(string propertyName)
+		protected void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+
+		/// <summary>
+		/// Get debug information.
+		/// </summary>
+		/// <param name="sb">String builder.</param>
+		public virtual void GetDebugInfo(System.Text.StringBuilder sb)
+		{
+			sb.Append("\tWrap: ");
+			sb.Append(Wrap);
+			sb.AppendLine();
+
+			sb.Append("\tJustify Content: ");
+			sb.Append(EnumHelper<Content>.ToString(JustifyContent));
+			sb.AppendLine();
+
+			sb.Append("\tAlign Content: ");
+			sb.Append(EnumHelper<Content>.ToString(AlignContent));
+			sb.AppendLine();
+
+			sb.Append("\tAlign Items: ");
+			sb.Append(EnumHelper<Items>.ToString(AlignItems));
+			sb.AppendLine();
 		}
 	}
 }

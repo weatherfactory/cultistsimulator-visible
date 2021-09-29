@@ -18,7 +18,7 @@
 	/// <typeparam name="TTrackForm">TrackForm type.</typeparam>
 	public abstract partial class TracksViewCustom<TData, TPoint, TDataView, TTrackView, TTrackBackground, TTrackDataDialog, TTrackDataForm, TTrackDialog, TTrackForm> : TracksViewBase<TData, TPoint>
 		where TData : class, ITrackData<TPoint>
-		where TPoint : IComparable
+		where TPoint : IComparable<TPoint>
 		where TDataView : TrackDataViewBase<TData, TPoint>
 		where TTrackView : TrackViewBase<TData, TPoint>
 		where TTrackBackground : TrackBackgroundBase<TData, TPoint>
@@ -50,7 +50,7 @@
 					rt.pivot = new Vector2(0f, 1f);
 					DefaultItemSize = rt.rect.size;
 
-					DataViews.DefaultItem = defaultItem;
+					DataViews.Template = defaultItem;
 
 					ChangeDefaultItemResizable();
 
@@ -107,7 +107,7 @@
 					var rt = defaultTrackHeader as RectTransform;
 					rt.pivot = new Vector2(0f, 1f);
 
-					TracksHeaders.DefaultItem = defaultTrackHeader;
+					TracksHeaders.Template = defaultTrackHeader;
 
 					UpdateView();
 				}
@@ -162,7 +162,7 @@
 					var rt = defaultTrackBackground as RectTransform;
 					rt.pivot = new Vector2(0f, 1f);
 
-					TracksBackgrounds.DefaultItem = defaultTrackBackground;
+					TracksBackgrounds.Template = defaultTrackBackground;
 
 					UpdateView();
 				}
@@ -212,6 +212,13 @@
 		/// </summary>
 		[NonSerialized]
 		protected TracksDataViews VisibleDataViews;
+
+		/// <summary>
+		/// Visible items of the track.
+		/// Reusable list.
+		/// </summary>
+		[NonSerialized]
+		protected List<TData> TrackVisibleItems = new List<TData>();
 
 		bool isCustomInited;
 
@@ -306,10 +313,13 @@
 			{
 				track.VisibleRangeSet(VisibleStart, VisibleEnd);
 
-				foreach (var data in track.VisibleItems)
+				track.GetVisibleItems(TrackVisibleItems);
+				foreach (var data in TrackVisibleItems)
 				{
 					VisibleDataViews.Add(track, data, height);
 				}
+
+				TrackVisibleItems.Clear();
 
 				height += TrackHeight(track) + TracksSpacing;
 			}

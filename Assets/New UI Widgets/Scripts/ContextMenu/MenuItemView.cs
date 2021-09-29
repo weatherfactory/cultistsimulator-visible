@@ -1,7 +1,6 @@
 ﻿namespace UIWidgets.Menu
 {
 	using System;
-	using System.ComponentModel;
 	using UIWidgets.l10n;
 	using UIWidgets.Styles;
 	using UnityEngine;
@@ -76,14 +75,14 @@
 
 				if (item != null)
 				{
-					item.PropertyChanged -= ItemChanged;
+					item.OnChange -= UpdateView;
 				}
 
 				item = value;
 
 				if (item != null)
 				{
-					item.PropertyChanged += ItemChanged;
+					item.OnChange += UpdateView;
 				}
 
 				UpdateView();
@@ -140,16 +139,6 @@
 			base.OnDestroy();
 
 			Item = null;
-		}
-
-		/// <summary>
-		/// Process the item changed event.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="args">Event arguments.</param>
-		protected virtual void ItemChanged(object sender, PropertyChangedEventArgs args)
-		{
-			UpdateView();
 		}
 
 		/// <summary>

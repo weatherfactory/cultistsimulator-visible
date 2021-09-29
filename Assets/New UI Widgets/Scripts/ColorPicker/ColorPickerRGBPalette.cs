@@ -619,9 +619,9 @@ namespace UIWidgets
 
 			if ((slider != null) && (slider.handleRect != null))
 			{
-				var handle_style = Utilities.IsHorizontal(slider)
-					? styleColorPicker.SliderVerticalHandle
-					: styleColorPicker.SliderHorizontalHandle;
+				var handle_style = UtilitiesUI.IsHorizontal(slider)
+					? styleColorPicker.SliderHorizontalHandle
+					: styleColorPicker.SliderVerticalHandle;
 				handle_style.ApplyTo(slider.handleRect.GetComponent<Image>());
 			}
 		}
@@ -642,9 +642,9 @@ namespace UIWidgets
 
 			if ((slider != null) && (slider.handleRect != null))
 			{
-				var handle_style = Utilities.IsHorizontal(slider)
-					? styleColorPicker.SliderVerticalHandle
-					: styleColorPicker.SliderHorizontalHandle;
+				var handle_style = UtilitiesUI.IsHorizontal(slider)
+					? styleColorPicker.SliderHorizontalHandle
+					: styleColorPicker.SliderVerticalHandle;
 				handle_style.GetFrom(slider.handleRect.GetComponent<Image>());
 			}
 		}

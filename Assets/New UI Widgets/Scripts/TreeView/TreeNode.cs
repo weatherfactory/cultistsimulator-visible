@@ -9,22 +9,17 @@
 	/// Tree node.
 	/// </summary>
 	/// <typeparam name="TItem">Type of node item.</typeparam>
-	#if !UNITY_2020_1_OR_NEWER
-	[Serializable]
-	#endif
-	public class TreeNode<TItem> : INotifyPropertyChanged
+	public class TreeNode<TItem> : IObservable, INotifyPropertyChanged, IEquatable<TreeNode<TItem>>
 	{
 		/// <summary>
 		/// Occurs when on change.
 		/// </summary>
-		#pragma warning disable 0067
-		public event OnChange OnChange = Utilities.DefaultHandler;
-		#pragma warning restore 0067
+		public event OnChange OnChange;
 
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = Utilities.DefaultPropertyHandler;
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// The pause observation.
@@ -50,7 +45,7 @@
 				if (isVisible != value)
 				{
 					isVisible = value;
-					Changed("IsVisible");
+					NotifyPropertyChanged("IsVisible");
 				}
 			}
 		}
@@ -74,7 +69,7 @@
 				if (isExpanded != value)
 				{
 					isExpanded = value;
-					Changed("IsExpanded");
+					NotifyPropertyChanged("IsExpanded");
 				}
 			}
 		}
@@ -96,7 +91,7 @@
 			set
 			{
 				item = value;
-				Changed("Item");
+				NotifyPropertyChanged("Item");
 			}
 		}
 
@@ -118,10 +113,13 @@
 			{
 				if (nodes != null)
 				{
-					nodes.OnChange -= Changed;
+					nodes.OnChange -= NotifyPropertyChanged;
 					nodes.OnCollectionChange -= CollectionChanged;
 
-					nodes.ForEach(RemoveParent);
+					for (int i = nodes.Count - 1; i >= 0; i--)
+					{
+						nodes[i].Parent = null;
+					}
 				}
 
 				nodes = value;
@@ -130,11 +128,11 @@
 				{
 					CollectionChanged();
 
-					nodes.OnChange += Changed;
+					nodes.OnChange += NotifyPropertyChanged;
 					nodes.OnCollectionChange += CollectionChanged;
 				}
 
-				Changed("Nodes");
+				NotifyPropertyChanged("Nodes");
 			}
 		}
 
@@ -212,7 +210,7 @@
 			get
 			{
 				var result = RealParent;
-				if ((result != null) && (result.Item != null))
+				if ((result != null) && !IsNull(result.Item))
 				{
 					return result;
 				}
@@ -261,7 +259,7 @@
 				}
 
 				var last = result.Count - 1;
-				if ((last >= 0) && (result[last].Item == null))
+				if ((last >= 0) && IsNull(result[last].Item))
 				{
 					result.RemoveAt(last);
 				}
@@ -306,6 +304,11 @@
 		/// <param name="node">Node.</param>
 		public bool IsParentOfNode(TreeNode<TItem> node)
 		{
+			if (node == null)
+			{
+				return false;
+			}
+
 			var nodeParent = node.Parent;
 			while (nodeParent != null)
 			{
@@ -327,6 +330,11 @@
 		/// <param name="newParent">New parent.</param>
 		public bool CanBeParent(TreeNode<TItem> newParent)
 		{
+			if (newParent == null)
+			{
+				return false;
+			}
+
 			if (this == newParent)
 			{
 				return false;
@@ -337,7 +345,7 @@
 
 		void SetParentValue(TreeNode<TItem> newParent)
 		{
-			var old_parent = ((parent != null) && parent.IsAlive) ? parent.Target as TreeNode<TItem> : null;
+			var old_parent = RealParent;
 
 			if (old_parent == newParent)
 			{
@@ -372,7 +380,7 @@
 				{
 					newParent.nodes = new ObservableList<TreeNode<TItem>>();
 
-					newParent.nodes.OnChange += newParent.Changed;
+					newParent.nodes.OnChange += newParent.NotifyPropertyChanged;
 					newParent.nodes.OnCollectionChange += newParent.CollectionChanged;
 				}
 
@@ -407,10 +415,35 @@
 
 			if (nodes != null)
 			{
-				nodes.OnChange += Changed;
+				nodes.OnChange += NotifyPropertyChanged;
 				nodes.OnCollectionChange += CollectionChanged;
 				CollectionChanged();
 			}
+		}
+
+		/// <summary>
+		/// TItem is value type.
+		/// </summary>
+		private static readonly bool IsValueType;
+
+		static TreeNode()
+		{
+			IsValueType = typeof(TItem).IsValueType;
+		}
+
+		/// <summary>
+		/// Check if item is null.
+		/// </summary>
+		/// <param name="item">Item.</param>
+		/// <returns>true if item is null; otherwise false.</returns>
+		protected static bool IsNull(TItem item)
+		{
+			if (IsValueType)
+			{
+				return false;
+			}
+
+			return item == null;
 		}
 
 		/// <summary>
@@ -431,7 +464,7 @@
 				nodes.Add(new TreeNode<TItem>(serializedNodes[node.FirstSubNodeIndex + i], serializedNodes));
 			}
 
-			nodes.OnChange += Changed;
+			nodes.OnChange += NotifyPropertyChanged;
 			nodes.OnCollectionChange += CollectionChanged;
 		}
 
@@ -442,7 +475,7 @@
 		{
 			if (nodes != null)
 			{
-				nodes.OnChange -= Changed;
+				nodes.OnChange -= NotifyPropertyChanged;
 				nodes.OnCollectionChange -= CollectionChanged;
 			}
 		}
@@ -481,20 +514,29 @@
 			nodes.EndUpdate();
 		}
 
-		void Changed()
+		void NotifyPropertyChanged()
 		{
-			Changed("Nodes");
+			NotifyPropertyChanged("Nodes");
 		}
 
-		void Changed(string propertyName)
+		void NotifyPropertyChanged(string propertyName)
 		{
 			if (PauseObservation)
 			{
 				return;
 			}
 
-			OnChange();
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 
 		/// <summary>
@@ -508,17 +550,53 @@
 		/// <summary>
 		/// Determines whether the specified object is equal to the current object.
 		/// </summary>
-		/// <param name="obj">The object to compare with the current object.</param>
+		/// <param name="other">The object to compare with the current object.</param>
 		/// <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
-		public override bool Equals(object obj)
+		public override bool Equals(object other)
 		{
-			var nodeObj = obj as TreeNode<TItem>;
-			if (nodeObj == null)
+			if (other is TreeNode<TItem>)
 			{
-				return this == null;
+				return Equals((TreeNode<TItem>)other);
 			}
 
-			return item.Equals(nodeObj.item);
+			return false;
+		}
+
+		/// <summary>
+		/// Determines whether the specified object is equal to the current object.
+		/// </summary>
+		/// <param name="other">The object to compare with the current object.</param>
+		/// <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+		public virtual bool Equals(TreeNode<TItem> other)
+		{
+			return ReferenceEquals(this, other);
+		}
+
+		/// <summary>
+		/// Returns true if the nodes items are equal, false otherwise.
+		/// </summary>
+		/// <param name="a">The first object.</param>
+		/// <param name="b">The second object.</param>
+		/// <returns>true if the objects equal; otherwise, false.</returns>
+		public static bool operator ==(TreeNode<TItem> a, TreeNode<TItem> b)
+		{
+			if (ReferenceEquals(a, null))
+			{
+				return ReferenceEquals(b, null);
+			}
+
+			return a.Equals(b);
+		}
+
+		/// <summary>
+		/// Returns true if the nodes items are not equal, false otherwise.
+		/// </summary>
+		/// <param name="a">The first object.</param>
+		/// <param name="b">The second object.</param>
+		/// <returns>true if the objects not equal; otherwise, false.</returns>
+		public static bool operator !=(TreeNode<TItem> a, TreeNode<TItem> b)
+		{
+			return !(a == b);
 		}
 
 		/// <summary>
@@ -528,74 +606,6 @@
 		public override int GetHashCode()
 		{
 			return nodes != null ? nodes.GetHashCode() : 0;
-		}
-
-		/// <summary>
-		/// Returns true if the nodes items are equal, false otherwise.
-		/// </summary>
-		/// <param name="a">The alpha component.</param>
-		/// <param name="b">The blue component.</param>
-		public static bool operator ==(TreeNode<TItem> a, TreeNode<TItem> b)
-		{
-			var a_null = object.ReferenceEquals(null, a);
-			var b_null = object.ReferenceEquals(null, b);
-			if (a_null && b_null)
-			{
-				return true;
-			}
-
-			if (a_null != b_null)
-			{
-				return false;
-			}
-
-			var a_item_null = object.ReferenceEquals(null, a.item);
-			var b_item_null = object.ReferenceEquals(null, b.item);
-			if (a_item_null && b_item_null)
-			{
-				return true;
-			}
-
-			if (a_item_null != b_item_null)
-			{
-				return false;
-			}
-
-			return a.item.Equals(b.item);
-		}
-
-		/// <summary>
-		/// Returns true if the nodes items are not equal, false otherwise.
-		/// </summary>
-		/// <param name="a">The alpha component.</param>
-		/// <param name="b">The blue component.</param>
-		public static bool operator !=(TreeNode<TItem> a, TreeNode<TItem> b)
-		{
-			var a_null = object.ReferenceEquals(null, a);
-			var b_null = object.ReferenceEquals(null, b);
-			if (a_null && b_null)
-			{
-				return false;
-			}
-
-			if (a_null != b_null)
-			{
-				return true;
-			}
-
-			var a_item_null = object.ReferenceEquals(null, a.item);
-			var b_item_null = object.ReferenceEquals(null, b.item);
-			if (a_item_null && b_item_null)
-			{
-				return false;
-			}
-
-			if (a_item_null != b_item_null)
-			{
-				return true;
-			}
-
-			return !a.item.Equals(b.item);
 		}
 
 		/// <summary>
@@ -664,9 +674,13 @@
 			return result;
 		}
 
-		static void RemoveParent(TreeNode<TItem> node)
+		/// <summary>
+		/// Convert this instance to string.
+		/// </summary>
+		/// <returns>String.</returns>
+		public override string ToString()
 		{
-			node.parent = null;
+			return string.Format("TreeNode<{0}>(Item = {1})", UtilitiesEditor.GetFriendlyTypeName(typeof(TItem)), IsNull(item) ? "null" : item.ToString());
 		}
 	}
 }

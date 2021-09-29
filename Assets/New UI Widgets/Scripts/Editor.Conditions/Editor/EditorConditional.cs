@@ -146,8 +146,15 @@ namespace UIWidgets
 
 						DetectFields();
 
-						Fields.ForEach(AddField);
-						Events.ForEach(AddEvent);
+						foreach (var f in Fields)
+						{
+							AddField(f);
+						}
+
+						foreach (var f in Events)
+						{
+							AddEvent(f);
+						}
 					}
 				}
 			}
@@ -191,6 +198,8 @@ namespace UIWidgets
 			/// Toggle events block.
 			/// </summary>
 			protected bool ShowEvents;
+
+			static readonly GUILayoutOption[] ToggleOptions = new GUILayoutOption[] { GUILayout.ExpandWidth(true) };
 
 			/// <summary>
 			/// Initializes a new instance of the <see cref="SerializedObjectData"/> class.
@@ -494,7 +503,7 @@ namespace UIWidgets
 
 				foreach (var block in Blocks.Values)
 				{
-					block.Visible = GUILayout.Toggle(block.Visible, block.Name, EditorStyles.foldout, GUILayout.ExpandWidth(true));
+					block.Visible = GUILayout.Toggle(block.Visible, block.Name, EditorStyles.foldout, ToggleOptions);
 					if (block.Visible)
 					{
 						EditorGUI.indentLevel++;

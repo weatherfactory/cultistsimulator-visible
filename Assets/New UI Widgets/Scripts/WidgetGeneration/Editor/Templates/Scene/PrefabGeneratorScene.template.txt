@@ -15,7 +15,7 @@ namespace {0:WidgetsNamespace}
 			foreach (var x in helper.Accordion.DataSource)
 			{{
 				var text = x.ToggleObject.transform.Find("Text").gameObject;
-				var label = AddLabel(text, x.ToggleObject.name, 14);
+				var label = AddLabel(text, x.ToggleObject.name, 14, true);
 				SetTextStyle(label, UnityEngine.FontStyle.Bold);
 				SetTextAlignment(label, UnityEngine.TextAnchor.MiddleCenter);
 			}}

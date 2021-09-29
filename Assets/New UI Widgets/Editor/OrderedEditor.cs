@@ -1,10 +1,8 @@
 ﻿#if UNITY_EDITOR
 namespace UIWidgets
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Reflection;
-	using UIWidgets.Extensions;
 	using UnityEditor;
 	using UnityEngine;
 	using UnityEngine.Events;
@@ -49,6 +47,8 @@ namespace UIWidgets
 		/// </summary>
 		protected List<string> Cursors = new List<string>();
 
+		GUILayoutOption[] toggleOptions = new GUILayoutOption[] { GUILayout.ExpandWidth(true) };
+
 		/// <summary>
 		/// Init.
 		/// </summary>
@@ -56,32 +56,32 @@ namespace UIWidgets
 		{
 			FillProperties();
 
-			Properties.ForEach(x =>
+			foreach (var p in Properties)
 			{
-				var property = serializedObject.FindProperty(x);
+				var property = serializedObject.FindProperty(p);
 				if (property != null)
 				{
-					SerializedProperties[x] = property;
+					SerializedProperties[p] = property;
 				}
-			});
+			}
 
-			Events.ForEach(x =>
+			foreach (var ev in Events)
 			{
-				var property = serializedObject.FindProperty(x);
+				var property = serializedObject.FindProperty(ev);
 				if (property != null)
 				{
-					SerializedEvents[x] = property;
+					SerializedEvents[ev] = property;
 				}
-			});
+			}
 
-			Cursors.ForEach(x =>
+			foreach (var c in Cursors)
 			{
-				var property = serializedObject.FindProperty(x);
+				var property = serializedObject.FindProperty(c);
 				if (property != null)
 				{
-					SerializedCursors[x] = property;
+					SerializedCursors[c] = property;
 				}
-			});
+			}
 		}
 
 		/// <summary>
@@ -139,6 +139,11 @@ namespace UIWidgets
 		protected bool ShowCursors;
 
 		/// <summary>
+		/// Allow to show cursors block.
+		/// </summary>
+		protected bool AllowedCursors;
+
+		/// <summary>
 		/// Is it event?
 		/// </summary>
 		/// <param name="property">Property</param>
@@ -164,19 +169,31 @@ namespace UIWidgets
 
 			serializedObject.Update();
 
-			SerializedProperties.ForEach(x => EditorGUILayout.PropertyField(x.Value));
-
-			EditorGUILayout.BeginVertical();
-
-			ShowCursors = GUILayout.Toggle(ShowCursors, "Cursors", EditorStyles.foldout, GUILayout.ExpandWidth(true));
-			if (ShowCursors)
+			foreach (var sp in SerializedProperties)
 			{
-				SerializedCursors.ForEach(x => EditorGUILayout.PropertyField(x.Value, true));
+				EditorGUILayout.PropertyField(sp.Value, true);
 			}
 
-			EditorGUILayout.EndVertical();
+			if (AllowedCursors)
+			{
+				EditorGUILayout.BeginVertical();
 
-			SerializedEvents.ForEach(x => EditorGUILayout.PropertyField(x.Value));
+				ShowCursors = GUILayout.Toggle(ShowCursors, "Cursors", EditorStyles.foldout, toggleOptions);
+				if (ShowCursors)
+				{
+					foreach (var sc in SerializedCursors)
+					{
+						EditorGUILayout.PropertyField(sc.Value, true);
+					}
+				}
+
+				EditorGUILayout.EndVertical();
+			}
+
+			foreach (var se in SerializedEvents)
+			{
+				EditorGUILayout.PropertyField(se.Value, true);
+			}
 
 			serializedObject.ApplyModifiedProperties();
 

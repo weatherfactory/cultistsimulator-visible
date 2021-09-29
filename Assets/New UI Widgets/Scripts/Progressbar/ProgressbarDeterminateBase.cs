@@ -202,7 +202,7 @@
 		/// <param name="bar">Progress bar.</param>
 		public static string TextPercent(ProgressbarDeterminateBase bar)
 		{
-			return string.Format("{0:P0}", (float)bar.Value / bar.Max);
+			return string.Format("{0}", ((float)bar.Value / bar.Max).ToString("P0"));
 		}
 
 		/// <summary>
@@ -212,7 +212,7 @@
 		/// <param name="bar">Progress bar.</param>
 		public static string TextRange(ProgressbarDeterminateBase bar)
 		{
-			return string.Format("{0} / {1}", bar.Value, bar.Max);
+			return string.Format("{0} / {1}", bar.Value.ToString(), bar.Max.ToString());
 		}
 
 		IEnumerator currentAnimation;
@@ -257,6 +257,7 @@
 			}
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		IEnumerator AnimationPerOne(int targetValue)
 		{
 			if (targetValue > Max)
@@ -436,7 +437,7 @@
 					textFunc = TextRange;
 					break;
 				default:
-					Debug.LogWarning("Unknown TextType: " + TextType);
+					Debug.LogWarning(string.Format("Unknown TextType: {0}", EnumHelper<ProgressbarTextTypes>.ToString(TextType)));
 					break;
 			}
 		}

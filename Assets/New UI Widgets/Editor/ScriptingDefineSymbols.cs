@@ -79,6 +79,8 @@ namespace UIWidgets
 			}
 		}
 
+		static readonly char[] SymbolSeparator = new char[] { ';' };
+
 		/// <summary>
 		/// Get scripting define symbols.
 		/// </summary>
@@ -88,7 +90,7 @@ namespace UIWidgets
 		{
 			var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
 
-			return new HashSet<string>(symbols.Split(';'));
+			return new HashSet<string>(symbols.Split(SymbolSeparator));
 		}
 
 		/// <summary>
@@ -100,7 +102,7 @@ namespace UIWidgets
 		{
 			var symbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(target);
 			var result = new HashSet<string>();
-			foreach (var symbol in symbols.Split(';'))
+			foreach (var symbol in symbols.Split(SymbolSeparator))
 			{
 				if (symbol.Length > 0)
 				{

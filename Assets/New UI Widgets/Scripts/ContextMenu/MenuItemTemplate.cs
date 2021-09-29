@@ -93,6 +93,8 @@
 				else
 				{
 					item = Instantiate(Template);
+					Utilities.FixInstantiated(Template, item);
+					item.RectTransform.localPosition = Vector3.zero;
 				}
 
 				item.gameObject.SetActive(true);
@@ -106,7 +108,7 @@
 			/// <param name="instance">Item.</param>
 			public void Return(MenuItemView instance)
 			{
-				instance.transform.SetParent(Template.RectTransform.parent);
+				instance.transform.SetParent(Template.RectTransform.parent, false);
 				instance.Index = -1;
 				instance.Item = null;
 

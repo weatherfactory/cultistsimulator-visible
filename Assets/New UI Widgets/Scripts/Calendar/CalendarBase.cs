@@ -144,7 +144,7 @@
 		}
 
 		/// <summary>
-		/// Cache for instantiated date components.
+		/// Cache for instantiated days components.
 		/// </summary>
 		[SerializeField]
 		[HideInInspector]
@@ -252,10 +252,18 @@
 			Layout.GridConstraint = GridConstraints.FixedColumnCount;
 			Layout.GridConstraintCount = DaysInWeek;
 
-			Cache.ForEach(DestroyGameObject);
+			foreach (var c in Cache)
+			{
+				DestroyGameObject(c);
+			}
+
 			Cache.Clear();
 
-			Days.ForEach(DestroyGameObject);
+			foreach (var d in Days)
+			{
+				DestroyGameObject(d);
+			}
+
 			Days.Clear();
 		}
 
@@ -275,7 +283,11 @@
 		{
 			calendarDayOfWeekTemplate.gameObject.SetActive(false);
 
-			Header.ForEach(DestroyGameObject);
+			foreach (var h in Header)
+			{
+				DestroyGameObject(h);
+			}
+
 			Header.Clear();
 		}
 
@@ -440,9 +452,9 @@
 				for (int i = n; i < Days.Count - n; i++)
 				{
 					Cache.Add(Days[i]);
+					DisableGameObject(Days[i]);
 				}
 
-				Cache.ForEach(DisableGameObject);
 				Days.RemoveRange(n, Days.Count - n);
 			}
 		}

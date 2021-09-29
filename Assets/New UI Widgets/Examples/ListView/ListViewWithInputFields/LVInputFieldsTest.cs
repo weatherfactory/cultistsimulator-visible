@@ -71,7 +71,7 @@
 		{
 			var item = List.DataSource[index];
 
-			Debug.Log(string.Format("Text1: {0}; Text2: {1}, IsOn: {2}", item.Text1, item.Text2, item.IsOn));
+			Debug.Log(string.Format("Text1: {0}; Text2: {1}, IsOn: {2}", item.Text1, item.Text2, item.IsOn.ToString()));
 		}
 	}
 }

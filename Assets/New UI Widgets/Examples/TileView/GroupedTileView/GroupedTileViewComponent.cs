@@ -78,7 +78,7 @@
 					Image.gameObject.SetActive(false);
 					DateAdapter.gameObject.SetActive(true);
 
-					DateAdapter.text = Item.Created.ToString("MMM. dd, yyyy");
+					DateAdapter.text = Item.Created.ToString("MMM. dd, yyyy", UtilitiesCompare.Culture);
 				}
 				else
 				{

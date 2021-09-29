@@ -125,13 +125,16 @@ namespace UIWidgets.WidgetGeneration
 					}
 				}
 
-				result.Sort(FieldsComparison);
+				result.Sort(FieldsComparisonDelegate);
 
 				return result;
 			}
 		}
 
-		int FieldsComparison(ClassField x, ClassField y)
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
+		static Comparison<ClassField> FieldsComparisonDelegate = FieldsComparison;
+
+		static int FieldsComparison(ClassField x, ClassField y)
 		{
 			return -(x.FieldType == typeof(string)).CompareTo(y.FieldType == typeof(string));
 		}
@@ -237,11 +240,11 @@ namespace UIWidgets.WidgetGeneration
 		/// <summary>
 		/// Errors.
 		/// </summary>
-		public ReadOnlyCollection<string> Errors
+		public List<string> Errors
 		{
 			get
 			{
-				return errors.AsReadOnly();
+				return new List<string>(errors);
 			}
 		}
 
@@ -260,10 +263,10 @@ namespace UIWidgets.WidgetGeneration
 			var type = script.GetClass();
 			if (type == null)
 			{
-				errors.Add("Type not found in the script " + script.name + ".\n" +
-					"Please make sure that the type name match with a file name.\n" +
-					"<b>Known Problems:</b> MonoScript.GetClass() return null for the 'struct' and 'interface' types\n inside a namespace with some Unity versions.\n" +
-					"<b>Workaround:</b> temporarily change 'interface' or 'struct' to 'class' in the type definition\n or use Data Type field to specify the type.");
+				var error = string.Format(
+					"Type not found in the script {0}.\nPlease make sure that the type name match with a file name.\n<b>Known Problems:</b> MonoScript.GetClass() return null for the 'struct' and 'interface' types\n inside a namespace with some Unity versions.\n<b>Workaround:</b> temporarily change 'interface' or 'struct' to 'class' in the type definition\n or use Data Type field to specify the type.",
+					script.name);
+				errors.Add(error);
 				return;
 			}
 

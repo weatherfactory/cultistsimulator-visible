@@ -65,12 +65,13 @@
 		/// <summary>
 		/// Create modal helper with the specified parent, sprite and color.
 		/// </summary>
-		/// <param name="parentGameObject">Parent.</param>
+		/// <param name="parentGameObject">Parent game object.</param>
 		/// <param name="sprite">Sprite.</param>
 		/// <param name="color">Color.</param>
 		/// <param name="onClick">onClick callback</param>
+		/// <param name="parent">Parent.</param>
 		/// <returns>Modal helper index</returns>
-		public static int Open(Component parentGameObject, Sprite sprite = null, Color? color = null, UnityAction onClick = null)
+		public static int Open(Component parentGameObject, Sprite sprite = null, Color? color = null, UnityAction onClick = null, RectTransform parent = null)
 		{
 			// check if in cache
 			if (!Templates.Exists(key))
@@ -81,15 +82,23 @@
 
 			var modal = Templates.Instance(key);
 
-			modal.transform.SetParent(Utilities.FindTopmostCanvas(parentGameObject.transform), false);
-			modal.gameObject.SetActive(true);
-			modal.transform.SetAsLastSibling();
+			if (parent == null)
+			{
+				parent = UtilitiesUI.FindTopmostCanvas(parentGameObject.transform);
+			}
 
-			var rect = modal.transform as RectTransform;
-			rect.sizeDelta = new Vector2(0, 0);
-			rect.anchorMin = new Vector2(0, 0);
-			rect.anchorMax = new Vector2(1, 1);
-			rect.anchoredPosition = new Vector2(0, 0);
+			modal.gameObject.SetActive(true);
+
+			var rt = modal.transform as RectTransform;
+
+			rt.SetParent(parent, false);
+			rt.SetAsLastSibling();
+
+			rt.localPosition = Vector3.zero;
+			rt.sizeDelta = new Vector2(0, 0);
+			rt.anchorMin = new Vector2(0, 0);
+			rt.anchorMax = new Vector2(1, 1);
+			rt.anchoredPosition = new Vector2(0, 0);
 
 			var img = modal.GetComponent<Image>();
 			if (sprite != null)

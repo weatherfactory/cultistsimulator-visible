@@ -18,6 +18,13 @@
 		protected class ListViewTypeSize : ListViewTypeRectangle
 		{
 			/// <summary>
+			/// Items sizes.
+			/// </summary>
+			protected readonly Dictionary<TItem, Vector2> ItemSizes = new Dictionary<TItem, Vector2>();
+
+			readonly List<TItem> ItemsToRemove = new List<TItem>();
+
+			/// <summary>
 			/// Initializes a new instance of the <see cref="ListViewTypeSize"/> class.
 			/// </summary>
 			/// <param name="owner">Owner.</param>
@@ -25,11 +32,6 @@
 				: base(owner)
 			{
 			}
-
-			/// <summary>
-			/// Items sizes.
-			/// </summary>
-			protected readonly Dictionary<TItem, Vector2> ItemSizes = new Dictionary<TItem, Vector2>();
 
 			/// <summary>
 			/// Calculates the maximum count of the visible items.
@@ -96,14 +98,10 @@
 				return Mathf.Max(1f, result);
 			}
 
-			/// <summary>
-			/// Gets the size of the item.
-			/// </summary>
-			/// <returns>The item size.</returns>
-			/// <param name="index">Item index.</param>
-			protected float GetItemSize(int index)
+			/// <inheritdoc/>
+			public override Vector2 GetItemFullSize(int index)
 			{
-				return GetItemSize(Owner.DataSource[index]);
+				return GetItemFullSize(Owner.DataSource[index]);
 			}
 
 			/// <summary>
@@ -251,7 +249,7 @@
 			/// <param name="index">Index.</param>
 			public override float GetItemPositionMiddle(int index)
 			{
-				return GetItemPosition(index) - (GetScrollRectSize() / 2f) + (GetItemSize(index) / 2f);
+				return GetItemPosition(index) + (GetItemSize(index) / 2f) - (GetScrollRectSize() / 2f);
 			}
 
 			/// <summary>
@@ -263,8 +261,6 @@
 			{
 				return GetItemPosition(index) + GetItemSize(index) + Owner.LayoutBridge.GetMargin() - Owner.LayoutBridge.GetSpacing() - GetScrollRectSize();
 			}
-
-			readonly List<TItem> ItemsToRemove = new List<TItem>();
 
 			/// <summary>
 			/// Remove old items from saved sizes.
@@ -299,50 +295,50 @@
 
 				if (Owner.PrecalculateItemSizes)
 				{
-					Owner.DefaultItemCopy.gameObject.SetActive(true);
-
-					if (Owner.DefaultItemLayout == null)
-					{
-						Owner.DefaultItemLayout = Owner.DefaultItemCopy.GetComponent<LayoutGroup>();
-					}
-
 					if (forceUpdate)
 					{
-						for (int i = 0; i < items.Count; i++)
+						for (int index = 0; index < items.Count; index++)
 						{
-							var item = items[i];
-							ItemSizes[item] = CalculateComponentSize(item);
+							var item = items[index];
+
+							var template = Owner.ComponentsPool.GetTemplate(index);
+							template.EnableTemplate();
+
+							ItemSizes[item] = CalculateComponentSize(item, template);
 						}
 					}
 					else
 					{
-						for (int i = 0; i < items.Count; i++)
+						for (int index = 0; index < items.Count; index++)
 						{
-							var item = items[i];
+							var item = items[index];
 							if (!ItemSizes.ContainsKey(item))
 							{
-								ItemSizes[item] = CalculateComponentSize(item);
+								var template = Owner.ComponentsPool.GetTemplate(index);
+								template.EnableTemplate();
+
+								ItemSizes[item] = CalculateComponentSize(item, template);
 							}
 						}
 					}
 
-					Owner.DefaultItemCopy.gameObject.SetActive(false);
+					Owner.ComponentsPool.DisableTemplates();
 				}
 				else
 				{
 					if (forceUpdate)
 					{
-						for (int i = 0; i < items.Count; i++)
+						for (int index = 0; index < items.Count; index++)
 						{
-							var item = items[i];
+							var item = items[index];
 							ItemSizes[item] = Owner.ItemSize;
 						}
 					}
 					else
 					{
-						for (int i = 0; i < items.Count; i++)
+						for (int index = 0; index < items.Count; index++)
 						{
-							var item = items[i];
+							var item = items[index];
 							if (!ItemSizes.ContainsKey(item))
 							{
 								ItemSizes[item] = Owner.ItemSize;
@@ -412,7 +408,7 @@
 						index += 1;
 						break;
 					default:
-						throw new NotSupportedException("Unsupported NearestType: " + type);
+						throw new NotSupportedException(string.Format("Unsupported NearestType: {0}", EnumHelper<NearestType>.ToString(type)));
 				}
 
 				return index;
@@ -422,7 +418,7 @@
 			/// Adds the callback.
 			/// </summary>
 			/// <param name="item">Item.</param>
-			public override void AddCallback(ListViewItem item)
+			public override void AddCallback(TComponent item)
 			{
 				item.onResize.AddListener(OnItemSizeChanged);
 			}
@@ -431,7 +427,7 @@
 			/// Removes the callback.
 			/// </summary>
 			/// <param name="item">Item.</param>
-			public override void RemoveCallback(ListViewItem item)
+			public override void RemoveCallback(TComponent item)
 			{
 				item.onResize.RemoveListener(OnItemSizeChanged);
 			}
@@ -458,6 +454,8 @@
 				{
 					return false;
 				}
+
+				newSize = ValidateSize(newSize);
 
 				var item = Owner.DataSource[index];
 				var current_size = GetItemFullSize(item);

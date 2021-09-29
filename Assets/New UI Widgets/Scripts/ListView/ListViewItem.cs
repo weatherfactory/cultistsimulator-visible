@@ -5,7 +5,6 @@ namespace UIWidgets
 {
 	using System;
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UIWidgets.Styles;
 	using UnityEngine;
 	using UnityEngine.Events;
@@ -345,7 +344,10 @@ namespace UIWidgets
 				return;
 			}
 
-			graphics.ForEach(GraphicsReset);
+			foreach (var g in graphics)
+			{
+				GraphicsReset(g);
+			}
 		}
 
 		/// <summary>
@@ -426,6 +428,28 @@ namespace UIWidgets
 			}
 
 			return Owner.IsInteractable();
+		}
+
+		/// <summary>
+		/// Remove current item.
+		/// </summary>
+		public void RemoveItem()
+		{
+			if (Owner != null)
+			{
+				Owner.RemoveItemAt(Index);
+			}
+		}
+
+		/// <summary>
+		/// Deselect current item.
+		/// </summary>
+		public void DeselectItem()
+		{
+			if (Owner != null)
+			{
+				Owner.Deselect(Index);
+			}
 		}
 
 		/// <summary>
@@ -585,7 +609,7 @@ namespace UIWidgets
 				Owner.ItemsEvents.PointerClick.Invoke(Index, this, eventData);
 			}
 
-			if ((eventData.button == PointerEventData.InputButton.Left) && (eventData.clickCount == 1))
+			if ((eventData.button == PointerEventData.InputButton.Left) && (eventData.clickCount <= 1))
 			{
 				#pragma warning disable 0618
 				onClick.Invoke();
@@ -681,16 +705,17 @@ namespace UIWidgets
 		Rect oldRect;
 
 		/// <summary>
-		/// Implementation of a callback that is sent if an associated RectTransform has it's dimensions changed..
+		/// Implementation of a callback that is sent if an associated RectTransform has it's dimensions changed.
 		/// </summary>
 		protected override void OnRectTransformDimensionsChange()
 		{
-			if (oldRect.Equals(RectTransform.rect))
+			var current = RectTransform.rect;
+			if (oldRect.Equals(current))
 			{
 				return;
 			}
 
-			oldRect = RectTransform.rect;
+			oldRect = current;
 			onResize.Invoke(Index, oldRect.size);
 
 			if (AllowItemsEvents())
@@ -784,7 +809,7 @@ namespace UIWidgets
 		{
 			base.OnValidate();
 
-			Upgrade();
+			Compatibility.Upgrade(this);
 
 			GraphicsBackgroundInit();
 			GraphicsForegroundInit();
@@ -839,7 +864,10 @@ namespace UIWidgets
 
 				if (GraphicsBackground != null)
 				{
-					GraphicsBackground.ForEach(style.Table.Background.ApplyTo);
+					foreach (var bg in GraphicsBackground)
+					{
+						style.Table.Background.ApplyTo(bg);
+					}
 				}
 			}
 
@@ -879,7 +907,10 @@ namespace UIWidgets
 			{
 				if (GraphicsBackground != null)
 				{
-					GraphicsBackground.ForEach(style.Table.Background.GetFrom);
+					foreach (var bg in GraphicsBackground)
+					{
+						style.Table.Background.GetFrom(bg);
+					}
 				}
 			}
 

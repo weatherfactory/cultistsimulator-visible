@@ -352,9 +352,9 @@
 		{
 			if ((aSlider != null) && (aSlider.handleRect != null))
 			{
-				var handle_style = Utilities.IsHorizontal(aSlider)
-					? styleColorPicker.SliderVerticalHandle
-					: styleColorPicker.SliderHorizontalHandle;
+				var handle_style = UtilitiesUI.IsHorizontal(aSlider)
+					? styleColorPicker.SliderHorizontalHandle
+					: styleColorPicker.SliderVerticalHandle;
 				handle_style.ApplyTo(aSlider.handleRect.GetComponent<Image>());
 			}
 
@@ -373,9 +373,9 @@
 		{
 			if ((aSlider != null) && (aSlider.handleRect != null))
 			{
-				var handle_style = Utilities.IsHorizontal(aSlider)
-					? styleColorPicker.SliderVerticalHandle
-					: styleColorPicker.SliderHorizontalHandle;
+				var handle_style = UtilitiesUI.IsHorizontal(aSlider)
+					? styleColorPicker.SliderHorizontalHandle
+					: styleColorPicker.SliderVerticalHandle;
 				handle_style.GetFrom(aSlider.handleRect.GetComponent<Image>());
 			}
 

@@ -69,9 +69,9 @@
 			{
 				Foreground = new Graphic[]
 				{
-					Utilities.GetGraphic(NameAdapter),
-					Utilities.GetGraphic(PriceAdapter),
-					Utilities.GetGraphic(AvailableCountAdapter),
+					UtilitiesUI.GetGraphic(NameAdapter),
+					UtilitiesUI.GetGraphic(PriceAdapter),
+					UtilitiesUI.GetGraphic(AvailableCountAdapter),
 				};
 				GraphicsForegroundVersion = 1;
 			}
@@ -133,17 +133,18 @@
 
 				NameAdapter.text = OrderLine.Item.Name;
 				PriceAdapter.text = OrderLine.Price.ToString();
-				AvailableCountAdapter.text = (OrderLine.Item.Count == -1) ? "∞" : OrderLine.Item.Count.ToString();
+				AvailableCountAdapter.text = (OrderLine.Item.Quantity == -1) ? "∞" : OrderLine.Item.Quantity.ToString();
 
 				Count.Min = 0;
-				Count.Max = (OrderLine.Item.Count == -1) ? 9999 : OrderLine.Item.Count;
-				Count.Value = OrderLine.Count;
+				Count.Max = (OrderLine.Item.Quantity == -1) ? 9999 : OrderLine.Item.Quantity;
+				Count.Value = OrderLine.Quantity;
 			}
 		}
 
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected override void Start()
 		{
 			Count.onValueChangeInt.AddListener(ChangeCount);
@@ -170,14 +171,15 @@
 			}
 		}
 
-		void ChangeCount(int count)
+		void ChangeCount(int quantity)
 		{
-			OrderLine.Count = count;
+			OrderLine.Quantity = quantity;
 		}
 
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected override void OnDestroy()
 		{
 			if (Count != null)
@@ -217,10 +219,10 @@
 
 			var actions = new DialogButton[]
 			{
-				new DialogButton("Change", (index) => CheckPlaylistDialog(helper)),
+				new DialogButton("Change", CheckPlaylistDialog),
 
 				// on click close dialog
-				new DialogButton("Cancel", Dialog.AlwaysClose),
+				new DialogButton("Cancel", DialogBase.DefaultClose),
 			};
 
 			// open dialog
@@ -235,10 +237,12 @@
 		/// <summary>
 		/// Check EditPlaylistDialog and change dialog name if valid.
 		/// </summary>
-		/// <param name="helper">Dialog helper to check values.</param>
+		/// <param name="dialog">Dialog.</param>
+		/// <param name="index">Index.</param>
 		/// <returns>true if values valid; otherwise false.</returns>
-		protected bool CheckPlaylistDialog(PlaylistDialogHelper helper)
+		protected bool CheckPlaylistDialog(DialogBase dialog, int index)
 		{
+			var helper = dialog.GetComponent<PlaylistDialogHelper>();
 			if (!helper.Validate())
 			{
 				// return false to keep dialog open

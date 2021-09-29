@@ -57,7 +57,11 @@
 				currentNotification = null;
 			}
 
-			NotificationSequence.ForEach(ReturnNotification);
+			foreach (var n in NotificationSequence)
+			{
+				ReturnNotification(n);
+			}
+
 			NotificationSequence.Clear();
 		}
 
@@ -127,6 +131,7 @@
 		/// Wait the SequenceDelay seconds.
 		/// </summary>
 		/// <returns>IEnumerator.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 		protected virtual IEnumerator NextDelay()
 		{
 			var notify = NotificationSequence[0];

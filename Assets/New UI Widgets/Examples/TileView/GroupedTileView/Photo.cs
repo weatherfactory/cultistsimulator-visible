@@ -32,9 +32,10 @@
 		/// Convert this instance to string.
 		/// </summary>
 		/// <returns>String.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0101:Array allocation for params parameter", Justification = "Required.")]
 		public override string ToString()
 		{
-			return string.Format("{0} at {1:yyyy-MM-dd}; IsGroup: {2}; IsEmpty: {3}", Image, Created, IsGroup, IsEmpty);
+			return string.Format("{0} at {1}; IsGroup: {2}; IsEmpty: {3}", Image, Created.ToString("yyyy-MM-dd"), IsGroup.ToString(), IsEmpty.ToString());
 		}
 	}
 }

@@ -10,7 +10,7 @@
 	/// Item.
 	/// </summary>
 	[Serializable]
-	public class Item : INotifyPropertyChanged
+	public class Item : IObservable, INotifyPropertyChanged
 	{
 		[SerializeField]
 		[FormerlySerializedAs("Name")]
@@ -37,57 +37,75 @@
 		}
 
 		[SerializeField]
-		int count;
+		[FormerlySerializedAs("count")]
+		int quantity;
 
 		/// <summary>
-		/// Gets or sets the count. -1 for infinity count.
+		/// Gets or sets the quantity. -1 for infinity quantity.
 		/// </summary>
-		/// <value>The count.</value>
-		public int Count
+		/// <value>The quantity.</value>
+		public int Quantity
 		{
 			get
 			{
-				return count;
+				return quantity;
 			}
 
 			set
 			{
-				if (count == value)
+				if (quantity == value)
 				{
 					return;
 				}
 
-				if (count == -1)
+				if (quantity == -1)
 				{
-					NotifyPropertyChanged("Count");
+					NotifyPropertyChanged("Quantity");
 					return;
 				}
 
-				count = value;
-				NotifyPropertyChanged("Count");
+				quantity = value;
+				NotifyPropertyChanged("Quantity");
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the quantity. -1 for infinity quantity.
+		/// </summary>
+		/// <value>The quantity.</value>
+		[Obsolete("Renamed to Quantity.")]
+		public int Count
+		{
+			get
+			{
+				return Quantity;
+			}
+
+			set
+			{
+				Quantity = value;
 			}
 		}
 
 		/// <summary>
 		/// Occurs when data changed.
 		/// </summary>
-		[Obsolete("Use PropertyChanged.")]
-		public event OnChange OnChange = () => { };
+		public event OnChange OnChange;
 
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = (x, y) => { };
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="UIWidgets.Examples.Shops.Item"/> class.
 		/// </summary>
 		/// <param name="itemName">Name.</param>
-		/// <param name="itemCount">Count.</param>
-		public Item(string itemName, int itemCount)
+		/// <param name="itemQuantity">Quantity.</param>
+		public Item(string itemName, int itemQuantity)
 		{
 			name = itemName;
-			count = itemCount;
+			quantity = itemQuantity;
 		}
 
 		/// <summary>
@@ -96,10 +114,17 @@
 		/// <param name="propertyName">Property name.</param>
 		protected void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			#pragma warning disable 0618
-			OnChange();
-			#pragma warning restore 0618
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

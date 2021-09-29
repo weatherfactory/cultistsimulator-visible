@@ -24,7 +24,14 @@
 		/// Owner.
 		/// </summary>
 		[NonSerialized]
-		public ScrollBlock Owner;
+		public ScrollBlockBase Owner;
+
+		/// <summary>
+		/// Called when data changed.
+		/// </summary>
+		public virtual void DataChanged()
+		{
+		}
 
 		/// <summary>
 		/// Process move to cache event.

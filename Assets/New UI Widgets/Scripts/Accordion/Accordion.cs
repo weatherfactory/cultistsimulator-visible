@@ -3,6 +3,7 @@
 	using System;
 	using System.Collections;
 	using System.Collections.Generic;
+	using UIWidgets.Attributes;
 	using UIWidgets.Styles;
 	using UnityEngine;
 	using UnityEngine.Events;
@@ -12,7 +13,7 @@
 	/// <summary>
 	/// Accordion.
 	/// </summary>
-	public class Accordion : UIWidgetsMonoBehaviour, IStylable, IValidateable
+	public class Accordion : UIBehaviourConditional, IStylable
 	{
 		/// <summary>
 		/// Encapsulates a method that has five parameters and returns a value of the type specified by the TResult parameter.
@@ -22,14 +23,16 @@
 		/// <typeparam name="T3">The type of the third parameter of the method that this delegate encapsulates.</typeparam>
 		/// <typeparam name="T4">The type of the fourth parameter of the method that this delegate encapsulates.</typeparam>
 		/// <typeparam name="T5">The type of the fifth parameter of the method that this delegate encapsulates.</typeparam>
+		/// <typeparam name="T6">The type of the sixth parameter of the method that this delegate encapsulates.</typeparam>
 		/// <typeparam name="TResult">The type of the return value of the method that this delegate encapsulates.</typeparam>
 		/// <param name="p1">The first parameter of the method that this delegate encapsulates.</param>
 		/// <param name="p2">The second parameter of the method that this delegate encapsulates.</param>
 		/// <param name="p3">The third parameter of the method that this delegate encapsulates.</param>
 		/// <param name="p4">The fourth parameter of the method that this delegate encapsulates.</param>
 		/// <param name="p5">The fifth parameter of the method that this delegate encapsulates.</param>
+		/// <param name="p6">The sixth parameter of the method that this delegate encapsulates.</param>
 		/// <returns>The return value of the method that this delegate encapsulates.</returns>
-		public delegate TResult AnimationFunc<T1, T2, T3, T4, T5, TResult>(T1 p1, T2 p2, T3 p3, T4 p4, T5 p5);
+		public delegate TResult AnimationFunc<T1, T2, T3, T4, T5, T6, TResult>(T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6);
 
 		/// <summary>
 		/// Items.
@@ -117,24 +120,35 @@
 		/// The duration of the animation.
 		/// </summary>
 		[SerializeField]
+		[EditorConditionBool("Animate")]
 		public float AnimationDuration = 0.5f;
+
+		/// <summary>
+		/// Animation curve.
+		/// </summary>
+		[SerializeField]
+		[EditorConditionBool("Animate")]
+		public AnimationCurve Curve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
 		/// <summary>
 		/// Use unscaled time.
 		/// </summary>
 		[SerializeField]
-		public bool UnscaledTime = false;
+		[EditorConditionBool("Animate")]
+		public bool UnscaledTime = true;
 
 		/// <summary>
 		/// The direction.
 		/// </summary>
 		[SerializeField]
+		[EditorConditionBool("Animate")]
 		public AccordionDirection Direction = AccordionDirection.Vertical;
 
 		/// <summary>
 		/// The item resize method.
 		/// </summary>
 		[SerializeField]
+		[EditorConditionBool("Animate")]
 		public ResizeMethods ResizeMethod = ResizeMethods.Size;
 
 		/// <summary>
@@ -158,27 +172,32 @@
 		/// <summary>
 		/// DataSource changed event.
 		/// </summary>
+		[SerializeField]
 		public UnityEvent OnDataSourceChanged = new UnityEvent();
 
 		/// <summary>
 		/// Open animation.
 		/// </summary>
-		public AnimationFunc<RectTransform, float, bool, bool, Action, IEnumerator> AnimationOpen = Animations.Open;
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		public AnimationFunc<RectTransform, float, AnimationCurve, bool, bool, Action, IEnumerator> AnimationOpen = Animations.Open;
 
 		/// <summary>
 		/// Open animation with resize method = flexible.
 		/// </summary>
-		public AnimationFunc<RectTransform, float, bool, bool, Action, IEnumerator> AnimationOpenFlexible = Animations.OpenFlexible;
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		public AnimationFunc<RectTransform, float, AnimationCurve, bool, bool, Action, IEnumerator> AnimationOpenFlexible = Animations.OpenFlexible;
 
 		/// <summary>
 		/// Close animation.
 		/// </summary>
-		public AnimationFunc<RectTransform, float, bool, bool, Action, IEnumerator> AnimationClose = Animations.Collapse;
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		public AnimationFunc<RectTransform, float, AnimationCurve, bool, bool, Action, IEnumerator> AnimationClose = Animations.Collapse;
 
 		/// <summary>
 		/// Close animation with resize method = flexible.
 		/// </summary>
-		public AnimationFunc<RectTransform, float, bool, bool, Action, IEnumerator> AnimationCloseFlexible = Animations.CollapseFlexible;
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
+		public AnimationFunc<RectTransform, float, AnimationCurve, bool, bool, Action, IEnumerator> AnimationCloseFlexible = Animations.CollapseFlexible;
 
 		/// <summary>
 		/// The components.
@@ -188,8 +207,9 @@
 		/// <summary>
 		/// Start this instance.
 		/// </summary>
-		protected virtual void Start()
+		protected override void Start()
 		{
+			base.Start();
 			UpdateItems();
 		}
 
@@ -199,8 +219,8 @@
 		protected virtual void UpdateItems()
 		{
 			RemoveCallbacks();
-
 			AddCallbacks();
+
 			UpdateLayout();
 
 			OnDataSourceChanged.Invoke();
@@ -212,19 +232,13 @@
 		/// <param name="item">Item.</param>
 		protected virtual void AddCallback(AccordionItem item)
 		{
-			if (item.Open)
-			{
-				Open(item, false);
-			}
-			else
-			{
-				Close(item, false);
-			}
+			item.ContentObject.SetActive(true);
 
 			var component = Utilities.GetOrAddComponent<AccordionItemComponent>(item.ToggleObject);
 			component.Item = item;
 			component.OnItemClick.AddListener(ToggleItem);
 
+			item.ToggleLabel = item.ToggleObject.GetComponentInChildren<TextAdapter>();
 			item.ContentObjectRect = item.ContentObject.transform as RectTransform;
 			item.ContentLayoutElement = Utilities.GetOrAddComponent<LayoutElement>(item.ContentObject);
 			if (IsHorizontal())
@@ -238,6 +252,15 @@
 
 			UpdateItemSize(item);
 
+			if (item.Open)
+			{
+				Open(item, false);
+			}
+			else
+			{
+				Close(item, false);
+			}
+
 			Components.Add(component);
 		}
 
@@ -246,7 +269,10 @@
 		/// </summary>
 		protected virtual void AddCallbacks()
 		{
-			DataSource.ForEach(AddCallback);
+			foreach (var item in DataSource)
+			{
+				AddCallback(item);
+			}
 		}
 
 		/// <summary>
@@ -269,14 +295,18 @@
 		/// </summary>
 		protected virtual void RemoveCallbacks()
 		{
-			Components.ForEach(RemoveCallback);
+			foreach (var c in Components)
+			{
+				RemoveCallback(c);
+			}
+
 			Components.Clear();
 		}
 
 		/// <summary>
 		/// This function is called when the MonoBehaviour will be destroyed.
 		/// </summary>
-		protected virtual void OnDestroy()
+		protected override void OnDestroy()
 		{
 			if (dataSource != null)
 			{
@@ -284,6 +314,8 @@
 			}
 
 			RemoveCallbacks();
+
+			base.OnDestroy();
 		}
 
 		/// <summary>
@@ -503,11 +535,11 @@
 
 			if (ResizeMethod == ResizeMethods.Size)
 			{
-				yield return StartCoroutine(AnimationOpen(item.ContentObjectRect, AnimationDuration, IsHorizontal(), UnscaledTime, DoNothing));
+				yield return StartCoroutine(AnimationOpen(item.ContentObjectRect, AnimationDuration, Curve, IsHorizontal(), UnscaledTime, DoNothing));
 			}
 			else if (ResizeMethod == ResizeMethods.Flexible)
 			{
-				yield return StartCoroutine(AnimationOpenFlexible(item.ContentObjectRect, AnimationDuration, IsHorizontal(), UnscaledTime, DoNothing));
+				yield return StartCoroutine(AnimationOpenFlexible(item.ContentObjectRect, AnimationDuration, Curve, IsHorizontal(), UnscaledTime, DoNothing));
 			}
 
 			AnimationEnded(item, true);
@@ -517,9 +549,9 @@
 		/// Update item size.
 		/// </summary>
 		/// <param name="item">Item.</param>
-		protected static void UpdateItemSize(AccordionItem item)
+		protected void UpdateItemSize(AccordionItem item)
 		{
-			LayoutRebuilder.ForceRebuildLayoutImmediate(item.ContentObjectRect.transform as RectTransform);
+			UpdateLayout();
 
 			item.ContentObjectWidth = LayoutUtilities.IsWidthControlled(item.ContentObjectRect)
 				? LayoutUtility.GetPreferredWidth(item.ContentObjectRect)
@@ -535,7 +567,7 @@
 		/// </summary>
 		protected void UpdateLayout()
 		{
-			LayoutUtilities.UpdateLayout(GetComponent<LayoutGroup>());
+			LayoutRebuilder.ForceRebuildLayoutImmediate(transform as RectTransform);
 		}
 
 		/// <summary>
@@ -591,11 +623,11 @@
 
 			if (ResizeMethod == ResizeMethods.Size)
 			{
-				yield return StartCoroutine(AnimationClose(item.ContentObjectRect, AnimationDuration, IsHorizontal(), UnscaledTime, DoNothing));
+				yield return StartCoroutine(AnimationClose(item.ContentObjectRect, AnimationDuration, Curve, IsHorizontal(), UnscaledTime, DoNothing));
 			}
 			else if (ResizeMethod == ResizeMethods.Flexible)
 			{
-				yield return StartCoroutine(AnimationCloseFlexible(item.ContentObjectRect, AnimationDuration, IsHorizontal(), UnscaledTime, DoNothing));
+				yield return StartCoroutine(AnimationCloseFlexible(item.ContentObjectRect, AnimationDuration, Curve, IsHorizontal(), UnscaledTime, DoNothing));
 			}
 
 			AnimationEnded(item, false);
@@ -604,9 +636,7 @@
 		/// <summary>
 		/// Do nothing.
 		/// </summary>
-		protected static void DoNothing()
-		{
-		}
+		protected static Action DoNothing = () => { };
 
 		/// <summary>
 		/// Close all opened items.
@@ -676,8 +706,10 @@
 		/// <summary>
 		/// Disable closed items in Editor if DisableClosed enabled.
 		/// </summary>
-		public virtual void Validate()
+		protected override void OnValidate()
 		{
+			base.OnValidate();
+
 			if (!DisableClosed)
 			{
 				return;

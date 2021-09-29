@@ -36,7 +36,7 @@ namespace UIWidgets
 		{
 			if (GraphicsForegroundVersion == 0)
 			{
-				Foreground = new Graphic[] { Utilities.GetGraphic(TextAdapter), };
+				Foreground = new Graphic[] { UtilitiesUI.GetGraphic(TextAdapter), };
 				GraphicsForegroundVersion = 1;
 			}
 		}
@@ -158,7 +158,11 @@ namespace UIWidgets
 		protected override void Start()
 		{
 			base.Start();
-			Toggle.OnClick.AddListener(ToggleNode);
+
+			if (Toggle != null)
+			{
+				Toggle.OnClick.AddListener(ToggleNode);
+			}
 		}
 
 		/// <summary>
@@ -181,19 +185,24 @@ namespace UIWidgets
 		{
 			if (AnimationCoroutine != null)
 			{
-				StopCoroutine(AnimationCoroutine);
+				Owner.StopCoroutine(AnimationCoroutine);
 			}
 
 			SetToggle(Node.IsExpanded);
 
 			ToggleEvent.Invoke(Index);
 
+			if (Owner != null)
+			{
+				Owner.ItemsEvents.NodeToggleClick.Invoke(Index, this);
+			}
+
 			if (OnNodeExpand == NodeToggle.Rotate)
 			{
 				if (AnimateArrow)
 				{
 					AnimationCoroutine = Node.IsExpanded ? CloseCoroutine() : OpenCoroutine();
-					StartCoroutine(AnimationCoroutine);
+					Owner.StartCoroutine(AnimationCoroutine);
 				}
 			}
 			else
@@ -223,7 +232,7 @@ namespace UIWidgets
 		protected virtual IEnumerator OpenCoroutine()
 		{
 			var rect = Toggle.transform as RectTransform;
-			yield return StartCoroutine(Animations.RotateZ(rect, 0.2f, -90, 0));
+			yield return Owner.StartCoroutine(Animations.RotateZ(rect, 0.2f, -90, 0));
 		}
 
 		/// <summary>
@@ -233,7 +242,7 @@ namespace UIWidgets
 		protected virtual IEnumerator CloseCoroutine()
 		{
 			var rect = Toggle.transform as RectTransform;
-			yield return StartCoroutine(Animations.RotateZ(rect, 0.2f, 0, -90));
+			yield return Owner.StartCoroutine(Animations.RotateZ(rect, 0.2f, 0, -90));
 		}
 
 		/// <summary>

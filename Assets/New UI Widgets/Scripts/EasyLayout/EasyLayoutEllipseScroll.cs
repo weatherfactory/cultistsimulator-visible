@@ -180,10 +180,10 @@
 		}
 
 		/// <summary>
-		/// Animate inertia scroll with unscaled time.
+		/// Intertia.
 		/// </summary>
 		[SerializeField]
-		public bool UnscaledTime = true;
+		public bool Inertia = true;
 
 		/// <summary>
 		/// Time to stop.
@@ -192,10 +192,22 @@
 		public float TimeToStop = 0.5f;
 
 		/// <summary>
+		/// Animate inertia scroll with unscaled time.
+		/// </summary>
+		[SerializeField]
+		public bool UnscaledTime = true;
+
+		/// <summary>
 		/// Scroll event.
 		/// </summary>
 		[SerializeField]
 		public UnityEvent OnScrollEvent = new UnityEvent();
+
+		/// <summary>
+		/// Scroll stop event.
+		/// </summary>
+		[SerializeField]
+		public UnityEvent OnScrollStopEvent = new UnityEvent();
 
 		/// <summary>
 		/// Velocity.
@@ -361,6 +373,12 @@
 		/// </summary>
 		protected virtual void InitIntertia()
 		{
+			if (!Inertia)
+			{
+				OnScrollStopEvent.Invoke();
+				return;
+			}
+
 			IntertiaVelocity = -ScrollVelocity;
 			CurrentDecelerationRate = -IntertiaVelocity / TimeToStop;
 
@@ -400,6 +418,7 @@
 				}
 				else
 				{
+					OnScrollStopEvent.Invoke();
 					StopInertia();
 				}
 			}

@@ -506,7 +506,7 @@
 			var end_pos = RestrictPosition(Target.localPosition);
 			if (start_pos != end_pos)
 			{
-				var animation_length = Curve.keys[Curve.keys.Length - 1].time;
+				var animation_length = Curve[Curve.length - 1].time;
 				var startTime = UtilitiesTime.GetTime(UnscaledTime);
 				var animation_position = 0f;
 
@@ -534,14 +534,16 @@
 		protected virtual Vector3 RestrictPosition(Vector3 pos)
 		{
 			var parent = Target.parent as RectTransform;
+			var parent_pivot = parent.pivot;
 			var parent_size = parent.rect.size;
-			var drag_size = Target.rect.size;
+			var target_size = Target.rect.size;
+			var target_pivot = Target.pivot;
 
-			var min_x = (-parent_size[0] / 2f) + (drag_size[0] * Target.pivot.x);
-			var max_x = (parent_size[0] / 2f) - (drag_size[0] * (1f - Target.pivot.x));
+			var min_x = -(parent_size.x * parent_pivot.x) + (target_size.x * target_pivot.x);
+			var max_x = (parent_size.x * (1f - parent_pivot.x)) - (target_size.x * (1f - target_pivot.x));
 
-			var min_y = (-parent_size[1] / 2f) + (drag_size[1] * Target.pivot.y);
-			var max_y = (parent_size[1] / 2f) - (drag_size[1] * (1f - Target.pivot.y));
+			var min_y = -(parent_size.y * parent_pivot.y) + (target_size.y * target_pivot.y);
+			var max_y = (parent_size.y * (1f - parent_pivot.y)) - (target_size.y * (1f - target_pivot.y));
 
 			return new Vector3(
 				Mathf.Clamp(pos.x, min_x, max_x),
@@ -556,7 +558,7 @@
 		{
 			if (!IsTargetSelf)
 			{
-				Utilities.CopyRectTransformValues(Target, RectTransform);
+				UtilitiesRectTransform.CopyValues(Target, RectTransform);
 			}
 		}
 	}

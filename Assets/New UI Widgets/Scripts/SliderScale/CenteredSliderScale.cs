@@ -138,7 +138,7 @@
 		/// <inheritdoc/>
 		public override void UpdateScale()
 		{
-			Scale.Set(Value2MarkData, Slider.LimitMin, Slider.LimitMax, Slider.Value);
+			Scale.Set(Value2MarkDataDelegate, Slider.LimitMin, Slider.LimitMax, Slider.Value);
 		}
 
 		/// <inheritdoc/>

@@ -12,7 +12,7 @@
 	public class ListComponentPool<TComponent>
 		where TComponent : Component
 	{
-		readonly List<TComponent> active;
+		readonly List<TComponent> instances;
 
 		readonly List<TComponent> cache;
 
@@ -20,57 +20,97 @@
 
 		readonly bool MovableToCache;
 
-		TComponent defaultItem;
+		TComponent template;
 
 		/// <summary>
-		/// Default item.
+		/// Template.
 		/// </summary>
-		public TComponent DefaultItem
+		public TComponent Template
 		{
 			get
 			{
-				return defaultItem;
+				return template;
 			}
 
 			set
 			{
-				if (defaultItem != value)
+				if (template != value)
 				{
-					defaultItem = value;
+					template = value;
 
 					Require(0);
 
-					cache.ForEach(UnityEngine.Object.Destroy);
+					foreach (var c in cache)
+					{
+						UnityEngine.Object.Destroy(c);
+					}
+
 					cache.Clear();
 
-					if (defaultItem != null)
+					if (template != null)
 					{
-						defaultItem.gameObject.SetActive(false);
+						template.gameObject.SetActive(false);
 					}
 				}
 			}
 		}
 
 		/// <summary>
+		/// Default item.
+		/// </summary>
+		[Obsolete("Replaced with Template.")]
+		public TComponent DefaultItem
+		{
+			get
+			{
+				return template;
+			}
+
+			set
+			{
+				Template = value;
+			}
+		}
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="ListComponentPool{TComponent}"/> class.
 		/// </summary>
-		/// <param name="defaultItem">Default item.</param>
-		/// <param name="active">List of the active items.</param>
+		/// <param name="template">Template.</param>
+		/// <param name="instances">List of the active items.</param>
 		/// <param name="cache">List of the cached items.</param>
 		/// <param name="parent">Parent.</param>
-		public ListComponentPool(TComponent defaultItem, List<TComponent> active, List<TComponent> cache, RectTransform parent)
+		public ListComponentPool(TComponent template, List<TComponent> instances, List<TComponent> cache, RectTransform parent)
 		{
 			MovableToCache = typeof(IMovableToCache).IsAssignableFrom(typeof(TComponent));
 
-			this.defaultItem = defaultItem;
-			if (this.defaultItem != null)
+			this.template = template;
+			if (this.template != null)
 			{
-				this.defaultItem.gameObject.SetActive(false);
+				this.template.gameObject.SetActive(false);
 			}
 
-			this.active = active;
+			this.instances = instances;
 			this.cache = cache;
 			this.parent = parent;
+		}
+
+		/// <summary>
+		/// Returns an enumerator that iterates through the <see cref="ListComponentPool{TComponent}" />.
+		/// </summary>
+		/// <returns>A <see cref="PoolEnumerator{TComponent}" /> for the <see cref="ListComponentPool{TComponent}" />.</returns>
+		public PoolEnumerator<TComponent> GetEnumerator()
+		{
+			return new PoolEnumerator<TComponent>(PoolEnumeratorMode.Active, template, instances, cache);
+		}
+
+		/// <summary>
+		/// Returns an enumerator that iterates through the <see cref="ListComponentPool{TComponent}" />.
+		/// </summary>
+		/// <param name="mode">Mode.</param>
+		/// <returns>A <see cref="PoolEnumerator{TComponent}" /> for the <see cref="ListComponentPool{TComponent}" />.</returns>
+		public PoolEnumerator<TComponent> GetEnumerator(PoolEnumeratorMode mode)
+		{
+			return new PoolEnumerator<TComponent>(mode, template, instances, cache);
 		}
 
 		/// <summary>
@@ -82,7 +122,7 @@
 		{
 			get
 			{
-				return active[index];
+				return instances[index];
 			}
 		}
 
@@ -93,7 +133,7 @@
 		{
 			get
 			{
-				return active.Count;
+				return instances.Count;
 			}
 		}
 
@@ -103,11 +143,11 @@
 		/// <param name="instancesCount">Required instances count.</param>
 		public void Require(int instancesCount)
 		{
-			if (active.Count > instancesCount)
+			if (instances.Count > instancesCount)
 			{
-				for (var i = active.Count - 1; i >= instancesCount; i--)
+				for (var i = instances.Count - 1; i >= instancesCount; i--)
 				{
-					var instance = active[i];
+					var instance = instances[i];
 
 					if (MovableToCache)
 					{
@@ -117,11 +157,11 @@
 					instance.gameObject.SetActive(false);
 					cache.Add(instance);
 
-					active.RemoveAt(i);
+					instances.RemoveAt(i);
 				}
 			}
 
-			while (active.Count < instancesCount)
+			while (instances.Count < instancesCount)
 			{
 				GetInstance();
 			}
@@ -138,7 +178,7 @@
 			for (int i = indices.Count - 1; i >= 0; i--)
 			{
 				var index = indices[i];
-				var instance = active[index];
+				var instance = instances[index];
 
 				if (MovableToCache)
 				{
@@ -148,7 +188,7 @@
 				instance.gameObject.SetActive(false);
 				cache.Add(instance);
 
-				active.RemoveAt(index);
+				instances.RemoveAt(index);
 			}
 		}
 
@@ -166,13 +206,13 @@
 			}
 			else
 			{
-				instance = Compatibility.Instantiate(DefaultItem);
-				Utilities.FixInstantiated(DefaultItem, instance);
+				instance = Compatibility.Instantiate(Template);
+				Utilities.FixInstantiated(Template, instance);
 				instance.transform.SetParent(parent, false);
 			}
 
 			instance.gameObject.SetActive(true);
-			active.Add(instance);
+			instances.Add(instance);
 
 			return instance;
 		}
@@ -183,7 +223,10 @@
 		/// <param name="action">Action.</param>
 		public void ForEach(Action<TComponent> action)
 		{
-			active.ForEach(action);
+			foreach (var a in instances)
+			{
+				action(a);
+			}
 		}
 
 		/// <summary>
@@ -192,8 +235,15 @@
 		/// <param name="action">Action.</param>
 		public void ForEachAll(Action<TComponent> action)
 		{
-			active.ForEach(action);
-			cache.ForEach(action);
+			foreach (var a in instances)
+			{
+				action(a);
+			}
+
+			foreach (var a in cache)
+			{
+				action(a);
+			}
 		}
 
 		/// <summary>
@@ -202,7 +252,10 @@
 		/// <param name="action">Action.</param>
 		public void ForEachCache(Action<TComponent> action)
 		{
-			cache.ForEach(action);
+			foreach (var a in cache)
+			{
+				action(a);
+			}
 		}
 	}
 }

@@ -1,7 +1,6 @@
 ﻿namespace UIWidgets
 {
 	using System.Collections.Generic;
-	using UIWidgets.Extensions;
 	using UIWidgets.Styles;
 	using UnityEngine;
 
@@ -100,7 +99,10 @@
 				Components.Add(Template.Instance());
 			}
 
-			CurrentDirectories.ForEach(SetCurrentDirectories);
+			for (int i = 0; i < CurrentDirectories.Count; i++)
+			{
+				SetCurrentDirectories(CurrentDirectories[i], i);
+			}
 		}
 
 		/// <summary>
@@ -134,7 +136,11 @@
 		/// </summary>
 		protected virtual void OnDestroy()
 		{
-			Components.ForEach(FreeComponent);
+			foreach (var c in Components)
+			{
+				FreeComponent(c);
+			}
+
 			Components.Clear();
 		}
 

@@ -182,6 +182,11 @@
 		}
 
 		/// <summary>
+		/// Callback on popup close.
+		/// </summary>
+		public Action OnClose;
+
+		/// <summary>
 		/// Awake is called when the script instance is being loaded.
 		/// </summary>
 		protected virtual void Awake()
@@ -317,6 +322,8 @@
 		/// <param name="modalSprite">Modal sprite.</param>
 		/// <param name="modalColor">Modal color.</param>
 		/// <param name="canvas">Canvas.</param>
+		/// <param name="content">Content. Also can be changed with SetContent().</param>
+		/// <param name="onClose">On close callback. Also can be changed with OnClose field.</param>
 		public virtual void Show(
 			string title = null,
 			string message = null,
@@ -325,29 +332,69 @@
 			bool modal = false,
 			Sprite modalSprite = null,
 			Color? modalColor = null,
-			Canvas canvas = null)
+			Canvas canvas = null,
+			RectTransform content = null,
+			Action onClose = null)
 		{
 			if (IsTemplate)
 			{
 				Debug.LogWarning("Use the template clone, not the template itself: PopupTemplate.Clone().Show(...), not PopupTemplate.Show(...)");
 			}
 
-			if (position == null)
-			{
-				position = new Vector3(0, 0, 0);
-			}
+			OnClose = onClose;
 
 			SetInfo(title, null, message, null, icon);
+			SetContent(content);
 
-			var parent = (canvas != null) ? canvas.transform : Utilities.FindTopmostCanvas(gameObject.transform);
+			var canvas_rt = SetCanvas(canvas);
+
+			SetModal(modal, modalSprite, modalColor, canvas_rt);
+
+			if (position.HasValue)
+			{
+				SetPosition(position.Value);
+			}
+
+			gameObject.SetActive(true);
+		}
+
+		/// <summary>
+		/// Set canvas.
+		/// </summary>
+		/// <param name="canvas">Canvas.</param>
+		/// <returns>Canvas RectTransform.</returns>
+		public virtual RectTransform SetCanvas(Canvas canvas)
+		{
+			var parent = (canvas != null) ? canvas.transform as RectTransform : UtilitiesUI.FindTopmostCanvas(gameObject.transform);
 			if (parent != null)
 			{
 				transform.SetParent(parent, false);
 			}
 
+			transform.SetAsLastSibling();
+
+			return parent;
+		}
+
+		/// <summary>
+		/// Set modal mode.
+		/// Warning: modal block is created at the current root canvas.
+		/// </summary>
+		/// <param name="modal">If set to <c>true</c> modal.</param>
+		/// <param name="modalSprite">Modal sprite.</param>
+		/// <param name="modalColor">Modal color.</param>
+		/// <param name="parent">Parent.</param>
+		public virtual void SetModal(bool modal = false, Sprite modalSprite = null, Color? modalColor = null, RectTransform parent = null)
+		{
+			if (ModalKey != null)
+			{
+				ModalHelper.Close(ModalKey.Value);
+				ModalKey = null;
+			}
+
 			if (modal)
 			{
-				ModalKey = ModalHelper.Open(this, modalSprite, modalColor, Close);
+				ModalKey = ModalHelper.Open(this, modalSprite, modalColor, Close, parent);
 			}
 			else
 			{
@@ -355,9 +402,15 @@
 			}
 
 			transform.SetAsLastSibling();
+		}
 
-			transform.localPosition = (Vector3)position;
-			gameObject.SetActive(true);
+		/// <summary>
+		/// Set position.
+		/// </summary>
+		/// <param name="position">Position.</param>
+		public virtual void SetPosition(Vector3 position)
+		{
+			transform.localPosition = position;
 		}
 
 		/// <summary>
@@ -385,10 +438,29 @@
 		}
 
 		/// <summary>
+		/// Sets the content.
+		/// </summary>
+		/// <param name="content">Content.</param>
+		public virtual void SetContent(RectTransform content)
+		{
+			if (content == null)
+			{
+				return;
+			}
+
+			Info.SetContent(content);
+		}
+
+		/// <summary>
 		/// Close popup.
 		/// </summary>
 		public virtual void Close()
 		{
+			if (OnClose != null)
+			{
+				OnClose();
+			}
+
 			if (ModalKey.HasValue)
 			{
 				ModalHelper.Close(ModalKey.Value);
@@ -412,6 +484,8 @@
 		/// </summary>
 		protected virtual void ResetParameters()
 		{
+			OnClose = null;
+
 			info.RestoreDefaultValues();
 		}
 

@@ -46,41 +46,49 @@
 			/// <summary>
 			/// Allow resize with top side.
 			/// </summary>
+			[SerializeField]
 			public bool Top;
 
 			/// <summary>
 			/// Allow resize with bottom side.
 			/// </summary>
+			[SerializeField]
 			public bool Bottom;
 
 			/// <summary>
 			/// Allow resize with left side.
 			/// </summary>
+			[SerializeField]
 			public bool Left;
 
 			/// <summary>
 			/// Allow resize with right side.
 			/// </summary>
+			[SerializeField]
 			public bool Right;
 
 			/// <summary>
 			/// Allow resize with top left corner.
 			/// </summary>
+			[SerializeField]
 			public bool TopLeft;
 
 			/// <summary>
 			/// Allow resize with top right corner.
 			/// </summary>
+			[SerializeField]
 			public bool TopRight;
 
 			/// <summary>
 			/// Allow resize with bottom left corner.
 			/// </summary>
+			[SerializeField]
 			public bool BottomLeft;
 
 			/// <summary>
 			/// Allow resize with bottom right corner.
 			/// </summary>
+			[SerializeField]
 			public bool BottomRight;
 
 			/// <summary>
@@ -259,7 +267,7 @@
 			/// <returns>true if the directions are equal; otherwise, false.</returns>
 			public static bool operator ==(Directions directions1, Directions directions2)
 			{
-				return Equals(directions1, directions2);
+				return directions1.Equals(directions2);
 			}
 
 			/// <summary>
@@ -270,7 +278,7 @@
 			/// <returns>true if the directions not equal; otherwise, false.</returns>
 			public static bool operator !=(Directions directions1, Directions directions2)
 			{
-				return !Equals(directions1, directions2);
+				return !directions1.Equals(directions2);
 			}
 		}
 
@@ -278,26 +286,31 @@
 		/// Active resize region.
 		/// Specifies how position should be changed with resize.
 		/// </summary>
+		[Serializable]
 		public struct Regions : IEquatable<Regions>
 		{
 			/// <summary>
 			/// The top.
 			/// </summary>
+			[SerializeField]
 			public bool Top;
 
 			/// <summary>
 			/// The bottom.
 			/// </summary>
+			[SerializeField]
 			public bool Bottom;
 
 			/// <summary>
 			/// The left.
 			/// </summary>
+			[SerializeField]
 			public bool Left;
 
 			/// <summary>
 			/// The right.
 			/// </summary>
+			[SerializeField]
 			public bool Right;
 
 			/// <summary>
@@ -475,9 +488,10 @@
 			/// Returns a string that represents the current object.
 			/// </summary>
 			/// <returns>A string that represents the current object.</returns>
+			[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0101:Array allocation for params parameter", Justification = "Required.")]
 			public override string ToString()
 			{
-				return string.Format("Top: {0}; Bottom: {1}; Left: {2}; Right: {3}", Top, Bottom, Left, Right);
+				return string.Format("Top: {0}; Bottom: {1}; Left: {2}; Right: {3}", Top.ToString(), Bottom.ToString(), Left.ToString(), Right.ToString());
 			}
 
 			/// <summary>
@@ -547,7 +561,7 @@
 			/// <returns>true if the regions are equal; otherwise, false.</returns>
 			public static bool operator ==(Regions regions1, Regions regions2)
 			{
-				return Equals(regions1, regions2);
+				return regions1.Equals(regions2);
 			}
 
 			/// <summary>
@@ -558,7 +572,7 @@
 			/// <returns>true if the regions not equal; otherwise, false.</returns>
 			public static bool operator !=(Regions regions1, Regions regions2)
 			{
-				return !Equals(regions1, regions2);
+				return !regions1.Equals(regions2);
 			}
 		}
 
@@ -763,6 +777,70 @@
 		public float ActiveRegion = 5;
 
 		/// <summary>
+		/// Use CanvasScaler.
+		/// </summary>
+		[SerializeField]
+		public bool UseCanvasScaler = true;
+
+		CanvasScaler canvasScaler;
+
+		/// <summary>
+		/// Canvas scaler.
+		/// </summary>
+		protected CanvasScaler CanvasScaler
+		{
+			get
+			{
+				if (canvasScaler == null)
+				{
+					canvasScaler = GetComponentInParent<CanvasScaler>();
+				}
+
+				return canvasScaler;
+			}
+		}
+
+		/// <summary>
+		/// Active region scaled according to CanvasScaler.
+		/// </summary>
+		protected float ActiveRegionScaled
+		{
+			get
+			{
+				if (!UseCanvasScaler)
+				{
+					return ActiveRegion;
+				}
+
+				var scaler = CanvasScaler;
+				if ((scaler == null) || (scaler.uiScaleMode == CanvasScaler.ScaleMode.ConstantPixelSize))
+				{
+					return ActiveRegion;
+				}
+
+				var ratio = 1f;
+				if (scaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize)
+				{
+					ratio = Screen.height / scaler.referenceResolution.y;
+					if (scaler.screenMatchMode == CanvasScaler.ScreenMatchMode.Shrink)
+					{
+						ratio = Mathf.Max(ratio, 1f);
+					}
+					else if (scaler.screenMatchMode == CanvasScaler.ScreenMatchMode.Expand)
+					{
+						ratio = Mathf.Min(ratio, 1f);
+					}
+				}
+				else if (scaler.uiScaleMode == CanvasScaler.ScaleMode.ConstantPhysicalSize)
+				{
+					ratio = Screen.dpi / scaler.defaultSpriteDPI;
+				}
+
+				return ActiveRegion * ratio;
+			}
+		}
+
+		/// <summary>
 		/// The minimum size.
 		/// </summary>
 		[SerializeField]
@@ -789,65 +867,79 @@
 		protected Camera CurrentCamera;
 
 		/// <summary>
+		/// Cursors.
+		/// </summary>
+		[SerializeField]
+		public Cursors Cursors;
+
+		/// <summary>
 		/// The cursor EW texture.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D CursorEWTexture;
 
 		/// <summary>
 		/// The cursor EW hot spot.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 CursorEWHotSpot = new Vector2(16, 16);
 
 		/// <summary>
 		/// The cursor NS texture.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D CursorNSTexture;
 
 		/// <summary>
 		/// The cursor NS hot spot.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 CursorNSHotSpot = new Vector2(16, 16);
 
 		/// <summary>
 		/// The cursor NESW texture.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D CursorNESWTexture;
 
 		/// <summary>
 		/// The cursor NESW hot spot.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 CursorNESWHotSpot = new Vector2(16, 16);
 
 		/// <summary>
 		/// The cursor NWSE texture.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D CursorNWSETexture;
 
 		/// <summary>
 		/// The cursor NWSE hot spot.
 		/// </summary>
 		[SerializeField]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 CursorNWSEHotSpot = new Vector2(16, 16);
 
 		/// <summary>
 		/// The default cursor texture.
 		/// </summary>
 		[SerializeField]
-		[Obsolete("Replaced with UICursorSettings component.")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Texture2D DefaultCursorTexture;
 
 		/// <summary>
 		/// The default cursor hot spot.
 		/// </summary>
 		[SerializeField]
-		[Obsolete("Replaced with UICursorSettings component.")]
+		[Obsolete("Replaced with Cursors and UICursor.Cursors.")]
 		public Vector2 DefaultCursorHotSpot;
 
 		/// <summary>
@@ -1140,10 +1232,11 @@
 
 		void UpdateRegions(Vector2 point)
 		{
-			regions.Top = CheckTop(point);
-			regions.Bottom = CheckBottom(point);
-			regions.Left = CheckLeft(point);
-			regions.Right = CheckRight(point);
+			var active = ActiveRegionScaled;
+			regions.Top = CheckTop(point, active);
+			regions.Bottom = CheckBottom(point, active);
+			regions.Left = CheckLeft(point, active);
+			regions.Right = CheckRight(point, active);
 
 			if (!IncludesCorners)
 			{
@@ -1164,22 +1257,22 @@
 			if ((regions.TopLeft && ResizeDirections.TopLeft) || (regions.BottomRight && ResizeDirections.BottomRight))
 			{
 				CursorChanged = true;
-				UICursor.Set(this, CursorNWSETexture, CursorNWSEHotSpot);
+				UICursor.Set(this, GetNWSECursor());
 			}
 			else if ((regions.TopRight && ResizeDirections.TopRight) || (regions.BottomLeft && ResizeDirections.BottomLeft))
 			{
 				CursorChanged = true;
-				UICursor.Set(this, CursorNESWTexture, CursorNESWHotSpot);
+				UICursor.Set(this, GetNESWCursor());
 			}
 			else if ((regions.Top && ResizeDirections.Top) || (regions.Bottom && ResizeDirections.Bottom))
 			{
 				CursorChanged = true;
-				UICursor.Set(this, CursorNSTexture, CursorNSHotSpot);
+				UICursor.Set(this, GetNSCursor());
 			}
 			else if ((regions.Left && ResizeDirections.Left) || (regions.Right && ResizeDirections.Right))
 			{
 				CursorChanged = true;
-				UICursor.Set(this, CursorEWTexture, CursorEWHotSpot);
+				UICursor.Set(this, GetEWCursor());
 			}
 			else if (CursorChanged)
 			{
@@ -1188,16 +1281,93 @@
 		}
 
 		/// <summary>
+		/// Get NWSE cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetNWSECursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.NorthWestSouthEastArrow;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.NorthWestSouthEastArrow;
+			}
+
+			return default(Cursors.Cursor);
+		}
+
+		/// <summary>
+		/// Get NESW cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetNESWCursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.NorthEastSouthWestArrow;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.NorthEastSouthWestArrow;
+			}
+
+			return default(Cursors.Cursor);
+		}
+
+		/// <summary>
+		/// Get NS cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetNSCursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.NorthSouthArrow;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.NorthSouthArrow;
+			}
+
+			return default(Cursors.Cursor);
+		}
+
+		/// <summary>
+		/// Get EW cursor.
+		/// </summary>
+		/// <returns>Cursor.</returns>
+		protected virtual Cursors.Cursor GetEWCursor()
+		{
+			if (Cursors != null)
+			{
+				return Cursors.EastWestArrow;
+			}
+
+			if (UICursor.Cursors != null)
+			{
+				return UICursor.Cursors.EastWestArrow;
+			}
+
+			return default(Cursors.Cursor);
+		}
+
+		/// <summary>
 		/// Checks if point in the top region.
 		/// </summary>
 		/// <returns><c>true</c>, if point in the top region, <c>false</c> otherwise.</returns>
 		/// <param name="point">Point.</param>
-		bool CheckTop(Vector2 point)
+		/// <param name="activeRegion">Active region.</param>
+		bool CheckTop(Vector2 point, float activeRegion)
 		{
 			var rect = Target.rect;
 
-			rect.position = new Vector2(rect.position.x, rect.position.y + rect.height - ActiveRegion);
-			rect.height = ActiveRegion;
+			rect.position = new Vector2(rect.position.x, rect.position.y + rect.height - activeRegion);
+			rect.height = activeRegion;
 
 			return rect.Contains(point);
 		}
@@ -1207,10 +1377,11 @@
 		/// </summary>
 		/// <returns><c>true</c>, if right was checked, <c>false</c> otherwise.</returns>
 		/// <param name="point">Point.</param>
-		bool CheckBottom(Vector2 point)
+		/// <param name="activeRegion">Active region.</param>
+		bool CheckBottom(Vector2 point, float activeRegion)
 		{
 			var rect = Target.rect;
-			rect.height = ActiveRegion;
+			rect.height = activeRegion;
 
 			return rect.Contains(point);
 		}
@@ -1220,10 +1391,11 @@
 		/// </summary>
 		/// <returns><c>true</c>, if point in the left region, <c>false</c> otherwise.</returns>
 		/// <param name="point">Point.</param>
-		bool CheckLeft(Vector2 point)
+		/// <param name="activeRegion">Active region.</param>
+		bool CheckLeft(Vector2 point, float activeRegion)
 		{
 			var rect = Target.rect;
-			rect.width = ActiveRegion;
+			rect.width = activeRegion;
 
 			return rect.Contains(point);
 		}
@@ -1233,12 +1405,13 @@
 		/// </summary>
 		/// <returns><c>true</c>, if right was checked, <c>false</c> otherwise.</returns>
 		/// <param name="point">Point.</param>
-		bool CheckRight(Vector2 point)
+		/// <param name="activeRegion">Active region.</param>
+		bool CheckRight(Vector2 point, float activeRegion)
 		{
 			var rect = Target.rect;
 
-			rect.position = new Vector2(rect.position.x + rect.width - ActiveRegion, rect.position.y);
-			rect.width = ActiveRegion;
+			rect.position = new Vector2(rect.position.x + rect.width - activeRegion, rect.position.y);
+			rect.width = activeRegion;
 
 			return rect.Contains(point);
 		}
@@ -1559,7 +1732,7 @@
 		{
 			if (!IsTargetSelf)
 			{
-				Utilities.CopyRectTransformValues(Target, RectTransform);
+				UtilitiesRectTransform.CopyValues(Target, RectTransform);
 			}
 		}
 	}

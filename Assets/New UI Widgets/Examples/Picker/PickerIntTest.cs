@@ -1,7 +1,6 @@
 ﻿namespace UIWidgets.Examples
 {
 	using UIWidgets;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 	using UnityEngine.UI;
 
@@ -35,13 +34,14 @@
 		/// <summary>
 		/// Run test.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void Test()
 		{
 			// create picker from template
 			var picker = PickerTemplate.Clone();
 
 			// set values from template
-			picker.ListView.DataSource = PickerTemplate.ListView.DataSource.ToObservableList();
+			picker.ListView.DataSource = new ObservableList<int>(PickerTemplate.ListView.DataSource);
 
 			// or set new values
 			// picker.ListView.DataSource = Utilities.CreateList(100, x => x);
@@ -53,7 +53,7 @@
 		void ValueSelected(int value)
 		{
 			currentValue = value;
-			Debug.Log("value: " + value);
+			Debug.Log(string.Format("value: {0}", value.ToString()));
 		}
 
 		void Canceled()
@@ -64,6 +64,7 @@
 		/// <summary>
 		/// Run test.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		public void TestShow()
 		{
 			// create picker from template
@@ -81,7 +82,7 @@
 		void ShowValueSelected(int value)
 		{
 			currentValue = value;
-			InfoAdapter.text = "Value: " + value;
+			InfoAdapter.text = string.Format("Value: {0}", value.ToString());
 		}
 
 		void ShowCanceled()

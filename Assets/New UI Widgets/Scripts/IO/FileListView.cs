@@ -2,7 +2,6 @@
 {
 	using System;
 	using System.IO;
-	using UIWidgets.Extensions;
 	using UIWidgets.Styles;
 	using UnityEngine;
 	using UnityEngine.EventSystems;
@@ -13,6 +12,11 @@
 	/// </summary>
 	public class FileListView : TileViewCustomSize<FileListViewComponentBase, FileSystemEntry>
 	{
+		/// <summary>
+		/// Pattern separators.
+		/// </summary>
+		protected static char[] PatternSeparators = new char[] { ';' };
+
 		/// <summary>
 		/// Current directory.
 		/// </summary>
@@ -267,32 +271,44 @@
 		{
 			if (!string.IsNullOrEmpty(directoryPatterns))
 			{
-				var patterns = directoryPatterns.Split(';');
+				var patterns = directoryPatterns.Split(PatternSeparators);
 				for (int i = 0; i < patterns.Length; i++)
 				{
 					var dirs = Directory.GetDirectories(currentDirectory, patterns[i]);
-					dirs.ForEach(AddDirectory);
+					foreach (var dir in dirs)
+					{
+						AddDirectory(dir);
+					}
 				}
 			}
 			else
 			{
 				var dirs = Directory.GetDirectories(currentDirectory);
-				dirs.ForEach(AddDirectory);
+				foreach (var dir in dirs)
+				{
+					AddDirectory(dir);
+				}
 			}
 
 			if (!string.IsNullOrEmpty(filePatterns))
 			{
-				var patterns = filePatterns.Split(';');
+				var patterns = filePatterns.Split(PatternSeparators);
 				for (int i = 0; i < patterns.Length; i++)
 				{
 					var files = Directory.GetFiles(currentDirectory, patterns[i]);
-					files.ForEach(AddFiles);
+					foreach (var file in files)
+					{
+						AddFile(file);
+					}
 				}
 			}
 			else
 			{
 				var files = Directory.GetFiles(currentDirectory);
-				files.ForEach(AddFiles);
+				foreach (var file in files)
+				{
+					AddFile(file);
+				}
 			}
 		}
 
@@ -313,7 +329,7 @@
 		/// Add files DataSource.
 		/// </summary>
 		/// <param name="file">File.</param>
-		protected virtual void AddFiles(string file)
+		protected virtual void AddFile(string file)
 		{
 			var item = new FileSystemEntry(file, Path.GetFileName(file), true);
 			if (CanDisplayEntry(item))

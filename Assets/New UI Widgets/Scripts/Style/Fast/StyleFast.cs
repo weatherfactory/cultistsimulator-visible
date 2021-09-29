@@ -276,7 +276,7 @@
 			style.AudioPlayer.Play.Image = Arrow.Clone();
 
 			style.Combobox.SingleInputBackground = Background.Clone();
-			style.Accordion.ToggleBackground = Background.Clone();
+			style.Accordion.ToggleDefaultBackground = Background.Clone();
 			style.Autocomplete.Background = Background.Clone();
 			style.CenteredSliderHorizontal.Handle = Background.Clone();
 			style.CenteredSliderVertical.Handle = Background.Clone();
@@ -481,7 +481,7 @@
 			style.Canvas.Background.Color = ColorBackground;
 
 			style.Table.HeaderText.Color = ColorSecondary;
-			style.Accordion.ToggleText.Color = ColorSecondary;
+			style.Accordion.ToggleDefaultText.Color = ColorSecondary;
 			style.Accordion.ContentText.Color = ColorSecondary;
 			style.Autocomplete.InputField.Color = ColorSecondary;
 			style.Autocomplete.Placeholder.Color = ColorSecondary;
@@ -539,8 +539,8 @@
 			style.FileListView.PathItemText.FontTMPro = FontTMPro;
 			style.IOCollectionsErrors.Font = Font;
 			style.IOCollectionsErrors.FontTMPro = FontTMPro;
-			style.Accordion.ToggleText.Font = Font;
-			style.Accordion.ToggleText.FontTMPro = FontTMPro;
+			style.Accordion.ToggleDefaultText.Font = Font;
+			style.Accordion.ToggleDefaultText.FontTMPro = FontTMPro;
 			style.Accordion.ContentText.Font = Font;
 			style.Accordion.ContentText.FontTMPro = FontTMPro;
 			style.TabsTop.DefaultButton.Text.Font = Font;

@@ -8,7 +8,7 @@
 	/// LVInputFields item.
 	/// </summary>
 	[Serializable]
-	public class LVInputFieldsItem
+	public class LVInputFieldsItem : IObservable, INotifyPropertyChanged
 	{
 		[SerializeField]
 		string text1;
@@ -82,14 +82,28 @@
 		}
 
 		/// <summary>
-		/// Represents the method that will handle the PropertyChanged event raised when a property is changed.
+		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = (x, y) => { };
+		public event OnChange OnChange;
+
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		void Changed(string propertyName)
 		{
-			// raise PropertyChanged event
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

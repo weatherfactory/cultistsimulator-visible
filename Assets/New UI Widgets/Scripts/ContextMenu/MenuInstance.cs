@@ -131,16 +131,23 @@
 			Coroutine closeCoroutine;
 
 			/// <summary>
+			/// Parent canvas.
+			/// </summary>
+			protected RectTransform ParentCanvas;
+
+			/// <summary>
 			/// Initializes a new instance of the <see cref="MenuInstance"/> class.
 			/// </summary>
 			/// <param name="owner">Owner.</param>
 			/// <param name="template">Template.</param>
 			/// <param name="items">Items.</param>
-			public MenuInstance(ContextMenu owner, ContextMenuView template, ReadOnlyCollection<MenuItem> items)
+			/// <param name="parentCanvas">Parent canvas.</param>
+			public MenuInstance(ContextMenu owner, ContextMenuView template, ReadOnlyCollection<MenuItem> items, RectTransform parentCanvas)
 			{
 				Owner = owner;
 				Template = template;
 				Items = items;
+				ParentCanvas = parentCanvas;
 			}
 
 			/// <summary>
@@ -194,24 +201,23 @@
 
 					var view = Template.GetItemView(item);
 
-					view.transform.SetParent(View.RectTransform);
+					view.transform.SetParent(View.RectTransform, false);
 					AddListeners(view);
 					SetData(view, index);
 
 					ItemViews.Add(view);
 				}
 
-				var canvas = Utilities.FindTopmostCanvas(Owner.RectTransform) as RectTransform;
-
-				View.RectTransform.SetParent(canvas);
+				View.RectTransform.SetParent(ParentCanvas, false);
 				View.RectTransform.SetAsLastSibling();
 				View.RectTransform.anchorMin = new Vector2(0, 1);
 				View.RectTransform.anchorMax = new Vector2(0, 1);
 				View.RectTransform.localScale = Vector3.one;
+				View.RectTransform.localPosition = Vector3.zero;
 
 				LayoutRebuilder.ForceRebuildLayoutImmediate(View.RectTransform);
 
-				var canvas_size = canvas.rect.size;
+				var canvas_size = ParentCanvas.rect.size;
 				var width = LayoutUtility.GetPreferredWidth(View.RectTransform);
 				var height = LayoutUtility.GetPreferredHeight(View.RectTransform);
 
@@ -246,7 +252,7 @@
 
 				if (parent == null)
 				{
-					ModalKey = ModalHelper.Open(Owner.RectTransform, null, Color.clear, Close);
+					ModalKey = ModalHelper.Open(Owner.RectTransform, null, Color.clear, Close, ParentCanvas);
 				}
 
 				CreateView();
@@ -358,11 +364,10 @@
 			/// </summary>
 			public void ResetItems()
 			{
-				ItemViews.ForEach(RemoveListeners);
-
-				for (int i = 0; i < ItemViews.Count; i++)
+				foreach (var view in ItemViews)
 				{
-					var view = ItemViews[i];
+					RemoveListeners(view);
+
 					if (!Items[view.Index].Visible)
 					{
 						continue;
@@ -444,6 +449,7 @@
 			/// </summary>
 			/// <param name="index">Index of the MenuItem.</param>
 			/// <returns>IEnumerator.</returns>
+			[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 			protected IEnumerator OpenSubmenuCoroutine(int index)
 			{
 				yield return UtilitiesTime.Wait(Owner.SubmenuDelay, Owner.UnscaledTime);
@@ -454,6 +460,7 @@
 			/// Close sub-menu coroutine.
 			/// </summary>
 			/// <returns>IEnumerator.</returns>
+			[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Enumerator is reusable.")]
 			protected IEnumerator CloseSubmenuCoroutine()
 			{
 				yield return UtilitiesTime.Wait(Owner.SubmenuDelay, Owner.UnscaledTime);
@@ -484,7 +491,7 @@
 				if (View == null)
 				{
 					View = Template.Instance();
-					View.name = Owner.name + " " + depth;
+					View.name = string.Format("{0} {1}", Owner.name, depth.ToString());
 				}
 			}
 
@@ -505,7 +512,7 @@
 
 				if (submenu == null)
 				{
-					submenu = new MenuInstance(Owner, Template, Items[index].Items.AsReadOnly());
+					submenu = new MenuInstance(Owner, Template, Items[index].Items.AsReadOnly(), ParentCanvas);
 					submenu.parent = this;
 					submenu.depth = depth + 1;
 				}

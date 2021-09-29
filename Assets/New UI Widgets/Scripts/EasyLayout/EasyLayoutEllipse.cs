@@ -2,6 +2,8 @@
 {
 	using System;
 	using System.Collections.Generic;
+	using EasyLayoutNS.Extensions;
+	using UIWidgets;
 	using UnityEngine;
 
 	/// <summary>
@@ -12,12 +14,16 @@
 		readonly List<LayoutElementInfo> EllipseGroup = new List<LayoutElementInfo>();
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="EasyLayoutEllipse"/> class.
+		/// Settings.
 		/// </summary>
-		/// <param name="layout">Layout.</param>
-		public EasyLayoutEllipse(EasyLayout layout)
-				: base(layout)
+		protected EasyLayoutEllipseSettings Settings;
+
+		/// <inheritdoc/>
+		public override void LoadSettings(EasyLayout layout)
 		{
+			base.LoadSettings(layout);
+
+			Settings = layout.EllipseSettings;
 		}
 
 		/// <summary>
@@ -43,27 +49,26 @@
 		/// Calculate group size.
 		/// </summary>
 		/// <returns>Size.</returns>
-		protected override Vector2 CalculateGroupSize()
+		protected override GroupSize CalculateGroupSize()
 		{
-			var settings = Layout.EllipseSettings;
-			var size = Layout.InternalSize;
+			var size = InternalSize;
 
-			if (!settings.WidthAuto)
+			if (!Settings.WidthAuto)
 			{
-				size.x = settings.Width;
+				size.x = Settings.Width;
 			}
 
-			if (!settings.HeightAuto)
+			if (!Settings.HeightAuto)
 			{
-				size.y = settings.Height;
+				size.y = Settings.Height;
 			}
 
 			var max_size = FindElementsMaxSize();
-			var align = GetAlignRate(settings.Align) * 2f;
+			var align = GetAlignRate(Settings.Align) * 2f;
 
-			if (settings.ElementsRotate)
+			if (Settings.ElementsRotate)
 			{
-				var rotation_angle = Mathf.Deg2Rad * settings.ElementsRotationStart;
+				var rotation_angle = Mathf.Deg2Rad * Settings.ElementsRotationStart;
 				var rotation_sin = Math.Sin(rotation_angle);
 				var rotation_cos = Math.Cos(rotation_angle);
 				var length = (max_size.x * rotation_cos) + (max_size.y * rotation_sin);
@@ -79,7 +84,7 @@
 			size.x = Mathf.Max(1f, size.x);
 			size.y = Mathf.Max(1f, size.y);
 
-			return size;
+			return new GroupSize(size);
 		}
 
 		Vector2 FindElementsMaxSize()
@@ -106,19 +111,17 @@
 				return;
 			}
 
-			var settings = Layout.EllipseSettings;
-
-			var angle_auto = settings.Fill == EllipseFill.Closed
+			var angle_auto = Settings.Fill == EllipseFill.Closed
 				? 360f / EllipseGroup.Count
-				: settings.ArcLength / Mathf.Max(1, EllipseGroup.Count - 1);
-			var angle_step = settings.AngleStepAuto ? angle_auto : settings.AngleStep;
+				: Settings.ArcLength / Mathf.Max(1, EllipseGroup.Count - 1);
+			var angle_step = Settings.AngleStepAuto ? angle_auto : Settings.AngleStep;
 
-			var angle = settings.AngleStart + settings.AngleFiller + settings.AngleScroll;
+			var angle = Settings.AngleStart + Settings.AngleFiller + Settings.AngleScroll;
 
 			var center = new Vector2(size.x / 2.0f, size.y / 2.0f);
-			var align = GetAlignRate(settings.Align);
+			var align = GetAlignRate(Settings.Align);
 
-			var rotation_angle_rad = Mathf.Deg2Rad * settings.ElementsRotationStart;
+			var rotation_angle_rad = Mathf.Deg2Rad * Settings.ElementsRotationStart;
 			var rotation_sin = (float)Math.Sin(rotation_angle_rad);
 			var rotation_cos = (float)Math.Cos(rotation_angle_rad);
 
@@ -136,7 +139,7 @@
 
 				var element_pos = new Vector2(center.x * position_cos, center.y * position_sin);
 
-				if (settings.ElementsRotate)
+				if (Settings.ElementsRotate)
 				{
 					var length = Mathf.Abs(element.Width * rotation_cos) + Mathf.Abs(element.Height * rotation_sin);
 					var align_fix = new Vector2(
@@ -152,7 +155,7 @@
 					element_pos += align_fix;
 				}
 
-				element.NewEulerAnglesZ = settings.ElementsRotate ? (angle + settings.ElementsRotationStart) : 0f;
+				element.NewEulerAnglesZ = Settings.ElementsRotate ? (angle + Settings.ElementsRotationStart) : 0f;
 
 				element.PositionPivot = element_pos;
 
@@ -171,7 +174,7 @@
 				case EllipseAlign.Inner:
 					return 0.5f;
 				default:
-					Debug.LogWarning("Unknown ellipse align: " + align);
+					Debug.LogWarning(string.Format("Unknown ellipse align: {0}", EnumHelper<EllipseAlign>.ToString(align)));
 					break;
 			}
 
@@ -193,10 +196,44 @@
 			EllipseGroup.Clear();
 			EllipseGroup.AddRange(ElementsGroup.Elements);
 
-			if (Layout.RightToLeft)
+			if (RightToLeft)
 			{
 				EllipseGroup.Reverse();
 			}
+		}
+
+		/// <inheritdoc/>
+		protected override void SetElementProperties(LayoutElementInfo element, ResizeType resizeType)
+		{
+			var driven_properties = DrivenTransformProperties.AnchoredPosition | DrivenTransformProperties.AnchoredPositionZ;
+
+			if (ChildrenWidth != ChildrenSize.DoNothing)
+			{
+				driven_properties |= DrivenTransformProperties.SizeDeltaX;
+
+				if (resizeType.IsSet(ResizeType.Horizontal))
+				{
+					element.Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, element.NewWidth);
+				}
+			}
+
+			if (ChildrenHeight != ChildrenSize.DoNothing)
+			{
+				driven_properties |= DrivenTransformProperties.SizeDeltaY;
+
+				if (resizeType.IsSet(ResizeType.Vertical))
+				{
+					element.Rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, element.NewHeight);
+				}
+			}
+
+			driven_properties |= DrivenTransformProperties.Rotation;
+			element.Rect.localEulerAngles = element.NewEulerAngles;
+
+			driven_properties |= DrivenTransformProperties.Pivot;
+			element.Rect.pivot = element.NewPivot;
+
+			OnElementChangedInvoke(element.Rect, driven_properties);
 		}
 	}
 }

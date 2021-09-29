@@ -6,7 +6,6 @@
 	using System.Runtime.Serialization.Formatters.Binary;
 #endif
 	using UIWidgets;
-	using UIWidgets.Extensions;
 	using UnityEngine;
 	using UnityEngine.Serialization;
 
@@ -36,7 +35,14 @@
 		/// <returns>OrderLines.</returns>
 		protected static ObservableList<JRPGOrderLine> CreateOrderLines(List<Item> items)
 		{
-			return items.Convert(item => new JRPGOrderLine(item, Prices.GetPrice(item, 1f))).ToObservableList();
+			var result = new ObservableList<JRPGOrderLine>();
+
+			foreach (var item in items)
+			{
+				result.Add(new JRPGOrderLine(item, Prices.GetPrice(item, 1f)));
+			}
+
+			return result;
 		}
 
 		/// <summary>
@@ -136,6 +142,8 @@
 		/// <summary>
 		/// Open AddPlaylistDialog.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0302:Display class allocation to capture closure", Justification = "Required.")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0301:Closure Allocation Source", Justification = "Required.")]
 		public void AddPlaylistDialog()
 		{
 			// create dialog from template
@@ -149,10 +157,10 @@
 
 			var actions = new DialogButton[]
 			{
-				new DialogButton("Add", (index) => CheckPlaylistDialog(helper)),
+				new DialogButton("Add", CheckPlaylistDialog),
 
 				// on click close dialog
-				new DialogButton("Cancel", Dialog.AlwaysClose),
+				new DialogButton("Cancel", DialogBase.DefaultClose),
 			};
 
 			// open dialog
@@ -167,10 +175,12 @@
 		/// <summary>
 		/// Check AddPlaylistDialog.
 		/// </summary>
-		/// <param name="helper">Dialog helper to check values.</param>
+		/// <param name="dialog">Dialog.</param>
+		/// <param name="index">Button index.</param>
 		/// <returns>true if values valid; otherwise false.</returns>
-		protected bool CheckPlaylistDialog(PlaylistDialogHelper helper)
+		protected bool CheckPlaylistDialog(DialogBase dialog, int index)
 		{
+			var helper = dialog.GetComponent<PlaylistDialogHelper>();
 			if (!helper.Validate())
 			{
 				// return false to keep dialog open

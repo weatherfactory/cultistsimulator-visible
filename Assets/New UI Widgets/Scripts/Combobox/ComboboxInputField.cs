@@ -132,28 +132,32 @@
 		/// </summary>
 		public ListViewEvent OnSelect = new ListViewEvent();
 
-		Transform listViewCanvas;
+		/// <summary>
+		/// Parent canvas.
+		/// </summary>
+		[SerializeField]
+		protected RectTransform parentCanvas;
 
 		/// <summary>
 		/// Canvas where ListView placed.
 		/// </summary>
-		protected Transform ListViewCanvas
+		protected RectTransform ParentCanvas
 		{
 			get
 			{
-				if (listViewCanvas == null)
+				if (parentCanvas == null)
 				{
-					listViewCanvas = Utilities.FindTopmostCanvas(listView.transform.parent);
+					parentCanvas = UtilitiesUI.FindTopmostCanvas(listView.transform.parent);
 				}
 
-				return listViewCanvas;
+				return parentCanvas;
 			}
 		}
 
 		/// <summary>
 		/// ListView parent.
 		/// </summary>
-		protected Transform ListViewParent;
+		protected RectTransform ListViewParent;
 
 		/// <summary>
 		/// Raised when ListView opened.
@@ -242,7 +246,7 @@
 
 			if (listView != null)
 			{
-				ListViewParent = listView.transform.parent;
+				ListViewParent = listView.transform.parent as RectTransform;
 
 				listView.OnSelectObject.AddListener(SelectItem);
 				listView.OnFocusOut.AddListener(OnFocusHideList);
@@ -319,12 +323,12 @@
 
 			listView.gameObject.SetActive(true);
 
-			ModalKey = ModalHelper.Open(this, null, new Color(0, 0, 0, 0f), HideList);
+			ModalKey = ModalHelper.Open(this, null, new Color(0, 0, 0, 0f), HideList, ParentCanvas);
 
-			if (ListViewCanvas != null)
+			if (ParentCanvas != null)
 			{
-				ListViewParent = listView.transform.parent;
-				listView.transform.SetParent(ListViewCanvas);
+				ListViewParent = listView.transform.parent as RectTransform;
+				listView.transform.SetParent(ParentCanvas);
 			}
 
 			if (listView.Layout != null)
@@ -360,7 +364,7 @@
 				return;
 			}
 
-			if (ListViewCanvas != null)
+			if (ParentCanvas != null)
 			{
 				listView.transform.SetParent(ListViewParent);
 			}
@@ -474,7 +478,11 @@
 		/// </summary>
 		protected void RemoveDeselectCallbacks()
 		{
-			childrenDeselect.ForEach(RemoveDeselectCallback);
+			foreach (var c in childrenDeselect)
+			{
+				RemoveDeselectCallback(c);
+			}
+
 			childrenDeselect.Clear();
 		}
 
@@ -597,6 +605,30 @@
 		{
 			ShowList();
 		}
+
+		#if UNITY_EDITOR
+		/// <summary>
+		/// Validate this instance.
+		/// </summary>
+		protected virtual void OnValidate()
+		{
+			if (parentCanvas == null)
+			{
+				parentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+
+		/// <summary>
+		/// Reset this instance.
+		/// </summary>
+		protected virtual void Reset()
+		{
+			if (parentCanvas == null)
+			{
+				parentCanvas = UtilitiesUI.FindTopmostCanvas(transform);
+			}
+		}
+		#endif
 
 		#region IStylable implementation
 

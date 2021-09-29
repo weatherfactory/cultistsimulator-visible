@@ -111,6 +111,7 @@
 		/// <summary>
 		/// Notification with slide animation to down.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required.")]
 		public void Content()
 		{
 			CustomContent.gameObject.SetActive(true);

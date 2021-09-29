@@ -141,9 +141,7 @@ public class CamOperator : MonoBehaviour {
            cameraHasArrived();
        else
        {
-       
-
-           smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
+        smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
 
            attachedCamera.transform.position = Vector3.Lerp(initialPosition, smoothTargetPosition,
                timeSpentMoving / moveDuration);

@@ -62,7 +62,7 @@ namespace UIWidgets
 		/// <inheritdoc/>
 		public override void UpdateScale()
 		{
-			Scale.Set(Value2MarkData, Slider.minValue, Slider.maxValue, Slider.value);
+			Scale.Set(Value2MarkDataDelegate, Slider.minValue, Slider.maxValue, Slider.value);
 		}
 
 		/// <inheritdoc/>
@@ -80,7 +80,7 @@ namespace UIWidgets
 				case Slider.Direction.BottomToTop:
 					return new Vector2(0.5f, v);
 				default:
-					throw new NotSupportedException("Unknown slider direction: " + Slider.direction);
+					throw new NotSupportedException(string.Format("Unknown slider direction: {0}", EnumHelper<Slider.Direction>.ToString(Slider.direction)));
 			}
 		}
 	}

@@ -54,6 +54,8 @@
 
 			readonly SortedList<TileViewStaggeredItemPosition, int> OrderedIndices = new SortedList<TileViewStaggeredItemPosition, int>(new ItemPositionComparer());
 
+			readonly List<int> newDisplayedIndices = new List<int>();
+
 			/// <summary>
 			/// Blocks count.
 			/// </summary>
@@ -430,7 +432,7 @@
 						index += 1;
 						break;
 					default:
-						throw new NotSupportedException("Unsupported NearestType: " + type);
+						throw new NotSupportedException(string.Format("Unsupported NearestType: {0}", EnumHelper<NearestType>.ToString(type)));
 				}
 
 				return index;
@@ -458,12 +460,11 @@
 				return last_visible_index;
 			}
 
-			readonly List<int> newDisplayedIndices = new List<int>();
-
 			/// <summary>
 			/// Update displayed indices.
 			/// </summary>
 			/// <returns>true if displayed indices changed; otherwise false.</returns>
+			[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0401:Possible allocation of reference type enumerator", Justification = "Required")]
 			public override bool UpdateDisplayedIndices()
 			{
 				newDisplayedIndices.Clear();
@@ -597,11 +598,6 @@
 			/// <inheritdoc/>
 			public override bool OnItemMove(AxisEventData eventData, ListViewItem item)
 			{
-				if (!Owner.Navigation)
-				{
-					return false;
-				}
-
 				var block_index = GetBlockIndex(item.Index);
 				var position_at_block = GetPositionAtBlock(item.Index);
 				var step = 0;
@@ -672,6 +668,43 @@
 				}
 
 				return Owner.Navigate(eventData, next_index);
+			}
+
+			/// <inheritdoc/>
+			public override void GetDebugInfo(System.Text.StringBuilder builder)
+			{
+				builder.Append("Blocks: ");
+				builder.Append(Blocks);
+				builder.AppendLine();
+
+				builder.AppendLine("Blocks Indices");
+				for (int i = 0; i < BlocksIndices.Count; i++)
+				{
+					var block = BlocksIndices[i];
+					builder.Append("\t");
+					builder.Append(i);
+					builder.Append(". ");
+					builder.Append(UtilitiesCollections.List2String(block));
+					builder.AppendLine();
+				}
+
+				builder.AppendLine("Blocks Sizes");
+				for (int i = 0; i < BlocksFullSizes.Count; i++)
+				{
+					builder.Append("\t");
+					builder.Append(i);
+					builder.Append(". ");
+					builder.Append(BlocksFullSizes[i]);
+					builder.AppendLine();
+				}
+
+				builder.Append("LayoutPaddingStart: ");
+				builder.Append(UtilitiesCollections.List2String(LayoutPaddingStart));
+				builder.AppendLine();
+
+				builder.Append("LayoutPaddingEnd: ");
+				builder.Append(UtilitiesCollections.List2String(LayoutPaddingEnd));
+				builder.AppendLine();
 			}
 		}
 	}

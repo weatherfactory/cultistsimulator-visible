@@ -29,6 +29,7 @@ namespace UIWidgets.Examples
 		/// <summary>
 		/// Adds listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void Start()
 		{
 			slider = GetComponent<RangeSlider>();
@@ -50,11 +51,11 @@ namespace UIWidgets.Examples
 			{
 				if (slider.WholeNumberOfSteps)
 				{
-					TextAdapter.text = string.Format("Range: {0:000} - {1:000}; Step: {2}", min, max, slider.Step);
+					TextAdapter.text = string.Format("Range: {0} - {1}; Step: {2}", min.ToString("000"), max.ToString("000'"), slider.Step.ToString());
 				}
 				else
 				{
-					TextAdapter.text = string.Format("Range: {0:000} - {1:000}", min, max);
+					TextAdapter.text = string.Format("Range: {0} - {1}", min.ToString("000"), max.ToString("000"));
 				}
 			}
 		}
@@ -62,6 +63,7 @@ namespace UIWidgets.Examples
 		/// <summary>
 		/// Remove listeners.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "HAA0603:Delegate allocation from a method group", Justification = "Required")]
 		protected virtual void OnDestroy()
 		{
 			if (slider != null)

@@ -71,7 +71,7 @@
 		{
 			if (GraphicsForegroundVersion == 0)
 			{
-				Foreground = new Graphic[] { Utilities.GetGraphic(TextAdapter), };
+				Foreground = new Graphic[] { UtilitiesUI.GetGraphic(TextAdapter), };
 				GraphicsForegroundVersion = 1;
 			}
 		}
@@ -85,7 +85,7 @@
 			Item = item;
 
 			#if UNITY_EDITOR
-			name = item == null ? "DefaultItem " + Index : item.Name;
+			name = item == null ? "DefaultItem " + Index.ToString() : item.Name;
 			#endif
 
 			if (Item == null)

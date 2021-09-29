@@ -71,13 +71,12 @@
 		/// <summary>
 		/// OnChange event.
 		/// </summary>
-		[Obsolete("Use PropertyChanged.")]
-		public event OnChange OnChange = () => { };
+		public event OnChange OnChange;
 
 		/// <summary>
 		/// Occurs when a property value changes.
 		/// </summary>
-		public event PropertyChangedEventHandler PropertyChanged = (x, y) => { };
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		/// <summary>
 		/// Notify property changed.
@@ -85,10 +84,17 @@
 		/// <param name="propertyName">Property name.</param>
 		protected void NotifyPropertyChanged(string propertyName)
 		{
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			#pragma warning disable 0618
-			OnChange();
-			#pragma warning restore 0618
+			var c_handlers = OnChange;
+			if (c_handlers != null)
+			{
+				c_handlers();
+			}
+
+			var handlers = PropertyChanged;
+			if (handlers != null)
+			{
+				handlers(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 
 		/// <summary>
@@ -99,7 +105,7 @@
 		{
 			component.Icon.sprite = null;
 			component.Icon.color = Color.clear;
-			component.TextAdapter.text = Name + " (Countries: " + Countries + ") ";
+			component.TextAdapter.text = string.Format("{0} (Countries: {1})", Name, Countries.ToString());
 		}
 	}
 }

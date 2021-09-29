@@ -32,7 +32,7 @@
 		public void Test()
 		{
 			// find required item by toggle object
-			var item = TestAccordion.DataSource.Find(x => x.ToggleObject == ToggleGameObject);
+			var item = FindItemByToggle(TestAccordion.DataSource, ToggleGameObject);
 
 			// and expand item
 			TestAccordion.Open(item);
@@ -44,10 +44,36 @@
 		public void TestClose()
 		{
 			// find required item by content object
-			var item = TestAccordion.DataSource.Find(x => x.ContentObject == ContentGameObject);
+			var item = FindItemByToggle(TestAccordion.DataSource, ContentGameObject);
 
 			// and close it
 			TestAccordion.Close(item);
+		}
+
+		static AccordionItem FindItemByToggle(ObservableList<AccordionItem> items, GameObject toggle)
+		{
+			foreach (var item in items)
+			{
+				if (item.ToggleObject == toggle)
+				{
+					return item;
+				}
+			}
+
+			return null;
+		}
+
+		static AccordionItem FindItemByContent(ObservableList<AccordionItem> items, GameObject content)
+		{
+			foreach (var item in items)
+			{
+				if (item.ContentObject == content)
+				{
+					return item;
+				}
+			}
+
+			return null;
 		}
 
 		/// <summary>

@@ -1,6 +1,5 @@
 ﻿namespace UIWidgets.Examples
 {
-	using System.ComponentModel;
 	using UIWidgets;
 
 	/// <summary>
@@ -24,13 +23,13 @@
 			{
 				if (item != null)
 				{
-					item.PropertyChanged -= UpdateView;
+					item.OnChange -= UpdateView;
 				}
 
 				item = value;
 				if (item != null)
 				{
-					item.PropertyChanged += UpdateView;
+					item.OnChange += UpdateView;
 				}
 
 				UpdateView();
@@ -52,9 +51,7 @@
 		/// <summary>
 		/// Update view.
 		/// </summary>
-		/// <param name="sender">Sender</param>
-		/// <param name="ev">Event.</param>
-		protected virtual void UpdateView(object sender = null, PropertyChangedEventArgs ev = null)
+		protected virtual void UpdateView()
 		{
 			if (Item == null)
 			{
@@ -76,7 +73,7 @@
 
 			if (item != null)
 			{
-				item.PropertyChanged -= UpdateView;
+				item.OnChange -= UpdateView;
 			}
 		}
 	}

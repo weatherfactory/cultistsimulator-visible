@@ -55,11 +55,15 @@ namespace UIWidgets
 			}
 		}
 
+		static GUILayoutOption[] nameOptions = new GUILayoutOption[] { GUILayout.Width(170) };
+
+		static GUILayoutOption[] statusOptions = new GUILayoutOption[] { GUILayout.Width(200) };
+
 		static void TMProBlock()
 		{
 			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField(Styles.TMProLabel, GUILayout.Width(170));
-			EditorGUILayout.LabelField(TMProStatus, GUILayout.Width(200));
+			EditorGUILayout.LabelField(Styles.TMProLabel, nameOptions);
+			EditorGUILayout.LabelField(TMProStatus, statusOptions);
 
 			if (ThirdPartySupportMenuOptions.TMProInstalled)
 			{
@@ -108,8 +112,8 @@ namespace UIWidgets
 		static void DataBindBlock()
 		{
 			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField(Styles.DataBindLabel, GUILayout.Width(170));
-			EditorGUILayout.LabelField(DataBindStatus, GUILayout.Width(200));
+			EditorGUILayout.LabelField(Styles.DataBindLabel, nameOptions);
+			EditorGUILayout.LabelField(DataBindStatus, statusOptions);
 
 			if (ThirdPartySupportMenuOptions.DataBindInstalled)
 			{
@@ -158,8 +162,8 @@ namespace UIWidgets
 		static void I2LocalizationBlock()
 		{
 			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField(Styles.I2LocalizationLabel, GUILayout.Width(170));
-			EditorGUILayout.LabelField(I2LocalizationStatus, GUILayout.Width(200));
+			EditorGUILayout.LabelField(Styles.I2LocalizationLabel, nameOptions);
+			EditorGUILayout.LabelField(I2LocalizationStatus, statusOptions);
 
 			if (ThirdPartySupportMenuOptions.I2LocalizationInstalled)
 			{

@@ -96,7 +96,7 @@ namespace UIWidgets
 			/// <returns>true if the specified object is equal to the current object; otherwise, false.</returns>
 			public bool Equals(ColorPickerShaderIDs other)
 			{
-				return Left == other.Left && Right == other.Right && Top == other.Top && Bottom == other.Bottom && Quality == other.Quality && Value == other.Value;
+				return (Left == other.Left) && (Right == other.Right) && (Top == other.Top) && (Bottom == other.Bottom) && (Quality == other.Quality) && (Value == other.Value);
 			}
 
 			/// <summary>
