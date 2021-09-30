@@ -89,7 +89,7 @@ namespace SecretHistories.Commands
 
             if (registeredSituations.Exists(rs => rs.Unique && rs.Verb.Id == VerbId))
             {
-                NoonUtility.Log("Tried to create " + recipe.Id + " for verb " + recipe.ActionId + " but that verb is already active.");
+                NoonUtility.Log("Tried to create " + recipe.Id + " for verb " + verb.Id + " but that verb is already active.");
                     return NullSituation.Create();
             }
 

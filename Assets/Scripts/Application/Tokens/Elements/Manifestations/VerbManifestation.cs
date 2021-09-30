@@ -302,10 +302,12 @@ namespace SecretHistories.Manifestations
 
                 ongoingSlotAppearFX.Play();
                 SoundManager.PlaySfx("SituationTokenShowOngoingSlot");
-                if(greedy)
-                    ongoingSlotGreedyIcon.gameObject.SetActive(true);
             }
-          
+            if (greedy)
+                ongoingSlotGreedyIcon.gameObject.SetActive(true);
+            else
+                ongoingSlotGreedyIcon.gameObject.SetActive(false);
+
         }
 
 

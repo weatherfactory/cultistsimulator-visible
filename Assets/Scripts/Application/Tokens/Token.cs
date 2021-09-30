@@ -160,6 +160,11 @@ namespace SecretHistories.UI {
             WorldPosition = TokenRectTransform.position;
         }
 
+        public bool IsValid()
+        {
+            return Payload.IsValid();
+        }
+
         public bool IsValidElementStack()
         {
             return Payload.IsValidElementStack();

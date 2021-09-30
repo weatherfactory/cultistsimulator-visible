@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using UnityEngine;
@@ -38,7 +39,13 @@ namespace SecretHistories.Commands
                 var tokenCreationCommand=new TokenCreationCommand(_payloadCreationCommand, newAnchorLocation).WithSourceToken(token);
 
                 var newToken=tokenCreationCommand.Execute(_context,token.Sphere);
-                newToken.Sphere.EvictToken(newToken,_context);
+
+                //Sometimes that command will result in a null token - for example if we're trying to spawn a unique situation
+                //that already exists.
+                if (newToken.IsValid())
+                    newToken.Sphere.EvictToken(newToken, _context);
+                else
+                    newToken.Retire(RetirementVFX.None);
             }
             return true;
         }
