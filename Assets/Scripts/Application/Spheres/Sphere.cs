@@ -379,16 +379,15 @@ namespace SecretHistories.Spheres
             int unsatisfiedChange = quantityChange;
             while (unsatisfiedChange < 0)
             {
-                Token tokenToAffect =
-                    _tokens.FirstOrDefault(c => !c.Defunct && c.Payload.GetAspects(true).ContainsKey(elementId));
+                ElementStack stackToAffect =GetElementStacks().FirstOrDefault(c => !c.Defunct && c.GetAspects(true).ContainsKey(elementId));
 
-                if (tokenToAffect == null
+                if (stackToAffect == null
                     ) //we haven't found either a concrete matching element, or an element with that ID.
                     //so end execution here, and return the unsatisfied change amount
                     return unsatisfiedChange;
 
-                int originalQuantity = tokenToAffect.Payload.Quantity;
-                tokenToAffect.Payload.ModifyQuantity(unsatisfiedChange, context);
+                int originalQuantity = stackToAffect.Quantity;
+                stackToAffect.ModifyQuantity(unsatisfiedChange, context);
                 unsatisfiedChange += originalQuantity;
 
             }

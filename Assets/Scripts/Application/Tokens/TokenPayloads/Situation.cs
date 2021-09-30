@@ -253,6 +253,7 @@ namespace SecretHistories.Entities {
             _currentRecipePrediction = newRecipePrediction;
             NoonUtility.Log($"Situation notification: recipe prediction updated from {_currentRecipePrediction.RecipeId} to {newRecipePrediction.RecipeId}.", 0, VerbosityLevel.Significants);
 
+
             var addNoteCommand=new AddNoteCommand(newRecipePrediction, context);
                 addNoteCommand.ExecuteOn(this);
 
@@ -349,7 +350,7 @@ namespace SecretHistories.Entities {
             return false;
         }
 
-        public bool Retire(RetirementVFX vfx)
+        public bool Retire(RetirementVFX VFX)
         {
             var spheresToRetire=new List<Sphere>(_spheres);
                 foreach (var c in spheresToRetire)
@@ -439,17 +440,19 @@ namespace SecretHistories.Entities {
 
         public void ShowNoMergeMessage(ITokenPayload incomingTokenPayload)
         {
-            //
+            NoonUtility.LogWarning($"Trying to ShowNoMergeMessage for {this.Id}, but we don't know how to do that for a situation.");
+
         }
 
         public void SetQuantity(int quantityToLeaveBehind, Context context)
         {
-         //
+            NoonUtility.LogWarning($"Trying to set the quantity of {this.Id}, but we don't know how to do that for a situation.");
+
         }
 
         public void ModifyQuantity(int unsatisfiedChange, Context context)
         {
-            //
+            NoonUtility.LogWarning($"Trying to modify the quantity of {this.Id}, but we don't know how to do that for a situation.");
         }
 
         public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)

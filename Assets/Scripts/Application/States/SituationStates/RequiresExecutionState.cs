@@ -10,6 +10,7 @@ using Assets.Logic;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Core;
 using SecretHistories.Constants;
+using SecretHistories.Services;
 using SecretHistories.Spheres;
 
 namespace SecretHistories.States
@@ -64,9 +65,13 @@ namespace SecretHistories.States
 
             if (linkedRecipe != null)
             {
-                var note = new Notification(linkedRecipe.Label, linkedRecipe.StartDescription);
+                var aspectsInSituation = situation.GetAspects(true);
+                TextRefiner tr = new TextRefiner(aspectsInSituation);
+                var noteLinkedRecipeIsBeginning = new Notification(linkedRecipe.Label,
+                    tr.RefineString(linkedRecipe.StartDescription));
+
                 NoonUtility.Log($"Situation notification: {situation.Recipe.Id} has executed and has linked recipe {linkedRecipe.Id}. Sending a notification with startdescription of {linkedRecipe.Id}.",0,VerbosityLevel.Significants);
-                var addNoteCommand=new AddNoteCommand(note, new Context(Context.ActionSource.UI));
+                var addNoteCommand=new AddNoteCommand(noteLinkedRecipeIsBeginning, new Context(Context.ActionSource.UI));
                 situation.ExecuteTokenEffectCommand(addNoteCommand);
                 
                  situation.SetRecipeActive(linkedRecipe);

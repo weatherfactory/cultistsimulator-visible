@@ -252,7 +252,7 @@ namespace SecretHistories.Entities.Verbs
             //
         }
 
-        public bool Retire(RetirementVFX vfx)
+        public bool Retire(RetirementVFX VFX)
         {
             return true;
         }

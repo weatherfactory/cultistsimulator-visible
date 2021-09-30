@@ -270,7 +270,7 @@ namespace SecretHistories.Tokens.TokenPayloads
             return false;
         }
 
-        public bool Retire(RetirementVFX vfx)
+        public bool Retire(RetirementVFX VFX)
         {
             if (Defunct)
                 return false;

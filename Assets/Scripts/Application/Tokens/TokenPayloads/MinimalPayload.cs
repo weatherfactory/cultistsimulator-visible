@@ -202,7 +202,7 @@ namespace SecretHistories.Entities
 
         }
 
-        public bool Retire(RetirementVFX vfx)
+        public bool Retire(RetirementVFX VFX)
         {
             throw new NotImplementedException("Retiring a minimal payload. should this kill the token?");
         }

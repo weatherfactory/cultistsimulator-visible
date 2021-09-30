@@ -219,6 +219,9 @@ namespace SecretHistories.UI {
             _quantity = quantity;
             if (quantity <= 0)
             {
+                if (context.actionSource == Context.ActionSource.Purge)
+                    Retire(RetirementVFX.CardLight);
+                else
                     Retire(RetirementVFX.CardBurn);
             }
 
@@ -427,15 +430,15 @@ namespace SecretHistories.UI {
         }
 
 
-        public bool Retire(RetirementVFX vfxName)
+        public bool Retire(RetirementVFX VFX)
         {
 
             if (Defunct)
                 return false;
             Defunct = true;
             TokenPayloadChangedArgs args= new TokenPayloadChangedArgs(this, PayloadChangeType.Retirement);
-            args.VFX = RetirementVFX.CardBurn;
-            OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Retirement));
+            args.VFX = VFX;
+            OnChanged?.Invoke(args);
 
             return true;
 

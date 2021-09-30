@@ -25,7 +25,7 @@ namespace SecretHistories.Abstract
         bool RegisterDominion(AbstractDominion dominion);
         public List<AbstractDominion> Dominions { get; }
         public bool Metafictional { get; }
-        public bool Retire(RetirementVFX vfx);
+        public bool Retire(RetirementVFX VFX);
 
     }
 }

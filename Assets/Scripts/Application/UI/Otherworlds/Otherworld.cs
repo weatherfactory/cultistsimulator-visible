@@ -26,7 +26,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         //also, we've broken the model for simplicity - this is a Manifestable which is also its own manifestation
       public   List<AbstractDominion> Dominions=>new List<AbstractDominion>(_dominions);
        public bool Metafictional => false;
-       public bool Retire(RetirementVFX vfx)
+       public bool Retire(RetirementVFX VFX)
        {
            //do nothing: can't currently retire an otherworld
            return false;
