@@ -179,10 +179,20 @@ namespace Assets.Scripts.Application.Meta
 
             _linksPanel.SetActive(true);
 
-            _currentRecipeDetails.Populate(LinkedRecipeDetails.AsCurrentRecipe(situation.Recipe),situation);
+            Recipe recipeToAnalyze = situation.Recipe;
+            if (!recipeToAnalyze.IsValid())
+            {
+                recipeToAnalyze = Watchman.Get<Compendium>()
+                    .GetEntityById<Recipe>(situation.CurrentRecipePrediction.RecipeId);
 
-            _altRecipeDetails.PopulateLinks(situation.Recipe.Alt,situation);
-            _linkedRecipeDetails.PopulateLinks(situation.Recipe.Linked, situation);
+                //conceivably this could still be a null recipe, in which everything will stay blank.
+            }
+
+
+            _currentRecipeDetails.Populate(LinkedRecipeDetails.AsCurrentRecipe(recipeToAnalyze),situation);
+
+            _altRecipeDetails.PopulateLinks(recipeToAnalyze.Alt,situation);
+            _linkedRecipeDetails.PopulateLinks(recipeToAnalyze.Linked, situation);
         }
 
         private void ClearLinksPanel()
