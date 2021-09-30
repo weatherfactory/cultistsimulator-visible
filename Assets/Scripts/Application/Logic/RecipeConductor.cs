@@ -65,7 +65,7 @@ namespace SecretHistories.Core
                     if (lr.ShouldAlwaysSucceed())
                     {
                         NoonUtility.Log(currentRecipe.Id + " says: " + lr.Id +
-                                        " is a suitable linked recipe no chance or challenges specified. Executing it next.");
+                                        " is a suitable linked recipe with no chance or challenges specified. Executing it next.");
                         return candidateRecipe;
 
                     }

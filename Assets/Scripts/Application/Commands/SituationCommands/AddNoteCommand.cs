@@ -24,6 +24,7 @@ namespace SecretHistories.Commands.SituationCommands
        {
            Notification = notification;
            _context = new Context(context);
+
        }
 
        public bool ExecuteOn(Token token)

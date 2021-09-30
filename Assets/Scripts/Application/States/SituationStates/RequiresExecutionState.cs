@@ -65,7 +65,7 @@ namespace SecretHistories.States
             if (linkedRecipe != null)
             {
                 var note = new Notification(linkedRecipe.Label, linkedRecipe.StartDescription);
-
+                NoonUtility.Log($"Situation notification: {situation.Recipe.Id} has executed and has linked recipe {linkedRecipe.Id}. Sending a notification with startdescription of {linkedRecipe.Id}.",0,VerbosityLevel.Significants);
                 var addNoteCommand=new AddNoteCommand(note, new Context(Context.ActionSource.UI));
                 situation.ExecuteTokenEffectCommand(addNoteCommand);
                 

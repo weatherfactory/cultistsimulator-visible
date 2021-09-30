@@ -251,9 +251,9 @@ namespace SecretHistories.Entities {
                 return;
 
             _currentRecipePrediction = newRecipePrediction;
+            NoonUtility.Log($"Situation notification: recipe prediction updated from {_currentRecipePrediction.RecipeId} to {newRecipePrediction.RecipeId}.", 0, VerbosityLevel.Significants);
 
-
-              var addNoteCommand=new AddNoteCommand(newRecipePrediction, context);
+            var addNoteCommand=new AddNoteCommand(newRecipePrediction, context);
                 addNoteCommand.ExecuteOn(this);
 
         }
@@ -382,8 +382,10 @@ namespace SecretHistories.Entities {
         {
             //no infinite loops pls
             if (notification.Title == this.Label && notification.Description == this.Description)
-                return true;
+            {
 
+                return true;
+            }
 
             if (!Situation.TextIntendedForDisplay(notification.Description))
                 return true;
@@ -680,6 +682,9 @@ namespace SecretHistories.Entities {
             TextRefiner tr = new TextRefiner(aspectsInSituation);
             var note = new Notification(primaryRecipeExecution.Recipe.Label,
                 tr.RefineString(primaryRecipeExecution.Recipe.Description));
+
+            NoonUtility.Log($"Situation notification: recipe {primaryRecipeExecution.Recipe.Id} is executing and will display description.", 0, VerbosityLevel.Significants);
+
 
             var addNoteCommand = new AddNoteCommand(note, new Context(Context.ActionSource.UI));
             ExecuteTokenEffectCommand(addNoteCommand);
