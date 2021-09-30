@@ -691,7 +691,7 @@ namespace SecretHistories.Spheres
         }
 
 
-        public void RetireAllTokens()
+        public virtual void RetireAllTokens()
         {
             var listCopy = new List<Token>(_tokens);
             foreach (Token t in listCopy)

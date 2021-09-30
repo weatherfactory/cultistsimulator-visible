@@ -40,9 +40,9 @@ namespace SecretHistories.Commands
         public RecipePrediction(Recipe predictingRecipe, AspectsDictionary aspectsAvailable,Verb withVerb)
         {
             if (!predictingRecipe.IsValid())
-            { //it's a null recipe, or for some other reason not useful Fall back to the basic verb info.
+            { //it's a null recipe, or for some other reason not useful, fall back to the basic verb info.
                 predictingRecipe = Recipe.CreateSpontaneousHintRecipe(withVerb);
-                Additive = false;
+                Additive = false;// new day, base verb description, we want to clear out all other notes.
             }
             else
                 Additive = true;    

@@ -683,13 +683,13 @@ namespace SecretHistories.Entities {
             //Check for possible text refinements based on the aspects in context
             var aspectsInSituation = GetAspects(true);
             TextRefiner tr = new TextRefiner(aspectsInSituation);
-            var note = new Notification(primaryRecipeExecution.Recipe.Label,
-                tr.RefineString(primaryRecipeExecution.Recipe.Description));
+            var notePrimaryRecipeIsExecuting = new Notification(primaryRecipeExecution.Recipe.Label,
+                tr.RefineString(primaryRecipeExecution.Recipe.Description),true);
 
             NoonUtility.Log($"Situation notification: recipe {primaryRecipeExecution.Recipe.Id} is executing and will display description.", 0, VerbosityLevel.Significants);
 
 
-            var addNoteCommand = new AddNoteCommand(note, new Context(Context.ActionSource.UI));
+            var addNoteCommand = new AddNoteCommand(notePrimaryRecipeIsExecuting, new Context(Context.ActionSource.UI));
             ExecuteTokenEffectCommand(addNoteCommand);
              
             RecipeCompletionEffectCommand primaryRecipeCompletionEffectCommand = new RecipeCompletionEffectCommand(primaryRecipeExecution.Recipe,

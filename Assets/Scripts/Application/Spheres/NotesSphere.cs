@@ -64,6 +64,15 @@ namespace Assets.Scripts.Application.Spheres
         }
 
 
+        public override void RetireAllTokens()
+        {
+            base.RetireAllTokens();
+            //Notes spheres keep a separate index and list count, so we can page back and forth.
+            //When we didn't empty these out too, we could page back through nonexistent notes.
+            PagedTokens.Clear();
+            CurrentIndex = 0;
+        }
+
         public override void DisplayAndPositionHere(Token token, Context context)
         {
             token.Manifest();

@@ -14,9 +14,16 @@ namespace SecretHistories.Commands
             Description = description;
         }
 
+        public Notification(string title, string description,bool additive)
+        {
+            Title = title;
+            Description = description;
+            Additive = additive;
+        }
+
         public string Title { get; set; }
         public string Description { get; set; }
-        public bool Additive => true;
+        public bool Additive { get; set; }
         public int EmphasisLevel { get; }
     }
 }

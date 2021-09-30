@@ -68,7 +68,7 @@ namespace SecretHistories.States
                 var aspectsInSituation = situation.GetAspects(true);
                 TextRefiner tr = new TextRefiner(aspectsInSituation);
                 var noteLinkedRecipeIsBeginning = new Notification(linkedRecipe.Label,
-                    tr.RefineString(linkedRecipe.StartDescription));
+                    tr.RefineString(linkedRecipe.StartDescription),true);
 
                 NoonUtility.Log($"Situation notification: {situation.Recipe.Id} has executed and has linked recipe {linkedRecipe.Id}. Sending a notification with startdescription of {linkedRecipe.Id}.",0,VerbosityLevel.Significants);
                 var addNoteCommand=new AddNoteCommand(noteLinkedRecipeIsBeginning, new Context(Context.ActionSource.UI));
