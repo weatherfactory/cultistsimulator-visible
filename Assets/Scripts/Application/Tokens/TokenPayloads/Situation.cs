@@ -478,7 +478,7 @@ namespace SecretHistories.Entities {
                 if (maxToPurge <= 0)
                     return maxToPurge;
                 else
-                    maxToPurge -= container.TryPurgeStacks(elementToPurge, maxToPurge);
+                    maxToPurge = container.TryPurgeStacks(elementToPurge, maxToPurge);
             }
 
             return maxToPurge;

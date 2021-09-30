@@ -323,7 +323,7 @@ namespace SecretHistories.Entities {
                 if (maxToPurge <= 0)
                     return maxToPurge;
 
-                maxToPurge -= worldSphere.TryPurgeStacks(elementToPurge, maxToPurge);
+                maxToPurge = worldSphere.TryPurgeStacks(elementToPurge, maxToPurge);
 
             }
 
@@ -334,7 +334,7 @@ namespace SecretHistories.Entities {
                 if (maxToPurge <= 0)
                     return maxToPurge;
            
-                maxToPurge -= s.TryPurgeStacks(elementToPurge, maxToPurge);
+                maxToPurge = s.TryPurgeStacks(elementToPurge, maxToPurge);
 
             }
 

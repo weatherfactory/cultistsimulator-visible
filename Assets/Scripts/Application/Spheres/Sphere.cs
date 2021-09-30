@@ -518,12 +518,13 @@ namespace SecretHistories.Spheres
             if (string.IsNullOrEmpty(element.DecayTo))
             {
                 //nb -p.value - purge max is specified as a positive cap, not a negative, for readability
-                return ReduceElement(element.Id, -maxToPurge, new Context(Context.ActionSource.Purge));
+                //This means we also need to reverse any unsatisfied change returned, since ReduceElement deals in negatives.
+                return -ReduceElement(element.Id, -maxToPurge, new Context(Context.ActionSource.Purge));
             }
             else
             {
-                int unsatisfiedChange = maxToPurge;
-                while (unsatisfiedChange > 0)
+                int unsatisfiedPurge = maxToPurge;
+                while (unsatisfiedPurge > 0)
                 {
 
                     //nb: if we transform a stack of >1, it's possible maxToPurge/Transform will be less than the stack total - iwc it'll transform the whole stack. Probably fine.
@@ -533,15 +534,15 @@ namespace SecretHistories.Spheres
                     if (elementStackTokenToAffect == null
                         ) //we haven't found either a concrete matching element, or an element with that ID.
                         //so end execution here, and return the unsatisfied change amount
-                        return unsatisfiedChange;
+                        return unsatisfiedPurge;
 
                     int originalQuantity = elementStackTokenToAffect.Quantity;
                     elementStackTokenToAffect.Purge();
                     //stackToAffect.Populate(element.DecayTo, stackToAffect.Quantity, Source.Existing());
-                    unsatisfiedChange -= originalQuantity;
+                    unsatisfiedPurge -= originalQuantity;
                 }
 
-                return unsatisfiedChange;
+                return unsatisfiedPurge;
             }
 
         }
