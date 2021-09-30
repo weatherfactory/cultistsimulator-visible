@@ -24,18 +24,45 @@ namespace SecretHistories.States
             if(!situation.GetSpheresByCategory(SphereCategory.SituationStorage).Any()) //create storage sphere if none exists already. *Don't* create if it does - we might have looped
             //straight back in here from a linked recipe, in which the existing storage sphere probably contains cardsn we don't want to flush.
             {
-                var sphereSpec=new SphereSpec(typeof(SituationStorageSphere), nameof(SituationStorageSphere));
-                var storageCommand = new PopulateDominionCommand(SituationDominionEnum.Storage.ToString(),sphereSpec);
-                situation.AddCommand(storageCommand);
+                CreateStorageSlot(situation);
             }
-            var migrateFromVerbSlotsToStorageCommand=new FlushTokensToCategoryCommand(SphereCategory.Threshold,SphereCategory.SituationStorage,StateEnum.Ongoing);
-                situation.AddCommand(migrateFromVerbSlotsToStorageCommand);
 
-
-                var recipeSlotsCommand = new PopulateDominionCommand(SituationDominionEnum.RecipeThresholds.ToString(), situation.Recipe.Slots);
-                situation.AddCommand(recipeSlotsCommand);
-
+            FlushFromThresholdsToStorage(situation);
+            PopulateRecipeSlots(situation);
             SoundManager.PlaySfx("SituationBegin");
+        }
+
+        private static void CreateStorageSlot(Situation situation)
+        {
+            var sphereSpec = new SphereSpec(typeof(SituationStorageSphere), nameof(SituationStorageSphere));
+            var storageCommand = new PopulateDominionCommand(SituationDominionEnum.Storage.ToString(), sphereSpec);
+            situation.AddCommand(storageCommand);
+        }
+
+        private static void FlushFromThresholdsToStorage(Situation situation)
+        {
+            var flushFromThresholdsToStorage = new FlushTokensToCategoryCommand(SphereCategory.Threshold,
+                SphereCategory.SituationStorage, StateEnum.Ongoing);
+            situation.AddCommand(flushFromThresholdsToStorage);
+        }
+
+        private static void PopulateRecipeSlots(Situation situation)
+        {
+            //we've just moved to Ongoing, so either it's a brand new recipe or a linked recipe.
+            //in either case, it should override or clear any existing slots.
+
+            if (situation.Recipe.Slots.Any())
+            {
+                var recipeSlotsCommand =
+                    new PopulateDominionCommand(SituationDominionEnum.RecipeThresholds.ToString(), situation.Recipe.Slots);
+                situation.AddCommand(recipeSlotsCommand);
+            }
+            else
+            {
+                var clearDominionCommand = new ClearDominionCommand(SituationDominionEnum.RecipeThresholds.ToString(),
+                    SphereRetirementType.Graceful);
+                situation.AddCommand(clearDominionCommand);
+            }
         }
 
         public override void Exit(Situation situation)
