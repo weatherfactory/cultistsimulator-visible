@@ -13,6 +13,8 @@ public class NavigationAnimation : MonoBehaviour {
 	[SerializeField] string soundOut;
 #pragma warning restore 649
     private bool isBusy;
+    private Coroutine _currentAnimation;
+
 
     protected virtual void OnDisable() {
         isBusy = false;
@@ -23,8 +25,10 @@ public class NavigationAnimation : MonoBehaviour {
     }
 
     public void TriggerAnimation(NavigationArgs args) {
-        
-        StartCoroutine(DoAnimation(args));
+        if(_currentAnimation!=null)
+            StopCoroutine(_currentAnimation);
+
+        _currentAnimation=StartCoroutine(DoAnimation(args));
     }
 
     private IEnumerator DoAnimation(NavigationArgs args) {
