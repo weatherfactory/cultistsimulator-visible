@@ -51,9 +51,6 @@ namespace SecretHistories.UI {
         void Start() {
             var registry = new Watchman();
 
-            var modManager = new ModManager();
-            modManager.CatalogueMods();
-            registry.Register(modManager);
 
             var compendium = new Compendium();
             registry.Register<Compendium>(compendium);

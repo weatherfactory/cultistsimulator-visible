@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Entities;
 using Assets.Scripts.Application.Entities.NullEntities;
@@ -77,6 +79,8 @@ namespace SecretHistories.Services
             LogSystemSettings();
             //Glory.Initialise needs to be run before anything else... or oyu won't like what happens next.
             Initialise();
+
+
 
         }
 
@@ -202,6 +206,18 @@ namespace SecretHistories.Services
 
                 //finally, load the first scene and get the ball rolling.
                 stageHand.LoadFirstScene(Watchman.Get<Config>().skiplogo);
+
+
+                foreach (Mod mod in Watchman.Get<ModManager>().GetEnabledMods())
+                {
+                    string dll_path = Path.Combine(mod.ModRootFolder, "dll", "main.dll");
+
+                    if (File.Exists(dll_path))
+                    {
+                        string mod_id = Regex.Replace(mod.Name, "[^a-zA-Z0-9_]+", "");
+                        Assembly.LoadFrom(dll_path).GetType(mod_id).GetMethod("Initialise").Invoke(null, null);
+                    }
+                }
 
             }
             catch (Exception e)
