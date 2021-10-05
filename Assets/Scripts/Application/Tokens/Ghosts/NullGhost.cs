@@ -34,5 +34,10 @@ namespace SecretHistories.Ghosts
         }
 
 
+        public static IGhost Create()
+        {
+            var nullGhost = new GameObject().AddComponent<NullGhost>();
+            return nullGhost;
+        }
     }
 }

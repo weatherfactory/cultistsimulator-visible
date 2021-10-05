@@ -121,7 +121,7 @@ namespace SecretHistories.Manifestations
 
         public IGhost CreateGhost()
         {
-            return new NullGhost();
+            return NullGhost.Create();
         }
 
     }
