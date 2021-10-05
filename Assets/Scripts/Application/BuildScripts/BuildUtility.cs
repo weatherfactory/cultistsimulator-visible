@@ -21,7 +21,7 @@ namespace SecretHistories.Utility
 
         private const string BUILD_DIR_PREFIX = "csunity-";
         private const string DEFAULT_BUILD_ROOT = "c:\\builds\\cs\\build_outputs";
-        private const string SCENES_FOLDER = "assets/TabletopUi/Scenes";
+        private const string SCENES_FOLDER = "assets/Scenes";
         private const string CONST_DLC_FOLDER = "DLC";
         private const string CONST_PERPETUALEDITION_DLCTITLE = "PERPETUAL";
         private const string CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE = "StreamingAssets\\edition\\semper.txt";
