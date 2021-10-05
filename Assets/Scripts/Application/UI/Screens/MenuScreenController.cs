@@ -282,21 +282,15 @@ public class MenuScreenController : LocalNexus {
         if (!canTakeInput)
             return;
 
-        ResetToLegacy(null);
+        var defaultPersistenceProvider = new DefaultGamePersistenceProvider();
 
+        defaultPersistenceProvider.PurgeSaveFileIrrevocably();
+        
 
         currentOverlay = null; // to ensure we can re-open another overlay afterwards
         Watchman.Get<StageHand>().MenuScreen();
     }
 
-    private void ResetToLegacy(Legacy activeLegacy)
-    {
-     //   Watchman.Get<Stable>().Protag().Reincarnate(activeLegacy,NullEnding.Create());
-
-
-      throw new NotImplementedException("save here?");
-
-    }
 
     public void BeginNewSaveWithSpecifiedLegacy(string legacyId)
     {

@@ -20,5 +20,9 @@ namespace SecretHistories.Infrastructure.Persistence
             return $"{persistentDataPath}/save.json";
         }
 
+        public void PurgeSaveFileIrrevocably()
+        {
+            File.Delete(GetSaveFileLocation());
+        }
     }
 }
