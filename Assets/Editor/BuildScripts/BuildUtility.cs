@@ -341,11 +341,11 @@ namespace SecretHistories.Utility
                 string dlcFileDestinationPath = NoonUtility.JoinPaths(dlcDestinationDir, dlcFilenameWithoutPath);
 
                 if (dlcTitle != dlcTitleLastLoop)
-                if (Directory.Exists(dlcDestinationDir))
-                {
-                    Directory.Delete(dlcDestinationDir, true);
-                    Log("Removing old directory: " + dlcDestinationDir);
-                }
+                    if (Directory.Exists(dlcDestinationDir))
+                    {
+                        Directory.Delete(dlcDestinationDir, true);
+                        Log("Removing old directory: " + dlcDestinationDir);
+                    }
                 Log("Creating directory: " + dlcDestinationDir);
                 Directory.CreateDirectory(dlcDestinationDir);
 

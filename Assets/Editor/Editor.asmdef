@@ -1,18 +1,18 @@
 {
-    "name": "SecretHistories.BuildScripts",
+    "name": "Editor",
     "rootNamespace": "",
     "references": [
-        "SecretHistories.Enums",
-        "SecretHistories.Constants",
-        "SecretHistories.Main",
-        "SecretHistories.Interfaces"
+        "GUID:006f8ae9b2a0cf54eb25abf84716331e",
+        "GUID:8edd0090e616b9b4fac581151f0096ac"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
-    "autoReferenced": true,
+    "autoReferenced": false,
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false

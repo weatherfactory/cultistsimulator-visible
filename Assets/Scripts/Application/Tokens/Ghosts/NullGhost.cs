@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SecretHistories.Ghosts
 {
-    public class NullGhost : IGhost
+    public class NullGhost : MonoBehaviour,IGhost
     {
         public bool Visible { get; private set; }
 
