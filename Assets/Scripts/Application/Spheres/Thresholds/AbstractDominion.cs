@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Commands;
@@ -10,7 +9,7 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Spheres;
-using UnityEditorInternal;
+
 using UnityEngine;
 
 namespace SecretHistories.UI

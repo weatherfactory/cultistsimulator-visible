@@ -19,12 +19,9 @@ using SecretHistories.Enums;
 using SecretHistories.Events;
 using SecretHistories.Fucine;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+
 using SecretHistories.Services;
 using SecretHistories.Spheres;
-using UnityEditorInternal;
-using UnityEngine.Events;
 
 namespace SecretHistories.UI {
 

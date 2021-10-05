@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using SecretHistories.Commands;
+
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.States;
 using SecretHistories.UI;
-using UnityEditorInternal;
 
 namespace SecretHistories.Commands.SituationCommands
 {
