@@ -175,7 +175,7 @@ namespace SecretHistories.Services
 
                 CharacterCreationCommand characterCreationCommand;
 
-                GamePersistenceProvider gamePersistenceProvider=GamePersistenceProvider.GetMostRelevantValidGamePersistence();
+                GamePersistenceProvider gamePersistenceProvider=GamePersistenceProvider.GetBestGuessGamePersistence();
      
                 gamePersistenceProvider.DepersistGameState();
                 var persistedState = gamePersistenceProvider.RetrievePersistedGameState();

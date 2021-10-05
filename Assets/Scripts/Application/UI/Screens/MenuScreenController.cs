@@ -173,9 +173,12 @@ public class MenuScreenController : LocalNexus {
         
         var currentCharacter = Watchman.Get<Stable>().Protag();
 
-        // Show the buttons as needed
-        var savedGameExists = (currentCharacter.State != CharacterState.Unformed);
+        var defaultPersistence = new DefaultGamePersistenceProvider();
+        var savedGameExists=defaultPersistence.Exists();
+            
 
+        // Show the buttons as needed
+ 
         newGameButton.gameObject.SetActive(!savedGameExists);
         continueGameButton.gameObject.SetActive(savedGameExists);
         purgeButton.gameObject.SetActive(savedGameExists);

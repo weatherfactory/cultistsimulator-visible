@@ -90,7 +90,7 @@ public class Character:MonoBehaviour,IEncaustable
         {
             if (EndingTriggered.IsValid())
                 return CharacterState.Extinct;
-            if (ActiveLegacy != null)
+            if (ActiveLegacy.IsValid())
                 return CharacterState.Viable;
 
             return CharacterState.Unformed;

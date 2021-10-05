@@ -158,14 +158,14 @@ namespace SecretHistories.Infrastructure.Persistence
         }
 
         
-        public static GamePersistenceProvider GetMostRelevantValidGamePersistence()
+        public static GamePersistenceProvider GetBestGuessGamePersistence()
         {
             var defaultPersistence = new DefaultGamePersistenceProvider();
             if (defaultPersistence.Exists())
                 return defaultPersistence;
-            var petromnemePersistence = new PetromnemeGamePersistenceProvider();
-            if (petromnemePersistence.Exists())
-                return petromnemePersistence;
+            //var petromnemePersistence = new PetromnemeGamePersistenceProvider();
+            //if (petromnemePersistence.Exists())
+            //    return petromnemePersistence;
 
             var defaultLegacy = Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First();
 
