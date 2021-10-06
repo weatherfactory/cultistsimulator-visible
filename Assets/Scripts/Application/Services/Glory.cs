@@ -204,20 +204,11 @@ namespace SecretHistories.Services
                     NoonUtility.PerpetualEdition = true;
 
 
-                //finally, load the first scene and get the ball rolling.
+                // load the first scene and get the ball rolling.
                 stageHand.LoadFirstScene(Watchman.Get<Config>().skiplogo);
 
-
-                foreach (Mod mod in Watchman.Get<ModManager>().GetEnabledMods())
-                {
-                    string dll_path = Path.Combine(mod.ModRootFolder, "dll", "main.dll");
-
-                    if (File.Exists(dll_path))
-                    {
-                        string mod_id = Regex.Replace(mod.Name, "[^a-zA-Z0-9_]+", "");
-                        Assembly.LoadFrom(dll_path).GetType(mod_id).GetMethod("Initialise").Invoke(null, null);
-                    }
-                }
+                //LOAD DLLS HERE, ONCE ONLY
+                Watchman.Get<ModManager>().LoadModDLLs();
 
             }
             catch (Exception e)

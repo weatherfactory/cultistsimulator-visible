@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Services;
@@ -20,6 +21,12 @@ namespace SecretHistories.Constants.Modding
     public class ModManager
     {
         private const string MOD_SYNOPSIS_FILENAME = "synopsis.json";
+        private const string MOD_DLL_FOLDER = "dll";
+        private const string MOD_DLL_NAME= "main.dll";
+        private const string MOD_INITIALISER_METHOD_NAME = "Initialise";
+
+        private bool AssemblyLoadingForModsAttempted = false;
+
 
         private static readonly string LocalModsPath = Path.Combine(Application.persistentDataPath, "mods");
 
@@ -29,6 +36,80 @@ namespace SecretHistories.Constants.Modding
 
         private Dictionary<string, Mod> _cataloguedMods { get; }
 
+        public void LoadModDLLs()
+        {
+
+            if (AssemblyLoadingForModsAttempted)
+            {
+                NoonUtility.LogWarning("Tried to load assemblies for mods twice. We don't want that.");
+                return;
+            }
+
+            AssemblyLoadingForModsAttempted = true;
+
+            foreach (Mod mod in Watchman.Get<ModManager>().GetEnabledMods())
+                TryLoadDllsForMod(mod);
+        }
+
+        private void TryLoadDllsForMod(Mod mod)
+        {
+            string dll_path = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER, MOD_DLL_NAME);
+
+            if (!File.Exists(dll_path)) //no mod found, return
+                return;
+
+            Assembly modAssembly;
+
+            try
+            {
+                modAssembly = Assembly.LoadFrom(dll_path);
+            }
+            catch (Exception cantLoadException)
+            {
+                NoonUtility.LogWarning($"Can't load a valid assembly at {dll_path}: {cantLoadException.Message}");
+                return;
+            }
+
+            NoonUtility.Log($"Loaded {dll_path} for {mod.Name}");
+
+            Type modInitialiserType;
+            string mod_initialiser_class_name=string.Empty;
+
+            try
+            {
+                 mod_initialiser_class_name= Regex.Replace(mod.Name, "[^a-zA-Z0-9_]+", "");
+                modInitialiserType = modAssembly.GetType(mod_initialiser_class_name);
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogWarning($"Can't find a class named {mod_initialiser_class_name} in dll at {dll_path}: {e.Message}");
+                return;
+            }
+
+
+            if(modInitialiserType==null)
+                NoonUtility.LogWarning($"Tried to get a class type named {mod_initialiser_class_name} in dll at {dll_path}, but it's coming back as null");
+
+
+            MethodInfo initialiserMethod;
+
+            try
+            {
+                initialiserMethod = modInitialiserType.GetMethod(MOD_INITIALISER_METHOD_NAME);
+                initialiserMethod.Invoke(null, null);
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogWarning($"Tried to invoke {MOD_INITIALISER_METHOD_NAME}() on a type named {mod_initialiser_class_name} in dll at {dll_path}, but failed: {e.Message}");
+                return;
+            }
+
+            NoonUtility.Log($"Successfully invoked {MOD_INITIALISER_METHOD_NAME}()on a type named {mod_initialiser_class_name} in dll at {dll_path}");
+
+
+
+
+        }
 
         public ModManager()
         {

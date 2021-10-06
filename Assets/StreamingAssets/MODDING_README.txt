@@ -140,8 +140,23 @@ fontscript='jp' uses NotoSansJP: our Japanese-speaking players pointed out cases
 
 And if fontscript isn't specified at all, the game will default to NotoSerif with glyphs for Latin-A and Latin-B. This will cover a lot of languages that use or can use a Latin-based script / Romanization, but crikey I'm only starting to understand how complicated all this is. If you're trying to translate something that needs to use other characters, contact us and we'll see what we can do.
 
+CUSTOM DLL LOADING (CURRENTLY EXPERIMENTAL, UNSTABLE, WINDOWS ONLY)
+-------------------------------------------------------------------
 
-[Acknowledgement: the modding framework is based on Lyrositor's original fan-contributed modding framework.]
+You can compile a .dll and upload it as part of a mod. Anything up to .NET 4.x should be compatible.
+
+A dll for a mod...
+
+- must go in /[modfolder]/dll
+- must be named main.dll
+- must contain a class with the same name as the mod (absent spaces and special characters)
+- that class must have a public static Initialise() function.
+
+That's your entry point. From then on you can do anything you like, including loading other code.
+
+DLLs are loaded *when the main app initialises*. If you disable or enable one, you'll need to restart the CS app to see the effect.
+
+[Acknowledgements: the modding framework is based on Lyrositor's original fan-contributed modding framework. The DLL loading functionality follows Chelnoque's suggested approach and sample code.]
 
 ---------------
 
