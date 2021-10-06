@@ -534,8 +534,8 @@ namespace SecretHistories.UI {
 
         public void OpenAt(TokenLocation location)
         {
-  
-            Watchman.Get<Notifier>().ShowCardElementDetails(Element, this);
+        if(Watchman.Exists<Notifier>())
+                Watchman.Get<Notifier>().ShowCardElementDetails(Element, this);
         }
 
         public void Close()

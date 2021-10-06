@@ -30,7 +30,11 @@ namespace SecretHistories.UI
 
         public static bool Exists<T>()
         {
-            return (registered.ContainsKey(typeof(T)));
+            if (!registered.ContainsKey(typeof(T)))
+                return false;
+            if (registered[typeof(T)] == null)
+                return false;
+            return true;
         }
 
         public static T GetOrInstantiate<T>(Transform atTransform) where T : Component

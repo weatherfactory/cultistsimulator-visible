@@ -18,7 +18,7 @@ namespace SecretHistories.UI
 {
     public class CreditsWindow: MonoBehaviour,ISphereEventSubscriber
     {
-        [SerializeField] public ExhibitCards CardsExhibit;
+        [SerializeField] public ExhibitCardsSphere CardsSphereExhibit;
         [SerializeField] public TextMeshProUGUI Responsibilities;
         [SerializeField] public TextMeshProUGUI Names;
 
@@ -32,20 +32,23 @@ namespace SecretHistories.UI
             foreach (var cc in creditCards)
             {
                 var t=new TokenCreationCommand().WithElementStack(cc.Id,1);
-                t.Execute(new Context(Context.ActionSource.UI), CardsExhibit);
+                t.Execute(new Context(Context.ActionSource.UI), CardsSphereExhibit);
             }
 
             var firstCard = creditCards[0];
 
-            CardsExhibit.HighlightCardWithId(firstCard.Id);
+            CardsSphereExhibit.HighlightCardWithId(firstCard.Id);
             Responsibilities.text = firstCard.Label;
             Names.text = firstCard.Description;
+
+
+            CardsSphereExhibit.Subscribe(this);
         }
 
         public void OnDisable()
         {
-         CardsExhibit.RetireAllTokens();
-
+         CardsSphereExhibit.RetireAllTokens();
+         CardsSphereExhibit.Unsubscribe(this);
         }
 
         public void OnSphereChanged(SphereChangedArgs args)
@@ -62,7 +65,7 @@ namespace SecretHistories.UI
         {
            if(args.Interaction==Interaction.OnClicked || args.Interaction == Interaction.OnDoubleClicked)
            {
-               CardsExhibit.HighlightCardWithId(args.Token.Payload.Id);
+               CardsSphereExhibit.HighlightCardWithId(args.Token.Payload.Id);
              Responsibilities.text = args.Token.Payload.Label;
             Names.text = args.Payload.Description;
            }

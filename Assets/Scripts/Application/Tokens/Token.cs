@@ -733,7 +733,7 @@ namespace SecretHistories.UI {
                 }
 
                 // this moves the clicked sibling on top of any other nearby cards.
-                if (Sphere.GetType() != typeof(ThresholdSphere) && Sphere.GetType() != typeof(ExhibitCards))
+                if (Sphere.GetType() != typeof(ThresholdSphere) && Sphere.GetType() != typeof(ExhibitCardsSphere))
                     transform.SetAsLastSibling();
 
                 previousClickTime = eventData.clickTime;

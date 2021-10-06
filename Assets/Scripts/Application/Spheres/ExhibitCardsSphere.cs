@@ -14,13 +14,13 @@ using SecretHistories.Constants;
 using SecretHistories.Spheres;
 using TMPro;
 
-public class ExhibitCards : Sphere {
+public class ExhibitCardsSphere : Sphere {
 
     public override bool AllowDrag { get { return false; } }
     public override bool AllowStackMerge { get { return false; } }
 
 
-    public override SphereCategory SphereCategory => SphereCategory.Meta;
+    public override SphereCategory SphereCategory => SphereCategory.World;
 
 
     public override void DisplayAndPositionHere(Token token, Context context)
