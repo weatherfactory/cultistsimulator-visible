@@ -152,7 +152,7 @@ namespace SecretHistories.Utility
             BuildStorefront buildStorefront=new BuildStorefront(Storefront.Gog,OSs,products);
 
             MakeDistribution(buildStorefront);
-
+            
         }
 
         [MenuItem("Tools/Make Distribution (Humble)")]
@@ -237,6 +237,8 @@ namespace SecretHistories.Utility
             }
 
             PostBuildFileTasks(target, GetParentDirectory(pathToBuiltProject), new BuildOS(target));
+
+            Log($"----FINISHED BUILDING {target.ToString()} VERSION TO {pathToBuiltProject}");
         }
 
         private static void PostBuildFileTasks(BuildTarget buildTarget, string pathToBuiltProject,BuildOS os)
@@ -268,7 +270,7 @@ namespace SecretHistories.Utility
             foreach(var d in distributions)
                 d.CopyFilesFromEnvironment(env);
 
-
+            Log($"----------FINISHED {storefront.StoreId} DISTRIBUTION BUILD");
         }
 
         private static void BuildPerpetualEdition(string from,string to,BuildOS os)
