@@ -353,7 +353,7 @@ namespace SecretHistories.Manifestations
 
                 glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.GlowPurpose.OnHover, UIStyle.GlowTheme.Classic) : hoverColor.Value);
                 glowImage.Show();
-                Emphasise();
+
             }
             else
             {
