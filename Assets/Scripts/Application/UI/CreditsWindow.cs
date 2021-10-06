@@ -35,11 +35,13 @@ namespace SecretHistories.UI
                 t.Execute(new Context(Context.ActionSource.UI), CardsSphereExhibit);
             }
 
-            var firstCard = creditCards[0];
+            var firstCard = CardsSphereExhibit.GetTokens().FirstOrDefault();
 
-            CardsSphereExhibit.HighlightCardWithId(firstCard.Id);
-            Responsibilities.text = firstCard.Label;
-            Names.text = firstCard.Description;
+            if (firstCard != null)
+                EmphasiseThisCardAndUnderstateOthers(firstCard);
+
+            Responsibilities.text = firstCard.Payload.Label;
+            Names.text = firstCard.Payload.Description;
 
 
             CardsSphereExhibit.Subscribe(this);
@@ -61,12 +63,15 @@ namespace SecretHistories.UI
         //
         }
 
+
         public void OnTokenInteractionInSphere(TokenInteractionEventArgs args)
         {
            if(args.Interaction==Interaction.OnClicked || args.Interaction == Interaction.OnDoubleClicked)
            {
-               CardsSphereExhibit.HighlightCardWithId(args.Token.Payload.Id);
-             Responsibilities.text = args.Token.Payload.Label;
+
+               EmphasiseThisCardAndUnderstateOthers(args.Token);
+
+               Responsibilities.text = args.Token.Payload.Label;
             Names.text = args.Payload.Description;
            }
 
@@ -80,8 +85,17 @@ namespace SecretHistories.UI
            }
         }
 
-    
+        private void EmphasiseThisCardAndUnderstateOthers(Token tokenToEmphasise)
+        {
+            var cardTokens = CardsSphereExhibit.GetElementTokens();
 
-        
+            foreach (var card in cardTokens)
+            {
+                if (card != tokenToEmphasise)
+                    card.Understate();
+                else
+                    card.Emphasise();
+            }
+        }
     }
 }

@@ -29,17 +29,4 @@ public class ExhibitCardsSphere : Sphere {
         token.Understate();
     }
 
-    public void HighlightCardWithId(string elementId)
-    {
-        var cards = GetElementTokens();
-
-        foreach (var card in cards)
-        {
-            if (card.Payload.EntityId == elementId)
-                card.Emphasise();
-            else
-                card.Understate();
-        }
-
-    }
 }
