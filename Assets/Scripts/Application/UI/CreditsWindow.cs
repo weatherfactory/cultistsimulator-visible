@@ -75,14 +75,7 @@ namespace SecretHistories.UI
             Names.text = args.Payload.Description;
            }
 
-           if(args.Interaction==Interaction.OnPointerEntered)
-               args.Token.Emphasise();
 
-           if (args.Interaction == Interaction.OnPointerExited)
-           {
-               if (Responsibilities.text != args.Token.Payload.Label) // don't remove the highlight if the card is currently selected
-                   args.Token.Understate();
-           }
         }
 
         private void EmphasiseThisCardAndUnderstateOthers(Token tokenToEmphasise)
