@@ -204,7 +204,7 @@ public class MenuScreenController : LocalNexus {
     }
 
     void HideAllOverlays() {
-        modal.gameObject.SetActive(false);
+        modal.gameObject.GetComponent<CanvasGroupFader>().Hide();
         purgeConfirm.gameObject.SetActive(false);
         credits.gameObject.SetActive(false);
         versionHints.gameObject.SetActive(false);
