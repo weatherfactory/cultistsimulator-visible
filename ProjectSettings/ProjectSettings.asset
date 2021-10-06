@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 2020.11.a.1
+  bundleVersion: 2021.10.a.1
   preloadedAssets:
   - {fileID: 11400000, guid: 8bfb0e939ffdb6e4f8e82b341cc0b618, type: 2}
   metroInputSource: 0
@@ -155,7 +155,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.WeatherFactory.CultistSimulator
-    Standalone: biz.weatherfactory.cultistsimulator
+    Standalone: com.WeatherFactory.CultistSimulator
     Tizen: com.Company.ProductName
     iPhone: unity.WeatherFactory.CultistSimulator
     tvOS: com.Company.ProductName
@@ -695,7 +695,8 @@ PlayerSettings:
   gcIncremental: 0
   assemblyVersionValidation: 1
   gcWBarrierValidation: 0
-  apiCompatibilityLevelPerPlatform: {}
+  apiCompatibilityLevelPerPlatform:
+    Standalone: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: CultistSimulator
