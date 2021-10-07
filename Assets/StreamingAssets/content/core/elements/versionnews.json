@@ -1,0 +1,39 @@
+﻿{
+	"elements": [
+		{    
+			"id": "versionnews.2021.10.a",
+			"label": "2021.10.a ALPHA",
+			"description": "This is a massive overhaul (80% complete) of the whole codebase, so I can use it for other projects without losing my mind. The effect is mostly to break existing functionality, I'm afraid. I've put it live so modders and other enthusiasts can take a look, but please consider it alpha and unstable.",
+			"icon": "rkx.weakness.cats"
+		},
+			{
+			"id": "versionnews.newsaveformat",
+			"label": "New Save Format",
+			"description": "This approach fixes some hard, horrible, Heisenbugs from 2017. It's not backwards compatible. I plan to write a converter before we go to the main branch, though.",
+			"icon": "ascensionchangec"
+		},
+					{
+			"id": "versionnews.assembly.loading",
+			"label": "Assembly Loading for Mods",
+			"description": "Check the MODDING_README.txt in //streamingassets. If you don't know what any of this means, stay clear :)",
+			"icon": "ritetoolconsumeinfluence"
+		},
+		{
+			"id": "versionnews.newordering",
+			"label": "New Token Ordering",
+			"description": "Ordering code is completely reworked. Verb tiles no longer muscle everything out of the way, and a shadow shows where tokens will be placed. (There are  some glitches around alignment.)",
+			"icon": "paintingmansus"
+		},
+				{
+			"id": "versionnews.drydock",
+			"label": "Token Drydock",
+			"description": "The Debug menu has been reworked completely. In theory, you can use it to edit the new save format (encaustment) manually to tweak tokens. That's not very useful yet, though. You can, however, use it to add and remove mutations, or advance one situation on its own.",
+			"icon": "apostleforge.pillar1"
+		},
+		
+		
+		]
+
+}
+
+"v2021.10.a.1 ALPHA,'Like they do in Babylon'\n\nT -  THERE IS A NEW SAVE FORMAT. It's not backwards compatible. I'll write a converter before we go to the main branch, though.				\n\n - 		\n\n - New or.				\n\n - A card shadow shows where things will land.			\n\n - Debug menu has known the Forge's touch.",

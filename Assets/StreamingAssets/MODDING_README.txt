@@ -125,8 +125,7 @@ removes each element in the list from the original property, which can either be
 CULTURES
 --------
 
-The game currently ships with English, Russian and Chinese (Simplified). If you'd like to add localisations for another language, add a json file with a culture entity to the /content/cultures folder in your mod. You can copy the format from the existing cultures in /core/cultures.
-
+The game currently ships with English, Russian, German, Japanese and Chinese (Simplified). If you'd like to add localisations for another language, add a json file with a culture entity to the /content/cultures folder in your mod. You can copy the format from the existing cultures in /core/cultures.
 
 A culture entity allows you to specify:
 - the name of the language
