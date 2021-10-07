@@ -32,6 +32,11 @@ namespace SecretHistories.Logic
             Resaturate = resaturate;
         }
 
+        public void SpendAllRemainingTime()
+        {
+            SpendTime(_lifetimeRemaining);
+        }
+
         public void SpendTime(float interval)
         {
             LastInterval = interval;

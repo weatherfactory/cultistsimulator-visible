@@ -19,7 +19,7 @@ namespace SecretHistories.States
         {
             //If we leave anything in the ongoing slot, it's lost, so let's rescue it to SituationStorage
             situation.AcceptTokens(SphereCategory.SituationStorage, situation.GetTokens(SphereCategory.Threshold));
-            
+            situation.GetTimeshadow().SpendAllRemainingTime();
         }
 
         public override void Exit(Situation situation)
