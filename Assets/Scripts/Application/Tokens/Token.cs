@@ -160,6 +160,13 @@ namespace SecretHistories.UI {
             WorldPosition = TokenRectTransform.position;
         }
 
+        // Tokens have their pos in their center, but rects have them in the bottom right
+        public Rect GetLocalRect()
+        {
+            var localRect=new Rect(TokenRectTransform.localPosition, TokenRectTransform.rect.size);
+            localRect.size = localRect.size * 0.5f;
+            return localRect;
+        }
         public bool IsValid()
         {
             return Payload.IsValid();

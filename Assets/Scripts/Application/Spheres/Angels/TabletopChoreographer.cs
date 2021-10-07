@@ -156,9 +156,9 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 				return;
 			}
 
-            var targetRect = GetLocalRectFromRectTransform(pushingToken.TokenRectTransform);
+            var targetRect = pushingToken.GetLocalRect();
 			// Reduce the target Rect size to be less finnicky
-			targetRect.size = targetRect.size * 0.5f;
+	//		targetRect.size = targetRect.size * 0.5f;
 
 			Rect pushedRect;
 
@@ -166,7 +166,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                 if (token==pushingToken || CanTokenBeIgnored(token))
                     continue;
 
-				pushedRect = GetLocalRectFromRectTransform(token.TokenRectTransform);
+                pushedRect = token.GetLocalRect();
 
 				if (!pushedRect.Overlaps(targetRect))
                     continue;
@@ -255,12 +255,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return Vector2.zero;
         }
 
-        // Tokens have their pos in their center, rects in the bottom right
-        Rect GetLocalRectFromRectTransform(RectTransform rectTrans)
-		{
-            return new Rect(rectTrans.localPosition, rectTrans.rect.size);
-        }
-
+      
         Rect GetLocalRectFromCenterPosition(Vector2 centerPos, Vector2 size)
 		{
             return new Rect(centerPos - size / 2f, size);
@@ -315,8 +310,9 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             Rect otherTokenRect;
 
 
-            foreach (var otherToken in _tabletop.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t))) {
-                  otherTokenRect = GetLocalRectFromRectTransform(otherToken.TokenRectTransform);
+            foreach (var otherToken in _tabletop.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t)))
+            {
+                otherTokenRect = otherToken.GetLocalRect();
 
              if (otherTokenRect.Overlaps(candidateRect))
                 {
