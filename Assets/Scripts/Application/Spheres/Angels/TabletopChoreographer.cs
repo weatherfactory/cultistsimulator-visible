@@ -156,7 +156,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 				return;
 			}
 
-            var targetRect = pushingToken.GetLocalRect();
+            var pushingRect = pushingToken.GetLocalRect();
 			// Reduce the target Rect size to be less finnicky
 	//		targetRect.size = targetRect.size * 0.5f;
 
@@ -168,10 +168,12 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
                 pushedRect = token.GetLocalRect();
 
-				if (!pushedRect.Overlaps(targetRect))
+				if (!pushedRect.Overlaps(pushingRect))
                     continue;
 
-                TokenTravelItinerary itinerary=new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition))
+                var freePositionForPushedToken = GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition3D);
+
+                TokenTravelItinerary itinerary=new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, freePositionForPushedToken)
                     .WithDuration(0.2f)
                     .WithScaling(1f,1f);
 
@@ -200,7 +202,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             
             Vector2 centerPosition = GetPosClampedToTable(startPos);
            Vector2 snappedToGridPosition = SnapToGrid(centerPosition);
-            var targetRect = GetLocalRectFromCenterPosition(snappedToGridPosition, token.ManifestationRectTransform.rect.size);
+            var targetRect = GetLocalRectFromCenterPosition(snappedToGridPosition, token.GetLocalRect().size);
 
             var legalPositionCheckResult = IsLegalPosition(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
@@ -315,9 +317,15 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                 otherTokenRect = otherToken.GetLocalRect();
 
              if (otherTokenRect.Overlaps(candidateRect))
-                {
-                    return LegalPositionCheckResult.Blocked(otherToken.name,otherTokenRect);
-                }
+                
+                   return LegalPositionCheckResult.Blocked(otherToken.name,otherTokenRect);
+                
+            }
+
+            foreach(var itinerary  in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_tabletop.GetAbsolutePath()))
+            {
+                if(itinerary.GetReservedDestinationRect().Overlaps(candidateRect))
+                    return LegalPositionCheckResult.Blocked($"Reserved destination for travelling token {itinerary.TokenName}", itinerary.GetReservedDestinationRect());
             }
 
             return LegalPositionCheckResult.Legal();

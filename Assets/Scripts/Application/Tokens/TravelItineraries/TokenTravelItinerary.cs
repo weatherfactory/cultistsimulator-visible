@@ -23,8 +23,10 @@ namespace SecretHistories.UI
         //startscale   = 1f, float endScale = 1f)
         private const float DefaultStartScale = 1f;
         private const float DefaultEndScale = 1f;
-        public string TokenName { get; private set; } //for debugging;
-
+        public override string TokenName => _tokenName;
+        private string _tokenName;
+        
+        private Rect _reservedDestinationRect;
         
         public TokenTravelItinerary()
         {}
@@ -67,7 +69,7 @@ namespace SecretHistories.UI
 
         public override void Depart(Token tokenToSend, Context context)
         {
-            TokenName = tokenToSend.name;
+            _tokenName = tokenToSend.name;
             Watchman.Get<Xamanek>().ItineraryStarted(this);
 
             tokenToSend.Unshroud(true);
@@ -95,7 +97,13 @@ namespace SecretHistories.UI
             //and the local positions in those are unlikely to match.
             Vector3 startPositioninWorldSpace = tokenToSend.Sphere.GetRectTransform().TransformPoint(Anchored3DStartPosition);
             Vector3 endPositionInWorldSpace = destinationSphere.GetRectTransform().TransformPoint(Anchored3DEndPosition);
-            
+
+
+
+            _reservedDestinationRect = new Rect((UnityEngine.Vector2)Anchored3DEndPosition - tokenToSend.TokenRectTransform.rect.size /2,
+                tokenToSend.TokenRectTransform.rect.size); //translate it rather clunkily into local space
+
+
             tokenAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
             tokenAnimation.SetScaling(StartScale,EndScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
              //is it if scaling ends before travel duration?
@@ -144,6 +152,11 @@ namespace SecretHistories.UI
                 NoonUtility.LogException(e); 
                 TravelFailed(token);
             }
+        }
+
+        public override Rect GetReservedDestinationRect()
+        {
+            return _reservedDestinationRect;
         }
 
         private void TravelFailed(Token token)
