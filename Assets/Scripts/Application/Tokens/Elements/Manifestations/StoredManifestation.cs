@@ -65,7 +65,8 @@ namespace SecretHistories.Manifestations
 
         public IGhost CreateGhost()
         {
-            return new NullGhost();
+            return NullGhost.Create();
+
         }
 
         public void OverrideIcon(string icon)
