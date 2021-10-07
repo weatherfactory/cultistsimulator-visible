@@ -14,6 +14,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 namespace SecretHistories.UI
 {
     public class CardDisplayWindow: MonoBehaviour,ISphereEventSubscriber
@@ -34,7 +35,7 @@ namespace SecretHistories.UI
 
             List<Element> creditCards = Watchman.Get<Compendium>().GetEntitiesAsList<Element>()
                 .Where(e => e.Id.StartsWith(IncludeCardsWhereIdStartsWith)).ToList();
-
+            
 
             foreach (var cc in creditCards)
             {
