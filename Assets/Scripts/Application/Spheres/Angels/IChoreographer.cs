@@ -22,6 +22,5 @@ namespace SecretHistories.Spheres.Angels
 
         Vector2 GetFreeLocalPosition(Token token, Vector2 startPos);
 
-        Vector3 SnapToGrid(Vector3 transformLocalPosition);
     }
 }

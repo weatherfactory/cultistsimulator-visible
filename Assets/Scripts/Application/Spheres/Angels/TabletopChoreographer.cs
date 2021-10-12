@@ -173,20 +173,21 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return localPoint;
         }
 
-        public Vector2 GetFreeLocalPosition(Token token, Vector2 startPos)
-		{
-                HideAllDebugRects(); //if we're beginning another attempt to find a free local position, hide all existing debug information
-            
-       //     Vector2 centerPosition = GetPosClampedToTable(startPos); //not sure what this is for; leaving it here for the mo
-           
-           var targetRect = token.GetRectAssumingPosition(startPos);
+        public Vector2 GetFreeLocalPosition(Token token, Vector2 intendedPos)
+        {
+            HideAllDebugRects(); //if we're beginning another attempt to find a free local position, hide all existing debug information
+
+            Vector2 intendedPosClampedToTable = GetPosClampedToTable(intendedPos);
+            Vector2 intendedPosOnGrid = SnapToGrid(intendedPosClampedToTable, token);
+
+            var targetRect = token.GetRectAssumingPosition(intendedPosOnGrid);
 
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
             {
                 HideAllDebugRects();
                 ShowDebugRect(targetRect, $"{token.name} goes here )");
-                return startPos;
+                return intendedPosOnGrid;
             }
             else
             {
@@ -197,57 +198,30 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
 
             int currentIteration = 1;
-            
-            var testRects = GetTestRects(token,startPos, 1);
 
-            // Iterate over a single round of test positions. If one is legal, then return it.
-            foreach (var testRect in testRects)
-			{
-                if (IsLegalPlacement(testRect, token).IsLegal)
-                    return testRect.position + targetRect.size / 2f; //this assumes that the position is in the centre of the rect
+            while (currentIteration < 10)
+            {
+
+
+                var testRects = GetTestRects(targetRect, currentIteration,token);
+
+                // Iterate over a single round of test positions. If one is legal, then return it.
+                foreach (var testRect in testRects)
+                {
+                    if (IsLegalPlacement(testRect, token).IsLegal)
+                        return testRect.position +
+                               targetRect.size / 2f; //this assumes that the position is in the centre of the rect
+                }
+
+                currentIteration++;
             }
-
 
             NoonUtility.Log(
                 $"Choreographer: No legal tabletop position found for {token.name})! Just putting it at zero", 1);
 
 
             return Vector2.zero;
-        }
 
-        private Vector2 ReturnPositionFromExpandedSearch(Token token, Vector2 snappedToGridPosition, Rect targetRect,
-            int currentIteration)
-        {
-            Vector2[] currentPosition;
-            // we've exhausted things, so we do again
-            // but we  shift the target pos a bit
-            Vector2 newStartPosition = snappedToGridPosition + targetRect.size;
-  
-            //Debug.Log("Did not find a legal pos for " + token.Id + ", allowing for overlap!");
-
-            // request a new set of points, since the center pos has shifted
-            currentPosition = OLDGetTestPositions(targetRect.position + targetRect.size / 2f, currentIteration, maxGridIterations);
-
-            var centerPosRect = GetLocalRectFromCenterPosition(targetRect.position, targetRect.size);
-            if (IsLegalPlacement(centerPosRect, token).IsLegal)
-                return newStartPosition;
-
-            foreach (var point in currentPosition)
-            {
-                if (IsLegalPlacement(GetLocalRectFromCenterPosition(point, targetRect.size), token).IsLegal)
-                    return point;
-            }
-
-            NoonUtility.Log(
-                "Choreographer: No legal tabletop position found for " + token.Payload.Id + " (" + newStartPosition + ")!", 1);
-
-            return Vector2.zero;
-        }
-
-
-        Rect GetLocalRectFromCenterPosition(Vector2 centerPos, Vector2 size)
-		{
-            return new Rect(centerPos - size / 2f, size);
         }
 
         Vector2 GetPosClampedToTable(Vector2 pos)
@@ -331,73 +305,29 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return false;
         }
 
-        private List<Rect> GetTestRects(Token tokenToPlace,Vector2 startingPosition, int iteration)
+        private List<Rect> GetTestRects(Rect startingRect, int iteration,Token rectsForToken)
         {
-            Rect startingRect=new Rect(startingPosition-tokenToPlace.TokenRectTransform.rect.size/2,tokenToPlace.TokenRectTransform.rect.size); //assumes position in centre, and duplicates GetRectInSphereSpaceForOverlap
-            const int separatorSpace = 5;
+            
             List <Rect> rects= new List<Rect>();
 
-            rects.Add(startingRect);
 
-
-            Vector2 aboveRectPosition=new Vector2(startingRect.x,startingRect.y+(startingRect.height+ separatorSpace));
+            Vector2 aboveRectPosition=new Vector2(startingRect.x,startingRect.y+(startingRect.height));
            Rect aboveRect=new Rect(aboveRectPosition,startingRect.size);
 
-            ShowDebugRect(aboveRect,$"AboveRect for {tokenToPlace.name}");
+            ShowDebugRect(aboveRect,$"AboveRect for {rectsForToken.name}");
 
             rects.Add(aboveRect);
 
-           Vector2 belowRectPosition = new Vector2(startingRect.x, startingRect.y - (startingRect.height+ separatorSpace));
+           Vector2 belowRectPosition = new Vector2(startingRect.x, startingRect.y - (startingRect.height));
            Rect belowRect = new Rect(belowRectPosition, startingRect.size);
 
            rects.Add(belowRect);
-           ShowDebugRect(belowRect, $"BelowRect for {tokenToPlace.name}");
+           ShowDebugRect(belowRect, $"BelowRect for {rectsForToken.name}");
 
             return rects;
 
         }
 
-
-        Vector2[] OLDGetTestPositions(Vector3 pos, int startIteration, int maxIteration)
-		{
-            int numPoints = 0;
-			// Always test in half-card intervals for best chance of finding valid slot
-			float snap_x = 90.0f * 0.5f;
-			float snap_y = 130.0f * 0.5f;
-
-            for (int i = startIteration; i <= maxIteration; i++)
-			{
-                numPoints += 8 * i;
-            }
-
-            var points = new Vector2[numPoints];
-
-            int p = 0;
-            float y;
-            float x;
-            
-            for (int v = 1 ; v < 2 + maxIteration * 2; v++)
-			{
-                y = (v % 2 == 0 ? -(v / 2) : (v / 2));
-
-                for (int h = 1; h < 2 + maxIteration * 2; h++)
-				{
-                    if (h <= -1 + startIteration * 2 && v <= -1 + startIteration * 2)
-                        continue; // don't put out points lower than our startIteration
-
-
-					x = (h % 2 == 0 ? (h / 2) : -(h / 2));
-
-
-                    points[p] = new Vector2(pos.x + x * snap_x, pos.y + y * snap_y);
-					points[p] = SnapToGrid( points[p] );
-
-                    p++;
-                }
-            }
-
-            return points;
-        }
 
   
         public void SetGridSnapSize(float snapsize)
@@ -420,21 +350,22 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
 
 
-        public Vector3 SnapToGrid(Vector3 v)
+        public Vector3 SnapToGrid(Vector2 intendedPos,Token forToken)
         {
-            return v;
-
+            
             if (GetGridSnapSize() > 0f)
             {
-                // Magical maths to snap cards to fractions of approx card dimensions - CP
-                float snap_x = 90.0f * GetGridSnapSize();
-                float snap_y = 130.0f * GetGridSnapSize();
-                float recip_x = 1.0f / snap_x;
-                float recip_y = 1.0f / snap_y;
-                v.x *= recip_x; v.x = (float)Mathf.RoundToInt(v.x); v.x *= snap_x;
-                v.y *= recip_y; v.y = (float)Mathf.RoundToInt(v.y); v.y *= snap_y;
+                float snap_x_interval = forToken.TokenRectTransform.rect.width * GetGridSnapSize();
+                float snap_y_interval = forToken.TokenRectTransform.rect.height * GetGridSnapSize();
+
+                float xAdjustment = intendedPos.x % snap_x_interval;
+                float yAdjustment = intendedPos.y % snap_y_interval;
+
+                var snappedPos=new Vector2(intendedPos.x-xAdjustment,intendedPos.y-yAdjustment);
+
+                return snappedPos;
             }
-            return v;
+            return intendedPos;
         }
 
         public void WhenSettingUpdated(object newValue)
