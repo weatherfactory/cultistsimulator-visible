@@ -58,15 +58,11 @@ namespace SecretHistories.Constants {
             return _tabletop.GetRect();
         }
      [SerializeField] private bool showDebugInfo;
-        const float checkPointPerArcLength = 100f;
-
-        const float pointGridSize = 100f;
+   
         private float gridSnapSize = 0.0f;
         const int maxGridIterations = 5;
 
-        const float radiusBase = 50f;
-        const float radiusIncrement = 50f;
-        const float radiusMaxSize = 250f;
+
 
         private List<DebugRect> rectanglesToDisplay=new List<DebugRect>();
 
@@ -261,6 +257,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return pos;
         }
 
+        
        private void ShowDebugRect(Rect rect,string desc)
         {
             if (string.IsNullOrEmpty(desc))
@@ -276,6 +273,14 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             rectanglesToDisplay.Add(new DebugRect{Desc= desc, Rect=guiRect});
         }
 
+       private bool Overlaps(Rect rect1, Rect rect2)
+       {
+            //we require grid snap. 'No grid snap' is no longer an option.
+            //Grid snap 1 means cards cannot overlap at all.
+            //Grid snap 0.5 means cards can overlap up to 50%.
+            //Grid snap 0.25 means cards can overlap up to 75%.
+            return rect1.Overlaps(rect2);
+       }
 
         public void HideAllDebugRects()
         {
