@@ -18,6 +18,8 @@ namespace SecretHistories.Abstract
         void ShowAt(Sphere projectInSphere, Vector3 anchoredPosition3D);
         void HideIn(Token forToken);
         bool TryFulfilPromise(Token token,Context context);
+        bool PromiseBlocksCandidateRect(Sphere sphere, Rect candidateRect);
+        Rect GetRect();
         void Retire();
     }
 }

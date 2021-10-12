@@ -28,6 +28,16 @@ namespace SecretHistories.Ghosts
           return false;
         }
 
+        public bool PromiseBlocksCandidateRect(Sphere sphere, Rect candidateRect)
+        {
+            return false;
+        }
+
+        public Rect GetRect()
+        {
+            return new Rect(0,0,0,0);
+        }
+
         public  void Retire()
         {
            //

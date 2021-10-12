@@ -304,6 +304,14 @@ namespace SecretHistories.UI {
         }
 
         private IGhost _ghost;
+
+        public IGhost GetCurrentGhost()
+        {
+            if (_ghost == null)
+                return NullGhost.Create();
+
+            return _ghost;
+        }
         public bool DisplayGhost(Sphere projectInSphere)
         {
             if (_ghost == null)

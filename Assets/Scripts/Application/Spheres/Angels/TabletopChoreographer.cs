@@ -324,8 +324,8 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
             foreach(var itinerary  in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_tabletop.GetAbsolutePath()))
             {
-                if(itinerary.GetReservedDestinationRect().Overlaps(candidateRect))
-                    return LegalPositionCheckResult.Blocked($"Reserved destination for travelling token {itinerary.TokenName}", itinerary.GetReservedDestinationRect());
+                if(itinerary.GetGhost().PromiseBlocksCandidateRect(_tabletop,candidateRect))
+                    return LegalPositionCheckResult.Blocked($"Reserved destination for {itinerary.GetDescription()}", itinerary.GetGhost().GetRect());
             }
 
             return LegalPositionCheckResult.Legal();

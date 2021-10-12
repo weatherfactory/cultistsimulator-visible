@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using System.Security.Cryptography;
+using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Entities;
 using SecretHistories.States.TokenStates;
@@ -23,10 +24,7 @@ namespace SecretHistories.UI
         //startscale   = 1f, float endScale = 1f)
         private const float DefaultStartScale = 1f;
         private const float DefaultEndScale = 1f;
-        public override string TokenName => _tokenName;
-        private string _tokenName;
-        
-        private Rect _reservedDestinationRect;
+        private Token _token;
         
         public TokenTravelItinerary()
         {}
@@ -51,7 +49,12 @@ namespace SecretHistories.UI
             StartScale = DefaultStartScale;
             EndScale = DefaultEndScale;
         }
-
+        public override string GetDescription()
+        {
+            if (_token == null)
+                return "Empty  TI";
+            return $" TI for {_token.name}";
+        }
         /// <summary>
         /// use when a token is already en route, ie has a running animation
         /// </summary>
@@ -69,7 +72,9 @@ namespace SecretHistories.UI
 
         public override void Depart(Token tokenToSend, Context context)
         {
-            _tokenName = tokenToSend.name;
+            _token = tokenToSend;
+     
+            
             Watchman.Get<Xamanek>().ItineraryStarted(this);
 
             tokenToSend.Unshroud(true);
@@ -99,9 +104,6 @@ namespace SecretHistories.UI
             Vector3 endPositionInWorldSpace = destinationSphere.GetRectTransform().TransformPoint(Anchored3DEndPosition);
 
 
-
-            _reservedDestinationRect = new Rect((UnityEngine.Vector2)Anchored3DEndPosition - tokenToSend.TokenRectTransform.rect.size /2,
-                tokenToSend.TokenRectTransform.rect.size); //translate it rather clunkily into local space
 
 
             tokenAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
@@ -154,10 +156,11 @@ namespace SecretHistories.UI
             }
         }
 
-        public override Rect GetReservedDestinationRect()
+        public override IGhost GetGhost()
         {
-            return _reservedDestinationRect;
+            return _token.GetCurrentGhost();
         }
+
 
         private void TravelFailed(Token token)
         {

@@ -12,6 +12,7 @@ namespace SecretHistories.Ghosts
     {
         
         protected RectTransform rectTransform;
+        private Sphere _projectedInSphere;
         [SerializeField] protected CanvasGroupFader canvasGroupFader;
         public void Awake()
         {
@@ -25,6 +26,7 @@ namespace SecretHistories.Ghosts
             canvasGroupFader.Show();
             rectTransform.SetParent(projectInSphere.GetRectTransform());
             rectTransform.anchoredPosition3D = anchoredPosition3D;
+            _projectedInSphere = projectInSphere;
         }
 
         public virtual void HideIn(Token forToken)
@@ -32,7 +34,30 @@ namespace SecretHistories.Ghosts
             canvasGroupFader.Hide();
             if(rectTransform!=null)
                 rectTransform.SetParent(forToken.TokenRectTransform); //so it doesn't clutter up the hierarchy
-            
+            _projectedInSphere = null;
+
+        }
+
+        public bool PromiseBlocksCandidateRect(Sphere sphere, Rect candidateRect)
+        {
+            if (!Visible)
+                return false; //invisible ghosts never block nuthin
+            if (sphere != _projectedInSphere)
+                return false;
+            if (!GetRect().Overlaps(candidateRect))
+                return false;
+
+            return true;
+
+        }
+
+        public Rect GetRect()
+        {
+            var rt = gameObject.GetComponent<RectTransform>();
+            if(rectTransform==null)
+                return new Rect(0,0,0,0);
+
+            return rt.rect;
         }
 
 
@@ -53,6 +78,8 @@ namespace SecretHistories.Ghosts
             //and say that we've fulfilled the promise
             return true;
         }
+
+
 
         public virtual void Retire()
         {

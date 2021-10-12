@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
+using SecretHistories.Ghosts;
 using SecretHistories.UI;
 using UnityEngine;
 
@@ -12,12 +14,17 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
     public class TokenInertItinerary: TokenItinerary
     {
         private Token _travellingToken;
-        private string _tokenName;
-        public override string TokenName => _tokenName;
+        
+
+        public override string GetDescription()
+        {
+            if (_travellingToken == null)
+                return "Empty inert TI";
+            return $"Inert TI for {_travellingToken.name}";
+        }
 
         public override void Depart(Token tokenToSend, Context context)
         {
-            _tokenName = tokenToSend.name;
             _travellingToken = tokenToSend;
         }
 
@@ -27,9 +34,9 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
 
         }
 
-        public override Rect GetReservedDestinationRect()
+        public override IGhost GetGhost()
         {
-            return new Rect(0f, 0f, 0f, 0f);
+            return NullGhost.Create();
         }
     }
 }
