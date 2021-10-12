@@ -26,6 +26,9 @@ namespace SecretHistories.Constants {
         {
             public string Desc { get; set; }
             public Rect Rect { get; set; }
+            public Color Colour { get; set; }
+
+    
 
             }
        class LegalPositionCheckResult
@@ -86,12 +89,30 @@ namespace SecretHistories.Constants {
             foreach (var r in rectanglesToDisplay)
             {
                 var style = GUI.skin.box;
+                Color transparentColor = r.Colour;
+
+                transparentColor.a = 0.3f;
+                style.normal.background = TextureForColour(transparentColor);
                 style.wordWrap = true;
+
                 GUI.Box(r.Rect, r.Desc, style);
             }
         }
 
-
+        private Texture2D TextureForColour( Color col)
+        {
+            int defaultWidth = 2;
+            int defaultHeight = 2;
+            Color[] pix = new Color[defaultWidth * defaultHeight];
+            for (int i = 0; i < pix.Length; ++i)
+            {
+                pix[i] = col;
+            }
+            Texture2D result = new Texture2D(defaultWidth, defaultHeight);
+            result.SetPixels(pix);
+            result.Apply();
+            return result;
+        }
 
         public void GroupAllStacks()
         {
@@ -203,7 +224,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             {
 
 
-                var testRects = GetTestRects(targetRect, currentIteration,token);
+                var testRects = GetAlternativeCandidateRects(targetRect, currentIteration,token);
 
                 // Iterate over a single round of test positions. If one is legal, then return it.
                 foreach (var testRect in testRects)
@@ -239,21 +260,27 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
         
        private void ShowDebugRect(Rect rect,string desc)
-        {
-            if (string.IsNullOrEmpty(desc))
-                return;
-
-    
-            var rectWorldPosition = _tabletop.GetRectTransform().TransformPoint(rect.position);
-            var rectScreenPosition= RectTransformUtility.WorldToScreenPoint( Camera.main, rectWorldPosition);
-
-            var guiRect=new Rect(rectScreenPosition,rect.size);
-            guiRect.position = new Vector3(guiRect.position.x, Screen.height - guiRect.position.y,-50);
-
-            rectanglesToDisplay.Add(new DebugRect{Desc= desc, Rect=guiRect});
+                    {
+            
+            ShowDebugRect(rect,desc, Color.blue);
         }
 
-       private bool UnacceptableOverlap(Rect rect1, Rect rect2)
+       private void ShowDebugRect(Rect rect, string desc,Color Colour)
+       {
+           if (string.IsNullOrEmpty(desc))
+               return;
+           
+           var rectWorldPosition = _tabletop.GetRectTransform().TransformPoint(rect.position);
+           var rectScreenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, rectWorldPosition);
+
+           var guiRect = new Rect(rectScreenPosition, rect.size);
+           guiRect.position = new Vector3(guiRect.position.x, Screen.height - guiRect.position.y, -50);
+           
+
+           rectanglesToDisplay.Add(new DebugRect { Desc = desc, Rect = guiRect,Colour = Colour});
+       }
+
+        private bool UnacceptableOverlap(Rect rect1, Rect rect2)
        {
             //we require grid snap. 'No grid snap' is no longer an option.
             //Grid snap 1 means cards cannot overlap at all.
@@ -305,31 +332,76 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return false;
         }
 
-        private List<Rect> GetTestRects(Rect startingRect, int iteration,Token rectsForToken)
+        private List<Rect> GetAlternativeCandidateRects(Rect startingRect, int iteration,Token rectsForToken)
         {
-            
+
+            float xShift = startingRect.width * iteration;
+            float yShift = startingRect.height * iteration;
+
+
             List <Rect> rects= new List<Rect>();
+            AddCandidateRect(startingRect.x, startingRect.y + yShift,
+                startingRect.size,
+                rects,
+                "north",
+                rectsForToken.name);
 
+            AddCandidateRect(startingRect.x + xShift, startingRect.y + yShift,
+                startingRect.size,
+                rects,
+                "northeast",
+                rectsForToken.name);
 
-            Vector2 aboveRectPosition=new Vector2(startingRect.x,startingRect.y+(startingRect.height));
-           Rect aboveRect=new Rect(aboveRectPosition,startingRect.size);
+            AddCandidateRect(startingRect.x + xShift, startingRect.y,
+                startingRect.size,
+                rects,
+                "east",
+                rectsForToken.name);
 
-            ShowDebugRect(aboveRect,$"AboveRect for {rectsForToken.name}");
+            AddCandidateRect(startingRect.x + xShift, startingRect.y - yShift,
+                startingRect.size,
+                rects,
+                "southeast",
+                rectsForToken.name);
 
-            rects.Add(aboveRect);
+            AddCandidateRect(startingRect.x, startingRect.y - (yShift),
+                startingRect.size,
+                rects,
+                "south",
+                rectsForToken.name);
 
-           Vector2 belowRectPosition = new Vector2(startingRect.x, startingRect.y - (startingRect.height));
-           Rect belowRect = new Rect(belowRectPosition, startingRect.size);
+            AddCandidateRect(startingRect.x - xShift, startingRect.y + yShift,
+                startingRect.size,
+                rects,
+                "northwest",
+                rectsForToken.name);
 
-           rects.Add(belowRect);
-           ShowDebugRect(belowRect, $"BelowRect for {rectsForToken.name}");
+            AddCandidateRect(startingRect.x - xShift, startingRect.y,
+                startingRect.size,
+                rects,
+                "west",
+                rectsForToken.name);
+
+            AddCandidateRect(startingRect.x - xShift, startingRect.y - yShift,
+                startingRect.size,
+                rects,
+                "southwest",
+                rectsForToken.name);
 
             return rects;
 
         }
 
+        private void AddCandidateRect(float x,float y, Vector2 size, List<Rect> rects,string positionName,string tokenName)
+        {
+            Vector2 rectPosition=new Vector2(x,y);
+            Rect newRect = new Rect(rectPosition, size);
+            rects.Add(newRect);
+            ShowDebugRect(newRect, $"{positionName} for {tokenName}", Color.white);
+        }
 
-  
+
+
         public void SetGridSnapSize(float snapsize)
         {
             int snap = Mathf.RoundToInt(snapsize);
