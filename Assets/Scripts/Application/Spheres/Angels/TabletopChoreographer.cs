@@ -21,6 +21,11 @@ namespace SecretHistories.Constants {
 
     public class TabletopChoreographer:MonoBehaviour, ISettingSubscriber,IChoreographer {
 
+        class DebugRect
+        {
+            public string Desc { get; set; }
+            public Rect Rect { get; set; }
+        }
        class LegalPositionCheckResult
        {
            public bool IsLegal=false;
@@ -61,11 +66,9 @@ namespace SecretHistories.Constants {
         const float radiusIncrement = 50f;
         const float radiusMaxSize = 250f;
 
-        private Dictionary<string,Rect> rectanglesToDisplay=new Dictionary<string, Rect>();
+        private List<DebugRect> rectanglesToDisplay=new List<DebugRect>();
 
         public void Awake() {
-            
-            
 
             var snapGridSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
             if (snapGridSetting != null)
@@ -85,10 +88,7 @@ namespace SecretHistories.Constants {
 
             foreach (var r in rectanglesToDisplay)
             {
-            //var guiRect = GUIUtility.ScreenToGUIRect(r.Value);
-          //    guiRect.position = new Vector2(guiRect.position.x,Screen.height - guiRect.position.y);
-                GUI.Box(r.Value, r.Key);
-
+                GUI.Box(r.Rect, r.Desc);
             }
         }
 
@@ -208,13 +208,14 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             if (legalPositionCheckResult.IsLegal)
             {
                 HideAllRects();
-                ShowRectViaIMGUI(targetRect, token.name);
+                ShowDebugRect(targetRect, $"{token.name} goes here (iteration {startIteration})");
                 return snappedToGridPosition;
             }
             else
             {
-                ShowRectViaIMGUI(targetRect, token.name);
-                ShowRectViaIMGUI(legalPositionCheckResult.BlockerRect, legalPositionCheckResult.BlockerName);
+                ShowDebugRect(targetRect, $"{token.name} is blocked - (iteration {startIteration})");
+                ShowDebugRect(legalPositionCheckResult.BlockerRect,
+                    $"{legalPositionCheckResult.BlockerName} is blocking {token.name}");
             }
 
         
@@ -276,9 +277,9 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return pos;
         }
 
-        void ShowRectViaIMGUI(Rect rect,string name)
+       private void ShowDebugRect(Rect rect,string desc)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(desc))
                 return;
 
     
@@ -288,14 +289,9 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             var guiRect=new Rect(rectScreenPosition,rect.size);
             guiRect.position = new Vector3(guiRect.position.x, Screen.height - guiRect.position.y,-50);
 
-            rectanglesToDisplay[name] = guiRect;
+            rectanglesToDisplay.Add(new DebugRect{Desc= desc, Rect=guiRect});
         }
 
-        void HideRect(string name)
-        {
-            if (rectanglesToDisplay.ContainsKey(name))
-                rectanglesToDisplay.Remove(name);
-        }
 
         public void HideAllRects()
         {
