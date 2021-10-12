@@ -364,7 +364,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                 "southeast",
                 rectsForToken.name);
 
-            AddCandidateRect(startingRect.x, startingRect.y - (yShift),
+            AddCandidateRect(startingRect.x, startingRect.y - yShift,
                 startingRect.size,
                 rects,
                 "south",
