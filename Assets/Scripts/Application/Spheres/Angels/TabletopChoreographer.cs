@@ -123,20 +123,6 @@ namespace SecretHistories.Constants {
      }
 
 
-/// <summary>
-/// Place at a specific position, pushing other tokens out of the way if necessary
-/// </summary>
-            public void PlaceTokenAssertivelyAtSpecifiedLocalPosition(Token token, Context context, Vector2 pos)
-		{
-            token.TokenRectTransform.anchoredPosition = pos;
-            token.transform.localRotation = Quaternion.identity;
-
-            SnapToGrid(token.transform.localPosition);
-
-            MoveAllTokensOverlappingWith(token);
-
-        }
-
 
 /// <summary>
 /// Place as close to a specific position as we can get
@@ -160,9 +146,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 			}
 
             var pushingRect = pushingToken.GetLocalRect();
-			// Reduce the target Rect size to be less finnicky
-	//		targetRect.size = targetRect.size * 0.5f;
-
+	
 			Rect pushedRect;
 
             foreach (var token in _tabletop.Tokens) {
@@ -174,7 +158,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 				if (!pushedRect.Overlaps(pushingRect))
                     continue;
 
-                var freePositionForPushedToken = GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition3D);
+                var freePositionForPushedToken = GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition);
 
                 TokenTravelItinerary itinerary=new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, freePositionForPushedToken)
                     .WithDuration(0.2f)
@@ -236,9 +220,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             // we've exhausted things, so we do again
             // but we  shift the target pos a bit
             Vector2 newStartPosition = snappedToGridPosition + targetRect.size;
-            // and we reduce the smaller rect size. This allows overlap
-            targetRect.size = targetRect.size * 0.4f;
-
+  
             //Debug.Log("Did not find a legal pos for " + token.Id + ", allowing for overlap!");
 
             // request a new set of points, since the center pos has shifted
@@ -380,63 +362,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return points;
         }
 
-        /*
-
-        Vector2[] GetTestPoints(Vector3 pos, int gridIteration) {
-            var points = new Vector2[8 * gridIteration];
-
-            int p = 0;
-
-            // right side points
-            for (int i = -gridIteration; i <= gridIteration; i++) {
-                points[p] = new Vector2(pos.x + gridIteration * pointGridSize, pos.y + i * pointGridSize);
-                p++;
-            }
-
-            // left side points
-            for (int i = -gridIteration; i <= gridIteration; i++) {
-                points[p] = new Vector2(pos.x + -gridIteration * pointGridSize, pos.y + i * pointGridSize);
-                p++;
-            }
-
-            // top side points
-            for (int i = -gridIteration + 1; i <= gridIteration - 1; i++) {
-                points[p] = new Vector2(pos.x + i * pointGridSize, pos.y + gridIteration * pointGridSize);
-                p++;
-            }
-
-            // bottom side points
-            for (int i = -gridIteration + 1; i <= gridIteration - 1; i++) {
-                points[p] = new Vector2(pos.x + i * pointGridSize, pos.y + -gridIteration * pointGridSize);
-                p++;
-            }
-
-            return points;
-        }
-        Vector2[] GetTestPoints(Vector3 pos, float radius) {
-            float circumference = 2f * Mathf.PI * radius;
-            int numPoints = Mathf.FloorToInt(circumference / checkPointPerArcLength);
-            int remainder = numPoints % 4;
-
-            if (remainder != 0) // making sure we're always a mulitple of 4
-                numPoints += 4 - remainder;
-
-            var points = new Vector2[numPoints];
-            float angleSteps = Mathf.Deg2Rad * 360f / points.Length;
-
-            for (int i = 0; i < points.Length; i++)
-                points[i] = GetPointOnCircle(pos, radius, -i * angleSteps);
-
-            return points;
-        }
-
-        Vector2 GetPointOnCircle(Vector3 origin, float radius, float angle) {
-            return new Vector2(origin.x + radius * Mathf.Cos(angle),
-                               origin.y + radius * Mathf.Sin(angle));
-        }
-        */
-
-
+  
         public void SetGridSnapSize(float snapsize)
         {
             int snap = Mathf.RoundToInt(snapsize);

@@ -164,8 +164,7 @@ namespace SecretHistories.UI {
         public Rect GetLocalRect()
         {
             var localRect=new Rect(TokenRectTransform.localPosition, TokenRectTransform.rect.size);
-            if(_payload.IsValidElementStack())
-                localRect.size = localRect.size * 0.5f; //ugh
+
       
             return localRect;
         }
