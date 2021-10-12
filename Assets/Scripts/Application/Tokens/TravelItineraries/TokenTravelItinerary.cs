@@ -87,44 +87,57 @@ namespace SecretHistories.UI
             //from then on, it's in the hands of TokenTravelAnimation.ExecuteHeartbeat
 
 
-            var tokenAnimation = tokenToSend.gameObject.AddComponent<TokenTravelAnimation>();
-            tokenAnimation.OnTokenArrival += Arrive;
-
-
+            var tokenTravelAnimation = SetUpTokenTravelAnimation(tokenToSend);
             var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
-            if(destinationSphere.SphereCategory==SphereCategory.Threshold) //hacky. Something more like a 'max tokens #' would make sense.
-            {
-                destinationSphere.AddBlock(tokenAnimation.AppliesSphereBlock());
-                tokenAnimation.OnBlockRedundant += destinationSphere.RemoveBlock;
-            }
+
+            SetupBlocksForDestinationSphere(destinationSphere, tokenTravelAnimation);
 
             //We convert to world positions before sending, because we'll be animating through an EnRouteSphere to a DestinationSphere,
             //and the local positions in those are unlikely to match.
             Vector3 startPositioninWorldSpace = tokenToSend.Sphere.GetRectTransform().TransformPoint(Anchored3DStartPosition);
             Vector3 endPositionInWorldSpace = destinationSphere.GetRectTransform().TransformPoint(Anchored3DEndPosition);
 
-
-
-
-            tokenAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
-            tokenAnimation.SetScaling(StartScale,EndScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
+            
+            tokenTravelAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
+            tokenTravelAnimation.SetScaling(StartScale,EndScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
              //is it if scaling ends before travel duration?
             //set a default duration if we don't have a valid one
            if (Duration <= 0)
-           {
-               float distance = Vector3.Distance(Anchored3DStartPosition, Anchored3DEndPosition);
-               float defaultTravelDuration = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultTravelDuration;
-
-               Duration = Mathf.Max(defaultTravelDuration, distance * 0.001f);
-           }
+               SetDefaultDuration();
+           
 
            var enrouteSphere=tokenToSend.Payload.GetEnRouteSphere();
             enrouteSphere.AcceptToken(tokenToSend,context);
 
+            tokenToSend.DisplayGhost(destinationSphere);
 
-            destinationSphere.Subscribe(tokenAnimation);
+            destinationSphere.Subscribe(tokenTravelAnimation);
 
-            tokenAnimation.Begin(tokenToSend, context,Duration);
+            tokenTravelAnimation.Begin(tokenToSend, context,Duration);
+        }
+
+        private void SetDefaultDuration()
+        {
+            float distance = Vector3.Distance(Anchored3DStartPosition, Anchored3DEndPosition);
+            float defaultTravelDuration = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultTravelDuration;
+            Duration = Mathf.Max(defaultTravelDuration, distance * 0.001f);
+        }
+
+        private static void SetupBlocksForDestinationSphere(Sphere destinationSphere, TokenTravelAnimation tokenTravelAnimation)
+        {
+            if (destinationSphere.SphereCategory == SphereCategory.Threshold
+            ) //hacky. Something more like a 'max tokens #' would make sense.
+            {
+                destinationSphere.AddBlock(tokenTravelAnimation.AppliesSphereBlock());
+                tokenTravelAnimation.OnBlockRedundant += destinationSphere.RemoveBlock;
+            }
+        }
+
+        private TokenTravelAnimation SetUpTokenTravelAnimation(Token tokenToSend)
+        {
+            var tokenAnimation = tokenToSend.gameObject.AddComponent<TokenTravelAnimation>();
+            tokenAnimation.OnTokenArrival += Arrive;
+            return tokenAnimation;
         }
 
         public override void Arrive(Token token,Context context)
