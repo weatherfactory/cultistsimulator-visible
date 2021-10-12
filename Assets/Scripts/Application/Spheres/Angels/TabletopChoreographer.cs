@@ -25,7 +25,8 @@ namespace SecretHistories.Constants {
         {
             public string Desc { get; set; }
             public Rect Rect { get; set; }
-        }
+
+            }
        class LegalPositionCheckResult
        {
            public bool IsLegal=false;
@@ -85,10 +86,11 @@ namespace SecretHistories.Constants {
         {
             if (!showDebugInfo)
                 return;
-
             foreach (var r in rectanglesToDisplay)
             {
-                GUI.Box(r.Rect, r.Desc);
+                var style = GUI.skin.box;
+                style.wordWrap = true;
+                GUI.Box(r.Rect, r.Desc, style);
             }
         }
 
@@ -190,15 +192,10 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return localPoint;
         }
 
-        public Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1)
+        public Vector2 GetFreeLocalPosition(Token token, Vector2 startPos, int startIteration = -1)
 		{
-            var pos = GetFreeTokenPosition(token, centerPos, startIteration);
-
-            return pos;
-        }
-
-        Vector2 GetFreeTokenPosition(Token token, Vector2 startPos, int startIteration = -1)
-		{
+            if(startIteration<0)
+                HideAllDebugRects(); //if we're beginning another attempt to find a free local position, hide all existing debug information
             
             Vector2 centerPosition = GetPosClampedToTable(startPos);
            Vector2 snappedToGridPosition = SnapToGrid(centerPosition);
@@ -207,7 +204,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             var legalPositionCheckResult = IsLegalPosition(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
             {
-                HideAllRects();
+                HideAllDebugRects();
                 ShowDebugRect(targetRect, $"{token.name} goes here (iteration {startIteration})");
                 return snappedToGridPosition;
             }
@@ -219,8 +216,6 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             }
 
         
-        
-
             // We grab a bunch of test points
             startIteration = startIteration > 0f ? startIteration : 1;
             var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations);
@@ -293,7 +288,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
         }
 
 
-        public void HideAllRects()
+        public void HideAllDebugRects()
         {
             rectanglesToDisplay.Clear();
         }

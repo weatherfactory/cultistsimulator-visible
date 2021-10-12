@@ -156,7 +156,7 @@ namespace SecretHistories.Spheres
           base.AcceptToken(token,context);
           CheckOverlappingTokens(token);
           SoundManager.PlaySfx("CardDrop");
-          _tabletopChoreographer.HideAllRects();
+          _tabletopChoreographer.HideAllDebugRects();
         }
 
 
