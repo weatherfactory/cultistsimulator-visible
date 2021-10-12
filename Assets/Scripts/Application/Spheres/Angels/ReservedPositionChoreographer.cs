@@ -34,7 +34,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         }
 
-        public Vector2 GetFreeLocalPosition(Token token, Vector2 startPos, int startIteration = -1)
+        public Vector2 GetFreeLocalPosition(Token token, Vector2 startPos)
         {
             
             float sphereWidth = _sphere.GetRectTransform().rect.width;

@@ -29,7 +29,7 @@ namespace SecretHistories.Spheres.Angels
             token.TokenRectTransform.anchoredPosition3D = targetPosition;
         }
 
-        public Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos, int startIteration = -1)
+        public Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos)
         {
             return Vector3.zero;
         }

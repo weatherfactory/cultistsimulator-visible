@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
@@ -192,9 +193,8 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return localPoint;
         }
 
-        public Vector2 GetFreeLocalPosition(Token token, Vector2 startPos, int startIteration = -1)
+        public Vector2 GetFreeLocalPosition(Token token, Vector2 startPos)
 		{
-            if(startIteration<0)
                 HideAllDebugRects(); //if we're beginning another attempt to find a free local position, hide all existing debug information
             
             Vector2 centerPosition = GetPosClampedToTable(startPos);
@@ -205,28 +205,34 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             if (legalPositionCheckResult.IsLegal)
             {
                 HideAllDebugRects();
-                ShowDebugRect(targetRect, $"{token.name} goes here (iteration {startIteration})");
+                ShowDebugRect(targetRect, $"{token.name} goes here )");
                 return snappedToGridPosition;
             }
             else
             {
-                ShowDebugRect(targetRect, $"{token.name} is blocked - (iteration {startIteration})");
+                ShowDebugRect(targetRect, $"{token.name} would overlap)");
                 ShowDebugRect(legalPositionCheckResult.BlockerRect,
-                    $"{legalPositionCheckResult.BlockerName} is blocking {token.name}");
+                    $"{legalPositionCheckResult.BlockerName} is overlapping default position for {token.name}");
             }
 
-        
-            // We grab a bunch of test points
-            startIteration = startIteration > 0f ? startIteration : 1;
-            var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations);
 
-            // Go over the test points and check if there's a clear spot to place things
-            foreach (var point in currentPoints)
+            int currentIteration = 1;
+            var currentPosition = GetTestPositions(targetRect.position + targetRect.size / 2f, currentIteration, maxGridIterations);
+
+            // Iterate over a single round of test positions. If one is legal, then return it.
+            foreach (var position in currentPosition)
 			{
-                if (IsLegalPosition(GetLocalRectFromCenterPosition(point, targetRect.size), token).IsLegal)
-                    return point;
+                if (IsLegalPosition(GetLocalRectFromCenterPosition(position, targetRect.size), token).IsLegal)
+                    return position;
             }
+            
+            return ReturnPositionFromExpandedSearch(token, snappedToGridPosition, targetRect, currentIteration+1);
+        }
 
+        private Vector2 ReturnPositionFromExpandedSearch(Token token, Vector2 snappedToGridPosition, Rect targetRect,
+            int currentIteration)
+        {
+            Vector2[] currentPosition;
             // we've exhausted things, so we do again
             // but we  shift the target pos a bit
             Vector2 newStartPosition = snappedToGridPosition + targetRect.size;
@@ -236,24 +242,25 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             //Debug.Log("Did not find a legal pos for " + token.Id + ", allowing for overlap!");
 
             // request a new set of points, since the center pos has shifted
-            currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations);
+            currentPosition = GetTestPositions(targetRect.position + targetRect.size / 2f, currentIteration, maxGridIterations);
 
             var centerPosRect = GetLocalRectFromCenterPosition(targetRect.position, targetRect.size);
             if (IsLegalPosition(centerPosRect, token).IsLegal)
                 return newStartPosition;
 
-            foreach (var point in currentPoints)
-			{
+            foreach (var point in currentPosition)
+            {
                 if (IsLegalPosition(GetLocalRectFromCenterPosition(point, targetRect.size), token).IsLegal)
                     return point;
             }
 
-            NoonUtility.Log("Choreographer: No legal tabletop position found for " + token.Payload.Id + " (" + newStartPosition + ")!",1);
+            NoonUtility.Log(
+                "Choreographer: No legal tabletop position found for " + token.Payload.Id + " (" + newStartPosition + ")!", 1);
 
             return Vector2.zero;
         }
 
-      
+
         Rect GetLocalRectFromCenterPosition(Vector2 centerPos, Vector2 size)
 		{
             return new Rect(centerPos - size / 2f, size);
@@ -332,7 +339,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return false;
         }
 
-        Vector2[] GetTestPoints(Vector3 pos, int startIteration, int maxIteration)
+        Vector2[] GetTestPositions(Vector3 pos, int startIteration, int maxIteration)
 		{
             int numPoints = 0;
 			// Always test in half-card intervals for best chance of finding valid slot
