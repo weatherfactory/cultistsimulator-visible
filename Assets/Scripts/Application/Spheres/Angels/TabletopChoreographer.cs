@@ -145,7 +145,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 				return;
 			}
 
-            var pushingRect = pushingToken.GetLocalRect();
+            var pushingRect = pushingToken.TokenRectTransform.rect;
 	
 			Rect pushedRect;
 
@@ -153,7 +153,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                 if (token==pushingToken || CanTokenBeIgnored(token))
                     continue;
 
-                pushedRect = token.GetLocalRect();
+                pushedRect = token.TokenRectTransform.rect;
 
 				if (!pushedRect.Overlaps(pushingRect))
                     continue;
@@ -183,7 +183,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             
             Vector2 centerPosition = GetPosClampedToTable(startPos);
            Vector2 snappedToGridPosition = SnapToGrid(centerPosition);
-            var targetRect = GetLocalRectFromCenterPosition(snappedToGridPosition, token.GetLocalRect().size);
+            var targetRect = GetLocalRectFromCenterPosition(snappedToGridPosition, token.TokenRectTransform.rect.size);
 
             var legalPositionCheckResult = IsLegalPosition(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
@@ -294,7 +294,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
             foreach (var otherToken in _tabletop.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t)))
             {
-                otherTokenRect = otherToken.GetLocalRect();
+                otherTokenRect = otherToken.TokenRectTransform.rect;
 
              if (otherTokenRect.Overlaps(candidateRect))
                 
