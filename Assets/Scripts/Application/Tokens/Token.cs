@@ -222,10 +222,20 @@ namespace SecretHistories.UI {
             return _manifestation.CanAnimateIcon();
         }
 
-        
 
-        
+        public Rect GetRectInCurrentSphere()
+        {
+            var rect = TokenRectTransform.rect; //this is in the rect in the token's own transform space
+            var rectInSphere=new Rect(TokenRectTransform.anchoredPosition-rect.size/2f,rect.size); //This assumes a centre pivot. We can address that here if nec.
+            return rectInSphere;
+        }
 
+        public Rect GetRectAssumingPosition(Vector2 assumingPosition)
+        {
+            var rect = TokenRectTransform.rect; //this is in the rect in the token's own transform space
+            var rectAssumingPosition = new Rect(assumingPosition - rect.size / 2f, rect.size); //This assumes a centre pivot. We can address that here if nec.
+            return rectAssumingPosition;
+        }
 
         public void SetPayload(ITokenPayload payload)
         {

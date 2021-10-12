@@ -141,7 +141,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 				return;
 			}
 
-            var pushingRect = pushingToken.TokenRectTransform.rect;
+            var pushingRect = pushingToken.GetRectInCurrentSphere();
 	
 			Rect pushedRect;
 
@@ -149,9 +149,9 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                 if (token==pushingToken || CanTokenBeIgnored(token))
                     continue;
 
-                pushedRect = token.TokenRectTransform.rect;
+                pushedRect = token.GetRectInCurrentSphere();
 
-				if (!pushedRect.Overlaps(pushingRect))
+				if (!UnacceptableOverlap(pushedRect,pushingRect))
                     continue;
 
                 var freePositionForPushedToken = GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition);
@@ -177,16 +177,16 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 		{
                 HideAllDebugRects(); //if we're beginning another attempt to find a free local position, hide all existing debug information
             
-            Vector2 centerPosition = GetPosClampedToTable(startPos);
-           Vector2 snappedToGridPosition = SnapToGrid(centerPosition);
-            var targetRect = GetLocalRectFromCenterPosition(snappedToGridPosition, token.TokenRectTransform.rect.size);
+       //     Vector2 centerPosition = GetPosClampedToTable(startPos); //not sure what this is for; leaving it here for the mo
+           
+           var targetRect = token.GetRectAssumingPosition(startPos);
 
-            var legalPositionCheckResult = IsLegalPosition(targetRect, token);
+            var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
             {
                 HideAllDebugRects();
                 ShowDebugRect(targetRect, $"{token.name} goes here )");
-                return snappedToGridPosition;
+                return startPos;
             }
             else
             {
@@ -197,16 +197,22 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
 
             int currentIteration = 1;
-            var currentPosition = GetTestPositions(targetRect.position + targetRect.size / 2f, currentIteration, maxGridIterations);
+            
+            var testRects = GetTestRects(token,startPos, 1);
 
             // Iterate over a single round of test positions. If one is legal, then return it.
-            foreach (var position in currentPosition)
+            foreach (var testRect in testRects)
 			{
-                if (IsLegalPosition(GetLocalRectFromCenterPosition(position, targetRect.size), token).IsLegal)
-                    return position;
+                if (IsLegalPlacement(testRect, token).IsLegal)
+                    return testRect.position + targetRect.size / 2f; //this assumes that the position is in the centre of the rect
             }
-            
-            return ReturnPositionFromExpandedSearch(token, snappedToGridPosition, targetRect, currentIteration+1);
+
+
+            NoonUtility.Log(
+                $"Choreographer: No legal tabletop position found for {token.name})! Just putting it at zero", 1);
+
+
+            return Vector2.zero;
         }
 
         private Vector2 ReturnPositionFromExpandedSearch(Token token, Vector2 snappedToGridPosition, Rect targetRect,
@@ -220,15 +226,15 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             //Debug.Log("Did not find a legal pos for " + token.Id + ", allowing for overlap!");
 
             // request a new set of points, since the center pos has shifted
-            currentPosition = GetTestPositions(targetRect.position + targetRect.size / 2f, currentIteration, maxGridIterations);
+            currentPosition = OLDGetTestPositions(targetRect.position + targetRect.size / 2f, currentIteration, maxGridIterations);
 
             var centerPosRect = GetLocalRectFromCenterPosition(targetRect.position, targetRect.size);
-            if (IsLegalPosition(centerPosRect, token).IsLegal)
+            if (IsLegalPlacement(centerPosRect, token).IsLegal)
                 return newStartPosition;
 
             foreach (var point in currentPosition)
             {
-                if (IsLegalPosition(GetLocalRectFromCenterPosition(point, targetRect.size), token).IsLegal)
+                if (IsLegalPlacement(GetLocalRectFromCenterPosition(point, targetRect.size), token).IsLegal)
                     return point;
             }
 
@@ -273,7 +279,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             rectanglesToDisplay.Add(new DebugRect{Desc= desc, Rect=guiRect});
         }
 
-       private bool Overlaps(Rect rect1, Rect rect2)
+       private bool UnacceptableOverlap(Rect rect1, Rect rect2)
        {
             //we require grid snap. 'No grid snap' is no longer an option.
             //Grid snap 1 means cards cannot overlap at all.
@@ -287,31 +293,30 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             rectanglesToDisplay.Clear();
         }
 
-        LegalPositionCheckResult IsLegalPosition(Rect candidateRect,  Token placingToken)
+        LegalPositionCheckResult IsLegalPlacement(Rect candidateRect,  Token placingToken)
 		{
           //Is the candidaterect inside the larger tabletop rect? if not, throw it out now.
-            if (GetTableRect().Contains(candidateRect.position + candidateRect.size / 2f) == false)
-                
+            if (!GetTableRect().Overlaps(candidateRect))
                 return LegalPositionCheckResult.Illegal();
             
-            Rect otherTokenRect;
+            Rect otherTokenOverlapRect;
 
 
             foreach (var otherToken in _tabletop.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t)))
             {
-                otherTokenRect = otherToken.TokenRectTransform.rect;
+                otherTokenOverlapRect = otherToken.GetRectInCurrentSphere();
 
-             if (otherTokenRect.Overlaps(candidateRect))
+             if (UnacceptableOverlap(otherTokenOverlapRect,candidateRect))
                 
-                   return LegalPositionCheckResult.Blocked(otherToken.name,otherTokenRect);
+                   return LegalPositionCheckResult.Blocked(otherToken.name,otherTokenOverlapRect);
                 
             }
 
-            foreach(var itinerary  in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_tabletop.GetAbsolutePath()))
-            {
-                if(itinerary.GetGhost().PromiseBlocksCandidateRect(_tabletop,candidateRect))
-                    return LegalPositionCheckResult.Blocked($"Reserved destination for {itinerary.GetDescription()}", itinerary.GetGhost().GetRect());
-            }
+            //foreach(var itinerary  in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_tabletop.GetAbsolutePath()))
+            //{
+            //    if(itinerary.GetGhost().PromiseBlocksCandidateRect(_tabletop,candidateRect))
+            //        return LegalPositionCheckResult.Blocked($"Reserved destination for {itinerary.GetDescription()}", itinerary.GetGhost().GetRect());
+            //}
 
             return LegalPositionCheckResult.Legal();
         }
@@ -326,7 +331,34 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return false;
         }
 
-        Vector2[] GetTestPositions(Vector3 pos, int startIteration, int maxIteration)
+        private List<Rect> GetTestRects(Token tokenToPlace,Vector2 startingPosition, int iteration)
+        {
+            Rect startingRect=new Rect(startingPosition-tokenToPlace.TokenRectTransform.rect.size/2,tokenToPlace.TokenRectTransform.rect.size); //assumes position in centre, and duplicates GetRectInSphereSpaceForOverlap
+            const int separatorSpace = 5;
+            List <Rect> rects= new List<Rect>();
+
+            rects.Add(startingRect);
+
+
+            Vector2 aboveRectPosition=new Vector2(startingRect.x,startingRect.y+(startingRect.height+ separatorSpace));
+           Rect aboveRect=new Rect(aboveRectPosition,startingRect.size);
+
+            ShowDebugRect(aboveRect,$"AboveRect for {tokenToPlace.name}");
+
+            rects.Add(aboveRect);
+
+           Vector2 belowRectPosition = new Vector2(startingRect.x, startingRect.y - (startingRect.height+ separatorSpace));
+           Rect belowRect = new Rect(belowRectPosition, startingRect.size);
+
+           rects.Add(belowRect);
+           ShowDebugRect(belowRect, $"BelowRect for {tokenToPlace.name}");
+
+            return rects;
+
+        }
+
+
+        Vector2[] OLDGetTestPositions(Vector3 pos, int startIteration, int maxIteration)
 		{
             int numPoints = 0;
 			// Always test in half-card intervals for best chance of finding valid slot
@@ -390,6 +422,8 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
         public Vector3 SnapToGrid(Vector3 v)
         {
+            return v;
+
             if (GetGridSnapSize() > 0f)
             {
                 // Magical maths to snap cards to fractions of approx card dimensions - CP
