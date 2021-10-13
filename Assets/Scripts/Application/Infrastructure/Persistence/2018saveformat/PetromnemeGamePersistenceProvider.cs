@@ -52,7 +52,7 @@ namespace SecretHistories.Infrastructure.Persistence
                 return ($"PETRO: Can't find {GetSaveFileLocation()}, can't rename!");
             else
             {
-                string newSaveFileName = $"save_txt_imported_{DateTime.Now:dddd_MM_yyyy__hh_mm}.txt";
+                string newSaveFileName = $"save_txt_imported_{DateTime.Now:dd_MM_yyyy__hh_mm}.txt";
                 newSaveFileName=newSaveFileName.Replace(" ", "_");
                 string newSaveFileLocation = GetSaveFileLocation().Replace(SAVE_FILE_NAME, newSaveFileName);
                 try

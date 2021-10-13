@@ -98,11 +98,12 @@ using SecretHistories.Spheres;
 
         var endingTriggeredForCharacterId =
                     TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_CURRENTENDING);
-        NoonUtility.Log($"PETRO: Found ending triggered id {endingTriggeredForCharacterId}");
-        
         characterCreationCommand.EndingTriggered = Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
-        NoonUtility.Log($"PETRO: Added Ending {characterCreationCommand.EndingTriggered.Id} to char creation command");
-
+        
+        if(!characterCreationCommand.EndingTriggered.IsValid())
+            NoonUtility.Log($"PETRO: Added Ending {characterCreationCommand.EndingTriggered.Id} to char creation command");
+        else
+            NoonUtility.Log($"PETRO: No triggered ending found; not adding oneto char creation command");
 
         if (htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
         {
@@ -125,7 +126,7 @@ using SecretHistories.Spheres;
                         int timesExecuted = GetIntFromHashtable(htExecutions, recipeExecutedId);
                         characterCreationCommand.RecipeExecutions.Add(recipeExecutedId, timesExecuted);
                     }
-                    NoonUtility.Log($"PETRO: Added {htExecutions.Keys} past recipe executions to char creation command");
+                    NoonUtility.Log($"PETRO: Added {htExecutions.Keys.Count} past recipe executions to char creation command");
         }
 
         if (htCharacter.ContainsKey(SaveConstants.SAVE_PAST_LEVERS))
@@ -138,7 +139,7 @@ using SecretHistories.Spheres;
                     characterCreationCommand.PreviousCharacterHistoryRecords.Add(key.ToString().ToLower(), htPastLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys and they may still exist in older saves
 
             }
-            NoonUtility.Log($"PETRO: Added {htPastLevers.Keys} past levers to char creation command");
+            NoonUtility.Log($"PETRO: Added {htPastLevers.Keys.Count} past levers to char creation command");
 
         }
 
@@ -149,7 +150,7 @@ using SecretHistories.Spheres;
             {
                 characterCreationCommand.InProgressHistoryRecords.Add(key.ToString().ToLower(), htFutureLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys  and they may still exist in older saves
             }
-            NoonUtility.Log($"PETRO: Added {htFutureLevers.Keys} future levers to char creation command");
+            NoonUtility.Log($"PETRO: Added {htFutureLevers.Keys.Count} future levers to char creation command");
 
         }
 
