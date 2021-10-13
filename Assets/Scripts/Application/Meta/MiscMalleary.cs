@@ -199,7 +199,7 @@ namespace Assets.Scripts.Application.Meta
                NoonUtility.LogWarning($"Can't find petromneme save file");
 
            var pson = pgpp.RetrieveHashedSaveFromFile();
-           NoonUtility.Log(pson.ToString());
+           NoonUtility.Log(pgpp.TryRenameImportedSaveFile());
         }
 
 
