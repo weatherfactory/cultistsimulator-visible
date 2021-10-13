@@ -51,7 +51,6 @@ namespace SecretHistories.Services
 
 
             Count++;
-
         }
     }
 }

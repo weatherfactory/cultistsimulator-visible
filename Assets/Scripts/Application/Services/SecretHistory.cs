@@ -33,6 +33,12 @@ namespace SecretHistories.Services
             canvas.SetActive(visible);
         }
 
+        public void DestroyAllEntries(bool visible)
+        {
+            foreach(var e in entries)
+                Destroy(e.gameObject);
+        }
+
 
         public VerbosityLevel Sensitivity => VerbosityLevel.Trivia;
 

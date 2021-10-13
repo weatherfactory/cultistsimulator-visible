@@ -192,6 +192,16 @@ namespace Assets.Scripts.Application.Meta
 
         }
 
+        public void PetromnemeConversion()
+        {
+           var pgpp=new PetromnemeGamePersistenceProvider();
+           if(!pgpp.Exists())
+               NoonUtility.LogWarning($"Can't find petromneme save file");
+
+           var pson = pgpp.RetrieveHashedSaveFromFile();
+           NoonUtility.Log(pson.ToString());
+        }
+
 
         void QueueRoll(string roll)
         {

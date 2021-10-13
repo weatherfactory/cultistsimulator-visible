@@ -11,6 +11,7 @@ namespace SecretHistories.Infrastructure.Persistence
 {
    public class PetromnemeGamePersistenceProvider: GamePersistenceProvider
     {
+
         protected override string GetSaveFileLocation()
         {
             return $"{UnityEngine.Application.persistentDataPath}/save.txt";
