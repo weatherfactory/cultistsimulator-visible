@@ -4,12 +4,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using SecretHistories.Commands;
+using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 
 namespace SecretHistories.Infrastructure.Persistence
 {
+    /// <summary>
+    /// Converter for classic CS SimpleJson save files
+    /// </summary>
    public class PetromnemeGamePersistenceProvider: GamePersistenceProvider
    {
        private const string SAVE_FILE_NAME = "save.txt";
@@ -25,10 +29,13 @@ namespace SecretHistories.Infrastructure.Persistence
             var importer = new PetromnemeImporter();
             _persistedGameState=new PersistedGameState();
 
+            NoonUtility.Log("PETRO: Attempting to import character to CharacterCreationCommand.");
             var characterCreationCommand= importer.ImportToCharacterCreationCommand(this);
             _persistedGameState.CharacterCreationCommands.Add(characterCreationCommand);
 
-            importer.ImportTableState(this, Watchman.Get<HornedAxe>().GetDefaultSphere()); //this isn't running through the commands list!
+            var rootPopulationCommand = importer.ImportTableState(this,characterCreationCommand.ActiveLegacy); //if we don't have an active legacy, we've no business importing table state
+            _persistedGameState.RootPopulationCommand = rootPopulationCommand;
+
         }
 
         public Hashtable RetrieveHashedSaveFromFile()
@@ -42,7 +49,7 @@ namespace SecretHistories.Infrastructure.Persistence
         public string TryRenameImportedSaveFile()
         {
             if (!File.Exists(GetSaveFileLocation()))
-                return ($"Can't find {GetSaveFileLocation()}, can't rename!");
+                return ($"PETRO: Can't find {GetSaveFileLocation()}, can't rename!");
             else
             {
                 string newSaveFileName = $"save_txt_imported_{DateTime.Now:dddd_MM_yyyy__hh_mm}.txt";
@@ -53,11 +60,11 @@ namespace SecretHistories.Infrastructure.Persistence
                   
                     
                     File.Move(GetSaveFileLocation(), newSaveFileLocation);
-                    return $"Imported save.txt; renamed to {newSaveFileLocation}";
+                    return $"PETRO: Imported save.txt; renamed to {newSaveFileLocation}";
                 }
                 catch (Exception e)
                 {
-                    return ($"Tried to rename {GetSaveFileLocation()} to  {newSaveFileLocation}  but ran into a problem: {e.Message}");
+                    return ($"PETRO: Tried to rename {GetSaveFileLocation()} to  {newSaveFileLocation}  but ran into a problem: {e.Message}");
                 }
             }
         }

@@ -24,5 +24,6 @@ namespace SecretHistories.Infrastructure.Persistence
         {
             File.Delete(GetSaveFileLocation());
         }
+
     }
 }

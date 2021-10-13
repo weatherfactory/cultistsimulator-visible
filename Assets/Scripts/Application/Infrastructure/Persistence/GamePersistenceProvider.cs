@@ -31,9 +31,26 @@ namespace SecretHistories.Infrastructure.Persistence
 
         protected PersistedGameState _persistedGameState=new PersistedGameState();
 
+
+        /// <summary>
+        /// get the game state we've retrieved. One day we might add validation checks. Who knows?
+        /// </summary>
+        /// <returns></returns>
         public PersistedGameState RetrievePersistedGameState()
         {
             return _persistedGameState;
+        }
+
+        /// <summary>
+        /// Supply a game state we've created arbitrarily or rescued from the moon or something
+        /// </summary>
+        /// <param name="gameState"></param>
+        public void SupplyGameState(PersistedGameState gameState)
+        {
+            if(_persistedGameState.CharacterCreationCommands.Any() || _persistedGameState.NotificationCommands.Any() || _persistedGameState.RootPopulationCommand.Spheres.Any())
+                throw new ApplicationException("'The sun turns black; earth sinks in the sea.'. Supplying a gamestate to a gamestateprovider with a non-empty game state isn't allowed.");
+
+            _persistedGameState = gameState;
         }
 
         public virtual void Encaust(Stable stable,HornedAxe hornedAxe)
@@ -41,8 +58,6 @@ namespace SecretHistories.Infrastructure.Persistence
 
             var characters = stable.GetAllCharacters();
      
-
-
             _persistedGameState =new PersistedGameState();
 
 
@@ -55,7 +70,7 @@ namespace SecretHistories.Infrastructure.Persistence
             
             Encaustery<RootPopulationCommand> rootEncaustery = new Encaustery<RootPopulationCommand>();
 
-     _persistedGameState.RootPopulationCommand=rootEncaustery.Encaust(FucineRoot.Get());
+            _persistedGameState.RootPopulationCommand=rootEncaustery.Encaust(FucineRoot.Get());
             
         }
 
@@ -77,6 +92,7 @@ namespace SecretHistories.Infrastructure.Persistence
             string json = File.ReadAllText(GetSaveFileLocation());
             var sh = new SerializationHelper();
             _persistedGameState = sh.DeserializeFromJsonString<PersistedGameState>(json);
+
             var note = new Notification(Watchman.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"),
                 Watchman.Get<ILocStringProvider>().Get("UI_LOADEDDESC"));
 

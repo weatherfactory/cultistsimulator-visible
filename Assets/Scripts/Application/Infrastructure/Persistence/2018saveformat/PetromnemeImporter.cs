@@ -24,7 +24,9 @@ using UnityEngine.Assertions;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 
-
+/// <summary>
+/// Step-by-step conversion from simplejson data format into encaustery commands
+/// </summary>
         public class PetromnemeImporter
     {
             private FucinePath windowSpherePath;
@@ -37,61 +39,84 @@ using SecretHistories.Spheres;
                 return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
             }
 
-
-
-
-            public void ImportTableState(PetromnemeGamePersistenceProvider source, Sphere tabletop)
+    
+            public RootPopulationCommand ImportTableState(PetromnemeGamePersistenceProvider source,Legacy currentLegacy)
             {
-                var htSave = source.RetrieveHashedSaveFromFile();
+        
+                RootPopulationCommand rootCommand=new RootPopulationCommand();
+                var tabletopSphereCreationCommand = RootPopulationCommand.ClassicTabletopSphereCreationCommand();
+                rootCommand.Spheres.Add(tabletopSphereCreationCommand);
 
-                //         windowSpherePath = new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWindowSpherePath);
-                tabletopSpherePath = new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
+        var htSave = source.RetrieveHashedSaveFromFile();
+        var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
+        ImportDecks(rootCommand, htDecks, currentLegacy);
+
+        
+        //get all tabletop element stacks
+        //  ImportTabletopElementStacks(tabletop, htElementStacks);
+        var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
+        //filter dropzone out of element stacks and convert it into dropzone token creation command
+        
+        //get all tabletop  situation tokens
+        var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
+        //  ImportSituations(tabletop, htSituations);
+
+        //add all these to tabletop creation command
 
 
-                var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
-                var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
 
-                ImportTabletopElementStacks(tabletop, htElementStacks);
+        return rootCommand;
 
-                ImportSituations(tabletop, htSituations);
-            }
+
+        }
 
             public CharacterCreationCommand ImportToCharacterCreationCommand(PetromnemeGamePersistenceProvider source)
             {
                 var characterCreationCommand = new CharacterCreationCommand();
                 var htSave = source.RetrieveHashedSaveFromFile();
-
+                
                 var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
                 if (htCharacter == null)
                 {
-                    //we can't find a character saved in the newer format. Try looking for a defunct character with an ending saved in the older format.
+                    NoonUtility.Log(
+                        "PETRO: We can't find a character saved in the newer petromneme format. Try looking for a defunct character with an ending saved in the *archaic* petromneme format.");
                     var endingTriggeredId = TryGetStringFromHashtable(htSave, SaveConstants.SAVE_CURRENTENDING);
+                    if(!string.IsNullOrEmpty(endingTriggeredId))
+                        NoonUtility.Log($"PETRO: Found ending triggered id {endingTriggeredId}");
                     characterCreationCommand.EndingTriggered = Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredId);
-
+            NoonUtility.Log("PETRO: Returning character creation command with just 'endingtriggered' populated. That's all we get.");
                     return characterCreationCommand;
                 }
-
-
+                
                 var chosenLegacyForCharacterId = TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_ACTIVELEGACY);
+                if(!string.IsNullOrEmpty(chosenLegacyForCharacterId))
+                    NoonUtility.Log($"PETRO: Found chosenLegacyForCharacterId {chosenLegacyForCharacterId}");
 
                 characterCreationCommand.ActiveLegacy = Watchman.Get<Compendium>().GetEntityById<Legacy>(chosenLegacyForCharacterId);
+                NoonUtility.Log($"PETRO: Added ActiveLegacy {characterCreationCommand.ActiveLegacy.Id} to char creation command");
 
 
-                var endingTriggeredForCharacterId =
+        var endingTriggeredForCharacterId =
                     TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_CURRENTENDING);
+        NoonUtility.Log($"PETRO: Found ending triggered id {endingTriggeredForCharacterId}");
+        
+        characterCreationCommand.EndingTriggered = Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
+        NoonUtility.Log($"PETRO: Added Ending {characterCreationCommand.EndingTriggered.Id} to char creation command");
 
-                characterCreationCommand.EndingTriggered = Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
 
-
-
-                if (htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
+        if (htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
+        {
                     characterCreationCommand.Name = htCharacter[SaveConstants.SAVE_NAME].ToString();
+                    NoonUtility.Log($"PETRO: Adding char name {characterCreationCommand.Name} to char creation command");
+        }
 
-
-                if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
+        if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
+        {
                     characterCreationCommand.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
+                    NoonUtility.Log($"PETRO: Adding char profession {characterCreationCommand.Profession} to char creation command");
+        }
 
-                if (htCharacter.ContainsKey(SaveConstants.SAVE_EXECUTIONS))
+        if (htCharacter.ContainsKey(SaveConstants.SAVE_EXECUTIONS))
                 {
                     var htExecutions = htCharacter.GetHashtable(SaveConstants.SAVE_EXECUTIONS);
                     foreach (var key in htExecutions.Keys)
@@ -100,35 +125,36 @@ using SecretHistories.Spheres;
                         int timesExecuted = GetIntFromHashtable(htExecutions, recipeExecutedId);
                         characterCreationCommand.RecipeExecutions.Add(recipeExecutedId, timesExecuted);
                     }
-                }
+                    NoonUtility.Log($"PETRO: Added {htExecutions.Keys} past recipe executions to char creation command");
+        }
 
-                if (htCharacter.ContainsKey(SaveConstants.SAVE_PAST_LEVERS))
-                {
-                    var htPastLevers = htCharacter.GetHashtable(SaveConstants.SAVE_PAST_LEVERS);
-                    foreach (var key in htPastLevers.Keys)
-                    {
-                        string value = htPastLevers[key].ToString();
-                        if (!string.IsNullOrEmpty(value))
-                            characterCreationCommand.PreviousCharacterHistoryRecords.Add(key.ToString().ToLower(), htPastLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys and they may still exist in older saves
+        if (htCharacter.ContainsKey(SaveConstants.SAVE_PAST_LEVERS))
+        {
+            var htPastLevers = htCharacter.GetHashtable(SaveConstants.SAVE_PAST_LEVERS);
+            foreach (var key in htPastLevers.Keys)
+            {
+                string value = htPastLevers[key].ToString();
+                if (!string.IsNullOrEmpty(value))
+                    characterCreationCommand.PreviousCharacterHistoryRecords.Add(key.ToString().ToLower(), htPastLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys and they may still exist in older saves
 
-                    }
-                }
+            }
+            NoonUtility.Log($"PETRO: Added {htPastLevers.Keys} past levers to char creation command");
 
-                if (htCharacter.ContainsKey(SaveConstants.SAVE_FUTURE_LEVERS))
-                {
-                    var htFutureLevers = htCharacter.GetHashtable(SaveConstants.SAVE_FUTURE_LEVERS);
-                    foreach (var key in htFutureLevers.Keys)
-                    {
-                        characterCreationCommand.InProgressHistoryRecords.Add(key.ToString().ToLower(), htFutureLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys  and they may still exist in older saves
+        }
 
-                    }
-                }
+        if (htCharacter.ContainsKey(SaveConstants.SAVE_FUTURE_LEVERS))
+        {
+            var htFutureLevers = htCharacter.GetHashtable(SaveConstants.SAVE_FUTURE_LEVERS);
+            foreach (var key in htFutureLevers.Keys)
+            {
+                characterCreationCommand.InProgressHistoryRecords.Add(key.ToString().ToLower(), htFutureLevers[key].ToString()); //hack: we used to have camel-cased enum values as keys  and they may still exist in older saves
+            }
+            NoonUtility.Log($"PETRO: Added {htFutureLevers.Keys} future levers to char creation command");
 
-                //TODO: deck instance import and creation
-                //     var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
-                //   ImportDecks(character, htDecks);
+        }
 
-                return characterCreationCommand;
+
+        return characterCreationCommand;
             }
 
 
@@ -143,22 +169,81 @@ using SecretHistories.Spheres;
 
             }
 
-            private void ImportDecks(Character character, Hashtable htDeckInstances)
+            private void ImportDecks(RootPopulationCommand rootCommand, Hashtable htDeckInstances,Legacy currentLegacy)
             {
-                foreach (var k in htDeckInstances.Keys)
+              NoonUtility.Log("PETRO: Adding DealersTable dominion command, so we have something nice to put cards on.");
+        rootCommand.DealersTable = new PopulateDominionCommand();
+        var allDeckSpecs = Watchman.Get<Compendium>().GetEntitiesAsAlphabetisedList<DeckSpec>();
+        int deckSpecsImported=0;
+        int deckInstancesImported = 0;
+        foreach (var deckSpec in allDeckSpecs)
+        {
+            if (string.IsNullOrEmpty(deckSpec.ForLegacyFamily) || currentLegacy.Family == deckSpec.ForLegacyFamily)
+            {
+                var drawSphereCommand = CreateDrawSphereCommand(deckSpec);
+                rootCommand.DealersTable.Spheres.Add(drawSphereCommand);
+
+                
+                var forbiddenCardsSphereCommand = CreateForbiddenCardsSphereCommand(deckSpec);
+                rootCommand.DealersTable.Spheres.Add(forbiddenCardsSphereCommand);
+
+                var htThisDeckInstance=htDeckInstances.GetHashtable(deckSpec.Id);
+
+                if (htThisDeckInstance != null)
                 {
-                    var htEachDeck = htDeckInstances.GetHashtable(k);
-
-                    DeckSpec spec = Watchman.Get<Compendium>().GetEntityById<DeckSpec>(k.ToString());
-
-                    if (spec == null)
-                        NoonUtility.Log("no deckspec found for saved deckinstance " + k.ToString());
-                    else
-                    {
-                        //  character.UpdateDeckInstanceFromSave(spec, htEachDeck);
-                    }
+                    ImportDeckInstance(htThisDeckInstance, forbiddenCardsSphereCommand, drawSphereCommand);
+                    deckInstancesImported++;
                 }
 
+
+                deckSpecsImported++;
+            }
+        }
+
+        NoonUtility.Log($"PETRO: Added {deckInstancesImported} deck instances for {deckSpecsImported} deckspecs.");
+
+        
+
+            }
+
+            private static void ImportDeckInstance(Hashtable htThisDeckInstance, SphereCreationCommand forbiddenCardsSphereCommand,
+                SphereCreationCommand drawSphereCommand)
+            {
+                foreach (var cardKey in htThisDeckInstance.Keys)
+                    if (cardKey.ToString() == SaveConstants.SAVE_ELIMINATEDCARDS)
+                    {
+                        var htEliminatedCardsForThisDeckInstance =
+                            htThisDeckInstance.GetHashtable(SaveConstants.SAVE_ELIMINATEDCARDS);
+                        if (htEliminatedCardsForThisDeckInstance != null)
+                            foreach (var eliminatedk in htEliminatedCardsForThisDeckInstance.Keys)
+                            {
+                                forbiddenCardsSphereCommand.Tokens.Add(
+                                    new TokenCreationCommand().WithElementStack(
+                                        htEliminatedCardsForThisDeckInstance[eliminatedk].ToString(), 1));
+                            }
+                    }
+                    else
+                    {
+                        var cardElementId = htThisDeckInstance[cardKey].ToString();
+                        drawSphereCommand.Tokens.Add(
+                            new TokenCreationCommand().WithElementStack(cardElementId, 1));
+                    }
+            }
+
+            private static SphereCreationCommand CreateForbiddenCardsSphereCommand(DeckSpec deckSpec)
+            {
+                var forbiddenCardsSphereSpec = new SphereSpec(typeof(ForbiddenPile), $"{deckSpec.Id}_forbidden");
+                forbiddenCardsSphereSpec.ActionId = deckSpec.Id;
+                var discardSphereCommand = new SphereCreationCommand(forbiddenCardsSphereSpec);
+                return discardSphereCommand;
+            }
+
+            private static SphereCreationCommand CreateDrawSphereCommand(DeckSpec deckSpec)
+            {
+                var drawSphereSpec = new SphereSpec(typeof(DrawPile), $"{deckSpec.Id}_draw");
+                drawSphereSpec.ActionId = deckSpec.Id;
+                var drawSphereCommand = new SphereCreationCommand(drawSphereSpec);
+                return drawSphereCommand;
             }
 
             private void ImportSituations(Sphere tabletop, Hashtable htSituations)

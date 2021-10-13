@@ -41,26 +41,33 @@ namespace SecretHistories.Commands
             DealersTable.Execute(root.DealersTable);
         }
 
-        
+        public static SphereCreationCommand ClassicTabletopSphereCreationCommand()
+        {
+            var tabletoppath = new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
+            var tabletopId = tabletoppath.GetEndingPathPart().GetId();
+            var tabletopSphereSpec = new SphereSpec(typeof(TabletopSphere), tabletopId);
+            var tabletopSphereCreationCommand = new SphereCreationCommand(tabletopSphereSpec);
+            return tabletopSphereCreationCommand;
+        }
+
         public static RootPopulationCommand RootCommandForLegacy(Legacy startingLegacy)
         {
             var rootCommand=new  RootPopulationCommand();
-            var tabletoppath=new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
-            var tabletopId = tabletoppath.GetEndingPathPart().GetId();
-            var tabletopSphereSpec = new SphereSpec(typeof(TabletopSphere), tabletopId);
+            var tabletopSphereCreationCommand = ClassicTabletopSphereCreationCommand();
 
-            var tabletopSphereCreationCommand = new SphereCreationCommand(tabletopSphereSpec);
             tabletopSphereCreationCommand.Tokens.AddRange(startingLegacy.GetTokenCreationCommandsToEnactLegacy());
             rootCommand.Spheres.Add(tabletopSphereCreationCommand);
 
-         rootCommand.DealersTable=DealersTableForLegacy(startingLegacy);
+            rootCommand.DealersTable=DealersTableForLegacy(startingLegacy);
 
             return rootCommand;
         }
 
+
+
         private static PopulateDominionCommand DealersTableForLegacy(Legacy startingLegacy)
         {
-       var dealersTableCommand = new PopulateDominionCommand();
+           var dealersTableCommand = new PopulateDominionCommand();
 
             var allDeckSpecs = Watchman.Get<Compendium>().GetEntitiesAsAlphabetisedList<DeckSpec>();
             foreach (var deckSpec in allDeckSpecs)
@@ -71,8 +78,7 @@ namespace SecretHistories.Commands
                     drawSphereSpec.ActionId = deckSpec.Id;
                     var drawSphereCommand = new SphereCreationCommand(drawSphereSpec);
                     
-
-
+                    
                     dealersTableCommand.Spheres.Add(drawSphereCommand);
 
                     var discardSphereSpec = new SphereSpec(typeof(ForbiddenPile), $"{deckSpec.Id}_forbidden");

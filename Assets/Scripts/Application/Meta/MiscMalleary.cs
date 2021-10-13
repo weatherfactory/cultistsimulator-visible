@@ -192,14 +192,29 @@ namespace Assets.Scripts.Application.Meta
 
         }
 
-        public void PetromnemeConversion()
+        public async void PetromnemeConversion()
         {
-           var pgpp=new PetromnemeGamePersistenceProvider();
-           if(!pgpp.Exists())
-               NoonUtility.LogWarning($"Can't find petromneme save file");
+           var petro=new PetromnemeGamePersistenceProvider();
+           if(!petro.Exists())
+           {
+               NoonUtility.LogWarning($"PETRO: Can't find petromneme save file. No Petro :(");
+               return;
+           }
+           
+           NoonUtility.Log("PETRO: Attempting to load game state from petromneme.");
+           petro.DepersistGameState();
+           var retrievedGameState = petro.RetrievePersistedGameState();
 
-           var pson = pgpp.RetrieveHashedSaveFromFile();
-           NoonUtility.Log(pgpp.TryRenameImportedSaveFile());
+           DefaultGamePersistenceProvider donald=new DefaultGamePersistenceProvider();
+           donald.SupplyGameState(retrievedGameState);
+
+          var saveTask= donald.SerialiseAndSaveAsync();
+
+          var result = await saveTask;
+          if(!result)
+              NoonUtility.LogWarning("PETRO: Retrieved game state from petromneme, but couldn't reserialise it. There should be more info above in the log.");
+           else
+              NoonUtility.Log(petro.TryRenameImportedSaveFile());
         }
 
 
