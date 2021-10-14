@@ -100,7 +100,7 @@ namespace SecretHistories.Constants
 
         public void Input_Zoom_Scrollwheel(InputAction.CallbackContext context)
         {
-            if (playerInputDisabled)
+            if (playerInputDisabled || Watchman.Get<SecretHistory>().IsVisible)
                 return;
 
             ZoomLevelEvent.Invoke(new ZoomLevelEventArgs { CurrentZoomInput = context.ReadValue<Single>()});

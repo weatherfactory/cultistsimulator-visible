@@ -27,6 +27,12 @@ namespace SecretHistories.Services
 
         private List<SecretHistoryLogMessageEntry> entries=new List<SecretHistoryLogMessageEntry>();
 
+        public void Awake()
+        {
+            var w=new Watchman();
+            w.Register<SecretHistory>(this);
+        }
+
         public void SetVisible(bool visible)
         {
 

@@ -36,6 +36,7 @@ namespace SecretHistories.Fucine
 
 
        protected bool playerInputDisabled = false;
+       
        protected Coroutine _enablePlayerInputAfterDelayCoroutine;
 
         public void Awake()
