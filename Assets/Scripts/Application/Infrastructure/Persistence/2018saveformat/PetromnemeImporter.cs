@@ -15,6 +15,7 @@ using SecretHistories.NullObjects;
 using SecretHistories.UI;
 using SecretHistories.Commands.SituationCommands;
 using OrbCreationExtensions;
+using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Infrastructure.Persistence;
 using UnityEngine;
@@ -27,7 +28,7 @@ using SecretHistories.Spheres;
 /// </summary>
 public class PetromnemeImporter
 {
-
+    private const string CLASSIC_DROPZONE_ELEMENT_ID = "dropzone";
 
 
     public bool IsSavedGameActive(PetromnemeGamePersistenceProvider source)
@@ -52,8 +53,6 @@ public class PetromnemeImporter
         //get all tabletop element stacks
         var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
         ImportTabletopElementStacks(tabletopSphereCreationCommand, htElementStacks);
-
-        //filter dropzone out of element stacks and convert it into dropzone token creation command
 
         //get all tabletop  situation tokens
         var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
@@ -170,44 +169,58 @@ public class PetromnemeImporter
         foreach (var locationInfoKey in htElementStacks.Keys)
         {
             var htEachStack = htElementStacks.GetHashtable(locationInfoKey);
+            ITokenPayloadCreationCommand tokenPayloadCreationCommand;
+
 
             var elementId = TryGetStringFromHashtable(htEachStack, SaveConstants.SAVE_ELEMENTID);
-            var elementQuantity = GetIntFromHashtable(htEachStack, SaveConstants.SAVE_QUANTITY);
+            if (elementId == CLASSIC_DROPZONE_ELEMENT_ID) //filter dropzone out of element stacks
+            {
+                tokenPayloadCreationCommand = new DropzoneCreationCommand();
+                NoonUtility.Log($"PETRO: Adding Dropzone to the tabletop.");
+            }
 
-            var elementStackCreationCommand = new ElementStackCreationCommand(elementId,elementQuantity);
+            else
 
-            var lifetimeRemaining = GetIntFromHashtable(htEachStack, SaveConstants.LIFETIME_REMAINING);
-            elementStackCreationCommand.LifetimeRemaining = lifetimeRemaining;
+            {
+                var elementQuantity = GetIntFromHashtable(htEachStack, SaveConstants.SAVE_QUANTITY);
+                var elementStackCreationCommand = new ElementStackCreationCommand(elementId, elementQuantity);
+
+                var lifetimeRemaining = GetIntFromHashtable(htEachStack, SaveConstants.LIFETIME_REMAINING);
+                elementStackCreationCommand.LifetimeRemaining = lifetimeRemaining;
 
 
-            if (htEachStack.ContainsKey(SaveConstants.SAVE_MUTATIONS))
-                elementStackCreationCommand.Mutations= NoonUtility.HashtableToStringIntDictionary(
-                htEachStack.GetHashtable(SaveConstants.SAVE_MUTATIONS));
+                if (htEachStack.ContainsKey(SaveConstants.SAVE_MUTATIONS))
+                    elementStackCreationCommand.Mutations = NoonUtility.HashtableToStringIntDictionary(
+                        htEachStack.GetHashtable(SaveConstants.SAVE_MUTATIONS));
 
-            
-            if (htEachStack.ContainsKey(SaveConstants.SAVE_ILLUMINATIONS))
-                elementStackCreationCommand.Illuminations = NoonUtility.HashtableToStringStringDictionary(
-                    htEachStack.GetHashtable(SaveConstants.SAVE_ILLUMINATIONS));
+
+                if (htEachStack.ContainsKey(SaveConstants.SAVE_ILLUMINATIONS))
+                    elementStackCreationCommand.Illuminations = NoonUtility.HashtableToStringStringDictionary(
+                        htEachStack.GetHashtable(SaveConstants.SAVE_ILLUMINATIONS));
+                NoonUtility.Log($"PETRO: Adding {elementId} ({elementQuantity}) to the tabletop.");
+                tokenPayloadCreationCommand = elementStackCreationCommand;
+            }
 
             var posx = TryGetNullableFloatFromHashtable(htEachStack, SaveConstants.SAVE_LASTTABLEPOS_X);
             var posy = TryGetNullableFloatFromHashtable(htEachStack, SaveConstants.SAVE_LASTTABLEPOS_Y);
             Vector3 lasttablepos = new Vector2(posx.HasValue ? posx.Value : 0.0f, posy.HasValue ? posy.Value : 0.0f);
 
-            
-            var stackTokenLocation = new TokenLocation(lasttablepos,FucinePath.Current()); //won't be en route sphere path cos that was not thought on in these times
+
+            var stackTokenLocation =
+                new TokenLocation(lasttablepos,
+                    FucinePath.Current()); //won't be en route sphere path cos that was not thought on in these times
             //the 'current' makes me a little nervous, because at the time of writing there is still some murkiness:
             //execute a spherecreationcommand with child tokencreationcommands, and the sphere will be created and then specified as the sphere location
             //so the path in the tokenlocation is actually irrelevant. Probably it *should* be 'current', but we don't cater helpfully for this.
 
-            var context = new Context(Context.ActionSource.Loading, stackTokenLocation);
 
-            var tokenCreationCommand=new TokenCreationCommand(elementStackCreationCommand, stackTokenLocation);
+            var tokenCreationCommand = new TokenCreationCommand(tokenPayloadCreationCommand, stackTokenLocation);
 
             tabletopSphereCommand.Tokens.Add(tokenCreationCommand);
             tabletopElementStacks++;
-            NoonUtility.Log($"PETRO: Adding {elementId} ({elementQuantity}) to the tabletop.");
-
+            
         }
+
         NoonUtility.Log($"PETRO: Adding {tabletopElementStacks} element stacks to the tabletop.");
     }
 
@@ -392,11 +405,11 @@ public class PetromnemeImporter
         if (htSituationValues.ContainsKey(slotTypeKey))
         {
             var htElements = htSituationValues.GetHashtable(slotTypeKey);
-          //  var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
+            //  var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
 
-        //    foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)
-                 //this order-by is important if we're populating something with elements which create child slots -
-                //in that case we need to do it from the top down, or the slots won't be there
+            //    foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)
+            //this order-by is important if we're populating something with elements which create child slots -
+            //in that case we need to do it from the top down, or the slots won't be there
             {
                 //         var slotPath = situation.CachedParentPath.AppendPath(ess.LocationInfo.Split(FucinePath.SPHERE)[0]);
                 //          var slot = Watchman.Get<HornedAxe>().GetSphereByPath(slotPath);
@@ -420,8 +433,8 @@ public class PetromnemeImporter
             var htSituationOutputStacks = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS);
 
 
-          //  var stackSpecification = PopulateElementStackSpecificationsList(htSituationOutputStacks);
-          //  foreach (var ess in stackSpecification)
+            //  var stackSpecification = PopulateElementStackSpecificationsList(htSituationOutputStacks);
+            //  foreach (var ess in stackSpecification)
             {
                 //        outputStacks.Add(tabletop.ProvisionStackFromCommand(ess));
             }
@@ -464,8 +477,8 @@ public class PetromnemeImporter
         if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
         {
             var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
-          // var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
-        //    foreach (var ess in elementStackSpecifications)
+            // var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
+            //    foreach (var ess in elementStackSpecifications)
             {
                 // var stackToStore=Watchman.Get<Limbo>().ProvisionStackFromCommand(ess);
 
@@ -475,8 +488,6 @@ public class PetromnemeImporter
             }
         }
     }
-
-
 
 
     private int GetQuantityFromElementHashtable(Dictionary<string, string> elementValues)
