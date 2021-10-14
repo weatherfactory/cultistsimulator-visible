@@ -47,16 +47,16 @@ public class PetromnemeImporter
 
         var htSave = source.RetrieveHashedSaveFromFile();
         var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
-        ImportDecks(rootCommand, htDecks, currentLegacy);
+        AddDecksToRootCommand(rootCommand, htDecks, currentLegacy);
 
 
         //get all tabletop element stacks
         var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
-        ImportTabletopElementStacks(tabletopSphereCreationCommand, htElementStacks);
+        AddElementStacksToTabletopCommand(tabletopSphereCreationCommand, htElementStacks);
 
         //get all tabletop  situation tokens
         var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
-        //  ImportSituations(tabletop, htSituations);
+          AddSituationsToTabletopCommand(tabletopSphereCreationCommand, htSituations);
 
         //add all these to tabletop creation command
 
@@ -162,7 +162,7 @@ public class PetromnemeImporter
     }
 
 
-    private void ImportTabletopElementStacks(SphereCreationCommand tabletopSphereCommand, Hashtable htElementStacks)
+    private void AddElementStacksToTabletopCommand(SphereCreationCommand tabletopSphereCommand, Hashtable htElementStacks)
     {
         var tabletopElementStacks = 0;
 
@@ -224,7 +224,7 @@ public class PetromnemeImporter
         NoonUtility.Log($"PETRO: Adding {tabletopElementStacks} element stacks to the tabletop.");
     }
 
-    private void ImportDecks(RootPopulationCommand rootCommand, Hashtable htDeckInstances, Legacy currentLegacy)
+    private void AddDecksToRootCommand(RootPopulationCommand rootCommand, Hashtable htDeckInstances, Legacy currentLegacy)
     {
         NoonUtility.Log("PETRO: Adding DealersTable dominion command, so we have something nice to put cards on.");
         rootCommand.DealersTable = new PopulateDominionCommand();
@@ -295,8 +295,9 @@ public class PetromnemeImporter
         return drawSphereCommand;
     }
 
-    private void ImportSituations(Sphere tabletop, Hashtable htSituations)
+    private void AddSituationsToTabletopCommand(SphereCreationCommand tabletopCommand, Hashtable htSituations)
     {
+        
         foreach (var locationInfo in htSituations.Keys)
         {
             var htSituationValues = htSituations.GetHashtable(locationInfo);
@@ -305,22 +306,19 @@ public class PetromnemeImporter
             var recipe = GetSituationRecipe(htSituationValues, verb);
             var situationState = GetSituationState(htSituationValues);
 
-            var command =
+            var situationTokenCommand =
                 SetupSituationTokenCreationCommand(verb, recipe, situationState, htSituationValues, locationInfo);
 
-            var situationToken = command.Execute(new Context(Context.ActionSource.Loading),
-                Watchman.Get<HornedAxe>().GetDefaultSphere());
-            var situation = situationToken.Payload as Situation;
+            
 
+            AddSlotContentsToSituationCommand(situationTokenCommand, htSituationValues, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
+            AddSlotContentsToSituationCommand(situationTokenCommand, htSituationValues, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+            AddStoredElementsToSituationCommand(situationTokenCommand,htSituationValues );
 
-            ImportSlotContents(situation, htSituationValues, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
-            ImportSlotContents(situation, htSituationValues, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
-            ImportSituationStoredElements(htSituationValues, situation);
-
-            ImportOutputs(htSituationValues, situation, tabletop);
+            AddOutputElementsToSituationCommand(situationTokenCommand,htSituationValues);
 
             //this should happen last, because adding those stacks above can overwrite notes
-            ImportSituationNotes(htSituationValues, situation);
+            AddNotesToSituationCommand(situationTokenCommand,htSituationValues);
         }
     }
 
@@ -397,7 +395,7 @@ public class PetromnemeImporter
         return recipe;
     }
 
-    private void ImportSlotContents(Situation situation, Hashtable htSituationValues, string slotTypeKey)
+    private void AddSlotContentsToSituationCommand(TokenCreationCommand situationTokenCommand, Hashtable htSituationValues, string slotTypeKey)
     {
         //I think there's a problem here. There is an issue where we were creating ongoing slots with null GoverningSlotSpecifications for transient verbs
         ////I don't know if this happens all the time? some saves? Starting slots as well but it doesn't matter?
@@ -418,15 +416,9 @@ public class PetromnemeImporter
         }
     }
 
-    private void ImportOutputs(Hashtable htSituationValues, Situation situation, Sphere tabletop)
+    private void AddOutputElementsToSituationCommand(TokenCreationCommand situationTokenCommand, Hashtable htSituationValues)
     {
-        var outputStacks = ImportOutputStacks(htSituationValues, tabletop);
-        situation.AcceptTokens(SphereCategory.Output, outputStacks);
-    }
 
-    private List<Token> ImportOutputStacks(Hashtable htSituationValues, Sphere tabletop)
-    {
-        var outputStacks = new List<Token>();
 
         if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS))
         {
@@ -440,10 +432,10 @@ public class PetromnemeImporter
             }
         }
 
-        return outputStacks;
     }
 
-    private void ImportSituationNotes(Hashtable htSituationValues, Situation situation)
+
+    private void AddNotesToSituationCommand(TokenCreationCommand situationTokenCommand, Hashtable htSituationValues)
     {
         if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONNOTES))
         {
@@ -472,7 +464,7 @@ public class PetromnemeImporter
         }
     }
 
-    private void ImportSituationStoredElements(Hashtable htSituationValues, Situation situation)
+    private void AddStoredElementsToSituationCommand(TokenCreationCommand situationTokenCommand, Hashtable htSituationValues)
     {
         if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
         {
