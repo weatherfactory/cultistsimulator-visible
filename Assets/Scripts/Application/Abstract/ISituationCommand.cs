@@ -13,7 +13,7 @@ namespace SecretHistories.Commands
 
 
     
-    public interface ISituationCommand: IEncaustment
+    public interface ISituationCommand
     {
    
         bool Execute(Situation situation);

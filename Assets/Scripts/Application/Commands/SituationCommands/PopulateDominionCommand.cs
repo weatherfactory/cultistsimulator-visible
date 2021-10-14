@@ -19,7 +19,7 @@ namespace SecretHistories.Commands.SituationCommands
     /// Populates spheres for specified dominion. Will overwrite (and gracefully retire) any existing spheres, but only if there are SphereCreationCommands specified.
     /// If there are no spherecreationcommands there, it'll do nothing - use ClearDominionCommand instead
     /// </summary>
-  public class PopulateDominionCommand: ISituationCommand
+  public class PopulateDominionCommand: ISituationCommand,IEncaustment
     {
 
         public string Identifier { get; set; }
