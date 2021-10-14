@@ -11,16 +11,16 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 
-namespace SecretHistories.Commands.SituationCommands
+namespace SecretHistories.Commands.TokenEffectCommands
 {
-   public class AddNoteCommand: IAffectsTokenCommand
+   public class AddNoteToTokenCommand: IAffectsTokenCommand
    {
 
        public List<StateEnum> ValidForStates => new List<StateEnum> { StateEnum.Unstarted,StateEnum.Complete,StateEnum.Halting,StateEnum.Ongoing,StateEnum.RequiringExecution,StateEnum.Inchoate };
        public INotification Notification { get; protected set; }
        private readonly Context _context;
 
-       public AddNoteCommand(INotification notification,Context context)
+       public AddNoteToTokenCommand(INotification notification,Context context)
        {
            Notification = notification;
            _context = new Context(context);

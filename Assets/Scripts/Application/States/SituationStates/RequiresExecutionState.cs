@@ -8,6 +8,7 @@ using SecretHistories.UI;
 using SecretHistories.Fucine;
 using Assets.Logic;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Commands.TokenEffectCommands;
 using SecretHistories.Core;
 using SecretHistories.Constants;
 using SecretHistories.Services;
@@ -71,7 +72,7 @@ namespace SecretHistories.States
                     tr.RefineString(linkedRecipe.StartDescription),true);
 
                 NoonUtility.Log($"Situation notification: {situation.Recipe.Id} has executed and has linked recipe {linkedRecipe.Id}. Sending a notification with startdescription of {linkedRecipe.Id}.",0,VerbosityLevel.Significants);
-                var addNoteCommand=new AddNoteCommand(noteLinkedRecipeIsBeginning, new Context(Context.ActionSource.UI));
+                var addNoteCommand=new AddNoteToTokenCommand(noteLinkedRecipeIsBeginning, new Context(Context.ActionSource.UI));
                 situation.ExecuteTokenEffectCommand(addNoteCommand);
                 
                  situation.SetRecipeActive(linkedRecipe);

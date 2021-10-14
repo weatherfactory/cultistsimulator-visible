@@ -15,6 +15,7 @@ using SecretHistories.UI;
 using SecretHistories.Commands.SituationCommands;
 using OrbCreationExtensions;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Infrastructure.Persistence;
 using UnityEngine;
@@ -318,7 +319,7 @@ public class PetromnemeImporter
             AddElementStacksFromSituationValuesHashTableToDominionSphere(situationCommand, htSituationValues, SaveConstants.SAVE_SITUATIONOUTPUTSTACKS, SecretHistories.Enums.SituationDominionEnum.Output);
   
             //this should happen last, because adding those stacks above can overwrite notes
-            AddNotesToSituationCommand(situationTokenCommand,htSituationValues);
+            AddNotesToSituationCommand(situationCommand,htSituationValues,verb);
 
             tabletopCommand.Tokens.Add(situationTokenCommand);
             situationTokensImported++;
@@ -327,7 +328,7 @@ public class PetromnemeImporter
 
         }
 
-        NoonUtility.Log($"PETRO: Adding {situationTokensImported} element stacks to the tabletop.");
+        NoonUtility.Log($"PETRO: Adding {situationTokensImported} situations to the tabletop.");
 
     }
 
@@ -471,33 +472,51 @@ public class PetromnemeImporter
 
 
 
-    private void AddNotesToSituationCommand(TokenCreationCommand situationTokenCommand, Hashtable htSituationValues)
+    private void AddNotesToSituationCommand(SituationCreationCommand situationCommand, Hashtable htSituationValues,Verb verb)
     {
-        //if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONNOTES))
+        if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONNOTES))
+        {
+                var htSituationNotes = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONNOTES);
+
+            foreach (var k in htSituationNotes.Keys)
+            {
+                var htThisOutput = htSituationNotes.GetHashtable(k);
+                //NOTE: I called it 'title' in the note itself, cos it's the only text in the note.
+                string title;
+                if (htThisOutput[SaveConstants.SAVE_TITLE] != null)
+                    title = htThisOutput[SaveConstants.SAVE_TITLE].ToString();
+                else
+                    title = "..."; //just catching possible empty descs so they don't blow up
+
+                situationCommand.CommandQueue.Add(new NotifySituationCommand(verb.Label,title,Context.Unknown()));
+            }
+
+            
+        }
         //{
         //    var notes = new SortedDictionary<int, Notification>();
 
-        //    var htSituationNotes = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONNOTES);
+            //    var htSituationNotes = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONNOTES);
 
-        //    foreach (var k in htSituationNotes.Keys)
-        //    {
-        //        var htThisOutput = htSituationNotes.GetHashtable(k);
-        //        //NOTE: distinct titles not currently used, but probably will be again
-        //        string title;
-        //        if (htThisOutput[SaveConstants.SAVE_TITLE] != null)
-        //            title = htThisOutput[SaveConstants.SAVE_TITLE].ToString();
-        //        else
-        //            title = "..."; //just catching possible empty descs so they don't blow up
+            //    foreach (var k in htSituationNotes.Keys)
+            //    {
+            //        var htThisOutput = htSituationNotes.GetHashtable(k);
+            //        //NOTE: distinct titles not currently used, but probably will be again
+            //        string title;
+            //        if (htThisOutput[SaveConstants.SAVE_TITLE] != null)
+            //            title = htThisOutput[SaveConstants.SAVE_TITLE].ToString();
+            //        else
+            //            title = "..."; //just catching possible empty descs so they don't blow up
 
 
-        //        var notificationForSituationNote = new Notification(title, title);
+            //        var notificationForSituationNote = new Notification(title, title);
 
-        //        if (int.TryParse(k.ToString(), out var order))
-        //            notes.Add(order, notificationForSituationNote);
-        //        else
-        //            notes.Add(notes.Count, notificationForSituationNote);
-        //    }
-        //}
+            //        if (int.TryParse(k.ToString(), out var order))
+            //            notes.Add(order, notificationForSituationNote);
+            //        else
+            //            notes.Add(notes.Count, notificationForSituationNote);
+            //    }
+            //}
     }
 
 

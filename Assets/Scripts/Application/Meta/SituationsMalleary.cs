@@ -9,6 +9,7 @@ using SecretHistories.Assets.Scripts.Application.UI;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Commands.TokenEffectCommands;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -123,7 +124,7 @@ namespace Assets.Scripts.Application.Meta
             var note=new Notification(title, description);
 
 
-            var addNoteCommand=new AddNoteCommand(note,new Context(Context.ActionSource.UI));
+            var addNoteCommand=new AddNoteToTokenCommand(note,new Context(Context.ActionSource.UI));
 
           situation.ExecuteTokenEffectCommand(addNoteCommand);
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Commands.TokenEffectCommands;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -39,28 +40,6 @@ namespace SecretHistories.Commands
     }
 
 
-    public class BurnImageUnderTokenCommand : IAffectsTokenCommand
-    {
-        private string _image;
 
-
-        public BurnImageUnderTokenCommand(string image)
-        {
-            _image = image;
-        }
-
-        
-        public bool ExecuteOn(Token token)
-        {
-
-            Watchman.Get<TabletopImageBurner>().ShowImageBurn(_image, token.Location.Anchored3DPosition, 20f, 2f,
-                    TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
-            return true;
-        }
-
-        public bool ExecuteOn(ITokenPayload payload)
-        {
-            return false;
-        }
-    }
+    
 }

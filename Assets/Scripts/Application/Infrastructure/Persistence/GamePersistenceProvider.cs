@@ -9,6 +9,7 @@ using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Commands.TokenEffectCommands;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -96,7 +97,7 @@ namespace SecretHistories.Infrastructure.Persistence
             var note = new Notification(Watchman.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"),
                 Watchman.Get<ILocStringProvider>().Get("UI_LOADEDDESC"));
 
-            _persistedGameState.NotificationCommands.Add(new AddNoteCommand(note,
+            _persistedGameState.NotificationCommands.Add(new AddNoteToTokenCommand(note,
                 new Context(Context.ActionSource.Loading)));
         }
 

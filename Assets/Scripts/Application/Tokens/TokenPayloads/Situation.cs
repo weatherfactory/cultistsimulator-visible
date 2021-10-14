@@ -21,6 +21,7 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
 using SecretHistories.Abstract;
+using SecretHistories.Commands.TokenEffectCommands;
 using SecretHistories.Constants;
 using SecretHistories.Core;
 using SecretHistories.Events;
@@ -254,7 +255,7 @@ namespace SecretHistories.Entities {
             NoonUtility.Log($"Situation notification: recipe prediction updated from {_currentRecipePrediction.RecipeId} to {newRecipePrediction.RecipeId}.", 0, VerbosityLevel.Significants);
 
 
-            var addNoteCommand=new AddNoteCommand(newRecipePrediction, context);
+            var addNoteCommand=new AddNoteToTokenCommand(newRecipePrediction, context);
                 addNoteCommand.ExecuteOn(this);
 
         }
@@ -689,7 +690,7 @@ namespace SecretHistories.Entities {
             NoonUtility.Log($"Situation notification: recipe {primaryRecipeExecution.Recipe.Id} is executing and will display description.", 0, VerbosityLevel.Significants);
 
 
-            var addNoteCommand = new AddNoteCommand(notePrimaryRecipeIsExecuting, new Context(Context.ActionSource.UI));
+            var addNoteCommand = new AddNoteToTokenCommand(notePrimaryRecipeIsExecuting, new Context(Context.ActionSource.UI));
             ExecuteTokenEffectCommand(addNoteCommand);
              
             RecipeCompletionEffectCommand primaryRecipeCompletionEffectCommand = new RecipeCompletionEffectCommand(primaryRecipeExecution.Recipe,

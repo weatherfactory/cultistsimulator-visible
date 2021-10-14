@@ -7,6 +7,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Commands.TokenEffectCommands;
 using SecretHistories.Entities;
 
 namespace SecretHistories.Infrastructure.Persistence
@@ -15,13 +16,13 @@ namespace SecretHistories.Infrastructure.Persistence
     {
         public List<CharacterCreationCommand> CharacterCreationCommands;
         public RootPopulationCommand RootPopulationCommand;
-        public List<AddNoteCommand> NotificationCommands;
+        public List<AddNoteToTokenCommand> NotificationCommands;
         public PersistedGameState()
         {
 
             CharacterCreationCommands=new List<CharacterCreationCommand>();
             RootPopulationCommand=new RootPopulationCommand();
-            NotificationCommands =new List<AddNoteCommand>();
+            NotificationCommands =new List<AddNoteToTokenCommand>();
         }
 
 
@@ -35,7 +36,7 @@ namespace SecretHistories.Infrastructure.Persistence
             var cc = CharacterCreationCommand.IncarnateFromLegacy(startingLegacy);
             state.CharacterCreationCommands.Add(cc);
             var note=new Notification(startingLegacy.Label, startingLegacy.Description);
-            var notificationCommand = new AddNoteCommand(note, new Context(Context.ActionSource.Loading));
+            var notificationCommand = new AddNoteToTokenCommand(note, new Context(Context.ActionSource.Loading));
             state.NotificationCommands.Add(notificationCommand);
 
             return state;
