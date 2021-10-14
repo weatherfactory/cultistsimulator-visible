@@ -29,6 +29,7 @@ using SecretHistories.Spheres;
 public class PetromnemeImporter
 {
     private const string CLASSIC_DROPZONE_ELEMENT_ID = "dropzone";
+    private const char CLASSIC_SITUATION_PATH_PART_SEPARATOR = '_';
 
 
     public bool IsSavedGameActive(PetromnemeGamePersistenceProvider source)
@@ -357,7 +358,7 @@ public class PetromnemeImporter
         TokenLocation tokenLocation;
 
         //get x, y vector from old weird situation notation into 
-        var simplifiedSituationPathParts = locationInfo.ToString().Split(FucinePath.SPHERE);
+        var simplifiedSituationPathParts = locationInfo.ToString().Split(CLASSIC_SITUATION_PATH_PART_SEPARATOR);
         if (simplifiedSituationPathParts.Length != 3)
         {
             NoonUtility.LogWarning(
