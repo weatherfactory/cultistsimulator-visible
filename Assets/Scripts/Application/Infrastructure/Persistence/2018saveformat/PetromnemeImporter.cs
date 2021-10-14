@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Assets.Scripts.Application.Entities.NullEntities;
-using Assets.Scripts.Application.Infrastructure.SimpleJsonGameDataImport;
 using SecretHistories.Commands;
 using SecretHistories.Entities; //Recipe,SlotSpecification
 using SecretHistories.Enums;
@@ -52,7 +51,7 @@ public class PetromnemeImporter
 
         //get all tabletop element stacks
         var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
-        AddElementStacksToTabletopCommand(tabletopSphereCreationCommand, htElementStacks);
+        AddElementsFromHashTableToSphereCommand(tabletopSphereCreationCommand, htElementStacks);
 
         //get all tabletop  situation tokens
         var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
@@ -162,7 +161,7 @@ public class PetromnemeImporter
     }
 
 
-    private void AddElementStacksToTabletopCommand(SphereCreationCommand tabletopSphereCommand, Hashtable htElementStacks)
+    private void AddElementsFromHashTableToSphereCommand(SphereCreationCommand sphereCommand, Hashtable htElementStacks)
     {
         var tabletopElementStacks = 0;
 
@@ -216,9 +215,10 @@ public class PetromnemeImporter
 
             var tokenCreationCommand = new TokenCreationCommand(tokenPayloadCreationCommand, stackTokenLocation);
 
-            tabletopSphereCommand.Tokens.Add(tokenCreationCommand);
+            sphereCommand.Tokens.Add(tokenCreationCommand);
             tabletopElementStacks++;
-            
+        
+
         }
 
         NoonUtility.Log($"PETRO: Adding {tabletopElementStacks} element stacks to the tabletop.");
@@ -297,28 +297,48 @@ public class PetromnemeImporter
 
     private void AddSituationsToTabletopCommand(SphereCreationCommand tabletopCommand, Hashtable htSituations)
     {
+        var situationTokensImported = 0;
         
         foreach (var locationInfo in htSituations.Keys)
         {
             var htSituationValues = htSituations.GetHashtable(locationInfo);
 
-            var verb = GetSituationVerb(htSituationValues);
+            var verb = GetSituationVerb(htSituationValues); //TODO: can this be null? What happens with base and transient verbs?
             var recipe = GetSituationRecipe(htSituationValues, verb);
             var situationState = GetSituationState(htSituationValues);
 
             var situationTokenCommand =
                 SetupSituationTokenCreationCommand(verb, recipe, situationState, htSituationValues, locationInfo);
 
+            var situationCommand = situationTokenCommand.Payload as SituationCreationCommand;
             
-
-            AddSlotContentsToSituationCommand(situationTokenCommand, htSituationValues, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
-            AddSlotContentsToSituationCommand(situationTokenCommand, htSituationValues, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
-            AddStoredElementsToSituationCommand(situationTokenCommand,htSituationValues );
-
-            AddOutputElementsToSituationCommand(situationTokenCommand,htSituationValues);
-
+            RescueElementStacksThatWouldBeInVerbSlots(tabletopCommand, htSituationValues);
+            AddElementStacksFromSituationValuesHashTableToDominionSphere(situationCommand, htSituationValues,SaveConstants.SAVE_ONGOINGSLOTELEMENTS,SecretHistories.Enums.SituationDominionEnum.RecipeThresholds);
+            AddElementStacksFromSituationValuesHashTableToDominionSphere(situationCommand, htSituationValues, SaveConstants.SAVE_SITUATIONSTOREDELEMENTS, SecretHistories.Enums.SituationDominionEnum.Storage);
+            AddElementStacksFromSituationValuesHashTableToDominionSphere(situationCommand, htSituationValues, SaveConstants.SAVE_SITUATIONOUTPUTSTACKS, SecretHistories.Enums.SituationDominionEnum.Output);
+  
             //this should happen last, because adding those stacks above can overwrite notes
             AddNotesToSituationCommand(situationTokenCommand,htSituationValues);
+
+            tabletopCommand.Tokens.Add(situationTokenCommand);
+            situationTokensImported++;
+        NoonUtility.Log($"PETRO: Adding situation {verb.Id} ({recipe.Id}), currently {situationState}, to the tabletop.");
+
+
+        }
+
+        NoonUtility.Log($"PETRO: Adding {situationTokensImported} element stacks to the tabletop.");
+
+    }
+
+    private void RescueElementStacksThatWouldBeInVerbSlots(SphereCreationCommand tabletopCommand,
+        Hashtable htSituationValues)
+    {
+        //moving elements in verb slots - particularly child slots - into the new system is a pain in the bum. So we just dump them on the table.
+        if (htSituationValues.ContainsKey(SaveConstants.SAVE_STARTINGSLOTELEMENTS))
+        {
+            var htElementsRescuedFromVerbSlots = htSituationValues.GetHashtable(SaveConstants.SAVE_STARTINGSLOTELEMENTS);
+            AddElementsFromHashTableToSphereCommand(tabletopCommand,htElementsRescuedFromVerbSlots);
         }
     }
 
@@ -335,32 +355,34 @@ public class PetromnemeImporter
         string simplifiedSituationPath;
         TokenLocation tokenLocation;
 
+        //get x, y vector from old weird situation notation into 
         var simplifiedSituationPathParts = locationInfo.ToString().Split(FucinePath.SPHERE);
         if (simplifiedSituationPathParts.Length != 3)
         {
             NoonUtility.LogWarning(
                 $"We can't parse a situation locationinfo: {locationInfo}. So we're just picking the beginning of it to use as the situation path.");
-            simplifiedSituationPath = simplifiedSituationPathParts[0];
             tokenLocation = new TokenLocation(0, 0, 0, FucinePath.Current());
         }
         else
         {
-            simplifiedSituationPath = simplifiedSituationPathParts[2];
+            
             float.TryParse(simplifiedSituationPathParts[0], out var anchorPosX);
             float.TryParse(simplifiedSituationPathParts[1], out var anchorPosY);
             tokenLocation = new TokenLocation(anchorPosX, anchorPosY, 0, FucinePath.Current());
         }
 
+        
+        situationCreationCommand.IsOpen = false; //No open situations. This means we don't have to worry about the gummy complexities of importing elementstacks into verb slots and, more importantly, child slots: we just dump 'em on the table.
 
-        situationCreationCommand.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
-
-
+        //verb slots based on current situation verb. No child slots, because there are no tokens in the verb slot!
         var verbSlotsCommand =
             new PopulateDominionCommand(SituationDominionEnum.VerbThresholds.ToString(), verb.Thresholds);
         situationCreationCommand.CommandQueue.Add(verbSlotsCommand);
 
 
-        var recipeSlotSpecs = SimpleJsonSlotImporter.ImportSituationOngoingSlotSpecs(htSituationValues, recipe.Slots);
+        //get the ongoing slot specs for the recipe, and then add in any more specs implied by the existence of possible contents. I think this is
+        //in case a recipe changed, but maybe it's also an alt/linked thing; maybe actually because of the null slotspecifications with transient verbs
+        var recipeSlotSpecs = ImportSituationOngoingSlotSpecs(htSituationValues, recipe.Slots);
         var recipeSlotsCommand =
             new PopulateDominionCommand(SituationDominionEnum.RecipeThresholds.ToString(), recipeSlotSpecs);
         situationCreationCommand.CommandQueue.Add(recipeSlotsCommand);
@@ -370,6 +392,34 @@ public class PetromnemeImporter
         return tokenCreationCommand;
     }
 
+    private List<SphereSpec> ImportSituationOngoingSlotSpecs(Hashtable htSituation, List<SphereSpec> ongoingSlotsForRecipe)
+        {
+            List<SphereSpec> ongoingSlotSpecs = new List<SphereSpec>();
+
+            
+
+            if (htSituation.ContainsKey(SaveConstants.SAVE_ONGOINGSLOTELEMENTS))
+            {
+                var htOngoingSlotStacks = htSituation.GetHashtable(SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+
+                foreach (string slotPath in htOngoingSlotStacks.Keys)
+                {
+                    var slotId = slotPath.Split(FucinePath.SPHERE)[0];
+                    var slotSpec = new SphereSpec(typeof(ThresholdSphere), slotId);
+                    ongoingSlotSpecs.Add(slotSpec);
+                }
+            }
+
+            else
+            {
+                //we don't have any elements in ongoing slots - but we might still have an empty slot from the recipe, which isn't tracked in the save
+                //so add the slot to the spec anyway
+               foreach (var slot in ongoingSlotsForRecipe)
+                    ongoingSlotSpecs.Add(slot);
+            }
+
+            return ongoingSlotSpecs;
+        }          
 
     private static StateEnum GetSituationState(Hashtable htSituationValues)
     {
@@ -395,102 +445,64 @@ public class PetromnemeImporter
         return recipe;
     }
 
-    private void AddSlotContentsToSituationCommand(TokenCreationCommand situationTokenCommand, Hashtable htSituationValues, string slotTypeKey)
+    private void AddElementStacksFromSituationValuesHashTableToDominionSphere(SituationCreationCommand situationCommand, Hashtable htSituationValues,string elementsWithThisHashtableKey, SituationDominionEnum toThisDominion)
     {
-        //I think there's a problem here. There is an issue where we were creating ongoing slots with null GoverningSlotSpecifications for transient verbs
-        ////I don't know if this happens all the time? some saves? Starting slots as well but it doesn't matter?
-        ////(this showed up a problem where greedy slots were trying to grab from ongoing slots that didn't really exist, and threw a nullref error - I've added a guard there but the problem remains).
-        if (htSituationValues.ContainsKey(slotTypeKey))
-        {
-            var htElements = htSituationValues.GetHashtable(slotTypeKey);
-            //  var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
 
-            //    foreach (var ess in elementStackSpecifications.OrderBy(spec => spec.Depth)
-            //this order-by is important if we're populating something with elements which create child slots -
-            //in that case we need to do it from the top down, or the slots won't be there
+        if (htSituationValues.ContainsKey(elementsWithThisHashtableKey))
+        {
+            var htElements = htSituationValues.GetHashtable(elementsWithThisHashtableKey);
+
+            foreach (var cmd in situationCommand.CommandQueue)
             {
-                //         var slotPath = situation.CachedParentPath.AppendPath(ess.LocationInfo.Split(FucinePath.SPHERE)[0]);
-                //          var slot = Watchman.Get<HornedAxe>().GetSphereByPath(slotPath);
-                //      slot.ProvisionStackFromCommand(ess);
+                if (cmd is PopulateDominionCommand pdc)
+                {
+                    if (pdc.Identifier == toThisDominion.ToString())
+                    {
+                        var sphereCommandToPopulate = pdc.Spheres.FirstOrDefault();
+                        if (sphereCommandToPopulate == null)
+                            return;
+                        else
+                            AddElementsFromHashTableToSphereCommand(sphereCommandToPopulate, htElements);
+                    }
+                }
             }
         }
     }
 
-    private void AddOutputElementsToSituationCommand(TokenCreationCommand situationTokenCommand, Hashtable htSituationValues)
-    {
-
-
-        if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS))
-        {
-            var htSituationOutputStacks = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS);
-
-
-            //  var stackSpecification = PopulateElementStackSpecificationsList(htSituationOutputStacks);
-            //  foreach (var ess in stackSpecification)
-            {
-                //        outputStacks.Add(tabletop.ProvisionStackFromCommand(ess));
-            }
-        }
-
-    }
 
 
     private void AddNotesToSituationCommand(TokenCreationCommand situationTokenCommand, Hashtable htSituationValues)
     {
-        if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONNOTES))
-        {
-            var notes = new SortedDictionary<int, Notification>();
+        //if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONNOTES))
+        //{
+        //    var notes = new SortedDictionary<int, Notification>();
 
-            var htSituationNotes = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONNOTES);
+        //    var htSituationNotes = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONNOTES);
 
-            foreach (var k in htSituationNotes.Keys)
-            {
-                var htThisOutput = htSituationNotes.GetHashtable(k);
-                //NOTE: distinct titles not currently used, but probably will be again
-                string title;
-                if (htThisOutput[SaveConstants.SAVE_TITLE] != null)
-                    title = htThisOutput[SaveConstants.SAVE_TITLE].ToString();
-                else
-                    title = "..."; //just catching possible empty descs so they don't blow up
-
-
-                var notificationForSituationNote = new Notification(title, title);
-
-                if (int.TryParse(k.ToString(), out var order))
-                    notes.Add(order, notificationForSituationNote);
-                else
-                    notes.Add(notes.Count, notificationForSituationNote);
-            }
-        }
-    }
-
-    private void AddStoredElementsToSituationCommand(TokenCreationCommand situationTokenCommand, Hashtable htSituationValues)
-    {
-        if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
-        {
-            var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
-            // var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
-            //    foreach (var ess in elementStackSpecifications)
-            {
-                // var stackToStore=Watchman.Get<Limbo>().ProvisionStackFromCommand(ess);
+        //    foreach (var k in htSituationNotes.Keys)
+        //    {
+        //        var htThisOutput = htSituationNotes.GetHashtable(k);
+        //        //NOTE: distinct titles not currently used, but probably will be again
+        //        string title;
+        //        if (htThisOutput[SaveConstants.SAVE_TITLE] != null)
+        //            title = htThisOutput[SaveConstants.SAVE_TITLE].ToString();
+        //        else
+        //            title = "..."; //just catching possible empty descs so they don't blow up
 
 
-                //   situation.AcceptToken(SphereCategory.SituationStorage, stackToStore,
-                //        new Context(Context.ActionSource.Loading));
-            }
-        }
+        //        var notificationForSituationNote = new Notification(title, title);
+
+        //        if (int.TryParse(k.ToString(), out var order))
+        //            notes.Add(order, notificationForSituationNote);
+        //        else
+        //            notes.Add(notes.Count, notificationForSituationNote);
+        //    }
+        //}
     }
 
 
-    private int GetQuantityFromElementHashtable(Dictionary<string, string> elementValues)
-    {
-        int quantity;
-        var couldParse = int.TryParse(elementValues[SaveConstants.SAVE_QUANTITY], out quantity);
-        if (!couldParse)
-            throw new ArgumentException("Couldn't parse " + elementValues[SaveConstants.SAVE_QUANTITY] + " for " +
-                                        elementValues[SaveConstants.SAVE_ELEMENTID] + " as a valid quantity.");
-        return quantity;
-    }
+
+
 
     private string TryGetStringFromHashtable(Hashtable ht, string key)
     {
