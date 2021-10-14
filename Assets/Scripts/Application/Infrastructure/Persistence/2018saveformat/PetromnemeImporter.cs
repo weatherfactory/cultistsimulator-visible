@@ -314,9 +314,9 @@ public class PetromnemeImporter
             var situationCommand = situationTokenCommand.Payload as SituationCreationCommand;
             
             RescueElementStacksThatWouldBeInVerbSlots(tabletopCommand, htSituationValues);
-            AddElementStacksFromSituationValuesHashTableToDominionSphere(situationCommand, htSituationValues,SaveConstants.SAVE_ONGOINGSLOTELEMENTS,SecretHistories.Enums.SituationDominionEnum.RecipeThresholds);
-            AddElementStacksFromSituationValuesHashTableToDominionSphere(situationCommand, htSituationValues, SaveConstants.SAVE_SITUATIONSTOREDELEMENTS, SecretHistories.Enums.SituationDominionEnum.Storage);
-            AddElementStacksFromSituationValuesHashTableToDominionSphere(situationCommand, htSituationValues, SaveConstants.SAVE_SITUATIONOUTPUTSTACKS, SecretHistories.Enums.SituationDominionEnum.Output);
+            AddElementStacksFromSituationValuesHashTableToDominionSphere(situationCommand, htSituationValues,SaveConstants.SAVE_ONGOINGSLOTELEMENTS,SituationDominionEnum.RecipeThresholds);
+            AddElementStacksFromSituationValuesHashTableToDominionSphere(situationCommand, htSituationValues, SaveConstants.SAVE_SITUATIONSTOREDELEMENTS, SituationDominionEnum.Storage);
+            AddElementStacksFromSituationValuesHashTableToDominionSphere(situationCommand, htSituationValues, SaveConstants.SAVE_SITUATIONOUTPUTSTACKS, SituationDominionEnum.Output);
   
             //this should happen last, because adding those stacks above can overwrite notes
             AddNotesToSituationCommand(situationCommand,htSituationValues,verb);
@@ -388,7 +388,14 @@ public class PetromnemeImporter
             new PopulateDominionCommand(SituationDominionEnum.RecipeThresholds.ToString(), recipeSlotSpecs);
         situationCreationCommand.CommandQueue.Add(recipeSlotsCommand);
 
-        var tokenCreationCommand = new TokenCreationCommand(situationCreationCommand, tokenLocation);
+
+        //ahhh... we need to do these explicitly because the situation has been created as AlreadyInState, meaning that it hasn't gone through its usual lifecycle.
+        situationCreationCommand.CommandQueue.Add(new PopulateDominionCommand(SituationDominionEnum.Storage.ToString(), new SphereSpec(typeof(SituationStorageSphere), nameof(SituationStorageSphere))));
+        situationCreationCommand.CommandQueue.Add(new PopulateDominionCommand(SituationDominionEnum.Output.ToString(), new SphereSpec(typeof(OutputSphere), nameof(OutputSphere))));
+
+
+
+var tokenCreationCommand = new TokenCreationCommand(situationCreationCommand, tokenLocation);
 
         return tokenCreationCommand;
     }
