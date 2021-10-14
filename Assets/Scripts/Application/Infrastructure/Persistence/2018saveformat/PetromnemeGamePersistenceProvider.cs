@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
@@ -66,6 +67,36 @@ namespace SecretHistories.Infrastructure.Persistence
                 {
                     return ($"PETRO: Tried to rename {GetSaveFileLocation()} to  {newSaveFileLocation}  but ran into a problem: {e.Message}");
                 }
+            }
+        }
+
+        public async Task<bool> AttemptSaveConversion()
+        {
+            if (!SaveExists())
+            {
+                NoonUtility.LogWarning($"PETRO: Can't find petromneme save file. No Petro :(");
+                return false;
+            }
+
+            NoonUtility.Log("PETRO: Attempting to load game state from petromneme.");
+            DepersistGameState();
+            var retrievedGameState = RetrievePersistedGameState();
+
+            DefaultGamePersistenceProvider donald = new DefaultGamePersistenceProvider();
+            donald.SupplyGameState(retrievedGameState);
+
+            var saveTask = donald.SerialiseAndSaveAsync();
+
+            var result = await saveTask;
+            if (!result)
+            {
+                NoonUtility.LogWarning("PETRO: Retrieved game state from petromneme, but couldn't reserialise it. There should be more info above in the log.");
+                return false;
+            }
+            else
+            {
+                NoonUtility.Log(TryRenameImportedSaveFile());
+                return true;
             }
         }
     }

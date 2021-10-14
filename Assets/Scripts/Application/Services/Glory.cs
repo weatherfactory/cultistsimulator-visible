@@ -98,7 +98,7 @@ namespace SecretHistories.Services
 
         }
         
-        private void Initialise()
+        private async void Initialise()
         {
             try
             {
@@ -175,6 +175,10 @@ namespace SecretHistories.Services
 
                 CharacterCreationCommand characterCreationCommand;
 
+                var conversionTask= ConvertClassicSaveIfNecessary();
+                await conversionTask;
+                
+
                 GamePersistenceProvider gamePersistenceProvider=GamePersistenceProvider.GetBestGuessGamePersistence();
      
                 gamePersistenceProvider.DepersistGameState();
@@ -217,6 +221,27 @@ namespace SecretHistories.Services
                 stageHand.LoadInfoScene();
                 
             }
+        }
+
+        private async Task<bool> ConvertClassicSaveIfNecessary()
+        {
+            //convert save.txt to save.json if
+            //(1) save.txt exists
+            //(2) save.json doesn't.
+
+            PetromnemeGamePersistenceProvider conversionProvider=new PetromnemeGamePersistenceProvider();
+            if (!conversionProvider.SaveExists())
+                return false;
+
+            DefaultGamePersistenceProvider formatProvider2021=new DefaultGamePersistenceProvider();
+            if (formatProvider2021.SaveExists())
+                return false;
+            
+            var saveTask= conversionProvider.AttemptSaveConversion();
+            await saveTask;
+
+            return saveTask.Result;
+
         }
 
 

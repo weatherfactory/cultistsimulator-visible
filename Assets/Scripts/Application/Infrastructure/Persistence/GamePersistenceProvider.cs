@@ -77,7 +77,7 @@ namespace SecretHistories.Infrastructure.Persistence
 
 
 
-        public virtual bool Exists()
+        public virtual bool SaveExists()
         {
             return File.Exists(GetSaveFileLocation());
         }
@@ -126,7 +126,6 @@ namespace SecretHistories.Infrastructure.Persistence
                 await purgeBackupsTask;
             }
 
-            
 
             return true;
         }
@@ -178,7 +177,7 @@ namespace SecretHistories.Infrastructure.Persistence
         public static GamePersistenceProvider GetBestGuessGamePersistence()
         {
             var defaultPersistence = new DefaultGamePersistenceProvider();
-            if (defaultPersistence.Exists())
+            if (defaultPersistence.SaveExists())
                 return defaultPersistence;
             //var petromnemePersistence = new PetromnemeGamePersistenceProvider();
             //if (petromnemePersistence.Exists())
