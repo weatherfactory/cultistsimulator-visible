@@ -15,8 +15,8 @@ namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
 
     public class NotifySituationCommand: ISituationCommand
     {
-        public string Title { get; }
-        public string Description { get; }
+        public string Title { get; set; }
+        public string Description { get; set; }
 
         public NotifySituationCommand()
         {
