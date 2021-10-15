@@ -140,10 +140,14 @@ namespace SecretHistories.Services
 
                 //set up the Mod Manager
                 watchman.Register(new ModManager());
-
                 //load Compendium content. We can't do anything with content files until this is in.
                 watchman.Register<Compendium>(new Compendium());
-                
+
+
+                //LOAD DLLS HERE, ONCE ONLY
+                Watchman.Get<ModManager>().CatalogueMods();
+                Watchman.Get<ModManager>().LoadModDLLs();
+
                 CompendiumLoader loader;
                 if (Application.isEditor && !string.IsNullOrEmpty(OverrideContentFolder))
                     loader = new CompendiumLoader(OverrideContentFolder);
@@ -154,7 +158,7 @@ namespace SecretHistories.Services
                 var log=LoadCompendium(Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
 
                 if (log.ImportFailed())
-                {
+                { 
                     stageHand.LoadInfoScene();
                     return;
                 }
@@ -211,8 +215,7 @@ namespace SecretHistories.Services
                 // load the first scene and get the ball rolling.
                 stageHand.LoadFirstScene(Watchman.Get<Config>().skiplogo);
 
-                //LOAD DLLS HERE, ONCE ONLY
-                Watchman.Get<ModManager>().LoadModDLLs();
+  
 
             }
             catch (Exception e)

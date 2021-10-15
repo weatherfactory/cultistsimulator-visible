@@ -153,10 +153,10 @@ A dll for a mod...
 
 That's your entry point. From then on you can do anything you like, including loading other code.
 
-DLLs are loaded *when the main app initialises*. If you disable or enable one, you'll need to restart the CS app to see the effect.
+DLLs are loaded *when the main app initialises* - before JSON content is loaded. If you disable or enable one, you'll need to restart the CS app to see the effect.
 
 [Acknowledgements: the modding framework is based on Lyrositor's original fan-contributed modding framework. The DLL loading functionality follows Chelnoque's suggested approach and sample code.]
 
 ---------------
 
-- AK 23/10/2020
+- AK 15/10/2021

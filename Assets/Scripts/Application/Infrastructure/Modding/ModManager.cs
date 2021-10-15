@@ -106,9 +106,6 @@ namespace SecretHistories.Constants.Modding
 
             NoonUtility.Log($"Successfully invoked {MOD_INITIALISER_METHOD_NAME}()on a type named {mod_initialiser_class_name} in dll at {dll_path}");
 
-
-
-
         }
 
         public ModManager()

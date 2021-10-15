@@ -20,6 +20,7 @@ namespace Assets.Scripts.Application.Meta
 {
     public class MiscMalleary: MonoBehaviour
     {
+        [SerializeField] private AutoCompletingInput input;
 
         [SerializeField] private Button MetapauseButton;
         [SerializeField] private Button UnmetapauseButton;
@@ -35,9 +36,9 @@ namespace Assets.Scripts.Application.Meta
             Watchman.Get<HornedAxe>().DeleteSituation(verbId, 1);
         }
 
-        private void PurgeElement(string elementId)
+        public void PurgeElement()
         {
-            Watchman.Get<HornedAxe>().PurgeElement(elementId, 1);
+            Watchman.Get<HornedAxe>().PurgeElement(input.text, 1);
         }
 
 
