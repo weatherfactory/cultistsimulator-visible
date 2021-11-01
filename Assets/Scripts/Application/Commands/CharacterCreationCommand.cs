@@ -76,7 +76,8 @@ namespace SecretHistories.Commands
         {
 
             var character = Watchman.Get<PrefabFactory>().CreateLocally<Character>(stable.transform);
-            character.name = "Character_" + Name;
+            character.Name = Name; //the data property...
+            character.name = "Character_" + Name; //...and the game object name. Let's not do this again, eh
             character.Profession = Profession;
             character.ActiveLegacy = ActiveLegacy;
             character.EndingTriggered = EndingTriggered;
