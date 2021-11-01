@@ -17,7 +17,12 @@ public class StatusBar : MonoBehaviour,ICharacterSubscriber
 
     public void Start()
     {
-        Watchman.Get<Stable>().Protag().Subscribe(this);
+        var protag= Watchman.Get<Stable>().Protag();
+        protag.Subscribe(this);
+        CharacterName.text = protag.Name;
+        CharacterProfession.text = protag.Profession;
+
+
     }
 
     public void ChangeCharacterName(string newName)

@@ -32,7 +32,7 @@ namespace SecretHistories.Services
             string lastDesireLabel=String.Empty;
             string lastFollowerLabel = String.Empty;
 
-			if (previousCharacterName == HistoryBuilder.DEFAULT_CHARACTER_NAME)
+			if (previousCharacterName == NoonConstants.ARCHETYPICAL_CHARACTER_NAME)
 			{
 				previousCharacterName = Watchman.Get<ILocStringProvider>().Get("UI_DEFAULTNAME");	// Replace [unnamed] with a nicer default such as J.N.Sinombre - CP
 			}

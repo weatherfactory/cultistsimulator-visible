@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SecretHistories.Constants;
 
 namespace SecretHistories.Services
 {
@@ -10,7 +11,7 @@ namespace SecretHistories.Services
     /// </summary>
  public class HistoryBuilder
     {
-        public const string DEFAULT_CHARACTER_NAME = "J.N. Sinombre";
+        
         public const string DEFAULT_LAST_BOOK = "textbooksanskrit";
         public const string DEFAULT_LAST_DESIRE = "ascensionsensationa";
         public const string DEFAULT_LAST_TOOL = "toolknockb";
@@ -35,7 +36,7 @@ namespace SecretHistories.Services
             else
                 populatedPast = currentPast;
             if(!populatedPast.ContainsKey(LegacyEventRecordId.lastcharactername.ToString()))
-                populatedPast.Add(LegacyEventRecordId.lastcharactername.ToString(), DEFAULT_CHARACTER_NAME);
+                populatedPast.Add(LegacyEventRecordId.lastcharactername.ToString(), NoonConstants.ARCHETYPICAL_CHARACTER_NAME);
 
             if (!populatedPast.ContainsKey(LegacyEventRecordId.lastbook.ToString()))
                 populatedPast.Add(LegacyEventRecordId.lastbook.ToString(), DEFAULT_LAST_BOOK);

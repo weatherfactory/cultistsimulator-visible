@@ -37,7 +37,7 @@ namespace SecretHistories.Constants
         public const string CULTURE_SETTING_KEY = "Culture";
 
         
-
+        public const string ARCHETYPICAL_CHARACTER_NAME = "J.N. Sinombre"; //can be replaced with locale info, but we use this as the base marker
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
         public const string TOKEN_LAST_DESIRE = "#LAST_DESIRE#";
         public const string TOKEN_LAST_TOOL = "#LAST_TOOL#";
