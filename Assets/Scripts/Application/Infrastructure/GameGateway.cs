@@ -71,12 +71,12 @@ namespace SecretHistories.Infrastructure
 
                 //Now that we've loaded the characters, display an appropriate tabletop
                 var protag = Watchman.Get<Stable>().Protag();
-                //if(protag.State==CharacterState.Extinct)
-                //{
-                //    Watchman.Get<StageHand>().LegacyChoiceScreen();
-                //    return;
-                //}
-                //else
+                if(protag.State==CharacterState.Extinct)
+                {
+                    Watchman.Get<StageHand>().LegacyChoiceScreen();
+                    return;
+                }
+                else
                     PopulateTabletop(protag, gameState);
             }
             catch (Exception e)
