@@ -23,10 +23,10 @@ namespace Assets.Logic
 
 
             //try to find a legacy that matches the death.
-            Legacy deathDependentLegacy = _compendium.GetEntitiesAsList<Legacy>().OrderBy(l=>rnd.Next()).ToList().Find(l => l.FromEnding == ending.Id);
+            Legacy endingDependentLegacy = _compendium.GetEntitiesAsList<Legacy>().OrderBy(l=>rnd.Next()).ToList().Find(l => l.FromEnding == ending.Id);
 
             //there should be one! but in case there's not, log it, and get prepped to draw an extra random legacy.
-            if (deathDependentLegacy == null)
+            if (!endingDependentLegacy.IsValid())
             {
                 NoonUtility.Log("Couldn't find a death-dependent ending for " + ending.Id +
                                 " so we'll draw a full 3 randoms. But this is a problem!",1);
@@ -34,7 +34,8 @@ namespace Assets.Logic
             }
             else
             {
-                selectedLegacies.Add(deathDependentLegacy);
+                NoonUtility.Log($"Ending dependent legacy {endingDependentLegacy.Id} from ending {ending.Id}");
+                selectedLegacies.Add(endingDependentLegacy);
             }
 
             //find: randomly selected legacies from the remaining list that are
@@ -43,20 +44,19 @@ namespace Assets.Logic
             //- not excluded by the death-dependent legacy
             IEnumerable<Legacy> drawingLegacies = _compendium.GetEntitiesAsList<Legacy>().Where(
                     l => l.AvailableWithoutEndingMatch
-                         && (deathDependentLegacy == null || !deathDependentLegacy.ExcludesOnEnding.Contains(l.Id)))
+                         && (!endingDependentLegacy.ExcludesOnEnding.Contains(l.Id)))
                 .OrderBy(l => rnd.Next()).ToList();
 
             NoonUtility.Log(drawingLegacies.Count() + " legacies available to draw from");
+            
+            
+            drawingLegacies = drawingLegacies.Where(l => l.Id != endingDependentLegacy.Id).Take(randomLegaciesToDraw);
 
-            NoonUtility.Log(randomLegaciesToDraw + "  legacies drawing");
+            foreach(var d in drawingLegacies)
+                NoonUtility.Log($"Drawn extra legacy: {d.Id}" );
+            
 
-
-            if (deathDependentLegacy == null)
-                drawingLegacies = drawingLegacies.Take(randomLegaciesToDraw);
-            else
-                drawingLegacies = drawingLegacies.Where(l => l.Id != deathDependentLegacy.Id).Take(randomLegaciesToDraw);
-
-           selectedLegacies.AddRange(drawingLegacies);
+            selectedLegacies.AddRange(drawingLegacies);
 
 
 
