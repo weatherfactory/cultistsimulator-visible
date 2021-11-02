@@ -32,10 +32,13 @@ public enum LegacyEventRecordId
 
 [IsEncaustableClass(typeof(CharacterCreationCommand))]
 public class Character:MonoBehaviour,IEncaustable
-    {
-        [Encaust]
+{
+    [Encaust] public string ActiveLegacyId => ActiveLegacy.Id;
+    [Encaust] public string EndingTriggeredId => EndingTriggered.Id;
+
+        [DontEncaust]
         public Legacy ActiveLegacy { get; set; }
-        [Encaust]
+        [DontEncaust]
         public Ending EndingTriggered { get; set; }
 
         [Encaust]
@@ -65,7 +68,7 @@ public class Character:MonoBehaviour,IEncaustable
         get => _profession;
         set
         {
-
+            _profession = value;
             foreach (var s in new List<ICharacterSubscriber>(_subscribers))
                 if (s.Equals(null))
                     Unsubscribe(s);

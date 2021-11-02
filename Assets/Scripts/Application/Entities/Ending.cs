@@ -19,7 +19,7 @@ namespace SecretHistories.Entities
         Vile=4
     }
     [FucineImportable("endings")]
-    public class Ending: AbstractEntity<Ending>, IEntityWithId
+    public class Ending: AbstractEntity<Ending>
     {
 
         [FucineValue(DefaultValue = "", Localise = true)]

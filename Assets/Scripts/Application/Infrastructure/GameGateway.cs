@@ -71,16 +71,13 @@ namespace SecretHistories.Infrastructure
 
                 //Now that we've loaded the characters, display an appropriate tabletop
                 var protag = Watchman.Get<Stable>().Protag();
-                Watchman.Get<TabletopBackground>().ShowTabletopFor(protag.ActiveLegacy);
-
-
-                gameState.RootPopulationCommand.Execute(new Context(Context.ActionSource.Loading));
-
-                
-                foreach (var n in gameState.NotificationCommands)
-                {
-                    Watchman.Get<Concursum>().ShowNotification(new NotificationArgs(n.Notification.Title, n.Notification.Description)); //ultimately, I'd like the float note to be a token, too - we're using AddCommand here currently just as a holder for the strings
-                }
+                //if(protag.State==CharacterState.Extinct)
+                //{
+                //    Watchman.Get<StageHand>().LegacyChoiceScreen();
+                //    return;
+                //}
+                //else
+                    PopulateTabletop(protag, gameState);
             }
             catch (Exception e)
             {
@@ -105,6 +102,22 @@ namespace SecretHistories.Infrastructure
             //set game speed as appropriate to the provider (usually paused, but not for a fresh or restarting game)
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProvider.GetDefaultGameSpeed(), WithSFX = false });
 
+        }
+
+        private static void PopulateTabletop(Character protag, PersistedGameState gameState)
+        {
+            Watchman.Get<TabletopBackground>().ShowTabletopFor(protag.ActiveLegacy);
+
+            gameState.RootPopulationCommand.Execute(new Context(Context.ActionSource.Loading));
+
+
+            foreach (var n in gameState.NotificationCommands)
+            {
+                Watchman.Get<Concursum>()
+                    .ShowNotification(new NotificationArgs(n.Notification.Title,
+                        n.Notification
+                            .Description)); //ultimately, I'd like the float note to be a token, too - we're using AddCommand here currently just as a holder for the strings
+            }
         }
 
         private static async Task SaveRestartState()

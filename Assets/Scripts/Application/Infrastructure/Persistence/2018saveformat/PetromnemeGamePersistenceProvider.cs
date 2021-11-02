@@ -34,7 +34,10 @@ namespace SecretHistories.Infrastructure.Persistence
             var characterCreationCommand= importer.ImportToCharacterCreationCommand(this);
             _persistedGameState.CharacterCreationCommands.Add(characterCreationCommand);
 
-            var rootPopulationCommand = importer.ImportTableState(this,characterCreationCommand.ActiveLegacy); //if we don't have an active legacy, we've no business importing table state
+            var activeLegacy = Watchman.Get<Compendium>()
+                .GetEntityById<Legacy>(characterCreationCommand.ActiveLegacyId);
+
+            var rootPopulationCommand = importer.ImportTableState(this, activeLegacy); //if we don't have an active legacy, we've no business importing table state
             _persistedGameState.RootPopulationCommand = rootPopulationCommand;
 
         }

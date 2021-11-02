@@ -78,8 +78,7 @@ public class PetromnemeImporter
             var endingTriggeredId = TryGetStringFromHashtable(htSave, SaveConstants.SAVE_CURRENTENDING);
             if (!string.IsNullOrEmpty(endingTriggeredId))
                 NoonUtility.Log($"PETRO: Found ending triggered id {endingTriggeredId}");
-            characterCreationCommand.EndingTriggered =
-                Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredId);
+            characterCreationCommand.EndingTriggeredId = endingTriggeredId;
             NoonUtility.Log(
                 "PETRO: Returning character creation command with just 'endingtriggered' populated. That's all we get.");
             return characterCreationCommand;
@@ -89,22 +88,26 @@ public class PetromnemeImporter
         if (!string.IsNullOrEmpty(chosenLegacyForCharacterId))
             NoonUtility.Log($"PETRO: Found chosenLegacyForCharacterId {chosenLegacyForCharacterId}");
 
-        characterCreationCommand.ActiveLegacy =
-            Watchman.Get<Compendium>().GetEntityById<Legacy>(chosenLegacyForCharacterId);
+        characterCreationCommand.ActiveLegacyId = chosenLegacyForCharacterId;
         NoonUtility.Log(
-            $"PETRO: Added ActiveLegacy {characterCreationCommand.ActiveLegacy.Id} to char creation command");
+            $"PETRO: Added ActiveLegacy {characterCreationCommand.ActiveLegacyId} to char creation command");
 
 
         var endingTriggeredForCharacterId =
             TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_CURRENTENDING);
-        characterCreationCommand.EndingTriggered =
+        var EndingTriggered =
             Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
 
-        if (!characterCreationCommand.EndingTriggered.IsValid())
+        if (EndingTriggered.IsValid())
+        {
+            characterCreationCommand.EndingTriggeredId = EndingTriggered.Id;
             NoonUtility.Log(
-                $"PETRO: Added Ending {characterCreationCommand.EndingTriggered.Id} to char creation command");
+                $"PETRO: Added Ending {EndingTriggered.Id} to char creation command");
+        }
         else
-            NoonUtility.Log($"PETRO: No triggered ending found; not adding oneto char creation command");
+        {
+            NoonUtility.Log($"PETRO: No triggered ending found; not adding one to char creation command");
+        }
 
         if (htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
         {

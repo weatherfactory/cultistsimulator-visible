@@ -20,8 +20,8 @@ namespace SecretHistories.Commands
     {
         public string Name { get; set; }
         public string Profession { get; set; }
-        public Legacy ActiveLegacy { get; set; }
-        public Ending EndingTriggered { get; set; }
+        public string ActiveLegacyId { get; set; }
+        public string EndingTriggeredId { get; set; }
         public Dictionary<string, int> RecipeExecutions { get; set; }
         public DateTime DateTimeCreated { get; set; }
         public Dictionary<string, string> InProgressHistoryRecords { get; set; }=new Dictionary<string, string>();
@@ -42,8 +42,8 @@ namespace SecretHistories.Commands
         {
             var cc = new CharacterCreationCommand
             {
-                ActiveLegacy = activeLegacy,
-                EndingTriggered = Ending.NotEnded(),
+                ActiveLegacyId = activeLegacy.Id,
+                EndingTriggeredId = Ending.NotEnded().Id,
                 Name = Watchman.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME"),
                 Profession = activeLegacy.Label,
                 DateTimeCreated=DateTime.Now
@@ -64,8 +64,11 @@ namespace SecretHistories.Commands
             character.Name = Name; //the data property...
             character.name = "Character_" + Name; //...and the game object name. Let's not do this again, eh
             character.Profession = Profession;
-            character.ActiveLegacy = ActiveLegacy;
-            character.EndingTriggered = EndingTriggered;
+
+            var compendium = Watchman.Get<Compendium>();
+
+            character.ActiveLegacy = compendium.GetEntityById<Legacy>(ActiveLegacyId);
+            character.EndingTriggered = compendium.GetEntityById<Ending>(EndingTriggeredId);
             character.SetCreatedAtTime(DateTimeCreated);
             character.OverwriteExecutionsWith(RecipeExecutions);
             foreach (var inProgressRecord in InProgressHistoryRecords)
