@@ -2,22 +2,18 @@
 	"elements": [
 		{    
 			"id": "versionnews.2021.10.a",
-			"label": "2021.10.a ALPHA",
-			"description": "This is a massive overhaul (80% complete) of the whole codebase, so I can use it for other projects without losing my mind. The effect is mostly to break existing functionality, I'm afraid. I've put it live so modders and other enthusiasts can take a look, but please consider it alpha and unstable.",
+			"label": "2021.11.a,1 ALPHA",
+			"description": "This is a massive overhaul (90% complete) of the whole codebase, so I can use it for other projects without losing my mind. We're now approaching stability.",
 			"icon": "rkx.weakness.cats"
 		},
+		
 					{
 			"id": "versionnews.newsaveformat",
 			"label": "SAVE FORMAT CONVERSION",
 			"description": "We've moved to a new save format. If you have an old-style save.txt but not new style save.json, the game will silently convert old-style save.txt to new-style save.json at startup. It'll rename and keep the old save.txt. Windows are auto-closed (which will not change) and card order may be disturbed (which may change).",
 			"icon": "ascensionchangec"
 		},
-					{
-			"id": "versionnews.purgingworks",
-			"label": "Purging Works?",
-			"description": "Purging an element with decayto: now works as intended (it'll decay to the specified element rather than disappearing). In fact I couldn't repro a problem where it didn't. I'm hoping this means it was a glitch I have accidentally fixed, rather than a problem I've misunderstood. Thanks for the bug reports, anyway!",
-			"icon": "health"
-		},
+
 
 					{
 			"id": "versionnews.assembly.loading",
@@ -25,30 +21,16 @@
 			"description": "Check the MODDING_README.txt in //streamingassets. If you don't know what any of this means, stay clear :)",
 			"icon": "ritetoolconsumeinfluence"
 		},
-		{
-			"id": "versionnews.newordering",
-			"label": "New Token Ordering",
-			"description": "Ordering code is completely reworked. Verb tiles no longer muscle everything out of the way, and a shadow shows where tokens will be placed. I've improved placement and alignment but it's still WIP.",
-			"icon": "paintingmansus"
-		},
-				{
-			"id": "versionnews.drydock",
-			"label": "Token Drydock",
-			"description": "The Debug menu has been reworked completely. In theory, you can use it to edit the new save format (encaustment) manually to tweak tokens. That's not very useful yet, though. You can, however, use it to add and remove mutations, or advance one situation on its own.",
-			"icon": "apostleforge.pillar1"
-		},
+
 						{
 			"id": "versionnews.minor",
-			"label": "Minor Changes in a.5",
-			"description": " - save format converter!
-- Timer on halted verbs is reset properly
-- Much reduced incidence of JAZZ BUG (let us know if you still see it)",
+			"label": "Minor Changes",
+			"description": " - END debug function can now activate a specified ending\n
+- autocomplete in debug shows whether element/recipe/ending",
 			"icon": "apostleforge.pillar2"
-		},
-		
+		}
 		
 		]
 
 }
 
-"v2021.10.a.1 ALPHA,'Like they do in Babylon'\n\nT -  THERE IS A NEW SAVE FORMAT. It's not backwards compatible. I'll write a converter before we go to the main branch, though.				\n\n - 		\n\n - New or.				\n\n - A card shadow shows where things will land.			\n\n - Debug menu has known the Forge's touch.",
