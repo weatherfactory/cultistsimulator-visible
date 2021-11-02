@@ -35,34 +35,28 @@ namespace SecretHistories.Services
                 populatedPast = new Dictionary<string, string>();
             else
                 populatedPast = currentPast;
-            if(!populatedPast.ContainsKey(LegacyEventRecordId.lastcharactername.ToString()))
-                populatedPast.Add(LegacyEventRecordId.lastcharactername.ToString(), NoonConstants.ARCHETYPICAL_CHARACTER_NAME);
 
-            if (!populatedPast.ContainsKey(LegacyEventRecordId.lastbook.ToString()))
-                populatedPast.Add(LegacyEventRecordId.lastbook.ToString(), DEFAULT_LAST_BOOK);
+            tryAddRecord(populatedPast,LegacyEventRecordId.lastcharactername.ToString(),NoonConstants.ARCHETYPICAL_CHARACTER_NAME);
 
-            if (!populatedPast.ContainsKey(LegacyEventRecordId.lastdesire.ToString()))
-                populatedPast.Add(LegacyEventRecordId.lastdesire.ToString(), DEFAULT_LAST_DESIRE);
-
-            if (!populatedPast.ContainsKey(LegacyEventRecordId.lasttool.ToString()))
-                populatedPast.Add(LegacyEventRecordId.lasttool.ToString(), DEFAULT_LAST_TOOL);
-
-            if (!populatedPast.ContainsKey(LegacyEventRecordId.lastsignificantpainting.ToString()))
-                populatedPast.Add(LegacyEventRecordId.lastsignificantpainting.ToString(), DEFAULT_LAST_SIGNIFICANTPAINTING);
-
-            if (!populatedPast.ContainsKey(LegacyEventRecordId.lastcult.ToString()))
-                populatedPast.Add(LegacyEventRecordId.lastcult.ToString(), DEFAULT_LAST_CULT);
-
-            if (!populatedPast.ContainsKey(LegacyEventRecordId.lastheadquarters.ToString()))
-                populatedPast.Add(LegacyEventRecordId.lastheadquarters.ToString(), DEFAULT_LAST_HEADQUARTERS);
-
-            if (!populatedPast.ContainsKey(LegacyEventRecordId.lastpersonkilled.ToString()))
-                populatedPast.Add(LegacyEventRecordId.lastpersonkilled.ToString(), DEFAULT_LAST_PERSON_KILLED);
-            if (!populatedPast.ContainsKey(LegacyEventRecordId.lastfollower.ToString()))
-                populatedPast.Add(LegacyEventRecordId.lastfollower.ToString(), DEFAULT_FOLLOWER_AT_GAME_END);
-
+            tryAddRecord(populatedPast, LegacyEventRecordId.lastbook.ToString(), DEFAULT_LAST_BOOK);
+            tryAddRecord(populatedPast, LegacyEventRecordId.lastdesire.ToString(), DEFAULT_LAST_DESIRE);
+            tryAddRecord(populatedPast, LegacyEventRecordId.lasttool.ToString(), DEFAULT_LAST_TOOL);
+            tryAddRecord(populatedPast, LegacyEventRecordId.lastsignificantpainting.ToString(), DEFAULT_LAST_SIGNIFICANTPAINTING);
+            tryAddRecord(populatedPast, LegacyEventRecordId.lastcult.ToString(), DEFAULT_LAST_CULT);
+            tryAddRecord(populatedPast, LegacyEventRecordId.lastheadquarters.ToString(), DEFAULT_LAST_HEADQUARTERS);
+            tryAddRecord(populatedPast, LegacyEventRecordId.lastpersonkilled.ToString(), DEFAULT_LAST_PERSON_KILLED);
+            tryAddRecord(populatedPast, LegacyEventRecordId.lastfollower.ToString(), DEFAULT_FOLLOWER_AT_GAME_END);
 
             return populatedPast;
+        }
+
+        public void tryAddRecord(Dictionary<string, string> records, string legacyEventRecordId, string value)
+        {
+            if (!records.ContainsKey(legacyEventRecordId))
+            {
+                records.Add(legacyEventRecordId, value);
+                NoonUtility.Log($"HistoryBuilder Can't find a value for {legacyEventRecordId} - supplying '{value}'");
+            }
         }
     }
 }
