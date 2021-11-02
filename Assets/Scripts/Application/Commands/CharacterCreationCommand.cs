@@ -32,26 +32,12 @@ namespace SecretHistories.Commands
             RecipeExecutions = new Dictionary<string, int>();
         }
 
-        public static CharacterCreationCommand Reincarnate(Dictionary<string,string> lastCharacterHistoryRecords, Legacy asLegacy, Ending afterEnding)
-        {
-            var cc = new CharacterCreationCommand
-            {
-                ActiveLegacy = asLegacy,
-                EndingTriggered = afterEnding,
-                Name = Watchman.Get<ILocStringProvider>().Get("UI_CLICK_TO_NAME"),
-                Profession = asLegacy.Label,
-                DateTimeCreated = DateTime.Now
-            };
-            // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
 
-            var hb = new HistoryBuilder();
-            cc.PreviousCharacterHistoryRecords = hb.FillInDefaultPast(lastCharacterHistoryRecords);
-            
-            return cc;
-
-        }
-
-
+        /// <summary>
+        /// Create an entirely new character with a default name
+        /// </summary>
+        /// <param name="activeLegacy"></param>
+        /// <returns></returns>
         public static CharacterCreationCommand IncarnateFromLegacy(Legacy activeLegacy)
         {
             var cc = new CharacterCreationCommand
@@ -67,7 +53,6 @@ namespace SecretHistories.Commands
             var hb = new HistoryBuilder();
             cc.PreviousCharacterHistoryRecords = hb.FillInDefaultPast();
             
-
             return cc;
 
         }

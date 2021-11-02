@@ -97,6 +97,14 @@ public class Character:MonoBehaviour,IEncaustable
         }
     }
 
+
+    public void EnactEnding(Ending endingToEnact)
+    {
+        //if we need logic for the ending to make changes to the character, here would be a good place.
+        EndingTriggered = endingToEnact;
+    }
+
+
     private Dictionary<string, int> _recipeExecutions = new Dictionary<string, int>();
     private string _profession;
     private HashSet<ICharacterSubscriber> _subscribers = new HashSet<ICharacterSubscriber>();

@@ -22,7 +22,9 @@ namespace Assets.Scripts.Application.Meta
         [SerializeField] public Transform AutoCompletionSuggestionPrefab;
         public bool MakeElementSuggestions;
         public bool MakeRecipeSuggestions;
-        
+        public bool MakeEndingSuggestions;
+
+
         private const int MaxAutoCompletionSuggestions = 50;
 
         // Indicates the last selected auto-completion suggestion
@@ -156,7 +158,8 @@ namespace Assets.Scripts.Application.Meta
             if (MakeRecipeSuggestions)
                 suggestions.AddRange(GetRecipeAutoCompletionSuggestions(compendium, value));
 
-
+            if (MakeEndingSuggestions)
+                suggestions.AddRange(GetEndingAutoCompletionSuggestions(compendium, value));
 
             var orderedSuggestions = suggestions.OrderBy(acs => acs.GetText()).ToList();
 
@@ -206,24 +209,39 @@ namespace Assets.Scripts.Application.Meta
         List<AutoCompletionSuggestion> GetElementAutoCompletionSuggestions(Compendium compendium, string prompt)
         {
             return compendium.GetEntitiesAsList<Element>().
-                Where(e => e.Id.StartsWith(prompt)).Select(e => MakeAutocompleteSuggestion(compendium, e.Id, true)).ToList();
+                Where(e => e.Id.StartsWith(prompt)).Select(e => MakeAutocompleteSuggestion(compendium, e.Id, typeof(Element))).ToList();
         }
 
         List<AutoCompletionSuggestion> GetRecipeAutoCompletionSuggestions(Compendium compendium, string prompt)
         {
             return compendium.GetEntitiesAsList<Recipe>().
-                Where(r => r.Id.StartsWith(prompt)).Select(r => MakeAutocompleteSuggestion(compendium, r.Id, false)).ToList();
+                Where(r => r.Id.StartsWith(prompt)).Select(r => MakeAutocompleteSuggestion(compendium, r.Id, typeof(Recipe))).ToList();
         }
 
-        AutoCompletionSuggestion MakeAutocompleteSuggestion(Compendium compendium, string suggestedId, bool isElement)
+        List<AutoCompletionSuggestion> GetEndingAutoCompletionSuggestions(Compendium compendium, string prompt)
+        {
+            return compendium.GetEntitiesAsList<Ending>().
+                Where(x => x.Id.StartsWith(prompt)).Select(x => MakeAutocompleteSuggestion(compendium, x.Id, typeof(Ending))).ToList();
+        }
+
+        AutoCompletionSuggestion MakeAutocompleteSuggestion(Compendium compendium, string suggestedId, Type entityType)
         {
             AutoCompletionSuggestion suggestion = Instantiate(AutoCompletionSuggestionPrefab).GetComponent<AutoCompletionSuggestion>();
             suggestion.SetText(suggestedId);
             suggestion.AddClickListener(() => ApplySuggestion(suggestedId));
 
             // Show the element image if applicable
-            if (isElement)
+            if (entityType==typeof(Element))
+            {
                 suggestion.SetIconForElement(compendium.GetEntityById<Element>(suggestedId));
+                suggestion.SetCategoryText('E');
+            }
+
+            else if(entityType==typeof(Recipe))
+                suggestion.SetCategoryText('R');
+
+            else if(entityType==typeof(Ending))
+                suggestion.SetCategoryText('X');
 
             return suggestion;
         }

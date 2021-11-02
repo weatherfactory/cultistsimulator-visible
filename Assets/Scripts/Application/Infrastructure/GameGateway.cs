@@ -157,19 +157,20 @@ namespace SecretHistories.Infrastructure
 
         
 
-        public void EndGame(Ending ending, Token focusOnToken)
+        public async void EndGame(Ending ending, Token focusOnToken)
         {
             //chronicle ending
             var chronicler = Watchman.Get<Chronicler>();
             chronicler.ChronicleGameEnd(Watchman.Get<HornedAxe>().GetRegisteredSituations(), Watchman.Get<HornedAxe>().GetSpheres(), ending);
 
             //Mark character as defunct
-            var characterCreationCommand=CharacterCreationCommand.Reincarnate(Watchman.Get<Stable>().Protag().InProgressHistoryRecords, NullLegacy.Create(), ending);
-            characterCreationCommand.Execute(Watchman.Get<Stable>());
-
+            Watchman.Get<Stable>().Protag().EnactEnding(ending);
             
             //stop everything
             Watchman.Get<Heart>().Metapause();
+            //save game, so our chronicled information is persisted
+            var saveResult = await TryDefaultSave();
+
 
             //stop current music clip
             Watchman.Get<BackgroundMusic>().FadeToSilence(3f);

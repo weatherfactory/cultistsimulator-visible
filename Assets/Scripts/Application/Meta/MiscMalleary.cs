@@ -119,19 +119,21 @@ namespace Assets.Scripts.Application.Meta
 
 
 
-        public void EndGame(string endingId)
+        public void ApplyEndingFromInput()
         {
             Ending ending;
+            string endingId = input.text;
             var compendium = Watchman.Get<Compendium>();
-            if (string.IsNullOrEmpty(endingId))
+
+            ending = compendium.GetEntityById<Ending>(endingId);
+            if(!ending.IsValid())
                 ending = compendium.GetEntitiesAsList<Ending>().First();
-            else
-                ending = compendium.GetEntityById<Ending>(endingId);
+                
 
 
-            //get a plausible token
+                    //get a plausible token
 
-            var focalToken=Watchman.Get<HornedAxe>().GetDefaultSphere().GetTokensWhere(t => !t.Defunct).FirstOrDefault();
+                    var focalToken=Watchman.Get<HornedAxe>().GetDefaultSphere().GetTokensWhere(t => !t.Defunct).FirstOrDefault();
             if(focalToken==null)
                 NoonUtility.LogWarning("Can't find any tokens in the default sphere to focus game ending on.");
             else

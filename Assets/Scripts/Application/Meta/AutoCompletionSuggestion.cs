@@ -1,4 +1,6 @@
-﻿using SecretHistories.Entities;
+﻿using System;
+using SecretHistories.Entities;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -6,10 +8,16 @@ using UnityEngine.UI;
 public class AutoCompletionSuggestion : MonoBehaviour
 {
 #pragma warning disable 649
+    [SerializeField] private TextMeshProUGUI _categoryText;
     [SerializeField] private Text _text;
 	[SerializeField] private Image _icon;
 	[SerializeField] private Button _button;
 #pragma warning restore 649
+
+    public void SetCategoryText(Char c)
+    {
+        _categoryText.text = c.ToString();
+    }
 
     public string GetText()
 	{
