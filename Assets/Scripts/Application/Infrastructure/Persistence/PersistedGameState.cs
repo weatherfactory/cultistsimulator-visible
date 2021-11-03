@@ -30,14 +30,14 @@ namespace SecretHistories.Infrastructure.Persistence
             return (CharacterCreationCommands.OrderByDescending(c => c.DateTimeCreated).FirstOrDefault());
         }
 
-        public static PersistedGameState ForLegacy(Legacy startingLegacy)
+        public static PersistedGameState ForLegacy(Legacy startingLegacy,Dictionary<string,string> historyRecordsFromPreviousCharacter)
         {
             var state = new PersistedGameState
             {
                 RootPopulationCommand = RootPopulationCommand.RootCommandForLegacy(startingLegacy)
             };
             
-            var cc = CharacterCreationCommand.IncarnateFromLegacy(startingLegacy);
+            var cc = CharacterCreationCommand.IncarnateFromLegacy(startingLegacy, historyRecordsFromPreviousCharacter);
             state.CharacterCreationCommands.Add(cc);
             var note=new Notification(startingLegacy.Label, startingLegacy.Description);
             var notificationCommand = new AddNoteToTokenCommand(note, new Context(Context.ActionSource.Loading));

@@ -64,18 +64,9 @@ namespace SecretHistories.Infrastructure
                 gamePersistenceProvider.DepersistGameState();
 
                 var gameState = gamePersistenceProvider.RetrievePersistedGameState();
+                //overwrite current character in stable with most up to date game state. This may have been retrieved from disk, or built from a legacy with freshGameStateProvider
+                gameState.MostRecentCharacterCommand().ExecuteToProtagonist(Watchman.Get<Stable>());
 
-                if (Watchman.Get<Stable>().Protag() == null )
-                {
-                    if( Application.isEditor)
-                        //The protag should always be loaded at game start. If we've got this far without one, then either we're debugging in the editor, or something has gone badly wrong.
-                        gameState.MostRecentCharacterCommand().ExecuteToProtagonist(Watchman.Get<Stable>());
-                    else
-                    {
-                        NoonUtility.LogWarning("Can't find a current protagonist in the stable. We should have loaded one by now. Aborting load attempt.");
-                        return;
-                    }
-                }
 
                 //Now that we've loaded the characters, display an appropriate tabletop
                 var protag = Watchman.Get<Stable>().Protag();

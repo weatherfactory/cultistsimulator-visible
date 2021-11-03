@@ -38,7 +38,7 @@ namespace SecretHistories.Commands
         /// </summary>
         /// <param name="activeLegacy"></param>
         /// <returns></returns>
-        public static CharacterCreationCommand IncarnateFromLegacy(Legacy activeLegacy)
+        public static CharacterCreationCommand IncarnateFromLegacy(Legacy activeLegacy,Dictionary<string,string> historyRecordsFromPreviousCharacter)
         {
             var cc = new CharacterCreationCommand
             {
@@ -51,7 +51,7 @@ namespace SecretHistories.Commands
             // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
 
             var hb = new HistoryBuilder();
-            cc.PreviousCharacterHistoryRecords = hb.FillInDefaultPast();
+            cc.PreviousCharacterHistoryRecords = hb.FillInDefaultPast(historyRecordsFromPreviousCharacter);
             
             return cc;
 

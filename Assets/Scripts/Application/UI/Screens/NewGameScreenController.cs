@@ -118,8 +118,9 @@ namespace SecretHistories.UI {
 				return;
 
             var chosenLegacy = AvailableLegaciesForEnding[selectedLegacy];
+            var previousProtag = Watchman.Get<Stable>().Protag();
 
-            var freshGamePersistenceProvider = new FreshGameProvider(chosenLegacy);
+            var freshGamePersistenceProvider = new FreshGameProvider(chosenLegacy,previousProtag.InProgressHistoryRecords);
 
             Watchman.Get<StageHand>().LoadGameOnTabletop(freshGamePersistenceProvider);
 
