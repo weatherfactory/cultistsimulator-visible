@@ -97,7 +97,9 @@ namespace SecretHistories.Services
         {
             if(!loadedInfoScene)
             {
-                SceneChange(UHOSCENE, false);
+                CleanUpSceneContents();
+                SceneManager.LoadScene(UHOSCENE, LoadSceneMode.Single);
+
                 loadedInfoScene = true;
             }
         }

@@ -116,7 +116,7 @@ public class CompendiumLoader
 
 
             if (_log.GetMessages().Any(m => m.MessageLevel > 1))
-                //found a serious problem: bug out and report.
+               // found a serious problem: bug out and report.
                 return _log;
         }
 

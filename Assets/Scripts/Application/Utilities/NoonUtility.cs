@@ -91,10 +91,10 @@ using  SecretHistories.Fucine;
                 message=new NoonLogMessage("Null log message supplied");
 
       
-                foreach(var s in subscribers)
-                {
-                    if((int)message.VerbosityNeeded<=(int)s.Sensitivity)
-                        s.AddMessage(message);
+            foreach(var s in subscribers)
+            {
+                if((int)message.VerbosityNeeded<=(int)s.Sensitivity || message.MessageLevel>1)
+                    s.AddMessage(message);
                 
 
         }
