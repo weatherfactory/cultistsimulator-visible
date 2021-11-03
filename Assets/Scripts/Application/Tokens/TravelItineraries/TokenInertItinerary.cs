@@ -36,7 +36,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
 
         public override IGhost GetGhost()
         {
-            return NullGhost.Create();
+            return _travellingToken.GetCurrentGhost();
         }
     }
 }

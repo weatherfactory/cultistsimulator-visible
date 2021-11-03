@@ -68,7 +68,6 @@ namespace SecretHistories.Infrastructure
                 gameState.MostRecentCharacterCommand().ExecuteToProtagonist(Watchman.Get<Stable>());
 
 
-                //Now that we've loaded the characters, display an appropriate tabletop
                 var protag = Watchman.Get<Stable>().Protag();
                 if(protag.State==CharacterState.Extinct)
                 {

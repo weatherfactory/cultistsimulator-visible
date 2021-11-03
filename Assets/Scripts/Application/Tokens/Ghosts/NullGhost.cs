@@ -44,9 +44,10 @@ namespace SecretHistories.Ghosts
         }
 
 
-        public static IGhost Create()
+        public static IGhost Create(IManifestation parentManifestation)
         {
             var nullGhost = new GameObject().AddComponent<NullGhost>();
+            nullGhost.gameObject.transform.SetParent(parentManifestation.Transform);
             return nullGhost;
         }
     }

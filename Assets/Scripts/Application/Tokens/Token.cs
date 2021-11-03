@@ -309,7 +309,7 @@ namespace SecretHistories.UI {
         public IGhost GetCurrentGhost()
         {
             if (_ghost == null)
-                return NullGhost.Create();
+                return NullGhost.Create(_manifestation);
 
             return _ghost;
         }

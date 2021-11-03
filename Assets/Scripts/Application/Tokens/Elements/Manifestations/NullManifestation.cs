@@ -179,7 +179,7 @@ namespace SecretHistories.Manifestations
 
         public IGhost CreateGhost()
         {
-            return NullGhost.Create();
+            return NullGhost.Create(this);
         }
 
         public void OverrideIcon(string icon)
