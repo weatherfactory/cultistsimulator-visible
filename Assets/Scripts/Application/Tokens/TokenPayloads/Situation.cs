@@ -329,8 +329,11 @@ namespace SecretHistories.Entities {
         public void FirstHeartbeat()
         {
              ExecuteHeartbeat(0f, 0f);
-             NotifyStateChange();
+             UpdateCurrentRecipePrediction(GetRecipePredictionForCurrentStateAndAspects(),
+                 new Context(Context.ActionSource.Unknown)); //If we've just loaded/rehydrated the situation, the recipeprediction will be the default verb one, and we need to make sure that the display state reflects a prediction based on current contents.
+            NotifyStateChange();
              NotifyTimerChange();
+
         }
 
         public void ExecuteHeartbeat(float seconds, float metaseconds)
