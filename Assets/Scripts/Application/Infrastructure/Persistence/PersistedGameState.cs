@@ -25,6 +25,10 @@ namespace SecretHistories.Infrastructure.Persistence
             NotificationCommands =new List<AddNoteToTokenCommand>();
         }
 
+        public CharacterCreationCommand MostRecentCharacterCommand()
+        {
+            return (CharacterCreationCommands.OrderByDescending(c => c.DateTimeCreated).FirstOrDefault());
+        }
 
         public static PersistedGameState ForLegacy(Legacy startingLegacy)
         {

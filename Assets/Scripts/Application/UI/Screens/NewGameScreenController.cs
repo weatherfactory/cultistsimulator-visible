@@ -98,7 +98,6 @@ namespace SecretHistories.UI {
             startGameButton.interactable = false;
         }
 
-
         
         // Exposed for in-scene buttons
 
@@ -109,18 +108,10 @@ namespace SecretHistories.UI {
 
             Watchman.Get<StageHand>().MenuScreen();
 
-            //save on exit, so the player will return here, not begin a new game
-//            FadeOut();
-	//		canInteract = false;
-		//	Invoke("ReturnToMenuDelayed", fadeDuration);
+
         }
 
-      //  async void  ReturnToMenuDelayed() { //unused?
-			
-      //throw new NotImplementedException("save here?");
 
-      //      Watchman.Get<StageHand>().MenuScreen();
-      //  }
 
 		public void StartGame() {
 			if (!canInteract)
@@ -132,21 +123,8 @@ namespace SecretHistories.UI {
 
             Watchman.Get<StageHand>().LoadGameOnTabletop(freshGamePersistenceProvider);
 
-
-            //         FadeOut();
-            //canInteract = false;
-            //SoundManager.PlaySfx("UIStartGame");
-            //Invoke("StartGameDelayed", fadeDuration);
         }
 
-		void StartGameDelayed()
-        {
-            var chosenLegacy = AvailableLegaciesForEnding[selectedLegacy];
-            //Watchman.Get<Stable>().Protag().Reincarnate(chosenLegacy,NullEnding.Create());
-
-            //Watchman.Get<StageHand>().NewGameOnTabletop();
-
-		}
 
 		public void SelectLegacy(int legacy) {
 			if (!canInteract)

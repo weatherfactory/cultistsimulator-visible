@@ -177,8 +177,6 @@ namespace SecretHistories.Services
                 //respond to future culture-changed events, but not the initial one
                 concursum.BeforeChangingCulture.AddListener(OnCultureChanged);
 
-                CharacterCreationCommand characterCreationCommand;
-
                 var conversionTask= ConvertClassicSaveIfNecessary();
                 await conversionTask;
                 
@@ -187,9 +185,9 @@ namespace SecretHistories.Services
      
                 gamePersistenceProvider.DepersistGameState();
                 var persistedState = gamePersistenceProvider.RetrievePersistedGameState();
-                characterCreationCommand = persistedState.CharacterCreationCommands.First();
-                _stable.PrepForLoad();
-                characterCreationCommand.Execute(_stable);
+                var characterCreationCommand = persistedState.MostRecentCharacterCommand();
+     
+                characterCreationCommand.ExecuteToProtagonist(_stable);
 
                 stageHand.UseProvider(gamePersistenceProvider);
        
@@ -197,9 +195,6 @@ namespace SecretHistories.Services
 
                 watchman.Register(_stable);
 
-                var chronicler = new Chronicler(Watchman.Get<Stable>().Protag(), Watchman.Get<Compendium>());
-
-                watchman.Register(chronicler);
 
                 //set up the top-level adapters. We do this here in case we've diverted to the error scene on first load / content fail, in order to avoid spamming the log with messages.
                 screenResolutionAdapter.Initialise();

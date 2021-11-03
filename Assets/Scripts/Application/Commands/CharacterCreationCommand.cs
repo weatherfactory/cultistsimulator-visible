@@ -57,10 +57,11 @@ namespace SecretHistories.Commands
 
         }
 
-        public Character Execute(Stable stable)
+        public Character ExecuteToProtagonist(Stable stable)
         {
 
-            var character = Watchman.Get<PrefabFactory>().CreateLocally<Character>(stable.transform);
+            var character = stable.InstantiateCharacterInStable();
+            
             character.Name = Name; //the data property...
             character.name = "Character_" + Name; //...and the game object name. Let's not do this again, eh
             character.Profession = Profession;
@@ -76,7 +77,7 @@ namespace SecretHistories.Commands
             foreach(var previousHistoryRecord in PreviousCharacterHistoryRecords)
                 character.SetOrOverwritePastLegacyEventRecord(previousHistoryRecord.Key,previousHistoryRecord.Value);
 
-            stable.AddNewCharacterAsProtag(character);
+            
 
             Watchman.Get<Compendium>().SupplyLevers(character);
 

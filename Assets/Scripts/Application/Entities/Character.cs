@@ -33,6 +33,15 @@ public enum LegacyEventRecordId
 [IsEncaustableClass(typeof(CharacterCreationCommand))]
 public class Character:MonoBehaviour,IEncaustable
 {
+
+
+    [SerializeField]
+    private string _name = NoonConstants.ARCHETYPICAL_CHARACTER_NAME;
+
+    [SerializeField]
+    private string _profession;
+    
+
     [Encaust] public string ActiveLegacyId => ActiveLegacy.Id;
     [Encaust] public string EndingTriggeredId => EndingTriggered.Id;
 
@@ -109,9 +118,9 @@ public class Character:MonoBehaviour,IEncaustable
 
 
     private Dictionary<string, int> _recipeExecutions = new Dictionary<string, int>();
-    private string _profession;
+    
     private HashSet<ICharacterSubscriber> _subscribers = new HashSet<ICharacterSubscriber>();
-    private string _name = NoonConstants.ARCHETYPICAL_CHARACTER_NAME;
+
     
     private Dictionary<string, string> _inProgressHistoryRecords=new Dictionary<string, string>();
     private Dictionary<string, string> _previousCharacterHistoryRecords=new Dictionary<string, string>();
@@ -127,6 +136,10 @@ public class Character:MonoBehaviour,IEncaustable
         _subscribers.Remove(subscriber);
     }
 
+    public void OnDestroy()
+    {
+        _subscribers.Clear();
+    }
 
     public void SetCreatedAtTime(DateTime createdAtTime)
     {

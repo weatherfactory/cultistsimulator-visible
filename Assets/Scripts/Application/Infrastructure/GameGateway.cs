@@ -65,9 +65,17 @@ namespace SecretHistories.Infrastructure
 
                 var gameState = gamePersistenceProvider.RetrievePersistedGameState();
 
-                Watchman.Get<Stable>().PrepForLoad();
-                foreach (var c in gameState.CharacterCreationCommands)
-                    c.Execute(Watchman.Get<Stable>());
+                if (Watchman.Get<Stable>().Protag() == null )
+                {
+                    if( Application.isEditor)
+                        //The protag should always be loaded at game start. If we've got this far without one, then either we're debugging in the editor, or something has gone badly wrong.
+                        gameState.MostRecentCharacterCommand().ExecuteToProtagonist(Watchman.Get<Stable>());
+                    else
+                    {
+                        NoonUtility.LogWarning("Can't find a current protagonist in the stable. We should have loaded one by now. Aborting load attempt.");
+                        return;
+                    }
+                }
 
                 //Now that we've loaded the characters, display an appropriate tabletop
                 var protag = Watchman.Get<Stable>().Protag();
@@ -118,6 +126,11 @@ namespace SecretHistories.Infrastructure
                         n.Notification
                             .Description)); //ultimately, I'd like the float note to be a token, too - we're using AddCommand here currently just as a holder for the strings
             }
+
+            //Start chronicling the character we just loaded on to the tabletop
+            Watchman.Get<Chronicler>().ChronicleCharacter(protag);
+
+            Watchman.Get<StatusBar>().AttachToCharacter(protag);
         }
 
         private static async Task SaveRestartState()

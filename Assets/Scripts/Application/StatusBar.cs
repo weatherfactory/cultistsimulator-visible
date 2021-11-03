@@ -15,14 +15,17 @@ public class StatusBar : MonoBehaviour,ICharacterSubscriber
     [SerializeField] private TMP_InputField CharacterName;
     [SerializeField] private TextMeshProUGUI CharacterProfession;
 
-    public void Start()
+    public void Awake()
     {
-        var protag= Watchman.Get<Stable>().Protag();
-        protag.Subscribe(this);
-        CharacterName.text = protag.Name;
-        CharacterProfession.text = protag.Profession;
+        var w=new Watchman();
+        w.Register(this);
+    }
 
-
+    public void AttachToCharacter(Character character)
+    {
+        character.Subscribe(this);
+        CharacterName.text = character.Name;
+        CharacterProfession.text = character.Profession;
     }
 
     public void ChangeCharacterName(string newName)
@@ -33,7 +36,6 @@ public class StatusBar : MonoBehaviour,ICharacterSubscriber
             currentCharacter.Name = newName;
         
     }
-
 
     public void CharacterNameUpdated(string newName)
     {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SecretHistories.Core;
@@ -10,19 +9,21 @@ using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
+using UnityEngine;
 using UnityEngine.Analytics;
+using Random = System.Random;
 
 
 namespace SecretHistories.Services
 {
     /// <summary>
-    /// meta responses to significant in game events
+    /// meta responses to significant in-game events. NB in-game: this is called, used and instantiated on the tabletop.
     /// </summary>
     
     
-    public class Chronicler:ICharacterSubscriber
+    public class Chronicler:MonoBehaviour, ICharacterSubscriber
     {
-        private Character _character;
+        private Character _chroniclingCharacter;
         private Compendium _compendium;
         private const string BOOK_ASPECT = "text";
         private const string DESIRE_ASPECT = "desire";
@@ -49,15 +50,23 @@ namespace SecretHistories.Services
         private const string WINTER = "winter";
 
 
-
-
-
-        public Chronicler(Character character,Compendium compendium)
+        public void Awake()
         {
-            _character = character;
-            _compendium = compendium;
-            _character.Subscribe(this);
-            
+            var w=new Watchman();
+            w.Register(this);
+
+            _compendium = Watchman.Get<Compendium>();
+
+        }
+
+        public void ChronicleCharacter(Character characterToChronicle)
+        {
+            if(_chroniclingCharacter!=null)
+                _chroniclingCharacter.Unsubscribe(this);
+
+            _chroniclingCharacter = characterToChronicle;
+            characterToChronicle.Subscribe(this);
+
         }
 
 
@@ -158,7 +167,7 @@ namespace SecretHistories.Services
 
             if(currentFollower!=null)
 
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastfollower.ToString(), currentFollower.Id);
+                _chroniclingCharacter.SetFutureLegacyEventRecord(LegacyEventRecordId.lastfollower.ToString(), currentFollower.Id);
 
         }
 
@@ -224,7 +233,7 @@ namespace SecretHistories.Services
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
 			{
 				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.Payload.EntityId } } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.Payload.EntityId);
+                _chroniclingCharacter.SetFutureLegacyEventRecord(LegacyEventRecordId.lastheadquarters.ToString(), token.Payload.EntityId);
 			}
         }
 
@@ -233,7 +242,7 @@ namespace SecretHistories.Services
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             {
 				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.Payload.EntityId } } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.Payload.EntityId);
+                _chroniclingCharacter.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcult.ToString(), token.Payload.EntityId);
 
                 if (tokenAspects.Keys.Contains("cultsecrethistories_1"))
 				{
@@ -279,7 +288,7 @@ namespace SecretHistories.Services
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
 			{
 				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.Payload.EntityId } } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.Payload.EntityId);
+                _chroniclingCharacter.SetFutureLegacyEventRecord(LegacyEventRecordId.lasttool.ToString(), token.Payload.EntityId);
 			}
         }
 
@@ -292,17 +301,17 @@ namespace SecretHistories.Services
                 if (tokenAspects.Keys.Contains(POWER_ASPECT))
 				{
 					Analytics.CustomEvent( "A_DESIRE_POWER" );
-                    _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionpowera");
+                    _chroniclingCharacter.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionpowera");
 				}
                 else if (tokenAspects.Keys.Contains(SENSATION_ASPECT))
                 {
 					Analytics.CustomEvent( "A_DESIRE_SENSATION" );
-				    _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionsensationa");
+				    _chroniclingCharacter.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionsensationa");
 				}
                 else if (tokenAspects.Keys.Contains(ENLIGHTENMENT_ASPECT))
 				{
 					Analytics.CustomEvent( "A_DESIRE_ENLIGHTENMENT" );
-                    _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionenlightenmenta");
+                    _chroniclingCharacter.SetFutureLegacyEventRecord(LegacyEventRecordId.lastdesire.ToString(), "ascensionenlightenmenta");
 				}
             }
         }
@@ -312,7 +321,7 @@ namespace SecretHistories.Services
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
 			{
 				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.Payload.EntityId } } );
-                _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.Payload.EntityId);
+                _chroniclingCharacter.SetFutureLegacyEventRecord(LegacyEventRecordId.lastbook.ToString(), token.Payload.EntityId);
 			}
         }
 
@@ -338,7 +347,7 @@ namespace SecretHistories.Services
 
         public void CharacterNameUpdated(string newName)
         {
-            _character.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
+            _chroniclingCharacter.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
 
         }
 

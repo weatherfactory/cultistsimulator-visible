@@ -141,7 +141,7 @@ public class CreationCommandsSmokeTests
     {
         var characterStable=new GameObject().AddComponent<Stable>();
         var characterCreationCommand=new CharacterCreationCommand();
-        var character = characterCreationCommand.Execute(characterStable);
+        var character = characterCreationCommand.ExecuteToProtagonist(characterStable);
         Assert.IsInstanceOf<Character>(character);
     }
 
