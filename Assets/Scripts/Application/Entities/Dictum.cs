@@ -37,8 +37,7 @@ namespace SecretHistories.Entities
         [FucineValue]
         public string NewGameScene { get; set; }
 
-        [FucineValue]
-        public string UhOScene { get; set; }
+        //We can't put the UhO scene in Dictum, because if the dictum JSON fails to load, we'll get stuck in a loop!
 
         [FucineValue]
         public string NoteElementId { get; set; }

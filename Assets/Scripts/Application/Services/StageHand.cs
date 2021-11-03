@@ -22,7 +22,7 @@ namespace SecretHistories.Services
         //we don't want to load it more than once, and checking if it's in loaded scenes doesn't seem to work - because they're not loaded when we do the pass again?
         private bool loadedInfoScene = false;
 
-
+        private const string UHOSCENE = "S7UhO";
         public int StartingSceneNumber;
 
         public GamePersistenceProvider GamePersistenceProvider { get; private set; }
@@ -97,7 +97,7 @@ namespace SecretHistories.Services
         {
             if(!loadedInfoScene)
             {
-                SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().UhOScene, false);
+                SceneChange(UHOSCENE, false);
                 loadedInfoScene = true;
             }
         }
