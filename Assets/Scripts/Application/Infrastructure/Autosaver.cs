@@ -96,8 +96,6 @@ namespace SecretHistories.Infrastructure
             Watchman.Get<LocalNexus>().DisablePlayerInput(0f);
 
 
-            if (gameGateway != null)
-            {
                 var saveResult = await gameGateway.TryDefaultSave();
                 AutosaveIndicator.Hide(); //always hide, succeed or fail
                 //but stay paused and disabled if the save went wrong
@@ -107,7 +105,7 @@ namespace SecretHistories.Infrastructure
                     heart.Unmetapause();
                     Watchman.Get<LocalNexus>().EnablePlayerInput();
                 }
-            }
+            
 
             
         }

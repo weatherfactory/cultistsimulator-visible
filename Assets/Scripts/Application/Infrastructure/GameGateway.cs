@@ -98,7 +98,7 @@ namespace SecretHistories.Infrastructure
             Watchman.Get<LocalNexus>().EnablePlayerInput();
             Watchman.Get<Heart>().Unmetapause();
             //set game speed as appropriate to the provider (usually paused, but not for a fresh or restarting game)
-            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = gamePersistenceProvider.GetDefaultGameSpeed(), WithSFX = false });
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 2, GameSpeed = gamePersistenceProvider.GetDefaultGameSpeed(), WithSFX = false });
 
         }
 
