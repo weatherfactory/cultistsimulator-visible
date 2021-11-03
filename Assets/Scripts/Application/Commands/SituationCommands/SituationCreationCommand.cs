@@ -115,6 +115,8 @@ namespace SecretHistories.Commands
             var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphereToDisplayWindowIn.transform);
             newWindow.Attach(newSituation);
 
+            if(IsOpen)
+                newSituation.OpenAt(windowLocation);
 
             foreach (var d in Dominions)
                 d.Execute(newSituation);

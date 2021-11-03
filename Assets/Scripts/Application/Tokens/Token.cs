@@ -187,7 +187,6 @@ namespace SecretHistories.UI {
             
             canvasGroup = GetComponent<CanvasGroup>();
 
-            CurrentItinerary = new TokenInertItinerary();
             _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
             _payload = NullElementStack.Create();
 

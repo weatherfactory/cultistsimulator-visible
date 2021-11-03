@@ -7,6 +7,7 @@ using Assets.Scripts.Application.Abstract;
 using Assets.Scripts.Application.Interfaces;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Commands;
 using SecretHistories.Constants;
@@ -35,12 +36,15 @@ namespace SecretHistories.Commands
         public TokenCreationCommand()
         {
             Location=TokenLocation.Default(FucinePath.Root()); // we expect the sphere to be overwritten in Execute.The SpherePath bit of Location here is redundant
+            CurrentItinerary = new TokenInertItinerary();
         }
 
         public TokenCreationCommand(ITokenPayloadCreationCommand payload,TokenLocation location)
         {
             Payload = payload;
             Location = location; // we expect the sphere to be overwritten in Execute.The SpherePath bit of Location here is redundant
+            CurrentItinerary = new TokenInertItinerary();
+
         }
 
         public TokenCreationCommand(ElementStack elementStack, TokenLocation location)
@@ -48,6 +52,8 @@ namespace SecretHistories.Commands
             var elementStackEncaustery = new Encaustery<ElementStackCreationCommand>();
             Payload = elementStackEncaustery.Encaust(elementStack);
             Location = location;
+            CurrentItinerary = new TokenInertItinerary();
+
         }
 
         public TokenCreationCommand WithSourceToken(Token sourceToken)
@@ -80,6 +86,7 @@ namespace SecretHistories.Commands
             {
                 SetTokenTravellingFromSourceToken(newToken,_sourceToken);
             }
+
 
             SoundManager.PlaySfx("SituationTokenCreate");
 
