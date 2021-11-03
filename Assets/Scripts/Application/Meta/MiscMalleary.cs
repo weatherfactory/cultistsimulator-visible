@@ -77,8 +77,6 @@ namespace Assets.Scripts.Application.Meta
 
             NoonUtility.Log("Total time to import: " + (DateTime.Now - startImport));
 
-            // Populate current decks with new cards (this will shuffle the deck)
-            //Watchman.Get<Stable>().Protag().ResetStartingDecks();
 
         }
 
