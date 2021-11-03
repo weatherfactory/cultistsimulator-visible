@@ -147,7 +147,7 @@ namespace SecretHistories.Entities
             public int tokenCount { get; private set; }
             public int rowCount { get; private set; }
             private const int STARTINGX = -200;
-            private const int XGAP = 100;
+            private const int XGAP = 200;
             private const int STARTINGY = 0;
             private const int YGAP = 250;
 
