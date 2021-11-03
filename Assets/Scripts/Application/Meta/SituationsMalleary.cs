@@ -109,10 +109,13 @@ namespace Assets.Scripts.Application.Meta
 
         public void AdvanceTimeToEndOfRecipe()
         {
-            var situation = _situationDrydock.GetTokenInSlot().Payload;
-            var timeRemaining = situation.GetTimeshadow().LifetimeRemaining;
+            var situationToken = _situationDrydock.GetTokenInSlot();
+            if(situationToken.Payload!=null)
+            {
+            var timeRemaining = situationToken.Payload.GetTimeshadow().LifetimeRemaining;
             if(timeRemaining>0)
                 _situationDrydock.RequestTokensSpendTime(timeRemaining, 0);
+            }
         }
 
         public void AddNote()
@@ -149,6 +152,7 @@ namespace Assets.Scripts.Application.Meta
                     situation.RemoveSubscriber(this);
             }
             else if(args.TokenAdded!=null)
+            
             {
                 EncaustDrydockedItem(args.TokenAdded, input);
                 PopulateLinksPanel(args.TokenAdded.Payload);
@@ -166,11 +170,21 @@ namespace Assets.Scripts.Application.Meta
 
         public void EncaustDrydockedItem(Token drydockedItem, AutoCompletingInput jsonEditField)
         {
+            try
+            {
+
+            
             var encaustery = new Encaustery<TokenCreationCommand>();
             var encaustedCommand = encaustery.Encaust(drydockedItem);
             var sh = new SerializationHelper();
 
             jsonEditField.text = sh.SerializeToJsonString(encaustedCommand);
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogWarning($"Couldn't encaust drydocked item: {e.Message}");
+                jsonEditField.text = string.Empty;
+            }
         }
 
         private void PopulateLinksPanel(ITokenPayload payload)
