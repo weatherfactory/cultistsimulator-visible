@@ -62,13 +62,8 @@ namespace Assets.Scripts.Application.Meta
             storefrontServicesProvider.SetAchievementForCurrentStorefronts(achievementId, false);
         }
 
-        void FastForward(float interval)
-        {
-       throw new NotImplementedException();
-       throw new NotImplementedException();
-        }
 
-        void UpdateCompendiumContent()
+        public void UpdateCompendiumContent()
         {
             Watchman.Get<ModManager>().CatalogueMods();
 
