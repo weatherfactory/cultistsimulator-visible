@@ -40,6 +40,8 @@ namespace SecretHistories.Commands
 
                 var newToken=tokenCreationCommand.Execute(_context,token.Sphere);
 
+                SoundManager.PlaySfx("SituationTokenSpawn");
+
                 //Sometimes that command will result in a null token - for example if we're trying to spawn a unique situation
                 //that already exists.
                 if (newToken.IsValid())

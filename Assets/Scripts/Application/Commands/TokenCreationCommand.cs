@@ -87,9 +87,6 @@ namespace SecretHistories.Commands
                 SetTokenTravellingFromSourceToken(newToken,_sourceToken);
             }
 
-
-            SoundManager.PlaySfx("SituationTokenCreate");
-
             return newToken;
         }
 
