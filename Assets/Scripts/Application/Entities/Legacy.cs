@@ -130,7 +130,7 @@ namespace SecretHistories.Entities
             }
 
 
-            startingTokenDistributionStrategy.NextRow();
+     //       startingTokenDistributionStrategy.NextRow();
 
             var dropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
             var dropzoneCreationCommand = new DropzoneCreationCommand();
