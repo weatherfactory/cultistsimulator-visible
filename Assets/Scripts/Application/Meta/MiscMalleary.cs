@@ -24,6 +24,16 @@ namespace Assets.Scripts.Application.Meta
 
         [SerializeField] private Button MetapauseButton;
         [SerializeField] private Button UnmetapauseButton;
+        [SerializeField] private Button SetCheevo;
+        [SerializeField] private Button ClearCheevo;
+
+        
+        public void Awake()
+        {
+            Debug.Log(Watchman.Get<Config>().knock);
+            SetCheevo.gameObject.SetActive(Watchman.Get<Config>().knock);
+            ClearCheevo.gameObject.SetActive(Watchman.Get<Config>().knock);
+        }
 
         void HaltVerb(string verbId)
         {

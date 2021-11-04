@@ -91,8 +91,8 @@ public class Config
             }
 
 
-
-            if (String.IsNullOrEmpty(GetConfigValue("knock")))
+            string knockValue = GetConfigValue("knock");
+            if (!String.IsNullOrEmpty(knockValue) && knockValue!="0" )
             {
                 knock = true;
             }
