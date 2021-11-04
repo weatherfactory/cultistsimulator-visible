@@ -10,7 +10,15 @@ namespace SecretHistories.Assets.Scripts.Application.Services
 {
    public class UnityLogWrapper: ILogSubscriber
    {
-       public VerbosityLevel Sensitivity => VerbosityLevel.Trivia;
+       public VerbosityLevel Sensitivity { get; protected set; }
+        public UnityLogWrapper()
+        {
+            if (UnityEngine.Application.isEditor)
+                Sensitivity = VerbosityLevel.Significants;
+            else
+                Sensitivity = VerbosityLevel.Trivia;
+
+        }
         public void AddMessage(ILogMessage message)
         {
             string formattedMessage =

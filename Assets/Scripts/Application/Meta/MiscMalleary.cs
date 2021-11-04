@@ -50,16 +50,17 @@ namespace Assets.Scripts.Application.Meta
 
         }
 
-        void TriggerAchievement(string achievementId)
+       public void TriggerAchievement()
         {
+
             var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
-            storefrontServicesProvider.SetAchievementForCurrentStorefronts(achievementId, true);
+            storefrontServicesProvider.SetAchievementForCurrentStorefronts(input.text.ToUpperInvariant(), true);
         }
 
-        void ResetAchievement(string achievementId)
+       public void ResetAchievement()
         {
             var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
-            storefrontServicesProvider.SetAchievementForCurrentStorefronts(achievementId, false);
+            storefrontServicesProvider.SetAchievementForCurrentStorefronts(input.text.ToUpperInvariant(), false);
         }
 
 
