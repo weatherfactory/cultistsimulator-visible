@@ -8,7 +8,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.States.TokenStates
 {
-   public class DroppedOnTokenWhichMovedAsideState: TokenState
+   public class DroppedOnTokenWhichMovedAsideState: AbstractTokenState
     {
         public override bool Docked(Token token)
         {

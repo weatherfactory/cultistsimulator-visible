@@ -591,6 +591,7 @@ namespace SecretHistories.Spheres
             DisplayAndPositionHere(token, context);
 
             NotifyTokensChangedForSphere(args);
+
         }
 
 

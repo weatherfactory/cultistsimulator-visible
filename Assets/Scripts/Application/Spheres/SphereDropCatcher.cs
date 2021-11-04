@@ -29,7 +29,7 @@ namespace SecretHistories.Spheres
             if (token != null)
             {
                 if (Sphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag)))
-                    token.CurrentState=new DroppedInSphereState();
+                    token.Stabilise();
             }
               
 

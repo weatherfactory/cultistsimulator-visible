@@ -9,7 +9,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.States.TokenStates
 {
-    public class DroppedInSphereState: TokenState
+    public class DroppedInSphereState: AbstractTokenState
     {
 
         public override bool Docked(Token token)

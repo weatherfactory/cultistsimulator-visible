@@ -11,7 +11,7 @@ namespace SecretHistories.States.TokenStates
     /// <summary>
     ///eg: we dropped a stack of >1 elements on a sphere which can only accept one of them. This state applies to the stack remainder that's returned
     /// </summary>
-   public class RejectedViaSplit: TokenState
+   public class RejectedViaSplit: AbstractTokenState
     {
         public override bool Docked(Token token)
         {

@@ -8,7 +8,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.States.TokenStates
 {
-    public class TravellingFailedUnexpectedlyState : TokenState
+    public class TravellingFailedUnexpectedlyState : AbstractTokenState
     {
     public override bool Docked(Token token)
     {

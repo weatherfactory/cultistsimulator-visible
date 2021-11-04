@@ -8,11 +8,12 @@ using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
+using SecretHistories.States.TokenStates;
 
 
 namespace SecretHistories.States
 {
-    public abstract class TokenState
+    public abstract class AbstractTokenState
     {
         public abstract bool Docked(Token token);
         public abstract bool InPlayerDrivenMotion(Token token);
@@ -20,6 +21,13 @@ namespace SecretHistories.States
         public abstract bool CanDecay(Token token);
 
 
-
+        /// <summary>
+        /// This is the 'finished, let's continue' state.
+        /// </summary>
+        /// <returns></returns>
+        public AbstractTokenState GetDefaultStableState()
+        {
+          return new DroppedInSphereState();
+        }
     }
 }

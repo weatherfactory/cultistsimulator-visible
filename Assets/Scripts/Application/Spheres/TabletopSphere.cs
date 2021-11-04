@@ -144,19 +144,15 @@ namespace SecretHistories.Spheres
 
 
 
-        // Tabletop specific
-        public void CheckOverlappingTokens(Token token)
-        {
-            // Verify if we are overlapping with anything. If so: move it.
-            _tabletopChoreographer.MoveAllTokensOverlappingWith(token);
-        }
+
 
         public override void AcceptToken(Token token, Context context)
         {
           base.AcceptToken(token,context);
-          CheckOverlappingTokens(token);
-          SoundManager.PlaySfx("CardDrop");
+          token.Stabilise();
+            SoundManager.PlaySfx("CardDrop");
           _tabletopChoreographer.HideAllDebugRects();
+
         }
 
 

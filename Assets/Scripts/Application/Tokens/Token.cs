@@ -82,7 +82,7 @@ namespace SecretHistories.UI {
         }
 
         [Encaust]
-        public TokenState CurrentState { get; set; } = new UnknownState();
+        public AbstractTokenState CurrentState { get; set; } = new UnknownState();
 
 
         [DontEncaust]
@@ -190,9 +190,17 @@ namespace SecretHistories.UI {
             _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
             _payload = NullElementStack.Create();
 
-            CurrentState=new DroppedInSphereState();
+           Stabilise();
 
         }
+
+        //Sets the stable version of the token's current state. At time of writing, this is always 'DroppedInSphere'
+        public void Stabilise()
+        {
+            CurrentState = CurrentState.GetDefaultStableState();
+        }
+
+
 
         public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)
         {
@@ -481,6 +489,7 @@ namespace SecretHistories.UI {
             
             
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
+            //just picked the token up, but it hasn't yet left the origin sphere. 
             TryCalveOriginToken(homingAngel);
 
 
@@ -522,8 +531,8 @@ namespace SecretHistories.UI {
 
             if (Quantity <= 1)
                 return;
-
-            homingAngel.SetOriginToken(CalveToken(Quantity - 1, new Context(Context.ActionSource.PlayerDrag)));
+            var stackLeftBehind = CalveToken(Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
+            homingAngel.SetOriginToken(stackLeftBehind);
            
         }
 
@@ -680,19 +689,20 @@ namespace SecretHistories.UI {
                 return this;
             }
 
-            var calvedTokenCreationCommand = new ElementStackCreationCommand(Payload.EntityId, Quantity - 1)
+            var calvedStackCreationCommand = new ElementStackCreationCommand(Payload.EntityId, Quantity - 1)
             {
                 Mutations = Payload.Mutations
             };
             var calvingContext = new Context(Context.ActionSource.CalvedStack);
             calvingContext.TokenDestination = new TokenLocation(this);
 
-            var calvedTokenCommand = new TokenCreationCommand(calvedTokenCreationCommand,new TokenLocation(this));
+            var calvedTokenCommand = new TokenCreationCommand(calvedStackCreationCommand,new TokenLocation(this));
+            calvedTokenCommand.CurrentState=new PlacedAssertivelyBySystemState(); //we don't want this calved token to argue with the token that's leaving it behind, and right now they occupy the same space.
             var calvedToken = calvedTokenCommand.Execute(calvingContext, Sphere);
             Payload.SetQuantity(Quantity - quantityToLeaveBehind, context);
 
 
-            //I think the commented code below is redundant now, because we specify the position in the TokenLocation passed in the context? <--which ultimately should go into a comand, yah
+            //I think the commented code below is redundant now, because we specify the position in the TokenLocation passed in the context? <--which ultimately should go into a command, yah
             // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
             //calvedToken.transform.position = transform.position;
             // Accepting stack may put it to pos Vector3.zero, so this is last
@@ -953,6 +963,7 @@ namespace SecretHistories.UI {
             else
                 Payload.Retire(RetirementVFX.CardLight);
         }
+
 
 
     }

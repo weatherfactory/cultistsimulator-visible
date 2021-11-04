@@ -140,10 +140,15 @@ namespace SecretHistories.Constants {
      }
 
 
+        //public void PlaceTokenAssertivelyAtSpecifiedPosition(Token token, Context context, Vector2 pos)
+        //{
+        //    Vector3 finalPositionAtTableLevel = new Vector3(pos.x, pos.y, _tabletop.transform.position.z);
+        //    token.TokenRectTransform.localPosition = finalPositionAtTableLevel;
+        //}
 
-/// <summary>
-/// Place as close to a specific position as we can get
-/// </summary>
+        /// <summary>
+        /// Place as close to a specific position as we can get
+        /// </summary>
         public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
     Vector2 freeLocalPosition= GetFreeLocalPosition(token, pos);
@@ -197,6 +202,9 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
         public Vector2 GetFreeLocalPosition(Token token, Vector2 intendedPos)
         {
             HideAllDebugRects(); //if we're beginning another attempt to find a free local position, hide all existing debug information
+
+            if (token.CurrentState.Docked(token)) //Sometimes the token has been placed assertively or is already present, but has just been accepted into the tabletop sphere - eg if calved. If so, don't worry about overlaps.
+                return intendedPos;
 
             Vector2 intendedPosClampedToTable = GetPosClampedToTable(intendedPos);
             Vector2 intendedPosOnGrid = SnapToGrid(intendedPosClampedToTable, token);

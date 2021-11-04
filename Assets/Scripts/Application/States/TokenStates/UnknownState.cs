@@ -7,7 +7,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.States
 {
-    public class UnknownState: TokenState
+    public class UnknownState: AbstractTokenState
     {
         public override bool Docked(Token token)
         {

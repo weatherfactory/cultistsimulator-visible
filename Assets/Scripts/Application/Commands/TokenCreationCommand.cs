@@ -30,7 +30,7 @@ namespace SecretHistories.Commands
         public ITokenPayloadCreationCommand Payload { get; set; }
         public bool Defunct { get; set; }
         [JsonProperty(TypeNameHandling = TypeNameHandling.All)]
-        public TokenState CurrentState { get; set; }
+        public AbstractTokenState CurrentState { get; set; }
         private Token _sourceToken;
 
         public TokenCreationCommand()

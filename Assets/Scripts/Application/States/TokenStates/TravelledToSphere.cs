@@ -8,7 +8,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.States.TokenStates
 {
-    public class TravelledToSphere : TokenState
+    public class TravelledToSphere : AbstractTokenState
     {
         public override bool Docked(Token token)
         {
