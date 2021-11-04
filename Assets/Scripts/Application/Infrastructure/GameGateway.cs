@@ -29,6 +29,8 @@ namespace SecretHistories.Infrastructure
 
 
         public bool DontLoadGame;
+        private Coroutine fadeToEndingCoroutine;
+        
         public void Awake()
         {
             var r = new Watchman();
@@ -201,7 +203,8 @@ namespace SecretHistories.Infrastructure
 
         public void FinalTransitionToEndingScreen()
         {
-            StartCoroutine(FadeToEndingScreen());
+            if(fadeToEndingCoroutine==null) //otherwise if we hit escape in the middle of a fadeout, we get two ending screen loads
+                fadeToEndingCoroutine=StartCoroutine(FadeToEndingScreen());
         }
 
         
