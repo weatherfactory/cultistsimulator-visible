@@ -176,10 +176,10 @@ namespace SecretHistories.Services
 
                 //respond to future culture-changed events, but not the initial one
                 concursum.BeforeChangingCulture.AddListener(OnCultureChanged);
-
+                
                 var conversionTask= ConvertClassicSaveIfNecessary();
                 await conversionTask;
-                
+
 
                 GamePersistenceProvider gamePersistenceProvider=GamePersistenceProvider.GetBestGuessGamePersistence();
      

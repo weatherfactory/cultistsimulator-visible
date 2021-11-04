@@ -93,6 +93,14 @@ public class PetromnemeImporter
             $"PETRO: Added ActiveLegacy {characterCreationCommand.ActiveLegacyId} to char creation command");
 
 
+        var activeLegacy = Watchman.Get<Compendium>().GetEntityById<Legacy>(characterCreationCommand.ActiveLegacyId);
+
+        characterCreationCommand.Profession = activeLegacy.Label;
+            NoonUtility.Log(
+                $"PETRO: Adding char profession {characterCreationCommand.Profession} to char creation command, based on active legacy label");
+        
+
+
         var endingTriggeredForCharacterId =
             TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_CURRENTENDING);
         var EndingTriggered =
@@ -115,12 +123,6 @@ public class PetromnemeImporter
             NoonUtility.Log($"PETRO: Adding char name {characterCreationCommand.Name} to char creation command");
         }
 
-        if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
-        {
-            characterCreationCommand.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
-            NoonUtility.Log(
-                $"PETRO: Adding char profession {characterCreationCommand.Profession} to char creation command");
-        }
 
         if (htCharacter.ContainsKey(SaveConstants.SAVE_EXECUTIONS))
         {
