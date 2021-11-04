@@ -57,7 +57,7 @@ public class GogGalaxyManager : MonoBehaviour
             }
         }
     }
-
+  
     private bool isInitialized = false;
 
     public static bool IsInitialized()
