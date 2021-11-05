@@ -1,8 +1,8 @@
 ﻿{
 	"elements": [
 		{    
-			"id": "versionnews.2021.10.a",
-			"label": "2021.11.a,1 ALPHA",
+			"id": "versionnews.2021.11.a.2",
+			"label": "2021.11.a.2 BETA",
 			"description": "This is a massive overhaul (90% complete) of the whole codebase, so I can use it for other projects without losing my mind. We're now approaching stability.",
 			"icon": "articleheartb"
 		},
@@ -23,7 +23,7 @@
 					{
 			"id": "versionnews.newsaveformat",
 			"label": "SAVE FORMAT CONVERSION",
-			"description": "We've moved to a new save format. If you have an old-style save.txt but not new style save.json, the game will silently convert old-style save.txt to new-style save.json at startup. It'll rename and keep the old save.txt. Windows are auto-closed (which will not change) and card order may be disturbed (which may change).",
+			"description": "We've moved to a new save format. If you have an old-style save.txt but not new style save.json, the game will silently convert old-style save.txt to new-style save.json at startup. It'll rename and keep the old save.txt. If you want to revert to the main branch, you can rename it back to save.txt after you've changed back in Steam/GOG.",
 			"icon": "ascensionchangec"
 		},
 

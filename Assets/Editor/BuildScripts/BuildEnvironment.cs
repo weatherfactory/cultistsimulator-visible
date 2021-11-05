@@ -41,7 +41,6 @@ namespace SecretHistories.Editor.BuildScripts
         public void LogError(string message)
         {
             //not using NoonUtility.Log, because we don't want to put messages in the in-game scene file
-
             Debug.LogWarning(message);
         }
 

@@ -28,6 +28,8 @@ namespace SecretHistories.Infrastructure
       [SerializeField] private float AUTOSAVE_INTERVAL = 300.0f;
       [SerializeField] private CanvasGroupFader AutosaveIndicator;
 
+      [SerializeField] private bool SaveWhenEditorStops;
+
 
         private GameGateway gameGateway;
       private Heart heart;
@@ -105,11 +107,14 @@ namespace SecretHistories.Infrastructure
                     heart.Unmetapause();
                     Watchman.Get<LocalNexus>().EnablePlayerInput();
                 }
-            
-
-            
         }
 
+        public async void OnApplicationQuit()
+        {
+            if (Application.isEditor && !SaveWhenEditorStops)
+                return; 
+            var saveResult = await gameGateway.TryDefaultSave();
+        }
 
         //Old code below for history and reference
         //public async Task<bool> SaveGameAsync(bool withNotification)
