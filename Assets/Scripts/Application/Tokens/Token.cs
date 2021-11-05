@@ -298,7 +298,7 @@ namespace SecretHistories.UI {
             else
                 _manifestation.Unshroud(true);
 
-            if(_ghost!=null)
+            if(!_ghost.Equals(null))
                 _ghost.Retire();
 
             _ghost = _manifestation.CreateGhost();

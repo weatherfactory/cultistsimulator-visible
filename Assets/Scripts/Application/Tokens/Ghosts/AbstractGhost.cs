@@ -83,7 +83,7 @@ namespace SecretHistories.Ghosts
 
         public virtual void Retire()
         {
-            Destroy(gameObject);
+                Destroy(gameObject);
         }
 
     }
