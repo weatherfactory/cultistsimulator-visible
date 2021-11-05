@@ -875,7 +875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tabletop: {fileID: 730}
-  showDebugInfo: 0
+  showDebugInfo: 1
 --- !u!114 &151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2267,18 +2267,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6dede08ba6a40338d4b3130dc33ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tabletop: {fileID: 730}
   tabletopBackground: {fileID: 577}
-  WindowsSphere: {fileID: 392807929}
   aspectDetailsWindow: {fileID: 114432530904652398}
   tokenDetailsWindow: {fileID: 114111364633692442}
   cardHoverDetail: {fileID: 5265435531635378363}
   draggableHolderRectTransform: {fileID: 1610149764}
-  tableScroll: {fileID: 0}
-  _dropZoneTemplate: {fileID: 1000011432613132, guid: 1156e72892331c64397bcd330e4ea6c6,
-    type: 3}
   StatusBar: {fileID: 1243788745}
-  backgroundMusic: {fileID: 677}
   _notifier: {fileID: 594}
   _elementOverview: {fileID: 1895797520}
 --- !u!114 &613
@@ -2526,18 +2520,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &677 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114682934411112886, guid: 1a6b760ab60ff74419b14dfad6d9e625,
-    type: 3}
-  m_PrefabInstance: {fileID: 1627794616}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aff7d6c2070c5dc4ca1b729e347f717d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23731,10 +23713,10 @@ RectTransform:
   m_Father: {fileID: 1708684191}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 200, y: -10}
-  m_SizeDelta: {x: 291.233, y: 360.806}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -490, y: -10}
+  m_SizeDelta: {x: 291.23303, y: 360.806}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1855372720
 MonoBehaviour:

@@ -342,59 +342,66 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
         private List<Rect> GetAlternativeCandidateRects(Rect startingRect, int iteration,Token rectsForToken)
         {
+            float rectWidth = startingRect.width;
+            float rectHeight = startingRect.height;
 
-            float xShift = startingRect.width * iteration;
-            float yShift = startingRect.height * iteration;
+            
+            List<Rect> rects = new List<Rect>();
 
 
-            List <Rect> rects= new List<Rect>();
-            AddCandidateRect(startingRect.x, startingRect.y + yShift,
-                startingRect.size,
-                rects,
-                "north",
-                rectsForToken.name);
+            float testRectX = startingRect.x;
+            float testRectY = startingRect.y;
 
-            AddCandidateRect(startingRect.x + xShift, startingRect.y + yShift,
-                startingRect.size,
-                rects,
-                "northeast",
-                rectsForToken.name);
+            testRectY -= rectHeight;
 
-            AddCandidateRect(startingRect.x + xShift, startingRect.y,
-                startingRect.size,
-                rects,
-                "east",
-                rectsForToken.name);
 
-            AddCandidateRect(startingRect.x + xShift, startingRect.y - yShift,
-                startingRect.size,
-                rects,
-                "southeast",
-                rectsForToken.name);
+            //go south until x<=startingx-iteration*width
+            while (testRectY > (startingRect.y - (iteration * rectHeight)))
+            {
+                testRectY -= rectHeight;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+            }
 
-            AddCandidateRect(startingRect.x, startingRect.y - yShift,
-                startingRect.size,
-                rects,
-                "south",
-                rectsForToken.name);
+            
+            //go west 
+            while (testRectX>(startingRect.x-(iteration*rectWidth)))
+            {
+                testRectX -= rectWidth;
+                AddCandidateRect(testRectX, testRectY,startingRect.size, rects, rects.Count.ToString(),rectsForToken.name);
+            }
 
-            AddCandidateRect(startingRect.x - xShift, startingRect.y + yShift,
-                startingRect.size,
-                rects,
-                "northwest",
-                rectsForToken.name);
+            //go north
+            while (testRectY< (startingRect.y + (iteration * rectHeight)))
+            {
+                testRectY += rectHeight;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+            }
 
-            AddCandidateRect(startingRect.x - xShift, startingRect.y,
-                startingRect.size,
-                rects,
-                "west",
-                rectsForToken.name);
 
-            AddCandidateRect(startingRect.x - xShift, startingRect.y - yShift,
-                startingRect.size,
-                rects,
-                "southwest",
-                rectsForToken.name);
+            //go east 
+            while (testRectX <(startingRect.x + (iteration * rectWidth)))
+            {
+                testRectX += rectWidth;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+            }
+
+
+            //go south 
+            while (testRectY > (startingRect.y - (iteration * rectHeight)))
+            {
+                testRectY -= rectHeight;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+            }
+
+
+            //go west again to starting point
+            while (testRectX > (startingRect.x))
+            {
+                testRectX -= rectWidth;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+            }
+
+
 
             return rects;
 
