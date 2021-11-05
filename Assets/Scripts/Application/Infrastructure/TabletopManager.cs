@@ -28,11 +28,8 @@ namespace SecretHistories.UI {
     public class TabletopManager : MonoBehaviour
     {
 
-        [Header("Tabletop")] [SerializeField] public TabletopSphere _tabletop;
         [SerializeField] TabletopBackground tabletopBackground;
 
-        [SerializeField] public WindowsSphere WindowsSphere;
-        
         [Header("Detail Windows")] [SerializeField]
         private AspectDetailsWindow aspectDetailsWindow;
 
@@ -43,14 +40,10 @@ namespace SecretHistories.UI {
         [Header("Drag & Window")] [SerializeField]
         private RectTransform draggableHolderRectTransform;
 
-        [SerializeField] private ScrollRect tableScroll;
-        [SerializeField] public GameObject _dropZoneTemplate;
-
 
         [Header("Status Bar & Notes")] [SerializeField]
         private StatusBar StatusBar;
-
-        [SerializeField] private BackgroundMusic backgroundMusic;
+        
 
         [SerializeField] private Notifier _notifier;
         [SerializeField] private ElementOverview _elementOverview;
@@ -61,9 +54,6 @@ namespace SecretHistories.UI {
             var registry = new Watchman();
             registry.Register(this);
         }
-
-
-
 
 
 		public void CloseAllDetailsWindows()
