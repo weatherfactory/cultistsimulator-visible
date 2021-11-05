@@ -8,6 +8,7 @@ using SecretHistories.Utility;
 using JetBrains.Annotations;
 
 using UnityEditor;
+using UnityEngine;
 
 namespace SecretHistories.Editor.BuildScripts
 {
@@ -33,12 +34,15 @@ namespace SecretHistories.Editor.BuildScripts
 
         public void Log(string message)
         {
-            NoonUtility.Log(message);
+            //not using NoonUtility.Log, because we don't want to put messages in the in-game scene file
+            Debug.Log(message);
         }
 
         public void LogError(string message)
         {
-            NoonUtility.Log(message,2);
+            //not using NoonUtility.Log, because we don't want to put messages in the in-game scene file
+
+            Debug.LogWarning(message);
         }
 
         public void DeleteProductWithOSBuildPath(BuildProduct p, BuildOS o)
