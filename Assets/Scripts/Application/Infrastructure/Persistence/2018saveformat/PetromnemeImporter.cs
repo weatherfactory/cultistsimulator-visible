@@ -22,6 +22,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
+using SecretHistories.States.TokenStates;
 
 /// <summary>
 /// Step-by-step conversion from simplejson data format into encaustery commands
@@ -29,6 +30,8 @@ using SecretHistories.Spheres;
 public class PetromnemeImporter
 {
     private const string CLASSIC_DROPZONE_ELEMENT_ID = "dropzone";
+    private const string CLASSIC_TABLETOP_SPHERE__ID = "tabletop";
+
     private const char CLASSIC_SITUATION_PATH_PART_SEPARATOR = '_';
 
 
@@ -221,6 +224,8 @@ public class PetromnemeImporter
 
 
             var tokenCreationCommand = new TokenCreationCommand(tokenPayloadCreationCommand, stackTokenLocation);
+            if(sphereCommand.GoverningSphereSpec.Id ==CLASSIC_TABLETOP_SPHERE__ID)
+            tokenCreationCommand.CurrentState=new PlacedAssertivelyBySystemState();
 
             sphereCommand.Tokens.Add(tokenCreationCommand);
             tabletopElementStacks++;
