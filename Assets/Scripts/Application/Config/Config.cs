@@ -35,13 +35,14 @@ public class Config
 {
     public bool skiplogo;
     public bool knock;
-
+    
     private Dictionary<string, string> _configValues;
 
     public Config()
     {
-        
-        _configValues = new Dictionary<string, string>();
+        var comparer = StringComparer.OrdinalIgnoreCase;
+        _configValues = new Dictionary<string, string>(comparer);
+
         PopulateConfigValuesFromIniFile();
 
       if(string.IsNullOrEmpty(GetConfigValue(NoonConstants.CULTURE_SETTING_KEY)))
@@ -85,7 +86,8 @@ public class Config
 
             _configValues = PopulateConfigValues(GetConfigFileLocation());
 
-            if (GetConfigValue("skiplogo") != String.Empty)
+            string skipLogoValue = GetConfigValue("skiplogo");
+            if (!String.IsNullOrEmpty(skipLogoValue) && skipLogoValue != "0")
             {
                 skiplogo = true;
             }
@@ -208,7 +210,8 @@ public class Config
 
     private Dictionary<string,string> PopulateConfigValues(string configLocation)
     {
-        Dictionary<string, string> dictToPopulate=new Dictionary<string, string>();
+        var comparer = StringComparer.OrdinalIgnoreCase;
+        Dictionary<string, string> dictToPopulate=new Dictionary<string, string>(comparer);
         var lines = File.ReadLines(configLocation);
 
         foreach (var line in lines)
