@@ -30,6 +30,7 @@ namespace SecretHistories.Infrastructure
 
         public bool DontLoadGame;
         private Coroutine fadeToEndingCoroutine;
+        private bool DefaultSaveInProgress; //This locks for TryDefaultSave only. If we move to coroutines, we can check for the existence of a coroutine.
         
         public void Awake()
         {
@@ -137,7 +138,10 @@ namespace SecretHistories.Infrastructure
 
         public async Task<bool> TryDefaultSave()
         {
-          
+            if (DefaultSaveInProgress)
+                return false;
+            DefaultSaveInProgress = true;
+
             var notifier = Watchman.Get<Notifier>();
             if(notifier==null)
                 NoonUtility.LogWarning("Can't find notifier for saving messages");
@@ -152,6 +156,8 @@ namespace SecretHistories.Infrastructure
                 game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
                 var saveTask = game.SerialiseAndSaveAsync();
                 var result = await saveTask;
+                DefaultSaveInProgress = false;
+
                 return result;
             }
             catch (Exception e)
@@ -160,6 +166,7 @@ namespace SecretHistories.Infrastructure
                 notifierArgs.WindowId = CustomNotificationWindowId.ShowSaveError;
                 notifierArgs.AdditionalText = $"\n'<b>{e.Message}</b>'";
                 notifier.ShowCustomWindow(notifierArgs);
+                DefaultSaveInProgress = false;
                 return false;
             }
         }
