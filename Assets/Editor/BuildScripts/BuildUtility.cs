@@ -215,7 +215,7 @@ namespace SecretHistories.Utility
             sceneFiles.AddRange(Directory.GetFiles(SCENES_FOLDER).ToList().FindAll(f=>f.EndsWith(".unity"))); //the common scene files are just in /assets/scenes
 
             
-            string gameSpecificSceneFilesDir = NoonUtility.JoinPaths(SCENES_FOLDER, product.GetGameId()); //the game-specific scene files are in /assets/scenes/[gameid]
+            string gameSpecificSceneFilesDir = NoonUtility.JoinPaths(SCENES_FOLDER, product.GetGameId().ToString()); //the game-specific scene files are in /assets/scenes/[gameid]
             sceneFiles.AddRange(Directory.GetFiles(gameSpecificSceneFilesDir).ToList().FindAll(f => f.EndsWith(".unity")));
 
             foreach (var f in sceneFiles)
@@ -255,14 +255,14 @@ namespace SecretHistories.Utility
 
             PostBuildFileTasks(target, GetParentDirectory(pathToBuiltProject), new BuildOS(target));
             
-
-
             Log($"----FINISHED BUILDING {target.ToString()} VERSION TO {pathToBuiltProject}");
         }
 
         private static void PostBuildFileTasks(BuildTarget buildTarget, string pathToBuiltProject,BuildOS os)
         {
             BuildEnvironment env=new BuildEnvironment(DEFAULT_BUILD_ROOT);
+
+            
 
             CopyStorefrontLibraries(buildTarget, pathToBuiltProject);
             AddVersionNumber(pathToBuiltProject);

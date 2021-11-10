@@ -109,23 +109,16 @@ namespace SecretHistories.Services
 
                 var watchman = new Watchman();
 
-                try
-                {
+          
                     GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), GameId);
                     //load config: this gives us a lot of info that we'll need early
                     watchman.Register(new Config(gameIdAsEnum));
-                }
-                catch (Exception e)
-                {
-                    throw new ApplicationException($"{GameId} can't be parsed as a GameId enum value");
-                    
-                }
-     
+   
             
                 //load concursum: central nexus for event responses
                 watchman.Register(concursum);
 
-                var metaInfo = new MetaInfo(new VersionNumber(Application.version),GetCurrentStorefront());
+                var metaInfo = new MetaInfo(gameIdAsEnum,new VersionNumber(Application.version),GetCurrentStorefront());
                 watchman.Register<MetaInfo>(metaInfo);
             
 

@@ -10,9 +10,11 @@ namespace SecretHistories.Entities
     {
         public VersionNumber VersionNumber { get; }
         public Storefront Storefront { get; }
+        public GameId GameId { get; }
 
-        public MetaInfo(VersionNumber versionNumber, Storefront storefront)
+        public MetaInfo(GameId gameId,VersionNumber versionNumber, Storefront storefront)
         {
+            GameId = gameId;
             VersionNumber = versionNumber;
             Storefront = storefront;
         }

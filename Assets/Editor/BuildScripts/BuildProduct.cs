@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Enums;
 
 
 namespace SecretHistories.Editor.BuildScripts
@@ -13,13 +14,13 @@ namespace SecretHistories.Editor.BuildScripts
         public Product Id { get; private set; }
         public bool IsDLC { get; private set; }
 
-        public string GetGameId()
+        public GameId GetGameId()
         {
-            if ((int)Id > 200)
-                return "lg";
+            if ((int) Id > 200)
+                return GameId.LG;
             if ((int) Id > 100)
-                return "bh";
-            return "cs";
+                return GameId.BH;
+            return GameId.CS;
         }
 
         private BuildEnvironment _fromEnvironment;
