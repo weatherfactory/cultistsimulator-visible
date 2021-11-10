@@ -42,7 +42,8 @@ namespace SecretHistories.Editor.BuildScripts
         DANCER=4,
         PRIEST=5,
         GHOUL=6,
-        EXILE=7
+        EXILE=7,
+        BH=101
 
     }
 }

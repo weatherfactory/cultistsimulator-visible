@@ -5,7 +5,7 @@ using System.Linq;
 using SecretHistories.Entities;
 using SecretHistories.Editor.BuildScripts;
 using Galaxy;
-
+using SecretHistories.UI;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -23,6 +23,7 @@ namespace SecretHistories.Utility
         private const string DEFAULT_BUILD_ROOT = "c:\\builds\\cs\\build_outputs";
         private const string SCENES_FOLDER = "assets/Scenes";
         private const string CONST_DLC_FOLDER = "DLC";
+        private const string CONST_TAGS_FILE_NAME = "tags.ini";
         private const string CONST_PERPETUALEDITION_DLCTITLE = "PERPETUAL";
         private const string CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE = "StreamingAssets\\edition\\semper.txt";
         private const char CONST_NAME_SEPARATOR_CHAR = '_';
@@ -45,34 +46,42 @@ namespace SecretHistories.Utility
             "zh-hans"
         };
 
-        [MenuItem("Tools/Build (ALL)")]
-        public static void PerformAllBuilds()
+
+
+        [MenuItem("Tools/Build (ALL)",false,10)]
+        public static void PerformAllCSBuilds()
         {
-            PerformWindowsBuild();
-            PerformOsxBuild();
-            PerformLinuxBuild();
+            PerformBuild(Product.VANILLA, BuildTarget.StandaloneWindows);
+            PerformBuild(Product.VANILLA, BuildTarget.StandaloneOSX);
+            PerformBuild(Product.VANILLA, BuildTarget.StandaloneLinux64);
         }
 
-        [MenuItem("Tools/Build (Windows)")]
+        [MenuItem("Tools/Build (Windows)", false, 10)]
         public static void PerformWindowsBuild()
         {
-            PerformBuild(BuildTarget.StandaloneWindows);
+            PerformBuild(Product.VANILLA, BuildTarget.StandaloneWindows);
         }
 
-        [MenuItem("Tools/Build (OSX)")]
+        [MenuItem("Tools/Build (OSX)", false, 10)]
         public static void PerformOsxBuild()
         {
-            PerformBuild(BuildTarget.StandaloneOSX);
+            PerformBuild(Product.VANILLA, BuildTarget.StandaloneOSX);
         }
 
-        [MenuItem("Tools/Build (Linux)")]
+        [MenuItem("Tools/Build (Linux)", false, 10)]
         public static void PerformLinuxBuild()
         {
-            PerformBuild(BuildTarget.StandaloneLinux64);
+            PerformBuild(Product.VANILLA, BuildTarget.StandaloneLinux64);
         }
 
-
-        [MenuItem("Tools/Make Distribution (ALL)")]
+        [MenuItem("Tools/Build (BH)", false, 30)]
+        public static void PerformAllBHBuilds()
+        {
+            PerformBuild(Product.BH, BuildTarget.StandaloneWindows);
+            PerformBuild(Product.BH, BuildTarget.StandaloneOSX);
+            PerformBuild(Product.BH, BuildTarget.StandaloneLinux64);
+        }
+        [MenuItem("Tools/Make Distribution (ALL)", false, 110)]
         public static void MakeAllDistributions()
         {
             MakeSteamDistribution();
@@ -81,7 +90,7 @@ namespace SecretHistories.Utility
 
         }
 
-        [MenuItem("Tools/Make Distribution (Steam)")]
+        [MenuItem("Tools/Make Distribution (Steam)", false, 110)]
         public static void MakeSteamDistribution()
         {
             
@@ -155,7 +164,7 @@ namespace SecretHistories.Utility
             
         }
 
-        [MenuItem("Tools/Make Distribution (Humble)")]
+        [MenuItem("Tools/Make Distribution (Humble)", false, 110)]
         public static void MakeHumbleDistribution()
         {
             BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
@@ -187,13 +196,13 @@ namespace SecretHistories.Utility
 
         }
 
-        private static void PerformBuild(BuildTarget target)
+        private static void PerformBuild(Product productId, BuildTarget target)
         {
+            
             var env=new BuildEnvironment(DEFAULT_BUILD_ROOT);
-
-
+            
             var os=new BuildOS(target);
-            var product=new BuildProduct(env,Product.VANILLA,false);
+            var product=new BuildProduct(env, productId, false);
 
             env.DeleteProductWithOSBuildPath(product,os);
 
@@ -210,16 +219,20 @@ namespace SecretHistories.Utility
                 Log("Adding scene to build: "+ f);
             }
 
+            string buildPath = env.GetProductWithOSBuildPath(product, os);
+
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
             {
                 target = target,
-                locationPathName = NoonUtility.JoinPaths(env.GetProductWithOSBuildPath(product, os), os.ExeName),
+                locationPathName = NoonUtility.JoinPaths(buildPath, os.ExeName),
                 scenes = sceneFilesInFolder.ToArray()
         };
-            Log("Building " + target + " version to build directory: " + buildPlayerOptions.locationPathName);            
+            Log("Building " + target + " version to build directory: " + buildPath);
+
 
             BuildPipeline.BuildPlayer(buildPlayerOptions);
-            
+            WriteProductTag(buildPath, productId); //<-- goes here because at this point we still have the product ID in scope
+
         }
 
 
@@ -237,6 +250,8 @@ namespace SecretHistories.Utility
             }
 
             PostBuildFileTasks(target, GetParentDirectory(pathToBuiltProject), new BuildOS(target));
+            
+
 
             Log($"----FINISHED BUILDING {target.ToString()} VERSION TO {pathToBuiltProject}");
         }
@@ -366,6 +381,16 @@ namespace SecretHistories.Utility
                 CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE);
 
             WriteSemperFile(semperPath);
+        }
+
+        private static void WriteProductTag( string path,Product productId)
+        {
+
+            string filePath = NoonUtility.JoinPaths(path, CONST_TAGS_FILE_NAME);
+            string contents =$"product={productId}";
+
+            File.WriteAllText(filePath, contents);
+
         }
 
         private static void WriteSemperFile(string semperPath)
