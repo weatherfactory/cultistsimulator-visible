@@ -7,6 +7,7 @@ using System.Linq;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 using SecretHistories.Constants;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Services;
 using UnityEngine;
@@ -38,8 +39,10 @@ public class Config
     
     private Dictionary<string, string> _configValues;
 
-    public Config()
+    public Config(GameId gameId)
     {
+        
+        
         var comparer = StringComparer.OrdinalIgnoreCase;
         _configValues = new Dictionary<string, string>(comparer);
 
@@ -49,12 +52,19 @@ public class Config
         PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,
             DetermineMostSuitableCultureId());
 
+
       if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY)))
+      {
+          string gameSpecificFolderName = NoonConstants.DEFAULT_CONTENT_FOLDER_NAME;
+
+          if (gameId != GameId.CS) //first and most honourable backwards compat hack
+              gameSpecificFolderName = gameId.ToString() + gameSpecificFolderName;
+
           PersistConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY,
-              NoonConstants.DEFAULT_CONTENT_FOLDER_NAME);
+              gameSpecificFolderName);
+      }
 
-
-        if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY)))
+      if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY)))
             PersistConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY,
                 NoonConstants.DEFAULT_IMAGES_FOLDER_NAME);
 

@@ -93,11 +93,18 @@ public class Compendium
 
     }
 
+    public bool TryRemoveEntity(Type t,string entityId)
+    {
+        var entitiesStore = EntityStoreFor(t);
+        return entitiesStore.TryRemoveEntity(entityId);
+
+    }
+
 
     public void OnPostImport(ContentImportLog log)
     {
-        
-      //run OnPostImport for every entity in every store
+
+        //run OnPostImport for every entity in every store
         foreach (var entityStore in entityStores.Values)
         {
             var entityList = new List<IEntityWithId>(entityStore.GetAllAsList()); //we might modify the collection as it gets refined, so we need to copy it first

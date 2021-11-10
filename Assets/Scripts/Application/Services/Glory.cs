@@ -51,7 +51,7 @@ namespace SecretHistories.Services
         public NullManifestation NullManifestation;
         [SerializeField]private Stable _stable;
 
-        [SerializeField] private string OverrideContentFolder;
+        [SerializeField] private string GameId;
 
         private string _initialisedAt;
 #pragma warning restore 649
@@ -109,8 +109,18 @@ namespace SecretHistories.Services
 
                 var watchman = new Watchman();
 
-                //load config: this gives us a lot of info that we'll need early
-                watchman.Register(new Config());            
+                try
+                {
+                    GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), GameId);
+                    //load config: this gives us a lot of info that we'll need early
+                    watchman.Register(new Config(gameIdAsEnum));
+                }
+                catch (Exception e)
+                {
+                    throw new ApplicationException($"{GameId} can't be parsed as a GameId enum value");
+                    
+                }
+     
             
                 //load concursum: central nexus for event responses
                 watchman.Register(concursum);
@@ -148,11 +158,13 @@ namespace SecretHistories.Services
                 Watchman.Get<ModManager>().CatalogueMods();
                 Watchman.Get<ModManager>().LoadModDLLs();
 
-                CompendiumLoader loader;
-                if (Application.isEditor && !string.IsNullOrEmpty(OverrideContentFolder))
-                    loader = new CompendiumLoader(OverrideContentFolder);
-                else
-                    loader = new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
+                
+
+                string contentFolder = Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY);
+                if (string.IsNullOrEmpty(GameId))
+                    contentFolder = GameId + contentFolder;
+
+                CompendiumLoader loader = new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
                 watchman.Register<CompendiumLoader>(loader);
 
                 var log=LoadCompendium(Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));

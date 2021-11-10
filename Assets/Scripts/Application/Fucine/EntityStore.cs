@@ -19,6 +19,17 @@ public class EntityStore
         return false;
     }
 
+    public bool TryRemoveEntity(string withEntityId)
+    {
+        if (_entities.ContainsKey(withEntityId))
+        {
+            _entities.Remove(withEntityId);
+            return true;
+        }
+
+        return false;
+    }
+
 
     public void AddEntity(IEntityWithId entityToAdd)
     {

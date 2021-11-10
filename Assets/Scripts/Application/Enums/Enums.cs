@@ -21,6 +21,12 @@ namespace SecretHistories.Enums
 
     public enum FucineValidity { Valid, TokenInRoot, Uninitialised,Empty }
 
+    public enum GameId
+    {
+        CS=1,
+        BH=2,
+        LG=3
+    }
     public enum GameSpeed
     {
         DeferToNextLowestCommand = -1,
