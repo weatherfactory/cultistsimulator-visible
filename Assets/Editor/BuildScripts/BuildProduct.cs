@@ -12,6 +12,16 @@ namespace SecretHistories.Editor.BuildScripts
     {
         public Product Id { get; private set; }
         public bool IsDLC { get; private set; }
+
+        public string GetGameId()
+        {
+            if ((int)Id > 200)
+                return "lg";
+            if ((int) Id > 100)
+                return "bh";
+            return "cs";
+        }
+
         private BuildEnvironment _fromEnvironment;
 
 

@@ -210,13 +210,17 @@ namespace SecretHistories.Utility
             if(!Directory.Exists(SCENES_FOLDER))
                 throw new ApplicationException($"Can't find scenes folder {SCENES_FOLDER}: exiting");
 
-            List<string> sceneFilesInFolder = new List<string>();
+            List<string> sceneFiles = new List<string>();
             
+            sceneFiles.AddRange(Directory.GetFiles(SCENES_FOLDER).ToList().FindAll(f=>f.EndsWith(".unity"))); //the common scene files are just in /assets/scenes
+
             
-            sceneFilesInFolder.AddRange(Directory.GetFiles(SCENES_FOLDER).ToList().FindAll(f=>f.EndsWith(".unity")));
-            foreach(var f in sceneFilesInFolder)
+            string gameSpecificSceneFilesDir = NoonUtility.JoinPaths(SCENES_FOLDER, product.GetGameId()); //the game-specific scene files are in /assets/scenes/[gameid]
+            sceneFiles.AddRange(Directory.GetFiles(gameSpecificSceneFilesDir).ToList().FindAll(f => f.EndsWith(".unity")));
+
+            foreach (var f in sceneFiles)
             {
-                Log("Adding scene to build: "+ f);
+                Log("Adding shared scene file to build: " + f);
             }
 
             string buildPath = env.GetProductWithOSBuildPath(product, os);
@@ -225,7 +229,7 @@ namespace SecretHistories.Utility
             {
                 target = target,
                 locationPathName = NoonUtility.JoinPaths(buildPath, os.ExeName),
-                scenes = sceneFilesInFolder.ToArray()
+                scenes = sceneFiles.ToArray()
         };
             Log("Building " + target + " version to build directory: " + buildPath);
 
