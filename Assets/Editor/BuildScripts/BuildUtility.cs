@@ -81,8 +81,8 @@ namespace SecretHistories.Utility
         public static void PerformAllBHBuilds()
         {
             PerformBuild(Product.BH, BuildTarget.StandaloneWindows);
-            PerformBuild(Product.BH, BuildTarget.StandaloneOSX);
-            PerformBuild(Product.BH, BuildTarget.StandaloneLinux64);
+          //  PerformBuild(Product.BH, BuildTarget.StandaloneOSX);
+           // PerformBuild(Product.BH, BuildTarget.StandaloneLinux64);
         }
         [MenuItem("Tools/CS Distribution (ALL)", false, 110)]
         public static void MakeAllDistributions()
@@ -102,9 +102,9 @@ namespace SecretHistories.Utility
             List<BuildOS> OSs=new List<BuildOS>();
             List<BuildProduct> products=new List<BuildProduct>();
 
-            BuildOS osw=new BuildOS(BuildTarget.StandaloneWindows64);
-            BuildOS oso=new BuildOS(BuildTarget.StandaloneOSX);
-            BuildOS osl=new BuildOS(BuildTarget.StandaloneLinux64);
+            BuildOS osw=new BuildOS(GameId.CS, BuildTarget.StandaloneWindows64);
+            BuildOS oso=new BuildOS(GameId.CS, BuildTarget.StandaloneOSX);
+            BuildOS osl=new BuildOS(GameId.CS, BuildTarget.StandaloneLinux64);
             OSs.Add(osw);
             OSs.Add(oso);
             OSs.Add(osl);
@@ -139,9 +139,9 @@ namespace SecretHistories.Utility
             List<BuildOS> OSs=new List<BuildOS>();
             List<BuildProduct> products=new List<BuildProduct>();
 
-            BuildOS osw=new BuildOS(BuildTarget.StandaloneWindows64);
-            BuildOS oso=new BuildOS(BuildTarget.StandaloneOSX);
-            BuildOS osl=new BuildOS(BuildTarget.StandaloneLinux64);
+            BuildOS osw=new BuildOS(GameId.CS, BuildTarget.StandaloneWindows64);
+            BuildOS oso=new BuildOS(GameId.CS, BuildTarget.StandaloneOSX);
+            BuildOS osl=new BuildOS(GameId.CS, BuildTarget.StandaloneLinux64);
             OSs.Add(osw);
             OSs.Add(oso);
             OSs.Add(osl);
@@ -175,7 +175,7 @@ namespace SecretHistories.Utility
             List<BuildOS> OSs = new List<BuildOS>();
             List<BuildProduct> products = new List<BuildProduct>();
 
-            BuildOS osw = new BuildOS(BuildTarget.StandaloneWindows64);
+            BuildOS osw = new BuildOS(GameId.CS, BuildTarget.StandaloneWindows64);
             OSs.Add(osw);
 
 
@@ -201,9 +201,10 @@ namespace SecretHistories.Utility
 
         private static void PerformBuild(Product productId, BuildTarget target)
         {
-
-            var os = new BuildOS(target);
             var product = new BuildProduct(productId, false);
+
+            var os = new BuildOS(product.GetGameId(), target);
+            
 
             var env=new BuildEnvironment(product.GetGameId(), DEFAULT_BUILD_ROOT);
           
@@ -233,15 +234,16 @@ namespace SecretHistories.Utility
             }
 
             string buildPath = env.GetProductWithOSBuildPath(product, os);
+            string exePath = NoonUtility.JoinPaths(buildPath, os.ExeName);
 
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
             {
                 target = target,
-                locationPathName = NoonUtility.JoinPaths(buildPath, os.ExeName),
+                locationPathName = exePath,
                 scenes = sceneFiles.ToArray(),
 
         };
-            Log("Building " + target + " version to build directory: " + buildPath);
+            Log("Building " + target + " version to " + exePath);
 
 
             BuildPipeline.BuildPlayer(buildPlayerOptions);
@@ -263,7 +265,7 @@ namespace SecretHistories.Utility
                 return;
             }
 
-            PostBuildFileTasks(target, GetParentDirectory(pathToBuiltProject), new BuildOS(target));
+            PostBuildFileTasks(target, GetParentDirectory(pathToBuiltProject), new BuildOS(GameId.CS, target));
             
             Log($"----FINISHED BUILDING {target.ToString()} VERSION TO {pathToBuiltProject}");
         }
@@ -465,7 +467,7 @@ namespace SecretHistories.Utility
         {
             var oldStackTraceLogType = Application.GetStackTraceLogType(LogType.Log);
             Application.SetStackTraceLogType(LogType.Log, StackTraceLogType.None);
-            Debug.Log("CS>>>>> " + message);
+            Debug.Log("WF>>>>> " + message);
             Application.SetStackTraceLogType(LogType.Log, oldStackTraceLogType);
         }
 

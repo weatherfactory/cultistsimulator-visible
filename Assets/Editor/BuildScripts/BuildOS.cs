@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Constants;
+using SecretHistories.Enums;
 using SecretHistories.UI;
 using UnityEditor;
 
@@ -28,31 +29,34 @@ namespace SecretHistories.Editor.BuildScripts
         public string ExeName { get; private set; }
 
 
-
-        public BuildOS(BuildTarget target)
+        public BuildOS(GameId game, BuildTarget target)
         {
-
             buildTarget = target;
 
-       if(target==BuildTarget.StandaloneWindows || target==BuildTarget.StandaloneWindows64)
-       {
-           OSId = OSId.Windows;
-           ExeName = "cultistsimulator.exe";
-       }
-            else if (target == BuildTarget.StandaloneOSX)
-       {
-           OSId = OSId.OSX;
-           ExeName =  "OSX.app";
-       }
-       else if (target == BuildTarget.StandaloneLinux64)
-       {
-           OSId = OSId.Linux;
-           ExeName = "CS.x86_64";
+            if (target == BuildTarget.StandaloneWindows || target == BuildTarget.StandaloneWindows64)
+            {
+                OSId = OSId.Windows;
+                if (game == GameId.CS)
+                    ExeName = "cultistsimulator.exe";
+                else
+                    ExeName = $"{game.ToString().ToLower()}.exe";
+            }
 
-       }
-       else 
-           throw new ApplicationException("Unrecognised build target " + target);
-           
+            else if (target == BuildTarget.StandaloneOSX)
+            {
+                OSId = OSId.OSX;
+                ExeName = "OSX.app";
+            }
+            else if (target == BuildTarget.StandaloneLinux64)
+            {
+                OSId = OSId.Linux;
+                if (game == GameId.CS)
+                    ExeName = "CS.x86_64";
+                else
+                    ExeName = $"{game.ToString().ToLower()}.x86_64";
+            }
+            else
+                throw new ApplicationException("Unrecognised build target " + target);
         }
        
 
