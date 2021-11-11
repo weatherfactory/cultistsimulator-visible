@@ -23,6 +23,7 @@ namespace SecretHistories.Enums
 
     public enum GameId
     {
+        XX=0,
         CS=1,
         BH=2,
         LG=3

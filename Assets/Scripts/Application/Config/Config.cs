@@ -64,6 +64,20 @@ public class Config
 
     }
 
+    public GameId GetGame()
+    {
+        var gameIdString = GetConfigValueAsString(NoonConstants.GAME_ID_KEY);
+        try
+        {
+            GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), gameIdString);
+
+            return gameIdAsEnum;
+        }
+        catch (Exception)
+        {
+            return GameId.XX;
+        }
+    }
     public void SetGame(GameId game)
     {
 

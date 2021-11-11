@@ -12,6 +12,8 @@ using UnityEngine;
 using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 using Storefront = SecretHistories.Enums.Storefront;
+using SecretHistories.Enums;
+using SecretHistories.Constants;
 
 namespace SecretHistories.Utility
 {
@@ -21,7 +23,9 @@ namespace SecretHistories.Utility
 
         private const string BUILD_DIR_PREFIX = "csunity-";
         private const string DEFAULT_BUILD_ROOT = "c:\\builds\\GAMEID\\build_outputs";
+        private const string POST_BUILT_STREAMING_ASSETS_FOLDER = "StreamingAssets";
         private const string SCENES_FOLDER = "assets/Scenes";
+        private const string CONTENT_FOLDER_CONTAINS_STRING = "content";
         private const string CONST_DLC_FOLDER = "DLC";
         private const string CONST_PERPETUALEDITION_DLCTITLE = "PERPETUAL";
         private const string CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE = "StreamingAssets\\edition\\semper.txt";
@@ -264,9 +268,19 @@ namespace SecretHistories.Utility
         {
             BuildEnvironment env=new BuildEnvironment(DEFAULT_BUILD_ROOT);
 
+            //get gameid from config file, since we don't have access to all the original spec from the menu command
+            var c = new Config();
             
+            string contentFolder=c.GetConfigValueAsString(NoonConstants.CONTENT_FOLDER_NAME_KEY);
+            //there's a chance I'll want to come in here and make other changes besides the content folder deletion.
 
+            //Deletes all folders in streamingassets with 'content' in their names, except the one we specifically want to keep.
+            //logs the deletion, but still this might cause us angst if we don't keep an eye.
+            DeleteContentFoldersExcept(os,pathToBuiltProject, contentFolder);
+
+            //copies ALL libraries: this is the base OS build, so this is as it should be.
             CopyStorefrontLibraries(buildTarget, pathToBuiltProject);
+            //gets Application.Version and writes it to version.txt, where it can be used to specify version by upload scripts
             AddVersionNumber(pathToBuiltProject);
 
             string perpetualEditionsFolderPath =NoonUtility.JoinPaths(env.GetProductWithOSBuildPath(new BuildProduct(env,Product.PERPETUAL_ALLDLC,false),os));
@@ -277,9 +291,28 @@ namespace SecretHistories.Utility
             ExtractDLCFilesFromBaseBuilds(pathToBuiltProject,dlcFolderPath, os);
 
           //  RunContentTests(buildTarget, builtAtPath);
+        }
 
+        private static void DeleteContentFoldersExcept(BuildOS os, string pathToBuiltProject, string nameOfContentFolderToKeep)
+        {
+  
+            string assetsFolderPath = NoonUtility.JoinPaths(pathToBuiltProject, os.GetDataFolderPath(), POST_BUILT_STREAMING_ASSETS_FOLDER);
+            Log($"Removing all %content% folders in '{assetsFolderPath}' except '{nameOfContentFolderToKeep}'");
+            var contentFolders = Directory.GetDirectories(assetsFolderPath).Where(f=>f.Contains(CONTENT_FOLDER_CONTAINS_STRING));
+            
+            foreach(var cf in contentFolders)
+            {
 
-
+                DirectoryInfo thisContentDir = new DirectoryInfo(cf);
+                if(thisContentDir.Name!=nameOfContentFolderToKeep)
+                {
+                    Log($"Deleting {thisContentDir.FullName}");
+                    thisContentDir.Delete(true);
+                   
+                    
+                }    
+                
+            }
         }
 
         private static void MakeDistribution(BuildStorefront storefront)
@@ -316,7 +349,7 @@ namespace SecretHistories.Utility
 
         private static void ExtractDLCFilesFromBaseBuilds(string from,string to, BuildOS os)
         {
-// Take the DLCs out of the base edition and into their own directories
+        // Take the DLCs out of the base edition and into their own directories
 
    
             foreach (var dlcContentType in ContentTypes)
