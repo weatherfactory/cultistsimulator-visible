@@ -27,8 +27,8 @@ namespace SecretHistories.Editor.BuildScripts
 
         public void CopyFilesFromEnvironment(BuildEnvironment fromEnvironment)
         {
-            try
-            {
+            //try
+            //{
 
 
             string fromDirectory = fromEnvironment.GetProductWithOSBuildPath(_product, _os);
@@ -81,12 +81,12 @@ namespace SecretHistories.Editor.BuildScripts
 //            }
             }
 
-            }
-            catch (Exception e)
-            {
-            NoonUtility.Log(e.Message,2);
-                throw;
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //NoonUtility.Log(e.Message,2);
+            //    throw;
+            //}
 
         }
 

@@ -18,10 +18,13 @@ namespace SecretHistories.Editor.BuildScripts
         public string BuildRoot { get; private set; }
         private const string BASE_OS_BUILDS = "BASE_OS_BUILDS";
         private const string GAME_ID_TOKEN = "GAMEID";
+        public GameId Game { get; private set; }
+
 
         public BuildEnvironment(GameId game, string root)
         {
-            BuildRoot = root.Replace(GAME_ID_TOKEN,game.ToString());
+            Game= game;
+            BuildRoot = root.Replace(GAME_ID_TOKEN, Game.ToString());
         }
 
         public string GetBaseBuildsPath()

@@ -45,13 +45,15 @@ namespace SecretHistories.Utility
         private static readonly string[] Locales =
         {
             null,  // Default locale (en)
+            "de",
+            "jp",
             "ru",
             "zh-hans"
         };
 
 
 
-        [MenuItem("Tools/Build (ALL)",false,10)]
+        [MenuItem("Tools/CS Build (ALL)",false,10)]
         public static void PerformAllCSBuilds()
         {
             PerformBuild(Product.VANILLA, BuildTarget.StandaloneWindows);
@@ -59,31 +61,63 @@ namespace SecretHistories.Utility
             PerformBuild(Product.VANILLA, BuildTarget.StandaloneLinux64);
         }
 
-        [MenuItem("Tools/Build (Windows)", false, 10)]
+        [MenuItem("Tools/CS Build (Windows)", false, 10)]
         public static void PerformWindowsBuild()
         {
             PerformBuild(Product.VANILLA, BuildTarget.StandaloneWindows);
         }
 
-        [MenuItem("Tools/Build (OSX)", false, 10)]
+        [MenuItem("Tools/CS Build (OSX)", false, 10)]
         public static void PerformOsxBuild()
         {
             PerformBuild(Product.VANILLA, BuildTarget.StandaloneOSX);
         }
 
-        [MenuItem("Tools/Build (Linux)", false, 10)]
+        [MenuItem("Tools/CS Build (Linux)", false, 10)]
         public static void PerformLinuxBuild()
         {
             PerformBuild(Product.VANILLA, BuildTarget.StandaloneLinux64);
         }
 
-        [MenuItem("Tools/Build (BH)", false, 30)]
-        public static void PerformAllBHBuilds()
+        //[MenuItem("Tools/BH Build (ALL)", false, 30)]
+        //public static void PerformAllBHBuilds()
+        //{
+        //    PerformBuild(Product.BH, BuildTarget.StandaloneWindows);
+        //    PerformBuild(Product.BH, BuildTarget.StandaloneOSX);
+        //    PerformBuild(Product.BH, BuildTarget.StandaloneLinux64); <-- this is breaking; let's come back to it when we rationalise more. The data folder name is coming out as CS_Data somehow
+        //}
+
+        [MenuItem("Tools/BH Build (Windows)", false, 30)]
+        public static void PerformWindowsBHBuild()
         {
             PerformBuild(Product.BH, BuildTarget.StandaloneWindows);
-          //  PerformBuild(Product.BH, BuildTarget.StandaloneOSX);
-           // PerformBuild(Product.BH, BuildTarget.StandaloneLinux64);
         }
+
+        [MenuItem("Tools/BH Distribution (Steam)", false, 30)]
+        public static void MakeBHSteamDistributionWindowsOnly()
+        {
+
+            BuildEnvironment env = new BuildEnvironment(GameId.BH, DEFAULT_BUILD_ROOT);
+
+            List<BuildOS> OSs = new List<BuildOS>();
+            List<BuildProduct> products = new List<BuildProduct>();
+
+            BuildOS osw = new BuildOS(GameId.BH, BuildTarget.StandaloneWindows64);
+            OSs.Add(osw);
+            
+
+            BuildProduct vanillaEdition = new BuildProduct(Product.BH, false);
+
+            products.Add(vanillaEdition);
+
+            BuildStorefront buildStorefront = new BuildStorefront(Storefront.Steam, OSs, products);
+
+            MakeDistribution(GameId.BH, buildStorefront);
+
+
+        }
+
+
         [MenuItem("Tools/CS Distribution (ALL)", false, 110)]
         public static void MakeAllDistributions()
         {
@@ -130,6 +164,8 @@ namespace SecretHistories.Utility
 
 
         }
+
+
 
         [MenuItem("Tools/CS Distribution (Gog)")]
         public static void MakeGogDistribution()
@@ -265,28 +301,28 @@ namespace SecretHistories.Utility
                 return;
             }
 
-            PostBuildFileTasks(target, GetParentDirectory(pathToBuiltProject), new BuildOS(GameId.CS, target));
+            PostBuildFileTasks(target, GetParentDirectory(pathToBuiltProject), target);
             
             Log($"----FINISHED BUILDING {target.ToString()} VERSION TO {pathToBuiltProject}");
         }
 
-        private static void PostBuildFileTasks(BuildTarget buildTarget, string pathToBuiltProject,BuildOS os)
+        private static void PostBuildFileTasks(BuildTarget buildTarget, string pathToBuiltProject,BuildTarget target)
         {
             //get gameid from config file, since we don't have access to all the original spec from the menu command
+            //which I *think* is the one  built in /applicationdata - so it's the app name that makes it? some witchcraft. Prolly needs rethinking
             var c = new Config();
 
             var game = c.GetGame();
+            var os = new BuildOS(game, target);
 
             BuildEnvironment env=new BuildEnvironment(game,DEFAULT_BUILD_ROOT);
-
-            
             
             string contentFolder=c.GetConfigValueAsString(NoonConstants.CONTENT_FOLDER_NAME_KEY);
             //there's a chance I'll want to come in here and make other changes besides the content folder deletion.
 
             //Deletes all folders in streamingassets with 'content' in their names, except the one we specifically want to keep.
             //logs the deletion, but still this might cause us angst if we don't keep an eye.
-            DeleteContentFoldersExcept(os,pathToBuiltProject, contentFolder);
+           DeleteContentFoldersExcept(os,pathToBuiltProject, contentFolder);
 
             //copies ALL libraries: this is the base OS build, so this is as it should be.
             CopyStorefrontLibraries(buildTarget, pathToBuiltProject);
@@ -298,7 +334,8 @@ namespace SecretHistories.Utility
 
             string dlcFolderPath=NoonUtility.JoinPaths(env.GetBaseBuildsPath(), CONST_DLC_FOLDER);
 
-            ExtractDLCFilesFromBaseBuilds(pathToBuiltProject,dlcFolderPath, os);
+            if(game==GameId.CS) //<--- THIS IS WHY NOTHING IS GOING INTO THE DLC FOLDERS IN 2022, AK
+                ExtractDLCFilesFromBaseBuilds(pathToBuiltProject,dlcFolderPath, os);
 
           //  RunContentTests(buildTarget, builtAtPath);
         }
@@ -312,9 +349,8 @@ namespace SecretHistories.Utility
             
             foreach(var cf in contentFolders)
             {
-
                 DirectoryInfo thisContentDir = new DirectoryInfo(cf);
-                if(thisContentDir.Name!=nameOfContentFolderToKeep)
+                if (!string.Equals(thisContentDir.Name,nameOfContentFolderToKeep,StringComparison.OrdinalIgnoreCase))
                 {
                     Log($"Deleting {thisContentDir.FullName}");
                     thisContentDir.Delete(true);
