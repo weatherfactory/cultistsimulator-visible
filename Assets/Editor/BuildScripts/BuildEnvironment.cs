@@ -9,6 +9,7 @@ using JetBrains.Annotations;
 
 using UnityEditor;
 using UnityEngine;
+using SecretHistories.Enums;
 
 namespace SecretHistories.Editor.BuildScripts
 {
@@ -18,9 +19,9 @@ namespace SecretHistories.Editor.BuildScripts
         private const string BASE_OS_BUILDS = "BASE_OS_BUILDS";
         private const string GAME_ID_TOKEN = "GAMEID";
 
-        public BuildEnvironment(string root)
+        public BuildEnvironment(GameId game, string root)
         {
-            BuildRoot = root;
+            BuildRoot = root.Replace(GAME_ID_TOKEN,game.ToString());
         }
 
         public string GetBaseBuildsPath()

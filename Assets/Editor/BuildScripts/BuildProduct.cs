@@ -23,12 +23,12 @@ namespace SecretHistories.Editor.BuildScripts
             return GameId.CS;
         }
 
-        private BuildEnvironment _fromEnvironment;
+   
 
 
-        public BuildProduct(BuildEnvironment fromEnvironment, Product id, bool isDLC)
+        public BuildProduct(Product id, bool isDLC)
         {
-            _fromEnvironment = fromEnvironment;
+   
             Id = id;
             IsDLC = isDLC;
         }

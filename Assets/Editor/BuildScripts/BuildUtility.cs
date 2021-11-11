@@ -84,7 +84,7 @@ namespace SecretHistories.Utility
             PerformBuild(Product.BH, BuildTarget.StandaloneOSX);
             PerformBuild(Product.BH, BuildTarget.StandaloneLinux64);
         }
-        [MenuItem("Tools/Make Distribution (ALL)", false, 110)]
+        [MenuItem("Tools/CS Distribution (ALL)", false, 110)]
         public static void MakeAllDistributions()
         {
             MakeSteamDistribution();
@@ -93,11 +93,11 @@ namespace SecretHistories.Utility
 
         }
 
-        [MenuItem("Tools/Make Distribution (Steam)", false, 110)]
+        [MenuItem("Tools/CS Distribution (Steam)", false, 110)]
         public static void MakeSteamDistribution()
         {
             
-            BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
+            BuildEnvironment env = new BuildEnvironment(GameId.CS, DEFAULT_BUILD_ROOT);
 
             List<BuildOS> OSs=new List<BuildOS>();
             List<BuildProduct> products=new List<BuildProduct>();
@@ -110,12 +110,12 @@ namespace SecretHistories.Utility
             OSs.Add(osl);
 
 
-            BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
-            BuildProduct perpetualDLC=new BuildProduct(env,Product.PERPETUAL,true);
-            BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
-            BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
-            BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
-             BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+            BuildProduct vanillaEdition=new BuildProduct(Product.VANILLA,false);
+            BuildProduct perpetualDLC=new BuildProduct(Product.PERPETUAL,true);
+            BuildProduct DancerDLC=new BuildProduct(Product.DANCER,true);
+            BuildProduct PriestDLC=new BuildProduct(Product.PRIEST,true);
+            BuildProduct GhoulDLC=new BuildProduct(Product.GHOUL,true);
+             BuildProduct ExileDLC=new BuildProduct(Product.EXILE,true);
 
             products.Add(vanillaEdition);
             products.Add(perpetualDLC);
@@ -126,15 +126,15 @@ namespace SecretHistories.Utility
 
             BuildStorefront buildStorefront=new BuildStorefront(Storefront.Steam,OSs,products);
 
-            MakeDistribution(buildStorefront);
+            MakeDistribution(GameId.CS, buildStorefront);
 
 
         }
 
-        [MenuItem("Tools/Make Distribution (Gog)")]
+        [MenuItem("Tools/CS Distribution (Gog)")]
         public static void MakeGogDistribution()
         {
-            BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
+            BuildEnvironment env = new BuildEnvironment(GameId.CS, DEFAULT_BUILD_ROOT);
 
             List<BuildOS> OSs=new List<BuildOS>();
             List<BuildProduct> products=new List<BuildProduct>();
@@ -147,12 +147,12 @@ namespace SecretHistories.Utility
             OSs.Add(osl);
 
 
-            BuildProduct vanillaEdition=new BuildProduct(env,Product.VANILLA,false);
-            BuildProduct perpetualDLC=new BuildProduct(env,Product.PERPETUAL,true);
-            BuildProduct DancerDLC=new BuildProduct(env,Product.DANCER,true);
-            BuildProduct PriestDLC=new BuildProduct(env,Product.PRIEST,true);
-            BuildProduct GhoulDLC=new BuildProduct(env,Product.GHOUL,true);
-            BuildProduct ExileDLC=new BuildProduct(env,Product.EXILE,true);
+            BuildProduct vanillaEdition=new BuildProduct(Product.VANILLA,false);
+            BuildProduct perpetualDLC=new BuildProduct(Product.PERPETUAL,true);
+            BuildProduct DancerDLC=new BuildProduct(Product.DANCER,true);
+            BuildProduct PriestDLC=new BuildProduct(Product.PRIEST,true);
+            BuildProduct GhoulDLC=new BuildProduct(Product.GHOUL,true);
+            BuildProduct ExileDLC=new BuildProduct(Product.EXILE,true);
 
             products.Add(vanillaEdition);
             products.Add(perpetualDLC);
@@ -163,14 +163,14 @@ namespace SecretHistories.Utility
 
             BuildStorefront buildStorefront=new BuildStorefront(Storefront.Gog,OSs,products);
 
-            MakeDistribution(buildStorefront);
+            MakeDistribution(GameId.CS, buildStorefront);
             
         }
 
-        [MenuItem("Tools/Make Distribution (Humble)", false, 110)]
+        [MenuItem("Tools/CS Distribution (Humble)", false, 110)]
         public static void MakeHumbleDistribution()
         {
-            BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
+            BuildEnvironment env = new BuildEnvironment(GameId.CS, DEFAULT_BUILD_ROOT);
 
             List<BuildOS> OSs = new List<BuildOS>();
             List<BuildProduct> products = new List<BuildProduct>();
@@ -179,12 +179,12 @@ namespace SecretHistories.Utility
             OSs.Add(osw);
 
 
-            BuildProduct vanillaEdition = new BuildProduct(env, Product.VANILLA, false);
-            BuildProduct perpetualAllDlc = new BuildProduct(env, Product.PERPETUAL_ALLDLC, false);
-            BuildProduct DancerDLC = new BuildProduct(env, Product.DANCER, true);
-            BuildProduct PriestDLC = new BuildProduct(env, Product.PRIEST, true);
-            BuildProduct GhoulDLC = new BuildProduct(env, Product.GHOUL, true);
-            BuildProduct ExileDLC = new BuildProduct(env, Product.EXILE, true);
+            BuildProduct vanillaEdition = new BuildProduct( Product.VANILLA, false);
+            BuildProduct perpetualAllDlc = new BuildProduct( Product.PERPETUAL_ALLDLC, false);
+            BuildProduct DancerDLC = new BuildProduct( Product.DANCER, true);
+            BuildProduct PriestDLC = new BuildProduct( Product.PRIEST, true);
+            BuildProduct GhoulDLC = new BuildProduct( Product.GHOUL, true);
+            BuildProduct ExileDLC = new BuildProduct( Product.EXILE, true);
 
             products.Add(vanillaEdition);
             products.Add(perpetualAllDlc);
@@ -195,17 +195,20 @@ namespace SecretHistories.Utility
 
             BuildStorefront buildStorefront = new BuildStorefront(Storefront.Humble, OSs, products);
 
-            MakeDistribution(buildStorefront);
+            MakeDistribution(GameId.CS, buildStorefront);
 
         }
 
         private static void PerformBuild(Product productId, BuildTarget target)
         {
+
+            var os = new BuildOS(target);
+            var product = new BuildProduct(productId, false);
+
+            var env=new BuildEnvironment(product.GetGameId(), DEFAULT_BUILD_ROOT);
+          
             
-            var env=new BuildEnvironment(DEFAULT_BUILD_ROOT);
             
-            var os=new BuildOS(target);
-            var product=new BuildProduct(env, productId, false);
 
             env.DeleteProductWithOSBuildPath(product,os);
 
@@ -235,7 +238,8 @@ namespace SecretHistories.Utility
             {
                 target = target,
                 locationPathName = NoonUtility.JoinPaths(buildPath, os.ExeName),
-                scenes = sceneFiles.ToArray()
+                scenes = sceneFiles.ToArray(),
+
         };
             Log("Building " + target + " version to build directory: " + buildPath);
 
@@ -266,10 +270,14 @@ namespace SecretHistories.Utility
 
         private static void PostBuildFileTasks(BuildTarget buildTarget, string pathToBuiltProject,BuildOS os)
         {
-            BuildEnvironment env=new BuildEnvironment(DEFAULT_BUILD_ROOT);
-
             //get gameid from config file, since we don't have access to all the original spec from the menu command
             var c = new Config();
+
+            var game = c.GetGame();
+
+            BuildEnvironment env=new BuildEnvironment(game,DEFAULT_BUILD_ROOT);
+
+            
             
             string contentFolder=c.GetConfigValueAsString(NoonConstants.CONTENT_FOLDER_NAME_KEY);
             //there's a chance I'll want to come in here and make other changes besides the content folder deletion.
@@ -283,7 +291,7 @@ namespace SecretHistories.Utility
             //gets Application.Version and writes it to version.txt, where it can be used to specify version by upload scripts
             AddVersionNumber(pathToBuiltProject);
 
-            string perpetualEditionsFolderPath =NoonUtility.JoinPaths(env.GetProductWithOSBuildPath(new BuildProduct(env,Product.PERPETUAL_ALLDLC,false),os));
+            string perpetualEditionsFolderPath =NoonUtility.JoinPaths(env.GetProductWithOSBuildPath(new BuildProduct(Product.PERPETUAL_ALLDLC,false),os));
             BuildPerpetualEdition(pathToBuiltProject,perpetualEditionsFolderPath,os);
 
             string dlcFolderPath=NoonUtility.JoinPaths(env.GetBaseBuildsPath(), CONST_DLC_FOLDER);
@@ -315,9 +323,9 @@ namespace SecretHistories.Utility
             }
         }
 
-        private static void MakeDistribution(BuildStorefront storefront)
+        private static void MakeDistribution(GameId game,BuildStorefront storefront)
         {
-            BuildEnvironment env = new BuildEnvironment(DEFAULT_BUILD_ROOT);
+            BuildEnvironment env = new BuildEnvironment(game,DEFAULT_BUILD_ROOT);
 
             var distributions = storefront.GetDistributionsForStorefront(env);
 
