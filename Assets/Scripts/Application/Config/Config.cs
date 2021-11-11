@@ -39,7 +39,7 @@ public class Config
     
     private Dictionary<string, string> _configValues;
 
-    public Config(GameId gameId)
+    public Config()
     {
         
         
@@ -48,21 +48,15 @@ public class Config
 
         PopulateConfigValuesFromIniFile();
 
-      if(string.IsNullOrEmpty(GetConfigValue(NoonConstants.CULTURE_SETTING_KEY)))
+
+
+
+        if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.CULTURE_SETTING_KEY)))
         PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,
             DetermineMostSuitableCultureId());
 
+      
 
-      if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY)))
-      {
-          string gameSpecificFolderName = NoonConstants.DEFAULT_CONTENT_FOLDER_NAME;
-
-          if (gameId != GameId.CS) //first and most honourable backwards compat hack
-              gameSpecificFolderName = gameId.ToString() + gameSpecificFolderName;
-
-          PersistConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY,
-              gameSpecificFolderName);
-      }
 
       if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY)))
             PersistConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY,
@@ -70,6 +64,18 @@ public class Config
 
     }
 
+    public void SetGame(GameId game)
+    {
+
+        PersistConfigValue(NoonConstants.GAME_ID_KEY, game.ToString());
+
+        string gameSpecificFolderName = NoonConstants.DEFAULT_CONTENT_FOLDER_NAME;
+        if (game != GameId.CS) //first and most honourable backwards compat hack
+            gameSpecificFolderName = game.ToString() + gameSpecificFolderName;
+        //set content folder based on game. If we want to set it arbitrarily, we'll need to widen what's allowed.
+        PersistConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY,
+            gameSpecificFolderName);
+    }
 
     /// <summary>
     /// returns an empty string if the value doeesn't exist, or is '0', or 'false' or an empty string

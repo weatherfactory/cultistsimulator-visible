@@ -106,13 +106,15 @@ namespace SecretHistories.Services
                 // force invariant culture to fix Linux save file issues
                 System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
-
                 var watchman = new Watchman();
 
           
-                    GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), GameId);
-                    //load config: this gives us a lot of info that we'll need early
-                    watchman.Register(new Config(gameIdAsEnum));
+               GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), GameId);
+                //load config: this gives us a lot of info that we'll need early
+                var config = new Config();
+                config.SetGame(gameIdAsEnum);
+                    
+                watchman.Register(config);
    
             
                 //load concursum: central nexus for event responses

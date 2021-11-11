@@ -25,6 +25,7 @@ namespace SecretHistories.Constants
 
         public const string DEFAULT_CONTENT_FOLDER_NAME = "content";
         public const string CONTENT_FOLDER_NAME_KEY = "contentdir";
+        public const string GAME_ID_KEY = "gameid";
 
         public const string DEFAULT_IMAGES_FOLDER_NAME = "images";
         public const string IMAGES_FOLDER_NAME_KEY = "imagesdir";

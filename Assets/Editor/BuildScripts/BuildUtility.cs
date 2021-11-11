@@ -20,10 +20,9 @@ namespace SecretHistories.Utility
     {
 
         private const string BUILD_DIR_PREFIX = "csunity-";
-        private const string DEFAULT_BUILD_ROOT = "c:\\builds\\cs\\build_outputs";
+        private const string DEFAULT_BUILD_ROOT = "c:\\builds\\GAMEID\\build_outputs";
         private const string SCENES_FOLDER = "assets/Scenes";
         private const string CONST_DLC_FOLDER = "DLC";
-        private const string CONST_TAGS_FILE_NAME = "tags.ini";
         private const string CONST_PERPETUALEDITION_DLCTITLE = "PERPETUAL";
         private const string CONST_PERPETUALEDITION_SEMPER_RELATIVE_PATH_TO_FILE = "StreamingAssets\\edition\\semper.txt";
         private const char CONST_NAME_SEPARATOR_CHAR = '_';
@@ -206,6 +205,9 @@ namespace SecretHistories.Utility
 
             env.DeleteProductWithOSBuildPath(product,os);
 
+            
+        var config=new Config();
+            config.SetGame(product.GetGameId()); //gameid might be different from what we've been playing with in the editor. Set it explicitly here to overwrite gameid and contentdir for later build stuff
 
             if(!Directory.Exists(SCENES_FOLDER))
                 throw new ApplicationException($"Can't find scenes folder {SCENES_FOLDER}: exiting");
@@ -235,7 +237,7 @@ namespace SecretHistories.Utility
 
 
             BuildPipeline.BuildPlayer(buildPlayerOptions);
-            WriteProductTag(buildPath, productId); //<-- goes here because at this point we still have the product ID in scope
+
 
         }
 
@@ -387,15 +389,6 @@ namespace SecretHistories.Utility
             WriteSemperFile(semperPath);
         }
 
-        private static void WriteProductTag( string path,Product productId)
-        {
-
-            string filePath = NoonUtility.JoinPaths(path, CONST_TAGS_FILE_NAME);
-            string contents =$"product={productId}";
-
-            File.WriteAllText(filePath, contents);
-
-        }
 
         private static void WriteSemperFile(string semperPath)
         {

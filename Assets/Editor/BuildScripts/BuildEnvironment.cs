@@ -16,6 +16,7 @@ namespace SecretHistories.Editor.BuildScripts
     {
         public string BuildRoot { get; private set; }
         private const string BASE_OS_BUILDS = "BASE_OS_BUILDS";
+        private const string GAME_ID_TOKEN = "GAMEID";
 
         public BuildEnvironment(string root)
         {
@@ -29,6 +30,8 @@ namespace SecretHistories.Editor.BuildScripts
 
         public string GetProductWithOSBuildPath(BuildProduct p, BuildOS o)
         {
+            string path= NoonUtility.JoinPaths(GetBaseBuildsPath(), p.GetRelativePath(), o.OSId.ToString());
+            path = path.Replace(GAME_ID_TOKEN, p.GetGameId().ToString().ToLower());
             return NoonUtility.JoinPaths(GetBaseBuildsPath(), p.GetRelativePath(), o.OSId.ToString());
         }
 
