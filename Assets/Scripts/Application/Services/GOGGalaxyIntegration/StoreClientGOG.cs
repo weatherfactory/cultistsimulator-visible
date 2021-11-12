@@ -63,8 +63,8 @@ namespace SecretHistories.Constants
     {
         public override void OnAuthSuccess()
         {
-            NoonUtility.Log("GOG Galaxy logged on?" + GalaxyInstance.User().IsLoggedOn(), 10);
-            NoonUtility.Log("GOG Galaxy signed in? " + GalaxyInstance.User().SignedIn(), 10);
+            NoonUtility.Log("GOG Galaxy logged on?" + GalaxyInstance.User().IsLoggedOn());
+            NoonUtility.Log("GOG Galaxy signed in? " + GalaxyInstance.User().SignedIn());
         }
 
         public override void OnAuthFailure(FailureReason failureReason)
