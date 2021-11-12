@@ -19,7 +19,7 @@ namespace SecretHistories.Entities
 
         public IEnumerable<Character> GetAllCharacters()
         {
-            return gameObject.GetComponentsInChildren<Character>();
+            return gameObject.GetComponentsInChildren<Character>(true);
         }
 
         public Character InstantiateCharacterInStable()
@@ -29,7 +29,7 @@ namespace SecretHistories.Entities
             //also I worry about the save file being cluttered up.
             //So for now, we're just destroying characters every time we instantiate a new one.
             foreach(var c in GetAllCharacters())
-              GameObject.Destroy(c);
+              GameObject.Destroy(c.gameObject);
 
             _protagonist= Watchman.Get<PrefabFactory>().CreateLocally<Character>(transform);
             return _protagonist;
