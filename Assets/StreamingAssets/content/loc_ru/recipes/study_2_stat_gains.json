@@ -3,200 +3,623 @@
         {
             "id": "studyincreasehealthstarter",
             "label": "Физические упражнения",
+            "actionid": "study",
+            "requirements": {
+                "vitality": 2
+            },
+            "startdescription": "Я чувствую прилив сил. Физические упражнения пойдут мне на пользу.",
             "description": "Теперь я сильнее, чем прежде. [Мне удалось поправить здоровье, но в следующий раз сделать это будет сложнее.]",
-            "startdescription": "Я чувствую прилив сил. Физические упражнения пойдут мне на пользу."
+            "effects": {
+                "vitality": -2,
+                "health": 1,
+                "skillhealtha": 1
+            },
+            "warmup": 60,
+            "maxexecutions": 1,
+            "craftable": true
         },
         {
             "id": "studyincreasevitalitytoplus",
             "label": "Физические упражнения",
+            "actionid": "study",
+            "requirements": {
+                "vitality": 2
+            },
+            "startdescription": "Я чувствую прилив сил. Физические упражнения пойдут мне на пользу.",
             "description": "Теперь я могу стать сильнее. [Используйте этот извлечённый урок со своим навыком силы.]",
-            "startdescription": "Я чувствую прилив сил. Физические упражнения пойдут мне на пользу."
+            "effects": {
+                "vitality": -2,
+                "vitalityplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasevitalitywithinfluencehearttoplus",
             "label": "Физические упражнения",
+            "actionid": "study",
+            "requirements": {
+                "vitality": 1,
+                "influenceheart": 1,
+                "lore": -1
+            },
+            "startdescription": "Я чувствую прилив сил, а пора располагает к бодрости. Физические упражнения пойдут мне на пользу. [Если добавить подходящие знания, вместо этого вы сможете создать усиленное оккультное Влияние.]",
             "description": "Теперь я могу стать сильнее. [Используйте этот извлечённый урок со своим навыком силы.]",
-            "startdescription": "Я чувствую прилив сил, а пора располагает к бодрости. Физические упражнения пойдут мне на пользу. [Если добавить подходящие знания, вместо этого вы сможете создать усиленное оккультное Влияние.]"
+            "effects": {
+                "influence": -2,
+                "vitalityplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasehealthskilla",
             "label": "Физические упражнения: сильнее...",
+            "actionid": "study",
+            "requirements": {
+                "skillhealtha": 1,
+                "vitalityplus": 2
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "Я стану сильнее.",
             "description": "Моё тело — машина — пульсирует от обретённой силы.",
-            "startdescription": "Я стану сильнее."
+            "effects": {
+                "health": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasehealthskillb",
             "label": "Физические упражнения: ещё сильнее...",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthb": 1,
+                "vitalityplus": 3
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "Я стану ещё сильнее.",
             "description": "Я могу прямо сейчас перенести человека через реку или придушить его.",
-            "startdescription": "Я стану ещё сильнее."
+            "effects": {
+                "health": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasehealthskill_to_d_edge",
             "label": "Физические упражнения: высшая сила",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "edge": 1,
+                "lore": 1
+            },
+            "startdescription": "Я пройду по стопам Львиного Кузнеца, что становится всё сильнее, и по стопам Полковника, что не боится увечий.",
             "description": "Моё сердце бьётся мерно, как барабан, и уверенно, как приговор судьи.",
-            "startdescription": "Я пройду по стопам Львиного Кузнеца, что становится всё сильнее, и по стопам Полковника, что не боится увечий."
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_strength": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasehealthskill_to_d_forge",
             "label": "Физические упражнения: высшая сила",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "forge": 1,
+                "lore": 1
+            },
+            "startdescription": "Во мне воспылает сила Кузни Дней.",
             "description": "Моё сердце бьётся мерно, как барабан, и уверенно, как приговор судьи.",
-            "startdescription": "Во мне воспылает сила Кузни Дней."
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_strength": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasehealthskill_to_d_grail",
             "label": "Физические упражнения: высшее изящество",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "grail": 1,
+                "lore": 1
+            },
+            "startdescription": "Я испробую то, что назначено Чашей, а тело моё станет гибким, сладким и непокорным.",
             "description": "Ни одна буря не сломит дерево, если ствол его гибок.",
-            "startdescription": "Я испробую то, что назначено Чашей, а тело моё станет гибким, сладким и непокорным."
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_grace": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasehealthskill_to_d_heart",
             "label": "Физические упражнения: высшее изящество",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "heart": 9,
+                "lore": 1
+            },
+            "comments": "ugh: heart influence from vitalityplus",
+            "startdescription": "Я последую на голос Громового Ритма.",
             "description": "Ни одна буря не сломит дерево, если ствол его гибок.",
-            "startdescription": "Я последую на голос Громового Ритма."
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_grace": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasehealthskill_to_d_moth",
             "label": "Физические упражнения: высшее изящество",
+            "actionid": "study",
+            "requirements": {
+                "skillhealthc": 1,
+                "vitalityplus": 4,
+                "moth": 1,
+                "lore": 1
+            },
+            "startdescription": "Мы летим сквозь пламя, и ему нас не поглотить.",
             "description": "Ни одна буря не сломит дерево, если ствол его гибок.",
-            "startdescription": "Мы летим сквозь пламя, и ему нас не поглотить."
+            "effects": {
+                "health": 1,
+                "skillhealthc": -1,
+                "skillhealthd_grace": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasereasonstarter",
             "label": "Упражнения для ума",
+            "actionid": "study",
+            "requirements": {
+                "erudition": 2
+            },
+            "startdescription": "Мне стали известны разрозненные факты. Если я займусь изучением того, что мне знакомо, мой разум будет улучшен.",
             "description": "Мой ум — моя библиотека. [Мне удалось улучшить свой разум, но в следующий раз сделать это будет сложнее.]",
-            "startdescription": "Мне стали известны разрозненные факты. Если я займусь изучением того, что мне знакомо, мой разум будет улучшен."
+            "effects": {
+                "erudition": -2,
+                "reason": 1,
+                "skillreasona": 1
+            },
+            "warmup": 60,
+            "maxexecutions": 1,
+            "craftable": true
         },
         {
             "id": "studyincreaseeruditiontoplus",
             "label": "Упражнения для ума",
+            "actionid": "study",
+            "requirements": {
+                "erudition": 2
+            },
+            "startdescription": "Мне стали известны разрозненные факты. Если я займусь изучением того, что мне знакомо, мой разум будет улучшен.",
             "description": "Мой ум — моя библиотека. [Используйте этот извлечённый урок со своим навыком учёности.]",
-            "startdescription": "Мне стали известны разрозненные факты. Если я займусь изучением того, что мне знакомо, мой разум будет улучшен."
+            "effects": {
+                "erudition": -2,
+                "eruditionplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreaseeruditionwithlanterninfluencetoplus",
             "label": "Свет разума",
+            "actionid": "study",
+            "requirements": {
+                "erudition": 1,
+                "influencelantern": 1,
+                "lore": -1
+            },
+            "startdescription": "Мне стали известны разрозненные факты... В эту пору освещённости я могу улучшить свой разум. [Если добавить подходящие знания, вместо этого вы сможете создать усиленное оккультное Влияние]",
             "description": "Мой ум — моя библиотека. [Используйте этот извлечённый урок со своим навыком учёности.]",
-            "startdescription": "Мне стали известны разрозненные факты... В эту пору освещённости я могу улучшить свой разум. [Если добавить подходящие знания, вместо этого вы сможете создать усиленное оккультное Влияние]"
+            "effects": {
+                "influence": -2,
+                "eruditionplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasereasonskilla",
             "label": "Упражнения для ума: мудрее...",
+            "actionid": "study",
+            "requirements": {
+                "skillreasona": 1,
+                "eruditionplus": 2
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "Знания суть городская стена, выстроенная камень за камнем. Но что ждёт нас во тьме за стенами? Зачем прятаться в крепости? Причина одна — снаружи таится опасность...",
             "description": "Границы моего невежества сомкнулись.",
-            "startdescription": "Знания суть городская стена, выстроенная камень за камнем. Но что ждёт нас во тьме за стенами? Зачем прятаться в крепости? Причина одна — снаружи таится опасность..."
+            "effects": {
+                "reason": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasereasonskillb",
             "label": "Упражнения для ума: мудрее всех...",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonb": 1,
+                "eruditionplus": 3
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "Я стану ещё мудрее.",
             "description": "Мой разум — это зеркальный рай, где всё как на ладони; я вижу даже то, чего не хочу видеть.",
-            "startdescription": "Я стану ещё мудрее."
+            "effects": {
+                "reason": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasereasonskill_to_d_lantern",
             "label": "Упражнения для ума: лучшее просвещение",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "lantern": 9,
+                "lore": 1
+            },
+            "startdescription": "Я последую по стопам Дозорного.",
             "description": "Чем выше я поднимаюсь, тем больше вижу.",
-            "startdescription": "Я последую по стопам Дозорного."
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_illumination": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasereasonskill_to_d_winter",
             "label": "Упражнения для ума: углублённое сосредоточение",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "winter": 1,
+                "lore": 1
+            },
+            "startdescription": "Я буду вслушиваться, чтобы услышать голос Мадругады.",
             "description": "Тишина — это добродетель.",
-            "startdescription": "Я буду вслушиваться, чтобы услышать голос Мадругады."
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_concentration": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasereasonskill_to_d_knock",
             "label": "Упражнения для ума: лучшее просвещение",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "knock": 1,
+                "lore": 1
+            },
+            "startdescription": "Я переступлю через порог, за которым ждёт Рогатая Секира.",
             "description": "Чем выше я поднимаюсь, тем больше вижу.",
-            "startdescription": "Я переступлю через порог, за которым ждёт Рогатая Секира."
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_illumination": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasereasonskill_to_d_secrethistories",
             "label": "Упражнения для ума: углублённое сосредоточение",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "secrethistories": 1,
+                "lore": 1
+            },
+            "startdescription": "Никто не помнит все Истории. Следовательно, никто не забудет их все.",
             "description": "Тишина — это добродетель.",
-            "startdescription": "Никто не помнит все Истории. Следовательно, никто не забудет их все."
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_concentration": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasereasonskill_to_d_forge",
             "label": "Упражнения для ума: лучшее просвещение",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "forge": 1,
+                "lore": 1
+            },
+            "startdescription": "Я создам себя заново, чтобы стать светочем в ночи невежества.",
             "description": "Чем выше я поднимаюсь, тем больше вижу.",
-            "startdescription": "Я создам себя заново, чтобы стать светочем в ночи невежества."
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_illumination": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasereasonskill_to_d_edge",
             "label": "Упражнения для ума: углублённое сосредоточение",
+            "actionid": "study",
+            "requirements": {
+                "skillreasonc": 1,
+                "eruditionplus": 4,
+                "edge": 1,
+                "lore": 1
+            },
+            "startdescription": "Я не отступлю, не позволю отказать мне.",
             "description": "Тишина — это добродетель.",
-            "startdescription": "Я не отступлю, не позволю отказать мне."
+            "effects": {
+                "reason": 1,
+                "skillreasonc": -1,
+                "skillreasond_concentration": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasepassionstarter",
             "label": "Пища для воображения",
+            "actionid": "study",
+            "requirements": {
+                "glimmering": 2
+            },
+            "startdescription": "«Разъярённый лев мудрее подъярёмной кобылы». Если я займусь изучением того, что мне знакомо, то разовью эмоции и получу навык.",
             "description": "В моей душе множество окон, но в них попадает не только солнечный свет. [Мне удалось развить свои эмоции, но в следующий раз сделать это будет сложнее.]",
-            "startdescription": "«Разъярённый лев мудрее подъярёмной кобылы». Если я займусь изучением того, что мне знакомо, то разовью эмоции и получу навык."
+            "effects": {
+                "glimmering": -2,
+                "passion": 1,
+                "skillpassiona": 1
+            },
+            "warmup": 60,
+            "maxexecutions": 1,
+            "craftable": true
         },
         {
             "id": "studyincreaseglimmeringtoplus",
             "label": "Пища для воображения",
+            "actionid": "study",
+            "requirements": {
+                "glimmering": 2
+            },
+            "startdescription": "«Разъярённый лев мудрее подъярёмной кобылы». Если я займусь изучением того, что мне знакомо, то начну развивать эмоции.",
             "description": "В моей душе множество окон, но в них попадает не только солнечный свет. [Используйте этот извлечённый урок со своим навыком воображения.]",
-            "startdescription": "«Разъярённый лев мудрее подъярёмной кобылы». Если я займусь изучением того, что мне знакомо, то начну развивать эмоции."
+            "effects": {
+                "glimmering": -2,
+                "glimmeringplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreaseglimmeringwithmothinfluencetoplus",
             "label": "Пища для воображения",
+            "actionid": "study",
+            "requirements": {
+                "glimmering": 1,
+                "influencemoth": 1,
+                "lore": -1
+            },
+            "startdescription": "«Разъярённый лев мудрее подъярёмной кобылы». В это время невоспетых порывов я начну развивать эмоции. [Если добавить подходящие знания, вместо этого вы сможете создать усиленное оккультное Влияние]",
             "description": "В моей душе множество окон, но в них попадает не только солнечный свет. [Используйте этот извлечённый урок со своим навыком воображения.]",
-            "startdescription": "«Разъярённый лев мудрее подъярёмной кобылы». В это время невоспетых порывов я начну развивать эмоции. [Если добавить подходящие знания, вместо этого вы сможете создать усиленное оккультное Влияние]"
+            "effects": {
+                "influence": -2,
+                "glimmeringplus": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasepassionskilla",
             "label": "Пища для воображения: неистовей...",
+            "actionid": "study",
+            "requirements": {
+                "skillpassiona": 1,
+                "glimmeringplus": 2
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "«Тот, кто желает и не действует, плодит чуму».",
             "description": "Мои желания множатся. Быть может, они всегда будут опережать мои действия.",
-            "startdescription": "«Тот, кто желает и не действует, плодит чуму»."
+            "effects": {
+                "passion": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasepassionskillb",
             "label": "Пища для воображения: неистовей всех...",
+            "actionid": "study",
+            "requirements": {
+                "skillpassionb": 1,
+                "glimmeringplus": 3
+            },
+            "aspects": {
+                "careeradvancement": 1
+            },
+            "startdescription": "«Лучше убить дитя в колыбели, чем пестовать несбыточные мечты».",
             "description": "Будь сейчас иные времена, меня ждал бы путь провидца или еретика.",
-            "startdescription": "«Лучше убить дитя в колыбели, чем пестовать несбыточные мечты»."
+            "effects": {
+                "passion": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasepassionskill_to_d_moth",
             "label": "Упражнения на воображение: безрассудство",
+            "actionid": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "moth": 9,
+                "lore": 1
+            },
+            "startdescription": "обрежь мне волосы, обрежь мне путы, обрежь мне щёлк-щёлк-щёлк.",
             "description": "Дай мне ответы, и я одолею их своими вопросами...",
-            "startdescription": "обрежь мне волосы, обрежь мне путы, обрежь мне щёлк-щёлк-щёлк."
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_unreason": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasepassionskill_to_d_heart",
             "label": "Упражнения на воображение: безрассудство",
+            "actionid": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "heart": 1,
+                "lore": 1
+            },
+            "startdescription": "Грозовой Ритм предвещал: мы непрерывны, и нас не прервать.",
             "description": "Дай мне ответы, и я одолею их своими вопросами...",
-            "startdescription": "Грозовой Ритм предвещал: мы непрерывны, и нас не прервать."
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_unreason": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasepassionskill_to_d_knock",
             "label": "Упражнения на воображение: блажь",
+            "actionid": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "knock": 1,
+                "lore": 1
+            },
+            "startdescription": "«Яблоня никогда не спрашивает у бука, как ей расти, лев у лошади — как ему поступать с добычей».",
             "description": "Теперь моя душа готова.",
-            "startdescription": "«Яблоня никогда не спрашивает у бука, как ей расти, лев у лошади — как ему поступать с добычей»."
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_folly": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyincreasepassionskill_to_d_grail",
             "label": "Упражнения на воображение: блажь",
+            "actionid": "study",
+            "requirements": {
+                "skillpassionc": 1,
+                "glimmeringplus": 4,
+                "grail": 1,
+                "lore": 1
+            },
+            "startdescription": "«Тот, кто желает и не действует, плодит чуму».",
             "description": "Теперь моя душа готова.",
-            "startdescription": "«Тот, кто желает и не действует, плодит чуму»."
+            "effects": {
+                "passion": 1,
+                "skillpassionc": -1,
+                "skillpassiond_folly": 1
+            },
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyhealth",
             "label": "Свежий воздух и упражнения",
+            "actionid": "study",
+            "requirements": {
+                "health": 1,
+                "lore": -1
+            },
+            "comments": "lore limiter added in case we use health for researching lore at some point",
+            "effects": {
+                "vitality": 1
+            },
+            "startdescription": "Нужно совершить долгую прогулку — избавиться от паутины в голове.",
             "description": "Пришлось ненадолго забросить обучение, но теперь я держусь прямо.",
-            "startdescription": "Нужно совершить долгую прогулку — избавиться от паутины в голове."
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studyreason",
             "label": "Прочесть всё, что попадётся",
+            "actionid": "study",
+            "requirements": {
+                "reason": 1,
+                "lore": -1
+            },
+            "comments": "lore limiter added because we use reason for researching (splitting) lore",
+            "effects": {
+                "erudition": 1
+            },
+            "startdescription": "В мире столько напечатанных слов... Порой даже в газетах можно обрести знания.",
             "description": "В словах были знания. Теперь они есть и во мне. Это напоминает не то кражу, не то пир, не то распространение заразной болезни.",
-            "startdescription": "В мире столько напечатанных слов... Порой даже в газетах можно обрести знания."
+            "warmup": 60,
+            "craftable": true
         },
         {
             "id": "studypassion",
             "label": "Прочесть что-нибудь сентиментальное",
+            "actionid": "study",
+            "requirements": {
+                "passion": 1
+            },
+            "comments": "lore limiter added in case we use passion for researching lore at some point",
+            "effects": {
+                "glimmering": 1
+            },
+            "startdescription": "Тот, кто хочет что-нибудь узнать, точно не возьмётся за это чтиво.",
             "description": "Это хороший способ убить время. Местами мне хотелось плакать, а местами смеяться. Тем временем мир вокруг меня идёт своим чередом.",
-            "startdescription": "Тот, кто хочет что-нибудь узнать, точно не возьмётся за это чтиво."
+            "warmup": 60,
+            "craftable": true
         }
     ]
 }

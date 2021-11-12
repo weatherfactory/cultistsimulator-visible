@@ -3,57 +3,90 @@
         {
             "id": "previtality",
             "label": "Стойкость",
-            "description": "[Стойкость расцветает...]"
+            "description": "[Стойкость расцветает...]",
+            "lifetime": 1,
+            "icon": "vitality",
+            "decayTo": "vitality"
         },
         {
             "id": "preerudition",
             "label": "Эрудиция",
-            "description": "[Из понимания рождается эрудиция...]"
+            "description": "[Из понимания рождается эрудиция...]",
+            "lifetime": 1,
+            "icon": "erudition",
+            "decayTo": "erudition"
         },
         {
             "id": "prerestlessness",
             "label": "Беспокойство",
-            "description": "[Вспыхивает беспокойство...]"
+            "description": "[Вспыхивает беспокойство...]",
+            "lifetime": 1,
+            "icon": "restlessness",
+            "decayTo": "restlessness"
         },
         {
             "id": "preglimmering",
             "label": "Проблеск",
-            "description": "[Возникает проблеск...]"
+            "description": "[Возникает проблеск...]",
+            "lifetime": 1,
+            "icon": "glimmering",
+            "decayTo": "glimmering"
         },
         {
             "id": "predread",
             "label": "Ужас",
-            "description": "[Ужас сковывает мне душу...]"
+            "description": "[Ужас сковывает мне душу...]",
+            "lifetime": 1,
+            "icon": "dread",
+            "decayTo": "dread"
         },
         {
             "id": "prefascination",
             "label": "Фиксация",
-            "description": "[Фиксация усиливается...]"
+            "description": "[Фиксация усиливается...]",
+            "lifetime": 1,
+            "icon": "fascination",
+            "decayTo": "fascination"
         },
         {
             "id": "pre.fragmentedgeb",
             "label": "Намёки: Грань",
-            "description": "Незримые искусства открываются мне с новой стороны."
+            "description": "Незримые искусства открываются мне с новой стороны.",
+            "lifetime": 1,
+            "decayTo": "fragmentedgeb",
+            "icon": "fragmentedgeb"
         },
         {
             "id": "pre.fragmentforgeb",
             "label": "Намёки: Кузня",
-            "description": "Незримые искусства открываются мне с новой стороны."
+            "description": "Незримые искусства открываются мне с новой стороны.",
+            "lifetime": 1,
+            "decayTo": "fragmentforgeb",
+            "icon": "fragmentforgeb"
         },
         {
             "id": "pre.fragmentgrailb",
             "label": "Намёки: Чаша",
-            "description": "Незримые искусства открываются мне с новой стороны."
+            "description": "Незримые искусства открываются мне с новой стороны.",
+            "lifetime": 1,
+            "decayTo": "fragmentgrailb",
+            "icon": "fragmentgrailb"
         },
         {
             "id": "pre.fragmentheartb",
             "label": "Намёки: Сердце",
-            "description": "Незримые искусства открываются мне с новой стороны."
+            "description": "Незримые искусства открываются мне с новой стороны.",
+            "lifetime": 1,
+            "decayTo": "fragmentheartb",
+            "icon": "fragmentheartb"
         },
         {
             "id": "pre.fragmentknockb",
             "label": "Намёки: Стук",
-            "description": "Незримые искусства открываются мне с новой стороны."
+            "description": "Незримые искусства открываются мне с новой стороны.",
+            "lifetime": 1,
+            "decayTo": "fragmentknockb",
+            "icon": "fragmentknockb"
         }
     ]
 }

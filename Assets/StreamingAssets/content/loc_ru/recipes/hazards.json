@@ -3,252 +3,744 @@
         {
             "id": "despairrisk",
             "label": "Безрадостные мысли",
-            "description": ".",
-            "startdescription": "Мрачные дни. Нельзя подпускать к себе сомнения. [Ужас может привести к полноценному отчаянию.]",
+            "actionid": "despair",
+            "requirements": {},
+            "effects": {},
             "slots": [
                 {
                     "id": "Shadows",
-                    "label": "Тени"
+                    "label": "Тени",
+                    "required": {
+                        "inducesdespair": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "Мрачные дни. Нельзя подпускать к себе сомнения. [Ужас может привести к полноценному отчаянию.]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "despairactive",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdefeated",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "despairactive",
             "label": "ОТЧАЯНИЕ",
-            "description": ".",
+            "actionid": "despair",
+            "requirements": {
+                "inducesdespair": 1
+            },
             "startdescription": "Отчаяние подобно волку, пожирающему мысли. [Вы можете справиться с отчаянием, отдав ему безмятежность, иначе при 3 ужасах оно уничтожит вас.]",
+            "description": ".",
+            "warmup": 60,
             "slots": [
                 {
                     "id": "Thoughts",
-                    "label": "Мысли"
+                    "label": "Мысли",
+                    "required": {
+                        "contentment": 1,
+                        "inducesdespair": 1
+                    },
+                    "greedy": true,
+                    "noanim": true
+                }
+            ],
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "despairwarning",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "despairabate",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "despairactive",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "despairwarning",
             "label": "ОТЧАЯНИЕ",
+            "actionid": "despair",
+            "requirements": {
+                "dread": 2,
+                "contentment": -1
+            },
+            "startdescription": "Отчаяние подкрадывается всё ближе ко мне. Огни мира меркнут. [Вы можете справиться с отчаянием, отдав ему безмятежность, иначе при 3 ужасах оно уничтожит вас.]",
             "description": ".",
-            "startdescription": "Отчаяние подкрадывается всё ближе ко мне. Огни мира меркнут. [Вы можете справиться с отчаянием, отдав ему безмятежность, иначе при 3 ужасах оно уничтожит вас.]"
-        },
-        {
-            "id": "despairabate",
-            "label": "Отчаяние отступает",
-            "description": ".",
-            "startdescription": "Воспоминания о лучших временах отгоняют волка от двери. [Каждая безмятежность уничтожает один ужас.]"
-        },
-        {
-            "id": "despairdeath",
-            "label": "ОТЧАЯНИЕ ОХВАТЫВАЕТ МЕНЯ",
-            "description": "Где найдут меня? Я больше не здесь.",
-            "startdescription": "Это почти конец... [Нужно найти безмятежность, иначе всему конец.]",
-            "slots": [
+            "comments": "This exists specifically for the burn image at 2 Dread.",
+            "burnimage": "despair",
+            "linked": [
                 {
-                    "id": "Thoughts",
-                    "label": "Мысли"
+                    "id": "despairabate",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "despairactive",
+                    "chance": 100
                 }
             ]
         },
         {
+            "id": "despairabate",
+            "label": "Отчаяние отступает",
+            "actionid": "despair",
+            "requirements": {
+                "contentment": 1
+            },
+            "effects": {
+                "inducesdespair": -1,
+                "contentment": -1
+            },
+            "startdescription": "Воспоминания о лучших временах отгоняют волка от двери. [Каждая безмятежность уничтожает один ужас.]",
+            "description": ".",
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "despairactive",
+                    "chance": 100
+                },
+                {
+                    "id": "despairdefeated",
+                    "chance": 100
+                }
+            ]
+        },
+        {
+            "id": "despairdeath",
+            "label": "ОТЧАЯНИЕ ОХВАТЫВАЕТ МЕНЯ",
+            "actionid": "despair",
+            "requirements": {
+                "inducesdespair": 3
+            },
+            "slots": [
+                {
+                    "id": "Thoughts",
+                    "label": "Мысли",
+                    "required": {
+                        "contentment": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "effects": {},
+            "startdescription": "Это почти конец... [Нужно найти безмятежность, иначе всему конец.]",
+            "description": "Где найдут меня? Я больше не здесь.",
+            "warmup": 60,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "despairabate",
+                    "chance": 100
+                }
+            ],
+            "ending": "despairending",
+            "signalEndingFlavour": "Melancholy",
+            "comments": "Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated."
+        },
+        {
             "id": "despairdefeated",
             "label": "Облака рассеиваются",
+            "actionid": "despair",
+            "effects": {
+                "fleeting": 1
+            },
+            "startdescription": ".",
             "description": "Волк отчаяния уходит все дальше. [Нет ужаса, чтобы подпитать отчаяние. Все кончилось. Пока что.]",
-            "startdescription": "."
+            "craftable": false
         },
         {
             "id": "visionsrisk",
             "label": "Воздушная рябь",
-            "description": ".",
-            "startdescription": "Солнце трепещет, подобно тени. За поверхностью зеркал идут рябью сны. Мне нужно сохранять осторожность, чтобы не выскользнуть из мира яви. [Фиксация может спровоцировать видения]",
+            "actionid": "visions",
+            "requirements": {},
             "slots": [
                 {
                     "id": "Shadows",
-                    "label": "Тени"
+                    "label": "Тени",
+                    "required": {
+                        "fascination": 1
+                    },
+                    "greedy": true
+                }
+            ],
+            "startdescription": "Солнце трепещет, подобно тени. За поверхностью зеркал идут рябью сны. Мне нужно сохранять осторожность, чтобы не выскользнуть из мира яви. [Фиксация может спровоцировать видения]",
+            "description": ".",
+            "warmup": 60,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdefeated",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "visionsactive",
             "label": "Я вижу всякое",
-            "description": ".",
+            "actionid": "visions",
+            "requirements": {
+                "fascination": 1
+            },
             "startdescription": "Картины шепчут. Окна подмигивают. Я знаю, что ничего этого на самом деле нет, но разве можно сказать наверняка? [Вы можете победить видения при помощи ужаса или ускользающих воспоминаний; если этого не сделать, то при 3 фиксациях вы забудете себя.]",
+            "description": ".",
+            "warmup": 60,
             "slots": [
                 {
                     "id": "Thoughts",
-                    "label": "Мысли"
+                    "label": "Мысли",
+                    "required": {
+                        "dread": 1,
+                        "fascination": 1,
+                        "fleeting": 1
+                    },
+                    "greedy": true,
+                    "noanim": true
+                }
+            ],
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "visionswarning",
+                    "chance": 100
+                }
+            ],
+            "linked": [
+                {
+                    "id": "visionsabate",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsabatefleeting",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsactive",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "visionswarning",
             "label": "Я вижу всякое!",
+            "actionid": "visions",
+            "requirements": {
+                "fascination": 2,
+                "dread": -1,
+                "fleeting": -1
+            },
+            "startdescription": "Мир пугающе ярок. [Вы можете победить видения при помощи ужаса или ускользающих воспоминаний; если этого не сделать, то при 3 фиксациях вы забудете себя.]",
             "description": ".",
-            "startdescription": "Мир пугающе ярок. [Вы можете победить видения при помощи ужаса или ускользающих воспоминаний; если этого не сделать, то при 3 фиксациях вы забудете себя.]"
+            "comments": "This exists specifically for the burn image at 2 Fascination.",
+            "burnimage": "visions",
+            "linked": [
+                {
+                    "id": "visionsabate",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsabatefleeting",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdeath",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "visionsdeath",
             "label": "Помогите мне... ",
-            "description": "Где найдут меня? Я больше не здесь.",
-            "startdescription": "Каждый предмет окаймлён ярким светом. Слава близится, но мне нельзя быть здесь, чтобы видеть... [Если вы не найдете ужас или ускользающее воспоминание, то всему конец.]",
+            "actionid": "visions",
+            "requirements": {
+                "fascination": 3
+            },
             "slots": [
                 {
                     "id": "Thoughts",
-                    "label": "Мысли"
+                    "label": "Мысли",
+                    "required": {
+                        "dread": 1,
+                        "fleeting": 1
+                    },
+                    "greedy": true
                 }
-            ]
+            ],
+            "effects": {},
+            "startdescription": "Каждый предмет окаймлён ярким светом. Слава близится, но мне нельзя быть здесь, чтобы видеть... [Если вы не найдете ужас или ускользающее воспоминание, то всему конец.]",
+            "description": "Где найдут меня? Я больше не здесь.",
+            "warmup": 60,
+            "craftable": false,
+            "alt": [
+                {
+                    "id": "visionsabate",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsabatefleeting",
+                    "chance": 100
+                }
+            ],
+            "signalEndingFlavour": "Melancholy",
+            "ending": "visionsending"
         },
         {
             "id": "visionsabate",
             "label": "Видения рассеиваются",
+            "actionid": "visions",
+            "requirements": {
+                "dread": 1
+            },
+            "effects": {
+                "fascination": -1,
+                "dread": -1
+            },
+            "startdescription": "Тени — убежище от света. Отчаяние — балласт. Даже горю можно найти применение. [Каждый ужас подавляет одну фиксацию.]",
             "description": ".",
-            "startdescription": "Тени — убежище от света. Отчаяние — балласт. Даже горю можно найти применение. [Каждый ужас подавляет одну фиксацию.]"
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdefeated",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "visionsabatefleeting",
             "label": "Видения рассеиваются",
+            "actionid": "visions",
+            "requirements": {
+                "fleeting": 1
+            },
+            "effects": {
+                "fascination": -1,
+                "fleeting": -1
+            },
+            "startdescription": "Осязаемость повседневности изгоняет фантомов. Я стараюсь цепляться за повседневность. [Каждое ускользающее воспоминание подавляет одну фиксацию.]",
             "description": ".",
-            "startdescription": "Осязаемость повседневности изгоняет фантомов. Я стараюсь цепляться за повседневность. [Каждое ускользающее воспоминание подавляет одну фиксацию.]"
+            "warmup": 10,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "visionsactive",
+                    "chance": 100
+                },
+                {
+                    "id": "visionsdefeated",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "visionsdefeated",
             "label": "Мир, как он есть",
+            "actionid": "visions",
+            "effects": {
+                "fleeting": 1
+            },
+            "startdescription": ".",
             "description": "Зеркала спокойны. Солнце не движется. Слава отступает. Мой разум трезв, словно это кого-то волнует. [Фиксации не порождают видения. Пока что вы в безопасности.]",
-            "startdescription": "."
+            "craftable": false
         },
         {
             "id": "curse_dread_dormant",
             "label": "Спящее Иссушающее проклятие",
-            "startdescription": "Иссушающее проклятие пока не подействовало."
+            "actionid": "curse_dread",
+            "startdescription": "Иссушающее проклятие пока не подействовало.",
+            "alt": [
+                {
+                    "id": "curse_dread_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_dread_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
         },
         {
             "id": "curse_dread_active",
             "label": "Иссушающее проклятие",
+            "requirements": {
+                "reason": -1
+            },
+            "actionid": "curse_dread",
             "startdescription": "Иссушающее проклятие действует медленно, опускается, словно лёгкая рука на плечо.",
             "slots": [
                 {
                     "id": "Reason",
-                    "label": "Разум"
+                    "label": "Разум",
+                    "greedy": true,
+                    "required": {
+                        "reason": 1
+                    }
                 }
-            ]
+            ],
+            "linked": [
+                {
+                    "id": "curse_dread_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_dread_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
         },
         {
             "id": "curse_dread_attempt_mitigation",
             "label": "Иссушающее проклятие: последний шанс",
-            "description": "Мой череп трещит. Свет вокруг меркнет.",
-            "startdescription": "Проклятие вступило в силу. Теперь я вижу вокруг себя лишь теснины. [Вы сможете отразить проклятие только в том случае, если у вас достаточно влияния Сердца.]",
+            "actionid": "curse_dread",
             "slots": [
                 {
                     "id": "Protection",
-                    "label": "Защита"
+                    "label": "Защита",
+                    "required": {
+                        "influencehearte": 1,
+                        "influenceheartg": 1
+                    }
                 }
-            ]
+            ],
+            "alt": [
+                {
+                    "id": "curse_dread_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Проклятие вступило в силу. Теперь я вижу вокруг себя лишь теснины. [Вы сможете отразить проклятие только в том случае, если у вас достаточно влияния Сердца.]",
+            "description": "Мой череп трещит. Свет вокруг меркнет.",
+            "aspects": {
+                "damagereason": 1
+            },
+            "warmup": 60
         },
         {
             "id": "curse_dread_mitigation_successful",
             "label": "Милость Громового Ритма",
-            "description": "Моя душа вновь трепещет, проклятие снято. Вдали, на горизонте, подобно беспокойному зверю, шевелится буря.",
-            "startdescription": "Ударьте в барабан и произнесите слова. Не теряйте надежды, пока песня не будет закончена."
+            "actionid": "curse_dread",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "Ударьте в барабан и произнесите слова. Не теряйте надежды, пока песня не будет закончена.",
+            "description": "Моя душа вновь трепещет, проклятие снято. Вдали, на горизонте, подобно беспокойному зверю, шевелится буря."
         },
         {
             "id": "curse_visions_dormant",
             "label": "Спящее проклятие пятого глаза",
-            "startdescription": "Проклятие пятого глаза пока не подействовало."
+            "actionid": "curse_visions",
+            "startdescription": "Проклятие пятого глаза пока не подействовало.",
+            "alt": [
+                {
+                    "id": "curse_visions_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_visions_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
         },
         {
             "id": "curse_visions_active",
             "label": "Проклятие пятого глаза",
+            "actionid": "curse_visions",
+            "requirements": {
+                "passion": -1
+            },
             "startdescription": "Третий глаз — выдумка, но иногда так называют шишковидную железу. Четвёртый глаз — знак определённых успехов в вознесении. Пятый же глаз сейчас открывается передо мной.",
             "slots": [
                 {
                     "id": "Passion",
-                    "label": "Эмоции"
+                    "label": "Эмоции",
+                    "greedy": true,
+                    "required": {
+                        "passion": 1
+                    }
                 }
-            ]
+            ],
+            "linked": [
+                {
+                    "id": "curse_visions_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_visions_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
         },
         {
             "id": "curse_visions_attempt_mitigation",
             "label": "Проклятие пятого глаза: последний шанс",
-            "description": "Я не могу перестать это видеть. А если буду смотреть достаточно долго, то не буду и хотеть.",
-            "startdescription": "Проклятие начало действовать. Теперь весь мир вокруг гниёт, источая свет. [Вы сможете отразить проклятие, если у вас достаточно влияния Сердца.]",
+            "actionid": "curse_visions",
             "slots": [
                 {
                     "id": "Protection",
-                    "label": "Защита"
+                    "label": "Защита",
+                    "required": {
+                        "influencehearte": 1,
+                        "influenceheartg": 1
+                    }
                 }
-            ]
+            ],
+            "alt": [
+                {
+                    "id": "curse_visions_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Проклятие начало действовать. Теперь весь мир вокруг гниёт, источая свет. [Вы сможете отразить проклятие, если у вас достаточно влияния Сердца.]",
+            "description": "Я не могу перестать это видеть. А если буду смотреть достаточно долго, то не буду и хотеть.",
+            "aspects": {
+                "damagepassion": 1
+            },
+            "warmup": 60
         },
         {
             "id": "curse_visions_mitigation_successful",
             "label": "Милость Громового Ритма",
-            "description": "Мои глаза прояснились, проклятие снято. Вдали, на горизонте, подобно беспокойному зверю, шевелится буря.",
-            "startdescription": "Ударьте в барабан и произнесите слова. Я закрою глаза до конца песни."
+            "actionid": "curse_visions",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "Ударьте в барабан и произнесите слова. Я закрою глаза до конца песни.",
+            "description": "Мои глаза прояснились, проклятие снято. Вдали, на горизонте, подобно беспокойному зверю, шевелится буря."
         },
         {
             "id": "curse_affliction_dormant",
             "label": "Спящее проклятие хриплого дыхания",
-            "startdescription": "Проклятие хриплого дыхания пока не подействовало."
+            "actionid": "curse_affliction",
+            "startdescription": "Проклятие хриплого дыхания пока не подействовало.",
+            "alt": [
+                {
+                    "id": "curse_affliction_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_affliction_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
         },
         {
             "id": "curse_affliction_active",
             "label": "Проклятие хриплого дыхания",
+            "actionid": "curse_affliction",
+            "requirements": {
+                "health": -1
+            },
             "startdescription": "Проклятие хриплого дыхания начинается с кашля — такого, что сжимает горло жертвы, подобно сборщику долгов.",
             "slots": [
                 {
                     "id": "Health",
-                    "label": "Здоровье"
+                    "label": "Здоровье",
+                    "greedy": true,
+                    "required": {
+                        "health": 1
+                    }
                 }
-            ]
+            ],
+            "linked": [
+                {
+                    "id": "curse_affliction_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_affliction_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
         },
         {
             "id": "curse_affliction_attempt_mitigation",
             "label": "Проклятие хриплого дыхания: последний шанс",
-            "description": "Каждый наш вздох в этом мире оказывается слабее предыдущего, пока мы не испускаем последний. Изменения настолько медленные, что мы их почти не замечаем... только если не оказываемся под действием проклятья хриплого дыхания.",
-            "startdescription": "Проклятие начало действовать. Пульс жизни замедляется. [Это проклятие страшнее обычной болезни, но вы сможете отразить его, если у вас достаточно влияния Сердца.]",
+            "actionid": "curse_affliction",
             "slots": [
                 {
                     "id": "Protection",
-                    "label": "Защита"
+                    "label": "Защита",
+                    "required": {
+                        "influencehearte": 1,
+                        "influenceheartg": 1
+                    }
                 }
-            ]
+            ],
+            "alt": [
+                {
+                    "id": "curse_affliction_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Проклятие начало действовать. Пульс жизни замедляется. [Это проклятие страшнее обычной болезни, но вы сможете отразить его, если у вас достаточно влияния Сердца.]",
+            "description": "Каждый наш вздох в этом мире оказывается слабее предыдущего, пока мы не испускаем последний. Изменения настолько медленные, что мы их почти не замечаем... только если не оказываемся под действием проклятья хриплого дыхания.",
+            "aspects": {
+                "destroyhealth": 1
+            },
+            "warmup": 60
         },
         {
             "id": "curse_affliction_mitigation_successful",
             "label": "Милость Громового Ритма",
-            "description": "Мои лёгкие здоровы, проклятие снято. Вдали, на горизонте, подобно беспокойному зверю, шевелится буря.",
-            "startdescription": "Ударьте в барабан и произнесите слова. Старайтесь не кашлять, пока песня не будет закончена."
+            "actionid": "curse_affliction",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "Ударьте в барабан и произнесите слова. Старайтесь не кашлять, пока песня не будет закончена.",
+            "description": "Мои лёгкие здоровы, проклятие снято. Вдали, на горизонте, подобно беспокойному зверю, шевелится буря."
         },
         {
             "id": "curse_nowhere_dormant",
             "label": "Мы что-то принесли с собой",
-            "startdescription": "Я вижу вокруг себя движение — нечто вроде мушек, что иногда проплывают перед глазами, но мельче. Иногда я слышу и звуки, что они издают."
+            "actionid": "curse_nowhere",
+            "startdescription": "Я вижу вокруг себя движение — нечто вроде мушек, что иногда проплывают перед глазами, но мельче. Иногда я слышу и звуки, что они издают.",
+            "alt": [
+                {
+                    "id": "curse_nowhere_active",
+                    "chance": 30
+                }
+            ],
+            "linked": [
+                {
+                    "id": "curse_nowhere_dormant",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60,
+            "craftable": false
         },
         {
             "id": "curse_nowhere_active",
             "label": "Черви мира",
+            "actionid": "curse_nowhere",
+            "requirements": {
+                "mortal": -1
+            },
             "startdescription": "В городе полно червей. Их невозможно увидеть, но невозможно и забыть. Они ищут жертву — кого-нибудь, в кого смогут проникнуть через изъяны кожи — а потом делают то, что обычно делают черви.",
             "slots": [
                 {
                     "id": "Someone",
-                    "label": "Кто-то"
+                    "label": "Кто-то",
+                    "greedy": true,
+                    "required": {
+                        "mortal": 1
+                    }
                 }
-            ]
+            ],
+            "linked": [
+                {
+                    "id": "curse_nowhere_active",
+                    "chance": 100
+                },
+                {
+                    "id": "curse_nowhere_attempt_mitigation",
+                    "chance": 100
+                }
+            ],
+            "warmup": 60
         },
         {
             "id": "curse_nowhere_attempt_mitigation",
             "label": "Черви мира: последний шанс",
-            "description": "Если черви добрались до плоти, остается только уничтожить останки — сжечь и крайне осторожно просеять.",
-            "startdescription": "Черви сумели забраться под кожу. Это конец. [Можно спастись, если у вас есть огромный запас влияния Сердца.]",
+            "actionid": "curse_nowhere",
             "slots": [
                 {
                     "id": "Protection",
-                    "label": "Защита"
+                    "label": "Защита",
+                    "required": {
+                        "influenceheartg": 1
+                    }
                 }
-            ]
+            ],
+            "alt": [
+                {
+                    "id": "curse_nowhere_mitigation_successful",
+                    "chance": 100
+                }
+            ],
+            "startdescription": "Черви сумели забраться под кожу. Это конец. [Можно спастись, если у вас есть огромный запас влияния Сердца.]",
+            "description": "Если черви добрались до плоти, остается только уничтожить останки — сжечь и крайне осторожно просеять.",
+            "effects": {
+                "mortal": -1,
+                "notoriety": 1,
+                "dread": 1
+            },
+            "warmup": 60
         },
         {
             "id": "curse_nowhere_mitigation_successful",
             "label": "Милость Громового Ритма",
-            "description": "Стоит избавиться от червей, и всё вокруг преображается — словно с мира сдёрнули занавес. Воздух снова пахнет дождём и озоном. Наши пальцы всё ещё движутся под Громовой Ритм.",
-            "startdescription": "Остается молиться о молнии — только дыхание бури сможет помочь."
+            "actionid": "curse_nowhere",
+            "requirements": {
+                "influence": 1
+            },
+            "effects": {
+                "influence": -1
+            },
+            "startdescription": "Остается молиться о молнии — только дыхание бури сможет помочь.",
+            "description": "Стоит избавиться от червей, и всё вокруг преображается — словно с мира сдёрнули занавес. Воздух снова пахнет дождём и озоном. Наши пальцы всё ещё движутся под Громовой Ритм."
         }
     ]
 }

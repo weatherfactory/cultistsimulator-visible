@@ -3,32 +3,44 @@
         {
             "id": "insight",
             "label": "Осознание",
-            "description": "Поможет разгадать эту тайну."
+            "description": "Поможет разгадать эту тайну.",
+            "lifetime": 1
         },
         {
             "id": "bid",
             "label": "Заявка",
-            "description": "Предложение цены в аукционном доме."
+            "description": "Предложение цены в аукционном доме.",
+            "xtriggers": {
+                "restore": "funds"
+            }
         },
         {
             "id": "abductioninprogress",
             "label": "Тюремная камера",
-            "description": "Говорят, что мысль свободна, но она прикована к телу."
+            "description": "Говорят, что мысль свободна, но она прикована к телу.",
+            "lifetime": 1,
+            "icon": "seal_wardeddoor"
         },
         {
             "id": "assassinationinprogress.player",
             "label": "Убийство",
-            "description": "Всё закончится смертью. Возможно, моей."
+            "description": "Всё закончится смертью. Возможно, моей.",
+            "lifetime": 1,
+            "icon": "dread"
         },
         {
             "id": "assassinationinprogress.follower",
             "label": "Убийство",
-            "description": "Всё закончится смертью — моих врагов или сторонников."
+            "description": "Всё закончится смертью — моих врагов или сторонников.",
+            "lifetime": 1,
+            "icon": "dread"
         },
         {
             "id": "scandalinprogress",
             "label": "Злые слухи",
-            "description": "Их слова — лишь тень правды, но по теням нас можно выследить."
+            "description": "Их слова — лишь тень правды, но по теням нас можно выследить.",
+            "lifetime": 1,
+            "icon": "notoriety"
         }
     ]
 }

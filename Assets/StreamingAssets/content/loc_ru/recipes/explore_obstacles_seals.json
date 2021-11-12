@@ -2,123 +2,417 @@
     "recipes": [
         {
             "id": "explorevaultseal_hiddendoor_encounter",
+            "actionid": "explore",
             "label": "Потайная дверь",
             "startdescription": "Здесь должна быть дверь. Но без Лампады или Стука нам её не найти.",
+            "requirements": {
+                "seal_hiddendoor": 1
+            },
             "slots": [
                 {
                     "id": "Assistance",
                     "label": "Помощь",
-                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия."
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultseal_hiddendoor_highlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_highknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_midlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_midknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_lowlantern",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_lowknock",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "explorevaultseal_hiddendoor_highlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 10
+            },
             "label": "Мы взываем к Дозорному, что проливает свет",
+            "startdescription": "Мы почти наверняка обнаружим потайную дверь.",
             "description": ".",
-            "startdescription": "Мы почти наверняка обнаружим потайную дверь."
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_hiddendoor_midlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 5
+            },
             "label": "Мы взываем к Дозорному, что находит путь",
+            "startdescription": "Наши чувства обострены. Скорее всего, дверь будет найдена.",
             "description": ".",
-            "startdescription": "Наши чувства обострены. Скорее всего, дверь будет найдена."
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_hiddendoor_lowlantern",
+            "actionid": "explore",
+            "requirements": {
+                "lantern": 1
+            },
             "label": "Мы взываем к Дозорному, что не знает сочувствия",
+            "startdescription": "Мы несём Свет. Возможно, мы всё же найдём эту потайную дверь. Но будет непросто.",
             "description": ".",
-            "startdescription": "Мы несём Свет. Возможно, мы всё же найдём эту потайную дверь. Но будет непросто."
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_hiddendoor_highknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 10
+            },
             "label": "Мы взываем к Ворону-с-Берега, что видит потерянное",
+            "startdescription": "С нами великая сила открытия. Мы почти наверняка обнаружим потайную дверь.",
             "description": ".",
-            "startdescription": "С нами великая сила открытия. Мы почти наверняка обнаружим потайную дверь."
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_hiddendoor_midknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 5
+            },
             "label": "Мы взываем к Ворону-с-Берега, что разверзает землю",
+            "startdescription": "Мы умеем видеть секретные проходы и, скорее всего, сумеем обнаружить потайную дверь.",
             "description": ".",
-            "startdescription": "Мы умеем видеть секретные проходы и, скорее всего, сумеем обнаружить потайную дверь."
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_hiddendoor_lowknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 1
+            },
             "label": "Мы взываем к Ворону-с-Берега, хозяину всего, что не принадлежит никому",
+            "startdescription": "Мы достаточно близко знакомы с силой открытия. Возможно, мы всё же найдём эту потайную дверь. Но будет непросто.",
             "description": ".",
-            "startdescription": "Мы достаточно близко знакомы с силой открытия. Возможно, мы всё же найдём эту потайную дверь. Но будет непросто."
+            "linked": [
+                {
+                    "id": "explorevaultseal_hiddendoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_hiddendoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_hiddendoor_success",
+            "actionid": "explore",
             "label": "Путь через потайную дверь",
+            "startdescription": "Едва заметные линии на камне; поверхность чуть поддаётся на нажатие. Получилось! Потайная дверь тяжело отъезжает в сторону, обдавая нас целым облаком пыли.",
             "description": ".",
-            "startdescription": "Едва заметные линии на камне; поверхность чуть поддаётся на нажатие. Получилось! Потайная дверь тяжело отъезжает в сторону, обдавая нас целым облаком пыли."
+            "effects": {
+                "seal_hiddendoor": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
         },
         {
             "id": "explorevaultseal_hiddendoor_failure",
+            "actionid": "explore",
             "label": "Безрезультатный поиск",
+            "startdescription": "Где же она? Здесь пригодилась бы сила Стука или Лампады.",
             "description": ".",
-            "startdescription": "Где же она? Здесь пригодилась бы сила Стука или Лампады."
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
         },
         {
             "id": "explorevaultseal_wardeddoor_encounter",
+            "actionid": "explore",
             "label": "Защищённая дверь",
             "startdescription": "Эта дверь долгое время оставалась неприступной. Без помощи Стука или Кузни она останется неприступной и для нас.",
+            "requirements": {
+                "seal_wardeddoor": 1
+            },
             "slots": [
                 {
                     "id": "Assistance",
                     "label": "Помощь",
-                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия."
+                    "description": "Без средств экспедиция беспомощна. Средства помогают преодолевать препятствия.",
+                    "required": {
+                        "follower": 1,
+                        "funds": 1
+                    }
+                }
+            ],
+            "alt": [
+                {
+                    "id": "explorevaultseal_wardeddoor_highforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_highknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_midforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_midknock",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_lowforge",
+                    "chance": 100
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_lowknock",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30,
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
                 }
             ]
         },
         {
             "id": "explorevaultseal_wardeddoor_highforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 10
+            },
             "label": "Мы взываем к Кузне Дней, что положит конец ночи",
+            "startdescription": "Мы почти наверняка сокрушим эту дверь.",
             "description": ".",
-            "startdescription": "Мы почти наверняка сокрушим эту дверь."
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_wardeddoor_midforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 5
+            },
             "label": "Мы взываем к Кузне Дней, что уничтожает неизменное",
+            "startdescription": "Всё готово. Скорее всего, дверь не устоит.",
             "description": ".",
-            "startdescription": "Всё готово. Скорее всего, дверь не устоит."
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_wardeddoor_lowforge",
+            "actionid": "explore",
+            "requirements": {
+                "forge": 1
+            },
             "label": "Мы взываем к Кузне Дней, что перековывает жаром огня",
+            "startdescription": "Мы преисполнены огня Кузни. Возможно, мы преодолеем защищённую дверь. Но будет непросто.",
             "description": ".",
-            "startdescription": "Мы преисполнены огня Кузни. Возможно, мы преодолеем защищённую дверь. Но будет непросто."
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_wardeddoor_highknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 10
+            },
             "label": "Мы взываем к Рогатой Секире, что ждёт за порогом",
+            "startdescription": "С нами великая сила открытия. Мы почти наверняка сокрушим эту защищённую дверь.",
             "description": ".",
-            "startdescription": "С нами великая сила открытия. Мы почти наверняка сокрушим эту защищённую дверь."
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 90
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_wardeddoor_midknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 5
+            },
             "label": "Мы взываем к Рогатой Секире, что дозволяет проход, когда приходит час",
+            "startdescription": "Мы умеем вскрывать защищённые проходы и, скорее всего, сумеем справиться с этой дверью.",
             "description": ".",
-            "startdescription": "Мы умеем вскрывать защищённые проходы и, скорее всего, сумеем справиться с этой дверью."
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 70
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_wardeddoor_lowknock",
+            "actionid": "explore",
+            "requirements": {
+                "knock": 1
+            },
             "label": "Мы взываем к Рогатой Секире, что увенчана двумя лезвиями",
+            "startdescription": "Мы достаточно близко знакомы с силой открытия. Возможно, мы всё же сумеем вскрыть эту дверь. Но будет непросто.",
             "description": ".",
-            "startdescription": "Мы достаточно близко знакомы с силой открытия. Возможно, мы всё же сумеем вскрыть эту дверь. Но будет непросто."
+            "linked": [
+                {
+                    "id": "explorevaultseal_wardeddoor_success",
+                    "chance": 30
+                },
+                {
+                    "id": "explorevaultseal_wardeddoor_failure",
+                    "chance": 100
+                }
+            ]
         },
         {
             "id": "explorevaultseal_wardeddoor_success",
+            "actionid": "explore",
             "label": "Гибель двери",
+            "startdescription": "Всякая дверь рано или поздно открывается; всякая жизнь рано или поздно заканчивается. Эта дверь встретила свой конец сегодня.",
             "description": ".",
-            "startdescription": "Всякая дверь рано или поздно открывается; всякая жизнь рано или поздно заканчивается. Эта дверь встретила свой конец сегодня."
+            "effects": {
+                "seal_wardeddoor": -1
+            },
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
         },
         {
             "id": "explorevaultseal_wardeddoor_failure",
+            "actionid": "explore",
             "label": "Назначения дверей",
+            "startdescription": "У всякой двери два назначения: открываться и оставаться закрытой. Эта дверь осталась верна второму.",
             "description": ".",
-            "startdescription": "У всякой двери два назначения: открываться и оставаться закрытой. Эта дверь осталась верна второму."
+            "craftable": false,
+            "linked": [
+                {
+                    "id": "explorevaulttick",
+                    "chance": 100
+                }
+            ],
+            "warmup": 30
         }
     ]
 }

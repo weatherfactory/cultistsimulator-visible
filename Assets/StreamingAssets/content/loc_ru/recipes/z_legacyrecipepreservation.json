@@ -1,19 +1,44 @@
 {
     "recipes": [
         {
-            "id": "translatevakh1int"
+            "id": "translatevakh1int",
+            "comments": "here to prevent possible legacy save issues only - orig hint misnamed",
+            "actionid": "z",
+            "requirements": {
+                "textvak": 1
+            },
+            "hintonly": true,
+            "craftable": false
         },
         {
             "id": "studyincreasehealthskillc",
-            "description": "Мои усилия ничего не дали."
+            "comments": "Backwards compatility only",
+            "actionid": "study",
+            "description": "Мои усилия ничего не дали.",
+            "effects": {
+                "health": 1
+            },
+            "craftable": false
         },
         {
             "id": "studyincreasereasonskillc",
-            "description": "Мои усилия ничего не дали."
+            "comments": "Backwards compatility only",
+            "actionid": "study",
+            "description": "Мои усилия ничего не дали.",
+            "effects": {
+                "reason": 1
+            },
+            "craftable": false
         },
         {
             "id": "studyincreasepassionskillc",
-            "description": "Мои усилия ничего не дали."
+            "comments": "Backwards compatility only",
+            "actionid": "study",
+            "description": "Мои усилия ничего не дали.",
+            "effects": {
+                "passion": 1
+            },
+            "craftable": false
         }
     ]
 }

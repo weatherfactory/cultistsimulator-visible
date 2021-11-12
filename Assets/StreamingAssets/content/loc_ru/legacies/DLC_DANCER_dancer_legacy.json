@@ -4,7 +4,17 @@
             "id": "dancer",
             "label": "Танцовщица",
             "description": "Моё тело молодо и сильно, и моя красота нескоро увянет.",
-            "startdescription": "Сегодня я выступаю с труппой театра Веселья впервые. Огни здесь сияют ярко, и на нас устремлены десятки внимательных взглядов."
+            "startdescription": "Сегодня я выступаю с труппой театра Веселья впервые. Огни здесь сияют ярко, и на нас устремлены десятки внимательных взглядов.",
+            "effects": {
+                "passion": 1,
+                "health": 2,
+                "legacydancerjob": 1
+            },
+            "image": "dancer",
+            "fromending": "workvictory",
+            "availableWithoutEndingMatch": true,
+            "startingverbid": "work",
+            "newstart": true
         }
     ]
 }

@@ -3,162 +3,396 @@
         {
             "id": "aladim",
             "label": "Доктор Ибн Аль-Адим",
+            "aspects": {
+                "tutoraramaic": 1,
+                "tutor": 1,
+                "patron": 1
+            },
             "description": "Доктор Ибн Аль-Адим по прозвищу Алеппинец интересуется историями, которые люди обычно обходят вниманием. Он предложил вам работу.",
+            "unique": true,
+            "xtriggers": {
+                "commissionfulfilled": "aladimaway",
+                "killmortal": "rumour",
+                "derangemortal": "rumour"
+            },
             "slots": [
                 {
                     "id": "Commission",
-                    "label": "Заказ"
+                    "label": "Заказ",
+                    "actionid": "talk",
+                    "required": {
+                        "commission": 1
+                    }
                 },
                 {
                     "id": "Manuscript",
-                    "label": "Рукопись"
+                    "label": "Рукопись",
+                    "actionid": "talk",
+                    "required": {
+                        "article": 1
+                    }
                 }
             ]
         },
         {
             "id": "aladimready",
             "label": "Доктор Ибн Аль-Адим",
-            "description": "Доктор Ибн Аль-Адим по прозвищу Алеппинец интересуется историями, которые люди обычно обходят вниманием. Ему не помешает ваша помощь."
+            "aspects": {
+                "tutoraramaic": 1,
+                "tutor": 1,
+                "patron": 1
+            },
+            "description": "Доктор Ибн Аль-Адим по прозвищу Алеппинец интересуется историями, которые люди обычно обходят вниманием. Ему не помешает ваша помощь.",
+            "unique": true,
+            "xtriggers": {
+                "commissiongiven": "aladim",
+                "killmortal": "rumour",
+                "derangemortal": "rumour"
+            }
         },
         {
             "id": "bechet",
             "label": "Мадам Беше",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorgreek": 1
+            },
             "description": "Мадам Олимпия Беше — редактор «Керишемского альманаха», где публикуются материалы, слишком мрачные или скандальные для других литературных журналов. Она предложила вам работу.",
+            "unique": true,
+            "xtriggers": {
+                "commissionfulfilled": "bechetaway",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
             "slots": [
                 {
                     "id": "Commission",
-                    "label": "Заказ"
+                    "label": "Заказ",
+                    "actionid": "talk",
+                    "required": {
+                        "commission": 1
+                    }
                 },
                 {
                     "id": "Manuscript",
-                    "label": "Рукопись"
+                    "label": "Рукопись",
+                    "actionid": "talk",
+                    "required": {
+                        "article": 1
+                    }
                 }
             ]
         },
         {
             "id": "bechetready",
             "label": "Мадам Беше",
-            "description": "Мадам Олимпия Беше — редактор «Керишемского альманаха», где публикуются материалы, слишком мрачные или скандальные для других литературных журналов. Ей не помешает ваша помощь."
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorgreek": 1
+            },
+            "description": "Мадам Олимпия Беше — редактор «Керишемского альманаха», где публикуются материалы, слишком мрачные или скандальные для других литературных журналов. Ей не помешает ваша помощь.",
+            "unique": true,
+            "xtriggers": {
+                "commissiongiven": "bechet",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
         },
         {
             "id": "jannings",
             "label": "Граф Яннингс",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorlatin": 1
+            },
             "description": "Граф Готтлоб Яннингс представляет Континентальное содружество врачей и дуэлянтов. Он предложил вам работу.",
+            "unique": true,
+            "xtriggers": {
+                "commissionfulfilled": "janningsaway",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            },
             "slots": [
                 {
                     "id": "Commission",
-                    "label": "Заказ"
+                    "label": "Заказ",
+                    "actionid": "talk",
+                    "required": {
+                        "commission": 1
+                    }
                 },
                 {
                     "id": "Manuscript",
-                    "label": "Рукопись"
+                    "label": "Рукопись",
+                    "actionid": "talk",
+                    "required": {
+                        "article": 1
+                    }
                 }
             ]
         },
         {
             "id": "janningsready",
             "label": "Граф Яннингс",
-            "description": "Граф Готтлоб Яннингс представляет Континентальное содружество врачей и дуэлянтов. Ему не помешает ваша помощь."
+            "aspects": {
+                "mortal": 1,
+                "patron": 1,
+                "tutor": 1,
+                "tutorlatin": 1
+            },
+            "description": "Граф Готтлоб Яннингс представляет Континентальное содружество врачей и дуэлянтов. Ему не помешает ваша помощь.",
+            "unique": true,
+            "xtriggers": {
+                "commissiongiven": "jannings",
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
         },
         {
             "id": "poppyready",
             "label": "Поппи Ласеллс",
-            "description": "Добродушная дама со средствами. Она хочет с вами поговорить."
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "Добродушная дама со средствами. Она хочет с вами поговорить.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
         },
         {
             "id": "poppy",
             "label": "Поппи Ласеллс",
-            "description": "Добродушная дама со средствами."
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "Добродушная дама со средствами.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic"
+            }
         },
         {
             "id": "poppycommissionready",
             "label": "Поппи Ласеллс",
-            "description": "Добродушная дама со средствами. Ей нужна ваша помощь в некоем деле."
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
+            "description": "Добродушная дама со средствами. Ей нужна ваша помощь в некоем деле.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "commissiongiven": "poppycommission"
+            },
+            "icon": "poppyready"
         },
         {
             "id": "poppycommission",
             "label": "Поппи Ласеллс",
+            "aspects": {
+                "mortal": 1,
+                "patron": 1
+            },
             "description": "Добродушная дама со средствами. Она предложила вам работу.",
+            "unique": true,
+            "xtriggers": {
+                "killmortal": "corpse",
+                "derangemortal": "lunatic",
+                "commissionfulfilled": "poppyaway"
+            },
             "slots": [
                 {
                     "id": "Commission",
-                    "label": "Заказ"
+                    "label": "Заказ",
+                    "actionid": "talk",
+                    "required": {
+                        "commission": 1
+                    }
                 },
                 {
                     "id": "Manuscript",
-                    "label": "Рукопись"
+                    "label": "Рукопись",
+                    "actionid": "talk",
+                    "required": {
+                        "article": 1
+                    }
                 }
-            ]
+            ],
+            "icon": "poppy"
         },
         {
             "id": "aladimaway",
             "label": "Доктор Ибн Аль-Адим",
-            "description": "Доктор Ибн Аль-Адим по прозвищу Алеппинец интересуется историями, которые люди обычно обходят вниманием. Сейчас связаться с ним невозможно, но он скоро вернётся."
+            "description": "Доктор Ибн Аль-Адим по прозвищу Алеппинец интересуется историями, которые люди обычно обходят вниманием. Сейчас связаться с ним невозможно, но он скоро вернётся.",
+            "lifetime": 120,
+            "decayTo": "aladimready",
+            "icon": "aladim"
         },
         {
             "id": "bechetaway",
             "label": "Мадам Беше",
-            "description": "Мадам Олимпия Беше — редактор «Керишемского альманаха», где публикуются материалы, слишком мрачные или скандальные для других литературных журналов. Сейчас она занята подготовкой нового выпуска, но скоро снова выйдет на связь."
+            "description": "Мадам Олимпия Беше — редактор «Керишемского альманаха», где публикуются материалы, слишком мрачные или скандальные для других литературных журналов. Сейчас она занята подготовкой нового выпуска, но скоро снова выйдет на связь.",
+            "lifetime": 120,
+            "decayTo": "bechetready",
+            "icon": "bechet"
         },
         {
             "id": "janningsaway",
             "label": "Граф Яннингс",
-            "description": "Граф Готтлоб Яннингс представляет Континентальное содружество врачей и дуэлянтов. Сейчас его нет в стране, но он скоро вернётся."
+            "lifetime": 120,
+            "description": "Граф Готтлоб Яннингс представляет Континентальное содружество врачей и дуэлянтов. Сейчас его нет в стране, но он скоро вернётся.",
+            "decayTo": "janningsready",
+            "icon": "jannings"
         },
         {
             "id": "poppyaway",
             "label": "Поппи Ласеллс",
-            "description": "Добродушная дама со средствами. Сейчас она не принимает посетителей."
+            "description": "Добродушная дама со средствами. Сейчас она не принимает посетителей.",
+            "lifetime": 120,
+            "decayTo": "poppycommissionready",
+            "icon": "poppy"
         },
         {
             "id": "benefactorm",
             "label": "Лорд Тимоти Мандей",
             "description": "Элегантный лысеющий джентльмен с печальными глазами и склонностью к приступам пронзительного, но дружелюбного нервного смеха. Зарёкся употреблять крепкие напитки.",
+            "uniquenessgroup": "uqbenefactorm",
+            "aspects": {
+                "benefactor": 1,
+                "mortal": 1
+            },
             "slots": [
                 {
                     "id": "health",
-                    "label": "Здоровье"
+                    "actionid": "work",
+                    "label": "Здоровье",
+                    "required": {
+                        "health": 1
+                    }
                 },
                 {
                     "id": "funds",
-                    "label": "Блеск"
+                    "actionid": "work",
+                    "label": "Блеск",
+                    "required": {
+                        "funds": 1
+                    }
                 }
-            ]
+            ],
+            "xtriggers": {
+                "employment": "benefactorm",
+                "rejection": "benefactorm_rejectedplayer",
+                "killmortal": "corpse",
+                "avowal": "benefactorm_proposedtoplayer"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorm_rejectedplayer"
         },
         {
             "id": "benefactorf",
             "label": "Николь, четвёртая маркиза Стэнфорда",
             "description": "Умная и предусмотрительная женщина с близко посаженными глазами и прекрасной для её возраста кожей. Она давно ведёт свои финансовые дела самостоятельно и регулярно жертвует на благотворительность.",
+            "uniquenessgroup": "uqbenefactorf",
+            "aspects": {
+                "benefactor": 1,
+                "mortal": 1
+            },
             "slots": [
                 {
                     "id": "health",
-                    "label": "Здоровье"
+                    "actionid": "work",
+                    "label": "Здоровье",
+                    "required": {
+                        "health": 1
+                    }
                 },
                 {
                     "id": "funds",
-                    "label": "Блеск"
+                    "actionid": "work",
+                    "label": "Блеск",
+                    "required": {
+                        "funds": 1
+                    }
                 }
-            ]
+            ],
+            "xtriggers": {
+                "employment": "benefactorf",
+                "rejection": "benefactorf_rejectedplayer",
+                "killmortal": "corpse",
+                "avowal": "benefactorf_proposedtoplayer"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorf_rejectedplayer"
         },
         {
             "id": "benefactorm_rejectedplayer",
             "label": "Лорд Тимоти Мандей",
-            "description": "Лорд Тимоти больше не присылает мне записочки."
+            "description": "Лорд Тимоти больше не присылает мне записочки.",
+            "uniquenessgroup": "uqbenefactorm",
+            "aspects": {
+                "mortal": 1
+            },
+            "xtriggers": {
+                "killmortal": "corpse"
+            },
+            "icon": "benefactorm"
         },
         {
             "id": "benefactorf_rejectedplayer",
             "label": "Николь, четвёртая маркиза Стэнфорда",
-            "description": "По слухам, достопочтенная маркиза Стэнфордская объявила, что сама не вполне понимает причины своего интереса ко мне."
+            "description": "По слухам, достопочтенная маркиза Стэнфордская объявила, что сама не вполне понимает причины своего интереса ко мне.",
+            "uniquenessgroup": "uqbenefactorf",
+            "aspects": {
+                "mortal": 1
+            },
+            "xtriggers": {
+                "killmortal": "corpse"
+            },
+            "icon": "benefactorf"
         },
         {
             "id": "benefactorm_proposedtoplayer",
             "label": "Лорд Тимоти Мандей",
-            "description": "В минуту страсти лорд Тимоти предложил мне сочетаться с ним браком. Если я соглашусь, моя жизнь изменится навсегда... и другие двери навеки закроются. [Поговорите с его светлостью, пока его энтузиазм не угас, или он решит, что его отвергли.]"
+            "description": "В минуту страсти лорд Тимоти предложил мне сочетаться с ним браком. Если я соглашусь, моя жизнь изменится навсегда... и другие двери навеки закроются. [Поговорите с его светлостью, пока его энтузиазм не угас, или он решит, что его отвергли.]",
+            "uniquenessgroup": "uqbenefactorm",
+            "aspects": {
+                "mortal": 1,
+                "benefactor_proposal": 1
+            },
+            "xtriggers": {
+                "killmortal": "benefactorwill"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorm_rejectedplayer",
+            "icon": "benefactorm"
         },
         {
             "id": "benefactorf_proposedtoplayer",
             "label": "Николь, четвёртая маркиза Стэнфорда",
-            "description": "В минуту страсти достопочтенная маркиза Стэнфордская предложила мне сочетаться с ней браком. Если я соглашусь, моя жизнь изменится навсегда... и другие двери навеки закроются. [Поговорите с маркизой, пока её энтузиазм не угас, или она решит, что её отвергли.]"
+            "description": "В минуту страсти достопочтенная маркиза Стэнфордская предложила мне сочетаться с ней браком. Если я соглашусь, моя жизнь изменится навсегда... и другие двери навеки закроются. [Поговорите с маркизой, пока её энтузиазм не угас, или она решит, что её отвергли.]",
+            "uniquenessgroup": "uqbenefactorf",
+            "aspects": {
+                "mortal": 1,
+                "benefactor_proposal": 1
+            },
+            "xtriggers": {
+                "killmortal": "benefactorwill"
+            },
+            "lifetime": 180,
+            "decayTo": "benefactorf_rejectedplayer",
+            "icon": "benefactorf"
         },
         {
             "id": "benefactorwill",
@@ -167,44 +401,81 @@
             "slots": [
                 {
                     "id": "lawyerfees",
-                    "label": "Адвокатский гонорар"
+                    "actionid": "study",
+                    "label": "Адвокатский гонорар",
+                    "consumes": true,
+                    "required": {
+                        "funds": 1
+                    }
                 }
-            ]
+            ],
+            "aspects": {
+                "legacyplotitem": 1
+            },
+            "icon": "documentgeneric"
         },
         {
             "id": "sulochana",
             "label": "Сулочана Амавасья",
-            "description": "Немногословная, энергичная, ясноглазая и невозмутимая хозяйка клуба «Экдизис»."
+            "description": "Немногословная, энергичная, ясноглазая и невозмутимая хозяйка клуба «Экдизис».",
+            "unique": true,
+            "aspects": {
+                "tutorsanskrit": 1,
+                "tutor": 1,
+                "patron": 1
+            }
         },
         {
             "id": "echidna.enroute",
             "label": "Миссис Э. в пути",
-            "description": "Миссис Э., «сестра» Сулочаны, носит не предвещающий ничего хорошего титул Матери чудовищ. Обычное место её обитания неизвестно, но это явно не ближний свет. Чтобы добраться до нас, ей потребуется время."
+            "description": "Миссис Э., «сестра» Сулочаны, носит не предвещающий ничего хорошего титул Матери чудовищ. Обычное место её обитания неизвестно, но это явно не ближний свет. Чтобы добраться до нас, ей потребуется время.",
+            "unique": true,
+            "lifetime": 180,
+            "decayTo": "echidna"
         },
         {
             "id": "echidna",
             "label": "Миссис Э.",
-            "description": "Называет себя Матерью чудовищ. Жизнерадостная полная женщина в серо-зеленом платье, напоминающем мешковатый дирндль."
+            "description": "Называет себя Матерью чудовищ. Жизнерадостная полная женщина в серо-зеленом платье, напоминающем мешковатый дирндль.",
+            "aspects": {
+                "patron": 1
+            },
+            "unique": true
         },
         {
             "id": "marinette.enroute",
             "label": "Нитяная дева в пути",
-            "description": "«Сестра» Сулочаны, известная под именем Нитяной девы. К ночи она будет у нас."
+            "description": "«Сестра» Сулочаны, известная под именем Нитяной девы. К ночи она будет у нас.",
+            "unique": true,
+            "lifetime": 180,
+            "decayTo": "marinette"
         },
         {
             "id": "marinette",
             "label": "Маринетта, Нитяная дева",
-            "description": "От этого существа смердит тухлой кровью. Оно щёлкает челюстью, когда говорит. Возможно, в глубине складок ткани, под костями, скрывается женщина. Возможно, это фокусы какого-то кукольника."
+            "description": "От этого существа смердит тухлой кровью. Оно щёлкает челюстью, когда говорит. Возможно, в глубине складок ткани, под костями, скрывается женщина. Возможно, это фокусы какого-то кукольника.",
+            "aspects": {
+                "patron": 1
+            },
+            "unique": true
         },
         {
             "id": "kleidouchos.enroute",
             "label": "Фрау Шлюссель в пути",
-            "description": "«Корреспондентка» Терезы Гальмье, «сестра» Сулочаны и хранительница Ключа Дней едет к нам из Вены. Возможно, мне следует встретить её на вокзале."
+            "description": "«Корреспондентка» Терезы Гальмье, «сестра» Сулочаны и хранительница Ключа Дней едет к нам из Вены. Возможно, мне следует встретить её на вокзале.",
+            "aspects": {
+                "patron": 1
+            },
+            "lifetime": 180,
+            "decayTo": "kleidouchos"
         },
         {
             "id": "kleidouchos",
             "label": "Фрау Шлюссель",
-            "description": "Бойкая, напористая женщина, одетая в чёрное и белое. Её лицо покрыто сетью морщин. Никто не видел, как она моргает. Из-под её юбок выглядывает крошечный чёрный щенок."
+            "description": "Бойкая, напористая женщина, одетая в чёрное и белое. Её лицо покрыто сетью морщин. Никто не видел, как она моргает. Из-под её юбок выглядывает крошечный чёрный щенок.",
+            "aspects": {
+                "patron": 1
+            }
         },
         {
             "id": "naenia",
@@ -214,9 +485,17 @@
                 {
                     "id": "subject",
                     "label": "Память",
-                    "description": "Мисс Нения не разговаривает со мной, а только пишет картины, но я всегда помню её слова."
+                    "description": "Мисс Нения не разговаривает со мной, а только пишет картины, но я всегда помню её слова.",
+                    "actionid": "talk",
+                    "required": {
+                        "memory": 1,
+                        "ascension.remembrance.offering": 1
+                    }
                 }
-            ]
+            ],
+            "aspects": {
+                "patron": 1
+            }
         }
     ]
 }
