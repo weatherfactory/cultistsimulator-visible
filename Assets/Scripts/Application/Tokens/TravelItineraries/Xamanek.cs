@@ -16,10 +16,11 @@ namespace SecretHistories.UI
     /// </summary>
     public class Xamanek: MonoBehaviour
     {
-        [SerializeField]
-  private readonly List<TokenItinerary> currentTokenTravelItineraries=new List<TokenItinerary>();
+        //we assume Token payload ids are unique. This should be the case.
+        //we assume each token can only ever have one itinerary. We may later regret this but I think it's a wise stricture.
+        private readonly Dictionary<string, TokenItinerary> _currentItineraries = new Dictionary<string, TokenItinerary>();
 
-  [SerializeField] private GameObject displayBoard;
+        [SerializeField] private GameObject displayBoard;
 
         public void Awake()
         {
@@ -33,11 +34,11 @@ namespace SecretHistories.UI
             foreach(var ed in existingDisplays)
                 Destroy(ed.gameObject);
 
-            foreach (var i in currentTokenTravelItineraries)
+            foreach (var i in _currentItineraries.Where(i=>i.Value.IsActive()))
             {
                 var newItineraryDisplay = Watchman.Get<PrefabFactory>()
                     .CreateLocally<ItineraryDisplay>(displayBoard.transform);
-                newItineraryDisplay.DisplayItinerary(null,i);
+                newItineraryDisplay.DisplayItinerary(i.Key,i.Value);
             }
 
         }
@@ -48,15 +49,15 @@ namespace SecretHistories.UI
             travelAnimation.Retire();
         }
 
-        public void ItineraryStarted(TokenTravelItinerary itinerary)
+        public void ItineraryStarted(string tokenPayloadId,TokenTravelItinerary itinerary)
         {
-            currentTokenTravelItineraries.Add(itinerary);
+            _currentItineraries.Add(tokenPayloadId,itinerary);
             UpdateItineraryDisplays();
         }
 
         public void TokenItineraryCompleted(Token token)
         {
-            currentTokenTravelItineraries.Remove(token.CurrentItinerary);
+            _currentItineraries.Remove(token.PayloadId);
             DestroyTravelAnimationForToken(token);
             UpdateItineraryDisplays();
 
@@ -65,32 +66,29 @@ namespace SecretHistories.UI
 
         public void TokenItineraryInterrupted(Token token)
         {
-            currentTokenTravelItineraries.Remove(token.CurrentItinerary);
+            _currentItineraries.Remove(token.PayloadId);
             DestroyTravelAnimationForToken(token);
             UpdateItineraryDisplays();
 
         }
 
 
-        public List<TokenItinerary> CurrentItineraries()
+        public Dictionary<string,TokenItinerary> CurrentItinerariesForPath(FucinePath forPath)
         {
-            return new List<TokenItinerary>(currentTokenTravelItineraries);
+            var matchingItineraries=new Dictionary<string, TokenItinerary>( _currentItineraries.Where(i =>
+                i.Value.DestinationSpherePath == forPath));
+
+            return matchingItineraries;
         }
 
-        public List<TokenItinerary> CurrentItinerariesForPath(FucinePath forPath)
-        {
-            return new List<TokenItinerary>(currentTokenTravelItineraries.Where(i =>
-                i.DestinationSpherePath == forPath));
-        }
-
-        public bool ItineraryWouldClash(TokenTravelItinerary checkItinerary)
-        {
-            if (currentTokenTravelItineraries.Exists(i =>
-                i.DestinationSpherePath == checkItinerary.DestinationSpherePath &&
-                i.Anchored3DEndPosition == checkItinerary.Anchored3DEndPosition))
-                return true;
-            return false;
-        }
+        //public bool ItineraryWouldClash(TokenTravelItinerary checkItinerary)
+        //{
+        //    if (currentTokenTravelItineraries.Exists(i =>
+        //        i.DestinationSpherePath == checkItinerary.DestinationSpherePath &&
+        //        i.Anchored3DEndPosition == checkItinerary.Anchored3DEndPosition))
+        //        return true;
+        //    return false;
+        //}
 
         //public void OnGUI()
         //{
