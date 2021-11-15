@@ -20,27 +20,33 @@ namespace SecretHistories.UI
         //we assume each token can only ever have one itinerary. We may later regret this but I think it's a wise stricture.
         private readonly Dictionary<string, TokenItinerary> _currentItineraries = new Dictionary<string, TokenItinerary>();
 
-        [SerializeField] private GameObject displayBoard;
-
+        [SerializeField] private GameObject ItinerariesDisplayHolder;
+        [SerializeField] private bool  MetapauseWhenItineraryStarted;
         public void Awake()
         {
             var r = new Watchman();
             r.Register(this);
+            ClearItineraryDisplays();
+
         }
 
         public void UpdateItineraryDisplays()
         {
-            var existingDisplays = displayBoard.GetComponentsInChildren<ItineraryDisplay>();
-            foreach(var ed in existingDisplays)
-                Destroy(ed.gameObject);
+            ClearItineraryDisplays();
 
             foreach (var i in _currentItineraries.Where(i=>i.Value.IsActive()))
             {
                 var newItineraryDisplay = Watchman.Get<PrefabFactory>()
-                    .CreateLocally<ItineraryDisplay>(displayBoard.transform);
+                    .CreateLocally<ItineraryDisplay>(ItinerariesDisplayHolder.transform);
                 newItineraryDisplay.DisplayItinerary(i.Key,i.Value);
             }
+        }
 
+        private void ClearItineraryDisplays()
+        {
+            var existingDisplays = ItinerariesDisplayHolder.GetComponentsInChildren<ItineraryDisplay>();
+            foreach (var ed in existingDisplays)
+                Destroy(ed.gameObject);
         }
 
         private void DestroyTravelAnimationForToken(Token token)
@@ -51,6 +57,11 @@ namespace SecretHistories.UI
 
         public void ItineraryStarted(string tokenPayloadId,TokenTravelItinerary itinerary)
         {
+            if (MetapauseWhenItineraryStarted)
+            {
+                Watchman.Get<Heart>().Metapause();
+              //  Watchman.Get<Mi>()
+            }
             _currentItineraries.Add(tokenPayloadId,itinerary);
             UpdateItineraryDisplays();
         }
