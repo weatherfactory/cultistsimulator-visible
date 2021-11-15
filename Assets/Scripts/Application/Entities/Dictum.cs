@@ -45,7 +45,8 @@ namespace SecretHistories.Entities
         [FucineValue]
         public float DefaultTravelDuration { get; set; }
 
-
+        [FucineValue]
+        public float DefaultQuickTravelDuration { get; set; }
         public Dictum(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)
         {
             

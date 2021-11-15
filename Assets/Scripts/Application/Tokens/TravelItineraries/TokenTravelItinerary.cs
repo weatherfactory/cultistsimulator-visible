@@ -17,7 +17,23 @@ namespace SecretHistories.UI
 
     public class TokenTravelItinerary: TokenItinerary
     {
+        public override float Elapsed
+        {
+            //primary candidate for refactoring in itinerary world!
+            //let's sort out what keeps a reference to what.
+//if we don't change it, we need to make sure there's a JSON-specific constructor to rehydrate Duration and Elapsed
 
+            get
+            {
+                if(_token==null) return 0;
+              var currentTravelAnimation = _token.gameObject.GetComponent<TokenTravelAnimation>();
+                if (currentTravelAnimation == null)
+                return 0;
+
+                return currentTravelAnimation.GetDurationElapsed();
+
+            }
+        }
 
         [SerializeField] public float StartScale { get; set; }
         public float EndScale { get; set; }
@@ -95,13 +111,15 @@ namespace SecretHistories.UI
             Vector3 startPositioninWorldSpace = tokenToSend.Sphere.GetRectTransform().TransformPoint(Anchored3DStartPosition);
             Vector3 endPositionInWorldSpace = destinationSphere.GetRectTransform().TransformPoint(Anchored3DEndPosition);
 
-            
-            tokenTravelAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
-            tokenTravelAnimation.SetScaling(StartScale,EndScale,1f); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
-             //is it if scaling ends before travel duration?
+            //is it if scaling ends before travel duration?
             //set a default duration if we don't have a valid one
-           if (Duration <= 0)
-               SetDefaultDuration();
+            if (Duration <= 0)
+                SetDefaultDuration();
+
+
+            tokenTravelAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
+            tokenTravelAnimation.SetScaling(StartScale,EndScale, Duration); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
+        
            
 
            var enrouteSphere=tokenToSend.Payload.GetEnRouteSphere();

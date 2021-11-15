@@ -19,6 +19,11 @@ public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
 	protected Token _token;
     protected Context _context;
 
+    public float GetDurationElapsed()
+    {
+        return _travelTimeElapsed;
+    }
+
     [SerializeField]
 	private Vector3 _startPosition;
     [SerializeField]

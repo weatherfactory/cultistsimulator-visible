@@ -1,5 +1,6 @@
 ﻿using SecretHistories.Abstract;
 using SecretHistories.Commands;
+using SecretHistories.Entities;
 using SecretHistories.Manifestations;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
@@ -66,10 +67,10 @@ namespace SecretHistories.Ghosts
             if (!Visible)
                 return false; //if the ghost isn't active, there's no promise to fulfill.
 
-            //otherwise, we did show the ghost, so we'd better be ready to make good on it.
+        //otherwise, we did show the ghost, so we'd better be ready to make good on it.
             TokenTravelItinerary travellingToGhost =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, rectTransform.anchoredPosition3D)
-                    .WithDuration(0.25f); //should be NoonConstants.MOMENT...
+                    .WithDuration(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultQuickTravelDuration);
 
             travellingToGhost.Depart(token, context);
 
