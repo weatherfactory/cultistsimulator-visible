@@ -31,12 +31,16 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
         public override void Arrive(Token tokenToSend, Context context)
         {
             _travellingToken = tokenToSend;
-
         }
 
         public override IGhost GetGhost()
         {
             return _travellingToken.GetCurrentGhost();
+        }
+
+        public override bool IsActive()
+        {
+            return true;
         }
     }
 }

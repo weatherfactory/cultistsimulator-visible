@@ -20,7 +20,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
         [SerializeField]
         private TextMeshProUGUI To;
 
-        public void DisplayItinerary(Token token, TokenItinerary itinerary)
+        public void DisplayItinerary(string tokenPayloadId, TokenItinerary itinerary)
         {
             Type.text = itinerary.GetDescription();
             From.text = itinerary.Anchored3DStartPosition.ToString();

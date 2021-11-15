@@ -75,7 +75,7 @@ namespace SecretHistories.UI
             _token = tokenToSend;
      
             
-            Watchman.Get<Xamanek>().ItineraryStarted(this);
+            Watchman.Get<Xamanek>().ItineraryStarted( tokenToSend.PayloadId,this);
 
             tokenToSend.Unshroud(true);
             tokenToSend.CurrentState=new TravellingState();
@@ -172,6 +172,11 @@ namespace SecretHistories.UI
         public override IGhost GetGhost()
         {
             return _token.GetCurrentGhost();
+        }
+
+        public override bool IsActive()
+        {
+            return true;
         }
 
 

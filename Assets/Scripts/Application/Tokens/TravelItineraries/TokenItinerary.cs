@@ -20,5 +20,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
        public Vector3 Anchored3DEndPosition { get; set; }
        public abstract IGhost GetGhost();
 
+       public abstract bool IsActive();
    }
 }
