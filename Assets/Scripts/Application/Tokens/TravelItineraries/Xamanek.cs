@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Meta;
+using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
+using SecretHistories.Commands;
 using SecretHistories.Fucine;
 using SecretHistories.Services;
 using UnityEditor;
@@ -15,7 +18,8 @@ namespace SecretHistories.UI
     /// <summary>
     /// The God of the North watches over travellers. He tracks all current itineraries and can be aware of problems of overlap.
     /// </summary>
-    public class Xamanek: MonoBehaviour
+      [IsEncaustableClass(typeof(XamanekCommand))]
+    public class Xamanek: MonoBehaviour,IEncaustable
     {
         //we assume Token payload ids are unique. This should be the case.
         //we assume each token can only ever have one itinerary. We may later regret this but I think it's a wise stricture.
