@@ -7905,7 +7905,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -300, y: 0}
-  m_SizeDelta: {x: 300, y: 300}
+  m_SizeDelta: {x: 450, y: 300}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &505096033
 MonoBehaviour:
@@ -16537,7 +16537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItinerariesDisplayHolder: {fileID: 606863644}
-  MetapauseWhenItineraryStarted: 1
+  MetapauseWhenItineraryStarted: 0
 --- !u!4 &1106690474
 Transform:
   m_ObjectHideFlags: 0
@@ -35945,6 +35945,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210957145614380289, guid: deb25e2bc166b544da0f4a9314ab4247,
+        type: 3}
+      propertyPath: m_MinHeight
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3210957145614380290, guid: deb25e2bc166b544da0f4a9314ab4247,
         type: 3}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Meta;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Fucine;
 using SecretHistories.Services;
@@ -60,7 +61,7 @@ namespace SecretHistories.UI
             if (MetapauseWhenItineraryStarted)
             {
                 Watchman.Get<Heart>().Metapause();
-              //  Watchman.Get<Mi>()
+              
             }
             _currentItineraries.Add(tokenPayloadId,itinerary);
             UpdateItineraryDisplays();

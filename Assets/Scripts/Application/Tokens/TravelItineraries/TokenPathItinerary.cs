@@ -4,42 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
-using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
-using SecretHistories.Ghosts;
 using SecretHistories.UI;
-using UnityEngine;
 
-namespace SecretHistories.Assets.Scripts.Application.Tokens
+namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 {
-    public class TokenInertItinerary: TokenItinerary
-    {
-        private Token _travellingToken;
-        
+    public class TokenPathItinerary: TokenItinerary
 
+    {
         public override string GetDescription()
         {
-            return "--";
-            
+            throw new NotImplementedException();
         }
 
         public override void Depart(Token tokenToSend, Context context)
         {
-            _travellingToken = tokenToSend;
+            throw new NotImplementedException();
         }
 
         public override void Arrive(Token tokenToSend, Context context)
         {
-            _travellingToken = tokenToSend;
+            throw new NotImplementedException();
         }
 
         public override IGhost GetGhost()
         {
-            return _travellingToken.GetCurrentGhost();
+            throw new NotImplementedException();
         }
 
         public override bool IsActive()
         {
-            return true;
+            throw new NotImplementedException();
         }
     }
 }

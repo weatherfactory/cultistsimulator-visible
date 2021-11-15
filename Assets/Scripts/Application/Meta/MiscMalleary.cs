@@ -32,6 +32,12 @@ namespace Assets.Scripts.Application.Meta
         {
             SetCheevo.gameObject.SetActive(Watchman.Get<Config>().knock);
             ClearCheevo.gameObject.SetActive(Watchman.Get<Config>().knock);
+
+            if (Watchman.Get<Heart>().Metapaused) //in case we're metapaused when the console is enabled
+            {
+                MetapauseButton.gameObject.SetActive(false);
+                UnmetapauseButton.gameObject.SetActive(true);
+            }
         }
 
         void HaltVerb(string verbId)

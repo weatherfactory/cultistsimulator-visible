@@ -12,7 +12,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 {
    public abstract class TokenItinerary
    {
-       public abstract string GetDescription();
+       public float Duration { get; protected set; }
+        public abstract string GetDescription();
        public abstract void Depart(Token tokenToSend, Context context);
        public abstract void Arrive(Token tokenToSend, Context context);
        public FucinePath DestinationSpherePath { get; set; }

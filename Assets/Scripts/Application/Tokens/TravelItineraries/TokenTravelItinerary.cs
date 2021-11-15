@@ -17,7 +17,7 @@ namespace SecretHistories.UI
 
     public class TokenTravelItinerary: TokenItinerary
     {
-        public float Duration { get; set; }
+
 
         [SerializeField] public float StartScale { get; set; }
         public float EndScale { get; set; }
@@ -51,9 +51,7 @@ namespace SecretHistories.UI
         }
         public override string GetDescription()
         {
-            if (_token == null)
-                return "Empty  TI";
-            return $" TI for {_token.name}";
+            return "->";
         }
         /// <summary>
         /// use when a token is already en route, ie has a running animation

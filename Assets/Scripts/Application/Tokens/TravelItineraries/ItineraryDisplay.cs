@@ -24,7 +24,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
         {
             Type.text = itinerary.GetDescription();
             From.text = itinerary.Anchored3DStartPosition.ToString();
-           // DurationAndRemaining.text = itinerary.Duration.ToString();
+            DurationAndRemaining.text = itinerary.Duration.ToString();
             To.text = $"{itinerary.DestinationSpherePath}\n{itinerary.Anchored3DEndPosition}";
 
         }
