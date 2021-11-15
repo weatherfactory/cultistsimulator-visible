@@ -40,14 +40,20 @@ namespace SecretHistories.Constants
         {
             var gogStats = Galaxy.Api.GalaxyInstance.Stats();
             if (!GalaxyInstance.User().SignedIn())
+            {
+                NoonUtility.Log("Tried to set a GOG achievement, but user wasn't signed in, so we couldn't");
                 return;
+            }
+                
 
             Galaxy.Api.IUserStatsAndAchievementsRetrieveListener statsRetrieveListener = new AchievementRequest(achievementId, setStatus, gogStats);
             Galaxy.Api.IStatsAndAchievementsStoreListener statsStoreListener = new GogStatsAndAchievementsStoreListener();
             Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerUserStatsAndAchievementsRetrieve.GetListenerType(), statsRetrieveListener);
             Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerStatsAndAchievementsStore.GetListenerType(), statsStoreListener);
+            NoonUtility.Log($"Trying to set GOG achievement {achievementId} as {setStatus}",1,VerbosityLevel.Essential);
 
             gogStats.RequestUserStatsAndAchievements(); //when the request completes, the callback will fire Execute on the AchievementRequest we attached above
+
         }
 
         public Storefront Storefront
@@ -121,55 +127,55 @@ namespace SecretHistories.Constants
 
         public override void OnUserStatsAndAchievementsRetrieveSuccess(GalaxyID userID)
         {
-            NoonUtility.Log("Retrieved achievements: about to set " + _forAchievementId + " as " + _setStatus, 10);
+            NoonUtility.Log("Retrieved achievements: about to set " + _forAchievementId + " as " + _setStatus, 1,VerbosityLevel.Essential);
             Execute();
         }
 
         public override void OnUserStatsAndAchievementsRetrieveFailure(GalaxyID userID, FailureReason failureReason)
         {
-            NoonUtility.Log("Couldn't retrieve achievements: " + failureReason, 10);
+            NoonUtility.Log("Couldn't retrieve achievements: " + failureReason, 1, VerbosityLevel.Essential);
         }
 
     }
 
     //not in use!
-    public class AchievementList : IUserStatsAndAchievementsRetrieveListener
+    //public class AchievementList : IUserStatsAndAchievementsRetrieveListener
 
-    {
-        // ReSharper disable once NotAccessedField.Local
-        private IStats _gogStats;
-
-
-        public AchievementList(IStats gogStats)
-        {
-            _gogStats = gogStats;
-        }
+    //{
+    //    // ReSharper disable once NotAccessedField.Local
+    //    private IStats _gogStats;
 
 
-        public override void OnUserStatsAndAchievementsRetrieveSuccess(GalaxyID userID)
-        {
-            NoonUtility.Log("Retrieved achievements: about to list them."); //or I would if there was something in the API for this
+    //    public AchievementList(IStats gogStats)
+    //    {
+    //        _gogStats = gogStats;
+    //    }
 
-        }
 
-        public override void OnUserStatsAndAchievementsRetrieveFailure(GalaxyID userID, FailureReason failureReason)
-        {
-            NoonUtility.Log("Couldn't retrieve achievements: " + failureReason, 10);
-        }
+    //    public override void OnUserStatsAndAchievementsRetrieveSuccess(GalaxyID userID)
+    //    {
+    //        NoonUtility.Log("Retrieved achievements: about to list them."); //or I would if there was something in the API for this
 
-    }
+    //    }
+
+    //    public override void OnUserStatsAndAchievementsRetrieveFailure(GalaxyID userID, FailureReason failureReason)
+    //    {
+    //        NoonUtility.Log("Couldn't retrieve achievements: " + failureReason,  1, VerbosityLevel.Essential);
+    //    }
+
+    //}
 
     public class GogStatsAndAchievementsStoreListener : IStatsAndAchievementsStoreListener
     {
         public override void OnUserStatsAndAchievementsStoreSuccess()
         {
-            NoonUtility.Log("Stored achievements", 10);
+            NoonUtility.Log("Stored achievements", 1, VerbosityLevel.Essential);
 
         }
 
         public override void OnUserStatsAndAchievementsStoreFailure(FailureReason failureReason)
         {
-            NoonUtility.Log("Couldn't store achievements: " + failureReason, 10);
+            NoonUtility.Log("Couldn't store achievements: " + failureReason,1,VerbosityLevel.Essential);
         }
     }
 

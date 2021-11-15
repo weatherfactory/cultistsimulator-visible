@@ -30,7 +30,6 @@ namespace Assets.Scripts.Application.Meta
         
         public void Awake()
         {
-            Debug.Log(Watchman.Get<Config>().knock);
             SetCheevo.gameObject.SetActive(Watchman.Get<Config>().knock);
             ClearCheevo.gameObject.SetActive(Watchman.Get<Config>().knock);
         }

@@ -21,7 +21,8 @@ namespace SecretHistories.Services
         {
             if (clientType == StoreClient.Steam && SteamManager.Initialized)
             {
-                _steamClientProvider=new SteamworksStorefrontClientProvider();
+                NoonUtility.Log("Initialising Steam client provider");
+                _steamClientProvider =new SteamworksStorefrontClientProvider();
 
             }
 
@@ -35,10 +36,9 @@ return;
             //we're integrating with GOG again
             if (clientType == StoreClient.Gog && GogGalaxyManager.IsInitialized())
             {
+                NoonUtility.Log("Initialising GOG client provider");
                 _gogClientProvider = new GOGStorefrontProvider();
-               return;
-
-
+                return;
             }
 #endif
         }
