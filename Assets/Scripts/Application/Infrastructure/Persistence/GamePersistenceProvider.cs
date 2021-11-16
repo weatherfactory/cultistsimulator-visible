@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
@@ -54,7 +55,7 @@ namespace SecretHistories.Infrastructure.Persistence
             _persistedGameState = gameState;
         }
 
-        public virtual void Encaust(Stable stable,HornedAxe hornedAxe)
+        public virtual void Encaust(Stable stable,FucineRoot fucineRoot,Xamanek xamanek)
         {
 
             var characters = stable.GetAllCharacters();
@@ -70,9 +71,11 @@ namespace SecretHistories.Infrastructure.Persistence
             }
             
             Encaustery<RootPopulationCommand> rootEncaustery = new Encaustery<RootPopulationCommand>();
+            _persistedGameState.RootPopulationCommand=rootEncaustery.Encaust(fucineRoot);
 
-            _persistedGameState.RootPopulationCommand=rootEncaustery.Encaust(FucineRoot.Get());
-            
+            Encaustery<PopulateXamanekCommand> xamanekEncaustery = new Encaustery<PopulateXamanekCommand>();
+            _persistedGameState.PopulateXamanekCommand = xamanekEncaustery.Encaust(xamanek);
+
         }
 
 

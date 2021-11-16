@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
+using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Constants;
@@ -129,7 +130,7 @@ namespace SecretHistories.Infrastructure
         private static async Task SaveRestartState()
         {
             var restartingGameStateProvider = new RestartingGameProvider();
-       restartingGameStateProvider.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
+       restartingGameStateProvider.Encaust(Watchman.Get<Stable>(), FucineRoot.Get(),Watchman.Get<Xamanek>() );
             var saveTask = restartingGameStateProvider.SerialiseAndSaveAsync();
             var result = await saveTask;
         }
@@ -153,7 +154,7 @@ namespace SecretHistories.Infrastructure
                     return false;
      
                 var game = new DefaultGamePersistenceProvider();
-                game.Encaust(Watchman.Get<Stable>(), Watchman.Get<HornedAxe>());
+                game.Encaust(Watchman.Get<Stable>(), FucineRoot.Get(), Watchman.Get<Xamanek>());
                 var saveTask = game.SerialiseAndSaveAsync();
                 var result = await saveTask;
                 DefaultSaveInProgress = false;

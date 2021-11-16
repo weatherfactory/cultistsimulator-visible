@@ -16,12 +16,14 @@ namespace SecretHistories.Infrastructure.Persistence
     {
         public List<CharacterCreationCommand> CharacterCreationCommands;
         public RootPopulationCommand RootPopulationCommand;
+        public PopulateXamanekCommand PopulateXamanekCommand;
         public List<AddNoteToTokenCommand> NotificationCommands;
         public PersistedGameState()
         {
 
             CharacterCreationCommands=new List<CharacterCreationCommand>();
             RootPopulationCommand=new RootPopulationCommand();
+            PopulateXamanekCommand = new PopulateXamanekCommand();
             NotificationCommands =new List<AddNoteToTokenCommand>();
         }
 

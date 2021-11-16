@@ -18,7 +18,7 @@ namespace SecretHistories.UI
     /// <summary>
     /// The God of the North watches over travellers. He tracks all current itineraries and can be aware of problems of overlap.
     /// </summary>
-      [IsEncaustableClass(typeof(XamanekCommand))]
+      [IsEncaustableClass(typeof(PopulateXamanekCommand))]
     public class Xamanek: MonoBehaviour,IEncaustable
     {
        [Encaust] public Dictionary<string, TokenItinerary> CurrentItineraries =>
