@@ -21,9 +21,13 @@ namespace SecretHistories.UI
       [IsEncaustableClass(typeof(XamanekCommand))]
     public class Xamanek: MonoBehaviour,IEncaustable
     {
+       [Encaust] public Dictionary<string, TokenItinerary> CurrentItineraries =>
+            new Dictionary<string, TokenItinerary>(_itineraries);
+
+
         //we assume Token payload ids are unique. This should be the case.
         //we assume each token can only ever have one itinerary. We may later regret this but I think it's a wise stricture.
-        private readonly Dictionary<string, TokenItinerary> _currentItineraries = new Dictionary<string, TokenItinerary>();
+        private readonly Dictionary<string, TokenItinerary> _itineraries = new Dictionary<string, TokenItinerary>();
 
         [SerializeField] private GameObject ItinerariesDisplayHolder;
         [SerializeField] private bool  MetapauseWhenItineraryStarted;
@@ -39,7 +43,7 @@ namespace SecretHistories.UI
         {
             ClearItineraryDisplays();
 
-            foreach (var i in _currentItineraries.Where(i=>i.Value.IsActive()))
+            foreach (var i in _itineraries.Where(i=>i.Value.IsActive()))
             {
                 var newItineraryDisplay = Watchman.Get<PrefabFactory>()
                     .CreateLocally<ItineraryDisplay>(ItinerariesDisplayHolder.transform);
@@ -67,13 +71,13 @@ namespace SecretHistories.UI
                 Watchman.Get<Heart>().Metapause();
               
             }
-            _currentItineraries.Add(tokenPayloadId,itinerary);
+            _itineraries.Add(tokenPayloadId,itinerary);
             UpdateItineraryDisplays();
         }
 
         public void TokenItineraryCompleted(Token token)
         {
-            _currentItineraries.Remove(token.PayloadId);
+            _itineraries.Remove(token.PayloadId);
             DestroyTravelAnimationForToken(token);
             UpdateItineraryDisplays();
 
@@ -82,7 +86,7 @@ namespace SecretHistories.UI
 
         public void TokenItineraryInterrupted(Token token)
         {
-            _currentItineraries.Remove(token.PayloadId);
+            _itineraries.Remove(token.PayloadId);
             DestroyTravelAnimationForToken(token);
             UpdateItineraryDisplays();
 
@@ -91,7 +95,7 @@ namespace SecretHistories.UI
 
         public Dictionary<string,TokenItinerary> CurrentItinerariesForPath(FucinePath forPath)
         {
-            var matchingItineraries=new Dictionary<string, TokenItinerary>( _currentItineraries.Where(i =>
+            var matchingItineraries=new Dictionary<string, TokenItinerary>( _itineraries.Where(i =>
                 i.Value.DestinationSpherePath == forPath));
 
             return matchingItineraries;
