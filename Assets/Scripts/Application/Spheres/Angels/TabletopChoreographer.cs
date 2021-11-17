@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using SecretHistories.Choreographers;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
@@ -31,28 +32,7 @@ namespace SecretHistories.Constants {
     
 
             }
-       class LegalPositionCheckResult
-       {
-           public bool IsLegal=false;
-           public string BlockerName;
-           public Rect BlockerRect;
 
-
-           public static LegalPositionCheckResult Legal()
-           {
-               return new LegalPositionCheckResult() { IsLegal = true};
-           }
-
-            public static LegalPositionCheckResult Illegal()
-           {
-               return new LegalPositionCheckResult();
-            }
-
-            public static LegalPositionCheckResult Blocked(string name,Rect rect)
-            {
-                return new LegalPositionCheckResult(){BlockerName = name,BlockerRect = rect};
-            }
-        }
 
         public TabletopSphere _tabletop;
 
@@ -302,7 +282,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             rectanglesToDisplay.Clear();
         }
 
-        LegalPositionCheckResult IsLegalPlacement(Rect candidateRect,  Token placingToken)
+       public LegalPositionCheckResult IsLegalPlacement(Rect candidateRect,  Token placingToken)
 		{
           //Is the candidaterect inside the larger tabletop rect? if not, throw it out now.
             if (!GetTableRect().Overlaps(candidateRect))

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Choreographers;
 using SecretHistories.UI;
 using UnityEngine;
 
@@ -14,11 +15,12 @@ namespace SecretHistories.Spheres.Angels
 
         void PlaceTokenAtFreeLocalPosition(Token token, Context context);
 
-        
         /// <summary>
         /// Place as close to a specific position as we can get
         /// </summary>
         void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 targetPosition);
+
+        public LegalPositionCheckResult IsLegalPlacement(Rect candidateRect, Token placingToken);
 
         Vector2 GetFreeLocalPosition(Token token, Vector2 startPos);
 

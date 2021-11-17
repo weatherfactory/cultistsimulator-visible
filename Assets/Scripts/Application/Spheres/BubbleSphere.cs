@@ -26,7 +26,7 @@ namespace SecretHistories.Spheres
     
         public override SphereCategory SphereCategory => SphereCategory.World;
         public override bool AllowDrag => true;
-        public override IChoreographer Choreographer=>new ReservedPositionChoreographer(this); 
+        public override IChoreographer Choreographer=>new OverlapAwareChoreographer(this); 
         
         
 
@@ -38,6 +38,7 @@ namespace SecretHistories.Spheres
             {
                 Watchman.Get<HornedAxe>().GetDefaultSphere().AcceptToken(t,context);
             }
+            
         }
 
 

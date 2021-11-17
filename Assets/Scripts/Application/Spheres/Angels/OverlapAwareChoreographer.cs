@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Choreographers;
+using SecretHistories.Entities;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.UI;
@@ -13,11 +15,17 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     //make sure there's a position for incoming tokens, bearing in mind other itineraries.
     //once they arrive, place them assertively.
     //Assume all tokens are the same dimensions.
-   public class ReservedPositionChoreographer: IChoreographer
+   public class OverlapAwareChoreographer: IChoreographer
     {
         private Sphere _sphere;
+    private string _sphereToWatchForOverlap;
 
-        public ReservedPositionChoreographer(Sphere sphere)
+        public void Awake()
+        {
+
+        }
+
+        public OverlapAwareChoreographer(Sphere sphere)
         {
             _sphere = sphere;
         }
@@ -32,6 +40,12 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         {
             token.TokenRectTransform.anchoredPosition3D = targetPosition;
 
+        }
+
+        public LegalPositionCheckResult IsLegalPlacement(Rect candidateRect, Token placingToken)
+        {
+            var overlapSphereToWatch = Watchman.Get<HornedAxe>().GetDefaultSphere();
+            return overlapSphereToWatch.Choreographer.IsLegalPlacement(candidateRect,placingToken));
         }
 
         public Vector2 GetFreeLocalPosition(Token token, Vector2 startPos)
