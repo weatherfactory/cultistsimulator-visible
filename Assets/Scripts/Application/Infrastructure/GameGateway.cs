@@ -28,8 +28,8 @@ namespace SecretHistories.Infrastructure
     public class GameGateway:MonoBehaviour
     {
 
-
-        public bool DontLoadGame;
+        [SerializeField]
+        private bool DontLoadGame;
         private Coroutine fadeToEndingCoroutine;
         private bool DefaultSaveInProgress; //This locks for TryDefaultSave only. If we move to coroutines, we can check for the existence of a coroutine.
         
@@ -108,11 +108,15 @@ namespace SecretHistories.Infrastructure
 
         private static void PopulateTabletop(Character protag, PersistedGameState gameState)
         {
-            Watchman.Get<TabletopBackground>().ShowTabletopFor(protag.ActiveLegacy);
+            //NB by the time we comne in here, the protagonist-character is already assumed to be set.
 
+            //most important command: put all the tokens in the right place.
             gameState.RootPopulationCommand.Execute(new Context(Context.ActionSource.Loading));
+            //restore and action any itineraries
+            gameState.PopulateXamanekCommand.Execute(new Context(Context.ActionSource.Loading));
 
 
+            //Show all stored notifation commands
             foreach (var n in gameState.NotificationCommands)
             {
                 Watchman.Get<Concursum>()
@@ -121,10 +125,14 @@ namespace SecretHistories.Infrastructure
                             .Description)); //ultimately, I'd like the float note to be a token, too - we're using AddCommand here currently just as a holder for the strings
             }
 
-            //Start chronicling the character we just loaded on to the tabletop
+            //Start chronicling the character-protag
             Watchman.Get<Chronicler>().ChronicleCharacter(protag);
 
+            //display character-protag info in status bar
             Watchman.Get<StatusBar>().AttachToCharacter(protag);
+            
+            //Show correct tabletop background for current legacy
+            Watchman.Get<TabletopBackground>().ShowTabletopFor(protag.ActiveLegacy);
         }
 
         private static async Task SaveRestartState()
