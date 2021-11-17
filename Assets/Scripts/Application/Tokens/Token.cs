@@ -321,7 +321,7 @@ namespace SecretHistories.UI {
 
             return _ghost;
         }
-        public bool DisplayGhost(Sphere projectInSphere)
+        public bool DisplayGhostAtChoreographerDrivenPosition(Sphere projectInSphere)
         {
             if (_ghost == null)
                 return false;
@@ -332,6 +332,21 @@ namespace SecretHistories.UI {
             var candidatePosition = projectInSphere.Choreographer.GetFreeLocalPosition(this, projectionPosition);
 
             _ghost.ShowAt(projectInSphere, candidatePosition);
+
+
+            //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
+            _manifestation.Unhighlight(HighlightType.WillInteract);
+
+            return true;
+        }
+
+        public bool DisplayGhostAtWorldPosition(Vector3 atPosition, Sphere projectInSphere)
+        {
+            if (_ghost == null)
+                return false;
+
+            
+            _ghost.ShowAt(projectInSphere, atPosition);
 
 
             //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.

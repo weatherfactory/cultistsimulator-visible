@@ -125,8 +125,7 @@ namespace SecretHistories.UI
            var enrouteSphere=tokenToSend.Payload.GetEnRouteSphere();
             enrouteSphere.AcceptToken(tokenToSend,context);
 
-            tokenToSend.DisplayGhost(destinationSphere);
-
+   
             destinationSphere.Subscribe(tokenTravelAnimation);
 
             tokenTravelAnimation.Begin(tokenToSend, context,Duration);

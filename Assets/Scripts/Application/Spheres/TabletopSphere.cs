@@ -183,7 +183,7 @@ namespace SecretHistories.Spheres
 
         public override bool TryDisplayGhost(Token forToken)
         {
-            return forToken.DisplayGhost(this);
+            return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
 
         }
     }
