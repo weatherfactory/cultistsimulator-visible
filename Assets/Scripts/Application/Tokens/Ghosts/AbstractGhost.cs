@@ -24,9 +24,11 @@ namespace SecretHistories.Ghosts
 
         public virtual void ShowAt(Sphere projectInSphere, Vector3 anchoredPosition3D)
         {
-            canvasGroupFader.Show();
+            canvasGroupFader.Hide();
+
             rectTransform.SetParent(projectInSphere.GetRectTransform());
             rectTransform.anchoredPosition3D = anchoredPosition3D;
+            canvasGroupFader.Show();
             _projectedInSphere = projectInSphere;
         }
 
