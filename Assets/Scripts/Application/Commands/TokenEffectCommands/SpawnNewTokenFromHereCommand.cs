@@ -39,7 +39,7 @@ namespace SecretHistories.Commands
                 var tokenCreationCommand=new TokenCreationCommand(_payloadCreationCommand, newAnchorLocation).WithSourceToken(token);
 
                 var newToken=tokenCreationCommand.Execute(_context,token.Sphere);
-
+                newToken.HideGhost();
                 SoundManager.PlaySfx("SituationTokenSpawn");
 
                 //Sometimes that command will result in a null token - for example if we're trying to spawn a unique situation

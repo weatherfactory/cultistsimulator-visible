@@ -24,7 +24,7 @@ namespace SecretHistories.Ghosts
 
         public virtual void ShowAt(Sphere projectInSphere, Vector3 anchoredPosition3D)
         {
-            canvasGroupFader.Hide();
+            //ghost behaviour is determined by whether it's visible or not. So when we hide it, we mean hide immediately.
 
             rectTransform.SetParent(projectInSphere.GetRectTransform());
             rectTransform.anchoredPosition3D = anchoredPosition3D;
@@ -34,7 +34,7 @@ namespace SecretHistories.Ghosts
 
         public virtual void HideIn(Token forToken)
         {
-            canvasGroupFader.Hide();
+            canvasGroupFader.HideImmediately(); //ghost behaviour is determined by whether it's visible or not. So when we hide it, we mean hide immediately.
             if(rectTransform!=null)
                 rectTransform.SetParent(forToken.TokenRectTransform); //so it doesn't clutter up the hierarchy
             _projectedInSphere = null;

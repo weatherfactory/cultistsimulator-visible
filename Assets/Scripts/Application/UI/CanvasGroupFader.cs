@@ -51,6 +51,15 @@ namespace SecretHistories.UI
                 _disappearingCoroutine = StartCoroutine(DoTransparencyChange(0f, durationTurnOff));
         }
 
+        public void HideImmediately()
+        {
+            SetFinalAlpha(0f);
+        }
+
+        public void ShowImmediately()
+        {
+            SetFinalAlpha(1f);
+        }
 
         public void Show()
         {

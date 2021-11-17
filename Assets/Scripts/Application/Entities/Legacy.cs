@@ -130,7 +130,7 @@ namespace SecretHistories.Entities
             }
 
 
-     //       startingTokenDistributionStrategy.NextRow();
+            startingTokenDistributionStrategy.NextRow();
 
             var dropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
             var dropzoneCreationCommand = new DropzoneCreationCommand();
@@ -148,8 +148,8 @@ namespace SecretHistories.Entities
             public int rowCount { get; private set; }
             private const int STARTINGX = -300;
             private const int XGAP = 200;
-            private const int STARTINGY = 0;
-            private const int YGAP = 250;
+            private const int STARTINGY = 200;
+            private const int YGAP = 200;
 
             public Vector3 GetNextTokenPositionAndIncrementCount()
             {
