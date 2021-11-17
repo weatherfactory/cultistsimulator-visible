@@ -470,6 +470,38 @@ namespace SecretHistories.Entities {
 
         }
 
+        public Token FindSingleOrDefaultTokenById(string uniqueTokenId)
+        {
+            return FindSingleOrDefaultTokenById(uniqueTokenId, null);
+        }
+
+        public Token FindSingleOrDefaultTokenById(string uniqueTokenId,Token defaultResult)
+        {
+            foreach (var s in _registeredSpheres)
+            {
+                var tokens = s.GetTokensWhere(t => t.PayloadId == uniqueTokenId);
+                
+                if (tokens.Any())
+                {
+                    var tokensList = tokens.ToList(); //avoiding multiple enumeration warning
+                    if(tokensList.Count>1)
+                    {
+                        NoonUtility.LogWarning(
+                            $"Found more than one token with id {uniqueTokenId} in sphere {s.GetAbsolutePath()} . This should never happen, but here's a warning in case it did. Returning the first token with id {uniqueTokenId}");
+                        return tokensList.First();
+                    }
+
+                    //>0 and <=1: 1
+
+                    return tokensList.Single();
+                }
+
+            }
+
+            return defaultResult;
+        }
+
+
 
     }
 }
