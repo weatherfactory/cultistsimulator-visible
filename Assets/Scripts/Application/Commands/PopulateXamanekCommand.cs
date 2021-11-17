@@ -13,11 +13,13 @@ namespace SecretHistories.Assets.Scripts.Application.Commands
 {
     public class PopulateXamanekCommand:IEncaustment
     {
-        public Dictionary<string, TokenItinerary> CurrentItineraries { get; set; }
+        public Dictionary<string, TokenItinerary> CurrentItineraries { get; set; }=new Dictionary<string,TokenItinerary>();
 
+        
 
         public static PopulateXamanekCommand ForLegacy()
         {
+            
             return new PopulateXamanekCommand(); //we might someday want to begin a legacy in BH or elsewhere with itineraries in progress
         }
 
