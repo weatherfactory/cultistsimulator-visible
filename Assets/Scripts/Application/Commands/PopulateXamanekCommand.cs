@@ -15,6 +15,12 @@ namespace SecretHistories.Assets.Scripts.Application.Commands
     {
         public Dictionary<string, TokenItinerary> CurrentItineraries { get; set; }
 
+
+        public static PopulateXamanekCommand ForLegacy()
+        {
+            return new PopulateXamanekCommand(); //we might someday want to begin a legacy in BH or elsewhere with itineraries in progress
+        }
+
         //Candidate for refactoring. Execute is currently only in use for loading.
         public void Execute(Context context)
         {

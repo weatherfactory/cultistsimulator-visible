@@ -36,7 +36,8 @@ namespace SecretHistories.Infrastructure.Persistence
         {
             var state = new PersistedGameState
             {
-                RootPopulationCommand = RootPopulationCommand.RootCommandForLegacy(startingLegacy)
+                RootPopulationCommand = RootPopulationCommand.RootCommandForLegacy(startingLegacy),
+                PopulateXamanekCommand = PopulateXamanekCommand.ForLegacy()
             };
             
             var cc = CharacterCreationCommand.IncarnateFromLegacy(startingLegacy, historyRecordsFromPreviousCharacter);
