@@ -71,7 +71,11 @@ namespace SecretHistories.UI
                 Watchman.Get<Heart>().Metapause();
               
             }
-            _itineraries.Add(tokenPayloadId,itinerary);
+
+            if (_itineraries.ContainsKey(tokenPayloadId))
+                _itineraries[tokenPayloadId] = itinerary;
+            else
+                _itineraries.Add(tokenPayloadId,itinerary);
             UpdateItineraryDisplays();
         }
 
