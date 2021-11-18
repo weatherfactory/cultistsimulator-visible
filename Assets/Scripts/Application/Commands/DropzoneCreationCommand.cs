@@ -21,7 +21,7 @@ namespace SecretHistories.Commands
         public int Quantity { get; set; }
         public List<PopulateDominionCommand> Dominions { get; set; }
 
-        public DropzoneCreationCommand():this(typeof(ElementStack).ToString())
+        public DropzoneCreationCommand():this(nameof(ElementStack))
         {
         }
 
@@ -34,7 +34,7 @@ namespace SecretHistories.Commands
 
         public ITokenPayload Execute(Context context)
         {
-            var dz= new Dropzone(Id);
+            var dz= new Dropzone(Id,EntityId);
             foreach (var d in Dominions)
                     d.Execute(dz);
 

@@ -134,7 +134,7 @@ namespace SecretHistories.Entities
 
 
             var elementDropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
-            var elementDropzoneCreationCommand = new DropzoneCreationCommand(typeof(ElementStack).ToString());
+            var elementDropzoneCreationCommand = new DropzoneCreationCommand(nameof(ElementStack).ToString());
             var elementBubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), $"{elementDropzoneCreationCommand.Id}bubble");
             elementDropzoneCreationCommand.Dominions.Add(new PopulateDominionCommand(SituationDominionEnum.Unknown.ToString(), elementBubbleSphereSpec));
             var elementDropzoneTokenCreationCommand = new TokenCreationCommand(elementDropzoneCreationCommand, elementDropzoneLocation);
@@ -143,8 +143,8 @@ namespace SecretHistories.Entities
             startingTokenDistributionStrategy.NextRow();
 
             var situationDropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
-            var situationDropzoneCreationCommand = new DropzoneCreationCommand(typeof(Situation).ToString());
-            var situationBubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), $"{elementDropzoneCreationCommand.Id}bubble");
+            var situationDropzoneCreationCommand = new DropzoneCreationCommand(nameof(Situation).ToString());
+            var situationBubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), $"{situationDropzoneCreationCommand.Id}bubble");
             situationDropzoneCreationCommand.Dominions.Add(new PopulateDominionCommand(SituationDominionEnum.Unknown.ToString(), situationBubbleSphereSpec));
             var situationDropzoneTokenCreationCommand = new TokenCreationCommand(situationDropzoneCreationCommand, situationDropzoneLocation);
             commands.Add(situationDropzoneTokenCreationCommand);

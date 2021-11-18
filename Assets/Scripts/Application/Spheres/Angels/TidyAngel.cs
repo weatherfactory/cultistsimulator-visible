@@ -17,12 +17,14 @@ namespace SecretHistories.Spheres.Angels
     public class TidyAngel: IAngel
     {
         private FucinePath _tidyToPath;
+        private readonly string _tidyPayloadsOfType;
 
         public int Authority => 0;
 
-        public TidyAngel(FucinePath tidyToPath)
+        public TidyAngel(FucinePath tidyToPath,string tidyPayloadsOfType)
         {
             _tidyToPath = tidyToPath;
+            _tidyPayloadsOfType = tidyPayloadsOfType;
         }
 
         public void Act(float seconds, float metaseconds)
@@ -42,8 +44,8 @@ namespace SecretHistories.Spheres.Angels
 
         public bool MinisterToEvictedToken(Token token, Context context)
         {
-            if (!token.IsValidElementStack())
-                return false; //currently, tidyangels only tidy element stacks
+            if(token.PayloadTypeName!= _tidyPayloadsOfType)
+                return false; 
 
             var tidyToSphere = Watchman.Get<HornedAxe>().GetSphereByPath(_tidyToPath);
 

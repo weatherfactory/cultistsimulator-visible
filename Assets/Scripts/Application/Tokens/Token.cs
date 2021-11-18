@@ -153,6 +153,8 @@ namespace SecretHistories.UI {
             }
         }
 
+        [DontEncaust] public string PayloadTypeName => _payload.GetType().Name;
+
         public Vector3 WorldPosition;
 
         public void Update()

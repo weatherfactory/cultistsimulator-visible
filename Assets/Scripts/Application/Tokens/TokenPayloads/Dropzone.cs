@@ -85,9 +85,20 @@ namespace SecretHistories.Entities.Verbs
             _spheres = new List<Sphere>();
         }
 
-        public Dropzone(string id):this()
+        public Dropzone(string id,string entityId):this()
         {
-            Id = id;
+         
+            if (string.IsNullOrEmpty(entityId)) //backward compatibility!
+            {
+                EntityId = nameof(ElementStack);
+                Id = $"dropzone_{entityId}";
+            }
+            else
+            {
+                Id = id;
+                EntityId = entityId;
+            }
+            
         }
 
         public string GetIllumination(string key)
@@ -204,7 +215,7 @@ namespace SecretHistories.Entities.Verbs
 
                 var dropzoneSpherePath = sphere.GetAbsolutePath();
                 var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
-                tabletopSphere.AddAngel(new TidyAngel(dropzoneSpherePath));
+                tabletopSphere.AddAngel(new TidyAngel(dropzoneSpherePath,EntityId)); //entityid is where we store the payload type
 
             }
         }
