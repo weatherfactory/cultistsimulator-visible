@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 using SecretHistories.Choreographers;
 using SecretHistories.UI;
 using SecretHistories.Constants;
+using SecretHistories.Elements;
+using SecretHistories.NullObjects;
 using UnityEngine;
 
 namespace SecretHistories.Spheres.Angels
 {
     public class SimpleChoreographer:AbstractChoreographer
     {
+        public static SimpleChoreographer Create()
+        {
 
+                var obj = new GameObject(nameof(SimpleChoreographer));
+                var simpleChoreographerComponent = obj.AddComponent<SimpleChoreographer>();
+
+            return simpleChoreographerComponent;
+        }
 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
         {

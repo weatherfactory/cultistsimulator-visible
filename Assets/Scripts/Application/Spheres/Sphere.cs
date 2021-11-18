@@ -104,10 +104,26 @@ namespace SecretHistories.Spheres
         public virtual float TokenHeartbeatIntervalMultiplier => 0;
         [DontEncaust]
         public abstract SphereCategory SphereCategory { get; }
+
         [DontEncaust]
-        public virtual AbstractChoreographer Choreographer { get; set; } = new SimpleChoreographer();
+        public virtual AbstractChoreographer Choreographer
+        {
+            get
+            {
+                if (_choreographer == null)
+                    _choreographer = SimpleChoreographer.Create();
+
+                return _choreographer;
+            }
+            set => _choreographer = value;
+        }
 
         public Vector3 WorldPosition;
+
+        public virtual void Awake()
+        {
+            Choreographer = SimpleChoreographer.Create();
+        }
 
         public void Update()
         {
@@ -190,6 +206,7 @@ namespace SecretHistories.Spheres
         protected AngelFlock flock = new AngelFlock();
 
         private readonly HashSet<ISphereEventSubscriber> _subscribers = new HashSet<ISphereEventSubscriber>();
+        private AbstractChoreographer _choreographer;
 
 
         public void Subscribe(ISphereEventSubscriber subscriber)

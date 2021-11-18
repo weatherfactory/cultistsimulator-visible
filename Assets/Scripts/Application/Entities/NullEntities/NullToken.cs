@@ -53,7 +53,7 @@ namespace SecretHistories.NullObjects
                     _instance = nullTokenComponent;
             }
 
-             return _instance;
+            return _instance;
          }
    }
 }
