@@ -62,17 +62,23 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         private LegalPositionCheckResult LegalInOverlappingSphere(Sphere overlapSphere, Rect candidateRect, Token placingToken)
         {
-
-
             Rect otherTokenOverlapRect;
 
-   
+            foreach (var otherToken in _sphere.Tokens)
+            {
+                if (!CanTokenBeIgnored(otherToken))
+                {
+                    otherTokenOverlapRect = otherToken.GetRectInCurrentSphere(); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
+                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect))
+
+                        return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
+                }
+            }
 
             foreach (var otherToken in overlapSphere.Tokens)
             {
                 if(!CanTokenBeIgnored(otherToken))
                 {
-
                     otherTokenOverlapRect = otherToken.GetRectInOtherSphere(_sphere); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
                     if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect))
 
@@ -107,30 +113,27 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             float startingX = -halfSphereWidth + halfTokenWidth;
             float startingY = 0f;
             var tokensAlreadyPresent = _sphere.Tokens;
-            float totalOffsetToRight = 0f;
-            foreach (var t in tokensAlreadyPresent)
+            Vector2 candidatePosition = new Vector2(startingX, startingY);
+
+    
+
+            //start at left, offset to right until we have no collisions either in the row sphere or in its world overlap
+            int failedPlacementAttempts = 0;
+            var placementIsLegal = IsLegalPlacement(token.GetRectAssumingPosition(candidatePosition),token);
+            while (failedPlacementAttempts < 12 && !placementIsLegal.IsLegal)
             {
-                totalOffsetToRight += tokenWidth;//assuming all tokens are the same size
+                candidatePosition.x += tokenWidth;
+                failedPlacementAttempts++;
+                placementIsLegal = IsLegalPlacement(token.GetRectAssumingPosition(candidatePosition), token);
             }
 
+            //offset once more for each incoming token
             foreach (var i in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_sphere.GetAbsolutePath()))
             {
-                totalOffsetToRight += tokenWidth;
+                candidatePosition.x += tokenWidth;
             }
 
-            Vector2 nextPosition =new Vector2(startingX + totalOffsetToRight, startingY);
-
-            int failedPlacementAttempts = 0;
-            var placementIsLegal = IsLegalPlacement(token.GetRectAssumingPosition(nextPosition),token);
-            while (failedPlacementAttempts < 7 && !placementIsLegal.IsLegal)
-            {
-                nextPosition.x += tokenWidth;
-                failedPlacementAttempts++;
-                placementIsLegal = IsLegalPlacement(token.GetRectAssumingPosition(nextPosition), token);
-            }
-
-                
-            return nextPosition;
+            return candidatePosition;
 
         }
 
