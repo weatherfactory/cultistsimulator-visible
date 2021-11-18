@@ -56,8 +56,8 @@ namespace SecretHistories.Entities.Verbs
         [DontEncaust]
         public bool IsOpen => false;
 
-        [DontEncaust]
-        public string EntityId => string.Empty;
+        [Encaust]
+        public string EntityId { get; set; }
 
         [DontEncaust] public FucinePath AbsolutePath => new NullFucinePath();
 
@@ -158,8 +158,7 @@ namespace SecretHistories.Entities.Verbs
         public void InitialiseManifestation(IManifestation manifestation)
         {
             manifestation.Initialise(this);
-
-
+            
         }
 
         public bool IsValid()

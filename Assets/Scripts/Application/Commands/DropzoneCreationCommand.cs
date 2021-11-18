@@ -9,19 +9,27 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities.Verbs;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
+using SecretHistories.UI;
 
 namespace SecretHistories.Commands
 {
     public class DropzoneCreationCommand: ITokenPayloadCreationCommand,IEncaustment
     {
         public string Id { get; set; }
+
+        public string EntityId { get; set; }
         public int Quantity { get; set; }
         public List<PopulateDominionCommand> Dominions { get; set; }
 
-        public DropzoneCreationCommand()
+        public DropzoneCreationCommand():this(typeof(ElementStack).ToString())
         {
-            Dominions=new List<PopulateDominionCommand>();
-            Id = "dropzoneclassic";
+        }
+
+        public DropzoneCreationCommand(string entityId)
+        {
+            Dominions = new List<PopulateDominionCommand>();
+            EntityId=entityId;
+            Id = $"dropzone_{entityId}";
         }
 
         public ITokenPayload Execute(Context context)
@@ -36,3 +44,4 @@ namespace SecretHistories.Commands
         
     }
 }
+

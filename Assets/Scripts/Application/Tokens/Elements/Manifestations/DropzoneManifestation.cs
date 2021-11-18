@@ -72,6 +72,8 @@ namespace SecretHistories.Manifestations
         {
             foreach (var d in Dominions)
                 d.RegisterFor(manifestable);
+
+           // if(manifestable.)
         }
 
         public void UpdateVisuals(IManifestable manifestable)

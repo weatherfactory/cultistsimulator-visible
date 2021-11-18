@@ -184,7 +184,10 @@ public class PetromnemeImporter
             var elementId = TryGetStringFromHashtable(htEachStack, SaveConstants.SAVE_ELEMENTID);
             if (elementId == CLASSIC_DROPZONE_ELEMENT_ID) //filter dropzone out of element stacks
             {
-                tokenPayloadCreationCommand = new DropzoneCreationCommand();
+                var dz = new DropzoneCreationCommand();
+                dz.Id = "dropzoneclassic";
+                tokenPayloadCreationCommand=dz;
+                
                 NoonUtility.Log($"PETRO: Adding Dropzone to the tabletop.");
             }
 

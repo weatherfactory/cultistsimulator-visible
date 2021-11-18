@@ -132,14 +132,25 @@ namespace SecretHistories.Entities
 
             startingTokenDistributionStrategy.NextRow();
 
-            var dropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
-            var dropzoneCreationCommand = new DropzoneCreationCommand();
-            var bubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), "classicdropzonebubble");
-            dropzoneCreationCommand.Dominions.Add(new PopulateDominionCommand(SituationDominionEnum.Unknown.ToString(), bubbleSphereSpec));
-             var dropzoneTokenCreationCommand = new TokenCreationCommand(dropzoneCreationCommand, dropzoneLocation);
-            commands.Add(dropzoneTokenCreationCommand);
+
+            var elementDropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
+            var elementDropzoneCreationCommand = new DropzoneCreationCommand(typeof(ElementStack).ToString());
+            var elementBubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), $"{elementDropzoneCreationCommand.Id}bubble");
+            elementDropzoneCreationCommand.Dominions.Add(new PopulateDominionCommand(SituationDominionEnum.Unknown.ToString(), elementBubbleSphereSpec));
+            var elementDropzoneTokenCreationCommand = new TokenCreationCommand(elementDropzoneCreationCommand, elementDropzoneLocation);
+            commands.Add(elementDropzoneTokenCreationCommand);
+
+            startingTokenDistributionStrategy.NextRow();
+
+            var situationDropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
+            var situationDropzoneCreationCommand = new DropzoneCreationCommand(typeof(Situation).ToString());
+            var situationBubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), $"{elementDropzoneCreationCommand.Id}bubble");
+            situationDropzoneCreationCommand.Dominions.Add(new PopulateDominionCommand(SituationDominionEnum.Unknown.ToString(), situationBubbleSphereSpec));
+            var situationDropzoneTokenCreationCommand = new TokenCreationCommand(situationDropzoneCreationCommand, situationDropzoneLocation);
+            commands.Add(situationDropzoneTokenCreationCommand);
 
             return commands;
+            
         }
 
         class CSClassicStartingTokenDistributionStrategy
