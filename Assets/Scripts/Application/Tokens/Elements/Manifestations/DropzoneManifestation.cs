@@ -30,6 +30,15 @@ namespace SecretHistories.Manifestations
         public bool RequestingNoDrag => false;
         public bool RequestingNoSplit => true;
 
+        [SerializeField]
+        private Image Glow;
+
+        private Color32 elementDropzoneColor= new Color32(147, 225, 239, 255);
+        private Color32 situationDropzoneColor = new Color32(31, 145, 178, 255);
+        private float elementDropzoneHeight = 134f;
+        private float situationDropzoneHeight = 160f;
+
+
         [SerializeField] private List<MinimalDominion> Dominions;
 
 
@@ -73,7 +82,18 @@ namespace SecretHistories.Manifestations
             foreach (var d in Dominions)
                 d.RegisterFor(manifestable);
 
-           // if(manifestable.)
+            if (manifestable.EntityId == nameof(Situation))
+            {
+                RectTransform.sizeDelta = new Vector2(RectTransform.sizeDelta.x, situationDropzoneHeight); 
+                Glow.color = situationDropzoneColor;
+            }
+            else if (manifestable.EntityId == nameof(ElementStack))
+            {
+                RectTransform.sizeDelta = new Vector2(RectTransform.sizeDelta.x, elementDropzoneHeight);
+                Glow.color = elementDropzoneColor;
+            }
+            else
+                NoonUtility.LogWarning($"Dropzone wants to be for payload type {manifestable.EntityId}, which we don't know about - leaving manifestation appearance at default.");
         }
 
         public void UpdateVisuals(IManifestable manifestable)

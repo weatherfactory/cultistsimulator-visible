@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 222000011707310424}
   - component: {fileID: 4827731083422111285}
   m_Layer: 5
-  m_Name: DropZoneManifestation
+  m_Name: DropzoneManifestation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1930649155029d243a92458eeaba91ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Glow: {fileID: 1056029067873791333}
   Dominions:
   - {fileID: 300065168710532456}
 --- !u!1 &5111367793869024320
@@ -189,7 +190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4caec927290191946a1d215060d82c42, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21fbffe8f5dfac04aa29f938e32209d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
