@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 563
-    y: 85
+    x: 472
+    y: 51
     width: 2527
     height: 1378
   m_ShowMode: 4
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 17
+  controlID: 60
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 22
+  controlID: 61
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 23
+  controlID: 62
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -310,8 +310,8 @@ MonoBehaviour:
   logPanelAutoScroll: 1
   currentFrame: 77817
   logs:
-    lastGrabbedIndex: 3
-    lastGrabbedCount: 4
+    lastGrabbedIndex: 2
+    lastGrabbedCount: 3
     proEntries:
     - logType: 2
       ignore: 0
@@ -349,9 +349,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:04:59.465
-      timeFrame: 5
-      timeStampDateTimeNow: 18:04:59.465
+      timeStamp: 18:32:38.608
+      timeFrame: 6
+      timeStampDateTimeNow: 18:32:38.608
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -848,9 +848,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:04:59.477
-      timeFrame: 5
-      timeStampDateTimeNow: 18:04:59.477
+      timeStamp: 18:32:38.618
+      timeFrame: 6
+      timeStampDateTimeNow: 18:32:38.618
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -1635,11 +1635,10 @@ MonoBehaviour:
       listIndex: 2
       nativeIndex: 2
       nativeIdentifier: 0
-      originalLog: '>>>> Saved game via DefaultGamePersistenceProvider to C:/Users/Alexis/AppData/LocalLow/Weather
-        Factory/Cultist Simulator/save.json at 18/11/2021 18:06:11'
-      originalStackTrace: '>>>> Saved game via DefaultGamePersistenceProvider to
-        C:/Users/Alexis/AppData/LocalLow/Weather Factory/Cultist Simulator/save.json
-        at 18/11/2021 18:06:11
+      originalLog: '>>>> Situation notification: recipe prediction updated from introdream
+        to introdream.'
+      originalStackTrace: '>>>> Situation notification: recipe prediction updated
+        from introdream to introdream.
 
         UnityEngine.Debug:Log (object)
 
@@ -1652,36 +1651,56 @@ MonoBehaviour:
         NoonUtility:Log
         (string,int,VerbosityLevel) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:109)
 
-        SecretHistories.Infrastructure.Persistence.GamePersistenceProvider/<SerialiseAndSaveAsync>d__9:MoveNext
-        () (at Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:119)
+        SecretHistories.Entities.Situation:UpdateCurrentRecipePrediction
+        (SecretHistories.Commands.RecipePrediction,Context) (at Assets/Scripts/Application/Tokens/TokenPayloads/Situation.cs:255)
 
-        System.Runtime.CompilerServices.AsyncTaskMethodBuilder:SetResult
-        ()
+        SecretHistories.Entities.Situation:FirstHeartbeat
+        () (at Assets/Scripts/Application/Tokens/TokenPayloads/Situation.cs:332)
 
-        SecretHistories.Infrastructure.Persistence.GamePersistenceProvider/<WriteSaveFile>d__10:MoveNext
-        () (at Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146)
+        SecretHistories.Commands.TokenCreationCommand:Execute
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:82)
 
-        UnityEngine.UnitySynchronizationContext:ExecuteTasks
-        ()
+        SecretHistories.Commands.SphereCreationCommand:ExecuteOn
+        (SecretHistories.Assets.Scripts.Application.Entities.NullEntities.FucineRoot,Context)
+        (at Assets/Scripts/Application/Commands/SphereCreationCommand.cs:39)
+
+        SecretHistories.Commands.RootPopulationCommand:Execute
+        (Context) (at Assets/Scripts/Application/Commands/RootPopulationCommand.cs:39)
+
+        SecretHistories.Infrastructure.GameGateway:PopulateTabletop
+        (Character,SecretHistories.Infrastructure.Persistence.PersistedGameState)
+        (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:114)
+
+        SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6:MoveNext
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:82)
+
+        System.Runtime.CompilerServices.AsyncVoidMethodBuilder:Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>
+        (SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6&)
+
+        SecretHistories.Infrastructure.GameGateway:LoadGame
+        (SecretHistories.Infrastructure.Persistence.GamePersistenceProvider)
+
+        SecretHistories.Infrastructure.GameGateway:Start
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:46)
 
 '
       nativeFileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
       nativeFileNamePretty: 
       nativeLineNumber: 29
       watchName: 
-      logText: '>>>> Saved game via DefaultGamePersistenceProvider to C:/Users/Alexis/AppData/LocalLow/Weather
-        Factory/Cultist Simulator/save.json at 18/11/2021 18:06:11'
-      logTruncatedText: '>>>> Saved game via DefaultGamePersistenceProvider to C:/Users/Alexis/AppData/LocalLow/Weather
-        Factory/Cultist Simulator/save.json at 18/11/2021 18:06:11'
+      logText: '>>>> Situation notification: recipe prediction updated from introdream
+        to introdream.'
+      logTruncatedText: '>>>> Situation notification: recipe prediction updated from
+        introdream to introdream.'
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:06:11.862
-      timeFrame: 3782
-      timeStampDateTimeNow: 18:06:11.862
+      timeStamp: 18:32:38.619
+      timeFrame: 6
+      timeStampDateTimeNow: 18:32:38.619
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -1777,20 +1796,200 @@ MonoBehaviour:
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
-      - fileName: Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssets: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:119
-        fileNameWithoutPath: GamePersistenceProvider.cs
-        fileNameWithoutPathPlusLineNumber: GamePersistenceProvider.cs:119
-        fileNamePretty: GamePersistenceProvider
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Situation.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Situation.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Situation.cs:255
+        fileNameWithoutPath: Situation.cs
+        fileNameWithoutPathPlusLineNumber: Situation.cs:255
+        fileNamePretty: Situation
         instanceID: -1
-        className: GamePersistenceProvider/<SerialiseAndSaveAsync>d__9
-        methodName: MoveNext
-        namespaceName: SecretHistories.Infrastructure.Persistence
-        lineNumberString: 119
+        className: Situation
+        methodName: UpdateCurrentRecipePrediction
+        namespaceName: SecretHistories.Entities
+        lineNumberString: 255
         charNumber: 0
-        stackLabel: GamePersistenceProvider/<SerialiseAndSaveAsync>d__9.MoveNext()
-        stackLabel2: ' at /Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:119'
+        stackLabel: Situation.UpdateCurrentRecipePrediction()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Situation.cs:255'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Situation.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Situation.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Situation.cs:332
+        fileNameWithoutPath: Situation.cs
+        fileNameWithoutPathPlusLineNumber: Situation.cs:332
+        fileNamePretty: Situation
+        instanceID: -1
+        className: Situation
+        methodName: FirstHeartbeat
+        namespaceName: SecretHistories.Entities
+        lineNumberString: 332
+        charNumber: 0
+        stackLabel: Situation.FirstHeartbeat()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Situation.cs:332'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:82
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:82
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 82
+        charNumber: 0
+        stackLabel: TokenCreationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:82'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SphereCreationCommand.cs:39
+        fileNameWithoutPath: SphereCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: SphereCreationCommand.cs:39
+        fileNamePretty: SphereCreationCommand
+        instanceID: -1
+        className: SphereCreationCommand
+        methodName: ExecuteOn
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: SphereCreationCommand.ExecuteOn()
+        stackLabel2: ' at /Scripts/Application/Commands/SphereCreationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/RootPopulationCommand.cs:39
+        fileNameWithoutPath: RootPopulationCommand.cs
+        fileNameWithoutPathPlusLineNumber: RootPopulationCommand.cs:39
+        fileNamePretty: RootPopulationCommand
+        instanceID: -1
+        className: RootPopulationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: RootPopulationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/RootPopulationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:114
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:114
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway
+        methodName: PopulateTabletop
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 114
+        charNumber: 0
+        stackLabel: GameGateway.PopulateTabletop()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:114'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:82
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:82
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway/<LoadGame>d__6
+        methodName: MoveNext
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 82
+        charNumber: 0
+        stackLabel: GameGateway/<LoadGame>d__6.MoveNext()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:82'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -1814,637 +2013,13 @@ MonoBehaviour:
         fileNameWithoutPathPlusLineNumber: None
         fileNamePretty: None
         instanceID: -1
-        className: AsyncTaskMethodBuilder
-        methodName: SetResult
-        namespaceName: System.Runtime.CompilerServices
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: AsyncTaskMethodBuilder.SetResult()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssets: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146
-        fileNameWithoutPath: GamePersistenceProvider.cs
-        fileNameWithoutPathPlusLineNumber: GamePersistenceProvider.cs:146
-        fileNamePretty: GamePersistenceProvider
-        instanceID: -1
-        className: GamePersistenceProvider/<WriteSaveFile>d__10
-        methodName: MoveNext
-        namespaceName: SecretHistories.Infrastructure.Persistence
-        lineNumberString: 146
-        charNumber: 0
-        stackLabel: GamePersistenceProvider/<WriteSaveFile>d__10.MoveNext()
-        stackLabel2: ' at /Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: UnitySynchronizationContext
-        methodName: ExecuteTasks
-        namespaceName: UnityEngine
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: UnitySynchronizationContext.ExecuteTasks()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      ignoredStackEntries: []
-      lastMatchedCount: 1
-      belongsToFilters:
-      - name: Log
-        isEnabled: 1
-        collapsed: 1
-        itemGUID: 75ebd108-d6c3-40f1-a52e-6a6c4cf83fe8
-        filterName: 
-        mainColor: {r: 1, g: 1, b: 1, a: 1}
-        isStandardFilter: 1
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 0
-        useIconTexture: 0
-        filterFormatVersion: 1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list:
-          - name: 
-            isEnabled: 1
-            collapsed: 0
-            itemGUID: 95d4c89c-3f89-4a87-ac65-cda2d75e46ec
-            searchString: <Any>
-            searchType: 1
-            removeSearchStringFromLog: 0
-            logTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 4edfeb26-cf7a-4f8e-9cf4-7263c007a66e
-                logType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            columnTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 0bcd3a0b-7c28-4004-b8d1-5dc925415212
-                columnType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            sourceCodeList:
-              list: []
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPLOGICON
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-      belongsToStandardFilters:
-      - name: Log
-        isEnabled: 1
-        collapsed: 1
-        itemGUID: 75ebd108-d6c3-40f1-a52e-6a6c4cf83fe8
-        filterName: 
-        mainColor: {r: 1, g: 1, b: 1, a: 1}
-        isStandardFilter: 1
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 0
-        useIconTexture: 0
-        filterFormatVersion: 1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list:
-          - name: 
-            isEnabled: 1
-            collapsed: 0
-            itemGUID: 95d4c89c-3f89-4a87-ac65-cda2d75e46ec
-            searchString: <Any>
-            searchType: 1
-            removeSearchStringFromLog: 0
-            logTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 4edfeb26-cf7a-4f8e-9cf4-7263c007a66e
-                logType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            columnTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 0bcd3a0b-7c28-4004-b8d1-5dc925415212
-                columnType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            sourceCodeList:
-              list: []
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPLOGICON
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-      assignedTempFilter:
-        name: 
-        isEnabled: 1
-        collapsed: 0
-        itemGUID: 
-        filterName: 
-        mainColor: {r: 1, g: 1, b: 1, a: 1}
-        isStandardFilter: 0
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 0
-        useIconTexture: 0
-        filterFormatVersion: -1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list: []
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-    - logType: 1
-      ignore: 0
-      processed: 1
-      tempFilterProcessed: 1
-      remoteEndPoint: Local
-      logPanelVisible: 1
-      logPanelIndex: 3
-      logOutputHeight: -1
-      listIndex: 3
-      nativeIndex: 3
-      nativeIdentifier: 0
-      originalLog: '>>>> Saved backup via DefaultGamePersistenceProvider to C:/Users/Alexis/AppData/LocalLow/Weather
-        Factory/Cultist Simulator/backups/save20211118180611848.json at 18/11/2021
-        18:06:11'
-      originalStackTrace: '>>>> Saved backup via DefaultGamePersistenceProvider to
-        C:/Users/Alexis/AppData/LocalLow/Weather Factory/Cultist Simulator/backups/save20211118180611848.json
-        at 18/11/2021 18:06:11
-
-        UnityEngine.Debug:Log (object)
-
-        SecretHistories.Assets.Scripts.Application.Services.UnityLogWrapper:AddMessage
-        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Services/UnityLogWrapper.cs:29)
-
-        NoonUtility:Log
-        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:97)
-
-        NoonUtility:Log
-        (string,int,VerbosityLevel) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:109)
-
-        SecretHistories.Infrastructure.Persistence.GamePersistenceProvider/<SerialiseAndSaveAsync>d__9:MoveNext
-        () (at Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:126)
-
-        System.Runtime.CompilerServices.AsyncTaskMethodBuilder:SetResult
-        ()
-
-        SecretHistories.Infrastructure.Persistence.GamePersistenceProvider/<WriteSaveFile>d__10:MoveNext
-        () (at Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146)
-
-        UnityEngine.UnitySynchronizationContext:ExecuteTasks
-        ()
-
-'
-      nativeFileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
-      nativeFileNamePretty: 
-      nativeLineNumber: 29
-      watchName: 
-      logText: '>>>> Saved backup via DefaultGamePersistenceProvider to C:/Users/Alexis/AppData/LocalLow/Weather
-        Factory/Cultist Simulator/backups/save20211118180611848.json at 18/11/2021
-        18:06:11'
-      logTruncatedText: '>>>> Saved backup via DefaultGamePersistenceProvider to
-        C:/Users/Alexis/AppData/LocalLow/Weather Factory/Cultist Simulator/backups/save20211118180611848.json
-        at 18/11/2021 18:06:11'
-      logColumnText: 
-      fileName: 
-      className: 
-      namespaceName: 
-      lineCount: 1
-      hasSourceCode: 0
-      timeStamp: 18:06:11.888
-      timeFrame: 3783
-      timeStampDateTimeNow: 18:06:11.888
-      instanceID: 0
-      collapsedCount: 0
-      cachedHeight: -1
-      cachedHeightLogWidth: 0
-      stackEntries:
-      - fileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
-        fileNameWithoutAssets: Scripts/Application/Services/UnityLogWrapper.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/UnityLogWrapper.cs:29
-        fileNameWithoutPath: UnityLogWrapper.cs
-        fileNameWithoutPathPlusLineNumber: UnityLogWrapper.cs:29
-        fileNamePretty: UnityLogWrapper
-        instanceID: -1
-        className: UnityLogWrapper
-        methodName: AddMessage
-        namespaceName: SecretHistories.Assets.Scripts.Application.Services
-        lineNumberString: 29
-        charNumber: 0
-        stackLabel: UnityLogWrapper.AddMessage()
-        stackLabel2: ' at /Scripts/Application/Services/UnityLogWrapper.cs:29'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:97
-        fileNameWithoutPath: NoonUtility.cs
-        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:97
-        fileNamePretty: NoonUtility
-        instanceID: -1
-        className: NoonUtility
-        methodName: Log
+        className: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure
+        methodName: GameGateway/<LoadGame>d__6>
         namespaceName: None
-        lineNumberString: 97
+        lineNumberString: 0
         charNumber: 0
-        stackLabel: NoonUtility.Log()
-        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:97'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:109
-        fileNameWithoutPath: NoonUtility.cs
-        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:109
-        fileNamePretty: NoonUtility
-        instanceID: -1
-        className: NoonUtility
-        methodName: Log
-        namespaceName: None
-        lineNumberString: 109
-        charNumber: 0
-        stackLabel: NoonUtility.Log()
-        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:109'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssets: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:126
-        fileNameWithoutPath: GamePersistenceProvider.cs
-        fileNameWithoutPathPlusLineNumber: GamePersistenceProvider.cs:126
-        fileNamePretty: GamePersistenceProvider
-        instanceID: -1
-        className: GamePersistenceProvider/<SerialiseAndSaveAsync>d__9
-        methodName: MoveNext
-        namespaceName: SecretHistories.Infrastructure.Persistence
-        lineNumberString: 126
-        charNumber: 0
-        stackLabel: GamePersistenceProvider/<SerialiseAndSaveAsync>d__9.MoveNext()
-        stackLabel2: ' at /Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:126'
+        stackLabel: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>()
+        stackLabel2: 
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -2468,12 +2043,12 @@ MonoBehaviour:
         fileNameWithoutPathPlusLineNumber: None
         fileNamePretty: None
         instanceID: -1
-        className: AsyncTaskMethodBuilder
-        methodName: SetResult
-        namespaceName: System.Runtime.CompilerServices
+        className: GameGateway
+        methodName: LoadGame
+        namespaceName: SecretHistories.Infrastructure
         lineNumberString: 0
         charNumber: 0
-        stackLabel: AsyncTaskMethodBuilder.SetResult()
+        stackLabel: GameGateway.LoadGame()
         stackLabel2: 
         stackLabel1Content:
           m_Text: 
@@ -2491,50 +2066,20 @@ MonoBehaviour:
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
-      - fileName: Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssets: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146
-        fileNameWithoutPath: GamePersistenceProvider.cs
-        fileNameWithoutPathPlusLineNumber: GamePersistenceProvider.cs:146
-        fileNamePretty: GamePersistenceProvider
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:46
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:46
+        fileNamePretty: GameGateway
         instanceID: -1
-        className: GamePersistenceProvider/<WriteSaveFile>d__10
-        methodName: MoveNext
-        namespaceName: SecretHistories.Infrastructure.Persistence
-        lineNumberString: 146
+        className: GameGateway
+        methodName: Start
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 46
         charNumber: 0
-        stackLabel: GamePersistenceProvider/<WriteSaveFile>d__10.MoveNext()
-        stackLabel2: ' at /Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: UnitySynchronizationContext
-        methodName: ExecuteTasks
-        namespaceName: UnityEngine
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: UnitySynchronizationContext.ExecuteTasks()
-        stackLabel2: 
+        stackLabel: GameGateway.Start()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:46'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -2970,9 +2515,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:04:59.465
-      timeFrame: 5
-      timeStampDateTimeNow: 18:04:59.465
+      timeStamp: 18:32:38.608
+      timeFrame: 6
+      timeStampDateTimeNow: 18:32:38.608
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -3469,9 +3014,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:04:59.477
-      timeFrame: 5
-      timeStampDateTimeNow: 18:04:59.477
+      timeStamp: 18:32:38.618
+      timeFrame: 6
+      timeStampDateTimeNow: 18:32:38.618
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -4256,11 +3801,10 @@ MonoBehaviour:
       listIndex: 2
       nativeIndex: 2
       nativeIdentifier: 0
-      originalLog: '>>>> Saved game via DefaultGamePersistenceProvider to C:/Users/Alexis/AppData/LocalLow/Weather
-        Factory/Cultist Simulator/save.json at 18/11/2021 18:06:11'
-      originalStackTrace: '>>>> Saved game via DefaultGamePersistenceProvider to
-        C:/Users/Alexis/AppData/LocalLow/Weather Factory/Cultist Simulator/save.json
-        at 18/11/2021 18:06:11
+      originalLog: '>>>> Situation notification: recipe prediction updated from introdream
+        to introdream.'
+      originalStackTrace: '>>>> Situation notification: recipe prediction updated
+        from introdream to introdream.
 
         UnityEngine.Debug:Log (object)
 
@@ -4273,36 +3817,56 @@ MonoBehaviour:
         NoonUtility:Log
         (string,int,VerbosityLevel) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:109)
 
-        SecretHistories.Infrastructure.Persistence.GamePersistenceProvider/<SerialiseAndSaveAsync>d__9:MoveNext
-        () (at Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:119)
+        SecretHistories.Entities.Situation:UpdateCurrentRecipePrediction
+        (SecretHistories.Commands.RecipePrediction,Context) (at Assets/Scripts/Application/Tokens/TokenPayloads/Situation.cs:255)
 
-        System.Runtime.CompilerServices.AsyncTaskMethodBuilder:SetResult
-        ()
+        SecretHistories.Entities.Situation:FirstHeartbeat
+        () (at Assets/Scripts/Application/Tokens/TokenPayloads/Situation.cs:332)
 
-        SecretHistories.Infrastructure.Persistence.GamePersistenceProvider/<WriteSaveFile>d__10:MoveNext
-        () (at Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146)
+        SecretHistories.Commands.TokenCreationCommand:Execute
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:82)
 
-        UnityEngine.UnitySynchronizationContext:ExecuteTasks
-        ()
+        SecretHistories.Commands.SphereCreationCommand:ExecuteOn
+        (SecretHistories.Assets.Scripts.Application.Entities.NullEntities.FucineRoot,Context)
+        (at Assets/Scripts/Application/Commands/SphereCreationCommand.cs:39)
+
+        SecretHistories.Commands.RootPopulationCommand:Execute
+        (Context) (at Assets/Scripts/Application/Commands/RootPopulationCommand.cs:39)
+
+        SecretHistories.Infrastructure.GameGateway:PopulateTabletop
+        (Character,SecretHistories.Infrastructure.Persistence.PersistedGameState)
+        (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:114)
+
+        SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6:MoveNext
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:82)
+
+        System.Runtime.CompilerServices.AsyncVoidMethodBuilder:Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>
+        (SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6&)
+
+        SecretHistories.Infrastructure.GameGateway:LoadGame
+        (SecretHistories.Infrastructure.Persistence.GamePersistenceProvider)
+
+        SecretHistories.Infrastructure.GameGateway:Start
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:46)
 
 '
       nativeFileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
       nativeFileNamePretty: 
       nativeLineNumber: 29
       watchName: 
-      logText: '>>>> Saved game via DefaultGamePersistenceProvider to C:/Users/Alexis/AppData/LocalLow/Weather
-        Factory/Cultist Simulator/save.json at 18/11/2021 18:06:11'
-      logTruncatedText: '>>>> Saved game via DefaultGamePersistenceProvider to C:/Users/Alexis/AppData/LocalLow/Weather
-        Factory/Cultist Simulator/save.json at 18/11/2021 18:06:11'
+      logText: '>>>> Situation notification: recipe prediction updated from introdream
+        to introdream.'
+      logTruncatedText: '>>>> Situation notification: recipe prediction updated from
+        introdream to introdream.'
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:06:11.862
-      timeFrame: 3782
-      timeStampDateTimeNow: 18:06:11.862
+      timeStamp: 18:32:38.619
+      timeFrame: 6
+      timeStampDateTimeNow: 18:32:38.619
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -4398,20 +3962,200 @@ MonoBehaviour:
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
-      - fileName: Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssets: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:119
-        fileNameWithoutPath: GamePersistenceProvider.cs
-        fileNameWithoutPathPlusLineNumber: GamePersistenceProvider.cs:119
-        fileNamePretty: GamePersistenceProvider
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Situation.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Situation.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Situation.cs:255
+        fileNameWithoutPath: Situation.cs
+        fileNameWithoutPathPlusLineNumber: Situation.cs:255
+        fileNamePretty: Situation
         instanceID: -1
-        className: GamePersistenceProvider/<SerialiseAndSaveAsync>d__9
-        methodName: MoveNext
-        namespaceName: SecretHistories.Infrastructure.Persistence
-        lineNumberString: 119
+        className: Situation
+        methodName: UpdateCurrentRecipePrediction
+        namespaceName: SecretHistories.Entities
+        lineNumberString: 255
         charNumber: 0
-        stackLabel: GamePersistenceProvider/<SerialiseAndSaveAsync>d__9.MoveNext()
-        stackLabel2: ' at /Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:119'
+        stackLabel: Situation.UpdateCurrentRecipePrediction()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Situation.cs:255'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Situation.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Situation.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Situation.cs:332
+        fileNameWithoutPath: Situation.cs
+        fileNameWithoutPathPlusLineNumber: Situation.cs:332
+        fileNamePretty: Situation
+        instanceID: -1
+        className: Situation
+        methodName: FirstHeartbeat
+        namespaceName: SecretHistories.Entities
+        lineNumberString: 332
+        charNumber: 0
+        stackLabel: Situation.FirstHeartbeat()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Situation.cs:332'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:82
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:82
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 82
+        charNumber: 0
+        stackLabel: TokenCreationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:82'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SphereCreationCommand.cs:39
+        fileNameWithoutPath: SphereCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: SphereCreationCommand.cs:39
+        fileNamePretty: SphereCreationCommand
+        instanceID: -1
+        className: SphereCreationCommand
+        methodName: ExecuteOn
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: SphereCreationCommand.ExecuteOn()
+        stackLabel2: ' at /Scripts/Application/Commands/SphereCreationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/RootPopulationCommand.cs:39
+        fileNameWithoutPath: RootPopulationCommand.cs
+        fileNameWithoutPathPlusLineNumber: RootPopulationCommand.cs:39
+        fileNamePretty: RootPopulationCommand
+        instanceID: -1
+        className: RootPopulationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: RootPopulationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/RootPopulationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:114
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:114
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway
+        methodName: PopulateTabletop
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 114
+        charNumber: 0
+        stackLabel: GameGateway.PopulateTabletop()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:114'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:82
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:82
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway/<LoadGame>d__6
+        methodName: MoveNext
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 82
+        charNumber: 0
+        stackLabel: GameGateway/<LoadGame>d__6.MoveNext()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:82'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -4435,637 +4179,13 @@ MonoBehaviour:
         fileNameWithoutPathPlusLineNumber: None
         fileNamePretty: None
         instanceID: -1
-        className: AsyncTaskMethodBuilder
-        methodName: SetResult
-        namespaceName: System.Runtime.CompilerServices
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: AsyncTaskMethodBuilder.SetResult()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssets: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146
-        fileNameWithoutPath: GamePersistenceProvider.cs
-        fileNameWithoutPathPlusLineNumber: GamePersistenceProvider.cs:146
-        fileNamePretty: GamePersistenceProvider
-        instanceID: -1
-        className: GamePersistenceProvider/<WriteSaveFile>d__10
-        methodName: MoveNext
-        namespaceName: SecretHistories.Infrastructure.Persistence
-        lineNumberString: 146
-        charNumber: 0
-        stackLabel: GamePersistenceProvider/<WriteSaveFile>d__10.MoveNext()
-        stackLabel2: ' at /Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: UnitySynchronizationContext
-        methodName: ExecuteTasks
-        namespaceName: UnityEngine
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: UnitySynchronizationContext.ExecuteTasks()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      ignoredStackEntries: []
-      lastMatchedCount: 1
-      belongsToFilters:
-      - name: Log
-        isEnabled: 1
-        collapsed: 1
-        itemGUID: 75ebd108-d6c3-40f1-a52e-6a6c4cf83fe8
-        filterName: 
-        mainColor: {r: 1, g: 1, b: 1, a: 1}
-        isStandardFilter: 1
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 0
-        useIconTexture: 0
-        filterFormatVersion: 1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list:
-          - name: 
-            isEnabled: 1
-            collapsed: 0
-            itemGUID: 95d4c89c-3f89-4a87-ac65-cda2d75e46ec
-            searchString: <Any>
-            searchType: 1
-            removeSearchStringFromLog: 0
-            logTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 4edfeb26-cf7a-4f8e-9cf4-7263c007a66e
-                logType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            columnTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 0bcd3a0b-7c28-4004-b8d1-5dc925415212
-                columnType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            sourceCodeList:
-              list: []
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPLOGICON
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-      belongsToStandardFilters:
-      - name: Log
-        isEnabled: 1
-        collapsed: 1
-        itemGUID: 75ebd108-d6c3-40f1-a52e-6a6c4cf83fe8
-        filterName: 
-        mainColor: {r: 1, g: 1, b: 1, a: 1}
-        isStandardFilter: 1
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 0
-        useIconTexture: 0
-        filterFormatVersion: 1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list:
-          - name: 
-            isEnabled: 1
-            collapsed: 0
-            itemGUID: 95d4c89c-3f89-4a87-ac65-cda2d75e46ec
-            searchString: <Any>
-            searchType: 1
-            removeSearchStringFromLog: 0
-            logTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 4edfeb26-cf7a-4f8e-9cf4-7263c007a66e
-                logType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            columnTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 0bcd3a0b-7c28-4004-b8d1-5dc925415212
-                columnType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            sourceCodeList:
-              list: []
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPLOGICON
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-      assignedTempFilter:
-        name: 
-        isEnabled: 1
-        collapsed: 0
-        itemGUID: 
-        filterName: 
-        mainColor: {r: 1, g: 1, b: 1, a: 1}
-        isStandardFilter: 0
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 0
-        useIconTexture: 0
-        filterFormatVersion: -1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list: []
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-    - logType: 1
-      ignore: 0
-      processed: 1
-      tempFilterProcessed: 1
-      remoteEndPoint: Local
-      logPanelVisible: 1
-      logPanelIndex: 3
-      logOutputHeight: -1
-      listIndex: 3
-      nativeIndex: 3
-      nativeIdentifier: 0
-      originalLog: '>>>> Saved backup via DefaultGamePersistenceProvider to C:/Users/Alexis/AppData/LocalLow/Weather
-        Factory/Cultist Simulator/backups/save20211118180611848.json at 18/11/2021
-        18:06:11'
-      originalStackTrace: '>>>> Saved backup via DefaultGamePersistenceProvider to
-        C:/Users/Alexis/AppData/LocalLow/Weather Factory/Cultist Simulator/backups/save20211118180611848.json
-        at 18/11/2021 18:06:11
-
-        UnityEngine.Debug:Log (object)
-
-        SecretHistories.Assets.Scripts.Application.Services.UnityLogWrapper:AddMessage
-        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Services/UnityLogWrapper.cs:29)
-
-        NoonUtility:Log
-        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:97)
-
-        NoonUtility:Log
-        (string,int,VerbosityLevel) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:109)
-
-        SecretHistories.Infrastructure.Persistence.GamePersistenceProvider/<SerialiseAndSaveAsync>d__9:MoveNext
-        () (at Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:126)
-
-        System.Runtime.CompilerServices.AsyncTaskMethodBuilder:SetResult
-        ()
-
-        SecretHistories.Infrastructure.Persistence.GamePersistenceProvider/<WriteSaveFile>d__10:MoveNext
-        () (at Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146)
-
-        UnityEngine.UnitySynchronizationContext:ExecuteTasks
-        ()
-
-'
-      nativeFileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
-      nativeFileNamePretty: 
-      nativeLineNumber: 29
-      watchName: 
-      logText: '>>>> Saved backup via DefaultGamePersistenceProvider to C:/Users/Alexis/AppData/LocalLow/Weather
-        Factory/Cultist Simulator/backups/save20211118180611848.json at 18/11/2021
-        18:06:11'
-      logTruncatedText: '>>>> Saved backup via DefaultGamePersistenceProvider to
-        C:/Users/Alexis/AppData/LocalLow/Weather Factory/Cultist Simulator/backups/save20211118180611848.json
-        at 18/11/2021 18:06:11'
-      logColumnText: 
-      fileName: 
-      className: 
-      namespaceName: 
-      lineCount: 1
-      hasSourceCode: 0
-      timeStamp: 18:06:11.888
-      timeFrame: 3783
-      timeStampDateTimeNow: 18:06:11.888
-      instanceID: 0
-      collapsedCount: 0
-      cachedHeight: -1
-      cachedHeightLogWidth: 0
-      stackEntries:
-      - fileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
-        fileNameWithoutAssets: Scripts/Application/Services/UnityLogWrapper.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/UnityLogWrapper.cs:29
-        fileNameWithoutPath: UnityLogWrapper.cs
-        fileNameWithoutPathPlusLineNumber: UnityLogWrapper.cs:29
-        fileNamePretty: UnityLogWrapper
-        instanceID: -1
-        className: UnityLogWrapper
-        methodName: AddMessage
-        namespaceName: SecretHistories.Assets.Scripts.Application.Services
-        lineNumberString: 29
-        charNumber: 0
-        stackLabel: UnityLogWrapper.AddMessage()
-        stackLabel2: ' at /Scripts/Application/Services/UnityLogWrapper.cs:29'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:97
-        fileNameWithoutPath: NoonUtility.cs
-        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:97
-        fileNamePretty: NoonUtility
-        instanceID: -1
-        className: NoonUtility
-        methodName: Log
+        className: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure
+        methodName: GameGateway/<LoadGame>d__6>
         namespaceName: None
-        lineNumberString: 97
+        lineNumberString: 0
         charNumber: 0
-        stackLabel: NoonUtility.Log()
-        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:97'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:109
-        fileNameWithoutPath: NoonUtility.cs
-        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:109
-        fileNamePretty: NoonUtility
-        instanceID: -1
-        className: NoonUtility
-        methodName: Log
-        namespaceName: None
-        lineNumberString: 109
-        charNumber: 0
-        stackLabel: NoonUtility.Log()
-        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:109'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssets: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:126
-        fileNameWithoutPath: GamePersistenceProvider.cs
-        fileNameWithoutPathPlusLineNumber: GamePersistenceProvider.cs:126
-        fileNamePretty: GamePersistenceProvider
-        instanceID: -1
-        className: GamePersistenceProvider/<SerialiseAndSaveAsync>d__9
-        methodName: MoveNext
-        namespaceName: SecretHistories.Infrastructure.Persistence
-        lineNumberString: 126
-        charNumber: 0
-        stackLabel: GamePersistenceProvider/<SerialiseAndSaveAsync>d__9.MoveNext()
-        stackLabel2: ' at /Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:126'
+        stackLabel: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>()
+        stackLabel2: 
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -5089,12 +4209,12 @@ MonoBehaviour:
         fileNameWithoutPathPlusLineNumber: None
         fileNamePretty: None
         instanceID: -1
-        className: AsyncTaskMethodBuilder
-        methodName: SetResult
-        namespaceName: System.Runtime.CompilerServices
+        className: GameGateway
+        methodName: LoadGame
+        namespaceName: SecretHistories.Infrastructure
         lineNumberString: 0
         charNumber: 0
-        stackLabel: AsyncTaskMethodBuilder.SetResult()
+        stackLabel: GameGateway.LoadGame()
         stackLabel2: 
         stackLabel1Content:
           m_Text: 
@@ -5112,50 +4232,20 @@ MonoBehaviour:
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
-      - fileName: Assets/Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssets: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146
-        fileNameWithoutPath: GamePersistenceProvider.cs
-        fileNameWithoutPathPlusLineNumber: GamePersistenceProvider.cs:146
-        fileNamePretty: GamePersistenceProvider
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:46
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:46
+        fileNamePretty: GameGateway
         instanceID: -1
-        className: GamePersistenceProvider/<WriteSaveFile>d__10
-        methodName: MoveNext
-        namespaceName: SecretHistories.Infrastructure.Persistence
-        lineNumberString: 146
+        className: GameGateway
+        methodName: Start
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 46
         charNumber: 0
-        stackLabel: GamePersistenceProvider/<WriteSaveFile>d__10.MoveNext()
-        stackLabel2: ' at /Scripts/Application/Infrastructure/Persistence/GamePersistenceProvider.cs:146'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: UnitySynchronizationContext
-        methodName: ExecuteTasks
-        namespaceName: UnityEngine
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: UnitySynchronizationContext.ExecuteTasks()
-        stackLabel2: 
+        stackLabel: GameGateway.Start()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:46'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -5607,7 +4697,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 572}
     m_SelectedIDs: ccac0000
     m_LastClickedID: 44236
-    m_ExpandedIDs: 00000000aa970000ac970000ae970000b0970000b2970000b4970000b6970000b8970000ba970000bc970000be970000c0970000c2970000c4970000c6970000c8970000ca970000cc970000d097000048990000fc9b000046aa000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000b2970000b4970000b6970000b8970000ba970000bc970000be970000c0970000c2970000c4970000c6970000c8970000ca970000cc970000ce970000d0970000d2970000d4970000d6970000d8970000da970000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5635,7 +4725,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000aa970000ac970000ae970000b0970000b2970000b4970000b6970000b8970000ba970000bc970000be970000c0970000c2970000c4970000c6970000c8970000ca970000cc970000ce970000d0970000d2970000
+    m_ExpandedIDs: 00000000b2970000b4970000b6970000b8970000ba970000bc970000be970000c0970000c2970000c4970000c6970000c8970000ca970000cc970000ce970000d0970000d2970000d4970000d6970000d8970000da970000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5712,8 +4802,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2751
-    y: 115
+    x: 2660
+    y: 81
     width: 338
     height: 1307
   m_ViewDataDictionary: {fileID: 0}
@@ -5754,8 +4844,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 563
-    y: 115
+    x: 472
+    y: 81
     width: 277
     height: 1006
   m_ViewDataDictionary: {fileID: 0}
@@ -5765,9 +4855,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e6960600
-      m_LastClickedID: 431846
-      m_ExpandedIDs: 24b2f1ff8ab4f1ff92b4f1ffbcb4f1ffdeb4f1ffe6b4f1ff0cb5f1ff82d7f1ff8ad7f1ffb4d7f1ff622ef2ff6a2ef2ff882ef2ffbcdaf2ffdaf3f2ffe2f3f2ff00f4f2ff22f4f2ff2af4f2ff48f4f2ff04aaf3ff0caaf3ff2aaaf3ff3873f6ff328df6ff508df6ffb4a8f6ffbca8f6ffdaa8f6ff04a9f6ff22a9f6ff0ac5f6ff12c5f6ff84c5faff96c5faff9ec5faffc8c5fafffa9dffff029effff2c9effff1afbffffe0830000f0830000048400000c840000f0880000209406003c9406004c940600609406005e960600c896060070990600b6990600109e0600cea00600
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 1cfbffff9687000040880000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -6118,8 +5208,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 841
-    y: 115
+    x: 750
+    y: 81
     width: 1908
     height: 1006
   m_ViewDataDictionary: {fileID: 0}
@@ -6211,8 +5301,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 563
-    y: 1142
+    x: 472
+    y: 1108
     width: 2187
     height: 280
   m_ViewDataDictionary: {fileID: 0}

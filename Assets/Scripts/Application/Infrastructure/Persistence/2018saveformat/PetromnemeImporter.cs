@@ -62,8 +62,26 @@ public class PetromnemeImporter
         var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
           AddSituationsToTabletopCommand(tabletopSphereCreationCommand, htSituations);
 
-        //add all these to tabletop creation command
 
+        //big old fudge to get the new dropzones in
+        var tabletopSpherePath= new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
+        var elementDropzoneLocation = TokenLocation.Default(tabletopSpherePath);
+        var situationDropzoneLocation = new TokenLocation(elementDropzoneLocation.Anchored3DPosition.x,
+            elementDropzoneLocation.Anchored3DPosition.y + 150, elementDropzoneLocation.Anchored3DPosition.z, tabletopSpherePath);
+
+        var elementDropzoneCreationCommand = new DropzoneCreationCommand(nameof(ElementStack).ToString());
+          var elementBubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), $"{elementDropzoneCreationCommand.Id}bubble");
+          elementDropzoneCreationCommand.Dominions.Add(new PopulateDominionCommand(SituationDominionEnum.Unknown.ToString(), elementBubbleSphereSpec));
+          var elementDropzoneTokenCreationCommand = new TokenCreationCommand(elementDropzoneCreationCommand, elementDropzoneLocation);
+          tabletopSphereCreationCommand.Tokens.Add(elementDropzoneTokenCreationCommand);
+
+          
+        
+          var situationDropzoneCreationCommand = new DropzoneCreationCommand(nameof(Situation).ToString());
+          var situationBubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), $"{situationDropzoneCreationCommand.Id}bubble");
+          situationDropzoneCreationCommand.Dominions.Add(new PopulateDominionCommand(SituationDominionEnum.Unknown.ToString(), situationBubbleSphereSpec));
+          var situationDropzoneTokenCreationCommand = new TokenCreationCommand(situationDropzoneCreationCommand, situationDropzoneLocation);
+          tabletopSphereCreationCommand.Tokens.Add(situationDropzoneTokenCreationCommand);
 
         return rootCommand;
     }
