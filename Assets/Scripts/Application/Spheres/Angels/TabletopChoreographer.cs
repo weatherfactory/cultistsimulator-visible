@@ -21,7 +21,7 @@ using UnityEngine.InputSystem.HID;
 namespace SecretHistories.Constants {
     //places, arranges and displays things on the table
 
-    public class TabletopChoreographer:MonoBehaviour, ISettingSubscriber,IChoreographer {
+    public class TabletopChoreographer: AbstractChoreographer, ISettingSubscriber {
 
         class DebugRect
         {
@@ -34,11 +34,9 @@ namespace SecretHistories.Constants {
             }
 
 
-        public TabletopSphere _tabletop;
-
         private Rect GetTableRect()
         {
-            return _tabletop.GetRect();
+            return _sphere.GetRect();
         }
      [SerializeField] private bool showDebugInfo;
    
@@ -96,7 +94,7 @@ namespace SecretHistories.Constants {
 
         public void GroupAllStacks()
         {
-            var stackTokens = _tabletop.GetElementTokens();
+            var stackTokens = _sphere.GetElementTokens();
             var groups = stackTokens
                 .GroupBy(e => e.Payload.GetSignature(), e => e)
                 .Select(group => group.OrderByDescending(e => e.Payload.Quantity).ToList());
@@ -114,7 +112,7 @@ namespace SecretHistories.Constants {
 
         }
 
-        public void PlaceTokenAtFreeLocalPosition(Token token, Context context)
+        public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
      {
          token.TokenRectTransform.anchoredPosition = GetFreeLocalPosition(token, Vector2.zero);
      }
@@ -129,11 +127,11 @@ namespace SecretHistories.Constants {
         /// <summary>
         /// Place as close to a specific position as we can get
         /// </summary>
-        public void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
+        public override void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
     Vector2 freeLocalPosition= GetFreeLocalPosition(token, pos);
     //token.TokenRectTransform.anchoredPosition = freeLocalPosition;
-            Vector3 finalPositionAtTableLevel=new Vector3(freeLocalPosition.x,freeLocalPosition.y,_tabletop.transform.position.z);
+            Vector3 finalPositionAtTableLevel=new Vector3(freeLocalPosition.x,freeLocalPosition.y,_sphere.transform.position.z);
             token.TokenRectTransform.localPosition = finalPositionAtTableLevel;
 
 
@@ -151,7 +149,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 	
 			Rect pushedRect;
 
-            foreach (var token in _tabletop.Tokens) {
+            foreach (var token in _sphere.Tokens) {
                 if (token==pushingToken || CanTokenBeIgnored(token))
                     continue;
 
@@ -174,12 +172,12 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
         public Vector2 GetTablePosForWorldPos(Vector3 worldPos) {
             Vector2 localPoint;
             var screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPos);
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(_tabletop.transform as RectTransform, screenPoint, Camera.main, out localPoint);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_sphere.transform as RectTransform, screenPoint, Camera.main, out localPoint);
 
             return localPoint;
         }
 
-        public Vector2 GetFreeLocalPosition(Token token, Vector2 intendedPos)
+        public override Vector2 GetFreeLocalPosition(Token token, Vector2 intendedPos)
         {
             HideAllDebugRects(); //if we're beginning another attempt to find a free local position, hide all existing debug information
 
@@ -258,7 +256,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
            if (string.IsNullOrEmpty(desc))
                return;
            
-           var rectWorldPosition = _tabletop.GetRectTransform().TransformPoint(rect.position);
+           var rectWorldPosition = _sphere.GetRectTransform().TransformPoint(rect.position);
            var rectScreenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, rectWorldPosition);
 
            var guiRect = new Rect(rectScreenPosition, rect.size);
@@ -268,21 +266,14 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
            rectanglesToDisplay.Add(new DebugRect { Desc = desc, Rect = guiRect,Colour = Colour});
        }
 
-        private bool UnacceptableOverlap(Rect rect1, Rect rect2)
-       {
-            //we require grid snap. 'No grid snap' is no longer an option.
-            //Grid snap 1 means cards cannot overlap at all.
-            //Grid snap 0.5 means cards can overlap up to 50%.
-            //Grid snap 0.25 means cards can overlap up to 75%.
-            return rect1.Overlaps(rect2);
-       }
+
 
         public void HideAllDebugRects()
         {
             rectanglesToDisplay.Clear();
         }
 
-       public LegalPositionCheckResult IsLegalPlacement(Rect candidateRect,  Token placingToken)
+       public override LegalPositionCheckResult IsLegalPlacement(Rect candidateRect,  Token placingToken)
 		{
           //Is the candidaterect inside the larger tabletop rect? if not, throw it out now.
             if (!GetTableRect().Overlaps(candidateRect))
@@ -291,7 +282,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             Rect otherTokenOverlapRect;
 
 
-            foreach (var otherToken in _tabletop.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t)))
+            foreach (var otherToken in _sphere.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t)))
             {
                 otherTokenOverlapRect = otherToken.GetRectInCurrentSphere();
 
@@ -310,15 +301,6 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return LegalPositionCheckResult.Legal();
         }
 
-        bool CanTokenBeIgnored(Token token) {
-            
-            if (token.Defunct)
-                return true;
-			if (token.NoPush)
-				return true;
-
-            return false;
-        }
 
         private List<Rect> GetAlternativeCandidateRects(Rect startingRect, int iteration,Token rectsForToken)
         {

@@ -52,7 +52,7 @@ namespace SecretHistories.Spheres
         public override float TokenHeartbeatIntervalMultiplier => 1;
         
 
-        public override IChoreographer Choreographer
+        public override AbstractChoreographer Choreographer
         {
             get
             {

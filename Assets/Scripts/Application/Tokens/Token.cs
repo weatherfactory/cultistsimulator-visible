@@ -229,7 +229,27 @@ namespace SecretHistories.UI {
             return _manifestation.CanAnimateIcon();
         }
 
+        public Rect GetRectInWorldSpace()
+        {
+            var rect = TokenRectTransform.rect;
 
+            var rectInWorldSpace = new Rect((Vector2)AnchoredPosInWorld() - rect.size / 2f, rect.size); //This assumes a centre pivot. We can address that here if nec.
+            return rectInWorldSpace;
+        }
+        /// <summary>
+        /// Helper function for rect to compare with rects in another sphere
+        /// </summary>
+        /// <param name="otherSphere">The other sphere is expected to be at the same z position</param>
+        /// <returns></returns>
+        public Rect GetRectInOtherSphere(Sphere otherSphere)
+        {
+            var rect = TokenRectTransform.rect;
+
+            var tokenWorldPosition = Sphere.GetRectTransform().TransformPoint(Location.Anchored3DPosition);
+            var projectionPosition = otherSphere.GetRectTransform().InverseTransformPoint(tokenWorldPosition);
+            var rectInOtherSphere = new Rect((Vector2)projectionPosition - rect.size / 2f, rect.size); //This assumes a centre pivot. We can address that here if nec.
+            return rectInOtherSphere;
+        }
         public Rect GetRectInCurrentSphere()
         {
             var rect = TokenRectTransform.rect; //this is in the rect in the token's own transform space

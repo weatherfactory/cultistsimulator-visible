@@ -26,7 +26,7 @@ namespace SecretHistories.Spheres
     
         public override SphereCategory SphereCategory => SphereCategory.World;
         public override bool AllowDrag => true;
-        public override IChoreographer Choreographer=>new OverlapAwareChoreographer(this); 
+        public override AbstractChoreographer Choreographer=>new WorldAwareRowChoreographer(this); 
         
         
 

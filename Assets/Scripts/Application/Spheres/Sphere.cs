@@ -105,7 +105,7 @@ namespace SecretHistories.Spheres
         [DontEncaust]
         public abstract SphereCategory SphereCategory { get; }
         [DontEncaust]
-        public virtual IChoreographer Choreographer { get; set; } = new SimpleChoreographer();
+        public virtual AbstractChoreographer Choreographer { get; set; } = new SimpleChoreographer();
 
         public Vector3 WorldPosition;
 

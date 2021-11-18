@@ -1,0 +1,142 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Assets.Scripts.Application.Abstract;
+using SecretHistories.Choreographers;
+using SecretHistories.Entities;
+using SecretHistories.Spheres;
+using SecretHistories.Spheres.Angels;
+using SecretHistories.UI;
+using UnityEngine;
+
+namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
+{
+    //Assume all tokens are the same dimensions and place them in a row.
+    //skip gaps created by tokens in the world sphere.
+    //This could be a good basis for a self-ordering shelf later.
+   public class WorldAwareRowChoreographer: AbstractChoreographer
+    {
+    
+        public void Awake()
+        {
+
+        }
+
+        public  WorldAwareRowChoreographer(Sphere sphere)
+        {
+            _sphere = sphere;
+        }
+        public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
+        {
+            token.TokenRectTransform.anchoredPosition3D = Vector3.zero;
+        }
+
+
+
+        public override void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 targetPosition)
+        {
+            token.TokenRectTransform.anchoredPosition3D = targetPosition;
+
+        }
+
+        public override LegalPositionCheckResult IsLegalPlacement(Rect candidateRect, Token placingToken)
+        {
+            
+
+            var overlapSphereToWatch = Watchman.Get<HornedAxe>().GetDefaultSphere();
+            var result= LegalInOverlappingSphere(overlapSphereToWatch, candidateRect, placingToken);
+
+
+            //foreach(var itinerary  in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_tabletop.GetAbsolutePath()))
+            //{
+            //    if(itinerary.GetGhost().PromiseBlocksCandidateRect(_tabletop,candidateRect))
+            //        return LegalPositionCheckResult.Blocked($"Reserved destination for {itinerary.GetDescription()}", itinerary.GetGhost().GetRect());
+            //}
+
+            return result;
+        }
+
+
+        private LegalPositionCheckResult LegalInOverlappingSphere(Sphere overlapSphere, Rect candidateRect, Token placingToken)
+        {
+
+
+            Rect otherTokenOverlapRect;
+
+   
+
+            foreach (var otherToken in overlapSphere.Tokens)
+            {
+                if(!CanTokenBeIgnored(otherToken))
+                {
+
+                    otherTokenOverlapRect = otherToken.GetRectInOtherSphere(_sphere); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
+                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect))
+
+                        return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
+                }
+            }
+
+            return LegalPositionCheckResult.Legal();
+
+        }
+
+        public override bool CanTokenBeIgnored(Token token)
+        {
+
+            IHasAspects dontWorryAbout = _sphere.GetContainer();
+
+            if (dontWorryAbout.Id == token.PayloadId)
+               return true;
+
+            return base.CanTokenBeIgnored(token);
+        }
+
+        public override Vector2 GetFreeLocalPosition(Token token, Vector2 startPos)
+        {
+            
+            float sphereWidth = _sphere.GetRectTransform().rect.width;
+            float halfSphereWidth = sphereWidth / 2; //as x, this would be our centre position
+            float tokenWidth= token.ManifestationRectTransform.rect.width;
+            float halfTokenWidth = tokenWidth/ 2; //we should offset the token at least half its manifestation's width to the right from the starting position, on the assumption it has a centre pivot
+            //nb this is the manifestation's width, not the token's, because the token's may not have been updated at this point, and manifestation is our best guess
+
+            float startingX = -halfSphereWidth + halfTokenWidth;
+            float startingY = 0f;
+            var tokensAlreadyPresent = _sphere.Tokens;
+            float totalOffsetToRight = 0f;
+            foreach (var t in tokensAlreadyPresent)
+            {
+                totalOffsetToRight += tokenWidth;//assuming all tokens are the same size
+            }
+
+            foreach (var i in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_sphere.GetAbsolutePath()))
+            {
+                totalOffsetToRight += tokenWidth;
+            }
+
+            Vector2 nextPosition =new Vector2(startingX + totalOffsetToRight, startingY);
+
+            int failedPlacementAttempts = 0;
+            var placementIsLegal = IsLegalPlacement(token.GetRectAssumingPosition(nextPosition),token);
+            while (failedPlacementAttempts < 7 && !placementIsLegal.IsLegal)
+            {
+                nextPosition.x += tokenWidth;
+                failedPlacementAttempts++;
+                placementIsLegal = IsLegalPlacement(token.GetRectAssumingPosition(nextPosition), token);
+            }
+
+                
+            return nextPosition;
+
+        }
+
+        public Vector3 SnapToGrid(Vector3 transformLocalPosition)
+        {
+            return Vector3.zero;
+        }
+    }
+}
