@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SecretHistories.Abstract;
 using SecretHistories.Commands.SituationCommands;
+using SecretHistories.Entities;
 using SecretHistories.Entities.Verbs;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -30,6 +32,10 @@ namespace SecretHistories.Commands
             Dominions = new List<PopulateDominionCommand>();
             EntityId=entityId;
             Id = $"dropzone_{entityId}";
+
+            var bubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), $"{Id}bubble");
+            Dominions.Add(new PopulateDominionCommand(SituationDominionEnum.Unknown.ToString(), bubbleSphereSpec));
+
         }
 
         public ITokenPayload Execute(Context context)

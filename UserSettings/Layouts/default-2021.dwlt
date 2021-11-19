@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 472
+    x: 70
     y: 51
     width: 2527
-    height: 1378
+    height: 1381
   m_ShowMode: 4
   m_Title: Game
   m_RootView: {fileID: 6}
@@ -44,11 +44,11 @@ MonoBehaviour:
     x: 0
     y: 30
     width: 2527
-    height: 1328
+    height: 1331
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 60
+  controlID: 90
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -67,7 +67,7 @@ MonoBehaviour:
     x: 2188
     y: 0
     width: 339
-    height: 1328
+    height: 1331
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
@@ -93,7 +93,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 278
-    height: 1027
+    height: 1030
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
@@ -111,24 +111,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 1027
+    y: 1030
     width: 2188
     height: 301
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 18}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
   - {fileID: 18}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -150,7 +150,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 2527
-    height: 1378
+    height: 1381
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 1358
+    y: 1361
     width: 2527
     height: 20
   m_MinSize: {x: 0, y: 0}
@@ -220,11 +220,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 2188
-    height: 1328
+    height: 1331
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 61
+  controlID: 91
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,11 +245,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 2188
-    height: 1027
+    height: 1030
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 62
+  controlID: 92
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -268,7 +268,7 @@ MonoBehaviour:
     x: 278
     y: 0
     width: 1910
-    height: 1027
+    height: 1030
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
@@ -310,8 +310,8 @@ MonoBehaviour:
   logPanelAutoScroll: 1
   currentFrame: 77817
   logs:
-    lastGrabbedIndex: 2
-    lastGrabbedCount: 3
+    lastGrabbedIndex: 4
+    lastGrabbedCount: 5
     proEntries:
     - logType: 2
       ignore: 0
@@ -349,9 +349,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:32:38.608
-      timeFrame: 6
-      timeStampDateTimeNow: 18:32:38.608
+      timeStamp: 13:55:23.555
+      timeFrame: 5
+      timeStampDateTimeNow: 13:55:23.555
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -848,9 +848,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:32:38.618
-      timeFrame: 6
-      timeStampDateTimeNow: 18:32:38.618
+      timeStamp: 13:55:23.566
+      timeFrame: 5
+      timeStampDateTimeNow: 13:55:23.566
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -1624,7 +1624,7 @@ MonoBehaviour:
         showInToolbar: 1
         hideLabelInToolbar: 0
         hideWhenNoMatches: 0
-    - logType: 1
+    - logType: 2
       ignore: 0
       processed: 1
       tempFilterProcessed: 1
@@ -1634,6 +1634,2536 @@ MonoBehaviour:
       logOutputHeight: -1
       listIndex: 2
       nativeIndex: 2
+      nativeIdentifier: 0
+      originalLog: You are trying to create a MonoBehaviour using the 'new' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      originalStackTrace: 'You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        UnityEngine.MonoBehaviour:.ctor ()
+
+        SecretHistories.Spheres.Angels.AbstractChoreographer:.ctor
+        ()
+
+        SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer:.ctor
+        (SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28)
+
+        SecretHistories.Spheres.BubbleSphere:get_Choreographer
+        () (at Assets/Scripts/Application/Spheres/BubbleSphere.cs:29)
+
+        SecretHistories.Spheres.Sphere:DisplayAndPositionHere
+        (SecretHistories.UI.Token,Context) (at Assets/Scripts/Application/Spheres/Sphere.cs:363)
+
+        SecretHistories.Spheres.Sphere:AcceptToken
+        (SecretHistories.UI.Token,Context) (at Assets/Scripts/Application/Spheres/Sphere.cs:608)
+
+        SecretHistories.Commands.TokenCreationCommand:InstantiateTokenInSphere
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:101)
+
+        SecretHistories.Commands.TokenCreationCommand:Execute
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:79)
+
+        SecretHistories.Commands.SphereCreationCommand:ExecuteOn
+        (SecretHistories.UI.AbstractDominion,Context) (at Assets/Scripts/Application/Commands/SphereCreationCommand.cs:49)
+
+        SecretHistories.Commands.SituationCommands.PopulateDominionCommand:Execute
+        (SecretHistories.UI.AbstractDominion) (at Assets/Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62)
+
+        SecretHistories.Entities.Verbs.Dropzone:RegisterDominion
+        (SecretHistories.UI.AbstractDominion) (at Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146)
+
+        SecretHistories.UI.AbstractDominion:RegisterFor
+        (SecretHistories.Abstract.IManifestable) (at Assets/Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105)
+
+        SecretHistories.Manifestations.DropzoneManifestation:Initialise
+        (SecretHistories.Abstract.IManifestable) (at Assets/Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83)
+
+        SecretHistories.Entities.Verbs.Dropzone:InitialiseManifestation
+        (SecretHistories.Manifestations.IManifestation) (at Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171)
+
+        SecretHistories.UI.Token:ReplaceManifestation
+        (SecretHistories.Manifestations.IManifestation,SecretHistories.Manifestations.IManifestation,SecretHistories.Enums.RetirementVFX)
+        (at Assets/Scripts/Application/Tokens/Token.cs:316)
+
+        SecretHistories.UI.Token:Manifest
+        () (at Assets/Scripts/Application/Tokens/Token.cs:409)
+
+        SecretHistories.UI.Token:Remanifest
+        (SecretHistories.Enums.RetirementVFX) (at Assets/Scripts/Application/Tokens/Token.cs:437)
+
+        SecretHistories.UI.Token:SetPayload
+        (SecretHistories.Abstract.ITokenPayload) (at Assets/Scripts/Application/Tokens/Token.cs:275)
+
+        SecretHistories.Commands.TokenCreationCommand:Execute
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:81)
+
+        SecretHistories.Commands.SphereCreationCommand:ExecuteOn
+        (SecretHistories.Assets.Scripts.Application.Entities.NullEntities.FucineRoot,Context)
+        (at Assets/Scripts/Application/Commands/SphereCreationCommand.cs:39)
+
+        SecretHistories.Commands.RootPopulationCommand:Execute
+        (Context) (at Assets/Scripts/Application/Commands/RootPopulationCommand.cs:39)
+
+        SecretHistories.Infrastructure.GameGateway:PopulateTabletop
+        (Character,SecretHistories.Infrastructure.Persistence.PersistedGameState)
+        (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:114)
+
+        SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6:MoveNext
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:82)
+
+        System.Runtime.CompilerServices.AsyncVoidMethodBuilder:Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>
+        (SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6&)
+
+        SecretHistories.Infrastructure.GameGateway:LoadGame
+        (SecretHistories.Infrastructure.Persistence.GamePersistenceProvider)
+
+        SecretHistories.Infrastructure.GameGateway:Start
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:46)
+
+'
+      nativeFileName: Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 28
+      watchName: 
+      logText: You are trying to create a MonoBehaviour using the 'new' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      logTruncatedText: You are trying to create a MonoBehaviour using the 'new'
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 13:55:23.567
+      timeFrame: 5
+      timeStampDateTimeNow: 13:55:23.567
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: SecretHistories.Spheres.Angels.AbstractChoreographer.
+        methodName: ctor
+        namespaceName: None
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: SecretHistories.Spheres.Angels.AbstractChoreographer..ctor()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28
+        fileNameWithoutPath: WorldAwareRowChoreographer.cs
+        fileNameWithoutPathPlusLineNumber: WorldAwareRowChoreographer.cs:28
+        fileNamePretty: WorldAwareRowChoreographer
+        instanceID: -1
+        className: SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer.
+        methodName: ctor
+        namespaceName: None
+        lineNumberString: 28
+        charNumber: 0
+        stackLabel: SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer..ctor()
+        stackLabel2: ' at /Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/BubbleSphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/BubbleSphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/BubbleSphere.cs:29
+        fileNameWithoutPath: BubbleSphere.cs
+        fileNameWithoutPathPlusLineNumber: BubbleSphere.cs:29
+        fileNamePretty: BubbleSphere
+        instanceID: -1
+        className: BubbleSphere
+        methodName: get_Choreographer
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 29
+        charNumber: 0
+        stackLabel: BubbleSphere.get_Choreographer()
+        stackLabel2: ' at /Scripts/Application/Spheres/BubbleSphere.cs:29'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Sphere.cs:363
+        fileNameWithoutPath: Sphere.cs
+        fileNameWithoutPathPlusLineNumber: Sphere.cs:363
+        fileNamePretty: Sphere
+        instanceID: -1
+        className: Sphere
+        methodName: DisplayAndPositionHere
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 363
+        charNumber: 0
+        stackLabel: Sphere.DisplayAndPositionHere()
+        stackLabel2: ' at /Scripts/Application/Spheres/Sphere.cs:363'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Sphere.cs:608
+        fileNameWithoutPath: Sphere.cs
+        fileNameWithoutPathPlusLineNumber: Sphere.cs:608
+        fileNamePretty: Sphere
+        instanceID: -1
+        className: Sphere
+        methodName: AcceptToken
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 608
+        charNumber: 0
+        stackLabel: Sphere.AcceptToken()
+        stackLabel2: ' at /Scripts/Application/Spheres/Sphere.cs:608'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:101
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:101
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: InstantiateTokenInSphere
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 101
+        charNumber: 0
+        stackLabel: TokenCreationCommand.InstantiateTokenInSphere()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:101'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:79
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:79
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 79
+        charNumber: 0
+        stackLabel: TokenCreationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:79'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SphereCreationCommand.cs:49
+        fileNameWithoutPath: SphereCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: SphereCreationCommand.cs:49
+        fileNamePretty: SphereCreationCommand
+        instanceID: -1
+        className: SphereCreationCommand
+        methodName: ExecuteOn
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 49
+        charNumber: 0
+        stackLabel: SphereCreationCommand.ExecuteOn()
+        stackLabel2: ' at /Scripts/Application/Commands/SphereCreationCommand.cs:49'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62
+        fileNameWithoutPath: PopulateDominionCommand.cs
+        fileNameWithoutPathPlusLineNumber: PopulateDominionCommand.cs:62
+        fileNamePretty: PopulateDominionCommand
+        instanceID: -1
+        className: PopulateDominionCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands.SituationCommands
+        lineNumberString: 62
+        charNumber: 0
+        stackLabel: PopulateDominionCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146
+        fileNameWithoutPath: Dropzone.cs
+        fileNameWithoutPathPlusLineNumber: Dropzone.cs:146
+        fileNamePretty: Dropzone
+        instanceID: -1
+        className: Dropzone
+        methodName: RegisterDominion
+        namespaceName: SecretHistories.Entities.Verbs
+        lineNumberString: 146
+        charNumber: 0
+        stackLabel: Dropzone.RegisterDominion()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Thresholds/AbstractDominion.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Thresholds/AbstractDominion.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105
+        fileNameWithoutPath: AbstractDominion.cs
+        fileNameWithoutPathPlusLineNumber: AbstractDominion.cs:105
+        fileNamePretty: AbstractDominion
+        instanceID: -1
+        className: AbstractDominion
+        methodName: RegisterFor
+        namespaceName: SecretHistories.UI
+        lineNumberString: 105
+        charNumber: 0
+        stackLabel: AbstractDominion.RegisterFor()
+        stackLabel2: ' at /Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83
+        fileNameWithoutPath: DropzoneManifestation.cs
+        fileNameWithoutPathPlusLineNumber: DropzoneManifestation.cs:83
+        fileNamePretty: DropzoneManifestation
+        instanceID: -1
+        className: DropzoneManifestation
+        methodName: Initialise
+        namespaceName: SecretHistories.Manifestations
+        lineNumberString: 83
+        charNumber: 0
+        stackLabel: DropzoneManifestation.Initialise()
+        stackLabel2: ' at /Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171
+        fileNameWithoutPath: Dropzone.cs
+        fileNameWithoutPathPlusLineNumber: Dropzone.cs:171
+        fileNamePretty: Dropzone
+        instanceID: -1
+        className: Dropzone
+        methodName: InitialiseManifestation
+        namespaceName: SecretHistories.Entities.Verbs
+        lineNumberString: 171
+        charNumber: 0
+        stackLabel: Dropzone.InitialiseManifestation()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:316
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:316
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: ReplaceManifestation
+        namespaceName: SecretHistories.UI
+        lineNumberString: 316
+        charNumber: 0
+        stackLabel: Token.ReplaceManifestation()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:316'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:409
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:409
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: Manifest
+        namespaceName: SecretHistories.UI
+        lineNumberString: 409
+        charNumber: 0
+        stackLabel: Token.Manifest()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:409'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:437
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:437
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: Remanifest
+        namespaceName: SecretHistories.UI
+        lineNumberString: 437
+        charNumber: 0
+        stackLabel: Token.Remanifest()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:437'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:275
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:275
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: SetPayload
+        namespaceName: SecretHistories.UI
+        lineNumberString: 275
+        charNumber: 0
+        stackLabel: Token.SetPayload()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:275'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:81
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:81
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 81
+        charNumber: 0
+        stackLabel: TokenCreationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:81'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SphereCreationCommand.cs:39
+        fileNameWithoutPath: SphereCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: SphereCreationCommand.cs:39
+        fileNamePretty: SphereCreationCommand
+        instanceID: -1
+        className: SphereCreationCommand
+        methodName: ExecuteOn
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: SphereCreationCommand.ExecuteOn()
+        stackLabel2: ' at /Scripts/Application/Commands/SphereCreationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/RootPopulationCommand.cs:39
+        fileNameWithoutPath: RootPopulationCommand.cs
+        fileNameWithoutPathPlusLineNumber: RootPopulationCommand.cs:39
+        fileNamePretty: RootPopulationCommand
+        instanceID: -1
+        className: RootPopulationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: RootPopulationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/RootPopulationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:114
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:114
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway
+        methodName: PopulateTabletop
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 114
+        charNumber: 0
+        stackLabel: GameGateway.PopulateTabletop()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:114'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:82
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:82
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway/<LoadGame>d__6
+        methodName: MoveNext
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 82
+        charNumber: 0
+        stackLabel: GameGateway/<LoadGame>d__6.MoveNext()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:82'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure
+        methodName: GameGateway/<LoadGame>d__6>
+        namespaceName: None
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: GameGateway
+        methodName: LoadGame
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: GameGateway.LoadGame()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:46
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:46
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway
+        methodName: Start
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 46
+        charNumber: 0
+        stackLabel: GameGateway.Start()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:46'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      ignoredStackEntries: []
+      lastMatchedCount: 1
+      belongsToFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 2
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 3
+      logOutputHeight: -1
+      listIndex: 3
+      nativeIndex: 3
+      nativeIdentifier: 0
+      originalLog: You are trying to create a MonoBehaviour using the 'new' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      originalStackTrace: 'You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        UnityEngine.MonoBehaviour:.ctor ()
+
+        SecretHistories.Spheres.Angels.AbstractChoreographer:.ctor
+        ()
+
+        SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer:.ctor
+        (SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28)
+
+        SecretHistories.Spheres.BubbleSphere:get_Choreographer
+        () (at Assets/Scripts/Application/Spheres/BubbleSphere.cs:29)
+
+        SecretHistories.Spheres.Sphere:DisplayAndPositionHere
+        (SecretHistories.UI.Token,Context) (at Assets/Scripts/Application/Spheres/Sphere.cs:363)
+
+        SecretHistories.Spheres.Sphere:AcceptToken
+        (SecretHistories.UI.Token,Context) (at Assets/Scripts/Application/Spheres/Sphere.cs:608)
+
+        SecretHistories.Commands.TokenCreationCommand:InstantiateTokenInSphere
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:101)
+
+        SecretHistories.Commands.TokenCreationCommand:Execute
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:79)
+
+        SecretHistories.Commands.SphereCreationCommand:ExecuteOn
+        (SecretHistories.UI.AbstractDominion,Context) (at Assets/Scripts/Application/Commands/SphereCreationCommand.cs:49)
+
+        SecretHistories.Commands.SituationCommands.PopulateDominionCommand:Execute
+        (SecretHistories.UI.AbstractDominion) (at Assets/Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62)
+
+        SecretHistories.Entities.Verbs.Dropzone:RegisterDominion
+        (SecretHistories.UI.AbstractDominion) (at Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146)
+
+        SecretHistories.UI.AbstractDominion:RegisterFor
+        (SecretHistories.Abstract.IManifestable) (at Assets/Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105)
+
+        SecretHistories.Manifestations.DropzoneManifestation:Initialise
+        (SecretHistories.Abstract.IManifestable) (at Assets/Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83)
+
+        SecretHistories.Entities.Verbs.Dropzone:InitialiseManifestation
+        (SecretHistories.Manifestations.IManifestation) (at Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171)
+
+        SecretHistories.UI.Token:ReplaceManifestation
+        (SecretHistories.Manifestations.IManifestation,SecretHistories.Manifestations.IManifestation,SecretHistories.Enums.RetirementVFX)
+        (at Assets/Scripts/Application/Tokens/Token.cs:316)
+
+        SecretHistories.UI.Token:Manifest
+        () (at Assets/Scripts/Application/Tokens/Token.cs:409)
+
+        SecretHistories.UI.Token:Remanifest
+        (SecretHistories.Enums.RetirementVFX) (at Assets/Scripts/Application/Tokens/Token.cs:437)
+
+        SecretHistories.UI.Token:SetPayload
+        (SecretHistories.Abstract.ITokenPayload) (at Assets/Scripts/Application/Tokens/Token.cs:275)
+
+        SecretHistories.Commands.TokenCreationCommand:Execute
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:81)
+
+        SecretHistories.Commands.SphereCreationCommand:ExecuteOn
+        (SecretHistories.Assets.Scripts.Application.Entities.NullEntities.FucineRoot,Context)
+        (at Assets/Scripts/Application/Commands/SphereCreationCommand.cs:39)
+
+        SecretHistories.Commands.RootPopulationCommand:Execute
+        (Context) (at Assets/Scripts/Application/Commands/RootPopulationCommand.cs:39)
+
+        SecretHistories.Infrastructure.GameGateway:PopulateTabletop
+        (Character,SecretHistories.Infrastructure.Persistence.PersistedGameState)
+        (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:114)
+
+        SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6:MoveNext
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:82)
+
+        System.Runtime.CompilerServices.AsyncVoidMethodBuilder:Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>
+        (SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6&)
+
+        SecretHistories.Infrastructure.GameGateway:LoadGame
+        (SecretHistories.Infrastructure.Persistence.GamePersistenceProvider)
+
+        SecretHistories.Infrastructure.GameGateway:Start
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:46)
+
+'
+      nativeFileName: Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 28
+      watchName: 
+      logText: You are trying to create a MonoBehaviour using the 'new' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      logTruncatedText: You are trying to create a MonoBehaviour using the 'new'
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 13:55:23.568
+      timeFrame: 5
+      timeStampDateTimeNow: 13:55:23.568
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: SecretHistories.Spheres.Angels.AbstractChoreographer.
+        methodName: ctor
+        namespaceName: None
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: SecretHistories.Spheres.Angels.AbstractChoreographer..ctor()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28
+        fileNameWithoutPath: WorldAwareRowChoreographer.cs
+        fileNameWithoutPathPlusLineNumber: WorldAwareRowChoreographer.cs:28
+        fileNamePretty: WorldAwareRowChoreographer
+        instanceID: -1
+        className: SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer.
+        methodName: ctor
+        namespaceName: None
+        lineNumberString: 28
+        charNumber: 0
+        stackLabel: SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer..ctor()
+        stackLabel2: ' at /Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/BubbleSphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/BubbleSphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/BubbleSphere.cs:29
+        fileNameWithoutPath: BubbleSphere.cs
+        fileNameWithoutPathPlusLineNumber: BubbleSphere.cs:29
+        fileNamePretty: BubbleSphere
+        instanceID: -1
+        className: BubbleSphere
+        methodName: get_Choreographer
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 29
+        charNumber: 0
+        stackLabel: BubbleSphere.get_Choreographer()
+        stackLabel2: ' at /Scripts/Application/Spheres/BubbleSphere.cs:29'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Sphere.cs:363
+        fileNameWithoutPath: Sphere.cs
+        fileNameWithoutPathPlusLineNumber: Sphere.cs:363
+        fileNamePretty: Sphere
+        instanceID: -1
+        className: Sphere
+        methodName: DisplayAndPositionHere
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 363
+        charNumber: 0
+        stackLabel: Sphere.DisplayAndPositionHere()
+        stackLabel2: ' at /Scripts/Application/Spheres/Sphere.cs:363'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Sphere.cs:608
+        fileNameWithoutPath: Sphere.cs
+        fileNameWithoutPathPlusLineNumber: Sphere.cs:608
+        fileNamePretty: Sphere
+        instanceID: -1
+        className: Sphere
+        methodName: AcceptToken
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 608
+        charNumber: 0
+        stackLabel: Sphere.AcceptToken()
+        stackLabel2: ' at /Scripts/Application/Spheres/Sphere.cs:608'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:101
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:101
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: InstantiateTokenInSphere
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 101
+        charNumber: 0
+        stackLabel: TokenCreationCommand.InstantiateTokenInSphere()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:101'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:79
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:79
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 79
+        charNumber: 0
+        stackLabel: TokenCreationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:79'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SphereCreationCommand.cs:49
+        fileNameWithoutPath: SphereCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: SphereCreationCommand.cs:49
+        fileNamePretty: SphereCreationCommand
+        instanceID: -1
+        className: SphereCreationCommand
+        methodName: ExecuteOn
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 49
+        charNumber: 0
+        stackLabel: SphereCreationCommand.ExecuteOn()
+        stackLabel2: ' at /Scripts/Application/Commands/SphereCreationCommand.cs:49'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62
+        fileNameWithoutPath: PopulateDominionCommand.cs
+        fileNameWithoutPathPlusLineNumber: PopulateDominionCommand.cs:62
+        fileNamePretty: PopulateDominionCommand
+        instanceID: -1
+        className: PopulateDominionCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands.SituationCommands
+        lineNumberString: 62
+        charNumber: 0
+        stackLabel: PopulateDominionCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146
+        fileNameWithoutPath: Dropzone.cs
+        fileNameWithoutPathPlusLineNumber: Dropzone.cs:146
+        fileNamePretty: Dropzone
+        instanceID: -1
+        className: Dropzone
+        methodName: RegisterDominion
+        namespaceName: SecretHistories.Entities.Verbs
+        lineNumberString: 146
+        charNumber: 0
+        stackLabel: Dropzone.RegisterDominion()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Thresholds/AbstractDominion.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Thresholds/AbstractDominion.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105
+        fileNameWithoutPath: AbstractDominion.cs
+        fileNameWithoutPathPlusLineNumber: AbstractDominion.cs:105
+        fileNamePretty: AbstractDominion
+        instanceID: -1
+        className: AbstractDominion
+        methodName: RegisterFor
+        namespaceName: SecretHistories.UI
+        lineNumberString: 105
+        charNumber: 0
+        stackLabel: AbstractDominion.RegisterFor()
+        stackLabel2: ' at /Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83
+        fileNameWithoutPath: DropzoneManifestation.cs
+        fileNameWithoutPathPlusLineNumber: DropzoneManifestation.cs:83
+        fileNamePretty: DropzoneManifestation
+        instanceID: -1
+        className: DropzoneManifestation
+        methodName: Initialise
+        namespaceName: SecretHistories.Manifestations
+        lineNumberString: 83
+        charNumber: 0
+        stackLabel: DropzoneManifestation.Initialise()
+        stackLabel2: ' at /Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171
+        fileNameWithoutPath: Dropzone.cs
+        fileNameWithoutPathPlusLineNumber: Dropzone.cs:171
+        fileNamePretty: Dropzone
+        instanceID: -1
+        className: Dropzone
+        methodName: InitialiseManifestation
+        namespaceName: SecretHistories.Entities.Verbs
+        lineNumberString: 171
+        charNumber: 0
+        stackLabel: Dropzone.InitialiseManifestation()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:316
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:316
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: ReplaceManifestation
+        namespaceName: SecretHistories.UI
+        lineNumberString: 316
+        charNumber: 0
+        stackLabel: Token.ReplaceManifestation()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:316'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:409
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:409
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: Manifest
+        namespaceName: SecretHistories.UI
+        lineNumberString: 409
+        charNumber: 0
+        stackLabel: Token.Manifest()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:409'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:437
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:437
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: Remanifest
+        namespaceName: SecretHistories.UI
+        lineNumberString: 437
+        charNumber: 0
+        stackLabel: Token.Remanifest()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:437'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:275
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:275
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: SetPayload
+        namespaceName: SecretHistories.UI
+        lineNumberString: 275
+        charNumber: 0
+        stackLabel: Token.SetPayload()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:275'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:81
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:81
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 81
+        charNumber: 0
+        stackLabel: TokenCreationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:81'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SphereCreationCommand.cs:39
+        fileNameWithoutPath: SphereCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: SphereCreationCommand.cs:39
+        fileNamePretty: SphereCreationCommand
+        instanceID: -1
+        className: SphereCreationCommand
+        methodName: ExecuteOn
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: SphereCreationCommand.ExecuteOn()
+        stackLabel2: ' at /Scripts/Application/Commands/SphereCreationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/RootPopulationCommand.cs:39
+        fileNameWithoutPath: RootPopulationCommand.cs
+        fileNameWithoutPathPlusLineNumber: RootPopulationCommand.cs:39
+        fileNamePretty: RootPopulationCommand
+        instanceID: -1
+        className: RootPopulationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: RootPopulationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/RootPopulationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:114
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:114
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway
+        methodName: PopulateTabletop
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 114
+        charNumber: 0
+        stackLabel: GameGateway.PopulateTabletop()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:114'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:82
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:82
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway/<LoadGame>d__6
+        methodName: MoveNext
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 82
+        charNumber: 0
+        stackLabel: GameGateway/<LoadGame>d__6.MoveNext()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:82'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure
+        methodName: GameGateway/<LoadGame>d__6>
+        namespaceName: None
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: GameGateway
+        methodName: LoadGame
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: GameGateway.LoadGame()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:46
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:46
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway
+        methodName: Start
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 46
+        charNumber: 0
+        stackLabel: GameGateway.Start()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:46'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      ignoredStackEntries: []
+      lastMatchedCount: 1
+      belongsToFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 1
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 4
+      logOutputHeight: -1
+      listIndex: 4
+      nativeIndex: 4
       nativeIdentifier: 0
       originalLog: '>>>> Situation notification: recipe prediction updated from introdream
         to introdream.'
@@ -1698,9 +4228,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:32:38.619
-      timeFrame: 6
-      timeStampDateTimeNow: 18:32:38.619
+      timeStamp: 13:55:23.569
+      timeFrame: 5
+      timeStampDateTimeNow: 13:55:23.569
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -2515,9 +5045,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:32:38.608
-      timeFrame: 6
-      timeStampDateTimeNow: 18:32:38.608
+      timeStamp: 13:55:23.555
+      timeFrame: 5
+      timeStampDateTimeNow: 13:55:23.555
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -3014,9 +5544,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:32:38.618
-      timeFrame: 6
-      timeStampDateTimeNow: 18:32:38.618
+      timeStamp: 13:55:23.566
+      timeFrame: 5
+      timeStampDateTimeNow: 13:55:23.566
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -3790,7 +6320,7 @@ MonoBehaviour:
         showInToolbar: 1
         hideLabelInToolbar: 0
         hideWhenNoMatches: 0
-    - logType: 1
+    - logType: 2
       ignore: 0
       processed: 1
       tempFilterProcessed: 1
@@ -3800,6 +6330,2536 @@ MonoBehaviour:
       logOutputHeight: -1
       listIndex: 2
       nativeIndex: 2
+      nativeIdentifier: 0
+      originalLog: You are trying to create a MonoBehaviour using the 'new' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      originalStackTrace: 'You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        UnityEngine.MonoBehaviour:.ctor ()
+
+        SecretHistories.Spheres.Angels.AbstractChoreographer:.ctor
+        ()
+
+        SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer:.ctor
+        (SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28)
+
+        SecretHistories.Spheres.BubbleSphere:get_Choreographer
+        () (at Assets/Scripts/Application/Spheres/BubbleSphere.cs:29)
+
+        SecretHistories.Spheres.Sphere:DisplayAndPositionHere
+        (SecretHistories.UI.Token,Context) (at Assets/Scripts/Application/Spheres/Sphere.cs:363)
+
+        SecretHistories.Spheres.Sphere:AcceptToken
+        (SecretHistories.UI.Token,Context) (at Assets/Scripts/Application/Spheres/Sphere.cs:608)
+
+        SecretHistories.Commands.TokenCreationCommand:InstantiateTokenInSphere
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:101)
+
+        SecretHistories.Commands.TokenCreationCommand:Execute
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:79)
+
+        SecretHistories.Commands.SphereCreationCommand:ExecuteOn
+        (SecretHistories.UI.AbstractDominion,Context) (at Assets/Scripts/Application/Commands/SphereCreationCommand.cs:49)
+
+        SecretHistories.Commands.SituationCommands.PopulateDominionCommand:Execute
+        (SecretHistories.UI.AbstractDominion) (at Assets/Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62)
+
+        SecretHistories.Entities.Verbs.Dropzone:RegisterDominion
+        (SecretHistories.UI.AbstractDominion) (at Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146)
+
+        SecretHistories.UI.AbstractDominion:RegisterFor
+        (SecretHistories.Abstract.IManifestable) (at Assets/Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105)
+
+        SecretHistories.Manifestations.DropzoneManifestation:Initialise
+        (SecretHistories.Abstract.IManifestable) (at Assets/Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83)
+
+        SecretHistories.Entities.Verbs.Dropzone:InitialiseManifestation
+        (SecretHistories.Manifestations.IManifestation) (at Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171)
+
+        SecretHistories.UI.Token:ReplaceManifestation
+        (SecretHistories.Manifestations.IManifestation,SecretHistories.Manifestations.IManifestation,SecretHistories.Enums.RetirementVFX)
+        (at Assets/Scripts/Application/Tokens/Token.cs:316)
+
+        SecretHistories.UI.Token:Manifest
+        () (at Assets/Scripts/Application/Tokens/Token.cs:409)
+
+        SecretHistories.UI.Token:Remanifest
+        (SecretHistories.Enums.RetirementVFX) (at Assets/Scripts/Application/Tokens/Token.cs:437)
+
+        SecretHistories.UI.Token:SetPayload
+        (SecretHistories.Abstract.ITokenPayload) (at Assets/Scripts/Application/Tokens/Token.cs:275)
+
+        SecretHistories.Commands.TokenCreationCommand:Execute
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:81)
+
+        SecretHistories.Commands.SphereCreationCommand:ExecuteOn
+        (SecretHistories.Assets.Scripts.Application.Entities.NullEntities.FucineRoot,Context)
+        (at Assets/Scripts/Application/Commands/SphereCreationCommand.cs:39)
+
+        SecretHistories.Commands.RootPopulationCommand:Execute
+        (Context) (at Assets/Scripts/Application/Commands/RootPopulationCommand.cs:39)
+
+        SecretHistories.Infrastructure.GameGateway:PopulateTabletop
+        (Character,SecretHistories.Infrastructure.Persistence.PersistedGameState)
+        (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:114)
+
+        SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6:MoveNext
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:82)
+
+        System.Runtime.CompilerServices.AsyncVoidMethodBuilder:Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>
+        (SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6&)
+
+        SecretHistories.Infrastructure.GameGateway:LoadGame
+        (SecretHistories.Infrastructure.Persistence.GamePersistenceProvider)
+
+        SecretHistories.Infrastructure.GameGateway:Start
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:46)
+
+'
+      nativeFileName: Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 28
+      watchName: 
+      logText: You are trying to create a MonoBehaviour using the 'new' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      logTruncatedText: You are trying to create a MonoBehaviour using the 'new'
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 13:55:23.567
+      timeFrame: 5
+      timeStampDateTimeNow: 13:55:23.567
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: SecretHistories.Spheres.Angels.AbstractChoreographer.
+        methodName: ctor
+        namespaceName: None
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: SecretHistories.Spheres.Angels.AbstractChoreographer..ctor()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28
+        fileNameWithoutPath: WorldAwareRowChoreographer.cs
+        fileNameWithoutPathPlusLineNumber: WorldAwareRowChoreographer.cs:28
+        fileNamePretty: WorldAwareRowChoreographer
+        instanceID: -1
+        className: SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer.
+        methodName: ctor
+        namespaceName: None
+        lineNumberString: 28
+        charNumber: 0
+        stackLabel: SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer..ctor()
+        stackLabel2: ' at /Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/BubbleSphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/BubbleSphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/BubbleSphere.cs:29
+        fileNameWithoutPath: BubbleSphere.cs
+        fileNameWithoutPathPlusLineNumber: BubbleSphere.cs:29
+        fileNamePretty: BubbleSphere
+        instanceID: -1
+        className: BubbleSphere
+        methodName: get_Choreographer
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 29
+        charNumber: 0
+        stackLabel: BubbleSphere.get_Choreographer()
+        stackLabel2: ' at /Scripts/Application/Spheres/BubbleSphere.cs:29'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Sphere.cs:363
+        fileNameWithoutPath: Sphere.cs
+        fileNameWithoutPathPlusLineNumber: Sphere.cs:363
+        fileNamePretty: Sphere
+        instanceID: -1
+        className: Sphere
+        methodName: DisplayAndPositionHere
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 363
+        charNumber: 0
+        stackLabel: Sphere.DisplayAndPositionHere()
+        stackLabel2: ' at /Scripts/Application/Spheres/Sphere.cs:363'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Sphere.cs:608
+        fileNameWithoutPath: Sphere.cs
+        fileNameWithoutPathPlusLineNumber: Sphere.cs:608
+        fileNamePretty: Sphere
+        instanceID: -1
+        className: Sphere
+        methodName: AcceptToken
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 608
+        charNumber: 0
+        stackLabel: Sphere.AcceptToken()
+        stackLabel2: ' at /Scripts/Application/Spheres/Sphere.cs:608'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:101
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:101
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: InstantiateTokenInSphere
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 101
+        charNumber: 0
+        stackLabel: TokenCreationCommand.InstantiateTokenInSphere()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:101'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:79
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:79
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 79
+        charNumber: 0
+        stackLabel: TokenCreationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:79'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SphereCreationCommand.cs:49
+        fileNameWithoutPath: SphereCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: SphereCreationCommand.cs:49
+        fileNamePretty: SphereCreationCommand
+        instanceID: -1
+        className: SphereCreationCommand
+        methodName: ExecuteOn
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 49
+        charNumber: 0
+        stackLabel: SphereCreationCommand.ExecuteOn()
+        stackLabel2: ' at /Scripts/Application/Commands/SphereCreationCommand.cs:49'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62
+        fileNameWithoutPath: PopulateDominionCommand.cs
+        fileNameWithoutPathPlusLineNumber: PopulateDominionCommand.cs:62
+        fileNamePretty: PopulateDominionCommand
+        instanceID: -1
+        className: PopulateDominionCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands.SituationCommands
+        lineNumberString: 62
+        charNumber: 0
+        stackLabel: PopulateDominionCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146
+        fileNameWithoutPath: Dropzone.cs
+        fileNameWithoutPathPlusLineNumber: Dropzone.cs:146
+        fileNamePretty: Dropzone
+        instanceID: -1
+        className: Dropzone
+        methodName: RegisterDominion
+        namespaceName: SecretHistories.Entities.Verbs
+        lineNumberString: 146
+        charNumber: 0
+        stackLabel: Dropzone.RegisterDominion()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Thresholds/AbstractDominion.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Thresholds/AbstractDominion.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105
+        fileNameWithoutPath: AbstractDominion.cs
+        fileNameWithoutPathPlusLineNumber: AbstractDominion.cs:105
+        fileNamePretty: AbstractDominion
+        instanceID: -1
+        className: AbstractDominion
+        methodName: RegisterFor
+        namespaceName: SecretHistories.UI
+        lineNumberString: 105
+        charNumber: 0
+        stackLabel: AbstractDominion.RegisterFor()
+        stackLabel2: ' at /Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83
+        fileNameWithoutPath: DropzoneManifestation.cs
+        fileNameWithoutPathPlusLineNumber: DropzoneManifestation.cs:83
+        fileNamePretty: DropzoneManifestation
+        instanceID: -1
+        className: DropzoneManifestation
+        methodName: Initialise
+        namespaceName: SecretHistories.Manifestations
+        lineNumberString: 83
+        charNumber: 0
+        stackLabel: DropzoneManifestation.Initialise()
+        stackLabel2: ' at /Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171
+        fileNameWithoutPath: Dropzone.cs
+        fileNameWithoutPathPlusLineNumber: Dropzone.cs:171
+        fileNamePretty: Dropzone
+        instanceID: -1
+        className: Dropzone
+        methodName: InitialiseManifestation
+        namespaceName: SecretHistories.Entities.Verbs
+        lineNumberString: 171
+        charNumber: 0
+        stackLabel: Dropzone.InitialiseManifestation()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:316
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:316
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: ReplaceManifestation
+        namespaceName: SecretHistories.UI
+        lineNumberString: 316
+        charNumber: 0
+        stackLabel: Token.ReplaceManifestation()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:316'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:409
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:409
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: Manifest
+        namespaceName: SecretHistories.UI
+        lineNumberString: 409
+        charNumber: 0
+        stackLabel: Token.Manifest()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:409'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:437
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:437
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: Remanifest
+        namespaceName: SecretHistories.UI
+        lineNumberString: 437
+        charNumber: 0
+        stackLabel: Token.Remanifest()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:437'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:275
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:275
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: SetPayload
+        namespaceName: SecretHistories.UI
+        lineNumberString: 275
+        charNumber: 0
+        stackLabel: Token.SetPayload()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:275'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:81
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:81
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 81
+        charNumber: 0
+        stackLabel: TokenCreationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:81'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SphereCreationCommand.cs:39
+        fileNameWithoutPath: SphereCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: SphereCreationCommand.cs:39
+        fileNamePretty: SphereCreationCommand
+        instanceID: -1
+        className: SphereCreationCommand
+        methodName: ExecuteOn
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: SphereCreationCommand.ExecuteOn()
+        stackLabel2: ' at /Scripts/Application/Commands/SphereCreationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/RootPopulationCommand.cs:39
+        fileNameWithoutPath: RootPopulationCommand.cs
+        fileNameWithoutPathPlusLineNumber: RootPopulationCommand.cs:39
+        fileNamePretty: RootPopulationCommand
+        instanceID: -1
+        className: RootPopulationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: RootPopulationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/RootPopulationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:114
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:114
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway
+        methodName: PopulateTabletop
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 114
+        charNumber: 0
+        stackLabel: GameGateway.PopulateTabletop()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:114'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:82
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:82
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway/<LoadGame>d__6
+        methodName: MoveNext
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 82
+        charNumber: 0
+        stackLabel: GameGateway/<LoadGame>d__6.MoveNext()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:82'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure
+        methodName: GameGateway/<LoadGame>d__6>
+        namespaceName: None
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: GameGateway
+        methodName: LoadGame
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: GameGateway.LoadGame()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:46
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:46
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway
+        methodName: Start
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 46
+        charNumber: 0
+        stackLabel: GameGateway.Start()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:46'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      ignoredStackEntries: []
+      lastMatchedCount: 1
+      belongsToFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 2
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 3
+      logOutputHeight: -1
+      listIndex: 3
+      nativeIndex: 3
+      nativeIdentifier: 0
+      originalLog: You are trying to create a MonoBehaviour using the 'new' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      originalStackTrace: 'You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        UnityEngine.MonoBehaviour:.ctor ()
+
+        SecretHistories.Spheres.Angels.AbstractChoreographer:.ctor
+        ()
+
+        SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer:.ctor
+        (SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28)
+
+        SecretHistories.Spheres.BubbleSphere:get_Choreographer
+        () (at Assets/Scripts/Application/Spheres/BubbleSphere.cs:29)
+
+        SecretHistories.Spheres.Sphere:DisplayAndPositionHere
+        (SecretHistories.UI.Token,Context) (at Assets/Scripts/Application/Spheres/Sphere.cs:363)
+
+        SecretHistories.Spheres.Sphere:AcceptToken
+        (SecretHistories.UI.Token,Context) (at Assets/Scripts/Application/Spheres/Sphere.cs:608)
+
+        SecretHistories.Commands.TokenCreationCommand:InstantiateTokenInSphere
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:101)
+
+        SecretHistories.Commands.TokenCreationCommand:Execute
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:79)
+
+        SecretHistories.Commands.SphereCreationCommand:ExecuteOn
+        (SecretHistories.UI.AbstractDominion,Context) (at Assets/Scripts/Application/Commands/SphereCreationCommand.cs:49)
+
+        SecretHistories.Commands.SituationCommands.PopulateDominionCommand:Execute
+        (SecretHistories.UI.AbstractDominion) (at Assets/Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62)
+
+        SecretHistories.Entities.Verbs.Dropzone:RegisterDominion
+        (SecretHistories.UI.AbstractDominion) (at Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146)
+
+        SecretHistories.UI.AbstractDominion:RegisterFor
+        (SecretHistories.Abstract.IManifestable) (at Assets/Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105)
+
+        SecretHistories.Manifestations.DropzoneManifestation:Initialise
+        (SecretHistories.Abstract.IManifestable) (at Assets/Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83)
+
+        SecretHistories.Entities.Verbs.Dropzone:InitialiseManifestation
+        (SecretHistories.Manifestations.IManifestation) (at Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171)
+
+        SecretHistories.UI.Token:ReplaceManifestation
+        (SecretHistories.Manifestations.IManifestation,SecretHistories.Manifestations.IManifestation,SecretHistories.Enums.RetirementVFX)
+        (at Assets/Scripts/Application/Tokens/Token.cs:316)
+
+        SecretHistories.UI.Token:Manifest
+        () (at Assets/Scripts/Application/Tokens/Token.cs:409)
+
+        SecretHistories.UI.Token:Remanifest
+        (SecretHistories.Enums.RetirementVFX) (at Assets/Scripts/Application/Tokens/Token.cs:437)
+
+        SecretHistories.UI.Token:SetPayload
+        (SecretHistories.Abstract.ITokenPayload) (at Assets/Scripts/Application/Tokens/Token.cs:275)
+
+        SecretHistories.Commands.TokenCreationCommand:Execute
+        (Context,SecretHistories.Spheres.Sphere) (at Assets/Scripts/Application/Commands/TokenCreationCommand.cs:81)
+
+        SecretHistories.Commands.SphereCreationCommand:ExecuteOn
+        (SecretHistories.Assets.Scripts.Application.Entities.NullEntities.FucineRoot,Context)
+        (at Assets/Scripts/Application/Commands/SphereCreationCommand.cs:39)
+
+        SecretHistories.Commands.RootPopulationCommand:Execute
+        (Context) (at Assets/Scripts/Application/Commands/RootPopulationCommand.cs:39)
+
+        SecretHistories.Infrastructure.GameGateway:PopulateTabletop
+        (Character,SecretHistories.Infrastructure.Persistence.PersistedGameState)
+        (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:114)
+
+        SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6:MoveNext
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:82)
+
+        System.Runtime.CompilerServices.AsyncVoidMethodBuilder:Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>
+        (SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6&)
+
+        SecretHistories.Infrastructure.GameGateway:LoadGame
+        (SecretHistories.Infrastructure.Persistence.GamePersistenceProvider)
+
+        SecretHistories.Infrastructure.GameGateway:Start
+        () (at Assets/Scripts/Application/Infrastructure/GameGateway.cs:46)
+
+'
+      nativeFileName: Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 28
+      watchName: 
+      logText: You are trying to create a MonoBehaviour using the 'new' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      logTruncatedText: You are trying to create a MonoBehaviour using the 'new'
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 13:55:23.568
+      timeFrame: 5
+      timeStampDateTimeNow: 13:55:23.568
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: SecretHistories.Spheres.Angels.AbstractChoreographer.
+        methodName: ctor
+        namespaceName: None
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: SecretHistories.Spheres.Angels.AbstractChoreographer..ctor()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28
+        fileNameWithoutPath: WorldAwareRowChoreographer.cs
+        fileNameWithoutPathPlusLineNumber: WorldAwareRowChoreographer.cs:28
+        fileNamePretty: WorldAwareRowChoreographer
+        instanceID: -1
+        className: SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer.
+        methodName: ctor
+        namespaceName: None
+        lineNumberString: 28
+        charNumber: 0
+        stackLabel: SecretHistories.Assets.Scripts.Application.Spheres.Angels.WorldAwareRowChoreographer..ctor()
+        stackLabel2: ' at /Scripts/Application/Spheres/Angels/WorldAwareRowChoreographer.cs:28'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/BubbleSphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/BubbleSphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/BubbleSphere.cs:29
+        fileNameWithoutPath: BubbleSphere.cs
+        fileNameWithoutPathPlusLineNumber: BubbleSphere.cs:29
+        fileNamePretty: BubbleSphere
+        instanceID: -1
+        className: BubbleSphere
+        methodName: get_Choreographer
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 29
+        charNumber: 0
+        stackLabel: BubbleSphere.get_Choreographer()
+        stackLabel2: ' at /Scripts/Application/Spheres/BubbleSphere.cs:29'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Sphere.cs:363
+        fileNameWithoutPath: Sphere.cs
+        fileNameWithoutPathPlusLineNumber: Sphere.cs:363
+        fileNamePretty: Sphere
+        instanceID: -1
+        className: Sphere
+        methodName: DisplayAndPositionHere
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 363
+        charNumber: 0
+        stackLabel: Sphere.DisplayAndPositionHere()
+        stackLabel2: ' at /Scripts/Application/Spheres/Sphere.cs:363'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Sphere.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Sphere.cs:608
+        fileNameWithoutPath: Sphere.cs
+        fileNameWithoutPathPlusLineNumber: Sphere.cs:608
+        fileNamePretty: Sphere
+        instanceID: -1
+        className: Sphere
+        methodName: AcceptToken
+        namespaceName: SecretHistories.Spheres
+        lineNumberString: 608
+        charNumber: 0
+        stackLabel: Sphere.AcceptToken()
+        stackLabel2: ' at /Scripts/Application/Spheres/Sphere.cs:608'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:101
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:101
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: InstantiateTokenInSphere
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 101
+        charNumber: 0
+        stackLabel: TokenCreationCommand.InstantiateTokenInSphere()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:101'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:79
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:79
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 79
+        charNumber: 0
+        stackLabel: TokenCreationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:79'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SphereCreationCommand.cs:49
+        fileNameWithoutPath: SphereCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: SphereCreationCommand.cs:49
+        fileNamePretty: SphereCreationCommand
+        instanceID: -1
+        className: SphereCreationCommand
+        methodName: ExecuteOn
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 49
+        charNumber: 0
+        stackLabel: SphereCreationCommand.ExecuteOn()
+        stackLabel2: ' at /Scripts/Application/Commands/SphereCreationCommand.cs:49'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62
+        fileNameWithoutPath: PopulateDominionCommand.cs
+        fileNameWithoutPathPlusLineNumber: PopulateDominionCommand.cs:62
+        fileNamePretty: PopulateDominionCommand
+        instanceID: -1
+        className: PopulateDominionCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands.SituationCommands
+        lineNumberString: 62
+        charNumber: 0
+        stackLabel: PopulateDominionCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/SituationCommands/PopulateDominionCommand.cs:62'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146
+        fileNameWithoutPath: Dropzone.cs
+        fileNameWithoutPathPlusLineNumber: Dropzone.cs:146
+        fileNamePretty: Dropzone
+        instanceID: -1
+        className: Dropzone
+        methodName: RegisterDominion
+        namespaceName: SecretHistories.Entities.Verbs
+        lineNumberString: 146
+        charNumber: 0
+        stackLabel: Dropzone.RegisterDominion()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:146'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Spheres/Thresholds/AbstractDominion.cs
+        fileNameWithoutAssets: Scripts/Application/Spheres/Thresholds/AbstractDominion.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105
+        fileNameWithoutPath: AbstractDominion.cs
+        fileNameWithoutPathPlusLineNumber: AbstractDominion.cs:105
+        fileNamePretty: AbstractDominion
+        instanceID: -1
+        className: AbstractDominion
+        methodName: RegisterFor
+        namespaceName: SecretHistories.UI
+        lineNumberString: 105
+        charNumber: 0
+        stackLabel: AbstractDominion.RegisterFor()
+        stackLabel2: ' at /Scripts/Application/Spheres/Thresholds/AbstractDominion.cs:105'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83
+        fileNameWithoutPath: DropzoneManifestation.cs
+        fileNameWithoutPathPlusLineNumber: DropzoneManifestation.cs:83
+        fileNamePretty: DropzoneManifestation
+        instanceID: -1
+        className: DropzoneManifestation
+        methodName: Initialise
+        namespaceName: SecretHistories.Manifestations
+        lineNumberString: 83
+        charNumber: 0
+        stackLabel: DropzoneManifestation.Initialise()
+        stackLabel2: ' at /Scripts/Application/Tokens/Elements/Manifestations/DropzoneManifestation.cs:83'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171
+        fileNameWithoutPath: Dropzone.cs
+        fileNameWithoutPathPlusLineNumber: Dropzone.cs:171
+        fileNamePretty: Dropzone
+        instanceID: -1
+        className: Dropzone
+        methodName: InitialiseManifestation
+        namespaceName: SecretHistories.Entities.Verbs
+        lineNumberString: 171
+        charNumber: 0
+        stackLabel: Dropzone.InitialiseManifestation()
+        stackLabel2: ' at /Scripts/Application/Tokens/TokenPayloads/Dropzone.cs:171'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:316
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:316
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: ReplaceManifestation
+        namespaceName: SecretHistories.UI
+        lineNumberString: 316
+        charNumber: 0
+        stackLabel: Token.ReplaceManifestation()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:316'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:409
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:409
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: Manifest
+        namespaceName: SecretHistories.UI
+        lineNumberString: 409
+        charNumber: 0
+        stackLabel: Token.Manifest()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:409'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:437
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:437
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: Remanifest
+        namespaceName: SecretHistories.UI
+        lineNumberString: 437
+        charNumber: 0
+        stackLabel: Token.Remanifest()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:437'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssets: Scripts/Application/Tokens/Token.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Tokens/Token.cs:275
+        fileNameWithoutPath: Token.cs
+        fileNameWithoutPathPlusLineNumber: Token.cs:275
+        fileNamePretty: Token
+        instanceID: -1
+        className: Token
+        methodName: SetPayload
+        namespaceName: SecretHistories.UI
+        lineNumberString: 275
+        charNumber: 0
+        stackLabel: Token.SetPayload()
+        stackLabel2: ' at /Scripts/Application/Tokens/Token.cs:275'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/TokenCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/TokenCreationCommand.cs:81
+        fileNameWithoutPath: TokenCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: TokenCreationCommand.cs:81
+        fileNamePretty: TokenCreationCommand
+        instanceID: -1
+        className: TokenCreationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 81
+        charNumber: 0
+        stackLabel: TokenCreationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/TokenCreationCommand.cs:81'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/SphereCreationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/SphereCreationCommand.cs:39
+        fileNameWithoutPath: SphereCreationCommand.cs
+        fileNameWithoutPathPlusLineNumber: SphereCreationCommand.cs:39
+        fileNamePretty: SphereCreationCommand
+        instanceID: -1
+        className: SphereCreationCommand
+        methodName: ExecuteOn
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: SphereCreationCommand.ExecuteOn()
+        stackLabel2: ' at /Scripts/Application/Commands/SphereCreationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssets: Scripts/Application/Commands/RootPopulationCommand.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Commands/RootPopulationCommand.cs:39
+        fileNameWithoutPath: RootPopulationCommand.cs
+        fileNameWithoutPathPlusLineNumber: RootPopulationCommand.cs:39
+        fileNamePretty: RootPopulationCommand
+        instanceID: -1
+        className: RootPopulationCommand
+        methodName: Execute
+        namespaceName: SecretHistories.Commands
+        lineNumberString: 39
+        charNumber: 0
+        stackLabel: RootPopulationCommand.Execute()
+        stackLabel2: ' at /Scripts/Application/Commands/RootPopulationCommand.cs:39'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:114
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:114
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway
+        methodName: PopulateTabletop
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 114
+        charNumber: 0
+        stackLabel: GameGateway.PopulateTabletop()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:114'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:82
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:82
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway/<LoadGame>d__6
+        methodName: MoveNext
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 82
+        charNumber: 0
+        stackLabel: GameGateway/<LoadGame>d__6.MoveNext()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:82'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure
+        methodName: GameGateway/<LoadGame>d__6>
+        namespaceName: None
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Infrastructure.GameGateway/<LoadGame>d__6>()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: GameGateway
+        methodName: LoadGame
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: GameGateway.LoadGame()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/GameGateway.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/GameGateway.cs:46
+        fileNameWithoutPath: GameGateway.cs
+        fileNameWithoutPathPlusLineNumber: GameGateway.cs:46
+        fileNamePretty: GameGateway
+        instanceID: -1
+        className: GameGateway
+        methodName: Start
+        namespaceName: SecretHistories.Infrastructure
+        lineNumberString: 46
+        charNumber: 0
+        stackLabel: GameGateway.Start()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/GameGateway.cs:46'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      ignoredStackEntries: []
+      lastMatchedCount: 1
+      belongsToFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 1
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 4
+      logOutputHeight: -1
+      listIndex: 4
+      nativeIndex: 4
       nativeIdentifier: 0
       originalLog: '>>>> Situation notification: recipe prediction updated from introdream
         to introdream.'
@@ -3864,9 +8924,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 18:32:38.619
-      timeFrame: 6
-      timeStampDateTimeNow: 18:32:38.619
+      timeStamp: 13:55:23.569
+      timeFrame: 5
+      timeStampDateTimeNow: 13:55:23.569
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -4661,8 +9721,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 563
-    y: 1142
+    x: 70
+    y: 1111
     width: 2187
     height: 280
   m_ViewDataDictionary: {fileID: 0}
@@ -4670,7 +9730,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: dropz
+    m_NameFilter: bubb
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -4684,7 +9744,7 @@ MonoBehaviour:
     m_Folders:
     - Assets/Sprites/Table
     m_Globs: []
-    m_OriginalText: dropz
+    m_OriginalText: bubb
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
@@ -4695,9 +9755,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 572}
-    m_SelectedIDs: ccac0000
-    m_LastClickedID: 44236
-    m_ExpandedIDs: 00000000b2970000b4970000b6970000b8970000ba970000bc970000be970000c0970000c2970000c4970000c6970000c8970000ca970000cc970000ce970000d0970000d2970000d4970000d6970000d8970000da970000
+    m_SelectedIDs: 46980000
+    m_LastClickedID: 38982
+    m_ExpandedIDs: 00000000b2970000b4970000b6970000b8970000ba970000bc970000be970000c0970000c2970000c4970000c6970000c8970000ca970000cc970000ce970000d0970000d2970000d4970000d6970000d8970000da9700002498000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -4750,9 +9810,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 1afbffff
-    m_LastClickedInstanceID: -1254
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000dc010000c2aa0000b6f50400
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -4802,10 +9862,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2660
+    x: 2258
     y: 81
     width: 338
-    height: 1307
+    height: 1310
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -4844,10 +9904,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 472
+    x: 70
     y: 81
     width: 277
-    height: 1006
+    height: 1009
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -4857,7 +9917,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1cfbffff9687000040880000
+      m_ExpandedIDs: 
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -5208,10 +10268,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 750
+    x: 348
     y: 81
     width: 1908
-    height: 1006
+    height: 1009
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -5222,7 +10282,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1908, y: 985}
+  m_TargetSize: {x: 1908, y: 988}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -5239,8 +10299,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -954
     m_HBaseRangeMax: 954
-    m_VBaseRangeMin: -492.5
-    m_VBaseRangeMax: 492.5
+    m_VBaseRangeMin: -494
+    m_VBaseRangeMax: 494
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -5259,9 +10319,9 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 1908
-      height: 985
+      height: 988
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 954, y: 492.5}
+    m_Translation: {x: 954, y: 494}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -5269,12 +10329,12 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -954
-      y: -492.5
+      y: -494
       width: 1908
-      height: 985
+      height: 988
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1908, y: 1006}
+  m_LastWindowPixelSize: {x: 1908, y: 1009}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -5301,10 +10361,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 472
-    y: 1108
+    x: 63
+    y: 1116
     width: 2187
-    height: 280
+    height: 282
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default

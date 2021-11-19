@@ -63,25 +63,16 @@ public class PetromnemeImporter
           AddSituationsToTabletopCommand(tabletopSphereCreationCommand, htSituations);
 
 
-        //big old fudge to get the new dropzones in
+        //big old fudge to get the new verb dropzone in
         var tabletopSpherePath= new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
-        var elementDropzoneLocation = TokenLocation.Default(tabletopSpherePath);
-        var situationDropzoneLocation = new TokenLocation(elementDropzoneLocation.Anchored3DPosition.x,
-            elementDropzoneLocation.Anchored3DPosition.y + 150, elementDropzoneLocation.Anchored3DPosition.z, tabletopSpherePath);
-
-        var elementDropzoneCreationCommand = new DropzoneCreationCommand(nameof(ElementStack).ToString());
-          var elementBubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), $"{elementDropzoneCreationCommand.Id}bubble");
-          elementDropzoneCreationCommand.Dominions.Add(new PopulateDominionCommand(SituationDominionEnum.Unknown.ToString(), elementBubbleSphereSpec));
-          var elementDropzoneTokenCreationCommand = new TokenCreationCommand(elementDropzoneCreationCommand, elementDropzoneLocation);
-          tabletopSphereCreationCommand.Tokens.Add(elementDropzoneTokenCreationCommand);
-
-          
+        
+        var situationDropzoneLocation = TokenLocation.Default(tabletopSpherePath);
         
           var situationDropzoneCreationCommand = new DropzoneCreationCommand(nameof(Situation).ToString());
-          var situationBubbleSphereSpec = new SphereSpec(typeof(BubbleSphere), $"{situationDropzoneCreationCommand.Id}bubble");
-          situationDropzoneCreationCommand.Dominions.Add(new PopulateDominionCommand(SituationDominionEnum.Unknown.ToString(), situationBubbleSphereSpec));
           var situationDropzoneTokenCreationCommand = new TokenCreationCommand(situationDropzoneCreationCommand, situationDropzoneLocation);
           tabletopSphereCreationCommand.Tokens.Add(situationDropzoneTokenCreationCommand);
+          NoonUtility.Log($"PETRO: Creating new verb dropzone and placing it on the tabletop");
+
 
         return rootCommand;
     }
@@ -119,10 +110,9 @@ public class PetromnemeImporter
         characterCreationCommand.Profession = activeLegacy.Label;
             NoonUtility.Log(
                 $"PETRO: Adding char profession {characterCreationCommand.Profession} to char creation command, based on active legacy label");
-        
 
 
-        var endingTriggeredForCharacterId =
+            var endingTriggeredForCharacterId =
             TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_CURRENTENDING);
         var EndingTriggered =
             Watchman.Get<Compendium>().GetEntityById<Ending>(endingTriggeredForCharacterId);
@@ -202,10 +192,11 @@ public class PetromnemeImporter
             var elementId = TryGetStringFromHashtable(htEachStack, SaveConstants.SAVE_ELEMENTID);
             if (elementId == CLASSIC_DROPZONE_ELEMENT_ID) //filter dropzone out of element stacks
             {
-                var dz = new DropzoneCreationCommand(nameof(ElementStack));
-                tokenPayloadCreationCommand=dz;
+                var elementDropzoneCreationCommand = new DropzoneCreationCommand(nameof(ElementStack));
                 
-                NoonUtility.Log($"PETRO: Adding Dropzone to the tabletop.");
+                tokenPayloadCreationCommand= elementDropzoneCreationCommand;
+                
+                NoonUtility.Log($"PETRO: Adding new element dropzone to the tabletop.");
             }
 
             else
