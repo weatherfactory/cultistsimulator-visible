@@ -69,7 +69,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 if (!CanTokenBeIgnored(otherToken))
                 {
                     otherTokenOverlapRect = otherToken.GetRectInCurrentSphere(); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
-                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect))
+                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapLevel()))
 
                         return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
                 }
@@ -80,7 +80,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 if(!CanTokenBeIgnored(otherToken))
                 {
                     otherTokenOverlapRect = otherToken.GetRectInOtherSphere(_sphere); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
-                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect))
+                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapLevel()))
 
                         return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
                 }

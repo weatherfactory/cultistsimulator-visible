@@ -1,0 +1,34 @@
+{
+    "legacies": [
+        {
+            "id": "librarian",
+            "label": "The Librarian",
+			"family": "librarian",
+            "description": "She brought them to Brancrug Isle, which even then was a hidden place, to make a double foundation of nuns and monks, and become its first abbess: but she would admit none to the order who was a virgin, nor innocent of any crime. Since then, Brancrug has been a refuge for all the world might consider impure",
+            "startdescription": "It's cold, here.",
+            "image": "exile",
+            "effects": {
+                "character": 1,
+                "chor": 1,
+                "ereb": 1,
+                "fet": 1,
+                "health":1,
+                "phost":1,
+                "shapt":1,
+                "trist":1,
+                "wist":1
+            },
+            "fromending": "retirement",
+            "availableWithoutEndingMatch": true,
+            "statusbarelements": [
+                "health",
+                "fet",
+                "phost",
+                "wist"
+            ],
+            "startingverbid": "use",
+            "newstart": true,
+            "tablecoverimage": "table_leather_exile"
+        }
+    ]
+}

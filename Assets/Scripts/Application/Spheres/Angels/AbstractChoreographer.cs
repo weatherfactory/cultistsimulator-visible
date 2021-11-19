@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Assets.Scripts.Application.Abstract;
 using JetBrains.Annotations;
 using SecretHistories.Choreographers;
+using SecretHistories.Constants;
+using SecretHistories.Entities;
 using SecretHistories.UI;
 using UnityEngine;
 
@@ -39,12 +41,27 @@ namespace SecretHistories.Spheres.Angels
             return false;
       }
 
-      protected bool UnacceptableOverlap(Rect rect1, Rect rect2) //probably needs rework ONCE I'VE REIMPLEMENTED GRIDSNAP
+      protected float GetGridSnapLevel()
       {
-          //we require grid snap. 'No grid snap' is no longer an option.
-          //Grid snap 1 means cards cannot overlap at all.
-          //Grid snap 0.5 means cards can overlap up to 50%.
-          //Grid snap 0.25 means cards can overlap up to 75%.
+          var snapValue = (float) Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE).CurrentValue;
+
+          if (snapValue == 1f)
+              return 1f;
+          else if (snapValue == 2f)
+              return 0.5f;
+          else if (snapValue == 3f)
+              return 0.25f;
+
+          else
+          {
+              NoonUtility.LogWarning($"Unexpected snapvalue {snapValue}: assuming it means grid set at 1. ");
+              return 1f;
+          }
+      }
+
+      protected bool UnacceptableOverlap(Rect rect1, Rect rect2,float acceptableOverlapPercent)
+      {
+          rect2.size *= acceptableOverlapPercent;
           return rect1.Overlaps(rect2);
       }
     }

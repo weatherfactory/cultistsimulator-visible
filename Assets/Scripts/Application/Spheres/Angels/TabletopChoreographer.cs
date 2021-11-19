@@ -118,22 +118,16 @@ namespace SecretHistories.Constants {
      }
 
 
-        //public void PlaceTokenAssertivelyAtSpecifiedPosition(Token token, Context context, Vector2 pos)
-        //{
-        //    Vector3 finalPositionAtTableLevel = new Vector3(pos.x, pos.y, _tabletop.transform.position.z);
-        //    token.TokenRectTransform.localPosition = finalPositionAtTableLevel;
-        //}
 
         /// <summary>
         /// Place as close to a specific position as we can get
         /// </summary>
         public override void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
-    Vector2 freeLocalPosition= GetFreeLocalPosition(token, pos);
-    //token.TokenRectTransform.anchoredPosition = freeLocalPosition;
+        Vector2 freeLocalPosition= GetFreeLocalPosition(token, pos);
+    
             Vector3 finalPositionAtTableLevel=new Vector3(freeLocalPosition.x,freeLocalPosition.y,_sphere.transform.position.z);
             token.TokenRectTransform.localPosition = finalPositionAtTableLevel;
-
 
 
         }
@@ -155,7 +149,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
                 pushedRect = token.GetRectInCurrentSphere();
 
-				if (!UnacceptableOverlap(pushedRect,pushingRect))
+				if (!UnacceptableOverlap(pushedRect,pushingRect, GetGridSnapLevel()))
                     continue;
 
                 var freePositionForPushedToken = GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition);
@@ -286,9 +280,18 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             {
                 otherTokenOverlapRect = otherToken.GetRectInCurrentSphere();
 
-             if (UnacceptableOverlap(otherTokenOverlapRect,candidateRect))
-                
-                   return LegalPositionCheckResult.Blocked(otherToken.name,otherTokenOverlapRect);
+                //Grid snap 1 means cards cannot overlap at all.
+                //Grid snap 0.5 means cards can overlap up to 50%.
+                //Grid snap 0.25 means cards can overlap up to 75%.
+
+                var gridSnapSize = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
+             //   if(gridSnapSize.CurrentValue)
+
+                if (UnacceptableOverlap(otherTokenOverlapRect,candidateRect, GetGridSnapLevel()))
+
+
+
+                    return LegalPositionCheckResult.Blocked(otherToken.name,otherTokenOverlapRect);
                 
             }
 
