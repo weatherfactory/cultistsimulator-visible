@@ -1,4 +1,5 @@
-﻿using SecretHistories.Abstract;
+﻿using System.Collections;
+using SecretHistories.Abstract;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Manifestations;
@@ -15,6 +16,10 @@ namespace SecretHistories.Ghosts
         protected RectTransform rectTransform;
         private Sphere _projectedInSphere;
         [SerializeField] protected CanvasGroupFader canvasGroupFader;
+
+        private Coroutine _travelCoroutine;
+
+
         public void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
@@ -22,14 +27,40 @@ namespace SecretHistories.Ghosts
 
         public bool Visible => canvasGroupFader.IsVisible();
 
-        public virtual void ShowAt(Sphere projectInSphere, Vector3 anchoredPosition3D)
+        public virtual void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D)
         {
-            //ghost behaviour is determined by whether it's visible or not. So when we hide it, we mean hide immediately.
 
-            rectTransform.SetParent(projectInSphere.GetRectTransform());
-            rectTransform.anchoredPosition3D = anchoredPosition3D;
+            if (projectInSphere==_projectedInSphere && rectTransform.anchoredPosition3D!=showAtAnchoredPosition3D) //do a smooth transition if moving in the same projected sphere and position not already identical
+                AnimateGhostMovement(rectTransform.anchoredPosition3D,showAtAnchoredPosition3D);
+            else
+            {
+                rectTransform.SetParent(projectInSphere.GetRectTransform());
+            rectTransform.anchoredPosition3D = showAtAnchoredPosition3D;
             canvasGroupFader.Show();
             _projectedInSphere = projectInSphere;
+            }
+        }
+
+        private void AnimateGhostMovement(Vector3 startPosition,Vector3 endPosition)
+        {
+            if(_travelCoroutine!=null)
+                StopCoroutine(_travelCoroutine);
+
+            _travelCoroutine = StartCoroutine(GhostMovingTo(startPosition, endPosition));
+        }
+
+        private IEnumerator GhostMovingTo(Vector3 startPosition, Vector3 endPosition)
+        {
+            float _travelDuration = 0.2f;
+            float _elapsed = 0f;
+            while (rectTransform.anchoredPosition3D != endPosition)
+            {
+                _elapsed += Time.deltaTime;
+                float completion = _elapsed / _travelDuration;
+                var lerpValue= Easing.Quartic.Out(completion);
+                rectTransform.anchoredPosition3D = new Vector3(Mathf.Lerp(startPosition.x, endPosition.x, lerpValue), Mathf.Lerp(startPosition.y, endPosition.y, lerpValue), endPosition.z);
+            yield return null;
+            }
         }
 
         public virtual void HideIn(Token forToken)
