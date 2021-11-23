@@ -304,53 +304,61 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             float testRectX = startingRect.x;
             float testRectY = startingRect.y;
 
-            testRectY -= shiftHeight;
 
-
-            //go south
-            while (testRectY > (startingRect.y - (iteration * shiftHeight)))
-            {
-                testRectY -= shiftHeight;
-            }
-            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-
-            //go west 
-            while (testRectX>(startingRect.x-(iteration*shiftWidth)))
-            {
-                testRectX -= shiftWidth;
-            }
-            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-            //go north
-            while (testRectY< (startingRect.y + (iteration * shiftHeight)))
-            {
-                testRectY += shiftHeight;
-            }
-            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-
-
+            
             //go east 
             while (testRectX <(startingRect.x + (iteration * shiftWidth)))
             {
                 testRectX += shiftWidth;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
             }
-            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+            
 
 
             //go south 
             while (testRectY > (startingRect.y - (iteration * shiftHeight)))
             {
                 testRectY -= shiftHeight;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
             }
-            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
 
 
-            //go west again to starting point
+            //go west
+            while (testRectX > (startingRect.x - (iteration * shiftWidth)))
+            {
+                testRectX -= shiftWidth;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+            }
+
+            //go north
+            while (testRectY < (startingRect.y + (iteration * shiftHeight)))
+            {
+                testRectY += shiftHeight;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+            }
+
+
+            //go east 
+            while (testRectX < (startingRect.x + (iteration * shiftWidth)))
+            {
+                testRectX += shiftWidth;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+            }
+
+
+            //go south
+            while (testRectY > (startingRect.y - (iteration * shiftHeight)))
+            {
+                testRectY -= shiftHeight;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+            }
+
+            //go west again until we get back to beginning
             while (testRectX > (startingRect.x))
             {
                 testRectX -= shiftWidth;
+                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
             }
-            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-
 
             return rects;
 
