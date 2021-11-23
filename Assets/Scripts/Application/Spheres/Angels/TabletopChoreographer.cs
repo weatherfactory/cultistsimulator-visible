@@ -21,7 +21,7 @@ using UnityEngine.InputSystem.HID;
 namespace SecretHistories.Constants {
     //places, arranges and displays things on the table
 
-    public class TabletopChoreographer: AbstractChoreographer, ISettingSubscriber {
+    public class TabletopChoreographer: AbstractChoreographer {
 
         class DebugRect
         {
@@ -29,9 +29,7 @@ namespace SecretHistories.Constants {
             public Rect Rect { get; set; }
             public Color Colour { get; set; }
 
-    
-
-            }
+        }
 
 
         private Rect GetTableRect()
@@ -40,24 +38,10 @@ namespace SecretHistories.Constants {
         }
      [SerializeField] private bool showDebugInfo;
    
-        private float gridSnapSize = 0.0f;
-        const int maxGridIterations = 5;
-
+        
 
 
         private List<DebugRect> rectanglesToDisplay=new List<DebugRect>();
-
-        public void Awake() {
-
-            var snapGridSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
-            if (snapGridSetting != null)
-            {
-                snapGridSetting.AddSubscriber(this);
-                WhenSettingUpdated(snapGridSetting.CurrentValue);
-            }
-            else
-                NoonUtility.Log("Missing setting entity: " + NoonConstants.GRIDSNAPSIZE);
-        }
 
 
         public void OnGUI()
@@ -149,7 +133,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
                 pushedRect = token.GetRectInCurrentSphere();
 
-				if (!UnacceptableOverlap(pushedRect,pushingRect, GetGridSnapLevel()))
+				if (!UnacceptableOverlap(pushedRect,pushingRect, GetGridSnapCoefficient()))
                     continue;
 
                 var freePositionForPushedToken = GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition);
@@ -179,9 +163,10 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                 return intendedPos;
 
             Vector2 intendedPosClampedToTable = GetPosClampedToTable(intendedPos);
-            Vector2 intendedPosOnGrid = SnapToGrid(intendedPosClampedToTable, token);
+            
+                Vector2 intendedPosOnGrid = SnapToGrid(intendedPosClampedToTable, token);
 
-            var targetRect = token.GetRectAssumingPosition(intendedPosOnGrid);
+            var targetRect = token.GetRectFromPosition(intendedPosOnGrid);
 
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
@@ -241,20 +226,22 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
         
        private void ShowDebugRect(Rect rect,string desc)
                     {
-            
-            ShowDebugRect(rect,desc, Color.blue);
+             ShowDebugRect(rect,desc, Color.blue);
         }
 
        private void ShowDebugRect(Rect rect, string desc,Color Colour)
        {
            if (string.IsNullOrEmpty(desc))
                return;
-           
+
            var rectWorldPosition = _sphere.GetRectTransform().TransformPoint(rect.position);
+            
            var rectScreenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, rectWorldPosition);
 
            var guiRect = new Rect(rectScreenPosition, rect.size);
-           guiRect.position = new Vector3(guiRect.position.x, Screen.height - guiRect.position.y, -50);
+
+           //yes I do need to add the height back in. Or do something else transformationally relevant above
+           guiRect.position = new Vector3(guiRect.position.x, Screen.height - (guiRect.position.y + rect.height), -50);
            
 
            rectanglesToDisplay.Add(new DebugRect { Desc = desc, Rect = guiRect,Colour = Colour});
@@ -287,7 +274,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                 var gridSnapSize = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
              //   if(gridSnapSize.CurrentValue)
 
-                if (UnacceptableOverlap(otherTokenOverlapRect,candidateRect, GetGridSnapLevel()))
+                if (UnacceptableOverlap(otherTokenOverlapRect,candidateRect, GetGridSnapCoefficient()))
 
 
 
@@ -307,8 +294,8 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
         private List<Rect> GetAlternativeCandidateRects(Rect startingRect, int iteration,Token rectsForToken)
         {
-            float rectWidth = startingRect.width;
-            float rectHeight = startingRect.height;
+            float shiftWidth = startingRect.width * GetGridSnapCoefficient();
+            float shiftHeight = startingRect.height * GetGridSnapCoefficient();
 
             
             List<Rect> rects = new List<Rect>();
@@ -317,55 +304,52 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             float testRectX = startingRect.x;
             float testRectY = startingRect.y;
 
-            testRectY -= rectHeight;
+            testRectY -= shiftHeight;
 
 
-            //go south until x<=startingx-iteration*width
-            while (testRectY > (startingRect.y - (iteration * rectHeight)))
+            //go south
+            while (testRectY > (startingRect.y - (iteration * shiftHeight)))
             {
-                testRectY -= rectHeight;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+                testRectY -= shiftHeight;
             }
+            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
 
-            
             //go west 
-            while (testRectX>(startingRect.x-(iteration*rectWidth)))
+            while (testRectX>(startingRect.x-(iteration*shiftWidth)))
             {
-                testRectX -= rectWidth;
-                AddCandidateRect(testRectX, testRectY,startingRect.size, rects, rects.Count.ToString(),rectsForToken.name);
+                testRectX -= shiftWidth;
             }
-
+            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
             //go north
-            while (testRectY< (startingRect.y + (iteration * rectHeight)))
+            while (testRectY< (startingRect.y + (iteration * shiftHeight)))
             {
-                testRectY += rectHeight;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+                testRectY += shiftHeight;
             }
+            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
 
 
             //go east 
-            while (testRectX <(startingRect.x + (iteration * rectWidth)))
+            while (testRectX <(startingRect.x + (iteration * shiftWidth)))
             {
-                testRectX += rectWidth;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+                testRectX += shiftWidth;
             }
+            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
 
 
             //go south 
-            while (testRectY > (startingRect.y - (iteration * rectHeight)))
+            while (testRectY > (startingRect.y - (iteration * shiftHeight)))
             {
-                testRectY -= rectHeight;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+                testRectY -= shiftHeight;
             }
+            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
 
 
             //go west again to starting point
             while (testRectX > (startingRect.x))
             {
-                testRectX -= rectWidth;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
+                testRectX -= shiftWidth;
             }
-
+            AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
 
 
             return rects;
@@ -382,33 +366,14 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
 
 
-        public void SetGridSnapSize(float snapsize)
-        {
-            int snap = Mathf.RoundToInt(snapsize);
-            switch (snap)
-            {
-                default:
-                case 0: gridSnapSize = 0.0f; break;
-                case 1: gridSnapSize = 1.0f; break;     // 1 card
-                case 2: gridSnapSize = 0.5f; break;     // ½ card
-                case 3: gridSnapSize = 0.25f; break;    // ¼ card
-            }
-        }
-
-        public float GetGridSnapSize()
-        {
-            return gridSnapSize;
-        }
-
-
 
         public Vector3 SnapToGrid(Vector2 intendedPos,Token forToken)
         {
             
-            if (GetGridSnapSize() > 0f)
+            if (GetGridSnapCoefficient() > 0f)
             {
-                float snap_x_interval = forToken.TokenRectTransform.rect.width * GetGridSnapSize();
-                float snap_y_interval = forToken.TokenRectTransform.rect.height * GetGridSnapSize();
+                float snap_x_interval = forToken.TokenRectTransform.rect.width * GetGridSnapCoefficient();
+                float snap_y_interval = forToken.TokenRectTransform.rect.height * GetGridSnapCoefficient();
 
                 float xAdjustment = intendedPos.x % snap_x_interval;
                 float yAdjustment = intendedPos.y % snap_y_interval;
@@ -420,11 +385,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return intendedPos;
         }
 
-        public void WhenSettingUpdated(object newValue)
-        {
-            SetGridSnapSize(newValue is float ? (float)newValue : 0);
-        }
-
+ 
 
 
 

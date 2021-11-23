@@ -69,7 +69,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 if (!CanTokenBeIgnored(otherToken))
                 {
                     otherTokenOverlapRect = otherToken.GetRectInCurrentSphere(); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
-                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapLevel()))
+                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapCoefficient()))
 
                         return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
                 }
@@ -80,7 +80,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 if(!CanTokenBeIgnored(otherToken))
                 {
                     otherTokenOverlapRect = otherToken.GetRectInOtherSphere(_sphere); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
-                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapLevel()))
+                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapCoefficient()))
 
                         return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
                 }
@@ -119,12 +119,12 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             //start at left, offset to right until we have no collisions either in the row sphere or in its world overlap
             int failedPlacementAttempts = 0;
-            var placementIsLegal = IsLegalPlacement(token.GetRectAssumingPosition(candidatePosition),token);
+            var placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition),token);
             while (failedPlacementAttempts < 12 && !placementIsLegal.IsLegal)
             {
                 candidatePosition.x += tokenWidth;
                 failedPlacementAttempts++;
-                placementIsLegal = IsLegalPlacement(token.GetRectAssumingPosition(candidatePosition), token);
+                placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
             }
 
             //offset once more for each incoming token
