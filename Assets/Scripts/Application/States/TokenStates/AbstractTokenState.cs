@@ -16,9 +16,9 @@ namespace SecretHistories.States
     public abstract class AbstractTokenState
     {
         public abstract bool Docked();
-        public abstract bool InPlayerDrivenMotion(Token token);
-        public abstract bool InSystemDrivenMotion(Token token);
-        public abstract bool CanDecay(Token token);
+        public abstract bool InPlayerDrivenMotion();
+        public abstract bool InSystemDrivenMotion();
+        public abstract bool CanDecay();
 
 
         /// <summary>

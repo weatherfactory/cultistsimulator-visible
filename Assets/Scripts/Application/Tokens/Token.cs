@@ -437,7 +437,7 @@ namespace SecretHistories.UI {
         public bool CurrentlyBeingDragged()
         {
             return  
-                CurrentState.InPlayerDrivenMotion(this);
+                CurrentState.InPlayerDrivenMotion();
         }
     
 
@@ -479,7 +479,7 @@ namespace SecretHistories.UI {
         {
             return
                 Sphere.AllowDrag 
-                && !CurrentState.InSystemDrivenMotion(this)
+                && !CurrentState.InSystemDrivenMotion()
                 && !Defunct
                 && !shrouded
                 && !_manifestation.RequestingNoDrag;
@@ -494,7 +494,7 @@ namespace SecretHistories.UI {
         {
             if (Defunct)
                 return false;
-            if (CurrentState.InSystemDrivenMotion(this))
+            if (CurrentState.InSystemDrivenMotion())
                 return false;
 
             var allowExploits = Watchman.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);

@@ -14,19 +14,19 @@ namespace SecretHistories.States
             return false;
         }
 
-        public override bool InPlayerDrivenMotion(Token token)
+        public override bool InPlayerDrivenMotion()
         {
             return false;
 
         }
 
-        public override bool InSystemDrivenMotion(Token token)
+        public override bool InSystemDrivenMotion()
         {
             return false;
 
         }
 
-        public override bool CanDecay(Token token)
+        public override bool CanDecay()
         {
             return false;
 
