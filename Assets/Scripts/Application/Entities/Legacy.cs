@@ -116,7 +116,7 @@ namespace SecretHistories.Entities
             SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId);
             var startingDestinationForVerb = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
 
-            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, startingTokenDistributionStrategy.OffBoardStartingLocation()).WithDestination(startingDestinationForVerb);
+            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, startingTokenDistributionStrategy.AboveBoardStartingLocation()).WithDestination(startingDestinationForVerb, startingTokenDistributionStrategy.GetPlacementDelay());
             commands.Add(startingTokenCommand);
 
             AspectsDictionary startingElements = new AspectsDictionary();
@@ -126,7 +126,7 @@ namespace SecretHistories.Entities
             {
                 var elementStackCreationCommand = new ElementStackCreationCommand(e.Key, e.Value);
                 var startingDestinationForToken = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
-                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, startingTokenDistributionStrategy.OffBoardStartingLocation()).WithDestination(startingDestinationForToken);
+                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, startingTokenDistributionStrategy.AboveBoardStartingLocation()).WithDestination(startingDestinationForToken, startingTokenDistributionStrategy.GetPlacementDelay());
                 commands.Add(startingStackCommand);
             }
 
@@ -134,14 +134,14 @@ namespace SecretHistories.Entities
 
             var elementDropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
             var elementDropzoneCreationCommand = new DropzoneCreationCommand(nameof(ElementStack).ToString());
-            var elementDropzoneTokenCreationCommand = new TokenCreationCommand(elementDropzoneCreationCommand, startingTokenDistributionStrategy.OffBoardStartingLocation()).WithDestination(elementDropzoneLocation);
+            var elementDropzoneTokenCreationCommand = new TokenCreationCommand(elementDropzoneCreationCommand, startingTokenDistributionStrategy.BelowBoardStartingLocation()).WithDestination(elementDropzoneLocation,startingTokenDistributionStrategy.GetPlacementDelay());
             commands.Add(elementDropzoneTokenCreationCommand);
 
             startingTokenDistributionStrategy.NextRow();
 
             var situationDropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
             var situationDropzoneCreationCommand = new DropzoneCreationCommand(nameof(Situation).ToString());
-            var situationDropzoneTokenCreationCommand = new TokenCreationCommand(situationDropzoneCreationCommand, startingTokenDistributionStrategy.OffBoardStartingLocation()).WithDestination(situationDropzoneLocation);
+            var situationDropzoneTokenCreationCommand = new TokenCreationCommand(situationDropzoneCreationCommand, startingTokenDistributionStrategy.BelowBoardStartingLocation()).WithDestination(situationDropzoneLocation, startingTokenDistributionStrategy.GetPlacementDelay());
             commands.Add(situationDropzoneTokenCreationCommand);
 
             return commands;
@@ -150,7 +150,7 @@ namespace SecretHistories.Entities
 
         class CSClassicStartingTokenDistributionStrategy
         {
-            public int tokenCount { get; private set; }
+            public int tokenCountOnThisRow { get; private set; }
             public int rowCount { get; private set; }
             private const int STARTINGX = -300;
             private const int XGAP = 200;
@@ -159,22 +159,36 @@ namespace SecretHistories.Entities
 
             public Vector3 GetNextTokenPositionAndIncrementCount()
             {
-                int x = STARTINGX + (tokenCount * XGAP);
+                int x = STARTINGX + (tokenCountOnThisRow * XGAP);
                 int y = STARTINGY - (YGAP * rowCount); //nb minus: next row is below previous one
                 var startingPosition=new Vector3(x,y,0);
-                tokenCount++;
+                tokenCountOnThisRow++;
                 return startingPosition;
+            }
+
+            public float GetPlacementDelay()
+            {
+                var quickDuration = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultQuickTravelDuration;
+                var longDuration = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultTravelDuration;
+                var extraDelayForEachTokenOnRow = (tokenCountOnThisRow + 1) * quickDuration;
+                var extraDelayForEachRow = rowCount * longDuration;
+                return extraDelayForEachRow + extraDelayForEachTokenOnRow;
             }
 
             public void NextRow()
             {
-                tokenCount = 0;
+                tokenCountOnThisRow = 0;
                 rowCount++;
             }
 
-            public TokenLocation OffBoardStartingLocation()
+            public TokenLocation AboveBoardStartingLocation()
             {
                 return new TokenLocation(0, 2000, 0, Watchman.Get<HornedAxe>().GetDefaultSpherePath());
+            }
+
+            public TokenLocation BelowBoardStartingLocation()
+            {
+                return new TokenLocation(0, -2000, 0, Watchman.Get<HornedAxe>().GetDefaultSpherePath());
             }
         }
     }

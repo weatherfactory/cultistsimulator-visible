@@ -31,6 +31,7 @@ namespace SecretHistories.Commands
         public AbstractTokenState CurrentState { get; set; }
         private Token _sourceToken;
         private TokenLocation _destination;
+        private float _travelDuration;
 
         public TokenCreationCommand()
         {
@@ -57,9 +58,10 @@ namespace SecretHistories.Commands
             return this;
         }
 
-        public TokenCreationCommand WithDestination(TokenLocation destination)
+        public TokenCreationCommand WithDestination(TokenLocation destination,float travelDuration)
         {
             _destination = destination;
+            _travelDuration = travelDuration;
             return this;
         }
 
@@ -126,11 +128,11 @@ namespace SecretHistories.Commands
 
         private void SetTokenTravellingToDestination(Token newToken, TokenLocation destination)
         {
-            var quickDuration = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultQuickTravelDuration;
+
             var itineraryForNewToken =
                 new TokenTravelItinerary(newToken.TokenRectTransform.anchoredPosition3D,
                         newToken.Sphere.Choreographer.GetFreeLocalPosition(newToken, destination.Anchored3DPosition))
-                    .WithDuration(quickDuration).
+                    .WithDuration(_travelDuration).
                     WithDestinationSpherePath(destination.AtSpherePath);
             newToken.TravelTo(itineraryForNewToken, new Context(Context.ActionSource.JustSpawned));
 
