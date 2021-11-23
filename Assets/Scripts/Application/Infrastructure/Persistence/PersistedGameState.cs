@@ -34,11 +34,11 @@ namespace SecretHistories.Infrastructure.Persistence
 
         public static PersistedGameState ForLegacy(Legacy startingLegacy,Dictionary<string,string> historyRecordsFromPreviousCharacter)
         {
-            var state = new PersistedGameState
-            {
-                RootPopulationCommand = RootPopulationCommand.RootCommandForLegacy(startingLegacy),
-                PopulateXamanekCommand = PopulateXamanekCommand.ForLegacy()
-            };
+            var state = new PersistedGameState();
+            state.RootPopulationCommand = RootPopulationCommand.RootCommandForLegacy(startingLegacy);
+            state.PopulateXamanekCommand = new PopulateXamanekCommand(); //we can't populate xamanek itineraries until we know unique payload ids, which only happens on instantiation.
+            //so saved itineraries go in the X command, but brand new ones for new games have to be specified with the tokens in the root command.
+      
             
             var cc = CharacterCreationCommand.IncarnateFromLegacy(startingLegacy, historyRecordsFromPreviousCharacter);
             state.CharacterCreationCommands.Add(cc);

@@ -41,11 +41,18 @@ namespace SecretHistories.Commands
             DealersTable.Execute(root.DealersTable);
         }
 
+        public static string DefaultWorldSphereId()
+        {
+
+            var tabletoppath =
+                new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
+            var tabletopId = tabletoppath.GetEndingPathPart().GetId();
+            return tabletopId;
+        }
+
         public static SphereCreationCommand ClassicTabletopSphereCreationCommand()
         {
-            var tabletoppath = new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
-            var tabletopId = tabletoppath.GetEndingPathPart().GetId();
-            var tabletopSphereSpec = new SphereSpec(typeof(TabletopSphere), tabletopId);
+            var tabletopSphereSpec = new SphereSpec(typeof(TabletopSphere), DefaultWorldSphereId());
             var tabletopSphereCreationCommand = new SphereCreationCommand(tabletopSphereSpec);
             return tabletopSphereCreationCommand;
         }

@@ -42,6 +42,7 @@ namespace SecretHistories.UI
             return new TokenLocation(0,0,0, atSpherePath);
         }
 
+
         public TokenLocation(Vector3 anchored3DPosition, FucinePath atSpherePath)
         {
             Anchored3DPosition = anchored3DPosition;

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.UI;
 using UnityEngine;
@@ -17,11 +18,6 @@ namespace SecretHistories.Assets.Scripts.Application.Commands
 
         
 
-        public static PopulateXamanekCommand ForLegacy()
-        {
-            
-            return new PopulateXamanekCommand(); //we might someday want to begin a legacy in BH or elsewhere with itineraries in progress
-        }
 
         //Candidate for refactoring. Execute is currently only in use for loading.
         public void Execute(Context context)

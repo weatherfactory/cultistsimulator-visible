@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using SecretHistories.Assets.Scripts.Application.Tokens;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Fucine;
@@ -113,9 +114,9 @@ namespace SecretHistories.Entities
             var commands = new List<TokenCreationCommand>();
 
             SituationCreationCommand startingSituation = new SituationCreationCommand(StartingVerbId);
-            var verbTokenLocation=new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(),tabletopSpherePath);
+            var startingDestinationForVerb = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
 
-            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, verbTokenLocation);
+            TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, startingTokenDistributionStrategy.OffBoardStartingLocation()).WithDestination(startingDestinationForVerb);
             commands.Add(startingTokenCommand);
 
             AspectsDictionary startingElements = new AspectsDictionary();
@@ -124,25 +125,23 @@ namespace SecretHistories.Entities
             foreach (var e in startingElements)
             {
                 var elementStackCreationCommand = new ElementStackCreationCommand(e.Key, e.Value);
-                var startingLocationForToken = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
-                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, startingLocationForToken);
+                var startingDestinationForToken = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
+                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, startingTokenDistributionStrategy.OffBoardStartingLocation()).WithDestination(startingDestinationForToken);
                 commands.Add(startingStackCommand);
             }
 
-
             startingTokenDistributionStrategy.NextRow();
-
 
             var elementDropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
             var elementDropzoneCreationCommand = new DropzoneCreationCommand(nameof(ElementStack).ToString());
-            var elementDropzoneTokenCreationCommand = new TokenCreationCommand(elementDropzoneCreationCommand, elementDropzoneLocation);
+            var elementDropzoneTokenCreationCommand = new TokenCreationCommand(elementDropzoneCreationCommand, startingTokenDistributionStrategy.OffBoardStartingLocation()).WithDestination(elementDropzoneLocation);
             commands.Add(elementDropzoneTokenCreationCommand);
 
             startingTokenDistributionStrategy.NextRow();
 
             var situationDropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
             var situationDropzoneCreationCommand = new DropzoneCreationCommand(nameof(Situation).ToString());
-            var situationDropzoneTokenCreationCommand = new TokenCreationCommand(situationDropzoneCreationCommand, situationDropzoneLocation);
+            var situationDropzoneTokenCreationCommand = new TokenCreationCommand(situationDropzoneCreationCommand, startingTokenDistributionStrategy.OffBoardStartingLocation()).WithDestination(situationDropzoneLocation);
             commands.Add(situationDropzoneTokenCreationCommand);
 
             return commands;
@@ -171,6 +170,11 @@ namespace SecretHistories.Entities
             {
                 tokenCount = 0;
                 rowCount++;
+            }
+
+            public TokenLocation OffBoardStartingLocation()
+            {
+                return new TokenLocation(0, 2000, 0, Watchman.Get<HornedAxe>().GetDefaultSpherePath());
             }
         }
     }

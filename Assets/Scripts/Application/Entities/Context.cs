@@ -27,7 +27,7 @@ public class Context {
         SituationReset,
         TravelFailed,
         UI,
-        SpawningAnchor,
+        JustSpawned,
         PushedAside,
         ContainingSphereRetired,
         SphereReferenceLocationChanged

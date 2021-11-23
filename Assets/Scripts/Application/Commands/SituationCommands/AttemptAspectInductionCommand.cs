@@ -97,7 +97,7 @@ namespace SecretHistories.Commands.SituationCommands
             SituationCreationCommand inducedSituationCreationCommand =
                 new SituationCreationCommand(inducedRecipe.ActionId).WithRecipeAboutToActivate(inducedRecipe.Id);
 
-            var spawnNewTokenCommand = new SpawnNewTokenFromThisOneCommand(inducedSituationCreationCommand, new Context(Context.ActionSource.SpawningAnchor));
+            var spawnNewTokenCommand = new SpawnNewTokenFromThisOneCommand(inducedSituationCreationCommand, new Context(Context.ActionSource.JustSpawned));
             situation.Token.ExecuteTokenEffectCommand(spawnNewTokenCommand);
 
         }

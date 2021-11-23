@@ -25,25 +25,22 @@ namespace SecretHistories.Commands
     {
         public TokenLocation Location { get; set; }
         [JsonProperty(TypeNameHandling = TypeNameHandling.All)]
-        public TokenItinerary CurrentItinerary { get; set; }
-        [JsonProperty(TypeNameHandling = TypeNameHandling.All)]
         public ITokenPayloadCreationCommand Payload { get; set; }
         public bool Defunct { get; set; }
         [JsonProperty(TypeNameHandling = TypeNameHandling.All)]
         public AbstractTokenState CurrentState { get; set; }
         private Token _sourceToken;
+        private TokenLocation _destination;
 
         public TokenCreationCommand()
         {
             Location=TokenLocation.Default(FucinePath.Root()); // we expect the sphere to be overwritten in Execute.The SpherePath bit of Location here is redundant
-            CurrentItinerary = new TokenInertItinerary();
         }
 
         public TokenCreationCommand(ITokenPayloadCreationCommand payload,TokenLocation location)
         {
             Payload = payload;
             Location = location; // we expect the sphere to be overwritten in Execute.The SpherePath bit of Location here is redundant
-            CurrentItinerary = new TokenInertItinerary();
 
         }
 
@@ -51,14 +48,18 @@ namespace SecretHistories.Commands
         {
             var elementStackEncaustery = new Encaustery<ElementStackCreationCommand>();
             Payload = elementStackEncaustery.Encaust(elementStack);
-            Location = location;
-            CurrentItinerary = new TokenInertItinerary();
 
         }
 
         public TokenCreationCommand WithSourceToken(Token sourceToken)
         {
             _sourceToken = sourceToken;
+            return this;
+        }
+
+        public TokenCreationCommand WithDestination(TokenLocation destination)
+        {
+            _destination = destination;
             return this;
         }
 
@@ -87,8 +88,15 @@ namespace SecretHistories.Commands
                 SetTokenTravellingFromSourceToken(newToken,_sourceToken);
             }
 
+            if (_destination != null)
+            {
+                SetTokenTravellingToDestination(newToken, _destination);
+            }
+ 
             return newToken;
         }
+
+
 
         private Token InstantiateTokenInSphere(Context context, Sphere sphere)
         {
@@ -105,7 +113,6 @@ namespace SecretHistories.Commands
         private void SetTokenTravellingFromSourceToken(Token newToken,Token fromSourceToken)
         {
             
-            var enrouteSphere = newToken.Payload.GetEnRouteSphere();
 
             var spawnedTravelItinerary = new TokenTravelItinerary(fromSourceToken.TokenRectTransform.anchoredPosition3D,
                     newToken.Sphere.Choreographer.GetFreeLocalPosition(newToken,
@@ -114,7 +121,17 @@ namespace SecretHistories.Commands
                 .WithDestinationSpherePath(newToken.Sphere.GetAbsolutePath())
                 .WithScaling(0f, 1f);
 
-            newToken.TravelTo(spawnedTravelItinerary, new Context(Context.ActionSource.SpawningAnchor));
+            newToken.TravelTo(spawnedTravelItinerary, new Context(Context.ActionSource.JustSpawned));
+        }
+
+        private void SetTokenTravellingToDestination(Token newToken, TokenLocation destination)
+        {
+            var itineraryForNewToken =
+                new TokenTravelItinerary(newToken.TokenRectTransform.anchoredPosition3D,
+                        newToken.Sphere.Choreographer.GetFreeLocalPosition(newToken, destination.Anchored3DPosition))
+                    .WithDuration(1f).WithDestinationSpherePath(destination.AtSpherePath);
+            newToken.TravelTo(itineraryForNewToken, new Context(Context.ActionSource.JustSpawned));
+
         }
     }
 }

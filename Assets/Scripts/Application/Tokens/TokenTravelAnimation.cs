@@ -92,25 +92,29 @@ public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
         transform.SetAsLastSibling();
 	}
 
-public void ExecuteHeartbeat(float seconds, float metaseconds)
+
+public void Update()
 {
+    float seconds = Time.deltaTime;
     if (Defunct)
         return;
+    if (Watchman.Get<Heart>().Metapaused)
+        return;
 
-        if (_token.PauseAnimations)
-            return;
-		if (_travelDuration < 0)
-			return;
-		else if (_travelTimeElapsed < _travelDuration) 
-			Continue( metaseconds);
-		else
-			Complete();
-	}
+    if (_token.PauseAnimations)
+        return;
+    if (_travelDuration < 0)
+        return;
+    else if (_travelTimeElapsed < _travelDuration)
+        Continue(seconds);
+    else
+        Complete();
+}
 
-	void Continue( float metaseconds) {
+    void Continue( float seconds) {
 
         //	_travelTimeElapsed += Time.deltaTime;
-        _travelTimeElapsed += metaseconds;
+        _travelTimeElapsed += seconds;
 
         float completion = _travelTimeElapsed / _travelDuration;
 

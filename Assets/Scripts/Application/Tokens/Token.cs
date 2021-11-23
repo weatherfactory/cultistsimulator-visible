@@ -93,7 +93,7 @@ namespace SecretHistories.UI {
         protected float
             dragHeight = -8f; // Draggables all drag on a specific height and have a specific "default height"
 
-        [Encaust]
+        [DontEncaust] //maybe phase this out now it exists in Xamanek.
         public TokenItinerary CurrentItinerary { get; set; }
 
         [Header("Display")]
@@ -288,13 +288,8 @@ namespace SecretHistories.UI {
 
         public void ExecuteHeartbeat(float seconds, float metaseconds)
         {
-
-                var travelAnimation = gameObject.GetComponent<TokenTravelAnimation>();
-
-                if(travelAnimation != null && !travelAnimation.Equals(null))
-                    travelAnimation.ExecuteHeartbeat(seconds, metaseconds);
-                
-                Payload.ExecuteHeartbeat(seconds, metaseconds);
+            //call to TokenTravelAnimation used to occur here, until I realised that animations go better in frame update!
+            Payload.ExecuteHeartbeat(seconds, metaseconds);
      
         }
         
