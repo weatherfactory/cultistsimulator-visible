@@ -19,11 +19,9 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     //This could be a good basis for a self-ordering shelf later.
    public class WorldAwareRowChoreographer: AbstractChoreographer
     {
-    
-        public void Awake()
-        {
 
-        }
+        public float Spacing { get; set; }
+        public int MaxPlacementAttempts { get; set; }
 
         public  WorldAwareRowChoreographer(Sphere sphere)
         {
@@ -49,12 +47,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             var overlapSphereToWatch = Watchman.Get<HornedAxe>().GetDefaultSphere();
             var result= LegalInOverlappingSphere(overlapSphereToWatch, candidateRect, placingToken);
 
-
-            //foreach(var itinerary  in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_tabletop.GetAbsolutePath()))
-            //{
-            //    if(itinerary.GetGhost().PromiseBlocksCandidateRect(_tabletop,candidateRect))
-            //        return LegalPositionCheckResult.Blocked($"Reserved destination for {itinerary.GetDescription()}", itinerary.GetGhost().GetRect());
-            //}
 
             return result;
         }
@@ -120,7 +112,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             //start at left, offset to right until we have no collisions either in the row sphere or in its world overlap
             int failedPlacementAttempts = 0;
             var placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition),token);
-            while (failedPlacementAttempts < 12 && !placementIsLegal.IsLegal)
+            while (failedPlacementAttempts < MaxPlacementAttempts && !placementIsLegal.IsLegal)
             {
                 candidatePosition.x += tokenWidth;
                 failedPlacementAttempts++;

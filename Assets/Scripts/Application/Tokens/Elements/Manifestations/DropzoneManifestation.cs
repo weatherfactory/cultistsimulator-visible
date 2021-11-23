@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
-
+using SecretHistories.Assets.Scripts.Application.Spheres.Angels;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -37,6 +37,9 @@ namespace SecretHistories.Manifestations
         private Color32 situationDropzoneColor = new Color32(31, 145, 178, 255);
         private float elementDropzoneHeight = 134f;
         private float situationDropzoneHeight = 160f;
+
+        private const int MAX_PLACEMENT_ATTEMPTS_FOR_DROPZONE=12;
+        private const float SITUATION_SPACING = 5f;
 
 
         [SerializeField] private List<MinimalDominion> Dominions;
@@ -81,11 +84,16 @@ namespace SecretHistories.Manifestations
         {
             foreach (var d in Dominions)
                 d.RegisterFor(manifestable);
+            var choreographer = gameObject.GetComponentInChildren<WorldAwareRowChoreographer>();
+            if(choreographer!= null)
+                choreographer.MaxPlacementAttempts = MAX_PLACEMENT_ATTEMPTS_FOR_DROPZONE;
 
             if (manifestable.EntityId == nameof(Situation))
             {
                 RectTransform.sizeDelta = new Vector2(RectTransform.sizeDelta.x, situationDropzoneHeight); 
                 Glow.color = situationDropzoneColor;
+                if (choreographer != null)
+                    choreographer.Spacing = SITUATION_SPACING;
             }
             else if (manifestable.EntityId == nameof(ElementStack))
             {
