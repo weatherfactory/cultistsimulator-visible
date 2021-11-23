@@ -354,7 +354,7 @@ namespace SecretHistories.UI {
             
             var candidatePosition = projectInSphere.Choreographer.GetFreeLocalPosition(this, projectionPosition);
 
-            _ghost.ShowAt(projectInSphere, candidatePosition);
+            _ghost.ShowAt(projectInSphere, candidatePosition,TokenRectTransform);
 
 
             //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
@@ -369,7 +369,7 @@ namespace SecretHistories.UI {
                 return false;
 
             
-            _ghost.ShowAt(projectInSphere, atPosition);
+            _ghost.ShowAt(projectInSphere, atPosition,TokenRectTransform);
 
 
             //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.

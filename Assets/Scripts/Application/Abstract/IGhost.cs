@@ -15,7 +15,7 @@ namespace SecretHistories.Abstract
     {
         
         bool Visible { get; }
-        void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D);
+        void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D,RectTransform tokenRectTransform);
         void HideIn(Token forToken);
         bool TryFulfilPromise(Token token,Context context);
         bool PromiseBlocksCandidateRect(Sphere sphere, Rect candidateRect);

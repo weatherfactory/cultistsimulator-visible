@@ -27,14 +27,16 @@ namespace SecretHistories.Ghosts
 
         public bool Visible => canvasGroupFader.IsVisible();
 
-        public virtual void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D)
+        public virtual void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D,RectTransform tokenRectTransform)
         {
 
             if (projectInSphere==_projectedInSphere && rectTransform.anchoredPosition3D!=showAtAnchoredPosition3D) //do a smooth transition if moving in the same projected sphere and position not already identical
                 AnimateGhostMovement(rectTransform.anchoredPosition3D,showAtAnchoredPosition3D);
             else
             {
-                rectTransform.SetParent(projectInSphere.GetRectTransform());
+               rectTransform.SetParent(projectInSphere.GetRectTransform());
+               rectTransform.localScale = tokenRectTransform.localScale; //we might want to think again about this: shadows can be cast bigger
+               rectTransform.rotation = tokenRectTransform.rotation; //this is to reset the rotation cos I've seen it get stuck at another rotation value
             rectTransform.anchoredPosition3D = showAtAnchoredPosition3D;
             canvasGroupFader.Show();
             _projectedInSphere = projectInSphere;

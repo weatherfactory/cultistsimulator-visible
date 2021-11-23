@@ -11,7 +11,7 @@ namespace SecretHistories.Ghosts
     {
         public bool Visible { get; private set; }
 
-        public  void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D)
+        public  void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D,RectTransform rectTransform)
         {
             Visible = false; //nope, null ghosts are never visible
 
