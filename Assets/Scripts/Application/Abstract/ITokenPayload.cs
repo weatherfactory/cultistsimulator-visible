@@ -39,6 +39,7 @@ namespace SecretHistories.Abstract
 
         void OpenAt(TokenLocation location);
         void Close();
+        void Conclude();
 
         void SetToken(Token token);
         void OnTokenMoved(TokenLocation toLocation);

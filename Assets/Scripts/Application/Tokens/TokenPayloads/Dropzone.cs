@@ -310,6 +310,11 @@ namespace SecretHistories.Entities.Verbs
             //
         }
 
+        public void Conclude()
+        {
+            Close();
+        }
+
         public void SetToken(Token token)
         {
             _token = token;

@@ -45,6 +45,11 @@ namespace SecretHistories.Entities
             return Token.TokenRectTransform;
         }
 
+        public void Conclude()
+        {
+            Close();
+        }
+
         public void SetToken(Token token)
         {
             _token = token;

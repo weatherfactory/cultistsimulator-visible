@@ -333,6 +333,11 @@ namespace SecretHistories.Tokens.TokenPayloads
             this.Retire(RetirementVFX.None);
         }
 
+        public void Conclude()
+        {
+            Close();
+        }
+
         public void SetToken(Token token)
         {
             _token = token;

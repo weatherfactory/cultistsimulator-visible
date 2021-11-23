@@ -71,7 +71,6 @@ namespace SecretHistories.Manifestations
 
 
         private List<Sprite> frames;
-        private bool _transient;
         private Coroutine animCoroutine;
 
         public bool RequestingNoDrag { get; }
@@ -87,7 +86,7 @@ namespace SecretHistories.Manifestations
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
             frames = ResourcesManager.GetAnimFramesForVerb(art);
             artwork.sprite = sprite;
-
+            
 
             ///Does this need to be for on the outer transform? hope not
             ParticleSystem.MainModule mainSettings;
@@ -196,14 +195,13 @@ namespace SecretHistories.Manifestations
         {
              shadow.DoMove(tokenRectTransform);
         }
-
-  
+        
 
         public bool HandlePointerDown(PointerEventData eventData, Token token)
         {
             if (dumpButton.PointerAboveThis)
             {
-                token.OnCollect.Invoke();
+                token.Payload.Conclude();
                 return true;
             }
             else
@@ -255,18 +253,14 @@ namespace SecretHistories.Manifestations
                 int completionCount = outputSpheres.Select(s => s.GetTotalElementsCount()).Sum();
                 completionBadge.gameObject.SetActive(true);
                 if (completionCount > 0)
-                {
                     completionText.text = completionCount.ToString();
-                    if(_transient)
-                        dumpButton.gameObject.SetActive(true);
-                    else
-                        dumpButton.gameObject.SetActive(false);
-                }
                 else
-                {
                     completionText.text = string.Empty;
+                if (manifestable.GetTimeshadow().Transient)
+                    dumpButton.gameObject.SetActive(true);
+                else
                     dumpButton.gameObject.SetActive(false);
-                }
+
 
             }
             else

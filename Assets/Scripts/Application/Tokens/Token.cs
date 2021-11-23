@@ -177,8 +177,7 @@ namespace SecretHistories.UI {
         public bool PlacementAlreadyChronicled = false;
 
         private ITokenPayload _payload;
-        public UnityEvent OnStart;
-        public UnityEvent OnCollect;
+
         public UnityEvent OnWindowClosed;
         public OnSphereAddedEvent OnSphereAdded;
         public OnSphereRemovedEvent OnSphereRemoved;
