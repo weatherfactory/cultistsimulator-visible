@@ -26,9 +26,9 @@ namespace SecretHistories.Spheres
     
         public override SphereCategory SphereCategory => SphereCategory.World;
         public override bool AllowDrag => true;
-        public override AbstractChoreographer Choreographer=>new WorldAwareRowChoreographer(this); 
-        
-        
+        public override AbstractChoreographer Choreographer=>new WorldAwareRowChoreographer(this);
+
+        public override float TokenHeartbeatIntervalMultiplier => 1;
 
         public void Pop(Context context)
         {

@@ -114,7 +114,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             var placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition),token);
             while (failedPlacementAttempts < MaxPlacementAttempts && !placementIsLegal.IsLegal)
             {
-                candidatePosition.x += tokenWidth;
+                candidatePosition.x += tokenWidth + Spacing;
                 failedPlacementAttempts++;
                 placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
             }

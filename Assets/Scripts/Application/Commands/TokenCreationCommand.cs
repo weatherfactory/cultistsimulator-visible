@@ -126,10 +126,12 @@ namespace SecretHistories.Commands
 
         private void SetTokenTravellingToDestination(Token newToken, TokenLocation destination)
         {
+            var quickDuration = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultQuickTravelDuration;
             var itineraryForNewToken =
                 new TokenTravelItinerary(newToken.TokenRectTransform.anchoredPosition3D,
                         newToken.Sphere.Choreographer.GetFreeLocalPosition(newToken, destination.Anchored3DPosition))
-                    .WithDuration(1f).WithDestinationSpherePath(destination.AtSpherePath);
+                    .WithDuration(quickDuration).
+                    WithDestinationSpherePath(destination.AtSpherePath);
             newToken.TravelTo(itineraryForNewToken, new Context(Context.ActionSource.JustSpawned));
 
         }
