@@ -23,7 +23,7 @@ namespace SecretHistories.Commands
         public int Quantity { get; set; }
         public List<PopulateDominionCommand> Dominions { get; set; }
 
-        public DropzoneCreationCommand():this(nameof(ElementStack))
+        public DropzoneCreationCommand()
         {
         }
 

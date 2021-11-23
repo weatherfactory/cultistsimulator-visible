@@ -115,15 +115,15 @@ namespace SecretHistories.UI
 
                 //Moved this inside the loop for permanent spheres, because it seemed to be firing twice wherever we were registering spheres in a dominion.
                 //move it back outside the loop if this causes some unexpected issue!
-                foreach (Sphere s in Spheres)
-                {
-                    manifestable.AttachSphere(s);
-                    s.SetContainer(manifestable);
-                }
+  
             }
 
 
-
+            foreach (Sphere s in Spheres)
+            {
+                manifestable.AttachSphere(s);
+                s.SetContainer(manifestable);
+            }
 
         }
 
