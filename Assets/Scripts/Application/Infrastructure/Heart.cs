@@ -17,10 +17,10 @@ using SecretHistories.Spheres;
 /// </summary>
 public class Heart : MonoBehaviour
 {
-    [SerializeField] private float minSecondsBetweenAmbientAnimations = 5f;
-    [SerializeField] private float maxSecondsBetweenAmbientAnimations = 8f;
-    [SerializeField] private float minSecondsBetweenAmbientSfx = 8f;
-    [SerializeField] private float maxSecondsBetweenAmbientSfx = 20f;
+    [SerializeField] private float minSecondsBetweenAmbientAnimations;
+    [SerializeField] private float maxSecondsBetweenAmbientAnimations;
+    [SerializeField] private float minSecondsBetweenAmbientSfx;
+    [SerializeField] private float maxSecondsBetweenAmbientSfx;
     [SerializeField] private CanvasGroupFader MetapauseIndicator;
 
     public const float BEAT_INTERVAL_SECONDS = 0.05f;
