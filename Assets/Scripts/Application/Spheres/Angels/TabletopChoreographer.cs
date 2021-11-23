@@ -34,7 +34,7 @@ namespace SecretHistories.Constants {
 
         private Rect GetTableRect()
         {
-            return _sphere.GetRect();
+            return Sphere.GetRect();
         }
      [SerializeField] private bool showDebugInfo;
    
@@ -78,7 +78,7 @@ namespace SecretHistories.Constants {
 
         public void GroupAllStacks()
         {
-            var stackTokens = _sphere.GetElementTokens();
+            var stackTokens = Sphere.GetElementTokens();
             var groups = stackTokens
                 .GroupBy(e => e.Payload.GetSignature(), e => e)
                 .Select(group => group.OrderByDescending(e => e.Payload.Quantity).ToList());
@@ -110,7 +110,7 @@ namespace SecretHistories.Constants {
 {
         Vector2 freeLocalPosition= GetFreeLocalPosition(token, pos);
     
-            Vector3 finalPositionAtTableLevel=new Vector3(freeLocalPosition.x,freeLocalPosition.y,_sphere.transform.position.z);
+            Vector3 finalPositionAtTableLevel=new Vector3(freeLocalPosition.x,freeLocalPosition.y, Sphere.transform.position.z);
             token.TokenRectTransform.localPosition = finalPositionAtTableLevel;
 
 
@@ -127,7 +127,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 	
 			Rect pushedRect;
 
-            foreach (var token in _sphere.Tokens) {
+            foreach (var token in Sphere.Tokens) {
                 if (token==pushingToken || CanTokenBeIgnored(token))
                     continue;
 
@@ -150,7 +150,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
         public Vector2 GetTablePosForWorldPos(Vector3 worldPos) {
             Vector2 localPoint;
             var screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPos);
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(_sphere.transform as RectTransform, screenPoint, Camera.main, out localPoint);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(Sphere.transform as RectTransform, screenPoint, Camera.main, out localPoint);
 
             return localPoint;
         }
@@ -234,7 +234,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
            if (string.IsNullOrEmpty(desc))
                return;
 
-           var rectWorldPosition = _sphere.GetRectTransform().TransformPoint(rect.position);
+           var rectWorldPosition = Sphere.GetRectTransform().TransformPoint(rect.position);
             
            var rectScreenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, rectWorldPosition);
 
@@ -263,7 +263,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             Rect otherTokenOverlapRect;
 
 
-            foreach (var otherToken in _sphere.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t)))
+            foreach (var otherToken in Sphere.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t)))
             {
                 otherTokenOverlapRect = otherToken.GetRectInCurrentSphere();
 

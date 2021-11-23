@@ -13,11 +13,11 @@ using UnityEngine;
 
 namespace SecretHistories.Spheres.Angels
 {
-    public abstract class AbstractChoreographer: MonoBehaviour
-    {
-        [SerializeField]
-        protected Sphere _sphere;
+ public abstract class AbstractChoreographer: MonoBehaviour
+ {
 
+
+     public Sphere Sphere => gameObject.GetComponent<Sphere>();
 
         public abstract void PlaceTokenAtFreeLocalPosition(Token token, Context context);
 

@@ -106,23 +106,15 @@ namespace SecretHistories.Spheres
         public abstract SphereCategory SphereCategory { get; }
 
         [DontEncaust]
-        public virtual AbstractChoreographer Choreographer
-        {
-            get
-            {
-                if (_choreographer == null)
-                    _choreographer = SimpleChoreographer.Create();
-
-                return _choreographer;
-            }
-            set => _choreographer = value;
-        }
+        public virtual AbstractChoreographer Choreographer => gameObject.GetComponent<AbstractChoreographer>();
+   
 
         public Vector3 WorldPosition;
 
         public virtual void Awake()
         {
-            Choreographer = SimpleChoreographer.Create();
+            gameObject.AddComponent<SimpleChoreographer>();
+
         }
 
         public void Update()

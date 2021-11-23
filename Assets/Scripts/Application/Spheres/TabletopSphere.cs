@@ -50,17 +50,12 @@ namespace SecretHistories.Spheres
 
         public override bool EnforceUniqueStacksInThisContainer => true;
         public override float TokenHeartbeatIntervalMultiplier => 1;
-        
 
-        public override AbstractChoreographer Choreographer
+
+        public override void Awake()
         {
-            get
-            {
-                if (_tabletopChoreographer == null)
-                    return
-                        new SimpleChoreographer(); //there's a nasty snarl-up where the choreographer is populated in Awake, which don't play nice with tests
-                return _tabletopChoreographer;
-            }
+            gameObject.AddComponent<TabletopChoreographer>();
+
         }
 
         [SerializeField] private TabletopChoreographer _tabletopChoreographer;

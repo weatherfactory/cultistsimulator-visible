@@ -31,7 +31,9 @@ namespace SecretHistories.Spheres
 
         public override void Awake()
         {
-            Choreographer = WorldAwareRowChoreographer.Create(this);
+
+          gameObject.AddComponent<WorldAwareRowChoreographer>();
+    
         }
 
 

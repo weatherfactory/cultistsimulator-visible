@@ -22,15 +22,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         public int MaxPlacementAttempts { get; set; }
 
-        public static AbstractChoreographer Create(Sphere sphere)
-        {
-
-            var obj = new GameObject(nameof(WorldAwareRowChoreographer));
-            var worldAwareChoreographerComponent = obj.AddComponent<WorldAwareRowChoreographer>();
-            worldAwareChoreographerComponent._sphere = sphere;
-            return worldAwareChoreographerComponent;
-        }
-        
  
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
         {
@@ -61,7 +52,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         {
             Rect otherTokenOverlapRect;
 
-            foreach (var otherToken in _sphere.Tokens)
+            foreach (var otherToken in Sphere.Tokens)
             {
                 if (!CanTokenBeIgnored(otherToken))
                 {
@@ -76,7 +67,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             {
                 if(!CanTokenBeIgnored(otherToken))
                 {
-                    otherTokenOverlapRect = otherToken.GetRectInOtherSphere(_sphere); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
+                    otherTokenOverlapRect = otherToken.GetRectInOtherSphere(Sphere); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
                     if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapCoefficient()))
 
                         return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
@@ -90,7 +81,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         public override bool CanTokenBeIgnored(Token token)
         {
 
-            IHasAspects dontWorryAbout = _sphere.GetContainer();
+            IHasAspects dontWorryAbout = Sphere.GetContainer();
 
             if (dontWorryAbout.Id == token.PayloadId)
                return true;
@@ -101,7 +92,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         public override Vector2 GetFreeLocalPosition(Token token, Vector2 startPos)
         {
             
-            float sphereWidth = _sphere.GetRectTransform().rect.width;
+            float sphereWidth = Sphere.GetRectTransform().rect.width;
             float halfSphereWidth = sphereWidth / 2; //as x, this would be our centre position
             float tokenWidth= token.ManifestationRectTransform.rect.width;
             float halfTokenWidth = tokenWidth/ 2; //we should offset the token at least half its manifestation's width to the right from the starting position, on the assumption it has a centre pivot
@@ -109,7 +100,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             float startingX = -halfSphereWidth + halfTokenWidth;
             float startingY = 0f;
-            var tokensAlreadyPresent = _sphere.Tokens;
+            var tokensAlreadyPresent = Sphere.Tokens;
             Vector2 candidatePosition = new Vector2(startingX, startingY);
 
     
@@ -125,7 +116,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             }
 
             //offset once more for each incoming token
-            foreach (var i in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_sphere.GetAbsolutePath()))
+            foreach (var i in Watchman.Get<Xamanek>().CurrentItinerariesForPath(Sphere.GetAbsolutePath()))
             {
                 candidatePosition.x += tokenWidth;
             }
