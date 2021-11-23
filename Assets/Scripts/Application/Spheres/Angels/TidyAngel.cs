@@ -16,14 +16,19 @@ namespace SecretHistories.Spheres.Angels
     //low-aggression angel which tidies up evicted tokens with no particular home
     public class TidyAngel: IAngel
     {
-        private FucinePath _tidyToPath;
+        private Sphere _tidyToSphere;
         private readonly string _tidyPayloadsOfType;
 
         public int Authority => 0;
 
-        public TidyAngel(FucinePath tidyToPath,string tidyPayloadsOfType)
+        /// <summary>
+        /// We used to use tidytopath - but that breaks things if the path changes because, eg, we are dragging a dropzone sphere through EnRoute
+        /// </summary>
+        /// <param name="tidyToSphere"></param>
+        /// <param name="tidyPayloadsOfType"></param>
+        public TidyAngel(Sphere tidyToSphere,string tidyPayloadsOfType)
         {
-            _tidyToPath = tidyToPath;
+            _tidyToSphere=tidyToSphere;
             _tidyPayloadsOfType = tidyPayloadsOfType;
         }
 
@@ -34,7 +39,8 @@ namespace SecretHistories.Spheres.Angels
 
         public void SetWatch(Sphere sphere)
         {
-            _tidyToPath = sphere.GetAbsolutePath();
+            _tidyToSphere = sphere;
+
         }
 
         public bool MinisterToDepartingToken(Token token, Context context)
@@ -47,15 +53,14 @@ namespace SecretHistories.Spheres.Angels
             if(token.PayloadTypeName!= _tidyPayloadsOfType)
                 return false; 
 
-            var tidyToSphere = Watchman.Get<HornedAxe>().GetSphereByPath(_tidyToPath);
-
-            if (!tidyToSphere.IsInRangeOf(token.Sphere))
+ 
+            if (!_tidyToSphere.IsInRangeOf(token.Sphere))
                 return false;
 
             TokenTravelItinerary travellingToTidyTarget =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D,
-                        tidyToSphere.Choreographer.GetFreeLocalPosition(token, Vector3.zero))
-                    .WithDestinationSpherePath(tidyToSphere.GetAbsolutePath())
+                        _tidyToSphere.Choreographer.GetFreeLocalPosition(token, Vector3.zero))
+                    .WithDestinationSpherePath(_tidyToSphere.GetAbsolutePath())
                     .WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
 
             travellingToTidyTarget.Depart(token,context);

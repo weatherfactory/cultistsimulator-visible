@@ -212,10 +212,8 @@ namespace SecretHistories.Entities.Verbs
                 _spheres.Add(sphere);
                 sphere.SetContainer(this);
                 
-
-                var dropzoneSpherePath = sphere.GetAbsolutePath();
                 var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
-                tabletopSphere.AddAngel(new TidyAngel(dropzoneSpherePath,EntityId)); //entityid is where we store the payload type
+                tabletopSphere.AddAngel(new TidyAngel(sphere, EntityId)); //entityid is where we store the payload type
 
             }
         }
