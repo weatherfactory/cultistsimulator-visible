@@ -39,7 +39,7 @@ namespace SecretHistories.Manifestations
         private float situationDropzoneHeight = 160f;
 
         private const int MAX_PLACEMENT_ATTEMPTS_FOR_DROPZONE=12;
-        private const float SITUATION_SPACING = 5f;
+        private const float SITUATION_SPACING = 20f;
 
 
         [SerializeField] private List<MinimalDominion> Dominions;
@@ -92,8 +92,6 @@ namespace SecretHistories.Manifestations
             {
                 RectTransform.sizeDelta = new Vector2(RectTransform.sizeDelta.x, situationDropzoneHeight); 
                 Glow.color = situationDropzoneColor;
-                if (choreographer != null)
-                    choreographer.Spacing = SITUATION_SPACING;
             }
             else if (manifestable.EntityId == nameof(ElementStack))
             {

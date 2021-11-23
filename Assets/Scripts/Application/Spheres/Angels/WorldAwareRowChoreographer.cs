@@ -20,7 +20,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
    public class WorldAwareRowChoreographer: AbstractChoreographer
     {
 
-        public float Spacing { get; set; }
         public int MaxPlacementAttempts { get; set; }
 
         public  WorldAwareRowChoreographer(Sphere sphere)
@@ -114,7 +113,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             var placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition),token);
             while (failedPlacementAttempts < MaxPlacementAttempts && !placementIsLegal.IsLegal)
             {
-                candidatePosition.x += tokenWidth + Spacing;
+                candidatePosition.x += tokenWidth;
                 failedPlacementAttempts++;
                 placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
             }
