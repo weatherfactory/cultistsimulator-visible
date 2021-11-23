@@ -94,7 +94,7 @@ namespace SecretHistories.Manifestations
             for (int i = 0; i < particles.Length; i++)
             {
                 mainSettings = particles[i].main;
-                mainSettings.customSimulationSpace = manifestable.GetRectTransform();
+                mainSettings.customSimulationSpace = Watchman.Get<HornedAxe>().GetDefaultSphere().GetRectTransform(); //so they don't move with the token when we pick it up
             }
 
 
@@ -202,6 +202,7 @@ namespace SecretHistories.Manifestations
             if (dumpButton.PointerAboveThis)
             {
                 token.Payload.Conclude();
+
                 return true;
             }
             else
