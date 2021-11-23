@@ -27,6 +27,8 @@ namespace SecretHistories.Spheres.Angels
         void Retire();
 
         bool Defunct { get; }
+
+        bool RequestingRetirement { get; }
         void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics);
         void HideRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics);
    }

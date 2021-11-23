@@ -29,9 +29,10 @@ namespace SecretHistories.Spheres.Angels
 
         public void Act(float seconds, float metaseconds)
         {
-            //if(TokenToBringHome.CurrentState.Docked())
+            //once it's safely home, forget about its origin, mark this angel for removal
+            if (TokenToBringHome.CurrentState.Docked())
+                RequestingRetirement = true;  //request retirement rather than remove directly from sphere, to avoid breaking the iteration in the flock above
 
-            //could put something here to remove this angel from the watched sphere if it's got stale
         }
 
         public void SetWatch(Sphere sphere)
@@ -58,7 +59,7 @@ namespace SecretHistories.Spheres.Angels
                 else 
                     ReturnToHomeLocation(context);
 
-                SphereToWatchOver.RemoveAngel(this);
+                SphereToWatchOver.RemoveAngel(this); 
                 return true;
             }
 
@@ -71,6 +72,8 @@ namespace SecretHistories.Spheres.Angels
         }
 
         public bool Defunct { get; protected set; }
+        public bool RequestingRetirement { get; private set; }
+
         public void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
         {
             //

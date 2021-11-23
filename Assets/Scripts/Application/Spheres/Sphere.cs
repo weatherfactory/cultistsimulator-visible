@@ -518,6 +518,7 @@ namespace SecretHistories.Spheres
         public void RequestFlockActions(float seconds, float metaseconds)
         {
             flock.Act(seconds, metaseconds);
+            flock.RemoveDefunctAngels();
         }
 
         public void RequestTokensSpendTime(float seconds, float metaseconds)

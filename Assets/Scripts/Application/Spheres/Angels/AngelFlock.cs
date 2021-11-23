@@ -53,5 +53,13 @@ namespace SecretHistories.Spheres.Angels
         {
             return _angels.Any(a => a.GetType() == angelType);
         }
+
+        public void RemoveDefunctAngels()
+        {
+            var angelsToRetire = new List<IAngel>(_angels.Where(a => a.RequestingRetirement));
+
+              foreach(var r in angelsToRetire)
+                  RemoveAngel(r);
+        }
     }
 }

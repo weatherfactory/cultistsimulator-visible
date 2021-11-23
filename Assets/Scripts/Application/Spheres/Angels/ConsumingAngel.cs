@@ -55,6 +55,8 @@ namespace SecretHistories.Spheres.Angels
         }
 
         public bool Defunct { get; protected set; }
+        public bool RequestingRetirement { get; }
+
         public void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
         {
             var consumingV =
