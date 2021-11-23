@@ -624,7 +624,7 @@ namespace SecretHistories.UI {
         {
             MakeInteractable();
 
-            if (!CurrentState.Docked(this))
+            if (!CurrentState.Docked())
                 //evict the token before hiding the ghost. If the ghost is still active, it'll give the evicted token a place to go.
                 this.Sphere.EvictToken(this,new Context(Context.ActionSource.PlayerDrag));
 

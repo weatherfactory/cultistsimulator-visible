@@ -29,6 +29,8 @@ namespace SecretHistories.Spheres.Angels
 
         public void Act(float seconds, float metaseconds)
         {
+            //if(TokenToBringHome.CurrentState.Docked())
+
             //could put something here to remove this angel from the watched sphere if it's got stale
         }
 

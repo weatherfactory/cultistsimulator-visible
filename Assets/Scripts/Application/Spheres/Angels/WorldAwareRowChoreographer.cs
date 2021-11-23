@@ -22,10 +22,16 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         public int MaxPlacementAttempts { get; set; }
 
-        public  WorldAwareRowChoreographer(Sphere sphere)
+        public static AbstractChoreographer Create(Sphere sphere)
         {
-            _sphere = sphere;
+
+            var obj = new GameObject(nameof(WorldAwareRowChoreographer));
+            var worldAwareChoreographerComponent = obj.AddComponent<WorldAwareRowChoreographer>();
+            worldAwareChoreographerComponent._sphere = sphere;
+            return worldAwareChoreographerComponent;
         }
+        
+ 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
         {
             token.TokenRectTransform.anchoredPosition3D = Vector3.zero;

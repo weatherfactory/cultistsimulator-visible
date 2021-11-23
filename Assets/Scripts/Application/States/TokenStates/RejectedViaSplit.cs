@@ -13,7 +13,7 @@ namespace SecretHistories.States.TokenStates
     /// </summary>
    public class RejectedViaSplit: AbstractTokenState
     {
-        public override bool Docked(Token token)
+        public override bool Docked()
         {
             return false;
         }

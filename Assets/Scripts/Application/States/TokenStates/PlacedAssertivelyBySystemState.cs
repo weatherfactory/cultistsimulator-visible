@@ -10,7 +10,7 @@ namespace SecretHistories.States.TokenStates
 {
     public  class PlacedAssertivelyBySystemState: AbstractTokenState
     {
-        public override bool Docked(Token token)
+        public override bool Docked()
         {
             return true;
         }

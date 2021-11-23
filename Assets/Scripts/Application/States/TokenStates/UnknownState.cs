@@ -9,7 +9,7 @@ namespace SecretHistories.States
 {
     public class UnknownState: AbstractTokenState
     {
-        public override bool Docked(Token token)
+        public override bool Docked()
         {
             return false;
         }
