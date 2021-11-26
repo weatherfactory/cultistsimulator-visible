@@ -42,7 +42,7 @@ namespace SecretHistories.Infrastructure.Persistence
             
             var cc = CharacterCreationCommand.IncarnateFromLegacy(startingLegacy, historyRecordsFromPreviousCharacter);
             state.CharacterCreationCommands.Add(cc);
-            var note=new Notification(startingLegacy.Label, startingLegacy.Description);
+            var note=new Notification(startingLegacy.Label, startingLegacy.StartDescription);
             var notificationCommand = new AddNoteToTokenCommand(note, new Context(Context.ActionSource.Loading));
             state.NotificationCommands.Add(notificationCommand);
 
