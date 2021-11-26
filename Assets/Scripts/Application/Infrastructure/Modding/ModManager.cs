@@ -22,7 +22,8 @@ namespace SecretHistories.Constants.Modding
     {
         private const string MOD_SYNOPSIS_FILENAME = "synopsis.json";
         private const string MOD_DLL_FOLDER = "dll";
-        private const string MOD_DLL_NAME= "main.dll";
+        private const string MOD_DLL_SUFFIX = ".dll";
+        private const string MOD_DLL_NAME_DEPRECATED= "main";
         private const string MOD_INITIALISER_METHOD_NAME = "Initialise";
 
         private bool AssemblyLoadingForModsAttempted = false;
@@ -34,7 +35,8 @@ namespace SecretHistories.Constants.Modding
 
         private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt");
 
-        private Dictionary<string, Mod> _cataloguedMods { get; }
+        private readonly Dictionary<string, Mod> _cataloguedMods;
+        private List<string> _enabledModsLoadOrder;
 
         public void LoadModDLLs()
         {
@@ -53,42 +55,51 @@ namespace SecretHistories.Constants.Modding
 
         private void TryLoadDllsForMod(Mod mod)
         {
-            string dll_path = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER, MOD_DLL_NAME);
+            string modNameWithoutSpecialCharacters = mod.GetNameAlphanumericsOnly();
+            string preferredDllPath = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER, modNameWithoutSpecialCharacters, MOD_DLL_SUFFIX);
+            string deprecatedDllPath = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER, MOD_DLL_NAME_DEPRECATED,MOD_DLL_SUFFIX);
 
-            if (!File.Exists(dll_path)) //no mod found, return
-                return;
+
+
+            string dllFoundPath;
+            if (File.Exists(preferredDllPath)) 
+                dllFoundPath = preferredDllPath;
+            else if (File.Exists(deprecatedDllPath))
+                dllFoundPath = deprecatedDllPath;
+            else
+             return;
 
             Assembly modAssembly;
 
             try
             {
-                modAssembly = Assembly.LoadFrom(dll_path);
+                modAssembly = Assembly.LoadFrom(dllFoundPath);
             }
             catch (Exception cantLoadException)
             {
-                NoonUtility.LogWarning($"Can't load a valid assembly at {dll_path}: {cantLoadException.Message}");
+                NoonUtility.LogWarning($"Can't load a valid assembly at {dllFoundPath}: {cantLoadException.Message}");
                 return;
             }
 
-            NoonUtility.Log($"Loaded {dll_path} for {mod.Name}");
+            NoonUtility.Log($"Loaded {dllFoundPath} for {mod.Name}");
 
             Type modInitialiserType;
             string mod_initialiser_class_name=string.Empty;
 
             try
             {
-                 mod_initialiser_class_name= Regex.Replace(mod.Name, "[^a-zA-Z0-9_]+", "");
+                mod_initialiser_class_name = modNameWithoutSpecialCharacters;
                 modInitialiserType = modAssembly.GetType(mod_initialiser_class_name);
             }
             catch (Exception e)
             {
-                NoonUtility.LogWarning($"Can't find a class named {mod_initialiser_class_name} in dll at {dll_path}: {e.Message}");
+                NoonUtility.LogWarning($"Can't find a class named {mod_initialiser_class_name} in dll at {dllFoundPath}: {e.Message}");
                 return;
             }
 
 
             if(modInitialiserType==null)
-                NoonUtility.LogWarning($"Tried to get a class type named {mod_initialiser_class_name} in dll at {dll_path}, but it's coming back as null");
+                NoonUtility.LogWarning($"Tried to get a class type named {mod_initialiser_class_name} in dll at {dllFoundPath}, but it's coming back as null");
 
 
             MethodInfo initialiserMethod;
@@ -100,11 +111,11 @@ namespace SecretHistories.Constants.Modding
             }
             catch (Exception e)
             {
-                NoonUtility.LogWarning($"Tried to invoke {MOD_INITIALISER_METHOD_NAME}() on a type named {mod_initialiser_class_name} in dll at {dll_path}, but failed: {e.Message}");
+                NoonUtility.LogWarning($"Tried to invoke {MOD_INITIALISER_METHOD_NAME}() on a type named {mod_initialiser_class_name} in dll at {dllFoundPath}, but failed: {e.Message}");
                 return;
             }
 
-            NoonUtility.Log($"Successfully invoked {MOD_INITIALISER_METHOD_NAME}()on a type named {mod_initialiser_class_name} in dll at {dll_path}");
+            NoonUtility.Log($"Successfully invoked {MOD_INITIALISER_METHOD_NAME}()on a type named {mod_initialiser_class_name} in dll at {dllFoundPath}");
 
         }
 
@@ -121,11 +132,49 @@ namespace SecretHistories.Constants.Modding
 
         public IEnumerable<Mod> GetEnabledMods()
         {
-            var activeMods = _cataloguedMods.Values.Where(m => m.Enabled);
-            return activeMods;
+            var orderedIds = GetEnabledModsLoadOrderList();
+            var orderedMods=new List<Mod>();
+            foreach (var oi in orderedIds)
+            {
+                if (_cataloguedMods.ContainsKey(oi))
+                    orderedMods.Add(_cataloguedMods[oi]);
+                else
+                    NoonUtility.LogWarning(
+                        $"Problem getting enabled mod lists: {oi} was found in the enabled loading order list, but not in the catalogue");
+
+            }
+
+            return orderedMods;
         }
 
-    public void CatalogueMods()
+        public IEnumerable<Mod> GetDisabledMods()
+        {
+            var disabledMods = new List<Mod>(); //we could just filter by enabled=true, but I'd rather treat the mods order list as the authoritative source of info and enabled as local info when displaying mod entries
+            var orderedIds = GetEnabledModsLoadOrderList();
+            foreach (var m in _cataloguedMods)
+            {
+                if(!orderedIds.Contains(m.Key))
+                    disabledMods.Add(m.Value);
+            }
+            
+            return disabledMods;
+
+        }
+
+        public List<string> GetEnabledModsLoadOrderList()
+        {
+            if (_enabledModsLoadOrder == null)
+            {
+                NoonUtility.LogWarning("Tried to get enabled mods load order list, but it hasnn't been populated so is still null. Returning empty list of strings. Pax vobiscum");
+                return new List<string>();
+            }
+
+            return new List<string>(_enabledModsLoadOrder);
+        }
+
+
+
+        public void CatalogueMods()
         {
 
             var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
@@ -205,9 +254,19 @@ namespace SecretHistories.Constants.Modding
                     }
                 }
             }
-             
-            // Enable all mods that have been marked as enabled
-            foreach (var modId in LoadEnabledModList())
+
+            //populate enabled mods load order list
+
+            _enabledModsLoadOrder = GetEnabledModsLoadOrderFromFile().ToList();
+            //remove any enabled mods that are no longer catalogued)
+            foreach (var modId in new List<string>(_enabledModsLoadOrder))
+            {
+                if (!_cataloguedMods.ContainsKey(modId))
+                    _enabledModsLoadOrder.Remove(modId);
+            }
+            
+            // Set the enabled flag in all catalogued mods in the enabled list
+            foreach (var modId in _enabledModsLoadOrder)
             {
                 if (_cataloguedMods.ContainsKey(modId))
                     _cataloguedMods[modId].Enabled = true;
@@ -323,10 +382,9 @@ namespace SecretHistories.Constants.Modding
             if (!_cataloguedMods.ContainsKey(modId))
                 return null;
 
-
             _cataloguedMods[modId].Enabled = enable;
-            SaveEnabledModList();
-
+            _enabledModsLoadOrder.Add(modId);
+            PersistEnabledModsLoadOrderToFile();
             
             var compendiumLoader = new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
             var existingCompendium = Watchman.Get<Compendium>();
@@ -338,16 +396,16 @@ namespace SecretHistories.Constants.Modding
             return modToAlter;
         }
 
-        private static IEnumerable<string> LoadEnabledModList()
+        private IEnumerable<String> GetEnabledModsLoadOrderFromFile()
         {
-            return File.Exists(ModEnabledListPath) ? File.ReadAllText(ModEnabledListPath).Split('\n') : new string[] {};
+            return File.Exists(ModEnabledListPath) ? File.ReadAllText(ModEnabledListPath).Split('\n') : new string[] { };
         }
 
-        private void SaveEnabledModList()
+        private void PersistEnabledModsLoadOrderToFile()
         {
             File.WriteAllText(
                 ModEnabledListPath, 
-                string.Join("\n", _cataloguedMods.Values.Where(m => m.Enabled).Select(m => m.Id).ToArray()));
+                string.Join("\n", _enabledModsLoadOrder.ToArray()));
         }
 
         /// <summary>
@@ -464,6 +522,25 @@ namespace SecretHistories.Constants.Modding
             sprite = Sprite.Create(
                 texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             return sprite;
+        }
+
+        public void SwapModsInLoadOrderAndPersistToFile(int thisModIndex, int swapWithModIndex)
+        {
+
+            if (thisModIndex < 0 || thisModIndex >= _enabledModsLoadOrder.Count)
+            {
+                NoonUtility.LogWarning($"Trying to swap enabled mods at position {thisModIndex} and {swapWithModIndex}, but {thisModIndex} isn't valid");
+                return;
+            }
+
+            if (swapWithModIndex < 0 || swapWithModIndex >= _enabledModsLoadOrder.Count)
+            {
+                NoonUtility.LogWarning($"Trying to swap enabled mods at position {thisModIndex} and {swapWithModIndex}, but {swapWithModIndex} isn't valid");
+                return;
+            }
+
+            (_enabledModsLoadOrder[thisModIndex], _enabledModsLoadOrder[swapWithModIndex]) = (_enabledModsLoadOrder[swapWithModIndex], _enabledModsLoadOrder[thisModIndex]);
+            PersistEnabledModsLoadOrderToFile();
         }
     }
 }

@@ -13,6 +13,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -425,8 +426,14 @@ public class MenuScreenController : LocalNexus {
         // Clear the list and repopulate with one entry per loaded mod
         foreach (Transform modEntry in modEntries)
             Destroy(modEntry.gameObject);
+
+        var modManager = Watchman.Get<ModManager>();
+        var modsInOrder = modManager.GetEnabledMods().ToList();
+        var disabledMods = modManager.GetDisabledMods();
         
-        foreach (var mod in Watchman.Get<ModManager>().GetCataloguedMods())
+        modsInOrder.AddRange(disabledMods); //they need to go after the enabled mods, though we don't care about the order after that
+
+        foreach (var mod in modsInOrder)
         {
             var modEntry = Instantiate(modEntryPrefab).GetComponent<ModEntry>();
             modEntry.transform.SetParent(modEntries, false);

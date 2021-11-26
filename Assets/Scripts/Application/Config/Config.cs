@@ -47,9 +47,7 @@ public class Config
         _configValues = new Dictionary<string, string>(comparer);
 
         PopulateConfigValuesFromIniFile();
-
-
-
+        
 
         if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.CULTURE_SETTING_KEY)))
         PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,

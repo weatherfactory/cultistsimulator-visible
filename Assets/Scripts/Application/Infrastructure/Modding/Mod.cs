@@ -244,5 +244,11 @@ namespace SecretHistories.Constants.Modding
         }
 
 
+        public string GetNameAlphanumericsOnly()
+        {
+
+            string alphanumericsOnlyName = Regex.Replace(Name, "[^a-zA-Z0-9_]+", "");
+            return alphanumericsOnlyName;
+        }
     }
 }

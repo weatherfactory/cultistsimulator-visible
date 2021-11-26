@@ -28,6 +28,10 @@ namespace SecretHistories.Constants.Modding
         public TextMeshProUGUI activationToggleText;
         public Babelfish activationToggleBabel;
 
+
+        public Button higherPriorityButton;
+        public Button lowerPriorityButton;
+
         public Image SteamImage;
         public Image LocalImage;
         public Image PreviewImage;
@@ -54,6 +58,8 @@ namespace SecretHistories.Constants.Modding
 
             uploadButton.onClick.AddListener(UploadModToStorefront);
             activationToggleButton.onClick.AddListener(ToggleActivation);
+            higherPriorityButton.onClick.AddListener(IncreaseModPriority);
+            lowerPriorityButton.onClick.AddListener(DecreaseModPriority);
             var concursum = Watchman.Get<Concursum>();
 
             concursum.ModOperationEvent.AddListener(ModOperationEvent);
@@ -79,8 +85,7 @@ namespace SecretHistories.Constants.Modding
                 SetUploadButtonState();
                 NoonUtility.Log($"Problematic install type for mod {_mod.Id} {_mod.Name} - {mod.ModInstallType}",1);
             }
-
-
+            
         }
 
         private void UpdateEnablementDisplay()
@@ -106,6 +111,34 @@ namespace SecretHistories.Constants.Modding
                 UpdateEnablementDisplay();
             }
         }
+
+        public void IncreaseModPriority()
+        {
+            var modManager = Watchman.Get<ModManager>();
+            var enabledModsInOriginalOrder = new List<Mod>(modManager.GetEnabledMods());
+
+            var thisModIndex = enabledModsInOriginalOrder.IndexOf(_mod);
+
+            if (thisModIndex >=0)
+            {
+                int swapWithModIndex = thisModIndex - 1;
+                if (swapWithModIndex >= 0)
+                    modManager.SwapModsInLoadOrderAndPersistToFile(thisModIndex, swapWithModIndex);
+
+                var currentSiblingIndex = gameObject.transform.GetSiblingIndex();
+                if (currentSiblingIndex <= 0)
+                    NoonUtility.LogWarning($"Trying to increase loading priority for mod {_mod.Id}, but its siblingindex is already {currentSiblingIndex}");
+                      else
+                gameObject.transform.SetSiblingIndex(currentSiblingIndex - 1);
+
+            }
+            
+
+
+        }
+        public void DecreaseModPriority()
+        { }
+
 
         public void SetUploadButtonState()
         {

@@ -147,7 +147,8 @@ You can compile a .dll and upload it as part of a mod. Anything up to .NET 4.x s
 A dll for a mod...
 
 - must go in /[modfolder]/dll
-- must be named main.dll
+
+- must have a dll with same name as the mod (absent spaces and special characters) - or must be called main.dll (but this is deprecated and will eventually be removed)
 - must contain a class with the same name as the mod (absent spaces and special characters)
 - that class must have a public static Initialise() function.
 
@@ -159,4 +160,4 @@ DLLs are loaded *when the main app initialises* - before JSON content is loaded.
 
 ---------------
 
-- AK 15/10/2021
+- AK 26/11/2021
