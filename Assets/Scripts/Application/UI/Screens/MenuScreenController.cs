@@ -15,6 +15,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Assets.Scripts.Application.Infrastructure.Modding;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -145,6 +146,8 @@ public class MenuScreenController : LocalNexus {
         concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
 
     }
+
+
 
     private void OnContentUpdated(ContentUpdatedArgs args)
     {

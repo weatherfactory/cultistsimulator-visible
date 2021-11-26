@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Infrastructure.Modding;
 using SecretHistories.UI;
 using SecretHistories.Services;
 
@@ -39,7 +40,7 @@ namespace SecretHistories.Constants.Modding
 
         public string ModId => _mod?.Id ?? string.Empty;
 
-        public bool Enabled => _mod?.Enabled ?? false;
+        public bool EnabledMod => _mod?.Enabled ?? false; //not to be confused with the monobehaviour property 'enabled'
 
         private Mod _mod;
         private Storefront _store;
@@ -88,7 +89,16 @@ namespace SecretHistories.Constants.Modding
                 SetUploadButtonState();
                 NoonUtility.Log($"Problematic install type for mod {_mod.Id} {_mod.Name} - {mod.ModInstallType}",1);
             }
-            
+             
+        }
+
+        private void TriggerRestartWarning()
+        {
+            var modsEntriesObj = gameObject.transform.parent;
+            var modDisplayPanel = modsEntriesObj.transform.parent.GetComponent<ModsDisplayPanel>();
+            if (modDisplayPanel != null)
+                modDisplayPanel.restartAfterModChangeWarning.gameObject.SetActive(true);
+            //yeah I did this. It's 6pm on a Friday evening. At least I had the grace to put it in its own method. Sorry, future AK.
         }
 
         private void UpdateEnablementDisplay()
@@ -103,20 +113,7 @@ namespace SecretHistories.Constants.Modding
             higherPriorityButton.gameObject.SetActive(_mod.Enabled);
             lowerPriorityButton.gameObject.SetActive(_mod.Enabled);
 
-            //look for the first disabled mod in entries that is not this one.
-            var firstDisabledMod=gameObject.transform.parent.GetComponentsInChildren<ModEntry>().FirstOrDefault(m=>!m.enabled && m.ModId!=_mod.Id);
-            if (firstDisabledMod != null)
-            {
-                var firstDisabledModSiblingIndex=firstDisabledMod.gameObject.transform.GetSiblingIndex();
-                gameObject.transform.SetSiblingIndex(firstDisabledModSiblingIndex);
-            }
-            else
-            {
-                //move to the last position. If the mod has just been enabled, it was the only disabled entry, so it's already at the end. If it has just been disabled, it should go to the end.
-                gameObject.transform.SetAsLastSibling();
-            }
 
-        //unexpectedly simple! and the moment the logic changes, I should have a modpanel class instead.
         }
 
         public void ToggleActivation()
@@ -131,7 +128,28 @@ namespace SecretHistories.Constants.Modding
             {
                 _mod=modManager.SetModEnableStateAndReloadContent(_mod.Id, !_mod.Enabled); //the mod should come back from here, reloaded and refreshed, with its enabled/disabled flag set appropriately.
                 UpdateEnablementDisplay();
+                TriggerRestartWarning();
             }
+
+            //look for the first disabled mod in entries that is not this one.
+            var modEntries = gameObject.transform.parent.GetComponentsInChildren<ModEntry>();
+            var firstDisabledMod = modEntries.FirstOrDefault(m => !m.EnabledMod && m.ModId != _mod.Id);
+            if (firstDisabledMod != null)
+            {
+                //move to the position immediately above the first disabled mod (whether we were just enabled or just disabled)
+                var firstDisabledModSiblingIndex = firstDisabledMod.gameObject.transform.GetSiblingIndex();
+        if(firstDisabledModSiblingIndex==0)
+            gameObject.transform.SetAsFirstSibling();
+        else
+               gameObject.transform.SetSiblingIndex(firstDisabledModSiblingIndex-1);
+            }
+            else
+            {
+                //move to the last position. If the mod has just been enabled, it was the only disabled entry, so it's already at the end. If it has just been disabled, it should go to the end.
+                gameObject.transform.SetAsLastSibling();
+            }
+
+            //A lot less simple than it looked. If it doesn't work as intended, or stops working as intended, I should have a modpanel class instead. See TriggerRestartWarning above.
         }
 
         public void IncreaseModPriority()
@@ -153,6 +171,7 @@ namespace SecretHistories.Constants.Modding
                 else
                     gameObject.transform.SetSiblingIndex(currentSiblingIndex - 1);
 
+                TriggerRestartWarning();
             }
       
 
@@ -177,6 +196,7 @@ namespace SecretHistories.Constants.Modding
                 else
                     gameObject.transform.SetSiblingIndex(currentSiblingIndex + 1);
 
+                TriggerRestartWarning();
             }
 
         }
