@@ -76,6 +76,10 @@ namespace SecretHistories.Manifestations
         public bool RequestingNoDrag { get; }
         public bool RequestingNoSplit => true;
 
+        private bool _spontaneousVerb; //separate bool because I don't want an explicit reference to Verb, I want to keep it as IManifestable. But there's already a hack below using illuminations
+        //to make this possible. So, once we have verb bookcases and whatnot, this perhaps should be refactored to something less special-case, like a strategy class to govern
+        //temp vs permie vs other behaviour
+
 #pragma warning restore 649
 
 
@@ -99,9 +103,9 @@ namespace SecretHistories.Manifestations
 
 
 
-            bool spontaneousVerb = (manifestable.GetIllumination(NoonConstants.IK_SPONTANEOUS) != string.Empty);
+            _spontaneousVerb = (manifestable.GetIllumination(NoonConstants.IK_SPONTANEOUS) != string.Empty);
 
-            if(spontaneousVerb)
+            if(_spontaneousVerb)
                 tokenBody.overrideSprite = lightweightSprite;
 
             SetInitialTimerVisuals();
@@ -257,7 +261,7 @@ namespace SecretHistories.Manifestations
                     completionText.text = completionCount.ToString();
                 else
                     completionText.text = string.Empty;
-                if (manifestable.GetTimeshadow().Transient)
+                if (_spontaneousVerb)
                     dumpButton.gameObject.SetActive(true);
                 else
                     dumpButton.gameObject.SetActive(false);
