@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using SecretHistories.UI;
 using SecretHistories.Services;
@@ -36,7 +37,9 @@ namespace SecretHistories.Constants.Modding
         public Image LocalImage;
         public Image PreviewImage;
 
+        public string ModId => _mod?.Id ?? string.Empty;
 
+        public bool Enabled => _mod?.Enabled ?? false;
 
         private Mod _mod;
         private Storefront _store;
@@ -93,21 +96,40 @@ namespace SecretHistories.Constants.Modding
             var newLabel = _mod.Enabled ? "UI_DISABLE" : "UI_ENABLE";
             activationToggleBabel.UpdateLocLabel(_mod.Enabled ? "UI_DISABLE" : "UI_ENABLE");
             activationToggleText.text = Watchman.Get<ILocStringProvider>().Get(newLabel);
-            var newColor = _mod.Enabled ? Color.white : Color.gray;
-            title.color = newColor;
-            description.color = newColor;
+            var newTextColor = _mod.Enabled ? Color.white : Color.gray;
+            title.color = newTextColor;
+            description.color = newTextColor;
+
+            higherPriorityButton.gameObject.SetActive(_mod.Enabled);
+            lowerPriorityButton.gameObject.SetActive(_mod.Enabled);
+
+            //look for the first disabled mod in entries that is not this one.
+            var firstDisabledMod=gameObject.transform.parent.GetComponentsInChildren<ModEntry>().FirstOrDefault(m=>!m.enabled && m.ModId!=_mod.Id);
+            if (firstDisabledMod != null)
+            {
+                var firstDisabledModSiblingIndex=firstDisabledMod.gameObject.transform.GetSiblingIndex();
+                gameObject.transform.SetSiblingIndex(firstDisabledModSiblingIndex);
+            }
+            else
+            {
+                //move to the last position. If the mod has just been enabled, it was the only disabled entry, so it's already at the end. If it has just been disabled, it should go to the end.
+                gameObject.transform.SetAsLastSibling();
+            }
+
+        //unexpectedly simple! and the moment the logic changes, I should have a modpanel class instead.
         }
 
         public void ToggleActivation()
         {
+
             var modManager = Watchman.Get<ModManager>();
 
             //can't enable two mods with the same name - this would usually be both a local and a Steam version
-            if (!_mod.Enabled && modManager.GetEnabledMods().ToList().Exists(m => m.Name == _mod.Name))
+            if (!_mod.Enabled && modManager.GetEnabledModsInLoadOrder().ToList().Exists(m => m.Name == _mod.Name))
                 NoonUtility.Log($"Can't enable two mods with the same name ({_mod.Name})", 1);
             else
             {
-                _mod=modManager.SetModEnableStateAndReloadContent(_mod.Id, !_mod.Enabled);
+                _mod=modManager.SetModEnableStateAndReloadContent(_mod.Id, !_mod.Enabled); //the mod should come back from here, reloaded and refreshed, with its enabled/disabled flag set appropriately.
                 UpdateEnablementDisplay();
             }
         }
@@ -115,29 +137,49 @@ namespace SecretHistories.Constants.Modding
         public void IncreaseModPriority()
         {
             var modManager = Watchman.Get<ModManager>();
-            var enabledModsInOriginalOrder = new List<Mod>(modManager.GetEnabledMods());
+            var enabledModsInOriginalOrder = new List<Mod>(modManager.GetEnabledModsInLoadOrder());
 
             var thisModIndex = enabledModsInOriginalOrder.IndexOf(_mod);
 
-            if (thisModIndex >=0)
+            if (thisModIndex >0)
             {
                 int swapWithModIndex = thisModIndex - 1;
-                if (swapWithModIndex >= 0)
-                    modManager.SwapModsInLoadOrderAndPersistToFile(thisModIndex, swapWithModIndex);
+
+                modManager.SwapModsInLoadOrderAndPersistToFile(thisModIndex, swapWithModIndex);
 
                 var currentSiblingIndex = gameObject.transform.GetSiblingIndex();
                 if (currentSiblingIndex <= 0)
                     NoonUtility.LogWarning($"Trying to increase loading priority for mod {_mod.Id}, but its siblingindex is already {currentSiblingIndex}");
-                      else
-                gameObject.transform.SetSiblingIndex(currentSiblingIndex - 1);
+                else
+                    gameObject.transform.SetSiblingIndex(currentSiblingIndex - 1);
 
             }
-            
-
+      
 
         }
+
         public void DecreaseModPriority()
-        { }
+        {
+            var modManager = Watchman.Get<ModManager>();
+            var enabledModsInOriginalOrder = new List<Mod>(modManager.GetEnabledModsInLoadOrder());
+
+            var thisModIndex = enabledModsInOriginalOrder.IndexOf(_mod);
+
+            if (thisModIndex+1 < enabledModsInOriginalOrder.Count) //if the zero-based index were one higher, would it still be less than the one-based count?
+            {
+                int swapWithModIndex = thisModIndex + 1;
+
+                modManager.SwapModsInLoadOrderAndPersistToFile(thisModIndex, swapWithModIndex);
+
+                var currentSiblingIndex = gameObject.transform.GetSiblingIndex();
+                if (currentSiblingIndex+1 >=gameObject.transform.parent.childCount)
+                    NoonUtility.LogWarning($"Trying to decrease loading priority for mod {_mod.Id}, but its siblingindex is already {currentSiblingIndex} and the parent childcount is{gameObject.transform.parent.childCount}");
+                else
+                    gameObject.transform.SetSiblingIndex(currentSiblingIndex + 1);
+
+            }
+
+        }
 
 
         public void SetUploadButtonState()

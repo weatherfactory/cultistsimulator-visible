@@ -32,7 +32,6 @@ namespace SecretHistories.Constants.Modding
         private static readonly string LocalModsPath = Path.Combine(Application.persistentDataPath, "mods");
 
         
-
         private static readonly string ModEnabledListPath = Path.Combine(Application.persistentDataPath, "mods.txt");
 
         private readonly Dictionary<string, Mod> _cataloguedMods;
@@ -49,7 +48,7 @@ namespace SecretHistories.Constants.Modding
 
             AssemblyLoadingForModsAttempted = true;
 
-            foreach (Mod mod in Watchman.Get<ModManager>().GetEnabledMods())
+            foreach (Mod mod in Watchman.Get<ModManager>().GetEnabledModsInLoadOrder())
                 TryLoadDllsForMod(mod);
         }
 
@@ -84,22 +83,22 @@ namespace SecretHistories.Constants.Modding
             NoonUtility.Log($"Loaded {dllFoundPath} for {mod.Name}");
 
             Type modInitialiserType;
-            string mod_initialiser_class_name=string.Empty;
+            string modInitialiserClassName=string.Empty;
 
             try
             {
-                mod_initialiser_class_name = modNameWithoutSpecialCharacters;
-                modInitialiserType = modAssembly.GetType(mod_initialiser_class_name);
+                modInitialiserClassName = modNameWithoutSpecialCharacters;
+                modInitialiserType = modAssembly.GetType(modInitialiserClassName);
             }
             catch (Exception e)
             {
-                NoonUtility.LogWarning($"Can't find a class named {mod_initialiser_class_name} in dll at {dllFoundPath}: {e.Message}");
+                NoonUtility.LogWarning($"Can't find a class named {modInitialiserClassName} in dll at {dllFoundPath}: {e.Message}");
                 return;
             }
 
 
             if(modInitialiserType==null)
-                NoonUtility.LogWarning($"Tried to get a class type named {mod_initialiser_class_name} in dll at {dllFoundPath}, but it's coming back as null");
+                NoonUtility.LogWarning($"Tried to get a class type named {modInitialiserClassName} in dll at {dllFoundPath}, but it's coming back as null");
 
 
             MethodInfo initialiserMethod;
@@ -111,11 +110,11 @@ namespace SecretHistories.Constants.Modding
             }
             catch (Exception e)
             {
-                NoonUtility.LogWarning($"Tried to invoke {MOD_INITIALISER_METHOD_NAME}() on a type named {mod_initialiser_class_name} in dll at {dllFoundPath}, but failed: {e.Message}");
+                NoonUtility.LogWarning($"Tried to invoke {MOD_INITIALISER_METHOD_NAME}() on a type named {modInitialiserClassName} in dll at {dllFoundPath}, but failed: {e.Message}");
                 return;
             }
 
-            NoonUtility.Log($"Successfully invoked {MOD_INITIALISER_METHOD_NAME}()on a type named {mod_initialiser_class_name} in dll at {dllFoundPath}");
+            NoonUtility.Log($"Successfully invoked {MOD_INITIALISER_METHOD_NAME}()on a type named {modInitialiserClassName} in dll at {dllFoundPath}");
 
         }
 
@@ -130,13 +129,13 @@ namespace SecretHistories.Constants.Modding
             return cataloguedMods;
         }
 
-        public IEnumerable<Mod> GetEnabledMods()
+        public IEnumerable<Mod> GetEnabledModsInLoadOrder()
         {
             var orderedIds = GetEnabledModsLoadOrderList();
             var orderedMods=new List<Mod>();
             foreach (var oi in orderedIds)
             {
-                if (_cataloguedMods.ContainsKey(oi))
+                if (_cataloguedMods.ContainsKey(oi) && orderedMods.All(om => om.Id != oi)) // second clause is in case something broke and a duplicate snuck in
                     orderedMods.Add(_cataloguedMods[oi]);
                 else
                     NoonUtility.LogWarning(
@@ -380,18 +379,22 @@ namespace SecretHistories.Constants.Modding
     {
  
             if (!_cataloguedMods.ContainsKey(modId))
+            {
+                NoonUtility.LogWarning($"Trying to disable {modId}, but it isn't in the list of catalogued mods");
                 return null;
+            }
+            if (enable)
+                _enabledModsLoadOrder.Add(modId);
+            else
+                _enabledModsLoadOrder.Remove(modId);
 
-            _cataloguedMods[modId].Enabled = enable;
-            _enabledModsLoadOrder.Add(modId);
             PersistEnabledModsLoadOrderToFile();
             
             var compendiumLoader = new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
             var existingCompendium = Watchman.Get<Compendium>();
             compendiumLoader.PopulateCompendium(existingCompendium, Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
             var modToAlter= _cataloguedMods[modId];
-
-       
+            modToAlter.Enabled= enable; //this should only be relevant now we're about to return it. It's already been added to the enabled mod load order list
 
             return modToAlter;
         }
@@ -403,6 +406,7 @@ namespace SecretHistories.Constants.Modding
 
         private void PersistEnabledModsLoadOrderToFile()
         {
+            _enabledModsLoadOrder = _enabledModsLoadOrder.Distinct().ToList(); //clean dupes if any have snuck in
             File.WriteAllText(
                 ModEnabledListPath, 
                 string.Join("\n", _enabledModsLoadOrder.ToArray()));
@@ -538,6 +542,9 @@ namespace SecretHistories.Constants.Modding
                 NoonUtility.LogWarning($"Trying to swap enabled mods at position {thisModIndex} and {swapWithModIndex}, but {swapWithModIndex} isn't valid");
                 return;
             }
+
+
+            
 
             (_enabledModsLoadOrder[thisModIndex], _enabledModsLoadOrder[swapWithModIndex]) = (_enabledModsLoadOrder[swapWithModIndex], _enabledModsLoadOrder[thisModIndex]);
             PersistEnabledModsLoadOrderToFile();

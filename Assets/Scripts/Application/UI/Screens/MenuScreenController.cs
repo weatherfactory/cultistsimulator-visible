@@ -428,7 +428,7 @@ public class MenuScreenController : LocalNexus {
             Destroy(modEntry.gameObject);
 
         var modManager = Watchman.Get<ModManager>();
-        var modsInOrder = modManager.GetEnabledMods().ToList();
+        var modsInOrder = modManager.GetEnabledModsInLoadOrder().ToList();
         var disabledMods = modManager.GetDisabledMods();
         
         modsInOrder.AddRange(disabledMods); //they need to go after the enabled mods, though we don't care about the order after that

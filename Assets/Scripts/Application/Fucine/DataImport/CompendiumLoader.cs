@@ -150,7 +150,7 @@ public class CompendiumLoader
         var modManager = Watchman.Get<ModManager>();
 
         modManager.CatalogueMods();
-        foreach (var mod in modManager.GetEnabledMods())
+        foreach (var mod in modManager.GetEnabledModsInLoadOrder())
         {
             var modContentLoader = new DataFileLoader(mod.ContentFolder);
             modContentLoader.LoadFilesFromAssignedFolder(_log);
