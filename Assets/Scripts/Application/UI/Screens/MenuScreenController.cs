@@ -60,13 +60,9 @@ public class MenuScreenController : LocalNexus {
     [Header("DLC & Mods")]
     public Transform legacyStartEntries;
     public MenuLegacyStartEntry LegacyStartEntryPrefab;
-    public GameObject modEntryPrefab;
     public TextMeshProUGUI steamWorkshopDownloadLink;
-    public TextMeshProUGUI modEmptyMessage;
-    public Transform modEntries;
 
     [Header("Localisation")]
-    //  public Button russianLanguageButton;
     public Transform LanguagesAvailable;
     public GameObject languageChoicePrefab;
 
@@ -76,8 +72,9 @@ public class MenuScreenController : LocalNexus {
     VersionNumber currentVersion;
     CanvasGroupFader currentOverlay;
 
-    
 
+    [SerializeField]
+    public ModsDisplayPanel modsDisplayPanel;
 
     private static readonly StartableLegacySpec[] DlcEntrySpecs =
     {
@@ -162,7 +159,7 @@ public class MenuScreenController : LocalNexus {
         var store = Watchman.Get<MetaInfo>().Storefront;
 
         BuildLegacyStartsPanel(store);
-        BuildModsPanel(store);
+        modsDisplayPanel.Initialise(store);
         BuildLanguagesAvailablePanel();
 
         new Watchman().Register(notifier); //we register a different notifier in the later tabletop scene
@@ -424,28 +421,6 @@ public class MenuScreenController : LocalNexus {
     }
     
 
-    private void BuildModsPanel(Storefront store)
-    {
-        // Clear the list and repopulate with one entry per loaded mod
-        foreach (Transform modEntry in modEntries)
-            Destroy(modEntry.gameObject);
-
-        var modManager = Watchman.Get<ModManager>();
-        var modsInOrder = modManager.GetEnabledModsInLoadOrder().ToList();
-        var disabledMods = modManager.GetDisabledMods();
-        
-        modsInOrder.AddRange(disabledMods); //they need to go after the enabled mods, though we don't care about the order after that
-
-        foreach (var mod in modsInOrder)
-        {
-            var modEntry = Instantiate(modEntryPrefab).GetComponent<ModEntry>();
-            modEntry.transform.SetParent(modEntries, false);
-            modEntry.Initialise(mod,store);
-        }
-
-        //display 'no mods' if no mods are available to enable
-        modEmptyMessage.enabled = !Watchman.Get<ModManager>().GetCataloguedMods().Any();
-    }
 
     private void BuildLanguagesAvailablePanel()
     {

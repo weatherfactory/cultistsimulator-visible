@@ -11,6 +11,7 @@ using SecretHistories.Services;
 using SecretHistories.Enums;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace SecretHistories.Constants.Modding
@@ -19,6 +20,9 @@ namespace SecretHistories.Constants.Modding
 
     public class ModEntry : MonoBehaviour
     {
+        public UnityEvent ModEnabled;
+        public UnityEvent ModDisabled;
+        public UnityEvent ModOrderChanged;
         public TextMeshProUGUI title;
         public TextMeshProUGUI description;
 
@@ -59,11 +63,8 @@ namespace SecretHistories.Constants.Modding
                 PreviewImage.overrideSprite = _mod.PreviewImage;
 
             UpdateEnablementDisplay();
+            
 
-            uploadButton.onClick.AddListener(UploadModToStorefront);
-            activationToggleButton.onClick.AddListener(ToggleActivation);
-            higherPriorityButton.onClick.AddListener(IncreaseModPriority);
-            lowerPriorityButton.onClick.AddListener(DecreaseModPriority);
             var concursum = Watchman.Get<Concursum>();
 
             concursum.ModOperationEvent.AddListener(ModOperationEvent);
@@ -92,14 +93,7 @@ namespace SecretHistories.Constants.Modding
              
         }
 
-        private void TriggerRestartWarning()
-        {
-            var modsEntriesObj = gameObject.transform.parent;
-            var modDisplayPanel = modsEntriesObj.transform.parent.GetComponent<ModsDisplayPanel>();
-            if (modDisplayPanel != null)
-                modDisplayPanel.restartAfterModChangeWarning.gameObject.SetActive(true);
-            //yeah I did this. It's 6pm on a Friday evening. At least I had the grace to put it in its own method. Sorry, future AK.
-        }
+
 
         private void UpdateEnablementDisplay()
         {
@@ -128,7 +122,7 @@ namespace SecretHistories.Constants.Modding
             {
                 _mod=modManager.SetModEnableStateAndReloadContent(_mod.Id, !_mod.Enabled); //the mod should come back from here, reloaded and refreshed, with its enabled/disabled flag set appropriately.
                 UpdateEnablementDisplay();
-                TriggerRestartWarning();
+                ModEnabled.Invoke();
             }
 
             //look for the first disabled mod in entries that is not this one.
@@ -162,18 +156,9 @@ namespace SecretHistories.Constants.Modding
             if (thisModIndex >0)
             {
                 int swapWithModIndex = thisModIndex - 1;
-
                 modManager.SwapModsInLoadOrderAndPersistToFile(thisModIndex, swapWithModIndex);
-
-                var currentSiblingIndex = gameObject.transform.GetSiblingIndex();
-                if (currentSiblingIndex <= 0)
-                    NoonUtility.LogWarning($"Trying to increase loading priority for mod {_mod.Id}, but its siblingindex is already {currentSiblingIndex}");
-                else
-                    gameObject.transform.SetSiblingIndex(currentSiblingIndex - 1);
-
-                TriggerRestartWarning();
             }
-      
+            ModOrderChanged.Invoke();
 
         }
 
@@ -189,14 +174,8 @@ namespace SecretHistories.Constants.Modding
                 int swapWithModIndex = thisModIndex + 1;
 
                 modManager.SwapModsInLoadOrderAndPersistToFile(thisModIndex, swapWithModIndex);
-
-                var currentSiblingIndex = gameObject.transform.GetSiblingIndex();
-                if (currentSiblingIndex+1 >=gameObject.transform.parent.childCount)
-                    NoonUtility.LogWarning($"Trying to decrease loading priority for mod {_mod.Id}, but its siblingindex is already {currentSiblingIndex} and the parent childcount is{gameObject.transform.parent.childCount}");
-                else
-                    gameObject.transform.SetSiblingIndex(currentSiblingIndex + 1);
-
-                TriggerRestartWarning();
+                
+               ModOrderChanged.Invoke();
             }
 
         }
