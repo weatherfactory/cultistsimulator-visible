@@ -1,9 +1,9 @@
 ﻿{
 	"elements": [
 		{    
-			"id": "versionnews.2021.11.b.3",
-			"label": "2021.11.c.a BETA",
-			"description": "This is a massive overhaul of codebase, so I can use it for other projects without losing my mind. Please let us know about any remaining bugs",
+			"id": "versionnews.2021.12.a.2",
+			"label": "2021.12.a.2 RELEASE CANDIDATE",
+			"description": "This is a massive overhaul of the codebase, so I can use it for other projects without losing my mind. It comes with some UI and modding improvements.",
 			"icon": "articleheartb"
 		},
 		
@@ -13,18 +13,9 @@
 			"description": "Newly spawned verbs will now try to go to a bigger brother of the card dropzone, in order to make board org easier. (If you have an existing beta save, the dropzone will only show up in your next game.)",
 			"icon": "city.valletta"
 		},
-		
-						{    
-			"id": "versionnews.updatecontent",
-			"label": "Update Content",
-			"description": "Restored this much beloved button to the debug menu.",
-			"icon": "clovette_a"
-		},
-		
-		
-					{
+			{
 			"id": "versionnews.newsaveformat",
-			"label": "SAVE FORMAT CONVERSION",
+			"label": "More Stable Save Format",
 			"description": "We've moved to a new save format. If you have an old-style save.txt but not new style save.json, the game will silently convert old-style save.txt to new-style save.json at startup. It'll rename and keep the old save.txt. If you want to revert to the main branch, you can rename it back to save.txt after you've changed back in Steam/GOG.",
 			"icon": "ascensionchangec"
 		},
@@ -33,20 +24,20 @@
 					{
 			"id": "versionnews.assembly.loading",
 			"label": "Assembly Loading for Mods",
-			"description": "Check the MODDING_README.txt in //streamingassets. If you don't know what any of this means, stay clear :) Mod dlls should now be named [modname].dll - 'main.dll' is still supported for now.",
+			"description": "Check the MODDING_README.txt in //streamingassets. If you don't know what any of this means, stay clear :)",
 			"icon": "ritetoolconsumeinfluence"
+		},
+							{
+			"id": "versionnews.mod.order",
+			"label": "Loading Order for Mods",
+			"description": "You wanted it! You got it!",
+			"icon": "locationbookdealer"
 		},
 
 						{
 			"id": "versionnews.minor",
 			"label": "Minor Changes",
-			"description": " - Legacy names for localised versions no longer show as tofu\n
-			- space bar now unpauses a loaded/fresh game\n
-			- previous character history now comes through again\n
-			- END debug function can now activate a specified ending\n
-- autocomplete in debug shows whether element/recipe/ending
-- GOG achievements fixed
-- Finally phased out bird/worm slider",
+			"description": "- Mod images now work in OSX and Linux\n- GOG achievements fixed\n- Finally phased out bird/worm slider\n- UI tweaks\n- many minor bug fixes",
 			"icon": "apostleforge.pillar2"
 		}
 		

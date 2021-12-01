@@ -34868,6 +34868,7 @@ GameObject:
   - component: {fileID: 906094148}
   - component: {fileID: 906094147}
   - component: {fileID: 906094146}
+  - component: {fileID: 906094149}
   m_Layer: 5
   m_Name: CardsExhibit
   m_TagString: Untagged
@@ -34948,6 +34949,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldPosition: {x: 0, y: 0, z: 0}
   VisibleCharacteristics: []
+--- !u!114 &906094149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906094144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c94d18b4ba8f049adbd315cc4873af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &908584159
 GameObject:
   m_ObjectHideFlags: 0

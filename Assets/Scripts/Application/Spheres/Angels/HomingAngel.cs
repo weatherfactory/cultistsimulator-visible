@@ -42,7 +42,7 @@ namespace SecretHistories.Spheres.Angels
 
         public bool MinisterToDepartingToken(Token token, Context context)
         {
-            return false; //if it's been purposedully removed, it's not our business.
+            return false; //if it's been purposefully removed, it's not our business.
         }
 
         public void SetOriginToken(Token originToken)
