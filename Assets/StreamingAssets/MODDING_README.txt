@@ -147,10 +147,9 @@ You can compile a .dll and upload it as part of a mod. Anything up to .NET 4.x s
 A dll for a mod...
 
 - must go in /[modfolder]/dll
-
 - must have a dll with same name as the mod (absent spaces and special characters) - or must be called main.dll (but this is deprecated and will eventually be removed)
 - must contain a class with the same name as the mod (absent spaces and special characters)
-- that class must have a public static Initialise() function.
+- that class must have a public static method with one of these two signatures: Initialise(ISecretHistoriesMod mod) or Initialise()
 
 That's your entry point. From then on you can do anything you like, including loading other code.
 
@@ -160,4 +159,4 @@ DLLs are loaded *when the main app initialises* - before JSON content is loaded.
 
 ---------------
 
-- AK 26/11/2021
+- AK 01/12/2021

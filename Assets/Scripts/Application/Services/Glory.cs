@@ -79,9 +79,7 @@ namespace SecretHistories.Services
             LogSystemSettings();
             //Glory.Initialise needs to be run before anything else... or oyu won't like what happens next.
             Initialise();
-
-
-
+            
         }
 
         private void LogSystemSettings()
@@ -108,7 +106,6 @@ namespace SecretHistories.Services
 
                 var watchman = new Watchman();
 
-          
                GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), GameId);
                 //load config: this gives us a lot of info that we'll need early
                 var config = new Config();

@@ -24,7 +24,7 @@ namespace SecretHistories.Constants.Modding
         private const string MOD_DLL_FOLDER = "dll";
         private const string MOD_DLL_SUFFIX = ".dll";
         private const string MOD_DLL_NAME_DEPRECATED= "main";
-        private const string MOD_INITIALISER_METHOD_NAME = "Initialise";
+
 
         private bool AssemblyLoadingForModsAttempted = false;
 
@@ -48,18 +48,23 @@ namespace SecretHistories.Constants.Modding
 
             AssemblyLoadingForModsAttempted = true;
 
-            foreach (Mod mod in Watchman.Get<ModManager>().GetEnabledModsInLoadOrder())
+            var enabledModsInLoadOrder = Watchman.Get<ModManager>().GetEnabledModsInLoadOrder();
+
+            foreach (var mod in enabledModsInLoadOrder)
                 TryLoadDllsForMod(mod);
+
+            foreach(var mod in enabledModsInLoadOrder.Where(m=>m.ValidAssemblyIsLoaded()))
+                mod.TryInitialiseAssembly();
+            
         }
 
         private void TryLoadDllsForMod(Mod mod)
         {
-            string modNameWithoutSpecialCharacters = mod.GetNameAlphanumericsOnly();
-            string preferredDllPath = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER, modNameWithoutSpecialCharacters, MOD_DLL_SUFFIX);
+           
+            string preferredDllPath = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER, mod.GetNameAlphanumericsOnly(), MOD_DLL_SUFFIX);
             string deprecatedDllPath = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER, MOD_DLL_NAME_DEPRECATED,MOD_DLL_SUFFIX);
 
-
-
+            
             string dllFoundPath;
             if (File.Exists(preferredDllPath)) 
                 dllFoundPath = preferredDllPath;
@@ -68,54 +73,7 @@ namespace SecretHistories.Constants.Modding
             else
              return;
 
-            Assembly modAssembly;
-
-            try
-            {
-                modAssembly = Assembly.LoadFrom(dllFoundPath);
-            }
-            catch (Exception cantLoadException)
-            {
-                NoonUtility.LogWarning($"Can't load a valid assembly at {dllFoundPath}: {cantLoadException.Message}");
-                return;
-            }
-
-            NoonUtility.Log($"Loaded {dllFoundPath} for {mod.Name}");
-
-            Type modInitialiserType;
-            string modInitialiserClassName=string.Empty;
-
-            try
-            {
-                modInitialiserClassName = modNameWithoutSpecialCharacters;
-                modInitialiserType = modAssembly.GetType(modInitialiserClassName);
-            }
-            catch (Exception e)
-            {
-                NoonUtility.LogWarning($"Can't find a class named {modInitialiserClassName} in dll at {dllFoundPath}: {e.Message}");
-                return;
-            }
-
-
-            if(modInitialiserType==null)
-                NoonUtility.LogWarning($"Tried to get a class type named {modInitialiserClassName} in dll at {dllFoundPath}, but it's coming back as null");
-
-
-            MethodInfo initialiserMethod;
-
-            try
-            {
-                initialiserMethod = modInitialiserType.GetMethod(MOD_INITIALISER_METHOD_NAME);
-                initialiserMethod.Invoke(null, null);
-            }
-            catch (Exception e)
-            {
-                NoonUtility.LogWarning($"Tried to invoke {MOD_INITIALISER_METHOD_NAME}() on a type named {modInitialiserClassName} in dll at {dllFoundPath}, but failed: {e.Message}");
-                return;
-            }
-
-            NoonUtility.Log($"Successfully invoked {MOD_INITIALISER_METHOD_NAME}()on a type named {modInitialiserClassName} in dll at {dllFoundPath}");
-
+            mod.TryLoadAssembly(dllFoundPath);
         }
 
         public ModManager()
@@ -486,7 +444,7 @@ namespace SecretHistories.Constants.Modding
         private bool TryLoadAllImages(Mod mod, string modPath)
         {
 
-            var imagesFolderForMod = Path.Combine(modPath, "images\\");
+            var imagesFolderForMod = Path.Combine(modPath, "images");
             // Search all subdirectories for more image files
             
             if (Directory.Exists(imagesFolderForMod))

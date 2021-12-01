@@ -4,7 +4,10 @@ using OrbCreationExtensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -17,8 +20,36 @@ namespace SecretHistories.Constants.Modding
 
     public enum ModInstallType {Unknown=0,Local=1,SteamWorkshop=2}
 
-    public class Mod
+
+    public interface ISecretHistoriesMod
     {
+        string Id { get; set; }
+        string Name { get; set; }
+        string Author { get; set; }
+        Version Version { get; set; }
+        string Description { get; set; }
+        Sprite PreviewImage { get; set; }
+        string PreviewImageFilePath { get; }
+        string DescriptionLong { get; set; }
+        List<Dependency> Dependencies { get; set; }
+        Dictionary<string, List<Hashtable>> Contents { get; set; }
+        Dictionary<string, Sprite> Images { get; set; }
+        bool Enabled { get; set; }
+        string ModRootFolder { get; set; }
+        string PublishedFileIdPath { get; }
+        string ContentFolder { get; set; }
+        string LocFolder { get; set; }
+        string CataloguingLog { get; set; }
+        bool IsValid { get; }
+        ModInstallType ModInstallType { get; set; }
+        Assembly LoadedAssembly { get; }
+        string GetNameAlphanumericsOnly();
+    }
+
+    public class Mod : ISecretHistoriesMod
+    {
+        private const string MOD_INITIALISER_METHOD_NAME = "Initialise";
+
         public string Id { get; set; }
 
         public string Name { get; set; }
@@ -58,6 +89,7 @@ namespace SecretHistories.Constants.Modding
 
         public string CataloguingLog { get; set; }
 
+        
 
         private const string DependencyPattern = @"^\s*(\w+)(?:\s*(<=|<|>=|>|==)\s*([\d.]+))?\s*$";
 
@@ -66,6 +98,7 @@ namespace SecretHistories.Constants.Modding
 
         public ModInstallType ModInstallType { get; set; }
 
+        public Assembly LoadedAssembly { get; private set; }
 
         public Mod(
             string id, string modRootFolder)
@@ -243,6 +276,69 @@ namespace SecretHistories.Constants.Modding
             return sprite;
         }
 
+        public bool TryLoadAssembly(string fromPath)
+        {
+            try
+            {
+               LoadedAssembly = Assembly.LoadFrom(fromPath);
+            }
+            catch (Exception cantLoadException)
+            {
+                NoonUtility.LogWarning($"Can't load a valid assembly at {fromPath}: {cantLoadException.Message}");
+                return false;
+            }
+            
+            NoonUtility.Log($"Loaded {fromPath} for {Name}");
+
+            return true;
+        }
+
+        public bool ValidAssemblyIsLoaded()
+        {
+            return LoadedAssembly != null;
+        }
+
+
+        public void TryInitialiseAssembly()
+        {
+            Type modInitialiserType;
+            string modInitialiserClassName = string.Empty;
+
+            try
+            {
+                modInitialiserClassName = GetNameAlphanumericsOnly(); ;
+                modInitialiserType = LoadedAssembly.GetType(modInitialiserClassName);
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogWarning($"Can't find a class named {modInitialiserClassName} in dll for mod{Name}: {e.Message}");
+                return;
+            }
+
+
+            if (modInitialiserType == null)
+                NoonUtility.LogWarning($"Tried to get a class type named {modInitialiserClassName} in dll for mod{Name}, but it's coming back as null");
+
+
+            MethodInfo initialiserMethod;
+
+            try
+            {
+                initialiserMethod = modInitialiserType.GetMethod(MOD_INITIALISER_METHOD_NAME);
+                if(initialiserMethod.GetParameters().Length ==1)
+                    initialiserMethod.Invoke(null, new object[] { this});
+                else
+                    initialiserMethod.Invoke(null, null);
+                
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogWarning($"Tried to invoke {MOD_INITIALISER_METHOD_NAME}() on a type named {modInitialiserClassName} in dll for mod{Name}, but failed: {e.Message}");
+                return;
+            }
+
+            NoonUtility.Log($"Successfully invoked {MOD_INITIALISER_METHOD_NAME}()on a type named {modInitialiserClassName} in dll for mod{Name},");
+        }
 
         public string GetNameAlphanumericsOnly()
         {
