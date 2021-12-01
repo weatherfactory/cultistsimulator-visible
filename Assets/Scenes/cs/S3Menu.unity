@@ -2785,14 +2785,11 @@ MonoBehaviour:
   legacyStartEntries: {fileID: 184592374}
   LegacyStartEntryPrefab: {fileID: 6025451815768673565, guid: 342bfed3f9acc7b4cac5fceb688d53b7,
     type: 3}
-  modEntryPrefab: {fileID: 3818379006724680686, guid: 07a0bf5a9456d21469984364e64be14b,
-    type: 3}
   steamWorkshopDownloadLink: {fileID: 1451627114}
-  modEmptyMessage: {fileID: 1073134174}
-  modEntries: {fileID: 556254899}
   LanguagesAvailable: {fileID: 2060971263}
   languageChoicePrefab: {fileID: 8529735501250895868, guid: 2b97b90e6c9348649a204656cc793ad0,
     type: 3}
+  modsDisplayPanel: {fileID: 1827485036}
 --- !u!4 &182394259
 Transform:
   m_ObjectHideFlags: 0
@@ -63573,7 +63570,7 @@ GameObject:
   - component: {fileID: 1827485035}
   - component: {fileID: 1827485036}
   m_Layer: 5
-  m_Name: ModsContainer
+  m_Name: ModsDisplayPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63641,7 +63638,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efc44f8a3b61f64b8eccd6870be2458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modEntryPrefab: {fileID: 3818379006724680686, guid: 07a0bf5a9456d21469984364e64be14b,
+    type: 3}
+  modEntries: {fileID: 556254899}
   restartAfterModChangeWarning: {fileID: 1103382370}
+  modEmptyMessage: {fileID: 1073134174}
 --- !u!1 &1880170874
 GameObject:
   m_ObjectHideFlags: 0
