@@ -43,6 +43,7 @@ namespace SecretHistories.Services
         public Concursum concursum;
         public SecretHistory SecretHistory;
 
+        [SerializeField] private StorefrontServicesProvider storefrontServicesProvider;
         [SerializeField] private ScreenResolutionAdapter screenResolutionAdapter;
         [SerializeField] private GraphicsSettingsAdapter graphicsSettingsAdapter;
         [SerializeField] private WindowSettingsAdapter windowSettingsAdapter;
@@ -133,7 +134,7 @@ namespace SecretHistories.Services
                 watchman.Register<IDice>(new Dice());
 
                 //Set up storefronts: integration with GOG and Steam, so this should come early.
-                var storefrontServicesProvider = new StorefrontServicesProvider();
+
                 if(metaInfo.Storefront==Storefront.Steam)
                     storefrontServicesProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
                 if (metaInfo.Storefront == Storefront.Gog)

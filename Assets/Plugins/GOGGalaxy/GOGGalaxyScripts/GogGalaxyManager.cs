@@ -5,27 +5,8 @@ using System.IO;
 // The GogGalaxyManager provides a base implementation of GOGGalaxy C# wrapper on which you can build upon.
 // It handles the basics of starting up and shutting down the GOG Galaxy for use.
 //
-#if UNITY_STANDALONE_LINUX
-public class GogGalaxyManager : MonoBehaviour
-    {
-  //  public string clientID = "foo";
-  //  public string clientSecret = "bar";
-//used to be that adding the fields here too stops the odd build error we get otherwise when we try to build just Linux after the editor knows about the fields. That doesn't seem to be the case any more.
-       private void Awake()
-    {
-    Debug.Log("Linux build: not initialising GOG Galaxy, cos there's no Linux support for it yet.");
-    }
-#pragma warning disable 414
-        private bool isInitialized = false;
-#pragma warning restore 414
 
-
-    public static bool IsInitialized()
-       {
-           return false;
-       }
-}
-#elif UNITY_WEBGL
+#if UNITY_WEBGL
 public class GogGalaxyManager : MonoBehaviour
 {
     private void Awake()
@@ -67,40 +48,36 @@ public class GogGalaxyManager : MonoBehaviour
 
     private void Awake()
     {
-        //we're integrating with GOG again
-        //if (Application.platform == RuntimePlatform.OSXPlayer)
-        //{
-        //    Debug.Log("Not currently integrating with Galaxy on OSX");
-        //    return;
-        //}
+   //     TryInitialise();
+    }
+
+    public void TryInitialise()
+    {
         if (singleton != null)
         {
             Destroy(gameObject);
             return;
         }
+
         singleton = this;
 
-        // We want our GogGalaxyManager Instance to persist across scenes.
-//..but it lives in the shared master scene now anyway
-        //DontDestroyOnLoad(gameObject);
 
-        if(!isInitialized)
-        { 
-        try
+        if (!isInitialized)
         {
-            InitParams initParams = new InitParams(clientID, clientSecret);
+            try
+            {
+                InitParams initParams = new InitParams(clientID, clientSecret);
 
-            GalaxyInstance.Init(initParams);
-        }
-        catch (GalaxyInstance.Error error)
-        {
-            Debug.LogWarning("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
-            return;
-        }
+                GalaxyInstance.Init(initParams);
+            }
+            catch (GalaxyInstance.Error error)
+            {
+                Debug.LogWarning("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
+                return;
+            }
+            //Debug.Log("Galaxy SDK was initialized", this);
 
-        //Debug.Log("Galaxy SDK was initialized", this);
-
-        isInitialized = true;
+            isInitialized = true;
         }
     }
 

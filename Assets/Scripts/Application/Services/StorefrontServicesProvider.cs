@@ -11,36 +11,52 @@ using UnityEngine;
 
 namespace SecretHistories.Services
 {
-   public class StorefrontServicesProvider
+   public class StorefrontServicesProvider: MonoBehaviour
    {
+       [SerializeField]
+       private SteamManager _steamManager;
+       [SerializeField]
+       private GogGalaxyManager _gogGalaxyManager;
+        
        private IStoreFrontClientProvider _steamClientProvider;
 #pragma warning disable 649
        private IStoreFrontClientProvider _gogClientProvider; //it is assigned, it's just in a compile block below
 #pragma warning restore 649
         public void InitialiseForStorefrontClientType(StoreClient clientType)
         {
-            if (clientType == StoreClient.Steam && SteamManager.Initialized)
+            if (clientType == StoreClient.Steam)
             {
+                _steamManager.TryInitialise();
+                if (!SteamManager.Initialized)
+                {
+                    NoonUtility.Log("Trying to initialise Steam client provider, but SteamManager isn't initialised");
+                    return;
+
+                }
+
                 NoonUtility.Log("Initialising Steam client provider");
                 _steamClientProvider =new SteamworksStorefrontClientProvider();
 
             }
 
-#if UNITY_STANDALONE_LINUX
-return;
-#elif UNITY_WEBGL
-                return;
-#else
-            //  if (Application.platform == RuntimePlatform.OSXPlayer)
-            //    return;
+
             //we're integrating with GOG again
-            if (clientType == StoreClient.Gog && GogGalaxyManager.IsInitialized())
+            if (clientType == StoreClient.Gog )
             {
+                _gogGalaxyManager.TryInitialise();
+
+                if (!GogGalaxyManager.IsInitialized())
+                {
+                    NoonUtility.LogWarning("Trying to initialise GOG client provider, but GogGalaxyManager hasn't been successfully initialised");
+                    return;
+
+                }
+
                 NoonUtility.Log("Initialising GOG client provider");
                 _gogClientProvider = new GOGStorefrontProvider();
                 return;
             }
-#endif
+
         }
 
         public bool IsAvailable(StoreClient clientType)

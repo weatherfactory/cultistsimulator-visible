@@ -286,8 +286,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 179919868}
+  - component: {fileID: 179919869}
   m_Layer: 0
-  m_Name: '- StorefrontIntegrations'
+  m_Name: StorefrontServicesProvider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,6 +311,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179919869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179919867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8095da903d004409e58b643975a4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _steamManager: {fileID: 1267017969}
+  _gogGalaxyManager: {fileID: 1025463376}
 --- !u!1001 &226875032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1138,6 +1153,7 @@ MonoBehaviour:
   stageHand: {fileID: 1768733093}
   concursum: {fileID: 1256507083}
   SecretHistory: {fileID: 1477282972}
+  storefrontServicesProvider: {fileID: 179919869}
   screenResolutionAdapter: {fileID: 1955269523}
   graphicsSettingsAdapter: {fileID: 1393924172}
   windowSettingsAdapter: {fileID: 1966314239}
@@ -1555,6 +1571,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1025463376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114037078656845908, guid: 0c1f6efe3a66806439de6fed8d19e94d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1228442597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4dd81ddfcc21604482ff07d2560e734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1140748769
 GameObject:
   m_ObjectHideFlags: 0
