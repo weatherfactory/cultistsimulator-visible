@@ -20,7 +20,6 @@ namespace SecretHistories.Constants
     {
         void SetAchievement(string achievementId, bool setStatus);
         Storefront Storefront { get; }
-        void DoUpdate();
     }
 
 

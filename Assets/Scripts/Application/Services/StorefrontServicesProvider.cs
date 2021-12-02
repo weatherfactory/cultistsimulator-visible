@@ -40,14 +40,14 @@ namespace SecretHistories.Services
             }
 
 
-            //we're integrating with GOG again
+            
             if (clientType == StoreClient.Gog )
             {
                 _gogGalaxyManager.TryInitialise();
 
                 if (!GogGalaxyManager.IsInitialized())
                 {
-                    NoonUtility.LogWarning("Trying to initialise GOG client provider, but GogGalaxyManager hasn't been successfully initialised");
+                    NoonUtility.LogWarning("Trying to initialise GOG client provider, but GogGalaxyManager hasn't been successfully initialised. This will always happen on Linux.");
                     return;
 
                 }
@@ -60,12 +60,10 @@ namespace SecretHistories.Services
         }
         public void DoUpdate()
         {
+            if(!GogGalaxyManager.IsInitialized())
+                _gogGalaxyManager.DoUpdate();
             //called from Update() method in active scene
 
-            if (_steamClientProvider != null)
-                _steamClientProvider.DoUpdate();
-            if (_gogClientProvider != null)
-                _gogClientProvider.DoUpdate();
         }
 
         public bool IsAvailable(StoreClient clientType)

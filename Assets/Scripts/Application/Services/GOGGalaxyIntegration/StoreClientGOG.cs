@@ -1,11 +1,40 @@
 ﻿
 
+#if UNITY_STANDALONE_LINUX
+using System;
+using SecretHistories.Enums;
+
+namespace SecretHistories.Constants
+{
+    public class GOGStorefrontProvider : IStoreFrontClientProvider
+    {
+        public GOGStorefrontProvider()
+        {
+NoonUtility.Log("Dummy storefront provider for GOG on Linux initiated.");
+        }
+
+        public void SetAchievement(string achievementId, bool setStatus)
+        {
+            NoonUtility.Log($"Can't set {achievementId} {setStatus} on Linux/GOG, sorry: no integration yet.");
+
+
+        }
+
+        public Storefront Storefront
+        {
+            get { return Storefront.Gog; }
+        }
+
+    }
+
+
+}
+#else
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Galaxy.Api;
-
 using SecretHistories.Enums;
 
 namespace SecretHistories.Constants
@@ -57,16 +86,12 @@ namespace SecretHistories.Constants
             get { return Storefront.Gog; }
         }
 
-        public void DoUpdate()
-        {
-            GalaxyInstance.ProcessData();
-        }
     }
 
-    
 
 
-        public class GogAuthListener : IAuthListener
+
+public class GogAuthListener : IAuthListener
     {
         public override void OnAuthSuccess()
         {
@@ -182,3 +207,4 @@ namespace SecretHistories.Constants
 
         
     }
+#endif
