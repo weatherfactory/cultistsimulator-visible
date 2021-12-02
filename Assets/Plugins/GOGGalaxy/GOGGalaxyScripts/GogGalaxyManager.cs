@@ -108,7 +108,8 @@ public class GogGalaxyManager : MonoBehaviour
         singleton = this;
 
         // We want our GogGalaxyManager Instance to persist across scenes.
-        DontDestroyOnLoad(gameObject);
+        //But this only works on root objects and it's in the master scene anyway.
+        //DontDestroyOnLoad(gameObject);
 
         // Make sure clientID and clientSecret are initialized
         Debug.Assert(clientID != default(string) || clientSecret != default(string), "ClientID and/or ClientSecret are not specified");

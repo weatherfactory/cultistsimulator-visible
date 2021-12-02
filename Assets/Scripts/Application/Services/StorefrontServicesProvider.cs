@@ -60,7 +60,7 @@ namespace SecretHistories.Services
         }
         public void DoUpdate()
         {
-            if(!GogGalaxyManager.IsInitialized())
+            if(GogGalaxyManager.IsInitialized())
                 _gogGalaxyManager.DoUpdate();
             //called from Update() method in active scene
 

@@ -43,9 +43,9 @@ namespace SecretHistories.Constants
     {
         public GOGStorefrontProvider()
         {
-            Galaxy.Api.IAuthListener authListener = new GogAuthListener();
+            IAuthListener authListener = new GogAuthListener();
 
-            Galaxy.Api.GalaxyInstance.ListenerRegistrar()
+            GalaxyInstance.ListenerRegistrar()
                 .Register(Galaxy.Api.GalaxyTypeAwareListenerAuth.GetListenerType(), authListener);
 
             try
@@ -53,6 +53,7 @@ namespace SecretHistories.Constants
 
                 if(!GalaxyInstance.User().SignedIn())
                     GalaxyInstance.User().SignInGalaxy();
+                
             }
             catch (GalaxyInstance.InvalidStateError e)
             {
@@ -71,10 +72,10 @@ namespace SecretHistories.Constants
             }
                 
 
-            Galaxy.Api.IUserStatsAndAchievementsRetrieveListener statsRetrieveListener = new AchievementRequest(achievementId, setStatus, gogStats);
-            Galaxy.Api.IStatsAndAchievementsStoreListener statsStoreListener = new GogStatsAndAchievementsStoreListener();
-            Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerUserStatsAndAchievementsRetrieve.GetListenerType(), statsRetrieveListener);
-            Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerStatsAndAchievementsStore.GetListenerType(), statsStoreListener);
+            IUserStatsAndAchievementsRetrieveListener statsRetrieveListener = new AchievementRequest(achievementId, setStatus, gogStats);
+            IStatsAndAchievementsStoreListener statsStoreListener = new GogStatsAndAchievementsStoreListener();
+            GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerUserStatsAndAchievementsRetrieve.GetListenerType(), statsRetrieveListener);
+            GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerStatsAndAchievementsStore.GetListenerType(), statsStoreListener);
             NoonUtility.Log($"Trying to set GOG achievement {achievementId} as {setStatus}",1,VerbosityLevel.Essential);
 
             gogStats.RequestUserStatsAndAchievements(); //when the request completes, the callback will fire Execute on the AchievementRequest we attached above
@@ -95,18 +96,18 @@ public class GogAuthListener : IAuthListener
     {
         public override void OnAuthSuccess()
         {
-            NoonUtility.Log("GOG Galaxy logged on?" + GalaxyInstance.User().IsLoggedOn());
-            NoonUtility.Log("GOG Galaxy signed in? " + GalaxyInstance.User().SignedIn());
+            NoonUtility.Log("GOG Galaxy logged on?" + GalaxyInstance.User().IsLoggedOn(),0,VerbosityLevel.Essential);
+            NoonUtility.Log("GOG Galaxy signed in? " + GalaxyInstance.User().SignedIn(),0,VerbosityLevel.Essential);
         }
 
         public override void OnAuthFailure(FailureReason failureReason)
         {
-            NoonUtility.Log("GOG Galaxy auth failed:" + failureReason, 1);
+            NoonUtility.LogWarning("GOG Galaxy auth failed:" + failureReason);
         }
 
         public override void OnAuthLost()
         {
-            NoonUtility.Log("Authentication lost",10);
+            NoonUtility.LogWarning("GOG Authentication lost");
         }
     }
 

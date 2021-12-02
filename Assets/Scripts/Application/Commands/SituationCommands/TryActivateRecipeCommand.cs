@@ -13,6 +13,11 @@ namespace SecretHistories.Commands.SituationCommands
         private readonly List<StateEnum> _validForStates=new List<StateEnum>();
         private readonly bool _alwaysActivateRegardlessOfRequirements;
 
+        public TryActivateRecipeCommand()
+        {
+            //to keep json deserialisation more stable
+        }
+
         protected TryActivateRecipeCommand(string recipeId, List<StateEnum> validForStates, bool alwaysActivateRegardlessOfRequirements)
         {
             _recipeId = recipeId;
