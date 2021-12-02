@@ -22,8 +22,8 @@ namespace SecretHistories.Constants
             try
             {
 
-            if(!GalaxyInstance.User().SignedIn())
-                GalaxyInstance.User().SignInGalaxy();
+                if(!GalaxyInstance.User().SignedIn())
+                    GalaxyInstance.User().SignInGalaxy();
             }
             catch (GalaxyInstance.InvalidStateError e)
             {
