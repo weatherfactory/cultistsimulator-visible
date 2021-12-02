@@ -1,28 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using Galaxy.Api;
+
+
 //
 // The GogGalaxyManager provides a base implementation of GOGGalaxy C# wrapper on which you can build upon.
 // It handles the basics of starting up and shutting down the GOG Galaxy for use.
 //
-
-#if UNITY_WEBGL
-public class GogGalaxyManager : MonoBehaviour
-{
-    private void Awake()
-    {
-        Debug.Log("WebGL build: not initialising GOG Galaxy, cos there's no support for it.");
-    }
-}
-
-#else
-using Galaxy.Api;
-
 [DisallowMultipleComponent]
 public class GogGalaxyManager : MonoBehaviour
 {
-    private string clientID = "50757209545787544";
-    private string clientSecret = "72e691b01ad6060c8716bb4155b305c68048585aae07d1227eecc5a6c959161c";
+    public string clientID;
+    public string clientSecret;
 
     private static GogGalaxyManager singleton;
     public static GogGalaxyManager Instance
@@ -38,7 +28,7 @@ public class GogGalaxyManager : MonoBehaviour
             }
         }
     }
-  
+
     private bool isInitialized = false;
 
     public static bool IsInitialized()
@@ -48,7 +38,8 @@ public class GogGalaxyManager : MonoBehaviour
 
     private void Awake()
     {
-   //     TryInitialise();
+       // TryInitialise();
+
     }
 
     public void TryInitialise()
@@ -58,27 +49,29 @@ public class GogGalaxyManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         singleton = this;
 
+        // We want our GogGalaxyManager Instance to persist across scenes.
+        DontDestroyOnLoad(gameObject);
 
-        if (!isInitialized)
+        // Make sure clientID and clientSecret are initialized
+        Debug.Assert(clientID != default(string) || clientSecret != default(string), "ClientID and/or ClientSecret are not specified");
+
+        try
         {
-            try
-            {
-                InitParams initParams = new InitParams(clientID, clientSecret);
+            InitParams initParams = new InitParams(clientID, clientSecret);
 
-                GalaxyInstance.Init(initParams);
-            }
-            catch (GalaxyInstance.Error error)
-            {
-                Debug.LogWarning("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
-                return;
-            }
-            //Debug.Log("Galaxy SDK was initialized", this);
-
-            isInitialized = true;
+            GalaxyInstance.Init(initParams);
         }
+        catch (GalaxyInstance.Error error)
+        {
+            Debug.LogError("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
+            return;
+        }
+
+        Debug.Log("Galaxy SDK was initialized", this);
+
+        isInitialized = true;
     }
 
     private void OnDestroy()
@@ -100,7 +93,7 @@ public class GogGalaxyManager : MonoBehaviour
         GalaxyInstance.Shutdown(true);
     }
 
-    private void Update()
+    public void Update()
     {
         if (!isInitialized)
         {
@@ -110,4 +103,3 @@ public class GogGalaxyManager : MonoBehaviour
         GalaxyInstance.ProcessData();
     }
 }
-#endif

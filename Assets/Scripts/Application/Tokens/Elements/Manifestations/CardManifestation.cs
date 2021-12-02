@@ -531,7 +531,7 @@ namespace SecretHistories.Manifestations
         public void OnPointerEnter(PointerEventData eventData)
         {
 
-            var tabletopManager = Watchman.Get<TabletopManager>();
+            var tabletopManager = Watchman.Get<Meniscate>();
             if (tabletopManager != null
             ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
@@ -548,10 +548,10 @@ namespace SecretHistories.Manifestations
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            var ttm = Watchman.Get<TabletopManager>();
+            var ttm = Watchman.Get<Meniscate>();
             if (ttm != null)
             {
-                Watchman.Get<TabletopManager>().SetHighlightedElement(null);
+                Watchman.Get<Meniscate>().SetHighlightedElement(null);
             }
 
             ExecuteEvents.Execute<IPointerExitHandler>(transform.parent.gameObject, eventData,

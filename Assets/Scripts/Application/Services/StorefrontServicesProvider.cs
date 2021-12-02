@@ -58,6 +58,15 @@ namespace SecretHistories.Services
             }
 
         }
+        public void DoUpdate()
+        {
+            //called from Update() method in active scene
+
+            if (_steamClientProvider != null)
+                _steamClientProvider.DoUpdate();
+            if (_gogClientProvider != null)
+                _gogClientProvider.DoUpdate();
+        }
 
         public bool IsAvailable(StoreClient clientType)
         {
@@ -121,5 +130,6 @@ namespace SecretHistories.Services
         }
 
 #pragma warning restore 1998
-    }
+
+   }
 }

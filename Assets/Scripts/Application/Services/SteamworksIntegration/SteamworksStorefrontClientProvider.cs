@@ -61,6 +61,12 @@ namespace SecretHistories.Constants
             get { return Storefront.Steam; }
         }
 
+        public void DoUpdate()
+        {
+            //currently we don't need to do anything here, but this method allows us
+            //to accept update calls from another scene - e.g. for ProcessData() in GOG
+        }
+
         public void SetAchievement(string achievementId, bool setStatus)
         {
             if (string.IsNullOrEmpty(achievementId))

@@ -23,7 +23,7 @@ namespace SecretHistories.Constants
             {
 
             if(!GalaxyInstance.User().SignedIn())
-                GalaxyInstance.User().SignIn();
+                GalaxyInstance.User().SignInGalaxy();
             }
             catch (GalaxyInstance.InvalidStateError e)
             {
@@ -55,6 +55,11 @@ namespace SecretHistories.Constants
         public Storefront Storefront
         {
             get { return Storefront.Gog; }
+        }
+
+        public void DoUpdate()
+        {
+            GalaxyInstance.ProcessData();
         }
     }
 

@@ -800,7 +800,7 @@ namespace SecretHistories.Entities {
            IsOpen = true;
            var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Opening);
            OnChanged?.Invoke(changeArgs);
-           Watchman.Get<TabletopManager>().CloseAllSituationWindowsExcept(VerbId);
+           Watchman.Get<Meniscate>().CloseAllSituationWindowsExcept(VerbId);
     }
 
         public void Close()

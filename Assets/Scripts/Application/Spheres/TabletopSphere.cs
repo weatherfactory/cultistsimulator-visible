@@ -156,7 +156,7 @@ namespace SecretHistories.Spheres
             //Close all open windows if we're not dragging (multi tap stuff)
             // Situation windows get closed first, then details windows.
 
-            var tabletopManager = Watchman.Get<TabletopManager>();
+            var tabletopManager = Watchman.Get<Meniscate>();
             if (tabletopManager.IsSituationWindowOpen())
                 tabletopManager.CloseAllSituationWindowsExcept(null);
             else

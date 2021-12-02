@@ -99,6 +99,10 @@ namespace SecretHistories.Services
         [SerializeField] private SecretHistory secretHistory;
 #pragma warning restore 649
 
+        public void DoUpdate()
+        {
+            Watchman.Get<StorefrontServicesProvider>().DoUpdate();
+        }
 
         public void SetNewCulture(Culture culture)
         {
