@@ -930,7 +930,7 @@ namespace SecretHistories.UI {
         public void ShowReadyToInteract()
         {
             HideGhost();
-            _manifestation.Highlight(HighlightType.WillInteract, null);
+            _manifestation.Highlight(HighlightType.WillInteract, _payload);
         }
    
 
@@ -939,7 +939,7 @@ namespace SecretHistories.UI {
             if(CanInteractWithToken(incomingToken))
             {
                 incomingToken.ShowReadyToInteract();
-                _manifestation.Highlight(HighlightType.WillInteract, null);
+                _manifestation.Highlight(HighlightType.WillInteract, _payload);
                 return true;
             }
 
