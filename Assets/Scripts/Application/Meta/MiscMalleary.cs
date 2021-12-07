@@ -197,7 +197,7 @@ namespace Assets.Scripts.Application.Meta
             int beatsDone = 0;
             while(beatsDone<beatsToDo)
             {
-              Watchman.Get<Heart>().Beat(1f,1f);
+              Watchman.Get<Heart>().Beat(1f,0f);
               beatsDone++;
             }
             Watchman.Get<Heart>().Unmetapause();

@@ -109,8 +109,9 @@ namespace SecretHistories.Entities {
         /// is a fuzzy term that may change its meaning.
         /// </summary>
         [DontEncaust] public string Description { private set; get; }
+
+        [DontEncaust] public float IntervalForLastHeartbeat { private set; get; }
         
-        [DontEncaust] public float IntervalForLastHeartbeat => _timeshadow.LastInterval;
         [DontEncaust]
         public string UniquenessGroup
         {
@@ -600,7 +601,7 @@ namespace SecretHistories.Entities {
 
         private SituationState Continue(float seconds,float metaseconds)
         {
-            _timeshadow.SpendTime(seconds);
+            IntervalForLastHeartbeat = seconds;
             ExecuteCommandsFor(State.Identifier,this);
             State.Continue(this);
 
