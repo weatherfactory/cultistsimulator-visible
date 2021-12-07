@@ -352,7 +352,7 @@ namespace SecretHistories.UI {
 
 
             //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
-            _manifestation.Unhighlight(HighlightType.WillInteract);
+            _manifestation.Unhighlight(HighlightType.WillInteract, null);
 
             return true;
         }
@@ -367,7 +367,7 @@ namespace SecretHistories.UI {
 
 
             //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
-            _manifestation.Unhighlight(HighlightType.WillInteract);
+            _manifestation.Unhighlight(HighlightType.WillInteract, null);
 
             return true;
         }
@@ -694,7 +694,7 @@ namespace SecretHistories.UI {
                 Interaction = Interaction.OnReceivedADrop
             });
 
-            _manifestation.Unhighlight(HighlightType.All); //whatever's just happened, we don't want to keep predicting interactions
+            _manifestation.Unhighlight(HighlightType.All, null); //whatever's just happened, we don't want to keep predicting interactions
 
             if (Payload.CanInteractWith(incomingToken.Payload))
                 Payload.InteractWithIncoming(incomingToken);
@@ -844,18 +844,16 @@ namespace SecretHistories.UI {
                 Destroy(this.gameObject);
         }
 
-
-
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (!eventData.dragging)
-                _manifestation.Highlight(HighlightType.Hover);
+                _manifestation.Highlight(HighlightType.Hover, _payload);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             if (!eventData.dragging)
-                _manifestation.Unhighlight(HighlightType.Hover);
+                _manifestation.Unhighlight(HighlightType.Hover, _payload);
 
             NotifyInteracted(new TokenInteractionEventArgs
             {
@@ -865,8 +863,6 @@ namespace SecretHistories.UI {
                 PointerEventData = eventData,
                 Interaction = Interaction.OnPointerExited
             });
-
-
 
 
         }
@@ -934,7 +930,7 @@ namespace SecretHistories.UI {
         public void ShowReadyToInteract()
         {
             HideGhost();
-            _manifestation.Highlight(HighlightType.WillInteract);
+            _manifestation.Highlight(HighlightType.WillInteract, null);
         }
    
 
@@ -943,7 +939,7 @@ namespace SecretHistories.UI {
             if(CanInteractWithToken(incomingToken))
             {
                 incomingToken.ShowReadyToInteract();
-                _manifestation.Highlight(HighlightType.WillInteract);
+                _manifestation.Highlight(HighlightType.WillInteract, null);
                 return true;
             }
 
@@ -978,13 +974,13 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return;
 
-            _manifestation.Highlight(HighlightType.PotentiallyRelevant);
+            _manifestation.Highlight(HighlightType.PotentiallyRelevant, null);
 
         }
 
         public void StopShowingPossibleInteractionWithToken(Token token)
         {
-            _manifestation.Unhighlight(HighlightType.PotentiallyRelevant);
+            _manifestation.Unhighlight(HighlightType.PotentiallyRelevant, null);
 
         }
 

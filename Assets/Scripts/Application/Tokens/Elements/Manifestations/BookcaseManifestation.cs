@@ -61,11 +61,11 @@ namespace SecretHistories.Manifestations
         {
         }
 
-        public void Highlight(HighlightType highlightType)
+        public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
         }
 
-        public void Unhighlight(HighlightType highlightType)
+        public void Unhighlight(HighlightType highlightType, IManifestable manifestable)
         {
         }
 

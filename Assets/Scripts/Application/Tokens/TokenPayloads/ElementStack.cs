@@ -509,7 +509,6 @@ namespace SecretHistories.UI {
             
             OnLifetimeSpent?.Invoke(LifetimeRemaining); //display decay effects for listeners elsewhere
 
-
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update));
 
             if (LifetimeRemaining <= 0 || seconds < 0)
@@ -523,8 +522,7 @@ namespace SecretHistories.UI {
                 else
                     ChangeTo(Element.DecayTo);
             }
-
-
+            
         }
 
         public void ExecuteTokenEffectCommand(IAffectsTokenCommand command)

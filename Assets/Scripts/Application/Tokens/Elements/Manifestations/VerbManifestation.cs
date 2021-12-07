@@ -482,7 +482,7 @@ namespace SecretHistories.Manifestations
             }
         }
 
-        public void Highlight(HighlightType highlightType)
+        public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
             if (highlightType == HighlightType.WillInteract)
             {
@@ -503,7 +503,7 @@ namespace SecretHistories.Manifestations
 
         }
 
-        public void Unhighlight(HighlightType highlightType)
+        public void Unhighlight(HighlightType highlightType, IManifestable manifestable)
         {
             if (highlightType== HighlightType.All)
             {

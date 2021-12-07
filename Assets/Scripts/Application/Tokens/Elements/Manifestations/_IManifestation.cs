@@ -41,8 +41,8 @@ namespace SecretHistories.Manifestations
         void OnBeginDragVisuals();
         void OnEndDragVisuals();
 
-        void Highlight(HighlightType highlightType);
-        void Unhighlight(HighlightType highlightType);
+        void Highlight(HighlightType highlightType, IManifestable manifestable);
+        void Unhighlight(HighlightType highlightType, IManifestable manifestable);
         bool NoPush { get; }
         void Unshroud(bool instant);
         void Shroud(bool instant);

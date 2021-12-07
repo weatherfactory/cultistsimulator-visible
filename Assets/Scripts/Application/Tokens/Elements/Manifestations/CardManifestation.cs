@@ -57,6 +57,15 @@ namespace SecretHistories.Manifestations
         private float _durationRemaining = 0f;
         private bool _forceDisplayTimeRemaining = false;
 
+        private Coroutine _showingDecayTimer;
+        private Coroutine _hidingDecayTimer;
+
+        //yes, we really do have to do this, or find a more sophisticated wrapper for coroutines.
+        //We can't check if a coroutine is running, StopCoRoutine doesn't set it to null, and using
+        //setting a coroutine to null when it might be running can cause race condition issues.
+        //This is probably the cause of the shadow that doesn't disappear.
+        private bool _showingDecayTimerFlag = false;
+        private bool _hidingDecayTimerFlag = false;
         
         public bool RequestingNoDrag => _flipHelper.FlipInProgress;
         public bool RequestingNoSplit => stackBadge.PointerAboveThis;
@@ -145,7 +154,7 @@ namespace SecretHistories.Manifestations
             ShowCardShadow(false);
         }
 
-        public void Highlight(HighlightType highlightType)
+        public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
             if (highlightType == HighlightType.WillInteract)
             {
@@ -169,10 +178,14 @@ namespace SecretHistories.Manifestations
 
             if (Decays())
                 _forceDisplayTimeRemaining = true;
+            
+            
+            UpdateVisuals(manifestable);
+            
 
         }
 
-        public void Unhighlight(HighlightType highlightType)
+        public void Unhighlight(HighlightType highlightType, IManifestable manifestable)
         {
             if(highlightType==HighlightType.All)
             {
@@ -192,6 +205,10 @@ namespace SecretHistories.Manifestations
 
             if (Decays())
                 _forceDisplayTimeRemaining = false;
+
+            UpdateVisuals(manifestable);
+
+
         }
 
         private IEnumerator PulseGlow()
@@ -259,6 +276,57 @@ namespace SecretHistories.Manifestations
             return _durationRemaining < _originalDuration / 2;
         }
 
+        IEnumerator ShowingDecayTimer()
+        {
+            _showingDecayTimerFlag = true;
+
+            while (decayAlpha < 1.0f)
+            {
+
+                decayAlpha += 0.1f;
+
+            if (decayCountText && decayBackgroundImage)
+            {
+                Color col = decayCountText.color;
+                col.a = decayAlpha;
+                decayCountText.color = col;
+                col = cachedDecayBackgroundColor; // then we can multiply with the non-1 alpha - CP
+                col.a *= decayAlpha;
+                decayBackgroundImage.color = col;
+            }
+            yield return new WaitForSeconds(0.03f);
+
+            }
+
+            _showingDecayTimerFlag = false;
+        }
+
+        IEnumerator HidingDecayTimer()
+        {
+            _hidingDecayTimerFlag = true;
+            while (decayAlpha > 0f)
+            {
+
+                decayAlpha -= 0.1f;
+
+
+                if (decayCountText && decayBackgroundImage)
+                {
+                    Color col = decayCountText.color;
+                    col.a = decayAlpha;
+                    decayCountText.color = col;
+                    col = cachedDecayBackgroundColor; // then we can multiply with the non-1 alpha - CP
+                    col.a *= decayAlpha;
+                    decayBackgroundImage.color = col;
+                }
+
+                yield return new WaitForSeconds(0.03f);
+
+            }
+
+            _hidingDecayTimerFlag = false;
+        }
+
         private void UpdateTimerVisuals(float originalDurationOfCurrentElement, float currentDurationRemaining, float interval, bool resaturate)
         {
 
@@ -272,42 +340,43 @@ namespace SecretHistories.Manifestations
 
             _originalDuration = originalDurationOfCurrentElement;
             _durationRemaining = currentDurationRemaining;
-
-
-            //I'm very hazy on whether this does what it was originally intended to.
-
-            // This handles moving the alpha value towards the desired target
-            float cosmetic_dt =
-                Mathf.Max(interval, Time.deltaTime) *
-                2.0f; // This allows us to call AdvanceTime with 0 delta and still get animation
+            
             if (ApproachingFinalDissolution() || _forceDisplayTimeRemaining)
-                decayAlpha = Mathf.MoveTowards(decayAlpha, 1.0f, cosmetic_dt);
-            else
-                decayAlpha = Mathf.MoveTowards(decayAlpha, 0.0f, cosmetic_dt);
-            if (_durationRemaining <= 0.0f)
-                decayAlpha = 0.0f;
-
-            if (decayView)
             {
-                decayView.gameObject.SetActive(_forceDisplayTimeRemaining || decayAlpha > 0.0f);
- 
+                if(_hidingDecayTimerFlag && _hidingDecayTimer!=null)
+                {
+                        StopCoroutine(_hidingDecayTimer);
+                        _hidingDecayTimerFlag = false;
+                }
+
+                if (decayAlpha<1f && !_showingDecayTimerFlag)
+                    _showingDecayTimer = StartCoroutine(ShowingDecayTimer());
+            }
+            else
+            {
+                if (_showingDecayTimerFlag && _showingDecayTimer!=null)
+                {
+                     StopCoroutine(ShowingDecayTimer());
+                     _showingDecayTimerFlag = false;
+                }
+                if (decayAlpha >0f && !_hidingDecayTimerFlag)
+                    _hidingDecayTimer = StartCoroutine(HidingDecayTimer());
+            }
+
+            //This determines whether the decay view is active, and what the current text value should be.
+            //The coroutines determine the current alpha values of the text and the background image
+            if (decayAlpha>0f)
+            {
+                decayView.gameObject.SetActive(true);
                 string cardDecayTimeString =
                     Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(_durationRemaining);
 
                 decayCountText.text = cardDecayTimeString;
                 decayCountText.richText = true;
             }
+            else
+            decayView.gameObject.SetActive(false);
 
-            // Set the text and background alpha so it fades on and off smoothly
-            if (decayCountText && decayBackgroundImage)
-            {
-                Color col = decayCountText.color;
-                col.a = decayAlpha;
-                decayCountText.color = col;
-                col = cachedDecayBackgroundColor; // Caching the color so that we can multiply with the non-1 alpha - CP
-                col.a *= decayAlpha;
-                decayBackgroundImage.color = col;
-            }
 
             float percentageDecayed = 1 - _durationRemaining / _originalDuration;
             percentageDecayed = Mathf.Clamp01(percentageDecayed);
