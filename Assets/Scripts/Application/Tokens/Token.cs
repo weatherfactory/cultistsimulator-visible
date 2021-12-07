@@ -352,7 +352,7 @@ namespace SecretHistories.UI {
 
 
             //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
-            _manifestation.Unhighlight(HighlightType.WillInteract, null);
+            _manifestation.Unhighlight(HighlightType.WillInteract, _payload);
 
             return true;
         }
@@ -367,7 +367,7 @@ namespace SecretHistories.UI {
 
 
             //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
-            _manifestation.Unhighlight(HighlightType.WillInteract, null);
+            _manifestation.Unhighlight(HighlightType.WillInteract, _payload);
 
             return true;
         }
@@ -694,7 +694,7 @@ namespace SecretHistories.UI {
                 Interaction = Interaction.OnReceivedADrop
             });
 
-            _manifestation.Unhighlight(HighlightType.All, null); //whatever's just happened, we don't want to keep predicting interactions
+            _manifestation.Unhighlight(HighlightType.All, _payload); //whatever's just happened, we don't want to keep predicting interactions
 
             if (Payload.CanInteractWith(incomingToken.Payload))
                 Payload.InteractWithIncoming(incomingToken);
@@ -974,13 +974,13 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return;
 
-            _manifestation.Highlight(HighlightType.PotentiallyRelevant, null);
+            _manifestation.Highlight(HighlightType.PotentiallyRelevant, _payload);
 
         }
 
         public void StopShowingPossibleInteractionWithToken(Token token)
         {
-            _manifestation.Unhighlight(HighlightType.PotentiallyRelevant, null);
+            _manifestation.Unhighlight(HighlightType.PotentiallyRelevant, _payload);
 
         }
 
