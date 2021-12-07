@@ -61,8 +61,10 @@ namespace SecretHistories.Constants.Modding
         private void TryLoadDllsForMod(Mod mod)
         {
            
-            string preferredDllPath = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER, mod.GetNameAlphanumericsOnly(), MOD_DLL_SUFFIX);
-            string deprecatedDllPath = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER, MOD_DLL_NAME_DEPRECATED,MOD_DLL_SUFFIX);
+            string preferredDllPath = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER,
+                $"{mod.GetNameAlphanumericsOnly()}{MOD_DLL_SUFFIX}");
+            string deprecatedDllPath = Path.Combine(mod.ModRootFolder, MOD_DLL_FOLDER,
+                $"{MOD_DLL_NAME_DEPRECATED}{MOD_DLL_SUFFIX}");
 
             
             string dllFoundPath;
