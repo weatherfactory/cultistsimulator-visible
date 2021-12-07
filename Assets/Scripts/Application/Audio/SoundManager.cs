@@ -167,6 +167,14 @@ public class SoundManager : AudioManager, ISettingSubscriber
 
     // Public Playback Methods
 
+    public static int PlaySfxOnceThisFrame(string name)
+    {
+        if (!Instance.soundsThisFrame.Contains(name))
+            return PlaySfx(name);
+
+        return -1;
+    }
+
     public static int PlaySfx(string name) {
         if (Instance == null)
         {

@@ -145,7 +145,8 @@ namespace SecretHistories.Spheres
         {
           base.AcceptToken(token,context);
           token.Stabilise();
-            SoundManager.PlaySfx("CardDrop");
+          
+            SoundManager.PlaySfxOnceThisFrame("CardDrop");
           _tabletopChoreographer.HideAllDebugRects();
 
         }
