@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Entities;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -46,10 +47,13 @@ namespace Assets.Scripts.Application.UI.Situation
 
 
             // Populate those we need
-            foreach (var item in deckEffects)
+            foreach (var effect in deckEffects)
             {
-                var deckSpec = Watchman.Get<Compendium>().GetEntityById<DeckSpec>(item.Key);
-                deckEffectViews[i].PopulateDisplay(deckSpec, item.Value);
+                var deckSpec = Watchman.Get<Compendium>().GetEntityById<DeckSpec>(effect.Key);
+
+                DeckEffect deckEffect = new DeckEffect(deckSpec, effect.Value);
+
+                deckEffectViews[i].PopulateDisplay(deckEffect);
                 deckEffectViews[i].gameObject.SetActive(true);
                 i++;
             }

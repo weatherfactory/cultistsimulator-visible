@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using Assets.Scripts.Application.Spheres;
+using SecretHistories.Assets.Scripts.Application.Entities;
 using SecretHistories.Entities;
 using SecretHistories.UI;
+using TMPro;
 using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.UI
 {
     public class DeckDetailsWindow : AbstractDetailsWindow
     {
-        private DeckSpec _deckSpec;
-        private int _cardsInNextDraw;
+        private DeckEffect _deckEffect;
+        [SerializeField] private TextMeshProUGUI _drawsCount;
 
         // Use this for initialization
 
@@ -17,30 +19,29 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         {
            UpdateContent();
         }
-        private void SetDeck(DeckSpec deckSpec, int cardsInNextDraw)
+        private void SetDeckEffect(DeckEffect deckEffect)
         {
-            _deckSpec = deckSpec;
-            _cardsInNextDraw = cardsInNextDraw;
+            _deckEffect = deckEffect;
             
-              ShowImage(ResourcesManager.GetSpriteForCardBack(_deckSpec.Id));
-            
-            ShowText(deckSpec.Label, deckSpec.Description);
+              ShowImage(ResourcesManager.GetSpriteForCardBack(_deckEffect.DeckSpec.Id));
+              ShowText(_deckEffect.DeckSpec.Label, _deckEffect.DeckSpec.Description);
+              _drawsCount.text = deckEffect.Draws.ToString();
         }
 
-        public void ShowDeckDetails(DeckSpec deckSpec,int cardsInNextDraw)
+        public void ShowDeckDetails(DeckEffect deckEffect)
         {
-            if(this._deckSpec==deckSpec && gameObject.activeSelf)
+
+            if(_deckEffect==deckEffect && gameObject.activeSelf)
                 return;
-            
-            _deckSpec = deckSpec;
-            _cardsInNextDraw = cardsInNextDraw;
+
+            _deckEffect = deckEffect;
             Show();
         }
 
         protected override void UpdateContent()
         {
-            if(_deckSpec!=null)
-                SetDeck (_deckSpec,0);
+            if(_deckEffect != null)
+                SetDeckEffect (_deckEffect);
             
         }
 
@@ -48,7 +49,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         protected override void ClearContent()
         {
-            _deckSpec = null;
+            _deckEffect = null;
 
         }
 

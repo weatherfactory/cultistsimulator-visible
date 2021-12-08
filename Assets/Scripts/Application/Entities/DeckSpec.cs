@@ -44,7 +44,7 @@ namespace SecretHistories.Entities
         public int Draws { get; set; }
 
 
-        //Spec determines which cards start in the deckSpec after each reset
+        //DeckSpec determines which cards start in the deckSpec after each reset
         [FucineList(ValidateAsElementId = true)]
         public List<string> Spec
         {
@@ -52,7 +52,7 @@ namespace SecretHistories.Entities
             set => _spec = value;
         }
 
-        [FucineDict(KeyMustExistIn = "Spec",Localise=true)]
+        [FucineDict(KeyMustExistIn = "DeckSpec",Localise=true)]
         public Dictionary<string, string> DrawMessages
         {
             get => _drawMessages;

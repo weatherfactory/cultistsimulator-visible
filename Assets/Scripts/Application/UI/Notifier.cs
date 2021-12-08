@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Entities;
 using SecretHistories.Assets.Scripts.Application.UI;
 using SecretHistories.Core;
 using SecretHistories.Fucine;
@@ -112,8 +113,8 @@ namespace SecretHistories.UI {
             deckDetails.Hide();
         }
 
-        public void ShowDeckDetails(DeckSpec deckSpec, int quantity) {
-            deckDetails.ShowDeckDetails(deckSpec, quantity);
+        public void ShowDeckEffectDetails(DeckEffect deckEffect) {
+            deckDetails.ShowDeckDetails(deckEffect);
             tokenDetails.Hide();
             aspectDetails.Hide();
             slotDetails.Hide();

@@ -8,6 +8,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
+using SecretHistories.Assets.Scripts.Application.Entities;
 using SecretHistories.Entities;
 
 public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
@@ -15,19 +16,19 @@ public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnter
     [SerializeField] private Image deckBack;
     [SerializeField] private TextMeshProUGUI deckQuantity;
 
-    private DeckSpec deckSpec;
-    private int quantity;
+    private DeckEffect _deckEffect;
+    
 
-    public void PopulateDisplay(DeckSpec deckSpec, int quantity) {
-        this.deckSpec = deckSpec;
-        this.quantity = quantity;
+    public void PopulateDisplay(DeckEffect deckEffect)
+    {
 
-        deckBack.sprite = ResourcesManager.GetSpriteForCardBack(deckSpec.Id); 
+        _deckEffect = deckEffect;
+        deckBack.sprite = ResourcesManager.GetSpriteForCardBack(_deckEffect.DeckSpec.Id); 
 
-        deckQuantity.gameObject.SetActive(quantity > 1);
-        deckQuantity.text = (quantity > 1 ? quantity.ToString() : null);
+        deckQuantity.gameObject.SetActive(deckEffect.Draws > 1);
+        deckQuantity.text = (deckEffect.Draws > 1 ? deckEffect.Draws.ToString() : null);
 
-        gameObject.name = "DeckEffectView - " + deckSpec + " - " + quantity;
+        gameObject.name = "DeckEffectView - " + deckEffect.DeckSpec.Id + " - " + deckEffect.Draws;
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
@@ -40,7 +41,7 @@ public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnter
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        Watchman.Get<Notifier>().ShowDeckDetails(deckSpec, quantity);
+        Watchman.Get<Notifier>().ShowDeckEffectDetails(_deckEffect);
     }
 
 
