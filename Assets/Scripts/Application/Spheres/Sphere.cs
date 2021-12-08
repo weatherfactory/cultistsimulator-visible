@@ -371,8 +371,10 @@ namespace SecretHistories.Spheres
         {
             if (quantityChange > 0)
                 IncreaseElement(elementId, quantityChange, context);
-            else
+            else if(quantityChange<0)
                 ReduceElement(elementId, quantityChange, context);
+            else
+                NoonUtility.Log($"ModifyElementQuantity {quantityChange} called for {elementId}, which might be a mistake");
         }
 
         /// <summary>
