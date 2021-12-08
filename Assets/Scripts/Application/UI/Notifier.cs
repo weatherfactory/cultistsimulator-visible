@@ -97,21 +97,24 @@ namespace SecretHistories.UI {
             slotDetails.Hide();
         }
 
-        public void ShowElementDetails(Element element) {
+        public void ShowAspectDetails(Element element) {
             
                 aspectDetails.ShowAspectDetails(element, true);
-                tokenDetails.Hide(); 
-                slotDetails.Hide();
+                tokenDetails.ResetTimer(); //if we're drilling down from it, it should stay visible
+                slotDetails.ResetTimer(); //if we're drilling down from it, it should stay visible
+            deckDetails.Hide();
         }
         
         public void ShowSlotDetails(SphereSpec slotSpec) {
             slotDetails.ShowSlotDetails(slotSpec);
             tokenDetails.Hide();
             aspectDetails.Hide();
+            deckDetails.Hide();
         }
 
         public void ShowDeckDetails(DeckSpec deckSpec, int quantity) {
             deckDetails.ShowDeckDetails(deckSpec, quantity);
+            tokenDetails.Hide();
             aspectDetails.Hide();
             slotDetails.Hide();
         }
@@ -121,6 +124,7 @@ namespace SecretHistories.UI {
             tokenDetails.Hide();
             aspectDetails.Hide();
             slotDetails.Hide();
+            deckDetails.Hide();
         }
 
         public void ShowCustomWindow(CustomNotificationWindowArgs args)

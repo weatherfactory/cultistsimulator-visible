@@ -102,7 +102,7 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
     public void OnPointerClick(PointerEventData eventData) {
 
-            Watchman.Get<Notifier>().ShowElementDetails(_aspect);
+            Watchman.Get<Notifier>().ShowAspectDetails(_aspect);
     }
 
     public Vector3 GetNotificationPosition()
