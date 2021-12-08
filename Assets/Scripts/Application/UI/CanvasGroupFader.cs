@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Assets.Scripts.Application.Fucine;
 using UnityEngine;
 
 namespace SecretHistories.UI
@@ -14,6 +15,8 @@ namespace SecretHistories.UI
 
         private Coroutine _appearingCoroutine;
         private Coroutine _disappearingCoroutine;
+        private bool _appearingFlag = false;
+        private bool _disappearingFlag = false;
 
         private Action _onChangeComplete;
 
@@ -41,14 +44,23 @@ namespace SecretHistories.UI
             if (IsInvisible())
                 return;
 
-            if (_appearingCoroutine != null)
+            if (_appearingFlag && _appearingCoroutine != null)
                 StopCoroutine(_appearingCoroutine);
 
             if (durationTurnOff <= 0f) {
                 SetFinalAlpha(0f);
             }
-            else 
-                _disappearingCoroutine = StartCoroutine(DoTransparencyChange(0f, durationTurnOff));
+            else
+            {
+                if(!_disappearingFlag)
+                {
+                    _disappearingFlag = true;
+                    _appearingFlag = false; //probably unnecessary but this is racey world
+                    _disappearingCoroutine = StartCoroutine(DoTransparencyChange(0f, durationTurnOff));
+                    
+                }
+            }
+                
         }
 
         public void HideImmediately()
@@ -79,7 +91,14 @@ namespace SecretHistories.UI
                 SetFinalAlpha(1f);
             }
             else
-                _appearingCoroutine = StartCoroutine(DoTransparencyChange(1f, durationTurnOn));
+            {
+                if(!_appearingFlag)
+                {
+                    _appearingFlag = true;
+                    _disappearingFlag = false; //probably unnecessary but this is racey world
+                    _appearingCoroutine = StartCoroutine(DoTransparencyChange(1f, durationTurnOn));
+                }
+            }
         }
 
         IEnumerator DoTransparencyChange(float targetAlpha, float duration) {
@@ -111,6 +130,9 @@ namespace SecretHistories.UI
        
             if (_disappearingCoroutine != null)
                 StopCoroutine(_disappearingCoroutine);
+
+            _appearingFlag = false;
+            _disappearingFlag = false;
 
             Group.alpha = alpha;
 
