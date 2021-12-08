@@ -184,7 +184,7 @@ namespace SecretHistories.UI {
 
             if(s.Recipe.Craftable)
             {
-                SoundManager.PlaySfx("SituationAvailable");
+                SoundManager.PlaySfxOnceThisFrame("SituationAvailable");
               //  ongoingDisplay.UpdateDisplay(s); //Ensures that the time bar is set to 0 to avoid a flicker - commented this out while refactoring, but bear it in mind
             }
             
