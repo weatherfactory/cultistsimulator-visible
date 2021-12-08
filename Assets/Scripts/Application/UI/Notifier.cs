@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.UI;
 using SecretHistories.Core;
 using SecretHistories.Fucine;
 using SecretHistories.Services;
@@ -36,6 +37,7 @@ namespace SecretHistories.UI {
         [SerializeField] TokenDetailsWindow tokenDetails;
         [SerializeField] SlotDetailsWindow slotDetails;
         [SerializeField] AspectDetailsWindow aspectDetails;
+        [SerializeField] DeckDetailsWindow deckDetails;
 
         [SerializeField] NotificationWindow SaveErrorWindow;
         [SerializeField] NotificationWindow SaveDeniedWindow;
@@ -98,9 +100,8 @@ namespace SecretHistories.UI {
         public void ShowElementDetails(Element element) {
             
                 aspectDetails.ShowAspectDetails(element, true);
-                tokenDetails.ResetTimer(); 
-                slotDetails.ResetTimer();
-
+                tokenDetails.Hide(); 
+                slotDetails.Hide();
         }
         
         public void ShowSlotDetails(SphereSpec slotSpec) {
@@ -110,7 +111,7 @@ namespace SecretHistories.UI {
         }
 
         public void ShowDeckDetails(DeckSpec deckSpec, int quantity) {
-            tokenDetails.ShowDeckDetails(deckSpec, quantity);
+            deckDetails.ShowDeckDetails(deckSpec, quantity);
             aspectDetails.Hide();
             slotDetails.Hide();
         }

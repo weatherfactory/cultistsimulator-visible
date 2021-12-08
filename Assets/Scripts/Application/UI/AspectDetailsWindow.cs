@@ -24,8 +24,7 @@ namespace SecretHistories.UI {
             // Check if we'd show the same, if so: do nothing
             if (this.element == element && gameObject.activeSelf)
                 return;
-
-
+            
             this.element = element;
             Show();
         }
@@ -44,7 +43,7 @@ namespace SecretHistories.UI {
                 SetAspect(element);
 
 
-				(transform as RectTransform).anchoredPosition = new Vector2( 0f, -tokenDetailsHeight.sizeDelta.y - 10f);
+            (transform as RectTransform).anchoredPosition = new Vector2( 0f, -tokenDetailsHeight.sizeDelta.y - 10f);
 
 		
         }
@@ -57,7 +56,7 @@ namespace SecretHistories.UI {
                 ShowImage(ResourcesManager.GetSpriteForElement(element.Icon));
 
             ShowText(Watchman.Get<ILocStringProvider>().Get("UI_ASPECT") + element.Label, element.Description);
-          //  adjuster.Adjust();
+
         }
     }
 }

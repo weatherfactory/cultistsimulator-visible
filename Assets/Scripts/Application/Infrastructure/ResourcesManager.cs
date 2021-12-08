@@ -104,7 +104,8 @@ public class ResourcesManager: MonoBehaviour
 
 
     public static Sprite GetSpriteForCardBack(string backId) {
-        return GetSprite("cardbacks/", backId);
+        //hardcoded to the books back at the moment
+        return GetSprite("cardbacks/", "books");
     }
 
     public static Sprite GetSpriteForAspect(string imageName)

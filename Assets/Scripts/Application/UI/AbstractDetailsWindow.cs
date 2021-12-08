@@ -132,7 +132,7 @@ namespace SecretHistories.UI {
                 args.OnEnd = DoHideAfterNavigation;
                 TriggerAnimation(args);
             }
-
+            ResetTimer();
         }
 
         void DoHideAfterNavigation(NavigationArgs args)

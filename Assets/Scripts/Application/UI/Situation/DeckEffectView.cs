@@ -18,16 +18,16 @@ public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnter
     private DeckSpec deckSpec;
     private int quantity;
 
-    public void PopulateDisplay(DeckSpec deckSpeck, int quantity) {
-        this.deckSpec = deckSpeck;
+    public void PopulateDisplay(DeckSpec deckSpec, int quantity) {
+        this.deckSpec = deckSpec;
         this.quantity = quantity;
 
-        deckBack.sprite = ResourcesManager.GetSpriteForCardBack(deckSpeck.Id); 
+        deckBack.sprite = ResourcesManager.GetSpriteForCardBack(deckSpec.Id); 
 
         deckQuantity.gameObject.SetActive(quantity > 1);
         deckQuantity.text = (quantity > 1 ? quantity.ToString() : null);
 
-        gameObject.name = "DeckEffectView - " + deckSpeck + " - " + quantity;
+        gameObject.name = "DeckEffectView - " + deckSpec + " - " + quantity;
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
