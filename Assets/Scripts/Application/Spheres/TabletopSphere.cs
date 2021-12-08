@@ -161,7 +161,7 @@ namespace SecretHistories.Spheres
             if (tabletopManager.IsSituationWindowOpen())
                 tabletopManager.CloseAllSituationWindowsExcept(null);
             else
-                tabletopManager.CloseAllDetailsWindows();
+                Watchman.Get<Notifier>().HideAllDetailWindows();
 
         }
 

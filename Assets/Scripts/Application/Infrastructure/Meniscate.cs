@@ -27,7 +27,7 @@ using Random = System.Random;
 namespace SecretHistories.UI {
     public class Meniscate : MonoBehaviour
     {
-        //marshalling point for services; link to the master scene
+        //marshalling point for services; link to the master scene. Once, this was TabletopManager
         [SerializeField] TabletopBackground tabletopBackground;
 
         [Header("Detail Windows")] [SerializeField]
@@ -60,13 +60,7 @@ namespace SecretHistories.UI {
             Watchman.Get<Concursum>().DoUpdate();
         }
 
-        public void CloseAllDetailsWindows()
-		{
-			if (aspectDetailsWindow != null)
-				aspectDetailsWindow.Hide();
-			if (tokenDetailsWindow != null)
-				tokenDetailsWindow.Hide();
-		}
+
 
         public void CloseAllSituationWindowsExcept(string exceptVerbId) {
             var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();

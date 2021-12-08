@@ -119,7 +119,7 @@ namespace SecretHistories.UI {
             slotDetails.Hide();
         }
 
-        public void HideDetails()
+        public void HideAllDetailWindows()
 		{
             tokenDetails.Hide();
             aspectDetails.Hide();
