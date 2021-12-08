@@ -119,7 +119,7 @@ namespace SecretHistories.Manifestations
         public void Initialise(IManifestable manifestable)
         {
 
-            Fader.SetFinalAlpha(0f); //make it invisible; alpha isn't set to 0 cos it's a nuisance when editing the prefab
+            Fader.SetStatesForFinalAlpha(0f); //make it invisible; alpha isn't set to 0 cos it's a nuisance when editing the prefab
             Fader.Show();
     UpdateVisuals(manifestable);
 

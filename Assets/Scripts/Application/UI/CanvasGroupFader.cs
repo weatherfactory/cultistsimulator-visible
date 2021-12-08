@@ -20,7 +20,7 @@ namespace SecretHistories.UI
 
         private Action _onChangeComplete;
 
-        public bool IsVisible()
+        public bool IsFullyVisible()
         {
             return Group.alpha >=1f;
         }
@@ -41,14 +41,14 @@ namespace SecretHistories.UI
 
         public void Hide()
         {
-            if (IsInvisible())
-                return;
-
+            //if we're currently trying to appear, shut that down
             if (_appearingFlag && _appearingCoroutine != null)
                 StopCoroutine(_appearingCoroutine);
 
-            if (durationTurnOff <= 0f) {
-                SetFinalAlpha(0f);
+            //if we're already invisible or if we're hiding instantly, set the final alpha state.
+            //This will ensure things like interactable are tidied to the invisible state if we got stuck halfway through
+            if (durationTurnOff <= 0f && IsInvisible()) {
+                SetStatesForFinalAlpha(0f);
             }
             else
             {
@@ -65,30 +65,25 @@ namespace SecretHistories.UI
 
         public void HideImmediately()
         {
-            SetFinalAlpha(0f);
+            SetStatesForFinalAlpha(0f);
         }
 
         public void ShowImmediately()
         {
-            SetFinalAlpha(1f);
+            SetStatesForFinalAlpha(1f);
         }
 
         public void Show()
         {
             //show / hide repeatedly still seems to get stuck sometimes.
             //it may be worth another look to behave differently if this gets called repeatedly in successionW
+            
+            if (_disappearingFlag && _disappearingCoroutine != null)
+                StopCoroutine(_disappearingCoroutine);
 
-            if (IsVisible())
-                return;
-
-
-            //I commented this out because it seems to be implicated in the stuttering effect when windows were opening?
-            //if(_disappearingCoroutine!=null)
-            //    StopCoroutine(_disappearingCoroutine);
-
-
-            if (durationTurnOn <= 0f) {
-                SetFinalAlpha(1f);
+            //If we're appearing instantly or if we are already visible, go to final alpha state, make sure everything is set correctly for that.
+            if (durationTurnOn <= 0f && IsFullyVisible()) {
+                SetStatesForFinalAlpha(1f);
             }
             else
             {
@@ -114,7 +109,7 @@ namespace SecretHistories.UI
                 yield return null;
             }
 
-            SetFinalAlpha(targetAlpha);
+            SetStatesForFinalAlpha(targetAlpha);
 
             if (_onChangeComplete != null)
             {
@@ -124,7 +119,7 @@ namespace SecretHistories.UI
     
         }
 
-        public void SetFinalAlpha(float alpha) {
+        public void SetStatesForFinalAlpha(float finalAlpha) {
             if(_appearingCoroutine!=null)
                 StopCoroutine(_appearingCoroutine);
        
@@ -134,9 +129,9 @@ namespace SecretHistories.UI
             _appearingFlag = false;
             _disappearingFlag = false;
 
-            Group.alpha = alpha;
+            Group.alpha = finalAlpha;
 
-            if (Mathf.Approximately(alpha, 0f))
+            if (Mathf.Approximately(finalAlpha, 0f))
                 SetInteractable(false);
             else
                 SetInteractable(true);

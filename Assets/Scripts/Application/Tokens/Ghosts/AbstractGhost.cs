@@ -25,7 +25,7 @@ namespace SecretHistories.Ghosts
             rectTransform = GetComponent<RectTransform>();
         }
 
-        public bool Visible => canvasGroupFader.IsVisible();
+        public bool Visible => canvasGroupFader.IsFullyVisible();
 
         public virtual void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D,RectTransform tokenRectTransform)
         {

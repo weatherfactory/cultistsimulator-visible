@@ -22,7 +22,7 @@ public class NotificationLog : MonoBehaviour {
 			textMeshes[i].gameObject.SetActive(false);
 		}
 
-		fader.SetFinalAlpha(0f);
+		fader.SetStatesForFinalAlpha(0f);
 	}
 
 	public void AddText(string text) {

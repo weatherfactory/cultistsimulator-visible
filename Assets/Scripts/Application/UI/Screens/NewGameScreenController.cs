@@ -61,7 +61,7 @@ namespace SecretHistories.UI {
             AvailableLegaciesForEnding = ls.DetermineLegacies(Watchman.Get<Stable>().Protag().EndingTriggered);
 
             InitLegacyButtons();
-            canvasFader.SetFinalAlpha(0f);
+            canvasFader.SetStatesForFinalAlpha(0f);
 
 			FadeIn();
 			SelectLegacy(0);

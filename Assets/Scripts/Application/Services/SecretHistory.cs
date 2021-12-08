@@ -22,7 +22,7 @@ namespace SecretHistories.Services
 #pragma warning restore 649
 
 
-        //public bool IsVisible => canvasGroup.alpha > 0f;
+        //public bool IsFullyVisible => canvasGroup.alpha > 0f;
         public bool IsVisible => canvas.activeInHierarchy;
 
         private List<SecretHistoryLogMessageEntry> entries=new List<SecretHistoryLogMessageEntry>();

@@ -39,7 +39,7 @@ namespace SecretHistories.UI {
         protected void Show()
         {
             ResetTimer();
-            if(!Fader.IsVisible())
+            if(!Fader.IsFullyVisible())
             {
                 UpdateContent();
                 var args = new NavigationArgs(0, NavigationAnimationDirection.None, NavigationAnimationDirection.MoveRight);
@@ -126,7 +126,7 @@ namespace SecretHistories.UI {
         }
 
         public void Hide() {
-            if(Fader.IsVisible())
+            if(Fader.IsFullyVisible())
             {
                 var args = new NavigationArgs(0, NavigationAnimationDirection.MoveRight, NavigationAnimationDirection.None);
                 args.OnEnd = DoHideAfterNavigation;

@@ -31,7 +31,7 @@ public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 	}
 
 	void LoadGameScene() {
-		if (fader.IsVisible() || isLoading)
+		if (fader.IsFullyVisible() || isLoading)
 			return;
 
 		fader.Show();

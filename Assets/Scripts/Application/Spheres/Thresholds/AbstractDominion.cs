@@ -75,7 +75,7 @@ namespace SecretHistories.UI
             {
                 if (canvasGroupFader == null)
                     return false;
-                return canvasGroupFader.IsVisible();
+                return canvasGroupFader.IsFullyVisible();
             }}
 
         [SerializeField] private CanvasGroupFader canvasGroupFader;

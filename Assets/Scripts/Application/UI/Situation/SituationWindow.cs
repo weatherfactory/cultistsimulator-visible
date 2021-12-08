@@ -73,7 +73,7 @@ namespace SecretHistories.UI {
 
 
         public bool IsVisible {
-            get { return canvasGroupFader.IsVisible(); }
+            get { return canvasGroupFader.IsFullyVisible(); }
         }
 
 		public string Title {
