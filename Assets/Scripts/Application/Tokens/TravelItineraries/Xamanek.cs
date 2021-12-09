@@ -8,6 +8,9 @@ using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Commands;
+using SecretHistories.Constants.Events;
+using SecretHistories.Entities;
+using SecretHistories.Events;
 using SecretHistories.Fucine;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
@@ -21,7 +24,7 @@ namespace SecretHistories.UI
     /// The God of the North watches over travellers. He tracks all current itineraries and can be aware of problems of overlap.
     /// </summary>
     [IsEncaustableClass(typeof(PopulateXamanekCommand))]
-    public class Xamanek : MonoBehaviour, IEncaustable
+    public class Xamanek : MonoBehaviour, IEncaustable, ISphereCatalogueEventSubscriber
     {
 
         [Encaust]
@@ -45,9 +48,15 @@ namespace SecretHistories.UI
         {
             var r = new Watchman();
             r.Register(this);
+
             ClearItineraryDisplays();
             ClearSphereBlockDisplays();
 
+        }
+
+        public void Start()
+        {
+            Watchman.Get<HornedAxe>().Subscribe(this);
         }
 
         public void UpdateItineraryDisplays()
@@ -178,6 +187,20 @@ namespace SecretHistories.UI
         //}
 
 
+        public void OnSphereChanged(SphereChangedArgs args)
+        {
+            
+        }
+
+        public void OnTokensChanged(SphereContentsChangedEventArgs args)
+        {
+
+        }
+
+        public void OnTokenInteraction(TokenInteractionEventArgs args)
+        {
+           //
+        }
     }
 
 

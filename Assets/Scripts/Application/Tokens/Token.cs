@@ -155,11 +155,16 @@ namespace SecretHistories.UI {
 
         [DontEncaust] public string PayloadTypeName => _payload.GetType().Name;
 
-        public Vector3 WorldPosition;
+        [SerializeField]
+        private Vector3 WorldPosition;
+
+        [SerializeField]
+        private string FullPathAsString;
 
         public void Update()
         {
             WorldPosition = TokenRectTransform.position;
+      
         }
 
 
@@ -271,6 +276,7 @@ namespace SecretHistories.UI {
             _payload.OnChanged += OnPayloadChanged;
             _payload.SetToken(this);
             name = _payload.Id + "_token";
+  
             Remanifest(RetirementVFX.None); //Remanifest not manifest. If we've just set a new payload, the manifestation type is very likely already the correct type for that sphere.
         }
 
@@ -452,6 +458,7 @@ namespace SecretHistories.UI {
                 if (oldSphere.ContentsHidden && !newSphere.ContentsHidden)
                     _manifestation.UpdateVisuals(Payload);
             }
+            FullPathAsString = new FucinePath(newSphere.GetAbsolutePath() + PayloadId).ToString();
         }
 
     //also sets scale for Manifestation
@@ -967,6 +974,14 @@ namespace SecretHistories.UI {
                 return false;
 
             return (Payload.CanMergeWith(incomingToken.Payload));
+        }
+
+        public void ShowPossibleInteraction()
+        {
+            if (Defunct)
+                return;
+
+            _manifestation.Highlight(HighlightType.PotentiallyRelevant, _payload);
         }
 
         public void ShowPossibleInteractionWithToken(Token token)

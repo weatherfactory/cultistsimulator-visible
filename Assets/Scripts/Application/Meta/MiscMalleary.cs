@@ -13,6 +13,7 @@ using SecretHistories.Infrastructure;
 using SecretHistories.Infrastructure.Persistence;
 using SecretHistories.Services;
 using SecretHistories.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Application.Meta
     public class MiscMalleary: MonoBehaviour
     {
         [SerializeField] private AutoCompletingInput input;
+        [SerializeField] public TextMeshProUGUI ResponseLabel;
 
         [SerializeField] private Button MetapauseButton;
         [SerializeField] private Button UnmetapauseButton;
@@ -54,8 +56,25 @@ namespace Assets.Scripts.Application.Meta
         public void PurgeElement()
         {
             Watchman.Get<HornedAxe>().PurgeElement(input.text, 1);
+
         }
 
+        public void FindByPath()
+        {
+            var path = new FucinePath(input.text);
+            if (!path.IsValid())
+                ResponseLabel.text = "Invalid Path";
+            string tokenId = input.text;
+            var tokenToFind=Watchman.Get<HornedAxe>().FindSingleOrDefaultTokenById(tokenId);
+            if (tokenToFind != null)
+            {
+                tokenToFind.ShowPossibleInteraction();
+                ResponseLabel.text = $"found token {tokenToFind.PayloadId}";
+            }
+            else
+                    ResponseLabel.text = $"couldn't find token {input.text}";
+
+        }
 
         void BeginLegacy(string legacyId)
         {
