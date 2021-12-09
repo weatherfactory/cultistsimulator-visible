@@ -8,7 +8,7 @@ public class Context {
         Unknown,
         Loading,
         PlayerDrag,
-        PushToThresholddUsurpedThisStack,
+        PlaceInThresholdUsurpedByIncomer,
         CalvedStack,
         PlayerClick,
         PlayerDumpAll,

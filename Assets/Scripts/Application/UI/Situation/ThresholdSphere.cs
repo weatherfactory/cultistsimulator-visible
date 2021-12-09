@@ -242,9 +242,14 @@ namespace SecretHistories.UI
                 }
 
                 if (currentOccupant != null)
-                    NoonUtility.LogWarning("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
-                //currentOccupant.ReturnToTabletop();
+                {
+                    //original flavour
+                    //currentOccupant.ReturnToTabletop();
+                    //placeholder flavour
+                    //NoonUtility.LogWarning("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
 
+                    currentOccupant.GoAway(new Context(Context.ActionSource.PlaceInThresholdUsurpedByIncomer));
+                }
                 //now we put the token in the slot.
                 token.CurrentState=new DroppedInSphereState();
                AcceptToken(token, context);

@@ -854,7 +854,7 @@ namespace SecretHistories.Entities {
             {
                 var incumbent = occupiedThresholdSphere.GetElementTokens().FirstOrDefault();
                 if(incumbent!=null) //should never happen, but code might shift later
-                    incumbent.GoAway(new Context(Context.ActionSource.PushToThresholddUsurpedThisStack));
+                    incumbent.GoAway(new Context(Context.ActionSource.PlaceInThresholdUsurpedByIncomer));
                  
                 return occupiedThresholdSphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag));
             }
