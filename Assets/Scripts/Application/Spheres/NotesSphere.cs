@@ -56,7 +56,7 @@ namespace Assets.Scripts.Application.Spheres
                 return;
 
             Defunct = true;
-            AddBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Retiring));
+   
             Watchman.Get<HornedAxe>().DeregisterSphere(this);
 
             DoRetirement(FinishRetirement, SphereRetirementType.Destructive);

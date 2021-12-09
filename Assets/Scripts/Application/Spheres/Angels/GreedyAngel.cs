@@ -20,7 +20,7 @@ namespace SecretHistories.Spheres.Angels
         private const int BEATS_BETWEEN_ANGELRY = 20; 
         private int _beatsTowardsAngelry = 0;
         private ThresholdSphere _thresholdSphereToGrabTo;
-        private readonly SphereBlock _angelBlock = new SphereBlock(BlockDirection.Inward, BlockReason.GreedyAngel);
+        
 
 
         public int Authority => 9;
@@ -33,7 +33,10 @@ namespace SecretHistories.Spheres.Angels
            
                 _beatsTowardsAngelry = 0;
 
-            if (!_thresholdSphereToGrabTo.CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection.Inward,BlockReason.GreedyAngel) && _thresholdSphereToGrabTo.Tokens.Count == 0)
+            if(_thresholdSphereToGrabTo.Tokens.Count!= 0) // when we have shelves, this will need to be a suitable count instead
+                return;
+
+            if (!_thresholdSphereToGrabTo.CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection.Inward,BlockReason.GreedyAngel) )
                 TryGrabStack(_thresholdSphereToGrabTo, metaseconds);
             
         }
@@ -43,7 +46,8 @@ namespace SecretHistories.Spheres.Angels
             _thresholdSphereToGrabTo = thresholdSphereToGrabTo as ThresholdSphere;
      
             thresholdSphereToGrabTo.ShowAngelPresence(this);
-            _thresholdSphereToGrabTo.AddBlock(_angelBlock);
+
+        _thresholdSphereToGrabTo.AddBlock(BlockDirection.Inward,BlockReason.GreedyAngel);
         }
 
         public bool MinisterToDepartingToken(Token token, Context context)
@@ -58,13 +62,17 @@ namespace SecretHistories.Spheres.Angels
 
         public void Retire()
         {
-            _thresholdSphereToGrabTo.RemoveBlock(_angelBlock);
+            _thresholdSphereToGrabTo.RemoveMatchingBlocks(BlockDirection.Inward, BlockReason.GreedyAngel);
             _thresholdSphereToGrabTo.HideAngelPresence(this);
             Defunct = true;
         }
+        public bool RequestingRetirement { get; private set; }
+        public void RequestRetirement()
+        {
+            RequestingRetirement = true;
+        }
 
         public bool Defunct { get; protected set; }
-        public bool RequestingRetirement { get; }
 
         public void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
         {

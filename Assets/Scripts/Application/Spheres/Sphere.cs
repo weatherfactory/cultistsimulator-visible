@@ -33,36 +33,6 @@ namespace SecretHistories.Spheres
 {
 
 
-    public enum BlockReason
-    {
-        GreedyAngel,
-      InboundTravellingStack,
-      Retiring,
-      Inactive
-    }
-
-    public enum BlockDirection
-    {
-        None,
-        Inward,
-        Outward,
-        All
-    }
-
-    [Serializable]
-    public class SphereBlock
-    {
-        public BlockDirection BlockDirection { get; }
-        public BlockReason BlockReason { get; }
-
-        public SphereBlock(BlockDirection direction, BlockReason reason)
-        {
-            BlockDirection = direction; 
-            BlockReason = reason;
-        }
-    }
-
-
     [IsEncaustableClass(typeof(SphereCreationCommand))]
     public abstract class 
         Sphere : MonoBehaviour,IEncaustable,IHasFucinePath,IHasElementTokens
@@ -129,7 +99,6 @@ namespace SecretHistories.Spheres
        /// </summary>
        [SerializeField] private List<VisibleCharacteristic> VisibleCharacteristics;
    
-        protected HashSet<SphereBlock> CurrentSphereBlocks = new HashSet<SphereBlock>();
 
        /// <param name="angel"></param>
        public void ShowAngelPresence(IAngel angel)
@@ -218,7 +187,7 @@ namespace SecretHistories.Spheres
 
         public void RemoveAngel(IAngel angel)
         {
-            flock.RemoveAngel(angel);
+            flock.RetireAndRemoveAngel(angel);
         }
 
         public virtual List<SphereSpec> GetChildSpheresSpecsToAddIfThisTokenAdded(Token t,string verbId)
@@ -244,8 +213,10 @@ namespace SecretHistories.Spheres
                 return;
 
             Defunct = true;
-            AddBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Retiring));
             Watchman.Get<HornedAxe>().DeregisterSphere(this);
+            flock.RequestRetirementForAllAngels();
+            //we used to add a block at this point. But if the sphere is deregistered and all the angels are inactive, that shouldn't be necessary;
+            //And if we add a retirement-specific block, we then need to remove it from the Xamanek if a slot at the same path is recreated!
 
             DoRetirement(FinishRetirement,sphereRetirementType);
 
@@ -269,15 +240,27 @@ namespace SecretHistories.Spheres
         }
 
 
+        //Removes the defunct object from the unity hierarchy
         protected void FinishRetirement()
         {
             if(Application.isPlaying) //don't destroy objects if we're in Edit Mode
                 Destroy(gameObject,0.1f); //For some reason, destroying the sphere when a token has just been removed from it borks the token's CanvasGroup.
             //waiting a tenth of a second avoids this.
             //I'd love to know why.
+
         }
 
-        
+        public void AddBlock(BlockDirection blockDirection,BlockReason blockReason)
+        {
+            var block = new SphereBlock(GetAbsolutePath(), blockDirection, blockReason);
+            Watchman.Get<Xamanek>().RegisterSphereBlock(block);
+        }
+
+        public int RemoveMatchingBlocks(BlockDirection blockDirection, BlockReason blockReason)
+        {
+          return  Watchman.Get<Xamanek>().RemoveMatchingBlocks(GetAbsolutePath(), blockDirection, blockReason);
+        }
+
         public virtual bool CurrentlyBlockedFor(BlockDirection direction)
         {
             var currentBlockDirection = CurrentBlockDirection();
@@ -287,7 +270,7 @@ namespace SecretHistories.Spheres
 
         public virtual bool CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection direction, BlockReason exceptReason)
         {
-            foreach (var cb in CurrentSphereBlocks)
+            foreach (var cb in Watchman.Get<Xamanek>().GetBlocksForSphereAtPath(GetAbsolutePath()))
             {
                 if (cb.BlockDirection == direction || cb.BlockDirection == BlockDirection.All)
                 
@@ -300,9 +283,10 @@ namespace SecretHistories.Spheres
 
         public BlockDirection CurrentBlockDirection()
         {
-            bool inwardblock = CurrentSphereBlocks.Any(cb => cb.BlockDirection == BlockDirection.Inward);
-            bool outwardBlock = CurrentSphereBlocks.Any(cb => cb.BlockDirection == BlockDirection.Outward);
-            bool allBlock = CurrentSphereBlocks.Any(cb => cb.BlockDirection == BlockDirection.All);
+            var x = Watchman.Get<Xamanek>();
+            bool inwardblock = x.GetBlocksForSphereAtPath(GetAbsolutePath()).Any(cb =>cb.BlockDirection == BlockDirection.Inward);
+            bool outwardBlock = x.GetBlocksForSphereAtPath(GetAbsolutePath()).Any(cb => cb.BlockDirection == BlockDirection.Outward);
+            bool allBlock = x.GetBlocksForSphereAtPath(GetAbsolutePath()).Any(cb => cb.BlockDirection == BlockDirection.All);
 
             if (allBlock || (inwardblock && outwardBlock))
                 return BlockDirection.All;
@@ -315,21 +299,6 @@ namespace SecretHistories.Spheres
             return BlockDirection.None;
         }
 
-        public bool AddBlock(SphereBlock block)
-        {
-            return CurrentSphereBlocks.Add(block);
-        }
-
-        public int RemoveBlock(SphereBlock blockToRemove)
-        {
-            if (blockToRemove.BlockDirection == BlockDirection.All)
-                return CurrentSphereBlocks.RemoveWhere(cb => cb.BlockReason == blockToRemove.BlockReason);
-            else
-                return CurrentSphereBlocks.RemoveWhere(cb =>
-                    cb.BlockDirection == blockToRemove.BlockDirection && cb.BlockReason == blockToRemove.BlockReason);
-
-        }
-      
 
         public Rect GetRect()
         {

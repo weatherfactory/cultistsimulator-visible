@@ -289,12 +289,12 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             {
                 if (d.MatchesEgress(_activeIngress.GetEgressId()))
                 {
-                    d.EgressSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Inactive));
+                    d.EgressSphere.RemoveMatchingBlocks(BlockDirection.Inward, BlockReason.Inactive);
                     _activeEgress = d.EgressSphere;
                     otherworldSpecificEnRouteSphere.SetOverridingNextStop(_activeEgress);
                 }
                 else
-                    d.EgressSphere.AddBlock(new SphereBlock(BlockDirection.Inward, BlockReason.Inactive));
+                    d.EgressSphere.AddBlock(BlockDirection.Inward, BlockReason.Inactive);
             }
 
             foreach (var d in _dominions)

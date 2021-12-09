@@ -375,7 +375,6 @@ public class PetromnemeImporter
             TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING) ?? 0;
         //   situationCreationCommand.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
 
-        string simplifiedSituationPath;
         TokenLocation tokenLocation;
 
         //get x, y vector from old weird situation notation into 

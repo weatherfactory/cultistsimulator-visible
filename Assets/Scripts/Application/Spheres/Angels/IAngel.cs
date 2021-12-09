@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.UI;
 using SecretHistories.Constants;
+using Steamworks;
 using UnityEngine;
 
 namespace SecretHistories.Spheres.Angels
@@ -26,7 +27,10 @@ namespace SecretHistories.Spheres.Angels
 
         void Retire();
 
+        void RequestRetirement();
+
         bool Defunct { get; }
+
 
         bool RequestingRetirement { get; }
         void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics);

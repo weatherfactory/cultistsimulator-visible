@@ -140,11 +140,10 @@ namespace SecretHistories.UI
 
         private static void SetupBlocksForDestinationSphere(Sphere destinationSphere, TokenTravelAnimation tokenTravelAnimation)
         {
-            if (destinationSphere.SphereCategory == SphereCategory.Threshold
-            ) //hacky. Something more like a 'max tokens #' would make sense.
+            if (destinationSphere.SphereCategory == SphereCategory.Threshold) //hacky. Something more like a 'max tokens #' would make sense.
             {
-                destinationSphere.AddBlock(tokenTravelAnimation.AppliesSphereBlock());
-                tokenTravelAnimation.OnBlockRedundant += destinationSphere.RemoveBlock;
+                destinationSphere.AddBlock(BlockDirection.Inward, BlockReason.InboundTravellingStack);
+                tokenTravelAnimation.OnBlockRedundant += destinationSphere.RemoveMatchingBlocks;
             }
         }
 
@@ -172,8 +171,8 @@ namespace SecretHistories.UI
                 }
 
                 //THERE MAY BE TROUBLE AHEAD. Do we add/remove blocks for world as well as threshold spheres?
-                destinationSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward,
-                    BlockReason.InboundTravellingStack));
+                destinationSphere.RemoveMatchingBlocks(BlockDirection.Inward,
+                    BlockReason.InboundTravellingStack);
 
            
             }
@@ -199,8 +198,8 @@ namespace SecretHistories.UI
         {
             
             var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
-            destinationSphere.RemoveBlock(new SphereBlock(BlockDirection.Inward,
-                BlockReason.InboundTravellingStack));
+            destinationSphere.RemoveMatchingBlocks(BlockDirection.Inward,
+                BlockReason.InboundTravellingStack);
 
             Watchman.Get<Xamanek>().TokenItineraryCompleted(token);
             token.CurrentState=new TravellingState();

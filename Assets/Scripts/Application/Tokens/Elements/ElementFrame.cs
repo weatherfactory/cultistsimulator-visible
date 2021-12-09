@@ -30,8 +30,7 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     float width2Digit = 80f; //85f;
     float width1Digit = 60f; //68f;
     float width0Digits = 40f;
-    private float widthPerCriterionCharacter = 15f;
-
+    
     public void PopulateDisplay(IManifestable manifestable)
     {
         //If we've passed a manifestable here, we probably want to cast it as an element and display that. But maybe we want to convert

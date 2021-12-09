@@ -155,8 +155,9 @@ That's your entry point. From then on you can do anything you like, including lo
 
 DLLs are loaded *when the main app initialises* - before JSON content is loaded. If you disable or enable one, you'll need to restart the CS app to see the effect.
 
-[Acknowledgements: the modding framework is based on Lyrositor's original fan-contributed modding framework. The DLL loading functionality follows Chelnoque's suggested approach and sample code.]
+ACKNOWLEDGEMENTS
+----------------
+The modding framework is based on Lyrositor's original fan-contributed modding framework. The DLL loading functionality follows Chelnoque's suggested approach and sample code.
 
----------------
 
 - AK 01/12/2021

@@ -14,7 +14,7 @@ using SecretHistories.States.TokenStates;
 public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
 
 	public event Action<Token,Context> OnTokenArrival;
-    public event Func<SphereBlock,int> OnBlockRedundant;
+    public event Func<BlockDirection,BlockReason,int> OnBlockRedundant;
 
 	protected Token _token;
     protected Context _context;
@@ -47,12 +47,6 @@ public class TokenTravelAnimation : MonoBehaviour,ISphereEventSubscriber {
     public bool Defunct { get; private set;}
     
 
-
-    public SphereBlock AppliesSphereBlock()
-    {
-        return new SphereBlock(BlockDirection.Inward,
-            BlockReason.InboundTravellingStack);
-    }
 
     protected virtual Vector3 StartPosition => _startPosition;
 
@@ -176,6 +170,7 @@ public void Update()
 
     public void OnDestroy()
     {
-        OnBlockRedundant?.Invoke(AppliesSphereBlock());
+        OnBlockRedundant?.Invoke(BlockDirection.Inward,
+            BlockReason.InboundTravellingStack);
     }
 }
