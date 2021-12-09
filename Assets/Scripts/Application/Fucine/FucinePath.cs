@@ -19,8 +19,6 @@ namespace SecretHistories.Fucine
         public const char SPHERE = '/';
 
 
-
-
         protected List<FucinePathPart> PathParts = new List<FucinePathPart>();
 
 

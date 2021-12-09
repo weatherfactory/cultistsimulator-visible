@@ -470,7 +470,24 @@ namespace SecretHistories.Entities {
 
         }
 
- 
+        public Sphere FindSingleOrDefaultSphereByImmediatePath(FucinePath immediatePath)
+        {
+            return FindSingleOrDefaultSphereByImmediatePath(immediatePath, null);
+        }
+
+        public Sphere FindSingleOrDefaultSphereByImmediatePath(FucinePath immediatePath,Sphere defaultResult)
+        {
+            
+            foreach (var s in _registeredSpheres)
+            {
+                if (s.GetImmediatePath() == immediatePath)
+                    return s;
+            }
+
+            return defaultResult;
+        }
+
+
 
         public Token FindSingleOrDefaultTokenById(string uniqueTokenId)
         {

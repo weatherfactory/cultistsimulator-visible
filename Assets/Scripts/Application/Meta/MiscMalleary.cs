@@ -63,17 +63,26 @@ namespace Assets.Scripts.Application.Meta
         {
             var path = new FucinePath(input.text);
             if (!path.IsValid())
-                ResponseLabel.text = "Invalid Path";
-            string tokenId = input.text;
-            var tokenToFind=Watchman.Get<HornedAxe>().FindSingleOrDefaultTokenById(tokenId);
+                ResponseLabel.text = "Invalid Fucine!";
+            
+            var tokenToFind=Watchman.Get<HornedAxe>().FindSingleOrDefaultTokenById(path.ToString());
             if (tokenToFind != null)
             {
                 tokenToFind.ShowPossibleInteraction();
-                ResponseLabel.text = $"found token {tokenToFind.PayloadId}";
+                ResponseLabel.text = $"found at {tokenToFind.Location.AtSpherePath}{path}";
+                return;
             }
-            else
-                    ResponseLabel.text = $"couldn't find token {input.text}";
 
+            var sphereToFind= Watchman.Get<HornedAxe>().FindSingleOrDefaultSphereByImmediatePath(path);
+            if (sphereToFind != null)
+            {
+                ResponseLabel.text= $"found at {sphereToFind.GetAbsolutePath()}";
+                return;
+            }
+
+            ResponseLabel.text = $"couldn't find {input.text}";
+
+            
         }
 
         void BeginLegacy(string legacyId)

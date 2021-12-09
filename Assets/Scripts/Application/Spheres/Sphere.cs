@@ -136,8 +136,15 @@ namespace SecretHistories.Spheres
         }
 
         public FucinePath GetAbsolutePath()
-        {
+        { 
             return _container.GetAbsolutePath().AppendSphere(Id);
+        }
+
+        //as long as all containers have a unique id, this can always be used to relocate the sphere, even if its container moves
+        public FucinePath GetImmediatePath()
+        {
+            var immediatePath = new FucinePath(_container.Id).AppendSphere(Id);
+            return immediatePath;
         }
 
 
@@ -252,7 +259,7 @@ namespace SecretHistories.Spheres
 
         public void AddBlock(BlockDirection blockDirection,BlockReason blockReason)
         {
-            var block = new SphereBlock(GetAbsolutePath(), blockDirection, blockReason);
+            var block = new SphereBlock(GetImmediatePath(), blockDirection, blockReason);
             Watchman.Get<Xamanek>().RegisterSphereBlock(block);
         }
 
