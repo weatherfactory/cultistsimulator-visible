@@ -105,9 +105,10 @@ namespace SecretHistories.Services
                 }
                 instantiatedPrefab.name = $"{spec.SphereType.Name}_{spec.Id}";
                 var newSphere = instantiatedPrefab.GetComponent(spec.SphereType) as Sphere;
-                newSphere.ApplySpec(spec);
-            //do this next: thje container might want the sphere ID, which is of course set via the spec
+                newSphere.SetPropertiesFromSpec(spec);
+            //do this next: the container might want the sphere ID, which is of course set via the spec
                 container.AttachSphere(newSphere);
+ 
 
             Watchman.Get<HornedAxe>().RegisterSphere(newSphere);
 

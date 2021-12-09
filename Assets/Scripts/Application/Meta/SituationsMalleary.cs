@@ -43,7 +43,7 @@ namespace Assets.Scripts.Application.Meta
            sphereSphec.Label = "Malleary: Situations";
            sphereSphec.AllowAnyToken = true;
 
-           _situationDrydock.ApplySpec(sphereSphec);
+           _situationDrydock.SetPropertiesFromSpec(sphereSphec);
 
            _situationDrydock.Subscribe(this);
 

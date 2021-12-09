@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Fucine;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.UI;
 
@@ -55,7 +57,7 @@ namespace SecretHistories.Spheres.Angels
             return _angels.Any(a => a.GetType() == angelType);
         }
 
-        public void RequestRetirementForAllAngels()
+        public void RetireAllAngels()
         {
             foreach (var a in _angels)
                 a.Retire();
@@ -68,5 +70,14 @@ namespace SecretHistories.Spheres.Angels
               foreach(var r in angelsToRetire)
                   RetireAndRemoveAngel(r);
         }
+
+        public IEnumerable GetImplicitAngelBlocks()
+        {
+            var blocks = new List<SphereBlock>();
+            foreach(var a in _angels)
+                if(a.GetType()==typeof(GreedyAngel)) // HACK, FIX
+                    blocks.Add(new SphereBlock(FucinePath.Current(), BlockDirection.Inward,BlockReason.GreedyAngel));
+        }
+
     }
 }

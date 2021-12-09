@@ -35,7 +35,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
                 NoonUtility.LogWarning("SpecApplier for sphere " + applyToSphere.name + " doesn't have an id specified.");
 
             _sphereSpec = new SphereSpec(applyToSphere.GetType(), ApplyId);
-            applyToSphere.ApplySpec(_sphereSpec);
+            applyToSphere.SetPropertiesFromSpec(_sphereSpec);
             
             Watchman.Get<HornedAxe>().RegisterSphere(applyToSphere);
         }

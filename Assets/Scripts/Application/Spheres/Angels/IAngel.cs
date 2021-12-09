@@ -27,7 +27,6 @@ namespace SecretHistories.Spheres.Angels
 
         void Retire();
 
-        void RequestRetirement();
 
         bool Defunct { get; }
 

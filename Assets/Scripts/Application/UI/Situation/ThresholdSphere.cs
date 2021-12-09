@@ -53,17 +53,12 @@ namespace SecretHistories.UI
         }
 
 
-        public override void ApplySpec(SphereSpec sphereSpec)
+        public override void SetPropertiesFromSpec(SphereSpec sphereSpec)
         {
-            base.ApplySpec(sphereSpec);
+            base.SetPropertiesFromSpec(sphereSpec);
 
             if(SlotLabel!=null)
                 SlotLabel.text = sphereSpec.Label;
-
-
-            var angelsToAdd = sphereSpec.MakeAngels(this);
-            foreach(var a in angelsToAdd)
-                AddAngel(a);
 
         }
 

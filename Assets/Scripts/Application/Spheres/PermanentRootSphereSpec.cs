@@ -37,7 +37,7 @@ namespace SecretHistories.Spheres
             _sphereSpec.EnRouteSpherePath=new FucinePath(EnRouteSpherePath);
             _sphereSpec.WindowsSpherePath = new FucinePath(WindowsSpherePath);
 
-            applyToSphere.ApplySpec(_sphereSpec);
+            applyToSphere.SetPropertiesFromSpec(_sphereSpec);
 
             FucineRoot.Get().AttachSphere(applyToSphere);
             Watchman.Get<HornedAxe>().RegisterSphere(applyToSphere);

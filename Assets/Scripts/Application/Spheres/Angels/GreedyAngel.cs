@@ -47,7 +47,6 @@ namespace SecretHistories.Spheres.Angels
      
             thresholdSphereToGrabTo.ShowAngelPresence(this);
 
-        _thresholdSphereToGrabTo.AddBlock(BlockDirection.Inward,BlockReason.GreedyAngel);
         }
 
         public bool MinisterToDepartingToken(Token token, Context context)
@@ -62,7 +61,6 @@ namespace SecretHistories.Spheres.Angels
 
         public void Retire()
         {
-            _thresholdSphereToGrabTo.RemoveMatchingBlocks(BlockDirection.Inward, BlockReason.GreedyAngel);
             _thresholdSphereToGrabTo.HideAngelPresence(this);
             Defunct = true;
         }

@@ -124,6 +124,7 @@ namespace SecretHistories.Spheres
 
         public void SetContainer(IHasAspects newContainer)
         {
+            
             if(newContainer==null)
                 NoonUtility.LogWarning($"We're trying to set null as a container for sphere {Id} / {gameObject.name}");
 
@@ -133,6 +134,9 @@ namespace SecretHistories.Spheres
             
             _container = newContainer;
             oldContainer.DetachSphere(this);
+
+            flock.RetireAllAngels(); //When we move a container, the angels may have inaccurate information. Remove them and recreate them
+            AddAngelsFromSpec(GoverningSphereSpec);
         }
 
         public FucinePath GetAbsolutePath()
@@ -206,12 +210,19 @@ namespace SecretHistories.Spheres
         }
 
 
-        public virtual void ApplySpec(SphereSpec spec)
+        public virtual void SetPropertiesFromSpec(SphereSpec spec)
         {
             if(string.IsNullOrEmpty(spec.Id))
                 NoonUtility.LogWarning("PROBLEM: null sphere id passed in SphereSpec for sphere " + gameObject.name + " in container " + GetContainer().Id);
 
             GoverningSphereSpec = spec;
+        }
+
+        public virtual void AddAngelsFromSpec(SphereSpec spec)
+        {
+            var angelsToAdd = spec.MakeAngels(this);
+            foreach (var a in angelsToAdd)
+                AddAngel(a);
         }
 
         public virtual void Retire(SphereRetirementType sphereRetirementType)
@@ -221,7 +232,7 @@ namespace SecretHistories.Spheres
 
             Defunct = true;
             Watchman.Get<HornedAxe>().DeregisterSphere(this);
-            flock.RequestRetirementForAllAngels();
+            flock.RetireAllAngels();
             //we used to add a block at this point. But if the sphere is deregistered and all the angels are inactive, that shouldn't be necessary;
             //And if we add a retirement-specific block, we then need to remove it from the Xamanek if a slot at the same path is recreated!
 
@@ -283,6 +294,11 @@ namespace SecretHistories.Spheres
                 
                     if(cb.BlockReason!=exceptReason)
                         return true;
+            }
+
+            foreach (var ib in flock.GetImplicitAngelBlocks())
+            {
+
             }
 
             return false;
