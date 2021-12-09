@@ -134,7 +134,14 @@ namespace SecretHistories.UI
 
         public IEnumerable<SphereBlock> GetBlocksForSphereAtPath(FucinePath atPath)
         {
-            return _sphereBlocks.Where(sb => sb.AtSpherePath == atPath);
+            var tempList = new List<SphereBlock>();
+            foreach(var sb in _sphereBlocks)
+                if (sb.AtSpherePath==atPath)
+                    tempList.Add(sb);
+
+            return tempList;
+
+            //    return _sphereBlocks.Where(sb => sb.AtSpherePath == atPath);
         }
 
         public int RemoveMatchingBlocks(FucinePath atPath, BlockDirection blockDirection, BlockReason blockReason)
