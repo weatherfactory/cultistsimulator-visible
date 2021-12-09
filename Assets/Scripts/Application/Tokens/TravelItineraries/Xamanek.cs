@@ -34,7 +34,7 @@ namespace SecretHistories.UI
         //We also assume each token can only ever have one itinerary. We may later regret this but I think it's a wise stricture.
         private readonly Dictionary<string, TokenItinerary> _itineraries = new Dictionary<string, TokenItinerary>();
 
-        private readonly HashSet<SphereBlock> _sphereBlocks;
+        private readonly HashSet<SphereBlock> _sphereBlocks=new HashSet<SphereBlock>();
 
         
         [SerializeField] private GameObject ItinerariesDisplayHolder;
