@@ -46,6 +46,7 @@ namespace SecretHistories.UI
             var r = new Watchman();
             r.Register(this);
             ClearItineraryDisplays();
+            ClearSphereBlockDisplays();
 
         }
 
@@ -66,6 +67,25 @@ namespace SecretHistories.UI
             var existingDisplays = ItinerariesDisplayHolder.GetComponentsInChildren<ItineraryDisplay>();
             foreach (var ed in existingDisplays)
                 Destroy(ed.gameObject);
+        }
+
+
+        private void ClearSphereBlockDisplays()
+        {
+            var sbds = SphereBlocksDisplayHolder.GetComponentsInChildren<SphereBlockDisplay>();
+            foreach(var sbd in sbds)
+                Destroy(sbd.gameObject);
+        }
+        public void UpdateSphereBlockDisplays()
+        {
+            ClearSphereBlockDisplays();
+
+            foreach (var s in _sphereBlocks)
+            {
+                var newSbDisplay = Watchman.Get<PrefabFactory>()
+                    .CreateLocally<SphereBlockDisplay>(SphereBlocksDisplayHolder.transform);
+                newSbDisplay.DisplaySphereBlock(s);
+            }
         }
 
         private void DestroyTravelAnimationForToken(Token token)
@@ -95,7 +115,6 @@ namespace SecretHistories.UI
             DestroyTravelAnimationForToken(token);
             UpdateItineraryDisplays();
 
-
         }
 
         public void TokenItineraryInterrupted(Token token)
@@ -109,6 +128,7 @@ namespace SecretHistories.UI
         public void RegisterSphereBlock(SphereBlock newBlock)
         {
             _sphereBlocks.Add(newBlock);
+            UpdateSphereBlockDisplays();
         }
         //Note: we *don't* remove sphereblocks routinely when a sphere retires, because the blocks may still apply to a successor in the same location
 
@@ -119,12 +139,15 @@ namespace SecretHistories.UI
 
         public int RemoveMatchingBlocks(FucinePath atPath, BlockDirection blockDirection, BlockReason blockReason)
         {
+            int blocksRemoved = 0;
             if (blockDirection == BlockDirection.All)
-                return CurrentSphereBlocks.RemoveWhere(cb => cb.AtSpherePath==atPath && cb.BlockReason == blockReason);
+                blocksRemoved= CurrentSphereBlocks.RemoveWhere(cb => cb.AtSpherePath==atPath && cb.BlockReason == blockReason);
             else
-                return CurrentSphereBlocks.RemoveWhere(cb => cb.AtSpherePath == atPath &&
-                                                             cb.BlockDirection == blockDirection && cb.BlockReason == blockReason);
+                blocksRemoved = CurrentSphereBlocks.RemoveWhere(cb => cb.AtSpherePath == atPath &&
+                                                                      cb.BlockDirection == blockDirection && cb.BlockReason == blockReason);
+            UpdateSphereBlockDisplays();
 
+            return blocksRemoved;
         }
 
         public Dictionary<string,TokenItinerary> CurrentItinerariesForPath(FucinePath forPath)
