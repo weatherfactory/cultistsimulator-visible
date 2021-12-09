@@ -141,10 +141,10 @@ namespace SecretHistories.UI
         {
             int blocksRemoved = 0;
             if (blockDirection == BlockDirection.All)
-                blocksRemoved= CurrentSphereBlocks.RemoveWhere(cb => cb.AtSpherePath==atPath && cb.BlockReason == blockReason);
+                blocksRemoved= _sphereBlocks.RemoveWhere(cb => cb.AtSpherePath==atPath && cb.BlockReason == blockReason);
             else
-                blocksRemoved = CurrentSphereBlocks.RemoveWhere(cb => cb.AtSpherePath == atPath &&
-                                                                      cb.BlockDirection == blockDirection && cb.BlockReason == blockReason);
+                blocksRemoved = _sphereBlocks.RemoveWhere(cb => cb.AtSpherePath == atPath &&
+                                                                cb.BlockDirection == blockDirection && cb.BlockReason == blockReason);
             UpdateSphereBlockDisplays();
 
             return blocksRemoved;
