@@ -209,7 +209,7 @@ namespace SecretHistories.Entities
         public string DefaultUniqueTokenId()
         {
             int identity = FucineRoot.Get().IncrementedIdentity();
-            return $"!{Id}_{identity}";
+            return $"{FucinePath.TOKEN}{Id}_{identity}";
         }
 
         public static Dictionary<string, int> EmptyMutationsDictionary()

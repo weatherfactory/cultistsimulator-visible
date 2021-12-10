@@ -116,7 +116,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             }
 
             //offset once more for each incoming token
-            foreach (var i in Watchman.Get<Xamanek>().CurrentItinerariesForPath(Sphere.GetAbsolutePath()))
+            foreach (var i in Watchman.Get<Xamanek>().GetCurrentItinerariesForPath(Sphere.GetAbsolutePath()))
             {
                 candidatePosition.x += tokenWidth;
             }

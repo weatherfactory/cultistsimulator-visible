@@ -307,8 +307,16 @@ namespace SecretHistories.Fucine
             return new FucinePath(String.Empty);
         }
 
+        public bool Conforms(FucinePath otherPath)
+        {
 
-        public bool MatchesWildPath(FucinePath wildPath)
+     if (otherPath.IsWild())
+         return ConformsWild(otherPath);
+
+     return Equals(otherPath);
+            
+        }
+        public bool ConformsWild(FucinePath wildPath)
         {
 
             if (!wildPath.IsWild())

@@ -81,6 +81,12 @@ namespace SecretHistories.Spheres
 
         public Vector3 WorldPosition;
 
+        [SerializeField]
+        private string _editorAbsolutePath;
+        [SerializeField]
+        private string _editorWildPath;
+
+
         public virtual void Awake()
         {
             gameObject.AddComponent<SimpleChoreographer>();
@@ -135,8 +141,8 @@ namespace SecretHistories.Spheres
             _container = newContainer;
             oldContainer.DetachSphere(this);
 
-            flock.RetireAllAngels(); //When we move a container, the angels may have inaccurate information. Remove them and recreate them
-            AddAngelsFromSpec(GoverningSphereSpec);
+            _editorAbsolutePath = GetAbsolutePath().ToString();
+            _editorWildPath = GetWildPath().ToString();
         }
 
         public FucinePath GetAbsolutePath()
@@ -158,6 +164,7 @@ namespace SecretHistories.Spheres
                 return false;
             if(GetMatchForTokenPayload(tokenToSend.Payload).MatchType != SlotMatchForAspectsType.Okay)
                 return false;
+
 
             return true;
         }
@@ -208,6 +215,8 @@ namespace SecretHistories.Spheres
         {
             if(string.IsNullOrEmpty(spec.Id))
                 NoonUtility.LogWarning("PROBLEM: null sphere id passed in SphereSpec for sphere " + gameObject.name + " in container " + GetContainer().Id);
+
+            AddAngelsFromSpec(spec);
 
             GoverningSphereSpec = spec;
         }

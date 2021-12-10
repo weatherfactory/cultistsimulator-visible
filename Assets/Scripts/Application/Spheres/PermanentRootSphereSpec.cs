@@ -41,6 +41,7 @@ namespace SecretHistories.Spheres
 
             FucineRoot.Get().AttachSphere(applyToSphere);
             Watchman.Get<HornedAxe>().RegisterSphere(applyToSphere);
+
         }
     }
 }

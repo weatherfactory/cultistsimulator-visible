@@ -257,7 +257,12 @@ namespace SecretHistories.UI
         public override bool IsValidDestinationForToken(Token tokenToSend)
         {
             if (GetElementTokenInSlot() != null)
-                return false;
+                return false; //assumes only one
+
+            var alreadyIncoming = Watchman.Get<Xamanek>().GetCurrentItinerariesForPath(GetWildPath());
+            if (alreadyIncoming.Any()) 
+                return false; //original flavour thresholds don't allow users or angels to put a token in if there are any en route already
+
 
             return base.IsValidDestinationForToken(tokenToSend);
         }

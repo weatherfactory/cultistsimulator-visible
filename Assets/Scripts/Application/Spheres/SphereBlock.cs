@@ -6,7 +6,6 @@ namespace SecretHistories.Spheres
     public enum BlockReason
     {
         GreedyAngel,
-        InboundTravellingStack,
         Inactive,
         None //used to pass to 'except for reason' when there's no exception
     }

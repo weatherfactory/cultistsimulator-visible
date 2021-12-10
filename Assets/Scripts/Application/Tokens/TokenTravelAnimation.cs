@@ -170,7 +170,6 @@ public void Update()
 
     public void OnDestroy()
     {
-        OnBlockRedundant?.Invoke(BlockDirection.Inward,
-            BlockReason.InboundTravellingStack);
+
     }
 }

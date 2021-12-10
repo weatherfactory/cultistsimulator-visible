@@ -466,7 +466,7 @@ namespace SecretHistories.Entities {
 
             var spherePath = tokenInSpherePath.GetSpherePath();
             var tokenPath = tokenInSpherePath.GetTokenPath();
-            var tokenId = tokenPath.GetEndingPathPart().GetId(); //this won't work, I don't think: !
+            var tokenId = tokenPath.GetEndingPathPart().GetId();
             var sphere = GetSphereByPath(spherePath);
             var token = sphere.Tokens.SingleOrDefault(t => t.PayloadId == tokenId);
             return token;

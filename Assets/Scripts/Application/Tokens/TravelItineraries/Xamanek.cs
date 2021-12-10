@@ -37,6 +37,7 @@ namespace SecretHistories.UI
         //We also assume each token can only ever have one itinerary. We may later regret this but I think it's a wise stricture.
         private readonly Dictionary<string, TokenItinerary> _itineraries = new Dictionary<string, TokenItinerary>();
 
+//Tracking blocks as independent state might yet turn out to be redundant. We only use it in one obscure place (Ingress) at time of writing
         private readonly HashSet<SphereBlock> _sphereBlocks=new HashSet<SphereBlock>();
 
         
@@ -145,42 +146,29 @@ namespace SecretHistories.UI
         {
             var eligible = new List<SphereBlock>();
             foreach(var sb in _sphereBlocks)
-                if (sb.AtSpherePath==atPath)
+                if (sb.AtSpherePath.Conforms(atPath))
                     eligible.Add(sb);
             return eligible;
-
         }
 
-        public IEnumerable<SphereBlock> GetImplicitBlocksForPath(FucinePath findBlocksForPath)
-        {
-            foreach (var i in _itineraries)
-            {
-                if ((findBlocksForPath.IsWild() && i.Value.DestinationSpherePath.MatchesWildPath(findBlocksForPath))
-                    || (!findBlocksForPath.IsWild() && i.Value.DestinationSpherePath == findBlocksForPath))
-                {
-                    var sb=new B
-                }
-                
-            }
-        }
 
         public int RemoveMatchingBlocks(FucinePath atPath, BlockDirection blockDirection, BlockReason blockReason)
         {
             int blocksRemoved = 0;
             if (blockDirection == BlockDirection.All)
-                blocksRemoved= _sphereBlocks.RemoveWhere(cb => cb.AtSpherePath==atPath && cb.BlockReason == blockReason);
+                blocksRemoved= _sphereBlocks.RemoveWhere(cb => cb.AtSpherePath.Conforms(atPath)  && cb.BlockReason == blockReason);
             else
-                blocksRemoved = _sphereBlocks.RemoveWhere(cb => cb.AtSpherePath == atPath &&
+                blocksRemoved = _sphereBlocks.RemoveWhere(cb => cb.AtSpherePath.Conforms(atPath) &&
                                                                 cb.BlockDirection == blockDirection && cb.BlockReason == blockReason);
             UpdateSphereBlockDisplays();
 
             return blocksRemoved;
         }
 
-        public Dictionary<string,TokenItinerary> CurrentItinerariesForPath(FucinePath forPath)
+        public Dictionary<string,TokenItinerary> GetCurrentItinerariesForPath(FucinePath forPath)
         {
             var matchingItineraries=new Dictionary<string, TokenItinerary>( _itineraries.Where(i =>
-                i.Value.DestinationSpherePath == forPath));
+                i.Value.DestinationSpherePath.Conforms(forPath)));
 
             return matchingItineraries;
         }

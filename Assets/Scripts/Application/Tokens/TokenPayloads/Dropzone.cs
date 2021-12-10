@@ -98,7 +98,10 @@ namespace SecretHistories.Entities.Verbs
                 Id = id;
                 EntityId = entityId;
             }
-            
+
+            if (!Id.StartsWith(FucinePath.TOKEN))
+                Id = FucinePath.TOKEN + Id;
+
         }
 
         public string GetIllumination(string key)

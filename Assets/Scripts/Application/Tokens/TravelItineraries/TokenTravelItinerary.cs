@@ -142,7 +142,6 @@ namespace SecretHistories.UI
         {
             if (destinationSphere.SphereCategory == SphereCategory.Threshold) //hacky. Something more like a 'max tokens #' would make sense.
             {
-                destinationSphere.AddBlock(BlockDirection.Inward, BlockReason.InboundTravellingStack);
                 tokenTravelAnimation.OnBlockRedundant += destinationSphere.RemoveMatchingBlocks;
             }
         }
@@ -170,9 +169,6 @@ namespace SecretHistories.UI
                     destinationSphere.TryAcceptToken(token,context);
                 }
 
-                //THERE MAY BE TROUBLE AHEAD. Do we add/remove blocks for world as well as threshold spheres?
-                destinationSphere.RemoveMatchingBlocks(BlockDirection.Inward,
-                    BlockReason.InboundTravellingStack);
 
            
             }
@@ -197,10 +193,6 @@ namespace SecretHistories.UI
         private void TravelFailed(Token token)
         {
             
-            var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
-            destinationSphere.RemoveMatchingBlocks(BlockDirection.Inward,
-                BlockReason.InboundTravellingStack);
-
             Watchman.Get<Xamanek>().TokenItineraryCompleted(token);
             token.CurrentState=new TravellingState();
             token.GoAway(new Context(Context.ActionSource.TravelFailed));
