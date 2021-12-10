@@ -64,12 +64,6 @@ namespace SecretHistories.Spheres.Angels
             _thresholdSphereToGrabTo.HideAngelPresence(this);
             Defunct = true;
         }
-        public bool RequestingRetirement { get; private set; }
-        public void RequestRetirement()
-        {
-            RequestingRetirement = true;
-        }
-
         public bool Defunct { get; protected set; }
 
         public void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
@@ -110,7 +104,8 @@ namespace SecretHistories.Spheres.Angels
                             new Context(Context.ActionSource.GreedyGrab));
 
 
-                    TokenTravelItinerary itinerary = destinationThresholdSphere.GetItineraryFor(matchingToken).WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION);
+                    TokenTravelItinerary itinerary = destinationThresholdSphere.GetItineraryFor(matchingToken).
+                        WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION);
 
                     itinerary.Depart(matchingToken,new Context(Context.ActionSource.GreedyGrab));
 

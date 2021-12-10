@@ -7,7 +7,8 @@ namespace SecretHistories.Spheres
     {
         GreedyAngel,
         InboundTravellingStack,
-        Inactive
+        Inactive,
+        None //used to pass to 'except for reason' when there's no exception
     }
 
     public enum BlockDirection

@@ -25,8 +25,12 @@ private char tokenIdPrefix => FucinePath.TOKEN;
         public override PathCategory Category => PathCategory.Token;
         public override string GetId()
         {
+            //if (PathPartValue.First() == tokenIdPrefix)
+            //    return PathPartValue.Substring(1);
+
+            //no: we're keeping the tokenidprefix in the id, so tokenids are always immediately identifiable
             if (PathPartValue.First() == tokenIdPrefix)
-                return PathPartValue.Substring(1);
+                return PathPartValue;
 
             throw new ApplicationException("Can't find the token ID in token pathpart " + PathPartValue);
         }

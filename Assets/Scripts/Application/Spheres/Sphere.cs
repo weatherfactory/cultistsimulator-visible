@@ -196,10 +196,6 @@ namespace SecretHistories.Spheres
             flock.AddAngel(angel);
         }
 
-        public void RemoveAngel(IAngel angel)
-        {
-            flock.RetireAndRemoveAngel(angel);
-        }
 
         public virtual List<SphereSpec> GetChildSpheresSpecsToAddIfThisTokenAdded(Token t,string verbId)
         {
@@ -281,45 +277,24 @@ namespace SecretHistories.Spheres
 
         public virtual bool CurrentlyBlockedFor(BlockDirection direction)
         {
-            var currentBlockDirection = CurrentBlockDirection();
-            return (currentBlockDirection == BlockDirection.All ||
-                    currentBlockDirection == direction);
+            return CurrentlyBlockedForDirectionWithAnyReasonExcept(direction, BlockReason.None);
         }
 
         public virtual bool CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection direction, BlockReason exceptReason)
         {
-            foreach (var cb in Watchman.Get<Xamanek>().GetBlocksForSphereAtPath(GetAbsolutePath()))
+            var allBlocks = new List<SphereBlock>();
+            allBlocks.AddRange(Watchman.Get<Xamanek>().GetBlocksForSphereAtPath(GetImmediatePath()));
+            allBlocks.AddRange(flock.GetImplicitAngelBlocks());
+
+            foreach (var b in allBlocks)
             {
-                if (cb.BlockDirection == direction || cb.BlockDirection == BlockDirection.All)
+                if (b.BlockDirection == direction || b.BlockDirection == BlockDirection.All)
                 
-                    if(cb.BlockReason!=exceptReason)
+                    if(b.BlockReason!=exceptReason)
                         return true;
             }
 
-            foreach (var ib in flock.GetImplicitAngelBlocks())
-            {
-
-            }
-
             return false;
-        }
-
-        public BlockDirection CurrentBlockDirection()
-        {
-            var x = Watchman.Get<Xamanek>();
-            bool inwardblock = x.GetBlocksForSphereAtPath(GetAbsolutePath()).Any(cb =>cb.BlockDirection == BlockDirection.Inward);
-            bool outwardBlock = x.GetBlocksForSphereAtPath(GetAbsolutePath()).Any(cb => cb.BlockDirection == BlockDirection.Outward);
-            bool allBlock = x.GetBlocksForSphereAtPath(GetAbsolutePath()).Any(cb => cb.BlockDirection == BlockDirection.All);
-
-            if (allBlock || (inwardblock && outwardBlock))
-                return BlockDirection.All;
-
-            if (inwardblock)
-                return BlockDirection.Inward;
-            if (outwardBlock)
-                return BlockDirection.Outward;
-
-            return BlockDirection.None;
         }
 
 
@@ -504,7 +479,7 @@ namespace SecretHistories.Spheres
         public void RequestFlockActions(float seconds, float metaseconds)
         {
             flock.Act(seconds, metaseconds);
-            flock.RemoveDefunctAngels();
+         
         }
 
         public void RequestTokensSpendTime(float seconds, float metaseconds)

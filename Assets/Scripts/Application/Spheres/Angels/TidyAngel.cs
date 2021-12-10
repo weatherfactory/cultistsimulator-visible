@@ -76,11 +76,7 @@ namespace SecretHistories.Spheres.Angels
 
 
         public bool Defunct { get; protected set; }
-        public bool RequestingRetirement { get; private set; }
-        public void RequestRetirement()
-        {
-            RequestingRetirement = true;
-        }
+
 
         public void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics)
         {

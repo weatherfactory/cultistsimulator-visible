@@ -26,12 +26,9 @@ namespace SecretHistories.Spheres.Angels
         bool MinisterToEvictedToken(Token token, Context context);
 
         void Retire();
-
-
+        
         bool Defunct { get; }
-
-
-        bool RequestingRetirement { get; }
+        
         void ShowRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics);
         void HideRelevantVisibleCharacteristic(List<VisibleCharacteristic> visibleCharacteristics);
    }

@@ -19,19 +19,13 @@ namespace SecretHistories.Spheres.Angels
             _angels.Add(angel);
         }
 
-        public void RetireAndRemoveAngel(IAngel angel)
-        {
-            angel.Retire();
-            _angels.Remove(angel);
-        }
-
         public void Act(float seconds, float metaseconds)
         {
+            _angels.RemoveWhere(a => a.Defunct);
+
             foreach (var angel in _angels)
-            {
-                if(!angel.Defunct || angel.RequestingRetirement)
+
                     angel.Act(seconds, metaseconds);
-            }
         }
 
         public bool MinisterToDepartingToken(Token token, Context context)
@@ -60,23 +54,18 @@ namespace SecretHistories.Spheres.Angels
         public void RetireAllAngels()
         {
             foreach (var a in _angels)
-                a.Retire();
+                a.Retire(); //they'll get cleaned out of the collection on next Act()
         }
 
-        public void RemoveDefunctAngels()
-        {
-            var angelsToRetire = new List<IAngel>(_angels.Where(a => a.RequestingRetirement));
 
-              foreach(var r in angelsToRetire)
-                  RetireAndRemoveAngel(r);
-        }
-
-        public IEnumerable GetImplicitAngelBlocks()
+        public IEnumerable<SphereBlock> GetImplicitAngelBlocks()
         {
             var blocks = new List<SphereBlock>();
             foreach(var a in _angels)
                 if(a.GetType()==typeof(GreedyAngel)) // HACK, FIX
                     blocks.Add(new SphereBlock(FucinePath.Current(), BlockDirection.Inward,BlockReason.GreedyAngel));
+
+            return blocks;
         }
 
     }
