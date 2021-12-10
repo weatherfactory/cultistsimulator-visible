@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Fucine;
@@ -70,29 +72,29 @@ namespace SecretHistories.Fucine
 
             try
             {
-                List<string> sphereParts;
+                List<string> splitParts;
                 //  ./sphere1!situationa/sphere2!situationb
                 if (path[0]==ROOT)
                 {
                     AddRootPart();
-                    sphereParts=path.Substring(1).Split(SPHERE).ToList();
+                    splitParts = path.Substring(1).Split(SPHERE).ToList();
                 }
                 else if (path[0] == WILD)
                 {
                     AddWildPart();
-                    sphereParts = path.Split(SPHERE).ToList();
+                    splitParts = path.Substring(1).Split(SPHERE).ToList();
                 }
                 else
                 {
-                    sphereParts = path.Split(SPHERE).ToList();
+                    splitParts = path.Split(SPHERE).ToList();
                 }
                 //  .
                 //  sphere1!situationa
                 //  sphere2!situationb
 
-                if (sphereParts.Any()) 
+                if (splitParts.Any()) 
                 {
-                    Parse(sphereParts);
+                    ParseAndAddPartsSplitBySphere(splitParts);
                 }
 
                 Validity=ValidateAfterParsing(PathParts);
@@ -105,6 +107,7 @@ namespace SecretHistories.Fucine
 
 
         }
+
 
         private FucineValidity ValidateAfterParsing(List<FucinePathPart> pathParts)
         {
@@ -197,31 +200,32 @@ namespace SecretHistories.Fucine
             return new FucinePath(new WildPathPart());
         }
 
-        private void Parse(List<string> sphereParts)
+        private void ParseAndAddPartsSplitBySphere(List<string> partsSplitBySphereDivider)
         {
-       
-                if (sphereParts[0].StartsWith(TOKEN.ToString()) && sphereParts.Count == 1)
-                {
-                    //this is a token path part, on its own. This is only legal when there is exactly one path part:
-                    //it has to be relative (so no root) and it can't be preceded by anything else (or it would have to be preceded by a sphere
-                    AddToken(sphereParts[0]);
-                    return;
-                }
+            foreach (var splitPart in partsSplitBySphereDivider)
+            {
 
-                foreach (var spherePart in sphereParts)
+                if (!string.IsNullOrEmpty(splitPart) && !string.IsNullOrWhiteSpace(splitPart))
                 {
-
-                    if (!string.IsNullOrEmpty(spherePart) && !string.IsNullOrWhiteSpace(spherePart))
+                    if (splitPart.StartsWith(TOKEN.ToString()))
+                        AddToken(splitPart); //it can't be followed by another /, because we've split those out. Add it as a token and move on.
+                    else
                     {
-                        string[] mightBeSphereAndSituation = spherePart.Split(TOKEN);
-                        if (mightBeSphereAndSituation.Length > 1)
-                            AddSphereAndToken(mightBeSphereAndSituation[0], mightBeSphereAndSituation[1]);
+                        if (splitPart.Contains(TOKEN.ToString()))
+                        {
+                            //This is a sphere followed by a token.
+                            string[] splitOnTokenChar = splitPart.Split(TOKEN.ToString());
+                            
+                            AddSphereAndToken(splitOnTokenChar[0], splitOnTokenChar[1]);
+                        }
                         else
-                            AddSphere(mightBeSphereAndSituation[0]);
+                        {
+                            //This is just a sphere.
+                            AddSphere(splitPart);
+                        }
                     }
                 }
-            
-
+            }
         }
 
         private void AddToken(string token)

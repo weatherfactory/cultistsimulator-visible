@@ -71,7 +71,7 @@ namespace Assets.Scripts.Application.Meta
                 var sphereToFind = Watchman.Get<HornedAxe>().FindSingleOrDefaultSphereByWildPath(path);
                 if (sphereToFind != null)
                 {
-                    ResponseLabel.text = $"found at {sphereToFind.GetAbsolutePath()}";
+                    ResponseLabel.text = $"found sphere at {sphereToFind.GetAbsolutePath()}";
                     return;
                 }
 
@@ -87,7 +87,7 @@ namespace Assets.Scripts.Application.Meta
                 if (tokenToFind != null)
                 {
                     tokenToFind.ShowPossibleInteraction();
-                    ResponseLabel.text = $"found at {tokenToFind.Location.AtSpherePath}{path}";
+                    ResponseLabel.text = $"found token at {tokenToFind.Location.AtSpherePath}{tokenToFind.PayloadId}";
                     return;
                 }
 

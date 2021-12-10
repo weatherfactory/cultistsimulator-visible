@@ -123,7 +123,7 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
 
         public FucinePath GetWildPath()
         {
-            return FucinePath.Root();
+            return FucinePath.Wild();
         }
 
         public RectTransform GetRectTransform()
