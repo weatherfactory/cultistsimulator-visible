@@ -307,6 +307,45 @@ namespace SecretHistories.Fucine
             return new FucinePath(String.Empty);
         }
 
+
+        public bool MatchesWildPath(FucinePath wildPath)
+        {
+
+            if (!wildPath.IsWild())
+            {
+                NoonUtility.LogWarning($"Trying to wild-match {this} with a non-wild path: {wildPath}");
+                return false;
+            }
+
+
+            if (PathParts.Count < wildPath.PathParts.Count)
+                return false; //a wild path can have fewer parts than a matching absolute path, but the reverse is not true
+
+            int thisPathIndex = PathParts.Count - 1;
+            int wildPathIndex = wildPath.PathParts.Count - 1;
+
+
+            while (wildPathIndex >= 0)
+            {
+                FucinePathPart wildPartToCompare = wildPath.PathParts[wildPathIndex];
+                
+                if (wildPartToCompare.Category != FucinePathPart.PathCategory.Wild)
+                {
+                    FucinePathPart thisPartToCompare = PathParts[thisPathIndex];
+                    if (thisPartToCompare.Category != wildPartToCompare.Category)
+                        return false;
+                    if (thisPartToCompare.GetId() != wildPartToCompare.GetId())
+                        return false;
+                }
+
+                wildPathIndex--;
+                thisPathIndex--;
+            }
+
+            return true;
+
+        }
+
         public bool Equals(FucinePath other)
         {
             if (ReferenceEquals(null, other)) return false;

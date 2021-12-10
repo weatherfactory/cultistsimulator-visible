@@ -270,7 +270,7 @@ namespace SecretHistories.Spheres
 
         public int RemoveMatchingBlocks(BlockDirection blockDirection, BlockReason blockReason)
         {
-          return  Watchman.Get<Xamanek>().RemoveMatchingBlocks(GetAbsolutePath(), blockDirection, blockReason);
+          return  Watchman.Get<Xamanek>().RemoveMatchingBlocks(GetWildPath(), blockDirection, blockReason);
         }
 
         public virtual bool CurrentlyBlockedFor(BlockDirection direction)

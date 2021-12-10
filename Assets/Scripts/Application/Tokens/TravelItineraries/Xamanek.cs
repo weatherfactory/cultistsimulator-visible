@@ -147,9 +147,21 @@ namespace SecretHistories.UI
             foreach(var sb in _sphereBlocks)
                 if (sb.AtSpherePath==atPath)
                     eligible.Add(sb);
-
             return eligible;
 
+        }
+
+        public IEnumerable<SphereBlock> GetImplicitBlocksForPath(FucinePath findBlocksForPath)
+        {
+            foreach (var i in _itineraries)
+            {
+                if ((findBlocksForPath.IsWild() && i.Value.DestinationSpherePath.MatchesWildPath(findBlocksForPath))
+                    || (!findBlocksForPath.IsWild() && i.Value.DestinationSpherePath == findBlocksForPath))
+                {
+                    var sb=new B
+                }
+                
+            }
         }
 
         public int RemoveMatchingBlocks(FucinePath atPath, BlockDirection blockDirection, BlockReason blockReason)
