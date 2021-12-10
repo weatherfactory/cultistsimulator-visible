@@ -288,7 +288,7 @@ namespace SecretHistories.UI
             TokenTravelItinerary itinerary = new TokenTravelItinerary(forToken.Location.Anchored3DPosition,
                     eventualTokenPosition)
                 .WithScaling(1f, destinationScale)
-                .WithDestinationSpherePath(GetAbsolutePath());
+                .WithDestinationSpherePath(GetWildPath());
 
 
              return itinerary;
@@ -307,7 +307,7 @@ namespace SecretHistories.UI
             TokenTravelItinerary itinerary = new TokenTravelItinerary(forToken.Location.Anchored3DPosition,
                     bestGuessReferencePosition)
                 .WithScaling(1f, 0.35f)
-                .WithDestinationSpherePath(GetAbsolutePath());
+                .WithDestinationSpherePath(GetWildPath());
 
             return itinerary;
         }

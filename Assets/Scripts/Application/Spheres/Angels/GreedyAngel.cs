@@ -33,10 +33,15 @@ namespace SecretHistories.Spheres.Angels
            
                 _beatsTowardsAngelry = 0;
 
-            if(_thresholdSphereToGrabTo.Tokens.Count!= 0) // when we have shelves, this will need to be a suitable count instead
+            if (_thresholdSphereToGrabTo.Tokens
+                .Any()) //default greedy angels will ignore spheres that already contain a token. Redundant with a check for validation, but stops us wasting time looking for tokens if we're already full!
                 return;
 
-            if (!_thresholdSphereToGrabTo.CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection.Inward,BlockReason.GreedyAngel) )
+            var alreadyIncoming = Watchman.Get<Xamanek>().GetCurrentItinerariesForPath(_thresholdSphereToGrabTo.GetWildPath());
+            if (alreadyIncoming.Any()) //greedy angels will ignore spheres that already have a token en route to them
+                return;
+
+            
                 TryGrabStack(_thresholdSphereToGrabTo, metaseconds);
             
         }
@@ -93,6 +98,10 @@ namespace SecretHistories.Spheres.Angels
             foreach (var sphereToSearch in spheresWhichAllowDragging)
             {
                 var matchingToken = FindStackForSlotSpecificationInSphere(destinationThresholdSphere.GoverningSphereSpec, sphereToSearch);
+
+                //if (!_thresholdSphereToGrabTo.IsValidDestinationForToken(matchingToken))
+                //    return;
+
                 if (matchingToken != null)
                 {
                     
