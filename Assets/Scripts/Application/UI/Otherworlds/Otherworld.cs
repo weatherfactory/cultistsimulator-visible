@@ -49,8 +49,14 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         public FucinePath GetAbsolutePath()
         {
             var pathAbove = FucinePath.Root();
-            var absolutePath = pathAbove.AppendToken(this.Id);
+            var absolutePath = pathAbove.AppendingToken(this.Id);
             return absolutePath;
+        }
+
+        public FucinePath GetWildPath()
+        {
+            var wildCardPath = FucinePath.Wild();
+            return wildCardPath.AppendingToken(this.Id);
         }
 
         public RectTransform GetRectTransform()

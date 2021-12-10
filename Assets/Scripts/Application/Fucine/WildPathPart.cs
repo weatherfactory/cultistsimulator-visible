@@ -7,16 +7,16 @@ using SecretHistories.Fucine;
 
 namespace Assets.Scripts.Application.Fucine
 {
-    public class CurrentLocationPathPart: FucinePathPart
+    public class WildPathPart: FucinePathPart
     {
-        public CurrentLocationPathPart() : base(String.Empty)
+        public WildPathPart() : base(FucinePath.WILD.ToString())
         {
         }
 
-        public override PathCategory Category => PathCategory.Current;
+        public override PathCategory Category => PathCategory.Wild;
         public override string GetId()
         {
-            return string.Empty;
+            return FucinePath.WILD.ToString();
         }
     }
 }

@@ -77,7 +77,7 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void RetrieveTokenPayload_ByPath()
         {
-            var tokenInSpherePath = _sphereInRoot.GetAbsolutePath().AppendToken(_tokenInSphere.PayloadId);
+            var tokenInSpherePath = _sphereInRoot.GetAbsolutePath().AppendingToken(_tokenInSphere.PayloadId);
             var retrievedToken = _hornedAxe.GetTokenByPath(tokenInSpherePath);
             Assert.AreEqual(_tokenInSphere.PayloadId, retrievedToken.PayloadId);
         }
@@ -85,8 +85,8 @@ namespace Assets.Tests.EditModeTests
         [Test]
         public void RetrieveSphereInTokenPayload_ByPath()
         {
-            var sphereInTokenPayloadPath = _sphereInRoot.GetAbsolutePath().AppendToken(_tokenInSphere.PayloadId)
-                .AppendSphere(SPHEREINTOKENPAYLOAD_ID);
+            var sphereInTokenPayloadPath = _sphereInRoot.GetAbsolutePath().AppendingToken(_tokenInSphere.PayloadId)
+                .AppendingSphere(SPHEREINTOKENPAYLOAD_ID);
             var retrievedSphere = _hornedAxe.GetSphereByPath(sphereInTokenPayloadPath);
             Assert.AreEqual(_sphereInTokenPayload,retrievedSphere);
         }
@@ -97,7 +97,7 @@ namespace Assets.Tests.EditModeTests
         {
          _OTHERSphereInRoot.AcceptToken(_tokenInSphere,Context.Unknown());
 
-         var tokenInSpherePath = _OTHERSphereInRoot.GetAbsolutePath().AppendToken(_tokenInSphere.PayloadId);
+         var tokenInSpherePath = _OTHERSphereInRoot.GetAbsolutePath().AppendingToken(_tokenInSphere.PayloadId);
          var retrievedToken = _hornedAxe.GetTokenByPath(tokenInSpherePath);
          Assert.AreEqual(_tokenInSphere.PayloadId, retrievedToken.PayloadId);
 
@@ -108,8 +108,8 @@ namespace Assets.Tests.EditModeTests
         {
             _OTHERSphereInRoot.AcceptToken(_tokenInSphere, Context.Unknown());
 
-            var sphereInTokenPayloadPath = _OTHERSphereInRoot.GetAbsolutePath().AppendToken(_tokenInSphere.PayloadId)
-                .AppendSphere(SPHEREINTOKENPAYLOAD_ID);
+            var sphereInTokenPayloadPath = _OTHERSphereInRoot.GetAbsolutePath().AppendingToken(_tokenInSphere.PayloadId)
+                .AppendingSphere(SPHEREINTOKENPAYLOAD_ID);
             var retrievedSphere = _hornedAxe.GetSphereByPath(sphereInTokenPayloadPath);
             Assert.AreEqual(_sphereInTokenPayload, retrievedSphere);
         }

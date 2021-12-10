@@ -141,17 +141,15 @@ namespace SecretHistories.Spheres
 
         public FucinePath GetAbsolutePath()
         { 
-            return _container.GetAbsolutePath().AppendSphere(Id);
+            return _container.GetAbsolutePath().AppendingSphere(Id);
         }
 
-        //as long as all containers have a unique id, this can always be used to relocate the sphere, even if its container moves
-        public FucinePath GetImmediatePath()
+        public FucinePath GetWildPath()
         {
-            var immediatePath = new FucinePath(_container.Id).AppendSphere(Id);
-            return immediatePath;
+            var wildCardPath = _container.GetWildPath().AppendingSphere(Id);
+            return wildCardPath;
         }
-
-
+        
         public virtual bool IsValidDestinationForToken(Token tokenToSend)
         {
             if (!IsInRangeOf(tokenToSend.Sphere))
@@ -266,7 +264,7 @@ namespace SecretHistories.Spheres
 
         public void AddBlock(BlockDirection blockDirection,BlockReason blockReason)
         {
-            var block = new SphereBlock(GetImmediatePath(), blockDirection, blockReason);
+            var block = new SphereBlock(GetWildPath(), blockDirection, blockReason);
             Watchman.Get<Xamanek>().RegisterSphereBlock(block);
         }
 
@@ -283,7 +281,7 @@ namespace SecretHistories.Spheres
         public virtual bool CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection direction, BlockReason exceptReason)
         {
             var allBlocks = new List<SphereBlock>();
-            allBlocks.AddRange(Watchman.Get<Xamanek>().GetBlocksForSphereAtPath(GetImmediatePath()));
+            allBlocks.AddRange(Watchman.Get<Xamanek>().GetBlocksForSphereAtPath(GetWildPath()));
             allBlocks.AddRange(flock.GetImplicitAngelBlocks());
 
             foreach (var b in allBlocks)

@@ -175,7 +175,7 @@ namespace Assets.Tests.EditModeTests
             var path1 = new FucinePath("~/sphere");
             var path2 = new FucinePath("~/sphere2");
             FucinePath combinedPath;
-            Assert.Throws<InvalidOperationException>(() => combinedPath = path1.AppendPath(path2));
+            Assert.Throws<InvalidOperationException>(() => combinedPath = path1.AppendingPath(path2));
         }
 
         
@@ -183,7 +183,7 @@ namespace Assets.Tests.EditModeTests
         public void CanCreatePathFromRelativePathPlusRelativePathString()
         {
             var existingPath=new FucinePath("/sphere");
-            var newPath=existingPath.AppendPath("!token");
+            var newPath=existingPath.AppendingPath("!token");
             Assert.IsTrue(newPath.IsValid());
             Assert.AreEqual("/sphere!token", newPath.ToString());
             }
@@ -193,7 +193,7 @@ namespace Assets.Tests.EditModeTests
         {
             var path1=new FucinePath("~/sphere");
             var path2=new FucinePath("!token");
-            var pathValidCombined=path1.AppendPath(path2);
+            var pathValidCombined=path1.AppendingPath(path2);
             Assert.IsTrue(pathValidCombined.IsValid());
             Assert.AreEqual("~/sphere!token", pathValidCombined.ToString());
         }

@@ -121,6 +121,11 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             return FucinePath.Root();
         }
 
+        public FucinePath GetWildPath()
+        {
+            return FucinePath.Root();
+        }
+
         public RectTransform GetRectTransform()
         {
             NoonUtility.LogWarning("Trying to get fucine root recttransform; supplying the default sphere rect transfomr.");

@@ -15,6 +15,7 @@ namespace SecretHistories.Fucine
     public class FucinePath:IEquatable<FucinePath>
     {
         public const char ROOT = '~';
+        public const char WILD = '*';
         public const char TOKEN = '!';
         public const char SPHERE = '/';
 
@@ -76,9 +77,13 @@ namespace SecretHistories.Fucine
                     AddRootPart();
                     sphereParts=path.Substring(1).Split(SPHERE).ToList();
                 }
+                else if (path[0] == WILD)
+                {
+                    AddWildPart();
+                    sphereParts = path.Split(SPHERE).ToList();
+                }
                 else
                 {
-                    AddCurrentLocationPart();   
                     sphereParts = path.Split(SPHERE).ToList();
                 }
                 //  .
@@ -131,7 +136,10 @@ namespace SecretHistories.Fucine
         {
             return (PathParts.First().Category == FucinePathPart.PathCategory.Root);
         }
-
+        public bool IsWild()
+        {
+            return (PathParts.First().Category == FucinePathPart.PathCategory.Wild);
+        }
         public FucinePathPart GetEndingPathPart()
         {
             if (!PathParts.Any())
@@ -184,6 +192,11 @@ namespace SecretHistories.Fucine
             return new FucinePath(new RootPathPart());
         }
 
+        public static FucinePath Wild()
+        {
+            return new FucinePath(new WildPathPart());
+        }
+
         private void Parse(List<string> sphereParts)
         {
        
@@ -231,7 +244,7 @@ namespace SecretHistories.Fucine
             PathParts.Add(spherePathPart);
         }
 
-        public FucinePath AppendToken(string tokenId)
+        public FucinePath AppendingToken(string tokenId)
         {
             TokenPathPart tokenPathPart = new TokenPathPart(tokenId);
         var partsForNewPath=new List<FucinePathPart>(PathParts);
@@ -241,7 +254,7 @@ namespace SecretHistories.Fucine
         }
 
 
-        public FucinePath AppendSphere(string sphereId)
+        public FucinePath AppendingSphere(string sphereId)
         {
             SpherePathPart spherePathPart = new SpherePathPart(sphereId);
             var partsForNewPath = new List<FucinePathPart>(PathParts);
@@ -252,14 +265,14 @@ namespace SecretHistories.Fucine
 
 
 
-        public FucinePath AppendPath(string appendPathString)
+        public FucinePath AppendingPath(string appendPathString)
         {
           var pathToAppend=new FucinePath(appendPathString);
-          return AppendPath(pathToAppend);
+          return AppendingPath(pathToAppend);
 
         }
 
-        public FucinePath AppendPath(FucinePath pathToAppend)
+        public FucinePath AppendingPath(FucinePath pathToAppend)
         {
             if(pathToAppend.IsAbsolute() && this.IsAbsolute())
                 throw new InvalidOperationException($"Can't combine two absolute paths: '{this.ToString()}' and '{pathToAppend.ToString()}'");
@@ -280,9 +293,9 @@ namespace SecretHistories.Fucine
             PathParts.Add(new RootPathPart());
         }
 
-        private void AddCurrentLocationPart()
+        private void AddWildPart()
         {
-            PathParts.Add(new CurrentLocationPathPart());
+            PathParts.Add(new WildPathPart());
         }
 
         public static FucinePath Current()

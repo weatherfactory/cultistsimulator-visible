@@ -114,10 +114,16 @@ namespace SecretHistories.Entities.Verbs
         public FucinePath GetAbsolutePath()
         {
             var pathAbove = _token.Sphere.GetAbsolutePath();
-            var absolutePath = pathAbove.AppendToken(this.Id);
+            var absolutePath = pathAbove.AppendingToken(this.Id);
             return absolutePath;
         }
 
+        public FucinePath GetWildPath()
+        {
+            var wildPath = FucinePath.Wild();
+
+            return wildPath.AppendingToken(this.Id); ;
+        }
         public RectTransform GetRectTransform()
         {
             return Token.TokenRectTransform;

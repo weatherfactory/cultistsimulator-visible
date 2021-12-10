@@ -12,6 +12,7 @@ namespace SecretHistories.Fucine
         public enum PathCategory
         {
             Root,
+            Wild,
             Token,
             Sphere,
             Null,

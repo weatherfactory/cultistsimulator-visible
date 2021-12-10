@@ -116,15 +116,18 @@ namespace SecretHistories.Entities {
 
         public Sphere GetSphereByPath(FucinePath relativePath, IHasFucinePath relativeTo)
         {
-            var constructedPath = relativeTo.GetAbsolutePath().AppendPath(relativePath);
+            var constructedPath = relativeTo.GetAbsolutePath().AppendingPath(relativePath);
             return GetSphereByPath(constructedPath);
         }
 
 
         public Sphere GetSphereByPath(FucinePath spherePath)
         {
+            if (spherePath.IsWild())
+                return FindSingleOrDefaultSphereByWildPath(spherePath);
+
             if(!spherePath.IsAbsolute())
-               throw new ApplicationException($"trying to find a sphere with sphere path '{spherePath.ToString()}', but that's not an absolute path, and no context was provided");
+               throw new ApplicationException($"trying to find a sphere with sphere path '{spherePath.ToString()}', but that's not an absolute path or a wildcard path, and no context was provided");
 
             if(spherePath.GetEndingPathPart().Category==FucinePathPart.PathCategory.Root)
                 throw new ApplicationException($"trying to find a sphere with sphere path '{spherePath.ToString()}', which seems to be a bare root path");
@@ -470,17 +473,17 @@ namespace SecretHistories.Entities {
 
         }
 
-        public Sphere FindSingleOrDefaultSphereByImmediatePath(FucinePath immediatePath)
+        public Sphere FindSingleOrDefaultSphereByWildPath(FucinePath wildPath)
         {
-            return FindSingleOrDefaultSphereByImmediatePath(immediatePath, null);
+            return FindSingleOrDefaultSphereByWildPath(wildPath, null);
         }
 
-        public Sphere FindSingleOrDefaultSphereByImmediatePath(FucinePath immediatePath,Sphere defaultResult)
+        public Sphere FindSingleOrDefaultSphereByWildPath(FucinePath wildPath,Sphere defaultResult)
         {
             
             foreach (var s in _registeredSpheres)
             {
-                if (s.GetImmediatePath() == immediatePath)
+                if (s.GetWildPath() == wildPath)
                     return s;
             }
 

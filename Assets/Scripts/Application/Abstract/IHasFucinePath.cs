@@ -12,6 +12,8 @@ namespace SecretHistories.Abstract
     {
         string Id { get; }
         FucinePath GetAbsolutePath();
+        FucinePath GetWildPath();
+
         /// <summary>
         /// Everything that exists in Fucine space also has a reference position in the Unity hierarchy. This may not actually be the same
         /// as the game object parent of the component; eg, FucineRoot has no reference position of its own, and uses the default sphere

@@ -19,7 +19,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Application.Meta
 {
-    public class MiscMalleary: MonoBehaviour
+    public class MiscMalleary : MonoBehaviour
     {
         [SerializeField] private AutoCompletingInput input;
         [SerializeField] public TextMeshProUGUI ResponseLabel;
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Application.Meta
         [SerializeField] private Button SetCheevo;
         [SerializeField] private Button ClearCheevo;
 
-        
+
         public void Awake()
         {
             SetCheevo.gameObject.SetActive(Watchman.Get<Config>().knock);
@@ -63,27 +63,43 @@ namespace Assets.Scripts.Application.Meta
         {
             var path = new FucinePath(input.text);
             if (!path.IsValid())
-                ResponseLabel.text = "Invalid Fucine!";
-            
-            var tokenToFind=Watchman.Get<HornedAxe>().FindSingleOrDefaultTokenById(path.ToString());
-            if (tokenToFind != null)
+                ResponseLabel.text = $"Invalid Fucine path! {input.text}";
+
+            if (path.GetEndingPathPart().Category == FucinePathPart.PathCategory.Sphere)
             {
-                tokenToFind.ShowPossibleInteraction();
-                ResponseLabel.text = $"found at {tokenToFind.Location.AtSpherePath}{path}";
+
+                var sphereToFind = Watchman.Get<HornedAxe>().FindSingleOrDefaultSphereByWildPath(path);
+                if (sphereToFind != null)
+                {
+                    ResponseLabel.text = $"found at {sphereToFind.GetAbsolutePath()}";
+                    return;
+                }
+
+                ResponseLabel.text = $"couldn't find sphere: {input.text}";
                 return;
             }
 
-            var sphereToFind= Watchman.Get<HornedAxe>().FindSingleOrDefaultSphereByImmediatePath(path);
-            if (sphereToFind != null)
+            if (path.GetEndingPathPart().Category == FucinePathPart.PathCategory.Token)
             {
-                ResponseLabel.text= $"found at {sphereToFind.GetAbsolutePath()}";
+                var tokenToFind = Watchman.Get<HornedAxe>()
+                    .FindSingleOrDefaultTokenById(path.GetEndingPathPart().GetId());
+
+                if (tokenToFind != null)
+                {
+                    tokenToFind.ShowPossibleInteraction();
+                    ResponseLabel.text = $"found at {tokenToFind.Location.AtSpherePath}{path}";
+                    return;
+                }
+
+                ResponseLabel.text = $"couldn't find token: {input.text}";
                 return;
             }
 
-            ResponseLabel.text = $"couldn't find {input.text}";
-
-            
+            ResponseLabel.text = $"couldn't find path: {input.text}";
         }
+
+    
+
 
         void BeginLegacy(string legacyId)
         {
