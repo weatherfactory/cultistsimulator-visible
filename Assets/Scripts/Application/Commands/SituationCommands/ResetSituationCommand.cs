@@ -28,5 +28,10 @@ namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
         {
             return forState == StateEnum.Unstarted;
         }
+
+        public bool IsObsoleteInState(StateEnum forState)
+        {
+            return false;
+        }
     }
 }

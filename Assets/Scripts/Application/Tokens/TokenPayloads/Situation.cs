@@ -596,6 +596,7 @@ namespace SecretHistories.Entities {
 
         public void TransitionToState(SituationState newState)
         {
+
             State.Exit(this);
             newState.Enter(this);
             State = newState;
@@ -619,6 +620,10 @@ namespace SecretHistories.Entities {
         {
             foreach (var command in new List<ISituationCommand>(CommandQueue))
             {
+
+                if(command.IsObsoleteInState(forState))
+                    MarkCommandCompleted(command);
+
                 if (command.IsValidForState(forState))
                 {
                     bool executed = command.Execute(situation);

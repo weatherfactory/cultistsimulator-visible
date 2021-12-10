@@ -18,6 +18,11 @@ namespace SecretHistories.Commands.SituationCommands
             return forState == StateEnum.Ongoing;
         }
 
+        public bool IsObsoleteInState(StateEnum forState)
+        {
+            return false;
+        }
+
 
         public TryHaltSituationCommand()
         {

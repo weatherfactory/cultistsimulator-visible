@@ -48,6 +48,11 @@ namespace SecretHistories.Commands.SituationCommands
             return forState == StateEnum.Unstarted;
         }
 
+        public bool IsObsoleteInState(StateEnum forState)
+        {
+            return false;
+        }
+
         public bool Execute(Situation situation)
         {
             var aspects = situation.GetAspects(true);

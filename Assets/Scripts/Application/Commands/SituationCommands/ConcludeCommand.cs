@@ -8,6 +8,7 @@ using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.States;
+using UnityEditorInternal;
 
 namespace SecretHistories.Commands.SituationCommands
 {
@@ -19,8 +20,15 @@ namespace SecretHistories.Commands.SituationCommands
            return forState == StateEnum.Complete;
        }
 
-        public bool Execute(Situation situation)
+       public bool IsObsoleteInState(StateEnum forState)
+       {
+           return false;
+           // return forState == StateEnum.Unstarted;
+       }
+
+       public bool Execute(Situation situation)
         {
+ 
             var results = situation.GetElementTokens(SphereCategory.Output);
             foreach (var item in results)
             {

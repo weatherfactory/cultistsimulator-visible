@@ -24,6 +24,11 @@ namespace SecretHistories.Commands.SituationCommands
             return (_statesCommandIsValidFor.Contains(forState));
         }
 
+        public bool IsObsoleteInState(StateEnum forState)
+        {
+            return false;
+        }
+
         public AttemptAspectInductionCommand(SphereCategory forSphereCategory, StateEnum onState)
         {
             _forSphereCategory = forSphereCategory;

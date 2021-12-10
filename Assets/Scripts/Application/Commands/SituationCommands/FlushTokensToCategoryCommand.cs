@@ -25,6 +25,11 @@ namespace SecretHistories.Commands.SituationCommands
             return _statesCommandIsValidFor.Contains(forState);
         }
 
+        public bool IsObsoleteInState(StateEnum forState)
+        {
+            return false;
+        }
+
         public FlushTokensToCategoryCommand(SphereCategory fromCategory,SphereCategory toCategory,StateEnum onState)
         {
             _fromCategory = fromCategory;

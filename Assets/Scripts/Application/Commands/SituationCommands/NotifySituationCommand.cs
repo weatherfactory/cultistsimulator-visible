@@ -41,5 +41,10 @@ namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
         {
             return true;
         }
+
+        public bool IsObsoleteInState(StateEnum forState)
+        {
+            return false;
+        }
     }
 }

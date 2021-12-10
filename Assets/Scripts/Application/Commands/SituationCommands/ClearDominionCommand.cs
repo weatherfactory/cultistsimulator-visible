@@ -26,6 +26,10 @@ namespace SecretHistories.Commands.SituationCommands
             return true;
         }
 
+        public bool IsObsoleteInState(StateEnum forState)
+        {
+            return false;
+        }
 
 
         public ClearDominionCommand()

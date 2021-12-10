@@ -90,6 +90,11 @@ namespace SecretHistories.Core
             return forState == StateEnum.RequiringExecution;
         }
 
+        public bool IsObsoleteInState(StateEnum forState)
+        {
+            return false;
+        }
+
         private void RunElementPurges()
         {
             //NOTE: element purges trigger decayto transformation if the element itself is specified. If we filter by aspect and purge on that, its decayto is *not* triggered.

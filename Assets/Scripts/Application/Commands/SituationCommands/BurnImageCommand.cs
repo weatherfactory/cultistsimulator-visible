@@ -23,6 +23,11 @@ namespace SecretHistories.Commands
             return true;
         }
 
+        public bool IsObsoleteInState(StateEnum forState)
+        {
+            return false;
+        }
+
         public BurnImageCommand(string image)
         {
             _image = image;

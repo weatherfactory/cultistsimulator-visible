@@ -18,5 +18,8 @@ namespace SecretHistories.Commands
    
         bool Execute(Situation situation);
         bool IsValidForState(StateEnum forState);
+
+        //This command should never be present in this state. Remove it.
+        bool IsObsoleteInState(StateEnum forState);
     }
 }
