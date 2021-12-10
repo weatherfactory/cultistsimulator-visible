@@ -46,7 +46,7 @@ public class MenuScreenController : LocalNexus {
 	public CanvasGroupFader credits;
 	public CanvasGroupFader settings;
 	public CanvasGroupFader languageMenu;
-    public CanvasGroupFader versionHints;
+    public CanvasGroupFader versionNews;
     public CanvasGroupFader modsPanel;
     public CanvasGroupFader startDLCLegacyConfirmPanel;
 
@@ -206,15 +206,15 @@ public class MenuScreenController : LocalNexus {
 
     void HideAllOverlays() {
         modal.gameObject.GetComponent<CanvasGroupFader>().Hide();
-        purgeConfirm.gameObject.SetActive(false);
-        credits.gameObject.SetActive(false);
-        versionHints.gameObject.SetActive(false);
-        modsPanel.gameObject.SetActive(false);
-        languageMenu.gameObject.SetActive(false);
-    startDLCLegacyConfirmPanel.gameObject.SetActive(false);
+        purgeConfirm.Hide();
+        credits.Hide();
+        versionNews.Hide();
+        modsPanel.Hide();
+        languageMenu.Hide();
+        startDLCLegacyConfirmPanel.Hide();
 
 
-}
+    }
 
 #region -- View Changes ------------------------
 
@@ -226,7 +226,6 @@ public class MenuScreenController : LocalNexus {
 
         currentOverlay = overlay;
 
-        overlay.gameObject.SetActive(true);
         overlay.Show();
         modal.Show();
     }
@@ -341,7 +340,7 @@ public class MenuScreenController : LocalNexus {
         if (!canTakeInput)
             return;
 
-        ShowOverlay(versionHints);
+        ShowOverlay(versionNews);
         versionAnim.Stop(); // Ensure that the anim is no longer playing
     }
 
