@@ -37,7 +37,9 @@ namespace SecretHistories.Constants {
             return Sphere.GetRect();
         }
      [SerializeField] private bool showDebugInfo;
-   
+
+     private const float GRID_WIDTH = 150f;
+     private const float GRID_HEIGHT = 150f;
         
 
 
@@ -48,6 +50,13 @@ namespace SecretHistories.Constants {
         {
             if (!showDebugInfo)
                 return;
+
+            float GridMaxX = GRID_WIDTH * 10;
+            float GridMaxY = GRID_HEIGHT * 10;
+
+         
+            
+
             foreach (var r in rectanglesToDisplay)
             {
                 var style = GUI.skin.box;
