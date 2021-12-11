@@ -183,24 +183,43 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             }
 
 
-            int currentIteration = 1;
+            Vector2 direction = (intendedPos - legalPositionCheckResult.BlockerRect.center).normalized;
 
-            while (currentIteration < 10)
-            {
+       
 
 
-                var testRects = GetAlternativeCandidateRects(targetRect, currentIteration,token);
+                var testRects = GetAlternativeCandidateRectsAlongVector(targetRect, direction,1,100);
 
                 // Iterate over a single round of test positions. If one is legal, then return it.
                 foreach (var testRect in testRects)
                 {
                     if (IsLegalPlacement(testRect, token).IsLegal)
-                        return testRect.position +
-                               targetRect.size / 2f; //this assumes that the position is in the centre of the rect
+                        return testRect.center;
+                        //return testRect.position +
+                        //       targetRect.size / 2f; //this assumes that the position is in the centre of the rect
                 }
 
-                currentIteration++;
-            }
+              
+
+
+                //int currentIteration = 1;
+
+            //while (currentIteration < 10)
+            //{
+
+
+            //    var testRects = GetAlternativeCandidateRects(targetRect, currentIteration,token);
+
+            //    // Iterate over a single round of test positions. If one is legal, then return it.
+            //    foreach (var testRect in testRects)
+            //    {
+            //        if (IsLegalPlacement(testRect, token).IsLegal)
+            //            return testRect.position +
+            //                   targetRect.size / 2f; //this assumes that the position is in the centre of the rect
+            //    }
+
+            //    currentIteration++;
+            //}
 
             NoonUtility.Log(
                 $"Choreographer: No legal tabletop position found for {token.name})! Just putting it at zero", 1);
@@ -209,6 +228,27 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             return Vector2.zero;
 
         }
+
+        public List<Rect> GetAlternativeCandidateRectsAlongVector(Rect startingRect, Vector2 alongVector, int fromIteration, int toIteration)
+        {
+            List<Rect> candidateRects = new List<Rect>();
+            float shiftWidth = startingRect.width * GetGridSnapCoefficient();
+            float shiftHeight = startingRect.height * GetGridSnapCoefficient();
+
+            for (int i=fromIteration;i<=toIteration;i++)
+            {
+                var candidatePoint = startingRect.center + new Vector2(shiftWidth * alongVector.x, shiftHeight * alongVector.y);
+                var candidateRect = new Rect(candidatePoint, startingRect.size);
+
+                AddCandidateRect(shiftWidth * alongVector.x,shiftHeight*alongVector.y,startingRect.size, candidateRects,i.ToString(),"_");
+                candidateRects.Add(candidateRect);
+            }
+
+            return candidateRects;
+
+        }
+
+
 
         Vector2 GetPosClampedToTable(Vector2 pos)
 		{
@@ -364,12 +404,12 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
         }
 
-        private void AddCandidateRect(float x,float y, Vector2 size, List<Rect> rects,string positionName,string tokenName)
+        private void AddCandidateRect(float x,float y, Vector2 size, List<Rect> rects,string positionInfo,string tokenInfo)
         {
             Vector2 rectPosition=new Vector2(x,y);
             Rect newRect = new Rect(rectPosition, size);
             rects.Add(newRect);
-            ShowDebugRect(newRect, $"{positionName} for {tokenName}", Color.white);
+            ShowDebugRect(newRect, $"{positionInfo} for {tokenInfo}", Color.white);
         }
 
 
