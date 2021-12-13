@@ -351,26 +351,17 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
             {
                 otherTokenOverlapRect = otherToken.GetRectInCurrentSphere();
 
-                //Grid snap 1 means cards cannot overlap at all.
-                //Grid snap 0.5 means cards can overlap up to 50%.
-                //Grid snap 0.25 means cards can overlap up to 75%.
+                var overlapModifier = 1f;
 
-                var gridSnapSize = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPSIZE);
-             //   if(gridSnapSize.CurrentValue)
-
-                if (UnacceptableOverlap(otherTokenOverlapRect,candidateRect, GetGridSnapCoefficient()))
+                if (otherToken.Payload.IsValidElementStack() && placingToken.IsValidElementStack())
+                    overlapModifier = GetGridSnapCoefficient();
 
 
+                if (UnacceptableOverlap(otherTokenOverlapRect,candidateRect, overlapModifier))
 
                     return LegalPositionCheckResult.Blocked(otherToken.name,otherTokenOverlapRect);
                 
             }
-
-            //foreach(var itinerary  in Watchman.Get<Xamanek>().CurrentItinerariesForPath(_tabletop.GetAbsolutePath()))
-            //{
-            //    if(itinerary.GetGhost().PromiseBlocksCandidateRect(_tabletop,candidateRect))
-            //        return LegalPositionCheckResult.Blocked($"Reserved destination for {itinerary.GetDescription()}", itinerary.GetGhost().GetRect());
-            //}
 
             return LegalPositionCheckResult.Legal();
         }
