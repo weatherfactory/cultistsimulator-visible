@@ -544,9 +544,6 @@ namespace SecretHistories.Entities {
             return stacks;
         }
 
-        /// <summary>
-        /// These are the aspects in the situation, not the aspects available to recipe criteria in the situation
-        /// </summary>
         /// <param name="includeElementAspects"></param>
         /// <returns></returns>
         public AspectsDictionary GetAspects(bool includeElementAspects)

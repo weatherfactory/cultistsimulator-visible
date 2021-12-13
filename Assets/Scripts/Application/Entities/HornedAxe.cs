@@ -266,19 +266,22 @@ namespace SecretHistories.Entities {
                 foreach (var tabletopStack in tabletopStacks)
                 {
                     AspectsDictionary stackAspects = tabletopStack.GetAspects();
-                    AspectsDictionary multipliedAspects = new AspectsDictionary();
-                    //If we just count aspects, a stack of 10 cards only counts them once. I *think* this is the only place we need to worry about this rn,
-                    //but bear it in mind in case there's ever a similar issue inside situations <--there is! if multiple cards are output, they stack.
-                    //However! To complicate matters, if we're counting elements rather than aspects, there is already code in the stack to multiply aspect * quality, and we don't want to multiply it twice
-                    foreach (var aspect in stackAspects)
-                    {
 
-                        if (aspect.Key == tabletopStack.EntityId)
-                            multipliedAspects.Add(aspect.Key, aspect.Value);
-                        else
-                            multipliedAspects.Add(aspect.Key, aspect.Value * tabletopStack.Quantity);
-                    }
-                    _tabletopAspects.CombineAspects(multipliedAspects);
+                    //TENTATIVELY REMOVING ALL THIS BECAUSE OF THE BIG DECISION TO MULTIPLY ALL ASPECTS
+                    //AspectsDictionary multipliedAspects = new AspectsDictionary();
+                    ////If we just count aspects, a stack of 10 cards only counts them once. I *think* this is the only place we need to worry about this rn,
+                    ////but bear it in mind in case there's ever a similar issue inside situations <--there is! if multiple cards are output, they stack.
+                    ////However! To complicate matters, if we're counting elements rather than aspects, there is already code in the stack to multiply aspect * quality, and we don't want to multiply it twice
+                    //foreach (var aspect in stackAspects)
+                    //{
+
+                    //    if (aspect.Key == tabletopStack.EntityId)
+                    //        multipliedAspects.Add(aspect.Key, aspect.Value);
+                    //    else
+                    //        multipliedAspects.Add(aspect.Key, aspect.Value * tabletopStack.Quantity);
+                    //}
+                    //_tabletopAspects.CombineAspects(multipliedAspects);
+                    _tabletopAspects.CombineAspects(stackAspects);
                 }
 
 
@@ -303,17 +306,19 @@ namespace SecretHistories.Entities {
                     foreach (var situationStack in stacksInSituation)
                     {
                         AspectsDictionary stackAspects = situationStack.GetAspects();
-                        AspectsDictionary multipliedAspects = new AspectsDictionary();
+                       // AspectsDictionary multipliedAspects = new AspectsDictionary();
+                        //TENTATIVELY REMOVING ALL THIS BECAUSE OF THE BIG DECISION TO MULTIPLY ALL ASPECTS
                         //See notes above. We need to multiply aspects to take account of stack quantities here too.
-                        foreach (var aspect in stackAspects)
-                        {
+                        //foreach (var aspect in stackAspects)
+                        //{
 
-                            if (aspect.Key == situationStack.EntityId)
-                                multipliedAspects.Add(aspect.Key, aspect.Value);
-                            else
-                                multipliedAspects.Add(aspect.Key, aspect.Value * situationStack.Quantity);
-                        }
-                        _allAspectsExtant.CombineAspects(multipliedAspects);
+                        //    if (aspect.Key == situationStack.EntityId)
+                        //        multipliedAspects.Add(aspect.Key, aspect.Value);
+                        //    else
+                        //        multipliedAspects.Add(aspect.Key, aspect.Value * situationStack.Quantity);
+                        //}
+                        //_allAspectsExtant.CombineAspects(multipliedAspects);
+                        _allAspectsExtant.CombineAspects(stackAspects);
                     }
 
                 }

@@ -368,9 +368,11 @@ namespace SecretHistories.UI {
                         _aspectsDictionaryInc.Clear(); // constructor is expensive
 
                     _aspectsDictionaryInc.CombineAspects(Element.AspectsIncludingSelf);
-                    _aspectsDictionaryInc[Element.Id] =
-                        _aspectsDictionaryInc[Element.Id] *
-                        Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
+                  
+                    _aspectsDictionaryInc.MultiplyByQuantity(Quantity);
+                    //_aspectsDictionaryInc[Element.Id] =
+                      //  _aspectsDictionaryInc[Element.Id] *
+                       // Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
 
                     _aspectsDictionaryInc.ApplyMutations(_mutations);
 
@@ -392,6 +394,8 @@ namespace SecretHistories.UI {
                         _aspectsDictionaryExc.Clear(); // constructor is expensive
 
                     _aspectsDictionaryExc.CombineAspects(Element.Aspects);
+                    _aspectsDictionaryExc.MultiplyByQuantity(Quantity);
+
 
                     _aspectsDictionaryExc.ApplyMutations(_mutations);
 

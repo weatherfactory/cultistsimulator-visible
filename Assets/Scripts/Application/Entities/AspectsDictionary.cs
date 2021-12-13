@@ -74,6 +74,19 @@ namespace SecretHistories.Core
             }
         }
 
+        /// <summary>
+        /// for stacks. There was a time when we didn't want to multiply aspects by stack quantity, but that time passed after we decided to use tabletop stacks as well.
+        /// </summary>
+        /// <param name="quantity"></param>
+        public void MultiplyByQuantity(int quantity)
+        {
+            var keysCopiedForIteration = new List<string>(this.Keys);
+
+
+            foreach (var k in keysCopiedForIteration)
+                this[k] *= quantity;
+        }
+
         public void ApplyMutations(Dictionary<string, int> mutations)
         {
             foreach (KeyValuePair<string, int> mutation in mutations)
