@@ -15954,7 +15954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: -15}
+  m_AnchoredPosition: {x: -50, y: -15.000244}
   m_SizeDelta: {x: 550, y: -35.00006}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &1049346369
@@ -27522,7 +27522,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1730258267366884, guid: 3d901299a57def14ca66ec6931695e22, type: 3}
       propertyPath: m_Name
-      value: SoundManager
+      value: ProbablyObsoleteCosMasterSceneSoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730258267366884, guid: 3d901299a57def14ca66ec6931695e22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576313819546230, guid: 3d901299a57def14ca66ec6931695e22, type: 3}
       propertyPath: m_RootOrder
@@ -34356,7 +34360,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &224014934820733592
 RectTransform:
@@ -39908,7 +39912,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &3664662191149498258
 RectTransform:

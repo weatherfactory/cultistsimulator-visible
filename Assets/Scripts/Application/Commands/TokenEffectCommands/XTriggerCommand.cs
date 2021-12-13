@@ -138,6 +138,7 @@ namespace SecretHistories.Commands
                                 NoonUtility.Log(
                                     "Transform xtrigger " + triggerKey + " caused " + oldElementId +
                                     " to transform into " + newElementId);
+                                onStack.SetQuantity(existingQuantity*morph.Level,new Context(Context.ActionSource.ChangeTo));
                             }
                             else if (morph.MorphEffect == MorphEffectType.Spawn)
                             {

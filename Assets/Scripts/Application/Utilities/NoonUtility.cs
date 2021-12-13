@@ -83,14 +83,19 @@ public class NoonLogMessage : ILogMessage
 
         public static void Dismantle(MonoBehaviour mb)
         {
-            //currently, this just makes sure we use DestroyImmediate if and only if we're in edit mode.
-            //This is because we run a lot of integration tests in edit mode, where Destroy isn't allowed.
-            //subsequently, it would be nice to unify Defunct/Retire through this.
-            if (EditorApplication.isPlaying)
+#if UNITY_EDITOR
+
+        //currently, this just makes sure we use DestroyImmediate if and only if we're in edit mode.
+        //This is because we run a lot of integration tests in edit mode, where Destroy isn't allowed.
+        //subsequently, it would be nice to unify Defunct/Retire through this.
+        if (EditorApplication.isPlaying)
                 Object.Destroy(mb);
             else
                 Object.DestroyImmediate(mb);
-        }
+#else
+           Object.Destroy(mb);
+#endif
+    }
 
 
         public static void Subscribe(ILogSubscriber subscriber)

@@ -27,8 +27,8 @@ namespace SecretHistories.Manifestations
     public class CardManifestation : MonoBehaviour, IManifestation,IPointerEnterHandler,IPointerExitHandler
     {
 
-        [SerializeField] public Image artwork;
-        [SerializeField] public Image backArtwork;
+        [SerializeField] private Image artwork;
+        [SerializeField] private Image backArtwork;
         [SerializeField] public Image textBackground;
         [SerializeField] public TextMeshProUGUI text;
         [SerializeField] public ElementStackBadge stackBadge;

@@ -1,15 +1,15 @@
 ﻿{
 	"elements": [
 		{    
-			"id": "versionnews.2021.12.b.1",
-			"label": "2021.12.a.2 RELEASE CANDIDATE",
+			"id": "versionnews.2021.12.c.1",
+			"label": "2021.12.c.1 RELEASE CANDIDATE",
 			"description": "This is a massive overhaul of the codebase, so I can use it for other projects without losing my mind. It comes with some UI and modding improvements.",
 			"icon": "articleheartb"
 		},
 										{    
-			"id": "versionnews.shadow",
-			"label": "Shadow Shows the Way",
-			"description": "When you drop a card or tile, its shadow shows where it'll end up.",
+			"id": "versionnews.glow",
+			"label": "Glow Shows the Way",
+			"description": "When you drop a card or tile, a glow shows where it'll end up. [This was a shadow, but the implied multiple light sources were too confusing.]",
 			"icon": "mystique"
 		},
 		
@@ -42,8 +42,8 @@
 
 						{
 			"id": "versionnews.minor",
-			"label": "Minor Changes",
-			"description": "- Fixed silly mistake mod dll loading\n - Verb slots no longer disappear\n - Greedy slots will limit themselves to one grab at a time\n - Modifying elements quantity by 0 no longer crashes the game\n - Decks preview works again \n	- Using the inspection window no longer locks out the top right hand corner of the screen\n - Mod images now work in OSX and Linux\n- GOG achievements fixed\n- Finally phased out bird/worm slider",
+			"label": "Bug fixes",
+			"description": "- Fixed silly mistake mod dll loading\n - Verb slots no longer disappear\n - Greedy slots will limit themselves to one grab at a time\n - Modifying elements quantity by 0 no longer crashes the game\n - Card stacks in situations now multiply their aspect quantities by the stack quanty\n - Decks preview works again \n	- Using the inspection window no longer locks out the top right hand corner of the screen\n - Mod images now work in OSX and Linux\n- GOG achievements fixed\n- Finally phased out bird/worm slider",
 			"icon": "apostleforge.pillar2"
 		}
 		

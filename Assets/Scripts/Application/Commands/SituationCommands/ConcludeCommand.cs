@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SecretHistories.Abstract;
-using SecretHistories.Commands;
+
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.States;
-using UnityEditorInternal;
+
 
 namespace SecretHistories.Commands.SituationCommands
 {
