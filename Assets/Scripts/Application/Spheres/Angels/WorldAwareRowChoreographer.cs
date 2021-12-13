@@ -21,8 +21,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     {
 
         public int MaxPlacementAttempts { get; set; }
+        public float InternalSpacing { get;  set; }
 
- 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
         {
             token.TokenRectTransform.anchoredPosition3D = Vector3.zero;
@@ -109,7 +109,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             var placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition),token);
             while (failedPlacementAttempts < MaxPlacementAttempts && !placementIsLegal.IsLegal)
             {
-                candidatePosition.x += tokenWidth;
+                candidatePosition.x += tokenWidth + InternalSpacing;
                 failedPlacementAttempts++;
                 placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
             }
@@ -117,7 +117,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             //offset once more for each incoming token
             foreach (var i in Watchman.Get<Xamanek>().GetCurrentItinerariesForPath(Sphere.GetAbsolutePath()))
             {
-                candidatePosition.x += tokenWidth;
+                candidatePosition.x += tokenWidth + InternalSpacing;
             }
 
             return candidatePosition;
