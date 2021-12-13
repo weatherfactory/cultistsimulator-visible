@@ -37,8 +37,10 @@ namespace SecretHistories.Constants {
             return Sphere.GetRect();
         }
      [SerializeField] private bool showDebugInfo;
+     [SerializeField] private bool showGrid;
 
-     private const float GRID_WIDTH = 150f;
+
+        private const float GRID_WIDTH = 150f;
      private const float GRID_HEIGHT = 150f;
         
 
@@ -48,23 +50,18 @@ namespace SecretHistories.Constants {
 
         public void OnGUI()
         {
-            if (!showDebugInfo)
-                return;
 
-            //float GridMaxX = GRID_WIDTH * 10;
-            //float GridMaxY = GRID_HEIGHT * 10;
+            if (showGrid)
+            
+                ShowGrid();
+            
+            if (showDebugInfo)
+             ShowDebugPlacementInfo();
+        }
 
-            //for (int x = 0; x <= 10; x++)
-            //{
-            //    for(int y=0; y<=10; y++)
-            //    {
-            //        var gridSquare = new Rect(GRID_WIDTH * x, GRID_HEIGHT * y, GRID_WIDTH, GRID_HEIGHT);
-            //        GUI.Box(gridSquare, ".");
-            //    }
-            //}
-
-
-        foreach (var r in rectanglesToDisplay)
+        private void ShowDebugPlacementInfo()
+        {
+            foreach (var r in rectanglesToDisplay)
             {
                 var style = GUI.skin.box;
                 Color transparentColor = r.Colour;
@@ -74,6 +71,33 @@ namespace SecretHistories.Constants {
                 style.wordWrap = true;
 
                 GUI.Box(r.Rect, r.Desc, style);
+            }
+        }
+
+        private void ShowGrid()
+        {
+            var gridStyle = GUI.skin.box;
+            Color gridColor = Color.gray;
+            gridColor.a = 0.2f;
+            gridStyle.normal.background = TextureForColour(gridColor);
+
+            float GridMaxX = GRID_WIDTH * 10;
+            float GridMaxY = GRID_HEIGHT * 10;
+
+            bool showAlternateSquare = false;
+
+            for (int x = 0; x <= 10; x++)
+            {
+                for (int y = 0; y <= 10; y++)
+                {
+                    showAlternateSquare = !showAlternateSquare;
+
+                    if (showAlternateSquare)
+                    {
+                        var gridSquare = new Rect(GRID_WIDTH * x, GRID_HEIGHT * y, GRID_WIDTH, GRID_HEIGHT);
+                        GUI.Box(gridSquare, GUIContent.none, gridStyle);
+                    }
+                }
             }
         }
 
