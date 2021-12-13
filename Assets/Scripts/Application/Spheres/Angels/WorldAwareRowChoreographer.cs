@@ -39,20 +39,19 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         public override LegalPositionCheckResult IsLegalPlacement(Rect candidateRect, Token placingToken)
         {
             
-
             var overlapSphereToWatch = Watchman.Get<HornedAxe>().GetDefaultSphere();
-            var result= LegalInOverlappingSphere(overlapSphereToWatch, candidateRect, placingToken);
+            var result= LegalInThisAndInOverlappingSphere(overlapSphereToWatch, candidateRect, placingToken);
 
 
             return result;
         }
 
 
-        private LegalPositionCheckResult LegalInOverlappingSphere(Sphere overlapSphere, Rect candidateRect, Token placingToken)
+        private LegalPositionCheckResult LegalInThisAndInOverlappingSphere(Sphere overlapSphere, Rect candidateRect, Token placingToken)
         {
             Rect otherTokenOverlapRect;
 
-            foreach (var otherToken in Sphere.Tokens)
+            foreach (var otherToken in Sphere.Tokens.Where(t=>t.PayloadId!=placingToken.PayloadId))
             {
                 if (!CanTokenBeIgnored(otherToken))
                 {
@@ -117,7 +116,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             //offset once more for each incoming token
             foreach (var i in Watchman.Get<Xamanek>().GetCurrentItinerariesForPath(Sphere.GetAbsolutePath()))
             {
-                candidatePosition.x += tokenWidth + InternalSpacing;
+                if(i.Key!=token.PayloadId)
+                   candidatePosition.x += tokenWidth + InternalSpacing;
             }
 
             return candidatePosition;
