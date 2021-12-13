@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7149087410384209666}
   - component: {fileID: 2944040976371228492}
   - component: {fileID: 6740964996143914366}
+  - component: {fileID: 6951673599138668675}
   m_Layer: 5
   m_Name: MinimalSphere
   m_TagString: Untagged
@@ -29,6 +30,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -77,6 +79,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152cd6aab34ff4644a0a834eefe1a2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GreedyIcon: {fileID: 0}
-  ConsumingIcon: {fileID: 0}
-  SphereIdentifier: 
+  WorldPosition: {x: 0, y: 0, z: 0}
+  _editorAbsolutePath: 
+  _editorWildPath: 
+  VisibleCharacteristics: []
+--- !u!114 &6951673599138668675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740964996143914367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c94d18b4ba8f049adbd315cc4873af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

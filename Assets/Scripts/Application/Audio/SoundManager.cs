@@ -169,6 +169,9 @@ public class SoundManager : AudioManager, ISettingSubscriber
 
     public static int PlaySfxOnceThisFrame(string name)
     {
+        if (Instance == null)
+            return -1;
+
         if (!Instance.soundsThisFrame.Contains(name))
             return PlaySfx(name);
 
@@ -177,10 +180,8 @@ public class SoundManager : AudioManager, ISettingSubscriber
 
     public static int PlaySfx(string name) {
         if (Instance == null)
-        {
-            NoonUtility.LogWarning($"Trying to play SFX {name}: null SoundManager instance");
             return -1;
-        }
+
         if (string.IsNullOrEmpty(name))
         {
             NoonUtility.LogWarning("Trying to play SFX: null or empty name");

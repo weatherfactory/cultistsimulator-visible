@@ -47,6 +47,7 @@ namespace SecretHistories.UI
             var prefabFactory = Get<PrefabFactory>(); 
 
             var newlyInstantiatedInstance=prefabFactory?.CreateLocally<T>(atTransform.root); //assuming we have a prefab factory. If we don't, we're stuffed, return null
+
             registered.Add(typeof(T),newlyInstantiatedInstance);
 
             return newlyInstantiatedInstance;

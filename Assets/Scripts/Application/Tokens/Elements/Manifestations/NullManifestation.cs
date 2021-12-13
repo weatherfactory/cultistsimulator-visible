@@ -12,6 +12,7 @@ using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -28,7 +29,8 @@ namespace SecretHistories.Manifestations
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
             Watchman.Forget<NullManifestation>();
-            Destroy(gameObject);
+            NoonUtility.Dismantle(this);
+            //Destroy(gameObject);
             callbackOnRetired();
         }
 

@@ -48,9 +48,12 @@ namespace Assets.Tests.EditModeTests
             watchman.Register(compendium);
             var gobjStable = new GameObject();
             var stableComponent = gobjStable.AddComponent<Stable>();
+            stableComponent.InstantiateCharacterInStable();
             watchman.Register(stableComponent);
 
             _hornedAxe = Watchman.Get<HornedAxe>();
+
+
 
             var defaultSphereSpec = new SphereSpec(typeof(MinimalSphere), "tabletop");
             defaultSphereSpec.WindowsSpherePath = new FucinePath("~/windows");

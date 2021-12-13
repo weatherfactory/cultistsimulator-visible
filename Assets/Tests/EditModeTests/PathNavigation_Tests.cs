@@ -62,7 +62,9 @@ namespace Assets.Tests.EditModeTests
              _sphereInTokenPayload= _tokenInSphere.Payload.Dominions.First().TryCreateSphere(sphereInTokenPayloadSpec);
              _hornedAxe.RegisterSphere(_sphereInTokenPayload);
 
-            
+             _hornedAxe.SetDefaultSpherePath(new FucinePath("~/default"));
+
+
         }
 
         [Test]
@@ -145,12 +147,6 @@ namespace Assets.Tests.EditModeTests
 
         }
 
-        [Test]
-        public void PurgeSituations_WithPath()
-        {
-            throw new NotImplementedException();
-
-        }
 
 
 

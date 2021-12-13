@@ -22,7 +22,7 @@ namespace SecretHistories.Commands
 
         public MinimalPayloadCreationCommand()
         {
-            Id = "defaultminimalpayloadid";
+            Id = "!defaultminimalpayloadid";
         }
 
         public ITokenPayload Execute(Context context)

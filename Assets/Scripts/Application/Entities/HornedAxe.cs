@@ -32,12 +32,14 @@ namespace SecretHistories.Entities {
         private bool _allAspectsExtantDirty = true;
         private List<Situation> _currentSituations;
         private readonly HashSet<Sphere> _registeredSpheres=new HashSet<Sphere>(); //Use this to find, eg, all World spheres. Don't use it for Fucine pathing!
-
+        private FucinePath _defaultSpherePath;
 
         public HornedAxe()
         {
             Reset();
         }
+
+        
 
         public void Reset()
         {
@@ -51,11 +53,24 @@ namespace SecretHistories.Entities {
             _subscribers.Clear();
         }
 
+        public void SetDefaultSpherePath(FucinePath defaultSpherePath)
+        {
+            _defaultSpherePath = defaultSpherePath;
+        }
+
         public FucinePath GetDefaultSpherePath()
         {
+            //this allows us to specify the default sphere path without needing to pull up a compendium - or to override it.
+
+            if (_defaultSpherePath != null)
+                return _defaultSpherePath;
+
             var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
-            var spherePath = new FucinePath(dictum.DefaultWorldSpherePath);
-            return spherePath;
+            
+            var pathFromDictum = new FucinePath(dictum.DefaultWorldSpherePath);
+            SetDefaultSpherePath(pathFromDictum);
+
+            return pathFromDictum;
         }
 
         public Sphere GetDefaultSphere()
