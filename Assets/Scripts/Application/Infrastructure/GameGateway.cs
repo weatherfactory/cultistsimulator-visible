@@ -108,7 +108,7 @@ namespace SecretHistories.Infrastructure
 
         private static void PopulateTabletop(Character protag, PersistedGameState gameState)
         {
-            //NB by the time we comne in here, the protagonist-character is already assumed to be set.
+            //NB by the time we come in here, the protagonist-character is already assumed to be set.
 
             //most important command: put all the tokens in the right place.
             gameState.RootPopulationCommand.Execute(new Context(Context.ActionSource.Loading));
