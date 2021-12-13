@@ -34,8 +34,7 @@ namespace Assets.Tests.EditModeTests
         private const string SPHEREINTOKENPAYLOAD_ID = "sphereintokenpayload";
 
 
-        [SetUp]
-        public void Setup()
+        [SetUp] public void Setup()
         {
             FucineRoot.Reset();
             Watchman.ForgetEverything();
