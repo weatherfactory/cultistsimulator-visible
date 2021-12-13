@@ -100,7 +100,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             float startingX = -halfSphereWidth + halfTokenWidth;
             float startingY = 0f;
-            var tokensAlreadyPresent = Sphere.Tokens;
             Vector2 candidatePosition = new Vector2(startingX, startingY);
 
     

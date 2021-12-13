@@ -37,6 +37,7 @@ namespace SecretHistories.Manifestations
         private Color32 situationDropzoneColor = new Color32(31, 145, 178, 255);
         private float elementDropzoneHeight = 134f;
         private float situationDropzoneHeight = 160f;
+        private float situationDropzoneWidth = 420f;
 
         private const int MAX_PLACEMENT_ATTEMPTS_FOR_DROPZONE=12;
         private const float SITUATION_SPACING = 20f;
@@ -90,7 +91,7 @@ namespace SecretHistories.Manifestations
 
             if (manifestable.EntityId == nameof(Situation))
             {
-                RectTransform.sizeDelta = new Vector2(RectTransform.sizeDelta.x, situationDropzoneHeight); 
+                RectTransform.sizeDelta = new Vector2(situationDropzoneWidth, situationDropzoneHeight); 
                 Glow.color = situationDropzoneColor;
             }
             else if (manifestable.EntityId == nameof(ElementStack))
