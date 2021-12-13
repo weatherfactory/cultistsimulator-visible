@@ -156,44 +156,7 @@ namespace SecretHistories.Constants {
 
         }
 
-public void MoveAllTokensOverlappingWith(Token pushingToken)
-		{
-			if (pushingToken.NoPush)
-			{
-				return;
-			}
 
-            var pushingRect = pushingToken.GetRectInCurrentSphere();
-	
-			Rect pushedRect;
-
-            foreach (var token in Sphere.Tokens) {
-                if (token==pushingToken || CanTokenBeIgnored(token))
-                    continue;
-
-                pushedRect = token.GetRectInCurrentSphere();
-
-				if (!UnacceptableOverlap(pushedRect,pushingRect, GetGridSnapCoefficient()))
-                    continue;
-
-                var freePositionForPushedToken = GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition);
-
-                TokenTravelItinerary itinerary=new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, freePositionForPushedToken)
-                    .WithDuration(0.2f)
-                    .WithScaling(1f,1f);
-
-                token.TravelTo(itinerary,new Context(Context.ActionSource.PushedAside));
-            }
-        }
-
-        // Note: If we're using the world pos while an object is dragged we get the wrong pos, since we project from cam through the raised pos
-        public Vector2 GetTablePosForWorldPos(Vector3 worldPos) {
-            Vector2 localPoint;
-            var screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPos);
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(Sphere.transform as RectTransform, screenPoint, Camera.main, out localPoint);
-
-            return localPoint;
-        }
 
         public override Vector2 GetFreeLocalPosition(Token token, Vector2 intendedPos)
         {
@@ -239,27 +202,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
                         //       targetRect.size / 2f; //this assumes that the position is in the centre of the rect
                 }
 
-              
-
-
-                //int currentIteration = 1;
-
-            //while (currentIteration < 10)
-            //{
-
-
-            //    var testRects = GetAlternativeCandidateRects(targetRect, currentIteration,token);
-
-            //    // Iterate over a single round of test positions. If one is legal, then return it.
-            //    foreach (var testRect in testRects)
-            //    {
-            //        if (IsLegalPlacement(testRect, token).IsLegal)
-            //            return testRect.position +
-            //                   targetRect.size / 2f; //this assumes that the position is in the centre of the rect
-            //    }
-
-            //    currentIteration++;
-            //}
+                
 
             NoonUtility.Log(
                 $"Choreographer: No legal tabletop position found for {token.name})! Just putting it at zero", 1);
@@ -367,87 +310,7 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
         }
 
 
-        private List<Rect> GetAlternativeCandidateRects(Rect startingRect, int iteration,Token rectsForToken)
-        {
-            float shiftWidth = startingRect.width * GetGridSnapCoefficient();
-            float shiftHeight = startingRect.height * GetGridSnapCoefficient();
-
-            
-            List<Rect> rects = new List<Rect>();
-
-
-            float testRectX = startingRect.x;
-            float testRectY = startingRect.y;
-
-
-            
-            //go east 
-            while (testRectX <(startingRect.x + (iteration * shiftWidth)))
-            {
-                testRectX += shiftWidth;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-            }
-            
-
-
-            //go south 
-            while (testRectY > (startingRect.y - (iteration * shiftHeight)))
-            {
-                testRectY -= shiftHeight;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-            }
-
-
-            //go west
-            while (testRectX > (startingRect.x - (iteration * shiftWidth)))
-            {
-                testRectX -= shiftWidth;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-            }
-
-            //go north
-            while (testRectY < (startingRect.y + (iteration * shiftHeight)))
-            {
-                testRectY += shiftHeight;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-            }
-
-
-            //go east 
-            while (testRectX < (startingRect.x + (iteration * shiftWidth)))
-            {
-                testRectX += shiftWidth;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-            }
-
-
-            //go south
-            while (testRectY > (startingRect.y - (iteration * shiftHeight)))
-            {
-                testRectY -= shiftHeight;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-            }
-
-            //go west again until we get back to beginning
-            while (testRectX > (startingRect.x))
-            {
-                testRectX -= shiftWidth;
-                AddCandidateRect(testRectX, testRectY, startingRect.size, rects, rects.Count.ToString(), rectsForToken.name);
-            }
-
-            return rects;
-
-        }
-
-        private void AddCandidateRect(float x,float y, Vector2 size, List<Rect> rects,string positionInfo,string tokenInfo)
-        {
-            Vector2 rectPosition=new Vector2(x,y);
-            Rect newRect = new Rect(rectPosition, size);
-            rects.Add(newRect);
-            ShowDebugRect(newRect, $"{positionInfo} for {tokenInfo}", Color.white);
-        }
-
-
+       
 
 
         public Vector3 SnapToGrid(Vector2 intendedPos,Token forToken)
