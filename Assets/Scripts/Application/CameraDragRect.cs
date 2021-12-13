@@ -80,75 +80,7 @@ public class CameraDragRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
 
 
-
-    void Update()
-    {
-        //This still isn't working perfectly - I don't understand the differing decelerations when using keys -
-        //but I'm going to move on and come back to it
-
-        //if (Mathf.Approximately(magnitude, 0f))
-        //{
-        //    pointerEnterEdgeTime = 0f;
-        //    return;
-        //}
-
-        //// Increment our edgeTimer if we're not over the timeout
-        //if (pointerEnterEdgeTime < timeout)
-        //{
-        //    pointerEnterEdgeTime += Time.deltaTime;
-
-        //    // Still not enough, then get us out of here
-        //    if (pointerEnterEdgeTime < timeout)
-        //        return;
-        //}
-
-        //magnitude = Mathf.Lerp(minAcceleration, maxAcceleration, magnitude);
-
-        //// -1f to invert the vector 
-        //var vector = mousePos.normalized * magnitude * -1f * Time.deltaTime;
-
-        //// Set horizontal velocity
-        //// if we change direction, do so immediately! Otherwise add on top up to our max speed.
-        //if (Mathf.Sign(vector.x) != Mathf.Sign(scrollRect.velocity.x))
-        //    vector.x = Mathf.Min(vector.x, maxVelocity);
-        //else 
-        //    vector.x = Mathf.Min(scrollRect.velocity.x + vector.x, maxVelocity);
-
-        //if (Mathf.Sign(vector.y) != Mathf.Sign(scrollRect.velocity.y))
-        //    vector.y = Mathf.Min(vector.y, maxVelocity);
-        //else 
-        //    vector.y = Mathf.Min(scrollRect.velocity.y + vector.y, maxVelocity);
-
-        //// Push the velocity into the scrollRect
-        //scrollRect.velocity = vector;
-	}
-
-
-
-
-
- //   void SetMagnitudeFromMouse() {
-	//	magnitude = 0f;
-	//	// Vertical
-	//	// up
-	//	if (mousePos.y > innerBounds.x) {
-	//		magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.y - innerBounds.x) / marginVect.y);
-	//	}
-	//	// down
-	//	else if (mousePos.y < innerBounds.z) {
-	//		magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.y - innerBounds.z) / marginVect.y);
-	//	}
-
-	//	// Horizontal
-	//	// right
-	//	if (mousePos.x > innerBounds.y) {
-	//		magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.y) / marginVect.x);
-	//	}
-	//	// left
-	//	else if (mousePos.x < innerBounds.w) {
-	//		magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.w) / marginVect.x);
-	//	}
-	//}
+    
 
 
     public void OnSphereChanged(SphereChangedArgs args)

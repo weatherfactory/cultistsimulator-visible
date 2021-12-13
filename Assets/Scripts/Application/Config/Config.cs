@@ -81,12 +81,20 @@ public class Config
 
         PersistConfigValue(NoonConstants.GAME_ID_KEY, game.ToString());
 
-        string gameSpecificFolderName = NoonConstants.DEFAULT_CONTENT_FOLDER_NAME;
+        string gameSpecificContentFolderName = NoonConstants.DEFAULT_CONTENT_FOLDER_NAME;
         if (game != GameId.CS) //first and most honourable backwards compat hack
-            gameSpecificFolderName = game.ToString() + gameSpecificFolderName;
+            gameSpecificContentFolderName = (game.ToString() + gameSpecificContentFolderName).ToLower();
         //set content folder based on game. If we want to set it arbitrarily, we'll need to widen what's allowed.
         PersistConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY,
-            gameSpecificFolderName);
+            gameSpecificContentFolderName);
+
+        string gameSpecificImageFolderName = NoonConstants.DEFAULT_CONTENT_FOLDER_NAME;
+        if (game != GameId.CS)
+            gameSpecificImageFolderName = (game.ToString() + gameSpecificImageFolderName).ToLower();
+        //set content folder based on game. If we want to set it arbitrarily, we'll need to widen what's allowed.
+        PersistConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY,
+            gameSpecificImageFolderName);
+
     }
 
     /// <summary>

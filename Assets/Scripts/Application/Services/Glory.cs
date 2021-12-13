@@ -107,6 +107,7 @@ namespace SecretHistories.Services
 
                 var watchman = new Watchman();
 
+                //Here we specify which game it is. This affects the content folder as set in the config next.
                GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), GameId);
                 //load config: this gives us a lot of info that we'll need early
                 var config = new Config();
@@ -152,12 +153,9 @@ namespace SecretHistories.Services
                 Watchman.Get<ModManager>().LoadModDLLs();
 
                 
-
+                //yup, this is fine. content folder is set by game id, first thing.
                 string contentFolder = Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY);
-                if (string.IsNullOrEmpty(GameId))
-                    contentFolder = GameId + contentFolder;
-
-                CompendiumLoader loader = new CompendiumLoader(Watchman.Get<Config>().GetConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY));
+                CompendiumLoader loader = new CompendiumLoader(contentFolder);
                 watchman.Register<CompendiumLoader>(loader);
 
                 var log=LoadCompendium(Watchman.Get<Config>().GetConfigValue(NoonConstants.CULTURE_SETTING_KEY));
