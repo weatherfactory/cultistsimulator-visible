@@ -51,13 +51,20 @@ namespace SecretHistories.Constants {
             if (!showDebugInfo)
                 return;
 
-            float GridMaxX = GRID_WIDTH * 10;
-            float GridMaxY = GRID_HEIGHT * 10;
+            //float GridMaxX = GRID_WIDTH * 10;
+            //float GridMaxY = GRID_HEIGHT * 10;
 
-         
-            
+            //for (int x = 0; x <= 10; x++)
+            //{
+            //    for(int y=0; y<=10; y++)
+            //    {
+            //        var gridSquare = new Rect(GRID_WIDTH * x, GRID_HEIGHT * y, GRID_WIDTH, GRID_HEIGHT);
+            //        GUI.Box(gridSquare, ".");
+            //    }
+            //}
 
-            foreach (var r in rectanglesToDisplay)
+
+        foreach (var r in rectanglesToDisplay)
             {
                 var style = GUI.skin.box;
                 Color transparentColor = r.Colour;
@@ -246,11 +253,15 @@ public void MoveAllTokensOverlappingWith(Token pushingToken)
 
             for (int i=fromIteration;i<=toIteration;i++)
             {
-                var candidatePoint = startingRect.center + new Vector2(shiftWidth * alongVector.x, shiftHeight * alongVector.y);
+                float shiftX = shiftWidth * alongVector.x * i;
+                float shiftY = shiftHeight * alongVector.y * i;
+
+                var candidatePoint = startingRect.center + new Vector2(shiftX, shiftY);
                 var candidateRect = new Rect(candidatePoint, startingRect.size);
 
-                AddCandidateRect(shiftWidth * alongVector.x,shiftHeight*alongVector.y,startingRect.size, candidateRects,i.ToString(),"_");
                 candidateRects.Add(candidateRect);
+
+                ShowDebugRect(candidateRect, $"{candidatePoint}", Color.white);
             }
 
             return candidateRects;
