@@ -26,7 +26,23 @@ namespace SecretHistories.Infrastructure.Persistence
 {
     public abstract class GamePersistenceProvider
     {
-        protected string persistentDataPath = Application.persistentDataPath; //cached here because it has to be called from the main thread; also it might, you know, turn out to be something else
+        protected string GetPersistentDataPath()
+        {
+            var gameId = Watchman.Get<MetaInfo>().GameId;
+          string persistentPathFromUnity=Application.persistentDataPath;
+
+            //NOT FOR PRODUCTION
+
+          string persistentPath;
+          if (gameId == GameId.BH)
+              persistentPath = persistentPathFromUnity.Replace("Cultist Simulator", "Book of Hours");
+          else
+              persistentPath = persistentPathFromUnity;
+
+          return persistentPath;
+        }
+
+
 
         protected abstract string GetSaveFileLocation();
 
@@ -148,7 +164,7 @@ namespace SecretHistories.Infrastructure.Persistence
 
         protected virtual string GetBackupSaveFileLocation()
         {
-            return $"{persistentDataPath}/backups/save{DateTime.Now:yyyyMMddHHmmssfff}.json";
+            return $"{GetPersistentDataPath()}/backups/save{DateTime.Now:yyyyMMddHHmmssfff}.json";
         }
 
         protected async Task PurgeBackups()

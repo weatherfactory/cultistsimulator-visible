@@ -17,7 +17,7 @@ namespace SecretHistories.Infrastructure.Persistence
     {
         protected override string GetSaveFileLocation()
         {
-            return $"{persistentDataPath}/save.json";
+            return $"{GetPersistentDataPath()}/save.json";
         }
 
         public void PurgeSaveFileIrrevocably()

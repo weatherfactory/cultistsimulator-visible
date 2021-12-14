@@ -31,8 +31,8 @@ namespace SecretHistories.Infrastructure
       [SerializeField] private bool SaveWhenEditorStops;
 
 
-        private GameGateway gameGateway;
-      private Heart heart;
+   [SerializeField]     private GameGateway gameGateway;
+   [SerializeField] private Heart heart;
 
       public void Awake()
       {
@@ -57,14 +57,14 @@ namespace SecretHistories.Infrastructure
           else
               NoonUtility.Log("Missing setting entity: " + NoonConstants.AUTOSAVEINTERVAL);
 
+          //Now using direct unity references, since they're all Monobehaviours and execution order can be tricky otherwise
+          //gameGateway = Watchman.Get<GameGateway>();
+          //if(gameGateway==null)
+          //    NoonUtility.LogWarning("Autosaver can't find GameGateway; autosave won't run.");
 
-          gameGateway = Watchman.Get<GameGateway>();
-          if(gameGateway==null)
-              NoonUtility.LogWarning("Autosaver can't find GameGateway; autosave won't run.");
-
-          heart = Watchman.Get<Heart>();
-          if (heart == null)
-              NoonUtility.LogWarning("Autosaver can't find Heart, which will be bad news.");
+          //heart = Watchman.Get<Heart>();
+          //if (heart == null)
+          //    NoonUtility.LogWarning("Autosaver can't find Heart, which will be bad news.");
         }
 
 

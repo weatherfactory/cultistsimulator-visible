@@ -3,7 +3,7 @@ namespace SecretHistories.Fucine
 {
     public interface ICharacterSubscriber
     {
-         void CharacterNameUpdated(string newName);
-         void CharacterProfessionUpdated(string newProfession);
+        public void CharacterNameUpdated(string newName);
+        public void CharacterProfessionUpdated(string newProfession);
     }
 }

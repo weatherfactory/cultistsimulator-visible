@@ -79,7 +79,7 @@ namespace SecretHistories.Infrastructure
                     return;
                 }
                 else
-                    PopulateTabletop(protag, gameState);
+                    PopulateEnvironment(protag, gameState);
             }
             catch (Exception e)
             {
@@ -106,7 +106,7 @@ namespace SecretHistories.Infrastructure
 
         }
 
-        private static void PopulateTabletop(Character protag, PersistedGameState gameState)
+        private static void PopulateEnvironment(Character protag, PersistedGameState gameState)
         {
             //NB by the time we come in here, the protagonist-character is already assumed to be set.
 
@@ -126,7 +126,7 @@ namespace SecretHistories.Infrastructure
             }
 
             //Start chronicling the character-protag
-            Watchman.Get<Chronicler>().ChronicleCharacter(protag);
+            Watchman.Get<AbstractChronicler>().ChronicleCharacter(protag);
 
             //display character-protag info in status bar
             Watchman.Get<StatusBar>().AttachToCharacter(protag);
@@ -194,7 +194,7 @@ namespace SecretHistories.Infrastructure
         public async void EndGame(Ending ending, Token focusOnToken)
         {
             //chronicle ending
-            var chronicler = Watchman.Get<Chronicler>();
+            var chronicler = Watchman.Get<CSChronicler>();
             chronicler.ChronicleGameEnd(Watchman.Get<HornedAxe>().GetRegisteredSituations(), Watchman.Get<HornedAxe>().GetSpheres(), ending);
 
             //Mark character as defunct

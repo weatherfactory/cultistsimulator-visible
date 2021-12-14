@@ -21,7 +21,7 @@ namespace SecretHistories.Infrastructure.Persistence
 
         protected override string GetSaveFileLocation()
         {
-            return $"{UnityEngine.Application.persistentDataPath}/{SAVE_FILE_NAME}";
+            return $"{GetPersistentDataPath()}/{SAVE_FILE_NAME}";
         }
 
 

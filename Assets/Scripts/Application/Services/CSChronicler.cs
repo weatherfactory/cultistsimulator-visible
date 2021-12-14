@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SecretHistories.Abstract;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -16,15 +17,16 @@ using Random = System.Random;
 
 namespace SecretHistories.Services
 {
+
+
     /// <summary>
     /// meta responses to significant in-game events. NB in-game: this is called, used and instantiated on the tabletop.
     /// </summary>
     
     
-    public class Chronicler:MonoBehaviour, ICharacterSubscriber
+    public class CSChronicler:AbstractChronicler
     {
-        private Character _chroniclingCharacter;
-        private Compendium _compendium;
+
         private const string BOOK_ASPECT = "text";
         private const string DESIRE_ASPECT = "desire";
         private const string TOOL_ASPECT = "tool";
@@ -50,27 +52,12 @@ namespace SecretHistories.Services
         private const string WINTER = "winter";
 
 
-        public void Awake()
-        {
-            var w=new Watchman();
-            w.Register(this);
-
-            _compendium = Watchman.Get<Compendium>();
-
-        }
-
-        public void ChronicleCharacter(Character characterToChronicle)
-        {
-            if(_chroniclingCharacter!=null)
-                _chroniclingCharacter.Unsubscribe(this);
-
-            _chroniclingCharacter = characterToChronicle;
-            characterToChronicle.Subscribe(this);
-
-        }
 
 
-        public void TokenPlacedOnTabletop(Token token)
+
+
+
+        public override void TokenPlacedInWorld(Token token)
         {
 
             if (token.PlacementAlreadyChronicled)
@@ -95,13 +82,13 @@ namespace SecretHistories.Services
             TryCHronicleHQPlaced(token, tokenAspects);
 
             token.PlacementAlreadyChronicled = true;
-             }
+            }
 
 
         }
 
 
-        private void SetAchievementsForEnding(Ending ending)
+        public override void SetAchievementsForEnding(Ending ending)
         {
             if (string.IsNullOrEmpty(ending.Achievement))
                 return;
@@ -117,32 +104,14 @@ namespace SecretHistories.Services
 			}
 		}
 
-        public void ChronicleGameEnd(List<Situation> situations, HashSet<Sphere> tokenContainers,Ending ending)
+
+
+        public override void ChronicleSpecificsForElementStacksAtGameEnd(List<Token> elementTokens)
         {
-            //a lot of the stuff in TokenPlacedOnTabletop might be better here, actually
-            SetAchievementsForEnding(ending);
-
-            List<Token> allStacksInGame=new List<Token>();
-
-            
-            foreach (var tc in tokenContainers)
-            {
-                allStacksInGame.AddRange(tc.GetElementTokens());
-            }
-
-            var rnd=new Random();
-
-            allStacksInGame=allStacksInGame.OrderBy(x => rnd.Next()).ToList(); //shuffle them, to prevent eg most recent follower consistently showing up at top.
-
-            TryUpdateBestFollower(allStacksInGame);
-        }
-
-        private void TryUpdateBestFollower(List<Token> stacks)
-        {
-
+            //update best follower
             Element currentFollower=null;
 
-            foreach (var stack in stacks.Where(s=>s.GetAspects().ContainsKey(FOLLOWER_ASPECT) && !s.GetAspects().ContainsKey(HIRELING_ASPECT) && !s.GetAspects().ContainsKey(SUMMONED_ASPECT)))
+            foreach (var stack in elementTokens.Where(s=>s.GetAspects().ContainsKey(FOLLOWER_ASPECT) && !s.GetAspects().ContainsKey(HIRELING_ASPECT) && !s.GetAspects().ContainsKey(SUMMONED_ASPECT)))
             {
                 var aspects = stack.GetAspects();
                 //if the follower is Exalted, update it.
@@ -325,7 +294,7 @@ namespace SecretHistories.Services
 			}
         }
 
-        public void ChronicleOtherworldEntry(string portalEffect)
+        public override void ChronicleOtherworldEntry(string portalEffect)
         {
 
             var storefrontServicesProvider = Watchman.Get<StorefrontServicesProvider>();
@@ -345,15 +314,5 @@ namespace SecretHistories.Services
                     
         }
 
-        public void CharacterNameUpdated(string newName)
-        {
-            _chroniclingCharacter.SetFutureLegacyEventRecord(LegacyEventRecordId.lastcharactername.ToString(), newName);
-
-        }
-
-        public void CharacterProfessionUpdated(string newProfession)
-        {
-       //
-        }
     }
 }

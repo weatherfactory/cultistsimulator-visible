@@ -12,8 +12,8 @@ namespace SecretHistories.Entities
     public class Dictum: AbstractEntity<Dictum>
     {
 
-        [FucineValue]
-        public string DefaultWorldSpherePath { get; set; }
+        [FucineValue] public string WorldSphereType { get; set; }
+        [FucineValue] public string DefaultWorldSpherePath { get; set; }
 
 
         [FucineValue]

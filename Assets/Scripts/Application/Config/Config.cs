@@ -88,7 +88,7 @@ public class Config
         PersistConfigValue(NoonConstants.CONTENT_FOLDER_NAME_KEY,
             gameSpecificContentFolderName);
 
-        string gameSpecificImageFolderName = NoonConstants.DEFAULT_CONTENT_FOLDER_NAME;
+        string gameSpecificImageFolderName = NoonConstants.DEFAULT_IMAGES_FOLDER_NAME;
         if (game != GameId.CS)
             gameSpecificImageFolderName = (game.ToString() + gameSpecificImageFolderName).ToLower();
         //set content folder based on game. If we want to set it arbitrarily, we'll need to widen what's allowed.

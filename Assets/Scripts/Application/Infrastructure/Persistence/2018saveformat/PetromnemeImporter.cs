@@ -46,7 +46,7 @@ public class PetromnemeImporter
     public RootPopulationCommand ImportTableState(PetromnemeGamePersistenceProvider source, Legacy currentLegacy)
     {
         var rootCommand = new RootPopulationCommand();
-        var tabletopSphereCreationCommand = RootPopulationCommand.ClassicTabletopSphereCreationCommand();
+        var tabletopSphereCreationCommand = RootPopulationCommand.DefaultSphereCreationCommand();
         rootCommand.Spheres.Add(tabletopSphereCreationCommand);
 
         var htSave = source.RetrieveHashedSaveFromFile();

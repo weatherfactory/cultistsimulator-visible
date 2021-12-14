@@ -41,18 +41,18 @@ namespace SecretHistories.Commands
             DealersTable.Execute(root.DealersTable);
         }
 
-        public static string DefaultWorldSphereId()
+        
+        public static SphereCreationCommand DefaultSphereCreationCommand()
         {
 
-            var tabletoppath =
-                new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
-            var tabletopId = tabletoppath.GetEndingPathPart().GetId();
-            return tabletopId;
-        }
+            var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
+            var tabletopPath = new FucinePath(dictum.DefaultWorldSpherePath);
 
-        public static SphereCreationCommand ClassicTabletopSphereCreationCommand()
-        {
-            var tabletopSphereSpec = new SphereSpec(typeof(TabletopSphere), DefaultWorldSphereId());
+            var tabletopId = tabletopPath.GetEndingPathPart().GetId();
+
+            var defaultWorldSphereType = Type.GetType(dictum.WorldSphereType);
+
+            var tabletopSphereSpec = new SphereSpec(defaultWorldSphereType, tabletopId);
             var tabletopSphereCreationCommand = new SphereCreationCommand(tabletopSphereSpec);
             return tabletopSphereCreationCommand;
         }
@@ -60,7 +60,7 @@ namespace SecretHistories.Commands
         public static RootPopulationCommand RootCommandForLegacy(Legacy startingLegacy)
         {
             var rootCommand=new  RootPopulationCommand();
-            var tabletopSphereCreationCommand = ClassicTabletopSphereCreationCommand();
+            var tabletopSphereCreationCommand = DefaultSphereCreationCommand();
 
             tabletopSphereCreationCommand.Tokens.AddRange(startingLegacy.GetTokenCreationCommandsToEnactLegacy());
             rootCommand.Spheres.Add(tabletopSphereCreationCommand);
