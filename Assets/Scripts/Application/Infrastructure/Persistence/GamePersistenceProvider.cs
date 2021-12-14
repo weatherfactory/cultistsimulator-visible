@@ -26,21 +26,6 @@ namespace SecretHistories.Infrastructure.Persistence
 {
     public abstract class GamePersistenceProvider
     {
-        protected string GetPersistentDataPath()
-        {
-            var gameId = Watchman.Get<MetaInfo>().GameId;
-          string persistentPathFromUnity=Application.persistentDataPath;
-
-            //NOT FOR PRODUCTION
-
-          string persistentPath;
-          if (gameId == GameId.BH)
-              persistentPath = persistentPathFromUnity.Replace("Cultist Simulator", "Book of Hours");
-          else
-              persistentPath = persistentPathFromUnity;
-
-          return persistentPath;
-        }
 
 
 
@@ -164,7 +149,9 @@ namespace SecretHistories.Infrastructure.Persistence
 
         protected virtual string GetBackupSaveFileLocation()
         {
-            return $"{GetPersistentDataPath()}/backups/save{DateTime.Now:yyyyMMddHHmmssfff}.json";
+            string persistentDataPath = Watchman.Get<MetaInfo>().PersistentDataPath;
+
+            return $"{persistentDataPath}/backups/save{DateTime.Now:yyyyMMddHHmmssfff}.json";
         }
 
         protected async Task PurgeBackups()

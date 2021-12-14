@@ -8,7 +8,9 @@ using Newtonsoft.Json;
 using SecretHistories.Commands;
 using SecretHistories.Commands.Encausting;
 using SecretHistories.Constants;
+using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.UI;
 using UnityEngine;
 
 namespace SecretHistories.Infrastructure.Persistence
@@ -17,7 +19,9 @@ namespace SecretHistories.Infrastructure.Persistence
     {
         protected override string GetSaveFileLocation()
         {
-            return $"{GetPersistentDataPath()}/save.json";
+            string persistentDataPath = Watchman.Get<MetaInfo>().PersistentDataPath;
+
+            return $"{persistentDataPath}/save.json";
         }
 
         public void PurgeSaveFileIrrevocably()

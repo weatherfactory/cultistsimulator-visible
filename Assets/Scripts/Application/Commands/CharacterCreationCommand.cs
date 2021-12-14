@@ -77,8 +77,6 @@ namespace SecretHistories.Commands
             foreach(var previousHistoryRecord in PreviousCharacterHistoryRecords)
                 character.SetOrOverwritePastLegacyEventRecord(previousHistoryRecord.Key,previousHistoryRecord.Value);
 
-            
-
             Watchman.Get<Compendium>().SupplyLevers(character);
 
 

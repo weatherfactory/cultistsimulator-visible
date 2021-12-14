@@ -21,7 +21,8 @@ namespace SecretHistories.Infrastructure.Persistence
 
         protected override string GetSaveFileLocation()
         {
-            return $"{GetPersistentDataPath()}/{SAVE_FILE_NAME}";
+            string persistentDataPath = Watchman.Get<MetaInfo>().PersistentDataPath;
+            return $"{persistentDataPath}/{SAVE_FILE_NAME}";
         }
 
 

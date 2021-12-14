@@ -1,15 +1,16 @@
-﻿using SecretHistories.Entities;
+﻿using SecretHistories.Assets.Scripts.Application.Spheres;
+using SecretHistories.Entities;
 using SecretHistories.Constants;
-
+using SecretHistories.Spheres;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace SecretHistories.UI
 {
-    public class TabletopBackground : MonoBehaviour, IPointerClickHandler {
+    public class TabletopBackground : AbstractBackground{
 
-        public event System.Action<PointerEventData> onClicked;
+      
 
 #pragma warning disable 649
         [SerializeField] private Image Cover;
@@ -18,18 +19,12 @@ namespace SecretHistories.UI
 #pragma warning restore 649
 
 
-        public void Awake()
-        {
-            var w=new Watchman();
-            w.Register(this);
-        }
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            onClicked?.Invoke(eventData);
-        }
 
-        public void ShowTabletopFor(Legacy characterActiveLegacy)
+
+
+
+        public override void ShowBackgroundFor(Legacy characterActiveLegacy)
         {
 
             if (!string.IsNullOrEmpty(characterActiveLegacy.TableCoverImage))

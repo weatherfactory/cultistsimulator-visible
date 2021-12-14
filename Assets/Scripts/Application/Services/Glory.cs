@@ -119,7 +119,7 @@ namespace SecretHistories.Services
                 //load concursum: central nexus for event responses
                 watchman.Register(concursum);
 
-                var metaInfo = new MetaInfo(gameIdAsEnum,new VersionNumber(Application.version),GetCurrentStorefront());
+                var metaInfo = new MetaInfo(gameIdAsEnum,new VersionNumber(Application.version),GetCurrentStorefront(),GetPersistentDataPath(gameIdAsEnum));
                 watchman.Register<MetaInfo>(metaInfo);
             
 
@@ -223,6 +223,22 @@ namespace SecretHistories.Services
                 
             }
         }
+
+        protected string GetPersistentDataPath(GameId gameId)
+        {
+            string persistentPathFromUnity = Application.persistentDataPath;
+
+            //NOT FOR PRODUCTION
+
+            string persistentPath;
+            if (gameId == Enums.GameId.BH)
+                persistentPath = persistentPathFromUnity.Replace("Cultist Simulator", "Book of Hours");
+            else
+                persistentPath = persistentPathFromUnity;
+
+            return persistentPath;
+        }
+
 
         private async Task<bool> ConvertClassicSaveIfNecessary()
         {

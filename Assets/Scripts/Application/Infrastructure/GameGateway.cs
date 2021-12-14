@@ -132,7 +132,7 @@ namespace SecretHistories.Infrastructure
             Watchman.Get<StatusBar>().AttachToCharacter(protag);
             
             //Show correct tabletop background for current legacy
-            Watchman.Get<TabletopBackground>().ShowTabletopFor(protag.ActiveLegacy);
+           Watchman.Get<AbstractBackground>().ShowBackgroundFor(protag.ActiveLegacy);
         }
 
         private static async Task SaveRestartState()
