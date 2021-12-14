@@ -29,8 +29,8 @@ namespace SecretHistories.Manifestations
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
             Watchman.Forget<NullManifestation>();
-            NoonUtility.Dismantle(this);
-            //Destroy(gameObject);
+           // NoonUtility.Dismantle(this); <--commenting out this will break edit mode tests again, but leaving it in clogs up the hierarchy with NullManifestation clones. Revisit.
+           Destroy(gameObject);
             callbackOnRetired();
         }
 
