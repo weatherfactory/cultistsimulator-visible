@@ -114,8 +114,7 @@ namespace SecretHistories.Infrastructure
             gameState.RootPopulationCommand.Execute(new Context(Context.ActionSource.Loading));
             //restore and action any itineraries
             gameState.PopulateXamanekCommand.Execute(new Context(Context.ActionSource.Loading));
-
-
+            
             //Show all stored notifation commands
             foreach (var n in gameState.NotificationCommands)
             {

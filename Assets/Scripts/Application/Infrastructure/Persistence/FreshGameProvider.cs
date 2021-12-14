@@ -1,8 +1,9 @@
 ﻿
 using System.Collections.Generic;
+using SecretHistories.Assets.Scripts.Application.Infrastructure;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
-
+using SecretHistories.UI;
 
 
 namespace SecretHistories.Infrastructure.Persistence
@@ -15,6 +16,7 @@ namespace SecretHistories.Infrastructure.Persistence
     {
         public Legacy StartingLegacy { get; set; }
         private Dictionary<string, string> _historyRecordsFromPreviousCharacter;
+        private readonly AbstractTokenSetupChamberlain _chamberlain;
 
 
         protected override string GetSaveFileLocation()
@@ -43,7 +45,8 @@ namespace SecretHistories.Infrastructure.Persistence
 
         public override void DepersistGameState()
         {
-            _persistedGameState= PersistedGameState.ForLegacy(StartingLegacy,_historyRecordsFromPreviousCharacter);
+            var chamberlain = Watchman.Get<AbstractTokenSetupChamberlain>();
+            _persistedGameState= PersistedGameState.ForLegacy(StartingLegacy, _historyRecordsFromPreviousCharacter);
 
         }
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Assets.Scripts.Application.Infrastructure;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants;
 using SecretHistories.Core;
@@ -62,7 +63,9 @@ namespace SecretHistories.Commands
             var rootCommand=new  RootPopulationCommand();
             var tabletopSphereCreationCommand = DefaultSphereCreationCommand();
 
-            tabletopSphereCreationCommand.Tokens.AddRange(startingLegacy.GetTokenCreationCommandsToEnactLegacy());
+            var chamberlain = startingLegacy.GetTokenSetupChamberlain(Watchman.Get<MetaInfo>().GameId);
+
+            tabletopSphereCreationCommand.Tokens.AddRange(chamberlain.GetTokenCreationCommandsToEnactLegacy(startingLegacy));
             rootCommand.Spheres.Add(tabletopSphereCreationCommand);
 
             rootCommand.DealersTable=DealersTableForLegacy(startingLegacy);

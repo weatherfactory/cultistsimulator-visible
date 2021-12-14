@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
+using SecretHistories.Assets.Scripts.Application.Infrastructure;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Commands.TokenEffectCommands;
@@ -32,7 +33,7 @@ namespace SecretHistories.Infrastructure.Persistence
             return (CharacterCreationCommands.OrderByDescending(c => c.DateTimeCreated).FirstOrDefault());
         }
 
-        public static PersistedGameState ForLegacy(Legacy startingLegacy,Dictionary<string,string> historyRecordsFromPreviousCharacter)
+        public static PersistedGameState ForLegacy(Legacy startingLegacy, Dictionary<string,string> historyRecordsFromPreviousCharacter)
         {
             var state = new PersistedGameState();
             state.RootPopulationCommand = RootPopulationCommand.RootCommandForLegacy(startingLegacy);

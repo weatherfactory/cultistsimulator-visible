@@ -5,6 +5,7 @@ using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using Assets.Logic;
 using Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Assets.Scripts.Application.Infrastructure;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Modding;
