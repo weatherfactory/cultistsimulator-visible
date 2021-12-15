@@ -95,8 +95,7 @@ namespace SecretHistories.Tokens.TokenPayloads
             }
 
         }
-
-
+        
         private List<AbstractDominion> _registeredDominions=new List<AbstractDominion>();
         private List<Sphere> _spheres=new List<Sphere>();
         private readonly Dictionary<string, int> _mutations=new Dictionary<string, int>();
@@ -148,9 +147,7 @@ namespace SecretHistories.Tokens.TokenPayloads
         {
             return new AspectsDictionary();
         }
-
         
-
         public string GetSignature()
         {
             throw new NotImplementedException();
