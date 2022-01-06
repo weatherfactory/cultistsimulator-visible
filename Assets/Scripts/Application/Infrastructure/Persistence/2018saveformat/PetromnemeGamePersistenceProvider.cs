@@ -43,6 +43,7 @@ namespace SecretHistories.Infrastructure.Persistence
                 _persistedGameState.RootPopulationCommand = rootPopulationCommand;
             }
 
+
         }
 
 

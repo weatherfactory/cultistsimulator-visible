@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.UI;
@@ -207,12 +208,12 @@ namespace SecretHistories.Constants
 
             var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
 
+
             foreach (var s in situations)
             {
                 if (s.IsOpen)
                 {
-                    s.Conclude();
-                    break;
+                    s.AddCommand(new EvictOutputCommand());
                 }
             }
         }
