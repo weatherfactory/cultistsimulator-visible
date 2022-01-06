@@ -236,7 +236,7 @@ public class PetromnemeImporter
 
             var tokenCreationCommand = new TokenCreationCommand(tokenPayloadCreationCommand, stackTokenLocation);
             if(sphereCommand.GoverningSphereSpec.Id ==CLASSIC_TABLETOP_SPHERE__ID)
-            tokenCreationCommand.CurrentState=new PlacedAssertivelyBySystemState();
+                tokenCreationCommand.CurrentState=new PlacedAssertivelyBySystemState();
 
             sphereCommand.Tokens.Add(tokenCreationCommand);
             tabletopElementStacks++;
