@@ -324,6 +324,11 @@ namespace SecretHistories.Entities.Verbs
             Close();
         }
 
+        public bool ApplyExoticEffect(ExoticEffect exoticEffect)
+        {
+            return false;
+        }
+
         public void SetToken(Token token)
         {
             _token = token;

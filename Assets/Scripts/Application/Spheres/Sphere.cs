@@ -523,7 +523,7 @@ namespace SecretHistories.Spheres
                         return unsatisfiedPurge;
 
                     int originalQuantity = elementStackTokenToAffect.Quantity;
-                    elementStackTokenToAffect.Purge();
+                    elementStackTokenToAffect.ApplyExoticEffect(ExoticEffect.Purge);
                     //stackToAffect.Populate(element.DecayTo, stackToAffect.Quantity, Source.Existing());
                     unsatisfiedPurge -= originalQuantity;
                 }

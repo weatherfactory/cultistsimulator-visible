@@ -26,6 +26,6 @@ namespace SecretHistories.Abstract
         public List<AbstractDominion> Dominions { get; }
         public bool Metafictional { get; }
         public bool Retire(RetirementVFX VFX);
-
+ 
     }
 }

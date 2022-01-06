@@ -996,18 +996,13 @@ namespace SecretHistories.UI {
         public void StopShowingPossibleInteractionWithToken(Token token)
         {
             _manifestation.Unhighlight(HighlightType.PotentiallyRelevant, _payload);
-
         }
 
-        public void Purge()
+        public void ApplyExoticEffect(ExoticEffect exoticEffect)
         {
-            if (Payload.GetTimeshadow().Transient)
-                Payload.ExecuteHeartbeat(Payload.GetTimeshadow().LifetimeRemaining + 1, Payload.GetTimeshadow().LifetimeRemaining + 1); //make it decay to its next form
-            else
-                Payload.Retire(RetirementVFX.CardLight);
+            Payload.ApplyExoticEffect(exoticEffect);
+
         }
-
-
-
+        
     }
 }

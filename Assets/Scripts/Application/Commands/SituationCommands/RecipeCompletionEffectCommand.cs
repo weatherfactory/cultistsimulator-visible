@@ -111,7 +111,7 @@ namespace SecretHistories.Core
                 Watchman.Get<HornedAxe>().HaltSituation(h.Key, h.Value);
 
             foreach (var d in Recipe.DeleteVerb)
-                Watchman.Get<HornedAxe>().DeleteSituation(d.Key, d.Value);
+                Watchman.Get<HornedAxe>().PurgeSituation(d.Key, d.Value);
         }
 
 

@@ -557,6 +557,25 @@ namespace SecretHistories.UI {
             Close();
         }
 
+        public bool ApplyExoticEffect(ExoticEffect exoticEffect)
+        {
+            if(exoticEffect == ExoticEffect.Purge)
+            {
+                if (string.IsNullOrEmpty(Element.DecayTo))
+                {
+                    Retire(RetirementVFX.CardLight);
+                }
+                else
+                    ChangeTo(Element.DecayTo);
+
+                return true;
+
+            }
+
+            return false;
+
+        }
+
         public void SetToken(Token token)
         {
             _token = token;

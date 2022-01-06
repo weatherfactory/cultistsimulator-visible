@@ -50,7 +50,7 @@ namespace Assets.Scripts.Application.Meta
 
         private void DeleteVerb(string verbId)
         {
-            Watchman.Get<HornedAxe>().DeleteSituation(verbId, 1);
+            Watchman.Get<HornedAxe>().PurgeSituation(verbId, 1);
         }
 
         public void PurgeElement()

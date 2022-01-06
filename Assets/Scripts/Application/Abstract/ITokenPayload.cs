@@ -41,6 +41,8 @@ namespace SecretHistories.Abstract
         void Close();
         void Conclude();
 
+        bool ApplyExoticEffect(ExoticEffect exoticEffect);
+
         void SetToken(Token token);
         void OnTokenMoved(TokenLocation toLocation);
         void StorePopulateDominionCommand(PopulateDominionCommand populateDominionCommand);

@@ -412,8 +412,7 @@ namespace SecretHistories.Entities {
                 {
                     if (s.Verb.Id.StartsWith(wildcardToDelete))
                     {
-                        s.AddCommand(new TryHaltSituationCommand());
-                        s.ExecuteHeartbeat(0f, 0f);
+                        s.ApplyExoticEffect(ExoticEffect.Halt);
                         i++;
                     }
 
@@ -428,8 +427,7 @@ namespace SecretHistories.Entities {
                 {
                     if (s.Verb.Id == toHaltId.Trim())
                     {
-                        s.AddCommand(new TryHaltSituationCommand());
-                        s.ExecuteHeartbeat(0f, 0f);
+                        s.ApplyExoticEffect(ExoticEffect.Halt);
                         i++;
                     }
                     if (i >= maxToHalt)
@@ -438,7 +436,7 @@ namespace SecretHistories.Entities {
             }
         }
 
-        public void DeleteSituation(string toDeleteId, int maxToDelete)
+        public void PurgeSituation(string toDeleteId, int maxToPurge)
         {
 
             int i = 0;
@@ -452,11 +450,11 @@ namespace SecretHistories.Entities {
                 {
                     if (s.Verb.Id.StartsWith(wildcardToDelete))
                     {
-                        s.Retire(RetirementVFX.Default);
+                        s.ApplyExoticEffect(ExoticEffect.Purge);
                         i++;
                     }
 
-                    if (i >= maxToDelete)
+                    if (i >= maxToPurge)
                         break;
                 }
             }
@@ -467,10 +465,10 @@ namespace SecretHistories.Entities {
                 {
                     if (s.Verb.Id == toDeleteId.Trim())
                     {
-                        s.Retire(RetirementVFX.Default);
+                        s.ApplyExoticEffect(ExoticEffect.Purge);
                         i++;
                     }
-                    if (i >= maxToDelete)
+                    if (i >= maxToPurge)
                         break;
                 }
             }

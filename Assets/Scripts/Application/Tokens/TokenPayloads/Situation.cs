@@ -21,6 +21,7 @@ using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Commands.TokenEffectCommands;
 using SecretHistories.Constants;
 using SecretHistories.Core;
@@ -764,6 +765,24 @@ namespace SecretHistories.Entities {
         }
 
 
+        public bool ApplyExoticEffect(ExoticEffect exoticEffect)
+        {
+            if (exoticEffect == ExoticEffect.Purge)
+            {
+                Retire(RetirementVFX.Default); //leaving room here for some day transforming with an element-decay like effect, for instance
+                return true;
+            }
+
+            if (exoticEffect == ExoticEffect.Halt)
+            {
+                AddCommand(new TryHaltSituationCommand());
+                ExecuteHeartbeat(0f, 0f);
+                return true;
+            }
+
+            return false;
+        }
+
         public void SetToken(Token token)
         {
             _token = token;
@@ -906,7 +925,8 @@ namespace SecretHistories.Entities {
         /// </summary>
         public void Conclude()
         {
-           AddCommand(new ConcludeCommand());
+            AddCommand(new EvictOutputCommand());
+            AddCommand(new ConcludeCommand());
            Continue(0f,0f);
         }
 

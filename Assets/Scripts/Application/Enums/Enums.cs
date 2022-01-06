@@ -19,6 +19,14 @@ namespace SecretHistories.Enums
 
     public enum SituationDominionEnum { VerbThresholds = 1, RecipeThresholds = 2, Notes = 3, Storage = 4, Output = 5,  Unknown = 0 }
 
+    //exotic effects on tokens, which might include 'set fire to' or 'choose form appropriate for context'. These should be simple! Anything more complex is recipe 
+    //territory
+    public enum ExoticEffect
+    {
+        Purge=1, //'Not allowed here, be gone with no particular extra logic or special effects'. This might mean retire, decay to default next stage, or be banished
+        Halt = 2 //'Stop immediately but non-destructively'
+    } 
+
     public enum FucineValidity { Valid, TokenInRoot, Uninitialised,Empty }
 
     public enum GameId
@@ -65,6 +73,8 @@ namespace SecretHistories.Enums
         TricuspidGate = 60,
         ILIKECAKE=70
     }
+
+
     public enum RetirementVFX
     {
         CardBurn,
