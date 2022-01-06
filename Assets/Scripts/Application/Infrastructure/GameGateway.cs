@@ -125,7 +125,7 @@ namespace SecretHistories.Infrastructure
             }
 
             //Start chronicling the character-protag
-            Watchman.Get<AbstractChronicler>().ChronicleCharacter(protag);
+            Watchman.Get<IChronicler>().ChronicleCharacter(protag);
 
             //display character-protag info in status bar
             Watchman.Get<StatusBar>().AttachToCharacter(protag);
@@ -193,7 +193,7 @@ namespace SecretHistories.Infrastructure
         public async void EndGame(Ending ending, Token focusOnToken)
         {
             //chronicle ending
-            var chronicler = Watchman.Get<CSChronicler>();
+            var chronicler = Watchman.Get<IChronicler>();
             chronicler.ChronicleGameEnd(Watchman.Get<HornedAxe>().GetRegisteredSituations(), Watchman.Get<HornedAxe>().GetSpheres(), ending);
 
             //Mark character as defunct

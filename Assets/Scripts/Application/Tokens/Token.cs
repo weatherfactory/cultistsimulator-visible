@@ -817,7 +817,7 @@ namespace SecretHistories.UI {
         protected virtual void NotifyInteracted(TokenInteractionEventArgs args)
         {
             Sphere.NotifyTokenInThisSphereInteracted(args);
-            Watchman.Get<CSChronicler>()?.TokenPlacedInWorld(this);
+            Watchman.Get<IChronicler>()?.TokenPlacedInWorld(this);
         }
 
         public bool Retire()

@@ -37,11 +37,14 @@ namespace SecretHistories.Infrastructure.Persistence
 
             var activeLegacy = Watchman.Get<Compendium>()
                 .GetEntityById<Legacy>(characterCreationCommand.ActiveLegacyId);
-
-            var rootPopulationCommand = importer.ImportTableState(this, activeLegacy); //if we don't have an active legacy, we've no business importing table state
-            _persistedGameState.RootPopulationCommand = rootPopulationCommand;
+            if(activeLegacy.IsValid()) //if we don't have a valid active legacy, we've no business importing table state
+            {
+                var rootPopulationCommand = importer.ImportTableState(this, activeLegacy); 
+                _persistedGameState.RootPopulationCommand = rootPopulationCommand;
+            }
 
         }
+
 
         public Hashtable RetrieveHashedSaveFromFile()
         {

@@ -72,7 +72,7 @@ namespace SecretHistories.UI
                 _currentOtherworld = otherworldToOpen;
             }
 
-            Watchman.Get<CSChronicler>()?.ChronicleOtherworldEntry(ingress.EntityId);
+            Watchman.Get<IChronicler>()?.ChronicleOtherworldEntry(ingress.EntityId);
         }
 
 

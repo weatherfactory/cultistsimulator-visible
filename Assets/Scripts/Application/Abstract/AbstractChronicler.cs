@@ -14,7 +14,19 @@ using Random = System.Random;
 
 namespace SecretHistories.Abstract
 {
-    public abstract class AbstractChronicler: MonoBehaviour, ICharacterSubscriber
+    public interface IChronicler
+    {
+        void ChronicleCharacter(Character characterToChronicle);
+        void TokenPlacedInWorld(Token token);
+        void ChronicleGameEnd(List<Situation> situations, HashSet<Sphere> tokenContainers, Ending ending);
+        void SetAchievementsForEnding(Ending ending);
+        void ChronicleSpecificsForElementStacksAtGameEnd(List<Token> elementTokens);
+        void CharacterNameUpdated(string newName);
+        void CharacterProfessionUpdated(string newProfession);
+        void ChronicleOtherworldEntry(string portal);
+    }
+
+    public abstract class AbstractChronicler: MonoBehaviour, ICharacterSubscriber, IChronicler
     {
         protected Character _chroniclingCharacter;
         protected Compendium _compendium;
@@ -22,7 +34,7 @@ namespace SecretHistories.Abstract
         public void Awake()
         {
             var w = new Watchman();
-            w.Register(this);
+            w.Register<IChronicler>(this);
 
             _compendium = Watchman.Get<Compendium>();
 
@@ -74,4 +86,6 @@ namespace SecretHistories.Abstract
         }
         public abstract void ChronicleOtherworldEntry(string portal);
     }
+
+
 }

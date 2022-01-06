@@ -218,6 +218,9 @@ namespace SecretHistories.Services
             }
             catch (Exception e)
             {
+                if (Application.isEditor)
+                    throw;
+
                 NoonUtility.LogException(e);
                 stageHand.LoadInfoScene();
                 
