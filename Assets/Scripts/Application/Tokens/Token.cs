@@ -728,7 +728,7 @@ namespace SecretHistories.UI {
                 return this;
             }
 
-            var calvedStackCreationCommand = new ElementStackCreationCommand(Payload.EntityId, Quantity - 1)
+            var calvedStackCreationCommand = new ElementStackCreationCommand(Payload.EntityId, quantityToLeaveBehind)
             {
                 Mutations = Payload.Mutations,
                 LifetimeRemaining = Payload.GetTimeshadow().LifetimeRemaining
