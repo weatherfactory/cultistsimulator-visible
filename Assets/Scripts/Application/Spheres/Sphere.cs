@@ -558,12 +558,12 @@ namespace SecretHistories.Spheres
                 if (EnforceUniqueStacksInThisContainer)
                     RemoveDuplicates(token.Payload);
 
-                // Check if the stack's elements are decaying, and split them if they are
-                // Decaying stacks should not be allowed
-                //while (token.Payload.GetTimeshadow().Transient && token.Quantity > 1)
-                //{
-                //    AcceptToken(token.CalveToken(1,context),context);
-                //}
+                Check if the stack's elements are decaying, and split them if they are
+                 Decaying stacks should not be allowed
+                while (token.Payload.GetTimeshadow().Transient && token.Quantity > 1)
+                {
+                    AcceptToken(token.CalveToken(1, context), context);
+                }
 
             }
 
