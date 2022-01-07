@@ -465,8 +465,12 @@ namespace SecretHistories.UI {
         {
             if (!otherPayload.IsValidElementStack())
                 return false;
-            if (Decays || Element.Unique)
+            if (Element.Unique)
                 return false;
+
+            if (Decays && otherPayload.GetTimeshadow().Transient)
+                if(Math.Abs(otherPayload.GetTimeshadow().LifetimeRemaining - GetTimeshadow().LifetimeRemaining) > 0.1f)
+                    return false;
             if (!Token.Sphere.AllowStackMerge)
                 return false;
 
@@ -474,8 +478,7 @@ namespace SecretHistories.UI {
                 return false;
             if (otherPayload == this)
                 return false;
-            if (!this.AllowsOutgoingMerge())
-                return false;
+
             if (!otherPayload.Mutations.IsEquivalentTo(Mutations))
                 return false;
 
@@ -483,13 +486,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public virtual bool AllowsOutgoingMerge()
-        {
-            if (Decays || Element.Unique)
-                return false;
-            else
-                return true; // If outgoing, it doesn't matter what its current container is - CP
-        }
+
 
 
 
