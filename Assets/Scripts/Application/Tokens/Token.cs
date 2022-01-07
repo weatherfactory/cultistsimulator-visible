@@ -730,7 +730,8 @@ namespace SecretHistories.UI {
 
             var calvedStackCreationCommand = new ElementStackCreationCommand(Payload.EntityId, Quantity - 1)
             {
-                Mutations = Payload.Mutations
+                Mutations = Payload.Mutations,
+                LifetimeRemaining = Payload.GetTimeshadow().LifetimeRemaining
             };
             var calvingContext = new Context(Context.ActionSource.CalvedStack);
             calvingContext.TokenDestination = new TokenLocation(this);
