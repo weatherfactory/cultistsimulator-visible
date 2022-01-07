@@ -132,7 +132,7 @@ namespace SecretHistories.Services
 
         public void MenuScreen()
         {
-            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().MenuScene, false);
+            SceneChange(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().MenuScene, true);
         }
 
 

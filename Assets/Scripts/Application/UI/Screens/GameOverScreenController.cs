@@ -16,7 +16,7 @@ using UnityEngine.UI;
 
 namespace SecretHistories.UI
 {
-    public class EndScreenController : MonoBehaviour
+    public class GameOverScreenController : MonoBehaviour
 	{
 		// Convenient way to list all the endings for the debug menu
 		enum eEndings
@@ -91,19 +91,9 @@ namespace SecretHistories.UI
                 return;
 
             hasSelected = true;
-            // TODO: PLAY Button SFX
-            FadeOut(durationFadeOut);
-            Invoke("ReturnToMenuInternal", durationFadeOut);
-        }
-
-  //      private async void ReturnToMenuInternal() //unused?
-		//{
-  //          //save on exit, so the player will return here, not begin a new game
             
-  //          throw new NotImplementedException("save here?");
-
-  //          Watchman.Get<StageHand>().MenuScreen();
-  //      }
+            Watchman.Get<StageHand>().MenuScreen();
+        }
 
         public void StartNewGame()
 		{
@@ -122,22 +112,22 @@ namespace SecretHistories.UI
 #if UNITY_EDITOR
 		private void OnGUI()
 		{
-			Rect buttonRect = new Rect(5,5,200,20);
-			var compendium = Watchman.Get<Compendium>();
-            List<Ending> endings = compendium.GetEntitiesAsList<Ending>();
-			foreach (Ending ending in endings)
-			{
-				if (GUI.Button(buttonRect, ending.Id))
-				{
-					InitEnding( ending );
-				}
-				buttonRect.y += 20.0f;
-				if (buttonRect.y > Screen.height-20)
-				{
-					buttonRect.y = 5;
-					buttonRect.x = Screen.width-205;
-				}
-			}
+			//Rect buttonRect = new Rect(5,5,200,20);
+			//var compendium = Watchman.Get<Compendium>();
+   //         List<Ending> endings = compendium.GetEntitiesAsList<Ending>();
+			//foreach (Ending ending in endings)
+			//{
+			//	if (GUI.Button(buttonRect, ending.Id))
+			//	{
+			//		InitEnding( ending );
+			//	}
+			//	buttonRect.y += 20.0f;
+			//	if (buttonRect.y > Screen.height-20)
+			//	{
+			//		buttonRect.y = 5;
+			//		buttonRect.x = Screen.width-205;
+			//	}
+			//}
 		}
 #endif
 	}
