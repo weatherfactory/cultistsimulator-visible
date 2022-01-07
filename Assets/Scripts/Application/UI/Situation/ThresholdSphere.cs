@@ -223,6 +223,7 @@ namespace SecretHistories.UI
                 var newStack = token.CalveToken(1, new Context(Context.ActionSource.PlayerDrag));
                 // And we put that into the slot
                 AcceptToken(newStack, context);
+                return false; //We've accepted the *new* calved token, but we don't return true because the remaining, original token is rejected.
             }
             else
             {
@@ -238,11 +239,8 @@ namespace SecretHistories.UI
 
                 if (currentOccupant != null)
                 {
-                    //original flavour
-                    //currentOccupant.ReturnToTabletop();
-                    //placeholder flavour
-                    //NoonUtility.LogWarning("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
-
+                    //a token dropped on another token will usually already have driven it away via Token.OnDrop(). But it's possible that a token has snuck in here somehow in the meantime.
+                    //When we come to do shelves, remember that there's also code in OnDrop to deal with overlap/usurpation.
                     currentOccupant.GoAway(new Context(Context.ActionSource.PlaceInThresholdUsurpedByIncomer));
                 }
                 //now we put the token in the slot.

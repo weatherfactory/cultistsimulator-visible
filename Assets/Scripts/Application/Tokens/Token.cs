@@ -82,7 +82,11 @@ namespace SecretHistories.UI {
         }
 
         [Encaust]
-        public AbstractTokenState CurrentState { get; set; } = new UnknownState();
+        public AbstractTokenState CurrentState
+        {
+            get => _currentState;
+            set => _currentState = value; //this was here for 
+        }
 
 
         [DontEncaust]
@@ -335,6 +339,7 @@ namespace SecretHistories.UI {
         }
 
         private IGhost _ghost;
+        private AbstractTokenState _currentState = new UnknownState();
 
         public IGhost GetCurrentGhost()
         {
@@ -671,7 +676,9 @@ namespace SecretHistories.UI {
 
         public  void OnDrop(PointerEventData eventData)
         {
-
+            //Inevitable but endlessly confusing. OnDrop is 'something has been dropped on me' and not 'I have been dropped on something'
+            //So the incomingtoken / potentialusurper is what is currently being dragged
+            //and the token on which this method has been called is the token that is currently in situ
             var incomingToken = eventData.pointerDrag.GetComponent<Token>();
             if (incomingToken == null)
                 return;
@@ -683,9 +690,9 @@ namespace SecretHistories.UI {
                 this.Sphere.TryMoveAsideFor(incomingToken,this, out bool moveAsideFor);
 
                 if (moveAsideFor)
-                   CurrentState=new DroppedOnTokenWhichMovedAsideState();
+                    incomingToken.CurrentState =new DroppedOnTokenWhichMovedAsideState();
                 else
-                    CurrentState = new RejectedByTokenState();
+                    incomingToken.CurrentState = new RejectedByTokenState();
             }
         }
 
