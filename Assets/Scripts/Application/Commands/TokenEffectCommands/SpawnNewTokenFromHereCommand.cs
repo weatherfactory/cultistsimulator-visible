@@ -48,8 +48,10 @@ namespace SecretHistories.Commands
                     newToken.Sphere.EvictToken(newToken, _context);
                 else
                     newToken.Retire(RetirementVFX.None);
+
+                return true;
             }
-            return true;
+            return false;
         }
 
         public bool ExecuteOn(ITokenPayload payload)

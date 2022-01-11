@@ -32,10 +32,11 @@ namespace SecretHistories.Commands
         public Dictionary<string, int> Mutations { get; set; }
         //This is used for reference and repair - perhaps testing. I'm populating the parent path in the Execute paramater
         public bool IsOpen { get; set; }
-        public List<Token> TokensToMigrate=new List<Token>();
         public List<PopulateDominionCommand> Dominions { get; set; }=new List<PopulateDominionCommand>();
 
-     
+
+        public Situation LastSituationCreated;
+
         public List<ISituationCommand> CommandQueue { get; set; } = new List<ISituationCommand>();
 
         public SituationCreationCommand()
@@ -122,12 +123,12 @@ namespace SecretHistories.Commands
                 d.Execute(newSituation);
 
             //this may have been specified if the new situation is being spawned from an old one
-            if (TokensToMigrate.Any())
-                newSituation.AcceptTokens(SphereCategory.SituationStorage,TokensToMigrate);
-            
-
+        
             newSituation.AddCommandsFrom(CommandQueue);
-            
+
+
+            LastSituationCreated = newSituation; //in case we need to retrieve a just-created situation later than this method call - as we do for instance in SpawnNewTokenCommand
+
             return newSituation;
 
 

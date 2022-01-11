@@ -757,10 +757,10 @@ namespace SecretHistories.Entities {
 
             var situationCreationCommand = new SituationCreationCommand(withRecipe.ActionId).WithRecipeAboutToActivate(withRecipe.Id);
 
-            situationCreationCommand.TokensToMigrate = stacksToAddToNewSituation;
             var spawnNewTokenCommand = new SpawnNewTokenFromThisOneCommand(situationCreationCommand,  new Context(Context.ActionSource.JustSpawned));
 
-            spawnNewTokenCommand.ExecuteOn(Token);
+          if(spawnNewTokenCommand.ExecuteOn(Token))
+                situationCreationCommand.LastSituationCreated.AcceptTokens(SphereCategory.SituationStorage,stacksToAddToNewSituation);
             
         }
 
