@@ -50,6 +50,11 @@ namespace SecretHistories.Manifestations
             //
         }
 
+        public void UpdateLocalScale(Vector3 newScale)
+        {
+            RectTransform.localScale = newScale;
+        }
+
         public void UpdateVisuals(ITokenPayload payload)
         {
             //do nothing

@@ -817,10 +817,10 @@ namespace SecretHistories.Entities {
 
         private void Open()
         {
-    if(_token==null)
-        OpenAt(TokenLocation.Default(GetAbsolutePath()));
-    else
-        OpenAt(_token.Location);
+        if(_token==null)
+            OpenAt(TokenLocation.Default(GetAbsolutePath()));
+        else
+            OpenAt(_token.Location);
         }
 
 
@@ -972,7 +972,7 @@ namespace SecretHistories.Entities {
 
         public void OnSphereChanged(SphereChangedArgs args)
         {
-            //
+       
         }
 
         private bool ChangesAreMetafictional(SphereContentsChangedEventArgs args)

@@ -168,7 +168,7 @@ namespace SecretHistories.UI {
         public void Update()
         {
             WorldPosition = TokenRectTransform.position;
-      
+           
         }
 
 
@@ -470,11 +470,10 @@ namespace SecretHistories.UI {
     public void SetLocalScale(Vector3 newScale)
     {
         TokenRectTransform.localScale = newScale;
-        _manifestation.RectTransform.localScale = newScale;
+        _manifestation.UpdateLocalScale(newScale);
     }
 
-
-        public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
         {
             NoonUtility.Log("Beginning drag for " + this.name,0,VerbosityLevel.SystemChatter);
 

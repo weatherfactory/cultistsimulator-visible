@@ -48,6 +48,11 @@ namespace SecretHistories.Manifestations
             elementFrame.PopulateDisplay(element, manifestable.Quantity, false);
         }
 
+        public void UpdateLocalScale(Vector3 newScale)
+        {
+            RectTransform.localScale = newScale;
+        }
+
         public void SendNotification(INotification notification)
         {
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support SendNotification");

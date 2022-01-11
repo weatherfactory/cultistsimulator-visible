@@ -132,7 +132,7 @@ namespace SecretHistories.UI
             Choreographer.PlaceTokenAtFreeLocalPosition(token,context);
 
             if(slotIconHolder!=null)
-            slotIconHolder.transform.SetAsLastSibling(); //this is p legacy hacky and exists just cos the hierarchy is how it is
+                slotIconHolder.transform.SetAsLastSibling(); //this is p legacy hacky and exists just cos the hierarchy is how it is
             
         }
 

@@ -37,7 +37,7 @@ namespace SecretHistories.Manifestations
         void Initialise(IManifestable manifestable);
 
         void UpdateVisuals(IManifestable manifestable);
-
+        void UpdateLocalScale(Vector3 newScale);
         void OnBeginDragVisuals();
         void OnEndDragVisuals();
 

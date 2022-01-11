@@ -63,6 +63,11 @@ namespace SecretHistories.Manifestations
             UpdateTextFromManifestable(manifestable);
         }
 
+        public void UpdateLocalScale(Vector3 newScale)
+        {
+            RectTransform.localScale = newScale;
+        }
+
         public void OnBeginDragVisuals()
         {
         }

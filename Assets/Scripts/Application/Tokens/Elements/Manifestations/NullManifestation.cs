@@ -49,6 +49,11 @@ namespace SecretHistories.Manifestations
             //
         }
 
+        public void UpdateLocalScale(Vector3 newScale)
+        {
+            //
+        }
+
         public void OnBeginDragVisuals()
         {
             //

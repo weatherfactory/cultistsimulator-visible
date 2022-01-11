@@ -75,6 +75,8 @@ namespace SecretHistories.Manifestations
         {
             _flipHelper = new FlipHelper(this);
         }
+
+
         
         public void Initialise(IManifestable manifestable)
         {
@@ -142,6 +144,12 @@ namespace SecretHistories.Manifestations
         }
 
 
+        public void UpdateLocalScale(Vector3 newScale)
+        {
+            RectTransform.localScale = newScale;
+            text.rectTransform.localScale = newScale;
+            text.ForceMeshUpdate(false, false); //Without this, the scale of the textmesh object may not match the parent object, which means the text goes blurry.
+        }
 
         public void OnBeginDragVisuals()
         {

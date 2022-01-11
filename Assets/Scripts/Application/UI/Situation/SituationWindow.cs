@@ -125,6 +125,8 @@ namespace SecretHistories.UI {
         {
             Title = _payload.Label;
 
+            //This slightly obscurely named method is now where we open and close the window
+
             if (args.ChangeType==PayloadChangeType.Retirement)
                 Retire();
             if(args.ChangeType==PayloadChangeType.Opening && !this.IsVisible)

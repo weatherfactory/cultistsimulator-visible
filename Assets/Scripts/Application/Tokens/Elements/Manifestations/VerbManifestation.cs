@@ -128,6 +128,11 @@ namespace SecretHistories.Manifestations
             DisplayOutputs(manifestable);
         }
 
+        public void UpdateLocalScale(Vector3 newScale)
+        {
+            RectTransform.localScale = newScale;
+        }
+
 
         private void TryOverrideVerbIcon(AspectsDictionary forAspects)
         {

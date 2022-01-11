@@ -111,6 +111,12 @@ namespace SecretHistories.Manifestations
             //
         }
 
+        public void UpdateLocalScale(Vector3 newScale)
+        {
+            RectTransform.localScale = newScale;
+            
+        }
+
 
         public void SendNotification(INotification notification)
         {
