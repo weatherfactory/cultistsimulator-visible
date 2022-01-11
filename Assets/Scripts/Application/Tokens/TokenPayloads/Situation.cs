@@ -767,7 +767,7 @@ namespace SecretHistories.Entities {
 
         public bool ApplyExoticEffect(ExoticEffect exoticEffect)
         {
-            if (exoticEffect == ExoticEffect.Purge)
+            if (exoticEffect == ExoticEffect.Purge || exoticEffect == ExoticEffect.BurnPurge)
             {
                 Retire(RetirementVFX.Default); //leaving room here for some day transforming with an element-decay like effect, for instance
                 return true;

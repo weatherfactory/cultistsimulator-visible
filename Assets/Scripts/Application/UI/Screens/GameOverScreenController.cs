@@ -101,13 +101,11 @@ namespace SecretHistories.UI
                 return;
 
             hasSelected = true;
-            // TODO: PLAY Button SFX
-            FadeOut(durationFadeOut);
-            Invoke("StartNewGameInternal", durationFadeOut);
+            Watchman.Get<StageHand>().LegacyChoiceScreen();
         }
 
         private void StartNewGameInternal() {
-            Watchman.Get<StageHand>().LegacyChoiceScreen();
+     
         }
 #if UNITY_EDITOR
 		private void OnGUI()

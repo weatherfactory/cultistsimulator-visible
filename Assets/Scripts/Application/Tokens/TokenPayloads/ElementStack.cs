@@ -556,11 +556,14 @@ namespace SecretHistories.UI {
 
         public bool ApplyExoticEffect(ExoticEffect exoticEffect)
         {
-            if(exoticEffect == ExoticEffect.Purge)
+            if(exoticEffect is ExoticEffect.Purge or ExoticEffect.BurnPurge)
             {
                 if (string.IsNullOrEmpty(Element.DecayTo))
                 {
-                    Retire(RetirementVFX.CardLight);
+                    if(exoticEffect==ExoticEffect.Purge)
+                        Retire(RetirementVFX.CardLight);
+                    else
+                        Retire(RetirementVFX.CardBurn);
                 }
                 else
                     ChangeTo(Element.DecayTo);

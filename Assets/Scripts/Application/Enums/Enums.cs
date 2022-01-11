@@ -24,7 +24,8 @@ namespace SecretHistories.Enums
     public enum ExoticEffect
     {
         Purge=1, //'Not allowed here, be gone with no particular extra logic or special effects'. This might mean retire, decay to default next stage, or be banished
-        Halt = 2 //'Stop immediately but non-destructively'
+        BurnPurge=2,//Purge but with a hotter SFX
+        Halt = 10 //'Stop immediately but non-destructively'
     } 
 
     public enum FucineValidity { Valid, TokenInRoot, Uninitialised,Empty }

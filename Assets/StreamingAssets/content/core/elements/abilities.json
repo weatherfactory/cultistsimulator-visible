@@ -46,7 +46,8 @@
                 "society": "fatigue",
                 "scar_ability": "scar_heart"
             },
-            "description": "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil. [With enough Vitality, you can gain more Health.]"
+            "description": "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil. [With enough Vitality, you can gain more Health.]",
+			"decayTo": "fatigue"
         },
         {
             "id": "vitality",
@@ -249,7 +250,8 @@
                 "ritual": "concentration",
                 "society": "concentration",
                 "scarability": "scar_lantern"
-            }
+            },
+			"decayTo": "concentration"
         },
         {
             "id": "concentration",
@@ -375,7 +377,8 @@
                 "toreason": "reason",
                 "ritual": "passionexhausted",
                 "society": "passionexhausted"
-            }
+            },
+			"decayTo": "passion"
         },
         {
             "id": "decrepitude",

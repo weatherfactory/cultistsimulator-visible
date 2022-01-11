@@ -36,7 +36,8 @@ namespace SecretHistories.Spheres.Angels
         {
             if (context.actionSource == Context.ActionSource.FlushingTokens)
             {
-                token.Retire(RetirementVFX.CardBurn);
+                token.ApplyExoticEffect(ExoticEffect.BurnPurge);
+                
                 return true;
             }
 
