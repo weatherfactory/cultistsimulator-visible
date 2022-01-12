@@ -117,14 +117,19 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
                 if (fontStyles[style].fontRu != null)
                     return fontStyles[style].fontRu;
                 break;
-
-			case "latin":
+                
+            case "latin":
                 if (fontStyles[style].fontEn != null)
                     return fontStyles[style].fontEn;
                 break;
 
-			default: // fall thru for all other languages; add additional cases if nec.
-                if (fontStyles[style].fontEn != null)
+            case "latinplus": //functionally identical to the default! But maybe some day it won't be.
+                if (fontStyles[style].fontX != null)
+                    return fontStyles[style].fontX;
+                break;
+
+            default: // fall thru for all other languages; add additional cases if nec.
+                if (fontStyles[style].fontX != null)
                     return fontStyles[style].fontX;
                 break;
         }
