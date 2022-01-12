@@ -65,7 +65,7 @@ namespace SecretHistories.Commands.SituationCommands
             if (_alwaysActivateRegardlessOfRequirements || recipeToActivate.RequirementsSatisfiedBy(aspectsInContext))
             {
                 situation.SetRecipeActive(recipeToActivate);
-                situation.UpdateCurrentRecipePrediction(situation.GetRecipePredictionForCurrentStateAndAspects(),new Context(Context.ActionSource.SituationEffect));
+                situation.ReactToNewRecipePrediction(situation.GetRecipePredictionForCurrentStateAndAspects(),new Context(Context.ActionSource.SituationEffect));
                 situation.TransitionToState(new OngoingState());
 
             }

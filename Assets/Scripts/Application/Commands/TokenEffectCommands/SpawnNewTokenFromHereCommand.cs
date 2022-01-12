@@ -43,13 +43,19 @@ namespace SecretHistories.Commands
                 SoundManager.PlaySfx("SituationTokenSpawn");
 
                 //Sometimes that command will result in a null token - for example if we're trying to spawn a unique situation
-                //that already exists.
+                //that already exists. In this case, return false, because nothing's been created.
                 if (newToken.IsValid())
+                {
                     newToken.Sphere.EvictToken(newToken, _context);
+                    return true;
+                }
                 else
+                {
+                    //null token, or something else has gone strange
                     newToken.Retire(RetirementVFX.None);
-
-                return true;
+                    return false;
+                }
+                
             }
             return false;
         }
