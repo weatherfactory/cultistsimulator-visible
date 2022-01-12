@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Reflection;
 using SecretHistories.Fucine.DataImport;
 using SecretHistories.Fucine;
@@ -25,9 +26,23 @@ namespace SecretHistories.Fucine
             }
             else
             {
-                TypeConverter typeConverter = TypeDescriptor.GetConverter(_cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType);
-                _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, typeConverter.ConvertFromString(valueInData.ToString()));
-                return true;
+                if(_cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType==typeof(float))
+                    NoonUtility.Log("aha!");
+
+                try
+                {
+                    TypeConverter typeConverter = TypeDescriptor.GetConverter(_cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType);
+                    string stringRepresentationOfValue = valueInData.ToString();
+                    object convertedValue = typeConverter.ConvertFromInvariantString(stringRepresentationOfValue);
+                    _cachedFucinePropertyToPopulate.SetViaFastInvoke(entity, convertedValue);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    NoonUtility.LogException(e);
+                    return false;
+                }
+    
             }
         }
     }

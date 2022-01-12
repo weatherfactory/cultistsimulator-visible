@@ -131,7 +131,8 @@ namespace SecretHistories.Fucine
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               
+               Console.WriteLine(e);
                 throw;
             }
 
