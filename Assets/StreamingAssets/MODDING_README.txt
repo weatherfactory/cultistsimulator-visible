@@ -132,12 +132,15 @@ A culture entity allows you to specify:
 - values for the UI labels in the game
 - which base font script a mod will use. 'Font script' here means a selection of font assets that support a particular writing system.
 
-fontscript='latin' uses Philosopher, Titania and Belgrad and should be okay for EFIGS-neighbourhood languages.
-fontscript='cyrillic' uses Philosopher, Titania and NotoSans, with the basic Roman and Cyrillic characters.
+fontscript='latin' uses Philosopher, Titania and Belgrad and should be okay for EFIGS-neighbourhood languages. Font support for Central and Eastern European languages
+depends on whether those fonts support Extended Latin, Latin-A and Latin-B. You might be lucky.
+fontscript='cyrillic' uses Philosopher, Titania (for numbers) and NotoSans, with the basic Roman and Cyrillic characters.
 fontscript='cjk' uses NotoSansCJK, a Google font which provides common characters used in Chinese, Japanese and Korean.
 fontscript='jp' uses NotoSansJP: our Japanese-speaking players pointed out cases where this is better for Japanese than NotoSansCJK.
+fontscript='latinplus' uses Titania for numbers and NotoSans for everything else. It supports Latin Extended, Latin A and Latin B. If you get white squares when you're trying to localise to
+a Central or Eastern European language, try this. (If fontscript isn't specified at all, the game will default to this.)
 
-And if fontscript isn't specified at all, the game will default to NotoSerif with glyphs for Latin-A and Latin-B. This will cover a lot of languages that use or can use a Latin-based script / Romanization, but crikey I'm only starting to understand how complicated all this is. If you're trying to translate something that needs to use other characters, contact us and we'll see what we can do.
+ This will cover a lot of languages that use or can use a Latin-based script / Romanization, but crikey I'm only starting to understand how complicated all this is. If you're trying to translate something that needs to use other characters, contact us and we'll see what we can do.
 
 CUSTOM DLL LOADING (CURRENTLY EXPERIMENTAL, UNSTABLE, WINDOWS ONLY)
 -------------------------------------------------------------------
