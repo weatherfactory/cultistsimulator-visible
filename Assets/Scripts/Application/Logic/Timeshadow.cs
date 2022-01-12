@@ -45,5 +45,11 @@ namespace SecretHistories.Logic
                 _lifetimeRemaining -= interval;
             }
         }
+
+        public void UpdateEndingFlavour(EndingFlavour endingFlavour)
+        {
+            //opportunity for logic here if changing from one endingflavour to another might have more meaning
+            EndingFlavour = endingFlavour;
+        }
     }
 }

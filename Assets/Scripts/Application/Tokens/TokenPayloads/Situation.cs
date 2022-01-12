@@ -257,14 +257,12 @@ namespace SecretHistories.Entities {
 
         public void ReactToNewRecipePrediction(RecipePrediction newRecipePrediction,Context context)
         {
-            var oldEndingFlavour = _currentRecipePrediction.SignalEndingFlavour;
-            var newEndingFlavour = CurrentRecipePrediction.SignalEndingFlavour;
-            if (oldEndingFlavour != _currentRecipePrediction.SignalEndingFlavour)
-                Token.ExecuteTokenEffectCommand(new SignalEndingFlavourCommand(newEndingFlavour));
+
+            Token.ExecuteTokenEffectCommand(new SignalEndingFlavourCommand(newRecipePrediction.SignalEndingFlavour));
 
             if (!newRecipePrediction.AddsMeaningfulInformation(_currentRecipePrediction))
                 return;
-            
+
             _currentRecipePrediction = newRecipePrediction;
             NoonUtility.Log($"Situation notification: recipe prediction updated from {_currentRecipePrediction.RecipeId} to {newRecipePrediction.RecipeId}.", 0, VerbosityLevel.Significants);
 
@@ -343,12 +341,12 @@ namespace SecretHistories.Entities {
         public void FirstHeartbeat()
         {
              ExecuteHeartbeat(0f, 0f);
-             var initialRecipePrediction = GetRecipePredictionForCurrentStateAndAspects();
-             if (initialRecipePrediction.SignalEndingFlavour != EndingFlavour.None)
-                 Token.ExecuteTokenEffectCommand(new SignalEndingFlavourCommand(CurrentRecipePrediction.SignalEndingFlavour));
+            var initialRecipePrediction = GetRecipePredictionForCurrentStateAndAspects();
+            if (initialRecipePrediction.SignalEndingFlavour != EndingFlavour.None)
+                Token.ExecuteTokenEffectCommand(new SignalEndingFlavourCommand(initialRecipePrediction.SignalEndingFlavour));
 
-            ReactToNewRecipePrediction(initialRecipePrediction,
-                 new Context(Context.ActionSource.Unknown)); //If we've just loaded/rehydrated the situation, the recipeprediction will be the default verb one, and we need to make sure that the display state reflects a prediction based on current contents.
+            //ReactToNewRecipePrediction(initialRecipePrediction,
+            //     new Context(Context.ActionSource.Unknown)); //If we've just loaded/rehydrated the situation, the recipeprediction will be the default verb one, and we need to make sure that the display state reflects a prediction based on current contents.
             NotifyStateChange();
              NotifyTimerChange();
 

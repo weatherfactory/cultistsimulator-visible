@@ -9,6 +9,7 @@ using SecretHistories.UI;
 
 namespace SecretHistories.Commands
 {
+    
     public class SignalEndingFlavourCommand: IAffectsTokenCommand
     {
         private EndingFlavour _endingFlavour;
@@ -20,6 +21,8 @@ namespace SecretHistories.Commands
         public bool ExecuteOn(Token token)
         {
             Watchman.Get<BackgroundMusic>().SignalEndingFlavour(_endingFlavour);
+            var timeshadow=token.Payload.GetTimeshadow();
+                timeshadow.UpdateEndingFlavour(_endingFlavour);
             return true;
         }
 
