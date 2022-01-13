@@ -70,13 +70,24 @@ namespace SecretHistories.UI
         public abstract bool CanCreateSphere(SphereSpec spec);
         
         [DontEncaust]
-        public bool CurrentlyEvoked {
+        public bool CurrentlyFullyEvoked {
             get
             {
                 if (canvasGroupFader == null)
                     return false;
                 return canvasGroupFader.IsFullyVisible();
             }}
+
+        [DontEncaust]
+        public bool CurrentlyBeingEvoked
+        {
+            get
+            {
+                if (canvasGroupFader == null)
+                    return false;
+                return canvasGroupFader.IsFullyVisible();
+            }
+        }
 
         [SerializeField] private CanvasGroupFader canvasGroupFader;
 
