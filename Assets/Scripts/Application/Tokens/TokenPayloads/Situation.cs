@@ -1025,8 +1025,12 @@ namespace SecretHistories.Entities {
                 Conclude();
             }
 
-            if(State.UpdatePredictionDynamically)
-                ReactToLatestRecipePrediction(GetRecipePredictionForCurrentStateAndAspects(),args.Context);
+            if (State.UpdatePredictionDynamically)
+            {
+                var latestPrediction=GetRecipePredictionForCurrentStateAndAspects();
+                ReactToLatestRecipePrediction(latestPrediction, args.Context);
+            }
+                
 
             foreach (var s in _subscribers)
                 s.SituationSphereContentsUpdated(this);
