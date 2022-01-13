@@ -1,9 +1,9 @@
 ﻿{
 	"elements": [
 		{    
-			"id": "versionnews.2021.12.c.1",
-			"label": "2021.12.c.1 RELEASE CANDIDATE",
-			"description": "This is a massive overhaul of the codebase, so I can use it for other projects without losing my mind. It comes with some UI and modding improvements.",
+			"id": "versionnews.2022.1.a.1",
+			"label": "2022.1.a.1 RELEASE CANDIDATE",
+			"description": "Happy New Year. This is a massive overhaul of the codebase, so I can use it for other projects without losing my mind. It comes with some UI and modding improvements.",
 			"icon": "articleheartb"
 		},
 										{    
@@ -43,7 +43,16 @@
 						{
 			"id": "versionnews.minor",
 			"label": "Bug fixes",
-			"description": "- Fixed silly mistake mod dll loading\n - Verb slots no longer disappear\n - Greedy slots will limit themselves to one grab at a time\n - Modifying elements quantity by 0 no longer crashes the game\n - Card stacks in situations now multiply their aspect quantities by the stack quanty\n - Decks preview works again \n	- Using the inspection window no longer locks out the top right hand corner of the screen\n - Mod images now work in OSX and Linux\n- GOG achievements fixed\n- Finally phased out bird/worm slider",
+			"description": "- Lifetimed cards can now be stacked (with a tolerance of 0.1 seconds lifetime difference)
+- Purging elements once again transforms them to decayed form, if they have one\n - changed anti-aliasing settings; should make text more readable but let me know your experiences\n - more than 4 deck effects in a recipe now possible, you LUNATICS
+- Consuming slots now have the same effect as purge: i.e., if the card in that slot decays to a final form, it'll do that instead of disappearing.
+- Ending flavours work again
+- Better font support for Central and Eastern European languages (see MODDING_README.txt)
+- Elements in a verb are clickable again
+- Expulsions no longer break game
+- Dropping token on an occupied slot sends the incumbent away, not both
+- Hilarious stack-splitting bug fixed
+ - Locs for mods should work again ",
 			"icon": "apostleforge.pillar2"
 		}
 		
