@@ -52,7 +52,7 @@ namespace SecretHistories.Manifestations
         bool RequestingNoSplit { get; }
         void DoMove(RectTransform tokenRectTransform);
 
-        bool HandlePointerDown(PointerEventData eventData, Token token);
+        bool HandlePointerClick(PointerEventData eventData, Token token);
 
         IGhost CreateGhost();
 

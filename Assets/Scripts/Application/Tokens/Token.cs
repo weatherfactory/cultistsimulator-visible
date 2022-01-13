@@ -39,7 +39,7 @@ namespace SecretHistories.UI {
     [IsEncaustableClass(typeof(TokenCreationCommand))]
     [RequireComponent(typeof(RectTransform))]
     public class Token : MonoBehaviour,
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerDownHandler, IPointerClickHandler, IPointerEnterHandler,
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler,
         IPointerExitHandler, IInteractsWithTokens,IEncaustable
     {
         private float previousClickTime = 0f;
@@ -757,14 +757,12 @@ namespace SecretHistories.UI {
 
         }
 
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            bool handled = _manifestation.HandlePointerDown(eventData, this);
-        }
-
         public void OnPointerClick(PointerEventData eventData)
         {
-          
+            bool handled = _manifestation.HandlePointerClick(eventData, this);
+
+            if (handled)
+                return;
 
             if (!Payload.IsOpen)
                 Payload.OpenAt(Location);
