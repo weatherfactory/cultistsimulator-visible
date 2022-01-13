@@ -63,11 +63,12 @@ public class CompendiumLoader
         coreFileLoader.LoadFilesFromAssignedFolder(_log);
 
         //retrieve loc content for current language
-        var locFileLoader = new DataFileLoader(locContentDir.Replace("[culture]", forCultureId));
+        string locContentFolderForCulture = locContentDir.Replace("[culture]", forCultureId);
+        var locFileLoader = new DataFileLoader(locContentFolderForCulture);
         locFileLoader.LoadFilesFromAssignedFolder(_log);
         
         if (Watchman.Exists<ModManager>())
-            LoadModsToCompendium();
+            LoadModsToCompendium(locContentFolderForCulture);
 
         
         //what entities need data importing?
@@ -145,7 +146,7 @@ public class CompendiumLoader
         }
     }
 
-    private void LoadModsToCompendium()
+    private void LoadModsToCompendium(string locContentFolderForCulture)
     {
         var modManager = Watchman.Get<ModManager>();
 
@@ -155,11 +156,20 @@ public class CompendiumLoader
             var modContentLoader = new DataFileLoader(mod.ContentFolder);
             modContentLoader.LoadFilesFromAssignedFolder(_log);
             modContentLoaders.Add(modContentLoader);
-
-            var modLocLoader = new DataFileLoader(mod.LocFolder);
+            string pathForCurrentlyRelevantLoc =
+                GetModCurrentlyRelevantLocPath(mod, locContentFolderForCulture);
+            var modLocLoader = new DataFileLoader(pathForCurrentlyRelevantLoc);
             modLocLoader.LoadFilesFromAssignedFolder(_log);
             modLocLoaders.Add(modLocLoader);
         }
+    }
+
+    private string GetModCurrentlyRelevantLocPath(Mod mod, string locContentFolderForCulture)
+    {
+        string modLocPath = Path.Combine(mod.LocFolder,
+            locContentFolderForCulture); //there is a locContentFolderForCulture, eg "/loc_fr", in core and in each mod folder. The mod needs to load the loc for the current culture, not the root loc folder!
+
+        return modLocPath;
     }
 }
 
