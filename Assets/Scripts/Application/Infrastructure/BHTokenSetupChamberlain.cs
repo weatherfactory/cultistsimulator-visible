@@ -7,6 +7,7 @@ using SecretHistories.Commands;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 
 namespace SecretHistories.Assets.Scripts.Application.Infrastructure
@@ -15,9 +16,10 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
     {
         public override List<TokenCreationCommand> GetTokenCreationCommandsToEnactLegacy(Legacy forLegacy)
         {
-            
-            FucinePath librarySpherePath = Watchman.Get<HornedAxe>().GetDefaultSpherePath();
+         //This is used to populate the root command. Use sphere paths not spheres!   
+         FucinePath startingRoomSpherePath = new FucinePath("*/solarium1");
 
+      
             var commands = new List<TokenCreationCommand>();
 
            // SituationCreationCommand startingSituation = new SituationCreationCommand(forLegacy.StartingVerbId);
@@ -33,7 +35,8 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
             {
                 var elementStackCreationCommand = new ElementStackCreationCommand(e.Key, e.Value);
                 
-                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(librarySpherePath));
+                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(startingRoomSpherePath));
+                
                 commands.Add(startingStackCommand);
             }
 

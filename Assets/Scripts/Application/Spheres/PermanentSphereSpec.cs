@@ -18,6 +18,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
    
         protected SphereSpec _sphereSpec;
 
+        //unlike root spheres, non-root permanent spheres have their spec applied manually, eg by their parent dominion.
         public Sphere GetSphereComponent()
         {
             var applyToSphere = gameObject.GetComponent<Sphere>();

@@ -23,7 +23,6 @@ namespace SecretHistories.Spheres
         {
             //registering awake on permanent root spheres ONLY using this approach.
             //when we call it on Awake on all spheres, then instantiated spheres get registered on instantiation, before their spec is applied.
-            //non-root permanent spheres have their spec applied by their parent dominion.
             ApplySpecToSphere(GetSphereComponent());
         }
 

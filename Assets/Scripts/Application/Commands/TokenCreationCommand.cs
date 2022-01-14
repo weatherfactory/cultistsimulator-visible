@@ -79,7 +79,16 @@ namespace SecretHistories.Commands
             if(!payloadForToken.IsValid())
                 return NullToken.Create();
 
-            var newToken = InstantiateTokenInSphere(context, sphere);
+            Token newToken;
+
+            //if we have a valid location that is not the same as the sphere in which this is being executed, execute at the location instead
+            if (Location != null && Location.AtSpherePath.IsValid() && !sphere.GetAbsolutePath().Conforms(Location.AtSpherePath))
+            {
+                var actualSphereToInstantiateIn = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
+                newToken = InstantiateTokenInSphere(context, actualSphereToInstantiateIn);
+            }
+            else
+             newToken = InstantiateTokenInSphere(context, sphere);
 
             newToken.SetPayload(payloadForToken);
             payloadForToken.FirstHeartbeat();
