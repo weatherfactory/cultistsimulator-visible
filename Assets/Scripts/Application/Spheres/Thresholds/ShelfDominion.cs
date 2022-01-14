@@ -14,9 +14,9 @@ using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 
-namespace SecretHistories.Assets.Scripts.Application.Spheres.Thresholds
+namespace SecretHistories.UI
 {
-    [IsEncaustableClass(typeof(PopulateDominionCommand))]
+    [IsEmulousEncaustable(typeof(AbstractDominion))]
     public class ShelfDominion: AbstractDominion
     {
      

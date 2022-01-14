@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
-using SecretHistories.Assets.Scripts.Application.Spheres.Thresholds;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Ghosts;
