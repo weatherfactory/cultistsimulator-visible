@@ -85,7 +85,7 @@ public class ResourcesManager: MonoBehaviour
 
         while (true)
         {
-            var s = GetSprite("elements/anim", imageName + "_" + i, false);
+            var s = GetSprite("elements\\anim", imageName + "_" + i, false);
             if (s != null)
             {
                 frames.Add(s);
@@ -105,7 +105,7 @@ public class ResourcesManager: MonoBehaviour
 
     public static Sprite GetSpriteForCardBack(string backId) {
         //hardcoded to the books back at the moment
-        return GetSprite("cardbacks/", "books");
+        return GetSprite("cardbacks\\", "books");
     }
 
     public static Sprite GetSpriteForAspect(string imageName)

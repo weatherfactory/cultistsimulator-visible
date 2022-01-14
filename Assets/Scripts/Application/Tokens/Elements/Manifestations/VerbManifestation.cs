@@ -206,7 +206,7 @@ namespace SecretHistories.Manifestations
         }
         
 
-        public bool HandlePointerDown(PointerEventData eventData, Token token)
+        public bool HandlePointerClick(PointerEventData eventData, Token token)
         {
             if (dumpButton.PointerAboveThis)
             {
@@ -247,7 +247,7 @@ namespace SecretHistories.Manifestations
             var outputDominion = manifestable.Dominions.SingleOrDefault(d =>
                 d.Identifier == SituationDominionEnum.Output.ToString());
 
-            if (outputDominion == null || !outputDominion.CurrentlyEvoked)
+            if (outputDominion == null || (!outputDominion.CurrentlyFullyEvoked && !outputDominion.CurrentlyBeingEvoked))
             {
                 completionBadge.gameObject.SetActive(false);
                 dumpButton.gameObject.SetActive(false);

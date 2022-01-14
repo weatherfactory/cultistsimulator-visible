@@ -181,16 +181,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public void DisplayPredictedRecipe(Situation s)
-        {
 
-            if(s.Recipe.Craftable)
-            {
-                SoundManager.PlaySfxOnceThisFrame("SituationAvailable");
-              //  ongoingDisplay.UpdateDisplay(s); //Ensures that the time bar is set to 0 to avoid a flicker - commented this out while refactoring, but bear it in mind
-            }
-            
-        }
 
         
        public void ContentsDisplayChanged(ContentsDisplayChangedArgs args)
@@ -238,8 +229,7 @@ namespace SecretHistories.UI {
 
         public void SituationSphereContentsUpdated(Situation s)
         {
-            DisplayPredictedRecipe(s);
-            
+         //If we have a transient card changing lifetime - and perhaps in other circs - this can get called every heartbeat. Candidate for optimisation.   
             var allAspectsToDisplay =s.GetAspects(false);
             aspectsDisplay.DisplayAspects(allAspectsToDisplay);
             DisplayButtonState(s);

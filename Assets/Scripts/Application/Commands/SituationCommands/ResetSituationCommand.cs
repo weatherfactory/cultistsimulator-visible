@@ -14,7 +14,7 @@ namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
         public bool Execute(Situation situation)
         {
             situation.Recipe = NullRecipe.Create();
-            situation.ReactToNewRecipePrediction(situation.GetRecipePredictionForCurrentStateAndAspects(), new Context(Context.ActionSource.SituationReset));
+            situation.ReactToLatestRecipePrediction(situation.GetRecipePredictionForCurrentStateAndAspects(), new Context(Context.ActionSource.SituationReset));
            situation.SetTimelessShadow();
             
 

@@ -52,9 +52,12 @@ namespace Assets.Scripts.Application.UI.Situation
                 var deckSpec = Watchman.Get<Compendium>().GetEntityById<DeckSpec>(effect.Key);
 
                 DeckEffect deckEffect = new DeckEffect(deckSpec, effect.Value);
+                if(deckEffectViews.Length>i)
+                {
+                    deckEffectViews[i].PopulateDisplay(deckEffect);
+                    deckEffectViews[i].gameObject.SetActive(true);
+                }
 
-                deckEffectViews[i].PopulateDisplay(deckEffect);
-                deckEffectViews[i].gameObject.SetActive(true);
                 i++;
             }
 

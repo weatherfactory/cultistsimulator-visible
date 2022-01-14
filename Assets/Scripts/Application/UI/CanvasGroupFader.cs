@@ -25,6 +25,11 @@ namespace SecretHistories.UI
             return Group.alpha >=1f;
         }
 
+        public bool IsAppearing()
+        {
+            return _appearingFlag;
+        }
+
         public bool IsInvisible()
         {
             return Group.alpha <= 0f;
@@ -47,7 +52,7 @@ namespace SecretHistories.UI
 
             //if we're already invisible or if we're hiding instantly, set the final alpha state.
             //This will ensure things like interactable are tidied to the invisible state if we got stuck halfway through
-            if (durationTurnOff <= 0f && IsInvisible()) {
+            if (durationTurnOff <= 0f || IsInvisible()) {
                 SetStatesForFinalAlpha(0f);
             }
             else
@@ -82,7 +87,7 @@ namespace SecretHistories.UI
                 StopCoroutine(_disappearingCoroutine);
 
             //If we're appearing instantly or if we are already visible, go to final alpha state, make sure everything is set correctly for that.
-            if (durationTurnOn <= 0f && IsFullyVisible()) {
+            if (durationTurnOn <= 0f || IsFullyVisible()) {
                 SetStatesForFinalAlpha(1f);
             }
             else

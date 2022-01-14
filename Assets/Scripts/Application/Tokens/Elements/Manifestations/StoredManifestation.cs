@@ -58,7 +58,7 @@ namespace SecretHistories.Manifestations
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support SendNotification");
         }
 
-        public bool HandlePointerDown(PointerEventData eventData, Token token)
+        public bool HandlePointerClick(PointerEventData eventData, Token token)
         {
             return false;
         }

@@ -184,20 +184,24 @@ namespace SecretHistories.Entities {
 
         public Situation(Verb verb,string id)
         {
-            HornedAxe hornedAxe = Watchman.Get<HornedAxe>();
-
-            hornedAxe.RegisterSituation(this);
-
-            Id = id;
-            Verb = verb;
-            Recipe = NullRecipe.Create();
-            _currentRecipePrediction = new RecipePrediction(Recipe, AspectsDictionary.Empty(),Verb);
-            Label = _currentRecipePrediction.Title; //the receivenote / title workflow is still uneven. This goes here to make sure verb-based recipes specify the title in brand new windows.
-
             State = new NullSituationState();
+            Id = id;
+            Recipe = NullRecipe.Create(); // a newly created situation isn't running a recipe. This will come with TryActiveRecipe, later.
+            Verb = verb;
             _timeshadow = new Timeshadow(Recipe.Warmup,
                 Recipe.Warmup,
                 false);
+
+            HornedAxe hornedAxe = Watchman.Get<HornedAxe>();
+            hornedAxe.RegisterSituation(this);
+
+            
+            if (verb.IsValid()) //we might create a situation with a null verb, for example if we're rehydrating. If it's a real verb, then base a starting recipe prediction on it.
+            {
+                var initialPredictionFromVerb = new RecipePrediction(Recipe, AspectsDictionary.Empty(), Verb);
+                ReactToLatestRecipePrediction(initialPredictionFromVerb,new Context(Context.ActionSource.SituationCreated));
+            }
+            
         }
 
 
@@ -255,7 +259,7 @@ namespace SecretHistories.Entities {
             OnChanged?.Invoke(args);
         }
 
-        public void ReactToNewRecipePrediction(RecipePrediction newRecipePrediction,Context context)
+        public void ReactToLatestRecipePrediction(RecipePrediction newRecipePrediction,Context context)
         {
 
             Token.ExecuteTokenEffectCommand(new SignalEndingFlavourCommand(newRecipePrediction.SignalEndingFlavour));
@@ -341,12 +345,8 @@ namespace SecretHistories.Entities {
         public void FirstHeartbeat()
         {
              ExecuteHeartbeat(0f, 0f);
-            var initialRecipePrediction = GetRecipePredictionForCurrentStateAndAspects();
-            if (initialRecipePrediction.SignalEndingFlavour != EndingFlavour.None)
-                Token.ExecuteTokenEffectCommand(new SignalEndingFlavourCommand(initialRecipePrediction.SignalEndingFlavour));
+     
 
-            //ReactToNewRecipePrediction(initialRecipePrediction,
-            //     new Context(Context.ActionSource.Unknown)); //If we've just loaded/rehydrated the situation, the recipeprediction will be the default verb one, and we need to make sure that the display state reflects a prediction based on current contents.
             NotifyStateChange();
              NotifyTimerChange();
 
@@ -675,6 +675,10 @@ namespace SecretHistories.Entities {
             }
 
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Update));
+
+            var prediction = GetRecipePredictionForCurrentStateAndAspects();
+            ReactToLatestRecipePrediction(prediction,new Context(Context.ActionSource.Unknown));
+
         }
 
         public void NotifyTimerChange()
@@ -1021,8 +1025,12 @@ namespace SecretHistories.Entities {
                 Conclude();
             }
 
-            if(State.UpdatePredictionDynamically)
-                ReactToNewRecipePrediction(GetRecipePredictionForCurrentStateAndAspects(),args.Context);
+            if (State.UpdatePredictionDynamically)
+            {
+                var latestPrediction=GetRecipePredictionForCurrentStateAndAspects();
+                ReactToLatestRecipePrediction(latestPrediction, args.Context);
+            }
+                
 
             foreach (var s in _subscribers)
                 s.SituationSphereContentsUpdated(this);

@@ -182,7 +182,7 @@ namespace SecretHistories.Manifestations
             //
         }
 
-        public bool HandlePointerDown(PointerEventData eventData, Token token)
+        public bool HandlePointerClick(PointerEventData eventData, Token token)
         {
             return false;
         }
