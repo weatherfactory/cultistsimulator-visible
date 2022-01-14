@@ -52,7 +52,12 @@ namespace SecretHistories.Services
         public NullManifestation NullManifestation;
         [SerializeField]private Stable _stable;
 
-        [SerializeField] private string GameId;
+        [SerializeField] private string _gameId;
+
+        public void SetGameIdFieldInEditor(GameId newGameId)
+        {
+            _gameId = newGameId.ToString();
+        }
 
         private string _initialisedAt;
 #pragma warning restore 649
@@ -108,7 +113,7 @@ namespace SecretHistories.Services
                 var watchman = new Watchman();
 
                 //Here we specify which game it is. This affects the content folder as set in the config next.
-               GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), GameId);
+               GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), _gameId);
                 //load config: this gives us a lot of info that we'll need early
                 var config = new Config();
                 config.SetGame(gameIdAsEnum);

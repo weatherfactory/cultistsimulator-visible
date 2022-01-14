@@ -167,7 +167,7 @@ namespace SecretHistories.Utility
 
 
 
-        [MenuItem("Tools/CS Distribution (Gog)")]
+        [MenuItem("Tools/CS Distribution (Gog)",false, 110)]
         public static void MakeGogDistribution()
         {
             BuildEnvironment env = new BuildEnvironment(GameId.CS, DEFAULT_BUILD_ROOT);
