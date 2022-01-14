@@ -10,14 +10,14 @@ namespace Assets.Editor.BuildScripts
         [MenuItem("Tools/Switch/CS")]
         static void SwitchToCS()
         {
-            PlayerSettings.bundleVersion = "2022.1.a.2";
+            PlayerSettings.productName = "Cultist Simulator";
             SetGameId(GameId.CS);
         }
 
         [MenuItem("Tools/Switch/BH")]
         static void SwitchToBH()
         {
-            PlayerSettings.bundleVersion = "2022.1.a.1";
+            PlayerSettings.productName = "Book of Hours";
             SetGameId(GameId.BH);
         }
 
