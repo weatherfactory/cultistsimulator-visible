@@ -8,7 +8,7 @@ using SecretHistories.Entities;
 
 namespace SecretHistories.UI
 {
-    public  class LibraryBackground: AbstractBackground
+    public  class PhysicalBackground: AbstractBackground
     {
         public override void ShowBackgroundFor(Legacy characterActiveLegacy)
         {

@@ -42,7 +42,6 @@ namespace SecretHistories.Infrastructure
             try
             {
                     LoadGame(Watchman.Get<StageHand>().GamePersistenceProvider);
-
             }
             catch (Exception e)
             {

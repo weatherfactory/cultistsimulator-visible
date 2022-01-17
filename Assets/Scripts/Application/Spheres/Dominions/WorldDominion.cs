@@ -9,21 +9,27 @@ using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.Spheres.Dominions
 {
-    public class LibraryDominion : AbstractDominion
+    public class WorldDominion : AbstractDominion
     {
-        [SerializeField] private string EditableIdentifier;
 
 
         public override void Awake()
         {
-            Identifier = EditableIdentifier;
-            var roomSpheres = GetComponentsInChildren<RoomSphere>();
-            foreach (var r in roomSpheres)
+            Identifier = gameObject.name;
+            var spheres = GetComponentsInChildren<Sphere>();
+            foreach (var s in spheres)
             {
-                var roomSphereSpec = r.gameObject.GetComponent<PermanentSphereSpec>();
-                roomSphereSpec.ApplySpecToSphere(r);
-                r.SetContainer(FucineRoot.Get());
-                Watchman.Get<HornedAxe>().RegisterSphere(r);
+                var sphereSpec = s.gameObject.GetComponent<PermanentSphereSpec>();
+                if(sphereSpec==null)
+                    NoonUtility.LogWarning($"Trying to set up spheres in a world dominion, but can't find a PermanentSphereSpec on {s.name}, so won't add it.");
+                else
+                {
+                    
+                    sphereSpec.ApplySpecToSphere(s);
+                    s.SetContainer(FucineRoot.Get());
+                    Watchman.Get<HornedAxe>().RegisterSphere(s);
+
+                }
             }
 
             base.Awake();

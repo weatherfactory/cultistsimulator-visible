@@ -16,7 +16,8 @@ namespace SecretHistories.UI
 {
     [IsEncaustableClass(typeof(PopulateDominionCommand))]
     public abstract class AbstractDominion: MonoBehaviour, IEncaustable
-
+    //A dominion is optional glue between an IHasAspects object and any spheres it contains.
+    //It's used to handle registration and management of contained spheres.
   {
       [Encaust]
         public string Identifier { get; protected set; }
