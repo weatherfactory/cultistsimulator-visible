@@ -29,7 +29,7 @@ namespace SecretHistories.Infrastructure
     {
 
         [SerializeField]
-        private bool DontLoadGame;
+        private bool ForceFreshGame;
         private Coroutine fadeToEndingCoroutine;
         private bool DefaultSaveInProgress; //This locks for TryDefaultSave only. If we move to coroutines, we can check for the existence of a coroutine.
         
@@ -42,8 +42,10 @@ namespace SecretHistories.Infrastructure
         {
             try
             {
-                if (!DontLoadGame)
+                if (!ForceFreshGame)
                     LoadGame(Watchman.Get<StageHand>().GamePersistenceProvider);
+                else
+                    LoadGame(new FreshGameProvider(Watchman.Get<Compendium>().GetEntitiesAsList<Legacy>().First()));
 
             }
             catch (Exception e)
