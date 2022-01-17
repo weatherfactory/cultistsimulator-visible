@@ -4187,7 +4187,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &327015170
 MonoBehaviour:
@@ -8449,7 +8449,7 @@ GameObject:
   - component: {fileID: 936279191}
   - component: {fileID: 936279192}
   m_Layer: 5
-  m_Name: LibrarySphere
+  m_Name: SkySphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8496,7 +8496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyId: library
+  ApplyId: sky
   EnRouteSpherePath: ~/enroute
   WindowsSpherePath: ~/windows
 --- !u!114 &936279191
@@ -14368,7 +14368,7 @@ GameObject:
   - component: {fileID: 1654680180}
   - component: {fileID: 1654680182}
   m_Layer: 5
-  m_Name: LibraryBackground
+  m_Name: WorldBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18915,7 +18915,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2111072234
 MonoBehaviour:

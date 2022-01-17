@@ -12,7 +12,7 @@ using SecretHistories.UI;
 namespace SecretHistories.Assets.Scripts.Application.Spheres
 {
     [IsEmulousEncaustable(typeof(Sphere))]
-    public class LibrarySphere: Sphere
+    public class SkySphere: Sphere
     {
         public override SphereCategory SphereCategory => SphereCategory.World;
 
