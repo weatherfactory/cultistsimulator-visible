@@ -195,6 +195,11 @@ namespace SecretHistories.Entities
             return false;
         }
 
+        public bool IsPermanent()
+        {
+            return false;
+        }
+
         public void FirstHeartbeat()
         {
             ExecuteHeartbeat(0f, 0f);

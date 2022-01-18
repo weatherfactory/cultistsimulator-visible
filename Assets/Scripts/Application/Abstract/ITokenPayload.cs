@@ -25,6 +25,9 @@ namespace SecretHistories.Abstract
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValid();
         bool IsValidElementStack();
+
+        ///Permanent token payloads are assumed already in the scene, and are populated, not created.
+        bool IsPermanent();
         void FirstHeartbeat();
         void ExecuteHeartbeat(float seconds, float metaseconds);
         bool CanInteractWith(ITokenPayload incomingTokenPayload);

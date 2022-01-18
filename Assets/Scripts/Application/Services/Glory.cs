@@ -188,18 +188,25 @@ namespace SecretHistories.Services
                 var conversionTask= ConvertClassicSaveIfNecessary();
                 await conversionTask;
 
-
-                GamePersistenceProvider gamePersistenceProvider=GamePersistenceProvider.GetBestGuessGamePersistence();
+                try
+                {
+                    var gamePersistenceProvider=GamePersistenceProvider.GetBestGuessGamePersistence();
      
-                gamePersistenceProvider.DepersistGameState();
-                var persistedState = gamePersistenceProvider.RetrievePersistedGameState();
-                var characterCreationCommand = persistedState.MostRecentCharacterCommand();
+                    gamePersistenceProvider.DepersistGameState();
+                    var persistedState = gamePersistenceProvider.RetrievePersistedGameState();
+                    var characterCreationCommand = persistedState.MostRecentCharacterCommand();
      
-                characterCreationCommand.ExecuteToProtagonist(_stable);
+                    characterCreationCommand.ExecuteToProtagonist(_stable);
 
-                stageHand.UseProvider(gamePersistenceProvider);
-       
-                
+                    stageHand.UseProvider(gamePersistenceProvider);
+
+                }
+                catch (Exception e)
+                {
+                    NoonUtility.Log($"Couldn't initialise / depersist game state when setting up: {e}",2);
+                }
+
+
 
                 watchman.Register(_stable);
 

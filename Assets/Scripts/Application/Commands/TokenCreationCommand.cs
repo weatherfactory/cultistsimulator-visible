@@ -81,16 +81,30 @@ namespace SecretHistories.Commands
 
             Token newToken;
 
-            //if we have a valid location that is not the same as the sphere in which this is being executed, execute at the location instead
-            if (Location != null && Location.AtSpherePath.IsValid() && !sphere.GetAbsolutePath().Conforms(Location.AtSpherePath))
-            {
-                var actualSphereToInstantiateIn = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
-                newToken = InstantiateTokenInSphere(context, actualSphereToInstantiateIn);
-            }
-            else
-             newToken = InstantiateTokenInSphere(context, sphere);
+            Sphere actualSphereToInstantiateIn;
 
-            newToken.SetPayload(payloadForToken);
+            //if we have a valid location that is not the same as the sphere in which this is being executed, execute at the location instead
+            if (Location != null && Location.AtSpherePath.IsValid() &&
+                !sphere.GetAbsolutePath().Conforms(Location.AtSpherePath))
+                actualSphereToInstantiateIn = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
+            else
+                actualSphereToInstantiateIn = sphere;
+
+            if (!payloadForToken.IsPermanent())
+                newToken = InstantiateTokenInSphere(context, actualSphereToInstantiateIn);
+            else
+            {
+                //permanent tokens, like terrain features, are already instantiated with the token component already attached.
+                //So we don't instantiate the token: we just find the existing token and then populate it with relevant payload data.
+                newToken = actualSphereToInstantiateIn.GetTokens().SingleOrDefault(t => t.PayloadId == payloadForToken.Id);
+                if(newToken==null || !newToken.IsValid());
+                {
+                    NoonUtility.LogWarning($"Couldn't populate a permanent token with payload id {payloadForToken.Id} in {actualSphereToInstantiateIn.GetAbsolutePath()}");
+                }
+            }
+       
+
+            newToken.SetPayload(payloadForToken); //if this is a permanent sphere, we're replacing the starter payload with the populated one.
             payloadForToken.FirstHeartbeat();
 
             

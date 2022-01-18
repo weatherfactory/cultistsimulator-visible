@@ -24,6 +24,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
     {
         //Otherworlds are NOT currently encausted or saved
         //also, we've broken the model for simplicity - this is a Manifestable which is also its own manifestation
+        //This is probably the way to go with things like Otherworlds and Rooms which can't actually be moved and manipulated.
+
       public   List<AbstractDominion> Dominions=>new List<AbstractDominion>(_dominions);
        public bool Metafictional => false;
        public bool Retire(RetirementVFX VFX)

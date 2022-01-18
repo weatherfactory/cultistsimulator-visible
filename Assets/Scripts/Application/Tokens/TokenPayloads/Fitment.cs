@@ -146,6 +146,11 @@ namespace SecretHistories.Entities
             throw new NotImplementedException();
         }
 
+        public bool IsPermanent()
+        {
+            return false;
+        }
+
         public void FirstHeartbeat()
         {
             throw new NotImplementedException();

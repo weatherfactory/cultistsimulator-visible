@@ -211,6 +211,11 @@ namespace SecretHistories.UI {
             return Element.Id != NullElement.NULL_ELEMENT_ID;
         }
 
+        public bool IsPermanent()
+        {
+            return false;
+        }
+
         public void FirstHeartbeat()
         {
             ExecuteHeartbeat(0f, 0f);

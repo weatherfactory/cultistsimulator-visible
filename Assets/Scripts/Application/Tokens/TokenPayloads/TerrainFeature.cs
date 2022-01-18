@@ -37,6 +37,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         void Awake()
         {
+            //A terrain feature will set its own identifier at startup. This is true
+            //whether or not we've loaded the contents.
+            //TODO: make sure all identifiers are unique.
+            Id = EditableIdentifier;
+
+            //A terrain feature will likely have permanent sphere children.
             var sphereComponentsInChildren = gameObject.GetComponentsInChildren<Sphere>();
             foreach (var s in sphereComponentsInChildren)
             {
@@ -51,6 +57,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
         {
 
         }
+
+        public string EditableIdentifier;
 
         [Encaust]
         public string Id { get; protected set; }
@@ -107,8 +115,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
         public void AttachSphere(Sphere sphere)
         {
             sphere.Subscribe(this);
-            sphere.SetContainer(this);
-            _registeredSpheres.Add(sphere);
+     
         }
 
         public void DetachSphere(Sphere c)
@@ -133,13 +140,14 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
            //
         }
 
-        public string EntityId { get; } //this will be Room
-        public string Label { get; } //from Room
-        public string Description { get; } //from Room
-        public int Quantity { get; } //
-        public string UniquenessGroup { get; } //
-        public bool Unique { get; } //
-        public string Icon { get; } //art
+
+        public string EntityId { get; }
+        public string Label { get; }
+        public string Description { get; }
+        public int Quantity { get; }
+        public string UniquenessGroup { get; }
+        public bool Unique { get; }
+        public string Icon { get; }
         public string GetIllumination(string key)
         {
             throw new NotImplementedException();
@@ -150,33 +158,33 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
             throw new NotImplementedException();
         }
 
-        public Timeshadow GetTimeshadow() => Timeshadow.CreateTimelessShadow();
-
-        [DontEncaust] //though we may yet want to if dominions turn out useful
-        public List<AbstractDominion> Dominions { get; }
-        public bool RegisterDominion(AbstractDominion dominion) //will we have dominions? maybe
+        public Timeshadow GetTimeshadow()
         {
             throw new NotImplementedException();
         }
 
+        public bool RegisterDominion(AbstractDominion dominion)
+        {
+            throw new NotImplementedException();
+        }
 
-        public bool Metafictional => false;
+        public List<AbstractDominion> Dominions { get; }
+        public bool Metafictional { get; }
         public bool Retire(RetirementVFX VFX)
         {
-            throw new NotImplementedException(); //what does it mean to retire a room?
+            throw new NotImplementedException();
         }
 
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
         public Sphere GetSphereById(string id)
         {
-            return _registeredSpheres.SingleOrDefault(s => s.Id==id);
+            throw new NotImplementedException();
         }
 
         public List<Sphere> GetSpheresByCategory(SphereCategory category)
         {
-            return _registeredSpheres.Where(s => s.SphereCategory == category).ToList();
-
+            return new List<Sphere>(_registeredSpheres.Where(s => s.SphereCategory == category));
         }
 
         public Type GetManifestationType(SphereCategory sphereCategory)
@@ -191,33 +199,37 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public bool IsValid()
         {
-            return true;
+            throw new NotImplementedException();
         }
 
         public bool IsValidElementStack()
         {
-            return false;
+            throw new NotImplementedException();
+        }
+
+        public bool IsPermanent()
+        {
+            return true;
         }
 
         public void FirstHeartbeat()
         {
-            //
+            throw new NotImplementedException();
         }
 
         public void ExecuteHeartbeat(float seconds, float metaseconds)
         {
-            //likely useful
+            throw new NotImplementedException();
         }
 
         public bool CanInteractWith(ITokenPayload incomingTokenPayload)
         {
-            return false;   //likely useful
+            throw new NotImplementedException();
         }
 
         public bool CanMergeWith(ITokenPayload incomingTokenPayload)
         {
-            return false;   //possibly useful
-
+            throw new NotImplementedException();
         }
 
         public void InteractWithIncoming(Token incomingToken)
@@ -252,22 +264,22 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public void OpenAt(TokenLocation location)
         {
-            throw new NotImplementedException(); //definitely
+            throw new NotImplementedException();
         }
 
         public void Close()
         {
-            throw new NotImplementedException(); //definitely
+            throw new NotImplementedException();
         }
 
         public void Conclude()
         {
-            throw new NotImplementedException(); //not sure
+            throw new NotImplementedException();
         }
 
         public bool ApplyExoticEffect(ExoticEffect exoticEffect)
         {
-            return false; //probably will be useful at some point
+            throw new NotImplementedException();
         }
 
         public void SetToken(Token token)
@@ -277,12 +289,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public void OnTokenMoved(TokenLocation toLocation)
         {
-            throw new NotImplementedException(); //do we ever move rooms?
+            throw new NotImplementedException();
         }
 
         public void StorePopulateDominionCommand(PopulateDominionCommand populateDominionCommand)
         {
-            throw new NotImplementedException(); //we don't yet have dominions
+            throw new NotImplementedException();
         }
     }
 }

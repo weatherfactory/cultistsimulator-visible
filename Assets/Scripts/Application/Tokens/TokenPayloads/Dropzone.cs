@@ -191,6 +191,11 @@ namespace SecretHistories.Entities.Verbs
             return false;
         }
 
+        public bool IsPermanent()
+        {
+            return false;
+        }
+
         public void FirstHeartbeat()
         {
             ExecuteHeartbeat(0f, 0f);

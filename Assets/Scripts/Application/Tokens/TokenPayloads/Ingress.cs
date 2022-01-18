@@ -251,6 +251,11 @@ namespace SecretHistories.Tokens.TokenPayloads
             return false;
         }
 
+        public bool IsPermanent()
+        {
+            return false;
+        }
+
         public void FirstHeartbeat()
         {
            //Don't open yet: we don't want to open  if the game is paused.

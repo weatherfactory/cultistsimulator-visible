@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
@@ -37,6 +38,7 @@ namespace SecretHistories.Commands
 
             foreach (var t in Tokens)
                 t.Execute(context, sphere);
+
          }
         }
 

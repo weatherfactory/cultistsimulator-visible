@@ -12,7 +12,6 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
 {
     public abstract class AbstractTokenSetupChamberlain
     {
-
         public abstract List<TokenCreationCommand> GetTokenCreationCommandsToEnactLegacy(Legacy forLegacy);
     }
 }
