@@ -21,7 +21,8 @@ namespace SecretHistories.Spheres
 
         public void Awake()
         {
-            //registering awake on permanent root spheres ONLY using this approach.
+            //registering awake on permanent root spheres ONLY - spheres which aren't in a dominion or terrain feature - using this approach.
+
             //when we call it on Awake on all spheres, then instantiated spheres get registered on instantiation, before their spec is applied.
             ApplySpecToSphere(GetSphereComponent());
         }
@@ -41,6 +42,8 @@ namespace SecretHistories.Spheres
             FucineRoot.Get().AttachSphere(applyToSphere);
             Watchman.Get<HornedAxe>().RegisterSphere(applyToSphere);
 
+            InitialiseChildTerrainFeatures(applyToSphere);
+            
         }
     }
 }

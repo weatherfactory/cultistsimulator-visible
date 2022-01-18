@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Assets.Scripts.Application.Tokens;
+using SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
@@ -39,6 +41,15 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
             applyToSphere.SetPropertiesFromSpec(_sphereSpec);
             
             Watchman.Get<HornedAxe>().RegisterSphere(applyToSphere);
+
+            InitialiseChildTerrainFeatures(applyToSphere);
+        }
+
+        protected void InitialiseChildTerrainFeatures(Sphere sphere)
+        {
+            var terrainFeatures = GetComponentsInChildren<TerrainFeatureInitialiser>();
+            foreach (var tf in terrainFeatures)
+                tf.Initialise(sphere);
         }
     }
 }

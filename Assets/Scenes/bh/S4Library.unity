@@ -1024,8 +1024,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 24571183}
-  - component: {fileID: 24571184}
   - component: {fileID: 24571185}
+  - component: {fileID: 24571186}
   m_Layer: 5
   m_Name: LibraryTerrainFeature
   m_TagString: Untagged
@@ -1055,19 +1055,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &24571184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24571182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfb61b9b94a19d34ba4d3fa68a99354d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EditableIdentifier: tflibrary
 --- !u!114 &24571185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,6 +1082,18 @@ MonoBehaviour:
   OnSphereRemoved:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &24571186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24571182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591e1bcc1ef18874abf5d00c9e1a1774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &27561304
 GameObject:
   m_ObjectHideFlags: 0

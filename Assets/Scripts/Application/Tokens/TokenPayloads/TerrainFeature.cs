@@ -17,6 +17,7 @@ using SecretHistories.Events;
 using SecretHistories.Fucine;
 using SecretHistories.Logic;
 using SecretHistories.Manifestations;
+using SecretHistories.NullObjects;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using Steamworks;
@@ -25,43 +26,41 @@ using UnityEngine;
 namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 {
     [IsEncaustableClass(typeof(PopulateTerrainFeatureCommand))]
-    public class TerrainFeature: MonoBehaviour, ITokenPayload,ISphereEventSubscriber
+    public class TerrainFeature: ITokenPayload,ISphereEventSubscriber
     {
-        //A terrain feature is the IHasAspects equivalent of a permanent sphere:
+        //A terrain feature is the IHasAspects equivalent of a permanent sphere spec:
         //the command does not set it up, but rather assumes it exists and populates it.
         //A terrain feature also initialises all its component, editor-built spheres at startup.
-        //Does it need a Token? We'll see.
-        private readonly HashSet<Sphere> _registeredSpheres = new HashSet<Sphere>();
 
-        public List<Sphere> Spheres => new List<Sphere>(_registeredSpheres);
+        private Token _token;
 
-        void Awake()
+        [DontEncaust]
+        public Token Token
         {
-            //A terrain feature will set its own identifier at startup. This is true
-            //whether or not we've loaded the contents.
-            //TODO: make sure all identifiers are unique.
-            Id = EditableIdentifier;
-
-            //A terrain feature will likely have permanent sphere children.
-            var sphereComponentsInChildren = gameObject.GetComponentsInChildren<Sphere>();
-            foreach (var s in sphereComponentsInChildren)
+            get
             {
-                var spec = s.GetComponent<PermanentSphereSpec>();
-                spec.ApplySpecToSphere(s);
-                AttachSphere(s);
+                {
+                    if (_token == null)
+                        return NullToken.Create();
+                    return _token;
+                }
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
+        private readonly HashSet<Sphere> _registeredSpheres = new HashSet<Sphere>();
 
-        }
+        [Encaust]
+        public List<Sphere> Spheres => new List<Sphere>(_registeredSpheres);
 
-        public string EditableIdentifier;
 
         [Encaust]
         public string Id { get; protected set; }
+
+
+        public void SetId(string id)
+        {
+            Id = id;
+        }
         public FucinePath GetAbsolutePath()
         {
             var pathAbove = FucinePath.Root();
@@ -77,7 +76,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public RectTransform GetRectTransform()
         {
-            return gameObject.GetComponent<RectTransform>();
+            return _token.TokenRectTransform;
 
         }
 
@@ -86,6 +85,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
             throw new System.NotImplementedException();
         }
 
+        [Encaust]
         public Dictionary<string, int> Mutations { get; }
         public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
         {
@@ -124,6 +124,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
             _registeredSpheres.Remove(c);
         }
 
+        [Encaust]
         public bool IsOpen { get; }
         public void OnSphereChanged(SphereChangedArgs args)
         {
@@ -140,13 +141,19 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
            //
         }
 
-
+[DontEncaust]
         public string EntityId { get; }
+        [DontEncaust]
         public string Label { get; }
+        [DontEncaust]
         public string Description { get; }
+        [Encaust]
         public int Quantity { get; }
+        [DontEncaust]
         public string UniquenessGroup { get; }
+        [DontEncaust]
         public bool Unique { get; }
+        [DontEncaust]
         public string Icon { get; }
         public string GetIllumination(string key)
         {
@@ -168,7 +175,9 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
             throw new NotImplementedException();
         }
 
+        [Encaust]
         public List<AbstractDominion> Dominions { get; }
+        [DontEncaust]
         public bool Metafictional { get; }
         public bool Retire(RetirementVFX VFX)
         {
@@ -189,12 +198,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public Type GetManifestationType(SphereCategory sphereCategory)
         {
-            throw new NotImplementedException();
+            return typeof(MinimalManifestation);
         }
 
         public void InitialiseManifestation(IManifestation manifestation)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public bool IsValid()
@@ -204,7 +213,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public bool IsValidElementStack()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public bool IsPermanent()
@@ -284,7 +293,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public void SetToken(Token token)
         {
-            throw new NotImplementedException();
+            _token = token;
         }
 
         public void OnTokenMoved(TokenLocation toLocation)
@@ -296,5 +305,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
         {
             throw new NotImplementedException();
         }
+
+
+
     }
 }

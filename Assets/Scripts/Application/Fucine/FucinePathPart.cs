@@ -33,5 +33,19 @@ namespace SecretHistories.Fucine
         {
             return PathPartValue;
         }
+
+        public string TrimTokenPrefix()
+        {
+            if (Category != PathCategory.Token)
+                return PathPartValue;
+            return PathPartValue.Substring(1);
+        }
+
+        public string TrimSpherePrefix()
+        {
+            if (Category != PathCategory.Sphere)
+                return PathPartValue;
+            return PathPartValue.Substring(1);
+        }
     }
 }

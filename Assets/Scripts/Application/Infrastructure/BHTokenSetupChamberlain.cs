@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,17 +29,18 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
        //     TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, startingTokenDistributionStrategy.AboveBoardStartingLocation()).WithDestination(startingDestinationForVerb, startingTokenDistributionStrategy.GetPlacementDelay());
         //    commands.Add(startingTokenCommand);
 
-            AspectsDictionary startingElements = new AspectsDictionary();
-            startingElements.CombineAspects(forLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
 
-            foreach (var e in startingElements)
-            {
-                var elementStackCreationCommand = new ElementStackCreationCommand(e.Key, e.Value);
-                
-                TokenCreationCommand startingStackCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(startingRoomSpherePath));
-                
-                commands.Add(startingStackCommand);
+        foreach (var effect in forLegacy.Effects)
+        {
+            var effectPath = new FucinePath(effect.Key);
+            string elementToCreate = effectPath.GetEndingPathPart().TrimTokenPrefix();
+            FucinePath createAtSpherePath= effectPath.GetSpherePath();
+            var elementStackCreationCommand = new ElementStackCreationCommand(elementToCreate, effect.Value);
+            TokenCreationCommand startingTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(createAtSpherePath));
+            
+            commands.Add(startingTokenCreationCommand);
             }
+
 
             return commands;
         }

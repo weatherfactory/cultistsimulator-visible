@@ -37,7 +37,8 @@ namespace SecretHistories.Commands
                 root.SetMutation(m.Key,m.Value,false);
 
             foreach(var s in Spheres)
-                s.ExecuteOn(root, context);
+                s.ExecuteOn(root, context); //By default this just walks down from the root. But the sphere commands may specify a path, in which case they execute further down.
+                                            //Better hope the place they execute exists, then!
             
             DealersTable.Execute(root.DealersTable);
         }
@@ -61,12 +62,12 @@ namespace SecretHistories.Commands
         public static RootPopulationCommand RootCommandForLegacy(Legacy startingLegacy)
         {
             var rootCommand=new  RootPopulationCommand();
-            var tabletopSphereCreationCommand = DefaultSphereCreationCommand();
+            var defaultSphereCreationComand = DefaultSphereCreationCommand();
 
             var chamberlain = startingLegacy.GetTokenSetupChamberlain(Watchman.Get<MetaInfo>().GameId);
 
-            tabletopSphereCreationCommand.Tokens.AddRange(chamberlain.GetTokenCreationCommandsToEnactLegacy(startingLegacy));
-            rootCommand.Spheres.Add(tabletopSphereCreationCommand);
+            defaultSphereCreationComand.Tokens.AddRange(chamberlain.GetTokenCreationCommandsToEnactLegacy(startingLegacy));
+            rootCommand.Spheres.Add(defaultSphereCreationComand);
 
             rootCommand.DealersTable=DealersTableForLegacy(startingLegacy);
 
