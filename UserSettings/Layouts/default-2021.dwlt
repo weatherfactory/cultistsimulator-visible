@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 1
+    x: 165
     y: 51
-    width: 1718
+    width: 2239
     height: 1340
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -43,12 +43,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1718
+    width: 2239
     height: 1290
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 38
+  controlID: 53
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -64,9 +64,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1416
+    x: 1911
     y: 0
-    width: 302
+    width: 328
     height: 1290
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
@@ -93,10 +93,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 254
-    height: 900
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 449
+    height: 986
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 900
-    width: 1416
-    height: 390
+    y: 986
+    width: 1911
+    height: 304
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
   m_ActualView: {fileID: 14}
@@ -129,7 +129,7 @@ MonoBehaviour:
   - {fileID: 18}
   - {fileID: 13}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -150,7 +150,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1718
+    width: 2239
     height: 1340
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -175,7 +175,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1718
+    width: 2239
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -197,7 +197,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 1320
-    width: 1718
+    width: 2239
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -220,12 +220,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1416
+    width: 1911
     height: 1290
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 39
+  controlID: 54
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,12 +245,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1416
-    height: 900
+    width: 1911
+    height: 986
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 40
+  controlID: 55
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -266,12 +266,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 254
+    x: 449
     y: 0
-    width: 1162
-    height: 900
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 1462
+    height: 986
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 17}
@@ -298,10 +298,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1242
-    y: 81
-    width: 476
-    height: 1269
+    x: 2002
+    y: 85
+    width: 589
+    height: 1310
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -326,21 +326,21 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 115
-    y: 918
-    width: 1976
-    height: 480
+    x: 165
+    y: 1067
+    width: 1910
+    height: 283
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  logPanelScroll: {x: 0, y: -280.77777}
+  logPanelScroll: {x: 0, y: -10}
   logPanelSelectedIndex: -1
   logPanelAutoScroll: 1
-  currentFrame: 92941
+  currentFrame: 164886
   logs:
-    lastGrabbedIndex: 8
-    lastGrabbedCount: 9
+    lastGrabbedIndex: 10
+    lastGrabbedCount: 11
     proEntries:
     - logType: 5
       ignore: 0
@@ -377,7 +377,7 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -451,7 +451,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -460,12 +460,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -475,7 +475,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -563,7 +563,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -592,7 +592,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -601,12 +601,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -616,7 +616,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -839,7 +839,7 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -884,7 +884,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -913,7 +913,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -922,12 +922,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -937,7 +937,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -1025,7 +1025,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -1054,7 +1054,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -1063,12 +1063,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -1078,7 +1078,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -1305,7 +1305,7 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -1350,7 +1350,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -1379,7 +1379,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -1388,12 +1388,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -1403,7 +1403,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -1491,7 +1491,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -1520,7 +1520,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -1529,12 +1529,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -1544,7 +1544,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -1774,7 +1774,7 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -1819,7 +1819,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -1848,7 +1848,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -1857,12 +1857,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -1872,7 +1872,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -1960,7 +1960,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -1989,7 +1989,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -1998,12 +1998,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -2013,7 +2013,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -2212,27 +2212,28 @@ MonoBehaviour:
       listIndex: 4
       nativeIndex: 4
       nativeIdentifier: 1234
-      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(117,54):
-        warning CS0067: The event ''Fitment.OnChanged'' is never used
+      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(118,36):
+        warning CS0067: The event ''Fitment.OnLifetimeSpent'' is never used
 
 '
-      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(117,54):
-        warning CS0067: The event ''Fitment.OnChanged'' is never used
+      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(118,36):
+        warning CS0067: The event ''Fitment.OnLifetimeSpent'' is never used
 
 '
       nativeFileName: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
       nativeFileNamePretty: 
-      nativeLineNumber: 117
+      nativeLineNumber: 118
       watchName: 
-      logText: '[CS0067] The event ''Fitment.OnChanged'' is never used'
-      logTruncatedText: '[CS0067] The event ''Fitment.OnChanged'' is never used'
+      logText: '[CS0067] The event ''Fitment.OnLifetimeSpent'' is never used'
+      logTruncatedText: '[CS0067] The event ''Fitment.OnLifetimeSpent'' is never
+        used'
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -2242,19 +2243,19 @@ MonoBehaviour:
       stackEntries:
       - fileName: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
         fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
-        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:117
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:118
         fileNameWithoutPath: Fitment.cs
-        fileNameWithoutPathPlusLineNumber: Fitment.cs:117
+        fileNameWithoutPathPlusLineNumber: Fitment.cs:118
         fileNamePretty: Fitment
         instanceID: -1
         className: Compiler
         methodName: Compiler
         namespaceName: None
-        lineNumberString: 117
-        charNumber: 54
+        lineNumberString: 118
+        charNumber: 36
         stackLabel: Compiler Warning
-        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:117
-          column 54'
+        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:118
+          column 36'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -2277,7 +2278,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -2306,7 +2307,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -2315,12 +2316,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -2330,7 +2331,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -2418,7 +2419,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -2447,7 +2448,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -2456,12 +2457,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -2471,7 +2472,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -2670,28 +2671,27 @@ MonoBehaviour:
       listIndex: 5
       nativeIndex: 5
       nativeIdentifier: 1234
-      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(118,36):
-        warning CS0067: The event ''Fitment.OnLifetimeSpent'' is never used
+      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(117,54):
+        warning CS0067: The event ''Fitment.OnChanged'' is never used
 
 '
-      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(118,36):
-        warning CS0067: The event ''Fitment.OnLifetimeSpent'' is never used
+      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(117,54):
+        warning CS0067: The event ''Fitment.OnChanged'' is never used
 
 '
       nativeFileName: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
       nativeFileNamePretty: 
-      nativeLineNumber: 118
+      nativeLineNumber: 117
       watchName: 
-      logText: '[CS0067] The event ''Fitment.OnLifetimeSpent'' is never used'
-      logTruncatedText: '[CS0067] The event ''Fitment.OnLifetimeSpent'' is never
-        used'
+      logText: '[CS0067] The event ''Fitment.OnChanged'' is never used'
+      logTruncatedText: '[CS0067] The event ''Fitment.OnChanged'' is never used'
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -2701,19 +2701,19 @@ MonoBehaviour:
       stackEntries:
       - fileName: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
         fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
-        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:118
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:117
         fileNameWithoutPath: Fitment.cs
-        fileNameWithoutPathPlusLineNumber: Fitment.cs:118
+        fileNameWithoutPathPlusLineNumber: Fitment.cs:117
         fileNamePretty: Fitment
         instanceID: -1
         className: Compiler
         methodName: Compiler
         namespaceName: None
-        lineNumberString: 118
-        charNumber: 36
+        lineNumberString: 117
+        charNumber: 54
         stackLabel: Compiler Warning
-        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:118
-          column 36'
+        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:117
+          column 54'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -2736,7 +2736,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -2765,7 +2765,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -2774,12 +2774,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -2789,7 +2789,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -2877,7 +2877,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -2906,7 +2906,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -2915,12 +2915,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -2930,7 +2930,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -3129,31 +3129,28 @@ MonoBehaviour:
       listIndex: 6
       nativeIndex: 6
       nativeIdentifier: 1234
-      originalLog: 'Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs(17,55):
-        warning CS0067: The event ''TokenTravelAnimation.OnBlockRedundant'' is never
-        used
+      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs(169,54):
+        warning CS0067: The event ''TerrainFeature.OnChanged'' is never used
 
 '
-      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs(17,55):
-        warning CS0067: The event ''TokenTravelAnimation.OnBlockRedundant'' is never
-        used
+      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs(169,54):
+        warning CS0067: The event ''TerrainFeature.OnChanged'' is never used
 
 '
-      nativeFileName: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
+      nativeFileName: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
       nativeFileNamePretty: 
-      nativeLineNumber: 17
+      nativeLineNumber: 169
       watchName: 
-      logText: '[CS0067] The event ''TokenTravelAnimation.OnBlockRedundant'' is never
+      logText: '[CS0067] The event ''TerrainFeature.OnChanged'' is never used'
+      logTruncatedText: '[CS0067] The event ''TerrainFeature.OnChanged'' is never
         used'
-      logTruncatedText: '[CS0067] The event ''TokenTravelAnimation.OnBlockRedundant''
-        is never used'
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -3161,21 +3158,21 @@ MonoBehaviour:
       cachedHeight: -1
       cachedHeightLogWidth: 0
       stackEntries:
-      - fileName: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
-        fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
-        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs:17
-        fileNameWithoutPath: TokenTravelAnimation.cs
-        fileNameWithoutPathPlusLineNumber: TokenTravelAnimation.cs:17
-        fileNamePretty: TokenTravelAnimation
+      - fileName: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
+        fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs:169
+        fileNameWithoutPath: TerrainFeature.cs
+        fileNameWithoutPathPlusLineNumber: TerrainFeature.cs:169
+        fileNamePretty: TerrainFeature
         instanceID: -1
         className: Compiler
         methodName: Compiler
         namespaceName: None
-        lineNumberString: 17
-        charNumber: 55
+        lineNumberString: 169
+        charNumber: 54
         stackLabel: Compiler Warning
-        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs:17
-          column 55'
+        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs:169
+          column 54'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -3198,7 +3195,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -3227,7 +3224,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -3236,12 +3233,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -3251,7 +3248,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -3339,7 +3336,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -3368,7 +3365,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -3377,12 +3374,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -3392,7 +3389,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -3612,7 +3609,7 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -3657,7 +3654,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -3686,7 +3683,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -3695,12 +3692,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -3710,7 +3707,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -3798,7 +3795,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -3827,7 +3824,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -3836,12 +3833,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -3851,7 +3848,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -4050,31 +4047,28 @@ MonoBehaviour:
       listIndex: 8
       nativeIndex: 8
       nativeIdentifier: 1234
-      originalLog: 'Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs(15,14):
-        warning CS0414: The field ''RecipeSlotViz.isHidden'' is assigned but its
-        value is never used
+      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs(170,36):
+        warning CS0067: The event ''TerrainFeature.OnLifetimeSpent'' is never used
 
 '
-      originalStackTrace: 'Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs(15,14):
-        warning CS0414: The field ''RecipeSlotViz.isHidden'' is assigned but its
-        value is never used
+      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs(170,36):
+        warning CS0067: The event ''TerrainFeature.OnLifetimeSpent'' is never used
 
 '
-      nativeFileName: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
+      nativeFileName: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
       nativeFileNamePretty: 
-      nativeLineNumber: 15
+      nativeLineNumber: 170
       watchName: 
-      logText: '[CS0414] The field ''RecipeSlotViz.isHidden'' is assigned but its
-        value is never used'
-      logTruncatedText: '[CS0414] The field ''RecipeSlotViz.isHidden'' is assigned
-        but its value is never used'
+      logText: '[CS0067] The event ''TerrainFeature.OnLifetimeSpent'' is never used'
+      logTruncatedText: '[CS0067] The event ''TerrainFeature.OnLifetimeSpent'' is
+        never used'
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -4082,21 +4076,21 @@ MonoBehaviour:
       cachedHeight: -1
       cachedHeightLogWidth: 0
       stackEntries:
-      - fileName: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
-        fileNameWithoutAssets: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
-        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs:15
-        fileNameWithoutPath: RecipeSlotViz.cs
-        fileNameWithoutPathPlusLineNumber: RecipeSlotViz.cs:15
-        fileNamePretty: RecipeSlotViz
+      - fileName: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
+        fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs:170
+        fileNameWithoutPath: TerrainFeature.cs
+        fileNameWithoutPathPlusLineNumber: TerrainFeature.cs:170
+        fileNamePretty: TerrainFeature
         instanceID: -1
         className: Compiler
         methodName: Compiler
         namespaceName: None
-        lineNumberString: 15
-        charNumber: 14
+        lineNumberString: 170
+        charNumber: 36
         stackLabel: Compiler Warning
-        stackLabel2: ' at Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs:15
-          column 14'
+        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs:170
+          column 36'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -4119,7 +4113,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -4148,7 +4142,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -4157,12 +4151,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -4172,7 +4166,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -4260,7 +4254,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -4289,7 +4283,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -4298,12 +4292,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -4313,7 +4307,931 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 5
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 9
+      logOutputHeight: -1
+      listIndex: 9
+      nativeIndex: 9
+      nativeIdentifier: 1234
+      originalLog: 'Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs(17,55):
+        warning CS0067: The event ''TokenTravelAnimation.OnBlockRedundant'' is never
+        used
+
+'
+      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs(17,55):
+        warning CS0067: The event ''TokenTravelAnimation.OnBlockRedundant'' is never
+        used
+
+'
+      nativeFileName: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 17
+      watchName: 
+      logText: '[CS0067] The event ''TokenTravelAnimation.OnBlockRedundant'' is never
+        used'
+      logTruncatedText: '[CS0067] The event ''TokenTravelAnimation.OnBlockRedundant''
+        is never used'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 17:28:18
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
+        fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs:17
+        fileNameWithoutPath: TokenTravelAnimation.cs
+        fileNameWithoutPathPlusLineNumber: TokenTravelAnimation.cs:17
+        fileNamePretty: TokenTravelAnimation
+        instanceID: -1
+        className: Compiler
+        methodName: Compiler
+        namespaceName: None
+        lineNumberString: 17
+        charNumber: 55
+        stackLabel: Compiler Warning
+        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs:17
+          column 55'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      ignoredStackEntries: []
+      lastMatchedCount: 1
+      belongsToFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 5
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 10
+      logOutputHeight: -1
+      listIndex: 10
+      nativeIndex: 10
+      nativeIdentifier: 1234
+      originalLog: 'Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs(15,14):
+        warning CS0414: The field ''RecipeSlotViz.isHidden'' is assigned but its
+        value is never used
+
+'
+      originalStackTrace: 'Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs(15,14):
+        warning CS0414: The field ''RecipeSlotViz.isHidden'' is assigned but its
+        value is never used
+
+'
+      nativeFileName: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 15
+      watchName: 
+      logText: '[CS0414] The field ''RecipeSlotViz.isHidden'' is assigned but its
+        value is never used'
+      logTruncatedText: '[CS0414] The field ''RecipeSlotViz.isHidden'' is assigned
+        but its value is never used'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 17:28:18
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
+        fileNameWithoutAssets: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs:15
+        fileNameWithoutPath: RecipeSlotViz.cs
+        fileNameWithoutPathPlusLineNumber: RecipeSlotViz.cs:15
+        fileNamePretty: RecipeSlotViz
+        instanceID: -1
+        className: Compiler
+        methodName: Compiler
+        namespaceName: None
+        lineNumberString: 15
+        charNumber: 14
+        stackLabel: Compiler Warning
+        stackLabel2: ' at Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs:15
+          column 14'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      ignoredStackEntries: []
+      lastMatchedCount: 1
+      belongsToFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -4541,7 +5459,7 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -4586,7 +5504,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -4615,7 +5533,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -4624,12 +5542,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -4639,7 +5557,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -4727,7 +5645,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -4756,7 +5674,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -4765,12 +5683,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -4780,7 +5698,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -5003,7 +5921,7 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -5048,7 +5966,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -5077,7 +5995,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -5086,12 +6004,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -5101,7 +6019,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -5189,7 +6107,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -5218,7 +6136,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -5227,12 +6145,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -5242,7 +6160,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -5469,7 +6387,7 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -5514,7 +6432,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -5543,7 +6461,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -5552,12 +6470,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -5567,7 +6485,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -5655,7 +6573,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -5684,7 +6602,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -5693,12 +6611,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -5708,7 +6626,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -5938,7 +6856,7 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -5983,7 +6901,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -6012,7 +6930,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -6021,12 +6939,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -6036,7 +6954,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -6124,7 +7042,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -6153,7 +7071,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -6162,12 +7080,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -6177,7 +7095,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -6376,27 +7294,28 @@ MonoBehaviour:
       listIndex: 4
       nativeIndex: 4
       nativeIdentifier: 1234
-      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(117,54):
-        warning CS0067: The event ''Fitment.OnChanged'' is never used
+      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(118,36):
+        warning CS0067: The event ''Fitment.OnLifetimeSpent'' is never used
 
 '
-      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(117,54):
-        warning CS0067: The event ''Fitment.OnChanged'' is never used
+      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(118,36):
+        warning CS0067: The event ''Fitment.OnLifetimeSpent'' is never used
 
 '
       nativeFileName: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
       nativeFileNamePretty: 
-      nativeLineNumber: 117
+      nativeLineNumber: 118
       watchName: 
-      logText: '[CS0067] The event ''Fitment.OnChanged'' is never used'
-      logTruncatedText: '[CS0067] The event ''Fitment.OnChanged'' is never used'
+      logText: '[CS0067] The event ''Fitment.OnLifetimeSpent'' is never used'
+      logTruncatedText: '[CS0067] The event ''Fitment.OnLifetimeSpent'' is never
+        used'
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -6406,19 +7325,19 @@ MonoBehaviour:
       stackEntries:
       - fileName: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
         fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
-        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:117
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:118
         fileNameWithoutPath: Fitment.cs
-        fileNameWithoutPathPlusLineNumber: Fitment.cs:117
+        fileNameWithoutPathPlusLineNumber: Fitment.cs:118
         fileNamePretty: Fitment
         instanceID: -1
         className: Compiler
         methodName: Compiler
         namespaceName: None
-        lineNumberString: 117
-        charNumber: 54
+        lineNumberString: 118
+        charNumber: 36
         stackLabel: Compiler Warning
-        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:117
-          column 54'
+        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:118
+          column 36'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -6441,7 +7360,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -6470,7 +7389,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -6479,12 +7398,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -6494,7 +7413,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -6582,7 +7501,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -6611,7 +7530,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -6620,12 +7539,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -6635,7 +7554,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -6834,28 +7753,27 @@ MonoBehaviour:
       listIndex: 5
       nativeIndex: 5
       nativeIdentifier: 1234
-      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(118,36):
-        warning CS0067: The event ''Fitment.OnLifetimeSpent'' is never used
+      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(117,54):
+        warning CS0067: The event ''Fitment.OnChanged'' is never used
 
 '
-      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(118,36):
-        warning CS0067: The event ''Fitment.OnLifetimeSpent'' is never used
+      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs(117,54):
+        warning CS0067: The event ''Fitment.OnChanged'' is never used
 
 '
       nativeFileName: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
       nativeFileNamePretty: 
-      nativeLineNumber: 118
+      nativeLineNumber: 117
       watchName: 
-      logText: '[CS0067] The event ''Fitment.OnLifetimeSpent'' is never used'
-      logTruncatedText: '[CS0067] The event ''Fitment.OnLifetimeSpent'' is never
-        used'
+      logText: '[CS0067] The event ''Fitment.OnChanged'' is never used'
+      logTruncatedText: '[CS0067] The event ''Fitment.OnChanged'' is never used'
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -6865,19 +7783,19 @@ MonoBehaviour:
       stackEntries:
       - fileName: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
         fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs
-        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:118
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:117
         fileNameWithoutPath: Fitment.cs
-        fileNameWithoutPathPlusLineNumber: Fitment.cs:118
+        fileNameWithoutPathPlusLineNumber: Fitment.cs:117
         fileNamePretty: Fitment
         instanceID: -1
         className: Compiler
         methodName: Compiler
         namespaceName: None
-        lineNumberString: 118
-        charNumber: 36
+        lineNumberString: 117
+        charNumber: 54
         stackLabel: Compiler Warning
-        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:118
-          column 36'
+        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\Fitment.cs:117
+          column 54'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -6900,7 +7818,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -6929,7 +7847,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -6938,12 +7856,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -6953,7 +7871,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -7041,7 +7959,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -7070,7 +7988,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -7079,12 +7997,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -7094,7 +8012,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -7293,31 +8211,28 @@ MonoBehaviour:
       listIndex: 6
       nativeIndex: 6
       nativeIdentifier: 1234
-      originalLog: 'Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs(17,55):
-        warning CS0067: The event ''TokenTravelAnimation.OnBlockRedundant'' is never
-        used
+      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs(169,54):
+        warning CS0067: The event ''TerrainFeature.OnChanged'' is never used
 
 '
-      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs(17,55):
-        warning CS0067: The event ''TokenTravelAnimation.OnBlockRedundant'' is never
-        used
+      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs(169,54):
+        warning CS0067: The event ''TerrainFeature.OnChanged'' is never used
 
 '
-      nativeFileName: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
+      nativeFileName: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
       nativeFileNamePretty: 
-      nativeLineNumber: 17
+      nativeLineNumber: 169
       watchName: 
-      logText: '[CS0067] The event ''TokenTravelAnimation.OnBlockRedundant'' is never
+      logText: '[CS0067] The event ''TerrainFeature.OnChanged'' is never used'
+      logTruncatedText: '[CS0067] The event ''TerrainFeature.OnChanged'' is never
         used'
-      logTruncatedText: '[CS0067] The event ''TokenTravelAnimation.OnBlockRedundant''
-        is never used'
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -7325,21 +8240,21 @@ MonoBehaviour:
       cachedHeight: -1
       cachedHeightLogWidth: 0
       stackEntries:
-      - fileName: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
-        fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
-        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs:17
-        fileNameWithoutPath: TokenTravelAnimation.cs
-        fileNameWithoutPathPlusLineNumber: TokenTravelAnimation.cs:17
-        fileNamePretty: TokenTravelAnimation
+      - fileName: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
+        fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs:169
+        fileNameWithoutPath: TerrainFeature.cs
+        fileNameWithoutPathPlusLineNumber: TerrainFeature.cs:169
+        fileNamePretty: TerrainFeature
         instanceID: -1
         className: Compiler
         methodName: Compiler
         namespaceName: None
-        lineNumberString: 17
-        charNumber: 55
+        lineNumberString: 169
+        charNumber: 54
         stackLabel: Compiler Warning
-        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs:17
-          column 55'
+        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs:169
+          column 54'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -7362,7 +8277,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -7391,7 +8306,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -7400,12 +8315,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -7415,7 +8330,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -7503,7 +8418,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -7532,7 +8447,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -7541,12 +8456,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -7556,7 +8471,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -7776,7 +8691,7 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -7821,7 +8736,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -7850,7 +8765,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -7859,12 +8774,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -7874,7 +8789,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -7962,7 +8877,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -7991,7 +8906,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -8000,12 +8915,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -8015,7 +8930,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -8214,31 +9129,28 @@ MonoBehaviour:
       listIndex: 8
       nativeIndex: 8
       nativeIdentifier: 1234
-      originalLog: 'Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs(15,14):
-        warning CS0414: The field ''RecipeSlotViz.isHidden'' is assigned but its
-        value is never used
+      originalLog: 'Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs(170,36):
+        warning CS0067: The event ''TerrainFeature.OnLifetimeSpent'' is never used
 
 '
-      originalStackTrace: 'Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs(15,14):
-        warning CS0414: The field ''RecipeSlotViz.isHidden'' is assigned but its
-        value is never used
+      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs(170,36):
+        warning CS0067: The event ''TerrainFeature.OnLifetimeSpent'' is never used
 
 '
-      nativeFileName: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
+      nativeFileName: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
       nativeFileNamePretty: 
-      nativeLineNumber: 15
+      nativeLineNumber: 170
       watchName: 
-      logText: '[CS0414] The field ''RecipeSlotViz.isHidden'' is assigned but its
-        value is never used'
-      logTruncatedText: '[CS0414] The field ''RecipeSlotViz.isHidden'' is assigned
-        but its value is never used'
+      logText: '[CS0067] The event ''TerrainFeature.OnLifetimeSpent'' is never used'
+      logTruncatedText: '[CS0067] The event ''TerrainFeature.OnLifetimeSpent'' is
+        never used'
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 11:50:29
+      timeStamp: 17:28:18
       timeFrame: -1
       timeStampDateTimeNow: 
       instanceID: 0
@@ -8246,21 +9158,21 @@ MonoBehaviour:
       cachedHeight: -1
       cachedHeightLogWidth: 0
       stackEntries:
-      - fileName: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
-        fileNameWithoutAssets: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
-        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs:15
-        fileNameWithoutPath: RecipeSlotViz.cs
-        fileNameWithoutPathPlusLineNumber: RecipeSlotViz.cs:15
-        fileNamePretty: RecipeSlotViz
+      - fileName: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
+        fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs:170
+        fileNameWithoutPath: TerrainFeature.cs
+        fileNameWithoutPathPlusLineNumber: TerrainFeature.cs:170
+        fileNamePretty: TerrainFeature
         instanceID: -1
         className: Compiler
         methodName: Compiler
         namespaceName: None
-        lineNumberString: 15
-        charNumber: 14
+        lineNumberString: 170
+        charNumber: 36
         stackLabel: Compiler Warning
-        stackLabel2: ' at Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs:15
-          column 14'
+        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenPayloads\TerrainFeature.cs:170
+          column 36'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -8283,7 +9195,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -8312,7 +9224,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -8321,12 +9233,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -8336,7 +9248,7 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -8424,7 +9336,7 @@ MonoBehaviour:
       - name: Warning
         isEnabled: 1
         collapsed: 1
-        itemGUID: e14f7049-0971-46e2-a4d2-36bf737bbe28
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
         filterName: 
         mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
         isStandardFilter: 1
@@ -8453,7 +9365,7 @@ MonoBehaviour:
           - name: 
             isEnabled: 1
             collapsed: 0
-            itemGUID: a8da2cac-c30f-4769-aeb6-6b80d5dc9b07
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
             searchString: <Any>
             searchType: 1
             removeSearchStringFromLog: 0
@@ -8462,12 +9374,12 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 2fa3a25b-43d8-45d4-8be3-4c695f77fd96
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
                 logType: 2
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 127247f7-a943-465f-8b0c-8f8ee3fac595
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
                 logType: 5
               selectionList: 0
               collapsable: 1
@@ -8477,7 +9389,931 @@ MonoBehaviour:
               - name: 
                 isEnabled: 1
                 collapsed: 0
-                itemGUID: 5919a344-e9ca-433d-a2e9-a6f8eb2a6399
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 5
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 9
+      logOutputHeight: -1
+      listIndex: 9
+      nativeIndex: 9
+      nativeIdentifier: 1234
+      originalLog: 'Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs(17,55):
+        warning CS0067: The event ''TokenTravelAnimation.OnBlockRedundant'' is never
+        used
+
+'
+      originalStackTrace: 'Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs(17,55):
+        warning CS0067: The event ''TokenTravelAnimation.OnBlockRedundant'' is never
+        used
+
+'
+      nativeFileName: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 17
+      watchName: 
+      logText: '[CS0067] The event ''TokenTravelAnimation.OnBlockRedundant'' is never
+        used'
+      logTruncatedText: '[CS0067] The event ''TokenTravelAnimation.OnBlockRedundant''
+        is never used'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 17:28:18
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
+        fileNameWithoutAssets: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs:17
+        fileNameWithoutPath: TokenTravelAnimation.cs
+        fileNameWithoutPathPlusLineNumber: TokenTravelAnimation.cs:17
+        fileNamePretty: TokenTravelAnimation
+        instanceID: -1
+        className: Compiler
+        methodName: Compiler
+        namespaceName: None
+        lineNumberString: 17
+        charNumber: 55
+        stackLabel: Compiler Warning
+        stackLabel2: ' at Assets\Scripts\Application\Tokens\TokenTravelAnimation.cs:17
+          column 55'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      ignoredStackEntries: []
+      lastMatchedCount: 1
+      belongsToFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 5
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 10
+      logOutputHeight: -1
+      listIndex: 10
+      nativeIndex: 10
+      nativeIdentifier: 1234
+      originalLog: 'Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs(15,14):
+        warning CS0414: The field ''RecipeSlotViz.isHidden'' is assigned but its
+        value is never used
+
+'
+      originalStackTrace: 'Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs(15,14):
+        warning CS0414: The field ''RecipeSlotViz.isHidden'' is assigned but its
+        value is never used
+
+'
+      nativeFileName: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 15
+      watchName: 
+      logText: '[CS0414] The field ''RecipeSlotViz.isHidden'' is assigned but its
+        value is never used'
+      logTruncatedText: '[CS0414] The field ''RecipeSlotViz.isHidden'' is assigned
+        but its value is never used'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 17:28:18
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
+        fileNameWithoutAssets: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs:15
+        fileNameWithoutPath: RecipeSlotViz.cs
+        fileNameWithoutPathPlusLineNumber: RecipeSlotViz.cs:15
+        fileNamePretty: RecipeSlotViz
+        instanceID: -1
+        className: Compiler
+        methodName: Compiler
+        namespaceName: None
+        lineNumberString: 15
+        charNumber: 14
+        stackLabel: Compiler Warning
+        stackLabel2: ' at Assets\Scripts\Application\Spheres\Dominions\RecipeSlotViz.cs:15
+          column 14'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      ignoredStackEntries: []
+      lastMatchedCount: 1
+      belongsToFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
                 columnType: 1
               selectionList: 0
               collapsable: 1
@@ -8686,16 +10522,16 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1
-    y: 981
-    width: 1415
-    height: 369
+    x: 165
+    y: 1067
+    width: 1910
+    height: 283
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: 
+    m_NameFilter: room
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -8707,22 +10543,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/StreamingAssets/bhcontent/core/rooms
+    - Assets/Resources/Fonts & Materials
     m_Globs: []
-    m_OriginalText: 
+    m_OriginalText: room
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/StreamingAssets/bhcontent/core/rooms
+  - Assets/Resources/Fonts & Materials
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\alexi\Documents\GitHub\csunity
+  m_LastProjectPath: C:\Users\Alexis\Documents\GitHub\csunity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 411}
-    m_SelectedIDs: c0b80000
-    m_LastClickedID: 47296
-    m_ExpandedIDs: 000000002e9b0000309b0000329b0000349b0000369b0000389b00003a9b00003c9b00003e9b000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 57}
+    m_SelectedIDs: 2a960000
+    m_LastClickedID: 38442
+    m_ExpandedIDs: 000000009a8e00009c8e00009e8e0000a08e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -8750,7 +10586,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002e9b0000309b0000329b0000349b0000369b0000389b00003a9b00003c9b00003e9b0000
+    m_ExpandedIDs: 000000009a8e00009c8e00009e8e0000a08e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -8777,7 +10613,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000dc010000c2aa0000b6f504001273000038a200000000000008170100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -8827,9 +10663,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1417
+    x: 2076
     y: 81
-    width: 301
+    width: 327
     height: 1269
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -8838,7 +10674,7 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 488
+    m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
@@ -8869,10 +10705,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1
+    x: 165
     y: 81
-    width: 253
-    height: 879
+    width: 448
+    height: 965
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -8880,9 +10716,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c445ffff
-      m_LastClickedID: -47676
-      m_ExpandedIDs: a846ffff3090ffffe8faffffeafafffff2faffff6c610000089c0000929c0000109e0000169e0000f09e0000529f0000649f00002ca00000b4a10000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: eafaffffa8850000368800003c8800002089000094890000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -8927,10 +10763,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 262
+    x: 2910
     y: 81
-    width: 1160
-    height: 874
+    width: 1357
+    height: 1007
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -8941,7 +10777,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: -101, y: -26}
+      snapOffsetDelta: {x: -101, y: -1}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -8963,7 +10799,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: unity-scene-view-toolbar
       index: 0
@@ -8974,7 +10810,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 1
       id: unity-search-toolbar
       index: 1
@@ -8985,7 +10821,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: unity-transform-toolbar
       index: 0
@@ -9007,7 +10843,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Light Settings
       index: 0
@@ -9018,7 +10854,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Camera
       index: 1
@@ -9029,7 +10865,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Cloth Constraints
       index: 2
@@ -9040,7 +10876,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Cloth Collisions
       index: 3
@@ -9051,7 +10887,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Navmesh Display
       index: 4
@@ -9062,7 +10898,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Agent Display
       index: 5
@@ -9073,7 +10909,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Obstacle Display
       index: 6
@@ -9084,7 +10920,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Occlusion Culling
       index: 7
@@ -9095,7 +10931,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Physics Debugger
       index: 8
@@ -9106,7 +10942,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Scene Visibility
       index: 9
@@ -9117,7 +10953,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 25}
       snapCorner: 0
       id: Scene View/Particles
       index: 10
@@ -9132,9 +10968,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 123.73218, y: 123.38103, z: -8.673524}
+    m_Target: {x: 533.2515, y: 18.616215, z: 13.1233635}
     speed: 2
-    m_Value: {x: 123.73218, y: 123.38103, z: -8.673524}
+    m_Value: {x: 533.2515, y: 18.616215, z: 13.1233635}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -9185,9 +11021,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 755.4509
+    m_Target: 368.4364
     speed: 2
-    m_Value: 755.4509
+    m_Value: 368.4364
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -9233,10 +11069,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 976
-    width: 1415
-    height: 367
+    x: 549
+    y: 1087
+    width: 1910
+    height: 283
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -9262,10 +11098,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 255
+    x: 614
     y: 81
-    width: 1160
-    height: 879
+    width: 1460
+    height: 965
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -9278,7 +11114,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1160, y: 858}
+  m_TargetSize: {x: 1460, y: 944}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -9293,10 +11129,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -580
-    m_HBaseRangeMax: 580
-    m_VBaseRangeMin: -429
-    m_VBaseRangeMax: 429
+    m_HBaseRangeMin: -730
+    m_HBaseRangeMax: 730
+    m_VBaseRangeMin: -472
+    m_VBaseRangeMax: 472
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -9314,23 +11150,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1160
-      height: 858
+      width: 1460
+      height: 944
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 580, y: 429}
+    m_Translation: {x: 730, y: 472}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -580
-      y: -429
-      width: 1160
-      height: 858
+      x: -730
+      y: -472
+      width: 1460
+      height: 944
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1160, y: 879}
+  m_LastWindowPixelSize: {x: 1460, y: 965}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000

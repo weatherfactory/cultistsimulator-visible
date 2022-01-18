@@ -26,8 +26,6 @@ namespace SecretHistories.Fucine
             }
             else
             {
-                if(_cachedFucinePropertyToPopulate.ThisPropInfo.PropertyType==typeof(float))
-                    NoonUtility.Log("aha!");
 
                 try
                 {
