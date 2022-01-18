@@ -83,8 +83,14 @@ namespace SecretHistories.Commands
 
             Sphere actualSphereToInstantiateIn;
 
+            if (Location != null && sphere == null && Location.HasValidSpherePath())
+            {
+                //if we have a valid location sphere path and no direct reference to a valid sphere, use the location sphere path.
+                actualSphereToInstantiateIn = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
+            }
+
             //if we have a valid location that is not the same as the sphere in which this is being executed, execute at the location instead
-            if (Location != null && Location.AtSpherePath.IsValid() &&
+            else if (Location != null && Location.HasValidSpherePath() &&
                 !sphere.GetAbsolutePath().Conforms(Location.AtSpherePath))
                 actualSphereToInstantiateIn = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
             else
@@ -126,7 +132,7 @@ namespace SecretHistories.Commands
         private Token InstantiateTokenInSphere(Context context, Sphere sphere)
         {
             //only use the location sphere if for some reason we don't have a valid sphere to accept the token
-            if (sphere == null && Location.AtSpherePath.IsValid())
+            if (sphere == null && Location.HasValidSpherePath())
                 sphere = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
 
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.GetRectTransform());

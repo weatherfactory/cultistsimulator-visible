@@ -48,10 +48,13 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
         }
 
         private readonly HashSet<Sphere> _registeredSpheres = new HashSet<Sphere>();
+        private readonly HashSet<AbstractDominion> _registeredDominions = new HashSet<AbstractDominion>();
+
 
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_registeredSpheres);
-
+        [Encaust]
+        public List<AbstractDominion> Dominions => new List<AbstractDominion>(_registeredDominions);
 
         [Encaust]
         public string Id { get; protected set; }
@@ -115,7 +118,11 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
         public void AttachSphere(Sphere sphere)
         {
             sphere.Subscribe(this);
-     
+            sphere.SetContainer(this);
+            _registeredSpheres.Add(sphere);
+            var args = new TokenPayloadChangedArgs(this, PayloadChangeType.Update);
+            OnChanged?.Invoke(args);
+
         }
 
         public void DetachSphere(Sphere c)
@@ -175,8 +182,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
             throw new NotImplementedException();
         }
 
-        [Encaust]
-        public List<AbstractDominion> Dominions { get; }
+
         [DontEncaust]
         public bool Metafictional { get; }
         public bool Retire(RetirementVFX VFX)
@@ -208,7 +214,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public bool IsValid()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public bool IsValidElementStack()
@@ -223,12 +229,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public void FirstHeartbeat()
         {
-            throw new NotImplementedException();
+           //
         }
 
         public void ExecuteHeartbeat(float seconds, float metaseconds)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public bool CanInteractWith(ITokenPayload incomingTokenPayload)

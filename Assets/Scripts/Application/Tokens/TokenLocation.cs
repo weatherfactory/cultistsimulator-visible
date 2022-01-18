@@ -67,6 +67,15 @@ namespace SecretHistories.UI
             return WithSpherePath(withSphere.GetAbsolutePath());
         }
 
+        public bool HasValidSpherePath()
+        {
+            if (AtSpherePath == null)
+                return false;
+            if (!AtSpherePath.IsValid())
+                return false;
+
+            return true;
+        }
 
 
 

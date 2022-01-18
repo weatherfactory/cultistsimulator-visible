@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads;
+using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
@@ -19,9 +20,10 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
         public void Initialise(Sphere inSphere)
         {
             var token = gameObject.GetComponent<Token>();
+            var existingManifestation = gameObject.GetComponent<MinimalManifestation>();
             var terrainFeaturePayload = new TerrainFeature();
             terrainFeaturePayload.SetId(EditableIdentifier);
-            token.SetPayload(terrainFeaturePayload);
+            token.SetPayloadWithExistingManifestation(terrainFeaturePayload, existingManifestation);
             
             inSphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
 
@@ -32,6 +34,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
                 var spec = s.GetComponent<PermanentSphereSpec>();
                 spec.ApplySpecToSphere(s);
                 terrainFeaturePayload.AttachSphere(s);
+
             }
         }
     }

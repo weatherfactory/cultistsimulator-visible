@@ -281,7 +281,18 @@ namespace SecretHistories.UI {
             _payload.SetToken(this);
             name = _payload.Id + "_token";
   
-            Remanifest(RetirementVFX.None); //Remanifest not manifest. If we've just set a new payload, the manifestation type is very likely already the correct type for that sphere.
+            Manifest(); //just changed this from Remanifest. Surely if we've set the payload, there shouldn't be a manifestation?
+            //so we don't need this overhead and leftover objects? but check again if this breaks CS
+
+            //Remanifest(RetirementVFX.None); //Originally I said: 'Remanifest not manifest. If we've just set a new payload, the manifestation type is very likely already the correct type for that sphere.'
+        }
+
+        public void SetPayloadWithExistingManifestation(ITokenPayload payload,IManifestation alreadyExtantManifestation)
+        {
+            _manifestation = alreadyExtantManifestation;
+            //doing this in one method gets us round awkward initialisation order problems
+            SetPayload(payload);
+            
         }
 
 
@@ -402,19 +413,21 @@ namespace SecretHistories.UI {
             if (_manifestation == null)
                 _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
 
-            if(Sphere!=null) //OKAY JUST THIS ONCE WE'RE DOING A NULL TEST. It's a headache trying to ge ta null sphere into the mix.
+            if (Sphere != null) //OKAY JUST THIS ONCE WE'RE DOING A NULL TEST. It's a headache trying to get a null sphere into the mix.
             {
 
                 if (_manifestation.GetType() != Payload.GetManifestationType(Sphere.SphereCategory))
                 {
                     Type newManifestationType = Payload.GetManifestationType(Sphere.SphereCategory);
 
-                    var newManifestation = Watchman.Get<PrefabFactory>().CreateManifestationPrefab(newManifestationType, this.transform);
+                    var newManifestation = Watchman.Get<PrefabFactory>()
+                        .CreateManifestationPrefab(newManifestationType, this.transform);
 
                     ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
 
             }
+
 
         }
 

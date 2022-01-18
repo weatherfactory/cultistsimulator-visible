@@ -127,11 +127,13 @@ namespace SecretHistories.Fucine
         public FucinePath(FucinePathPart part)
         {
             PathParts.Add(part);
+            Validity = ValidateAfterParsing(PathParts);//This should use constructor chaining when I next refactor
         }
 
         public FucinePath(IEnumerable<FucinePathPart> parts)
         {
             PathParts.AddRange(parts);
+            Validity = ValidateAfterParsing(PathParts); //This should use constructor chaining when I next refactor
         }
 
 

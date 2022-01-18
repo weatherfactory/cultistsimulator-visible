@@ -31,6 +31,7 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
             //Jon Skeet says do this because
             // "Explicit static constructor to tell C# compiler
             // not to mark type as beforefieldinit"
+            //Trust in the Skeet.
         }
 
         [DontEncaust]
@@ -43,6 +44,10 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
 
         [Encaust]
         public List<Sphere> Spheres => new List<Sphere>(_spheres);
+
+        [Encaust]
+        public List<Token> TokensAtArbitraryPaths => new List<Token>(); //currently this doesn't save anything from a live root.
+        //it's here to give us the option of arbitrarily inserting tokens at whatever path, as we do with BH legacies.
 
         [Encaust] public DealersTable DealersTable => Watchman.Get<DealersTable>();
 

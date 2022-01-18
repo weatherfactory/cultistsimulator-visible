@@ -15,30 +15,32 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
 {
     public class BHTokenSetupChamberlain: AbstractTokenSetupChamberlain
     {
-        public override List<TokenCreationCommand> GetTokenCreationCommandsToEnactLegacy(Legacy forLegacy)
+        public override List<TokenCreationCommand> GetDefaultSphereTokenCreationCommandsToEnactLegacy(Legacy forLegacy)
         {
-         //This is used to populate the root command. Use sphere paths not spheres!   
-         FucinePath startingRoomSpherePath = new FucinePath("*/solarium1");
 
-      
+            return new List<TokenCreationCommand>();
+        }
+
+        public override List<TokenCreationCommand> GetArbitraryPathTokenCreationCommandsToEnactLegacy(Legacy forLegacy)
+        {
             var commands = new List<TokenCreationCommand>();
 
-           // SituationCreationCommand startingSituation = new SituationCreationCommand(forLegacy.StartingVerbId);
-           // var startingDestinationForVerb = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
+            // SituationCreationCommand startingSituation = new SituationCreationCommand(forLegacy.StartingVerbId);
+            // var startingDestinationForVerb = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
 
-       //     TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, startingTokenDistributionStrategy.AboveBoardStartingLocation()).WithDestination(startingDestinationForVerb, startingTokenDistributionStrategy.GetPlacementDelay());
-        //    commands.Add(startingTokenCommand);
+            //     TokenCreationCommand startingTokenCommand = new TokenCreationCommand(startingSituation, startingTokenDistributionStrategy.AboveBoardStartingLocation()).WithDestination(startingDestinationForVerb, startingTokenDistributionStrategy.GetPlacementDelay());
+            //    commands.Add(startingTokenCommand);
 
 
-        foreach (var effect in forLegacy.Effects)
-        {
-            var effectPath = new FucinePath(effect.Key);
-            string elementToCreate = effectPath.GetEndingPathPart().TrimTokenPrefix();
-            FucinePath createAtSpherePath= effectPath.GetSpherePath();
-            var elementStackCreationCommand = new ElementStackCreationCommand(elementToCreate, effect.Value);
-            TokenCreationCommand startingTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(createAtSpherePath));
-            
-            commands.Add(startingTokenCreationCommand);
+            foreach (var effect in forLegacy.Effects)
+            {
+                var effectPath = new FucinePath(effect.Key);
+                string elementToCreate = effectPath.GetEndingPathPart().TrimTokenPrefix();
+                FucinePath createAtSpherePath = effectPath.GetSpherePath();
+                var elementStackCreationCommand = new ElementStackCreationCommand(elementToCreate, effect.Value);
+                TokenCreationCommand startingTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(createAtSpherePath));
+
+                commands.Add(startingTokenCreationCommand);
             }
 
 

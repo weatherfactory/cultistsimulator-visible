@@ -22,13 +22,18 @@ namespace SecretHistories.Commands
         public Dictionary<string, int> Mutations { get; set; }
         public List<SphereCreationCommand> Spheres { get; set; }
         public PopulateDominionCommand DealersTable { get; set; }
+
+        public List<TokenCreationCommand> TokensAtArbitraryPaths { get; set; }
         public bool IsOpen { get; set; }
 
         public RootPopulationCommand()
         {
             Mutations=new Dictionary<string, int>();
             Spheres=new List<SphereCreationCommand>();
+            TokensAtArbitraryPaths = new List<TokenCreationCommand>();
         }
+
+        
 
         public void Execute(Context context)
         {
@@ -37,9 +42,11 @@ namespace SecretHistories.Commands
                 root.SetMutation(m.Key,m.Value,false);
 
             foreach(var s in Spheres)
-                s.ExecuteOn(root, context); //By default this just walks down from the root. But the sphere commands may specify a path, in which case they execute further down.
-                                            //Better hope the place they execute exists, then!
-            
+                s.ExecuteOn(root, context); 
+
+            foreach (var t in TokensAtArbitraryPaths)
+                 t.Execute(context, null);
+
             DealersTable.Execute(root.DealersTable);
         }
 
@@ -66,8 +73,11 @@ namespace SecretHistories.Commands
 
             var chamberlain = startingLegacy.GetTokenSetupChamberlain(Watchman.Get<MetaInfo>().GameId);
 
-            defaultSphereCreationComand.Tokens.AddRange(chamberlain.GetTokenCreationCommandsToEnactLegacy(startingLegacy));
+            defaultSphereCreationComand.Tokens.AddRange(chamberlain.GetDefaultSphereTokenCreationCommandsToEnactLegacy(startingLegacy));
             rootCommand.Spheres.Add(defaultSphereCreationComand);
+
+            var tokensAtArbitraryPaths = chamberlain.GetArbitraryPathTokenCreationCommandsToEnactLegacy(startingLegacy);
+            rootCommand.TokensAtArbitraryPaths.AddRange(tokensAtArbitraryPaths);
 
             rootCommand.DealersTable=DealersTableForLegacy(startingLegacy);
 

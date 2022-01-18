@@ -14,7 +14,7 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
 {
     public class CSTokenSetupChamberlain: AbstractTokenSetupChamberlain
     {
-        public override List<TokenCreationCommand> GetTokenCreationCommandsToEnactLegacy(Legacy forLegacy)
+        public override List<TokenCreationCommand> GetDefaultSphereTokenCreationCommandsToEnactLegacy(Legacy forLegacy)
         {
             var startingTokenDistributionStrategy = new CSClassicStartingTokenDistributionStrategy();
 
@@ -55,6 +55,11 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
 
             return commands;
 
+        }
+
+        public override List<TokenCreationCommand> GetArbitraryPathTokenCreationCommandsToEnactLegacy(Legacy forLegacy)
+        {
+            return new List<TokenCreationCommand>();
         }
 
         class CSClassicStartingTokenDistributionStrategy

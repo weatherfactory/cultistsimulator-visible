@@ -29,9 +29,11 @@ namespace SecretHistories.Commands
 
         public void ExecuteOn(FucineRoot root, Context context)
         {
+            
             var sphere = root.GetSphereById(this.GoverningSphereSpec.Id);
          if(sphere!=null)
          {
+             
              //this will diskard data from spheres that can't be found because they haven't become active/registered yet - like ElementsMalleary
              //worth caching the commands for when they appear?
             sphere.OwnerSphereIdentifier = OwnerSphereIdentifier; //should never be relevant, but let's play safe

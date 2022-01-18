@@ -1026,6 +1026,7 @@ GameObject:
   - component: {fileID: 24571183}
   - component: {fileID: 24571185}
   - component: {fileID: 24571186}
+  - component: {fileID: 24571187}
   m_Layer: 5
   m_Name: LibraryTerrainFeature
   m_TagString: Untagged
@@ -1092,6 +1093,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 591e1bcc1ef18874abf5d00c9e1a1774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EditableIdentifier: library
+--- !u!114 &24571187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24571182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1a4f1ad0677af40b9456a50b9a4b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &27561304
@@ -4348,7 +4362,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &327015170
 MonoBehaviour:
@@ -19189,7 +19203,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2111072234
 MonoBehaviour:
