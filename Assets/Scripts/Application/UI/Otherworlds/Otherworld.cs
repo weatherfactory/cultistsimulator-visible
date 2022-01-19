@@ -326,7 +326,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
                 var targetSphere =
                     _spheres.SingleOrDefault(s =>
-                        s.Id == targetSphereId); //NOTE: we're not actually using the pathing system here. We might want to upgrade to that.
+                        s.Id == targetSphereId); //NOTE: we're not actually using the pathing system here. This is because a Mansus otherworld breaks the model; it's a token which exists in the root.
+                //either it shouldn't be, or tokens in root should be allowed.
 
                 var fader = targetSphere.gameObject.GetComponent<CanvasGroupFader>();
                 if(fader!=null)
