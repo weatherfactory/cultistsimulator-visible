@@ -64,7 +64,7 @@ public class PetromnemeImporter
 
 
         //big old fudge to get the new verb dropzone in
-        var tabletopSpherePath= new FucinePath(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath);
+        var tabletopSpherePath= Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultWorldSpherePath;
         
         var situationDropzoneLocation = TokenLocation.Default(tabletopSpherePath);
         

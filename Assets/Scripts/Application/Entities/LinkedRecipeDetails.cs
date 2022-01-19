@@ -17,8 +17,8 @@ namespace SecretHistories.Entities
         [FucineValue(false)]
         public bool Additional { get; set; }
 
-        [FucineValue]
-        public string ToPath { get; set; }
+        [FucinePathValue("")]
+        public FucinePath ToPath { get; set; }
 
         /// <summary>
         /// Specify a challenge based on aspect quality, as either base or advanced. If there's more than one challenge,
@@ -43,7 +43,7 @@ namespace SecretHistories.Entities
             l.Chance = 0;
             l.Additional = false;
             l.Challenges=new Dictionary<string, string>();
-            l.ToPath = FucinePath.Current().ToString();
+            l.ToPath = FucinePath.Current();
             return l;
         }
 

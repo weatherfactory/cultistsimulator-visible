@@ -79,7 +79,23 @@ namespace SecretHistories.Fucine
         }
     }
 
+    public class FucinePathValue : Fucine
+    {
+        public FucinePathValue()
+        {
 
+        }
+
+        public FucinePathValue(string defaultValue)
+        {
+            DefaultValue = new FucinePath(defaultValue);
+        }
+
+        public override AbstractImporter CreateImporterInstance()
+        {
+            return new PathImporter();
+        }
+    }
 
 
     [AttributeUsage(AttributeTargets.Property)]

@@ -325,7 +325,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
                 var targetSphere =
                     _spheres.SingleOrDefault(s =>
-                        s.Id == c.ToPath); //NOTE: we're not actually using the pathing system here. We might want to upgrade to that.
+                        s.Id == c.ToPath.ToString()); //NOTE: we're not actually using the pathing system here. We might want to upgrade to that.
 
                 var fader = targetSphere.gameObject.GetComponent<CanvasGroupFader>();
                 if(fader!=null)

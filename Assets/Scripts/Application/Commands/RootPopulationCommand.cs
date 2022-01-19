@@ -55,7 +55,7 @@ namespace SecretHistories.Commands
         {
 
             var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
-            var tabletopPath = new FucinePath(dictum.DefaultWorldSpherePath);
+            var tabletopPath = dictum.DefaultWorldSpherePath;
 
             var tabletopId = tabletopPath.GetEndingPathPart().GetId();
 

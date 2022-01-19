@@ -163,7 +163,7 @@ namespace SecretHistories.Core
                     }
                     if (ar.Additional)
                     {
-                        originalRecipePlusAdditionals.Add(new AlternateRecipeExecution(candidateRecipe,ar.Expulsion,new FucinePath(ar.ToPath))); //add the additional recipe, and keep going
+                        originalRecipePlusAdditionals.Add(new AlternateRecipeExecution(candidateRecipe,ar.Expulsion,ar.ToPath)); //add the additional recipe, and keep going
                         NoonUtility.Log(recipe.Id + " says: Found additional recipe with dice result " + diceResult + ", against chance " + +challengeArbiter.GetArbitratedChance()  + ar.Id +
                                         " to execute - adding it to execution list and looking for more");
                     }

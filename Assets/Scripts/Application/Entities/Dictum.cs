@@ -13,7 +13,7 @@ namespace SecretHistories.Entities
     {
 
         [FucineValue] public string WorldSphereType { get; set; }
-        [FucineValue] public string DefaultWorldSpherePath { get; set; }
+        [FucinePathValue] public FucinePath DefaultWorldSpherePath { get; set; }
 
 
         [FucineValue]

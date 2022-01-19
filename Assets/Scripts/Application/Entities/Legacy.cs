@@ -66,10 +66,22 @@ namespace SecretHistories.Entities
         [FucineValue(false)] public bool AvailableWithoutEndingMatch { get; set; }
 
 
+        /// <summary>
+        /// If true, this legacy will appear as an optional start in the DLC menu
+        /// </summary>
         [FucineValue(false)] public bool NewStart { get; set; }
 
+        /// <summary>
+        /// These are just applied to the default sphere when the game begins
+        /// </summary>
         [FucineAspects(ValidateAsElementId = true)]
         public AspectsDictionary Effects { get; set; }
+
+        /// <summary>
+        /// ///These recipes execute when the game begins. An AtPath should be specified - otherwise just use effects.
+        /// </summary>
+        [FucineList]
+        public List<LinkedRecipeDetails> StartupRecipes { get; set; }
 
         [FucineList] public List<string> ExcludesOnEnding { get; set; }
 

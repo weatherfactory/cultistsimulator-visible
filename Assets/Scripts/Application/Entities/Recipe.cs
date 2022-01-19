@@ -32,6 +32,7 @@ namespace SecretHistories.Entities
         [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, string> Effects { get; set; }
 
+
         [FucineAspects(ValidateAsElementId = true)]
         public AspectsDictionary Aspects {get; set; }
 

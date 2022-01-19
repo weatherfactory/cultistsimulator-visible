@@ -35,6 +35,12 @@ namespace SecretHistories.Fucine
             return false;
         }
 
+        public virtual string DisplayStatus()
+        {
+            //could put more verbose descriptors in here
+            return Validity.ToString();
+        }
+
         public virtual bool IsEmpty()
         {
             if (Validity == FucineValidity.Empty)

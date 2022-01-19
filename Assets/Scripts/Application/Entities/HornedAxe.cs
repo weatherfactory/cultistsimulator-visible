@@ -67,7 +67,7 @@ namespace SecretHistories.Entities {
 
             var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
             
-            var pathFromDictum = new FucinePath(dictum.DefaultWorldSpherePath);
+            var pathFromDictum =dictum.DefaultWorldSpherePath;
             SetDefaultSpherePath(pathFromDictum);
 
             return pathFromDictum;
