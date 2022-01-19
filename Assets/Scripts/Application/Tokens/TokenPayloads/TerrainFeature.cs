@@ -32,7 +32,35 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
         //the command does not set it up, but rather assumes it exists and populates it.
         //A terrain feature also initialises all its component, editor-built spheres at startup.
 
+
+        private readonly HashSet<Sphere> _registeredSpheres = new HashSet<Sphere>();
+        private readonly HashSet<AbstractDominion> _registeredDominions = new HashSet<AbstractDominion>();
+        private readonly Dictionary<string, int> _mutations=new Dictionary<string, int>();
+
+        [DontEncaust]
+        public string EntityId { get; }
+        [DontEncaust]
+        public string Label { get; }
+        [DontEncaust]
+        public string Description { get;}
+        [Encaust]
+        public int Quantity { get; set; }
+        [DontEncaust]
+        public string UniquenessGroup { get; }
+        [DontEncaust]
+        public bool Unique { get; }
+        [DontEncaust]
+        public string Icon { get; }
+
+        [Encaust] public bool IsOpen { get; set; }
+
+        [Encaust]
+        public Dictionary<string, int> Mutations =>new Dictionary<string, int>(_mutations);
+        [Encaust]
+        public List<AbstractDominion> Dominions => new List<AbstractDominion>(_registeredDominions);
+
         private Token _token;
+        
 
         [DontEncaust]
         public Token Token
@@ -46,20 +74,17 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
                 }
             }
         }
+        
 
-        private readonly HashSet<Sphere> _registeredSpheres = new HashSet<Sphere>();
-        private readonly HashSet<AbstractDominion> _registeredDominions = new HashSet<AbstractDominion>();
-
-
-        [Encaust]
-        public List<Sphere> Spheres => new List<Sphere>(_registeredSpheres);
-        [Encaust]
-        public List<AbstractDominion> Dominions => new List<AbstractDominion>(_registeredDominions);
-
+ 
         [Encaust]
         public string Id { get; protected set; }
 
 
+        public TerrainFeature()
+        {
+
+        }
         public void SetId(string id)
         {
             Id = id;
@@ -88,8 +113,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
             throw new System.NotImplementedException();
         }
 
-        [Encaust]
-        public Dictionary<string, int> Mutations { get; }
+
         public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
         {
             throw new System.NotImplementedException();
@@ -131,8 +155,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
             _registeredSpheres.Remove(c);
         }
 
-        [Encaust]
-        public bool IsOpen { get; }
         public void OnSphereChanged(SphereChangedArgs args)
         {
             //
@@ -148,20 +170,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
            //
         }
 
-[DontEncaust]
-        public string EntityId { get; }
-        [DontEncaust]
-        public string Label { get; }
-        [DontEncaust]
-        public string Description { get; }
-        [Encaust]
-        public int Quantity { get; }
-        [DontEncaust]
-        public string UniquenessGroup { get; }
-        [DontEncaust]
-        public bool Unique { get; }
-        [DontEncaust]
-        public string Icon { get; }
+
         public string GetIllumination(string key)
         {
             throw new NotImplementedException();
@@ -179,7 +188,11 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public bool RegisterDominion(AbstractDominion dominion)
         {
-            throw new NotImplementedException();
+            dominion.OnSphereAdded.AddListener(AttachSphere);
+            dominion.OnSphereRemoved.AddListener(DetachSphere);
+            _registeredDominions.Add(dominion);
+
+            return true;
         }
 
 

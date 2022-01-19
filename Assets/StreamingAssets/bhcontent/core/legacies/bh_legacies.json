@@ -7,12 +7,14 @@
             "description": "She brought them to Brancrug Isle, which even then was a hidden place, to make a double foundation of nuns and monks, and become its first abbess: but she would admit none to the order who was a virgin, nor innocent of any crime. Since then, Brancrug has been a refuge for all the world might consider impure",
             "startdescription": "It's cold, here.",
             "image": "exile",
-            "effects": {
-                "*!library/solarium1!xhea":1,
-                "*!library/solarium1!xtri":1,
-                "*!library/solarium1!xwis":1,
-		"*/solarium1!bookcase":1
-            },
+            "effects": {},
+			 "startup": [
+                {
+                    "id": "setup.librarian",
+                    "chance": 100,
+					"topath":"*!library/solarium1"
+                }
+            ],
             "fromending": "retirement",
             "availableWithoutEndingMatch": true,
             "statusbarelements": [

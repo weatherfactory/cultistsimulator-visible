@@ -23,11 +23,11 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
 
         public override List<TokenCreationCommand> GetArbitraryPathTokenCreationCommandsToEnactLegacy(Legacy forLegacy)
         {
-            ///add this to CS as well so people can play with it?
+            //add this to CS as well so people can play with it?
             var commands = new List<TokenCreationCommand>();
 
             
-            foreach (var linked in forLegacy.StartupRecipes)
+            foreach (var linked in forLegacy.Startup)
             {
                 //very limited! at the moment just grabs the path from the link and the effects from the recipe
                 //doesn't check challenges, reqs, warmup, any of that stuff

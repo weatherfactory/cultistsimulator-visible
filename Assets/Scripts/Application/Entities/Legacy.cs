@@ -81,7 +81,7 @@ namespace SecretHistories.Entities
         /// ///These recipes execute when the game begins. An AtPath should be specified - otherwise just use effects.
         /// </summary>
         [FucineList]
-        public List<LinkedRecipeDetails> StartupRecipes { get; set; }
+        public List<LinkedRecipeDetails> Startup { get; set; }
 
         [FucineList] public List<string> ExcludesOnEnding { get; set; }
 

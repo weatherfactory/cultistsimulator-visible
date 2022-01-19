@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.Spheres;
+using SecretHistories.Assets.Scripts.Application.Spheres.Dominions;
 using SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads;
 using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
@@ -27,15 +28,18 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
             
             inSphere.AcceptToken(token, new Context(Context.ActionSource.Unknown));
 
-            //A terrain feature will likely have permanent sphere children.
-            var sphereComponentsInChildren = gameObject.GetComponentsInChildren<Sphere>();
-            foreach (var s in sphereComponentsInChildren)
-            {
-                var spec = s.GetComponent<PermanentSphereSpec>();
-                spec.ApplySpecToSphere(s);
-                terrainFeaturePayload.AttachSphere(s);
+            var dominionComponentsInChildren = gameObject.GetComponentsInChildren<WorldDominion>();
+            foreach(var d in dominionComponentsInChildren)
+                d.RegisterFor(terrainFeaturePayload); //this should also activate the spheres
 
-            }
+            //var sphereComponentsInChildren = gameObject.GetComponentsInChildren<Sphere>();
+            //foreach (var s in sphereComponentsInChildren)
+            //{
+            //    var spec = s.GetComponent<PermanentSphereSpec>();
+            //    spec.ApplySpecToSphere(s);
+            //    terrainFeaturePayload.AttachSphere(s);
+
+            //}
         }
     }
 }

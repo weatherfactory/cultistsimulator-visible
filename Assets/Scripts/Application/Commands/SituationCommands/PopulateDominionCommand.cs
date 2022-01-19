@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Assets.Scripts.Application.Spheres.Dominions;
 using SecretHistories.Core;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
@@ -73,31 +74,46 @@ namespace SecretHistories.Commands.SituationCommands
 
         public bool Execute(Situation situation)
         {
-            return Execute(situation as ITokenPayload);
+            return Execute(situation as ITokenPayload); //really? This must have been to stop a hasty gap.
+            //but it probably gets us out of our nasty casting situation below.
         }
 
         public bool Execute(ITokenPayload payload)
         {
-            if (Spheres.Any())
+            if (payload.IsPermanent())
             {
-                var dominion = payload.Dominions.SingleOrDefault(d => d.Identifier == Identifier);
-                if (dominion!=null)
+                //We don't create or remove spheres for terrain features. We just populate the existing ones.
+                if (Spheres.Any())
                 {
-                    //we're going to replace any existing spheres
-                    var sphereIdsToRemove = new List<string>(dominion.Spheres.Select(s => s.Id));
-                    foreach (var s in sphereIdsToRemove)
-                        dominion.RemoveSphere(s, SphereRetirementType.Graceful);
-
+                    var dominion = payload.Dominions.SingleOrDefault(d => d.Identifier == Identifier);
                     foreach (var s in Spheres)
-                        s.ExecuteOn(dominion as SituationDominion, new Context(Context.ActionSource.Unknown)); 
+                        s.ExecuteOn(dominion as WorldDominion, new Context(Context.ActionSource.Unknown));
                     return true;
                 }
-                else
+            }
+            else
+            {
+                if (Spheres.Any())
+                {
+                    var dominion = payload.Dominions.SingleOrDefault(d => d.Identifier == Identifier);
+                    if (dominion!=null)
+                    {
+                        //we're going to replace any existing spheres
+                        var sphereIdsToRemove = new List<string>(dominion.Spheres.Select(s => s.Id));
+                        foreach (var s in sphereIdsToRemove)
+                            dominion.RemoveSphere(s, SphereRetirementType.Graceful);
+
+                        foreach (var s in Spheres)
+                            s.ExecuteOn(dominion as SituationDominion, new Context(Context.ActionSource.Unknown)); 
+                        return true;
+                    }
+                    else
                 
-                //store the dominion creation for later. If a payload keeps its spheres in a manifestation, it
-                //may not yet be manifested, so the dominion may not yet exist.
-                    payload.StorePopulateDominionCommand(this);
-                
+                        //store the dominion creation for later. If a payload keeps its spheres in a manifestation, it
+                        //may not yet be manifested, so the dominion may not yet exist.
+                        payload.StorePopulateDominionCommand(this);
+                }
+
             }
 
             return false;

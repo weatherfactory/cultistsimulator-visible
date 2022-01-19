@@ -139,7 +139,7 @@ namespace SecretHistories.Entities {
         public Sphere GetSphereByPath(FucinePath spherePath)
         {
             if (spherePath.IsWild())
-                return FindSingleOrDefaultSphereByWildPath(spherePath);
+                return FindFirstOrDefaultSphereByWildPath(spherePath);
 
             if(!spherePath.IsAbsolute())
                throw new ApplicationException($"trying to find a sphere with sphere path '{spherePath.ToString()}', but that's not an absolute path or a wildcard path, and no context was provided");
@@ -491,12 +491,12 @@ namespace SecretHistories.Entities {
 
         }
 
-        public Sphere FindSingleOrDefaultSphereByWildPath(FucinePath wildPath)
+        public Sphere FindFirstOrDefaultSphereByWildPath(FucinePath wildPath)
         {
-            return FindSingleOrDefaultSphereByWildPath(wildPath, null);
+            return FindFirstOrDefaultSphereByWildPath(wildPath, null);
         }
 
-        public Sphere FindSingleOrDefaultSphereByWildPath(FucinePath wildPath,Sphere defaultResult)
+        public Sphere FindFirstOrDefaultSphereByWildPath(FucinePath wildPath,Sphere defaultResult)
         {
             
             foreach (var s in _registeredSpheres)
