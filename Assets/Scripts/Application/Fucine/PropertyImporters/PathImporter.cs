@@ -37,7 +37,7 @@ namespace SecretHistories.Fucine
                     else
                     {
                         NoonUtility.Log(
-                            $"Tried to import path {pathValueAsString} for an entity of type {nameof(T)}, but there's a problem with it: '{pathValue.IsValid()}'");
+                            $"Tried to import path {pathValueAsString} for an entity of type {nameof(T)}, but there's a problem with it: '{pathValue.GetDisplayStatus()}'");
                         return false;
                     }
                 }

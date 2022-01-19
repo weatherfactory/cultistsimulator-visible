@@ -322,10 +322,11 @@ namespace SecretHistories.Assets.Scripts.Application.UI
                 var consequenceRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(c.Id);
                 //we could conceivably use RecipeCompletionEffectCommand here, but that expects a Situation at the moment
 
+                string targetSphereId = c.ToPath.GetEndingPathPart().TrimSpherePrefix();
 
                 var targetSphere =
                     _spheres.SingleOrDefault(s =>
-                        s.Id == c.ToPath.ToString()); //NOTE: we're not actually using the pathing system here. We might want to upgrade to that.
+                        s.Id == targetSphereId); //NOTE: we're not actually using the pathing system here. We might want to upgrade to that.
 
                 var fader = targetSphere.gameObject.GetComponent<CanvasGroupFader>();
                 if(fader!=null)

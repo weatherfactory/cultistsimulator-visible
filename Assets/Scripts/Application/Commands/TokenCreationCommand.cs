@@ -90,8 +90,10 @@ namespace SecretHistories.Commands
             }
 
             //if we have a valid location that is not the same as the sphere in which this is being executed, execute at the location instead
-            else if (Location != null && Location.HasValidSpherePath() &&
-                !sphere.GetAbsolutePath().Conforms(Location.AtSpherePath))
+            else if (Location != null && Location.HasValidSpherePath() 
+                     && !Location.AtSpherePath.IsRoot() //what? why? Because back when the pathing system was embryonic, 
+                     //root meant 'ugh I dont know what should go here and/or maybe this means current.' So it's often the default for CS when it should actually be current.
+                     && !sphere.GetAbsolutePath().Conforms(Location.AtSpherePath))
                 actualSphereToInstantiateIn = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
             else
                 actualSphereToInstantiateIn = sphere;

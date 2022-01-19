@@ -35,7 +35,16 @@ namespace SecretHistories.Fucine
             return false;
         }
 
-        public virtual string DisplayStatus()
+        public virtual bool IsRoot()
+        {
+            if(PathParts.Count==1
+                && PathParts.First().Category==FucinePathPart.PathCategory.Root)
+                return true;
+
+            return false;
+        }
+
+        public virtual string GetDisplayStatus()
         {
             //could put more verbose descriptors in here
             return Validity.ToString();
