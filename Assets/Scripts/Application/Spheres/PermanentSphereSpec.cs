@@ -47,7 +47,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
         protected void InitialiseChildTerrainFeatures(Sphere sphere)
         {
-            var terrainFeatures = GetComponentsInChildren<TerrainFeatureInitialiser>();
+            var terrainFeatures = GetComponentsInChildren<InitialiseAsTerrainFeature>();
             foreach (var tf in terrainFeatures)
                 tf.Initialise(sphere);
         }

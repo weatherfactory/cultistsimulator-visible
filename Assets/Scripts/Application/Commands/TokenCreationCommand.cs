@@ -105,10 +105,12 @@ namespace SecretHistories.Commands
                 //permanent tokens, like terrain features, are already instantiated with the token component already attached.
                 //So we don't instantiate the token: we just find the existing token and then populate it with relevant payload data.
                 newToken = actualSphereToInstantiateIn.GetTokens().SingleOrDefault(t => t.PayloadId == payloadForToken.Id);
-                if(newToken==null || !newToken.IsValid());
+                if(newToken==null || !newToken.IsValid())
                 {
                     NoonUtility.LogWarning($"Couldn't populate a permanent token with payload id {payloadForToken.Id} in {actualSphereToInstantiateIn.GetAbsolutePath()}");
                 }
+
+
             }
        
 

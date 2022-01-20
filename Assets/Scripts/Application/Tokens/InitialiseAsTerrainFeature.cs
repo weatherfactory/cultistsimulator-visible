@@ -13,15 +13,16 @@ using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.Tokens
 {
-    public class TerrainFeatureInitialiser: MonoBehaviour
+    public class InitialiseAsTerrainFeature: MonoBehaviour
     {
         public string EditableIdentifier;
 
 
         public void Initialise(Sphere inSphere)
         {
-            var token = gameObject.GetComponent<Token>();
-            var existingManifestation = gameObject.GetComponent<MinimalManifestation>();
+         //   var token = gameObject.GetComponent<Token>();
+         var token = gameObject.AddComponent<Token>();
+         var existingManifestation = gameObject.AddComponent<MinimalManifestation>();
             var terrainFeaturePayload = new TerrainFeature();
             terrainFeaturePayload.SetId(EditableIdentifier);
             token.SetPayloadWithExistingManifestation(terrainFeaturePayload, existingManifestation);
