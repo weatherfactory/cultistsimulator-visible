@@ -36,6 +36,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
         private readonly HashSet<Sphere> _registeredSpheres = new HashSet<Sphere>();
         private readonly HashSet<AbstractDominion> _registeredDominions = new HashSet<AbstractDominion>();
         private readonly Dictionary<string, int> _mutations=new Dictionary<string, int>();
+        [Encaust] public string Id { get; protected set; }
 
         [DontEncaust]
         public string EntityId { get; }
@@ -77,8 +78,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
         
 
  
-        [Encaust]
-        public string Id { get; protected set; }
 
 
         public TerrainFeature()
