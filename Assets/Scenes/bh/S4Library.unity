@@ -13555,7 +13555,7 @@ GameObject:
   - component: {fileID: 1559623475}
   - component: {fileID: 1559623474}
   m_Layer: 0
-  m_Name: LibraryCamera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16211,6 +16211,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UIController
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: TruckEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1559623474}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: PedestalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1559623474}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: TruckEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTruckEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: ZoomLevelEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1559623474}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: PedestalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPedestalEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: ZoomLevelEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnZoomEvent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9649df484f5c1a469a65b2f1cc82805, type: 3}
