@@ -24,22 +24,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Dominions
         public override void Awake()
         {
             Identifier = gameObject.name;
-            var spheres = GetComponentsInChildren<Sphere>();
-            foreach (var s in spheres)
-            {
-                var sphereSpec = s.gameObject.GetComponent<PermanentSphereSpec>();
-                if(sphereSpec==null)
-                    NoonUtility.LogWarning($"Trying to set up spheres in a world dominion, but can't find a PermanentSphereSpec on {s.name}, so won't add it.");
-                else
-                {
-                    
-                    sphereSpec.ApplySpecToSphere(s);
-                    s.SetContainer(FucineRoot.Get());
-                    Watchman.Get<HornedAxe>().RegisterSphere(s);
-
-                }
-            }
-
+            
             base.Awake();
         }
 

@@ -124,10 +124,6 @@ namespace SecretHistories.UI
                 var actualSphere = permanentSphere.GetSphereComponent();
                 permanentSphere.ApplySpecToSphere(actualSphere);
                 _spheres.Add(actualSphere);
-
-                //Moved this inside the loop for permanent spheres, because it seemed to be firing twice wherever we were registering spheres in a dominion.
-                //move it back outside the loop if this causes some unexpected issue!
-  
             }
 
 

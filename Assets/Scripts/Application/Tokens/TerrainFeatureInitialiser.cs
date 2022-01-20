@@ -30,16 +30,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
 
             var dominionComponentsInChildren = gameObject.GetComponentsInChildren<WorldDominion>();
             foreach(var d in dominionComponentsInChildren)
-                d.RegisterFor(terrainFeaturePayload); //this should also activate the spheres
+                d.RegisterFor(terrainFeaturePayload); //this will also attach the spheres.
 
-            //var sphereComponentsInChildren = gameObject.GetComponentsInChildren<Sphere>();
-            //foreach (var s in sphereComponentsInChildren)
-            //{
-            //    var spec = s.GetComponent<PermanentSphereSpec>();
-            //    spec.ApplySpecToSphere(s);
-            //    terrainFeaturePayload.AttachSphere(s);
-
-            //}
         }
     }
 }

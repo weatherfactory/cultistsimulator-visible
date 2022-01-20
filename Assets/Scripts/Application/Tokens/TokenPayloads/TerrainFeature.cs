@@ -141,6 +141,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public void AttachSphere(Sphere sphere)
         {
+  
             sphere.Subscribe(this);
             sphere.SetContainer(this);
             _registeredSpheres.Add(sphere);

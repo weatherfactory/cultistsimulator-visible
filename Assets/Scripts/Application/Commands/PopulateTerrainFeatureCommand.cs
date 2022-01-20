@@ -31,18 +31,16 @@ namespace SecretHistories.Assets.Scripts.Application.Commands
         {
             
           var existingTerrainFeatureToken=Watchman.Get<HornedAxe>().FindSingleOrDefaultTokenById(Id);
-          var terrainFeaturePayload = new TerrainFeature();
-          terrainFeaturePayload.SetId(Id); //unusually, because terrain features are 100% unique, the payload and the token have the same Id
-          terrainFeaturePayload.Quantity = Quantity;
-          terrainFeaturePayload.IsOpen = IsOpen;
+
+            //In most cases, we'd now recreate the payload. In this case, the initialiser has already done this at scene setup. We
+            //just need to retrieve it and update its properties.
+            var terrainFeaturePayload = existingTerrainFeatureToken.Payload as TerrainFeature;
+       
+          terrainFeaturePayload.Quantity = Quantity; //may always be meaningless, but let's assume there's some useful difference of degree.
+          terrainFeaturePayload.IsOpen = IsOpen; //likely useful for info windows; we may need to call something to recognise its openness
           foreach(var m in Mutations)
               terrainFeaturePayload.SetMutation(m.Key,m.Value,false);
 
-            //illuminations?
-            var dominionComponentsInChildren = existingTerrainFeatureToken.gameObject.GetComponentsInChildren<WorldDominion>();
-
-            foreach (var d in dominionComponentsInChildren)
-                d.RegisterFor(terrainFeaturePayload); //this should also activate the spheres
 
             foreach (var d in Dominions)
               d.Execute(terrainFeaturePayload);
