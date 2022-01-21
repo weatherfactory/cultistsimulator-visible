@@ -252,17 +252,17 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public bool CanInteractWith(ITokenPayload incomingTokenPayload)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public bool CanMergeWith(ITokenPayload incomingTokenPayload)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public void InteractWithIncoming(Token incomingToken)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public bool ReceiveNote(INotification notification, Context context)

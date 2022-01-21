@@ -13,5 +13,12 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
     public class WideThreshold: Sphere
     {
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
+        public override bool AllowDrag
+        {
+            get
+            {
+                return true;
+            }
+        }
     }
 }
