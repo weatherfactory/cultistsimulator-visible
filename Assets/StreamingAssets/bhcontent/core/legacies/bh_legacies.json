@@ -9,11 +9,9 @@
             "image": "exile",
             "effects": {},
 			 "startup": [
-                {
-                    "id": "setup.librarian",
-                    "chance": 100,
-					"topath":"*!library/solarium"
-                }
+                {"id": "setup.librarian.abilities","topath":"~/hand"},
+				{"id": "setup.librarian.fitments","topath":"*!library/solarium"}
+				
             ],
             "fromending": "retirement",
             "availableWithoutEndingMatch": true,

@@ -1,15 +1,25 @@
  {"recipes": [
  
     {
-        "id": "setup.librarian",
+        "id": "setup.librarian.abilities",
         "label": ".",
-        "actionid": ".",
+        "actionid": ".path_could_go_here",
         "requirements": {},
         "effects": {
                 "xhea":1,
                 "xtri":1,
-                "xwis":1,
-		"bookcase":1},
+                "xwis":1},
+        "startdescription": ".",
+        "description": ".",
+        "warmup": 0,
+        "craftable": false
+    },
+	    {
+        "id": "setup.librarian.fitments",
+        "label": ".",
+        "actionid": ".path_could_go_here",
+        "requirements": {},
+        "effects": {"bookcase":1},
         "startdescription": ".",
         "description": ".",
         "warmup": 0,
