@@ -16,14 +16,17 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 {
     public class RowChoreographer : AbstractChoreographer
     {
- 
 
-            public int MaxPlacementAttempts { get; set; }
+
+        
             public float InternalSpacing { get; set; }
+            public int MaxPlacementAttempts; /// set in code in the dropzone, because I was fudging my way out of *that* one.
+            
 
-            public string PathOfOverlapSphereToWatch;
+        public string PathOfOverlapSphereToWatch;
+            
 
-            public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
+        public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
             {
                 var acceptablePosition = GetFreeLocalPosition(token, Vector3.zero);
                 token.TokenRectTransform.anchoredPosition3D = acceptablePosition;
@@ -41,53 +44,25 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             public override LegalPositionCheckResult IsLegalPlacement(Rect candidateRect, Token placingToken)
             {
-                Sphere overlapSphereToWatch;
-                FucinePath fpOverlapSphereToWatch = new FucinePath(PathOfOverlapSphereToWatch);
-                if (!fpOverlapSphereToWatch.IsValid())
-                    overlapSphereToWatch = Watchman.Get<HornedAxe>().GetDefaultSphere();
-                else
-                    overlapSphereToWatch = Watchman.Get<HornedAxe>().GetSphereByPath(fpOverlapSphereToWatch);
-                 var result = LegalInThisAndInOverlappingSphere(overlapSphereToWatch, candidateRect, placingToken);
 
+            Rect otherTokenOverlapRect;
 
-                return result;
-            }
-
-
-            private LegalPositionCheckResult LegalInThisAndInOverlappingSphere(Sphere overlapSphere, Rect candidateRect,
-                Token placingToken)
+            foreach (var otherToken in Sphere.Tokens.Where(t => t.PayloadId != placingToken.PayloadId))
             {
-                Rect otherTokenOverlapRect;
-
-                foreach (var otherToken in Sphere.Tokens.Where(t => t.PayloadId != placingToken.PayloadId))
+                if (!CanTokenBeIgnored(otherToken))
                 {
-                    if (!CanTokenBeIgnored(otherToken))
-                    {
-                        otherTokenOverlapRect =
-                            otherToken
-                                .GetRectInCurrentSphere(); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
-                        if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapCoefficient()))
-
-                            return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
-                    }
+                    otherTokenOverlapRect =
+                        otherToken
+                            .GetRectInCurrentSphere(); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
+                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapCoefficient()))
+                        return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
                 }
-
-                foreach (var otherToken in overlapSphere.Tokens)
-                {
-                    if (!CanTokenBeIgnored(otherToken))
-                    {
-                        otherTokenOverlapRect =
-                            otherToken.GetRectInOtherSphere(
-                                Sphere); //we need the token's rect in the current sphere, not in the world sphere, to compare with the candidate rect we've just calculated for current sphere
-                        if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapCoefficient()))
-
-                            return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
-                    }
-                }
-
-                return LegalPositionCheckResult.Legal();
-
             }
+
+            return LegalPositionCheckResult.Legal();
+        }
+
+
 
             public override bool CanTokenBeIgnored(Token token)
             {
