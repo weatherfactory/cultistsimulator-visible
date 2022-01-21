@@ -41,7 +41,7 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
                     int quantity = int.Parse(effect.Value); //it won't work with rich effects. Refactor recipe execution out of situations wand we can do this!
                     var elementStackCreationCommand = new ElementStackCreationCommand(effect.Key, quantity);
                     TokenCreationCommand startingTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(effectPath));
-
+                    
                     commands.Add(startingTokenCreationCommand);
                 }
             }
