@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Constants;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -18,10 +19,9 @@ namespace SecretHistories.Manifestations
 
 {
     [RequireComponent(typeof(RectTransform))]
-    public class TextManifestation : MonoBehaviour, IManifestation
+    public class TextManifestation : BasicManifestation, IManifestation
     {
-        public Transform Transform => gameObject.transform;
-        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
+
         
         [SerializeField] private TMP_Text textComponent;
         public void Retire(RetirementVFX retirementVfx, Action callback)

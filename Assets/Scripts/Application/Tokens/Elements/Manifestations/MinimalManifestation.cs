@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -19,10 +20,8 @@ using UnityEngine.EventSystems;
 namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class MinimalManifestation:MonoBehaviour,IManifestation
+    public class MinimalManifestation: BasicManifestation, IManifestation
     {
-        public Transform Transform => gameObject.transform;
-        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
         public bool RequestingNoDrag => false;
         public bool RequestingNoSplit => true;
@@ -48,11 +47,6 @@ namespace SecretHistories.Manifestations
         public void UpdateVisuals(IManifestable manifestable)
         {
             //
-        }
-
-        public void UpdateLocalScale(Vector3 newScale)
-        {
-            RectTransform.localScale = newScale;
         }
 
         public void UpdateVisuals(ITokenPayload payload)

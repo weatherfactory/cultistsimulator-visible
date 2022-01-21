@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -22,10 +23,8 @@ namespace SecretHistories.Manifestations
 
 #pragma warning disable 649
     [RequireComponent(typeof(RectTransform))]
-    public class StoredManifestation: MonoBehaviour, IManifestation
+    public class StoredManifestation: BasicManifestation, IManifestation
     {
-        public Transform Transform => gameObject.transform;
-        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
 
 
         [SerializeField] private CanvasGroup canvasGroup;
@@ -48,10 +47,7 @@ namespace SecretHistories.Manifestations
             elementFrame.PopulateDisplay(element, manifestable.Quantity, false);
         }
 
-        public void UpdateLocalScale(Vector3 newScale)
-        {
-            RectTransform.localScale = newScale;
-        }
+
 
         public void SendNotification(INotification notification)
         {
@@ -83,8 +79,7 @@ namespace SecretHistories.Manifestations
         {
    //
         }
-
-
+        
         public void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
             Destroy(gameObject);

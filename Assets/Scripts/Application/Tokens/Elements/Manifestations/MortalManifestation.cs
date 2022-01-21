@@ -4,26 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
-using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Enums;
-using SecretHistories.Fucine;
-using SecretHistories.Ghosts;
-using SecretHistories.Services;
-using SecretHistories.Spheres;
+using SecretHistories.Manifestations;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace SecretHistories.Manifestations
+namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations
 {
-    [RequireComponent(typeof(RectTransform))]
-    public class BookcaseManifestation: BasicManifestation, IManifestation
+ [RequireComponent(typeof(RectTransform))]
+    public class MortalManifestation: BasicManifestation, IManifestation
     {
-
-
-        [SerializeField] List<ShelfDominion> _dominions;
-
- 
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -32,90 +23,80 @@ namespace SecretHistories.Manifestations
 
         public bool CanAnimateIcon()
         {
-            return false;
+            throw new NotImplementedException();
         }
 
         public void BeginIconAnimation()
         {
-          //
+            throw new NotImplementedException();
         }
 
         public void Initialise(IManifestable manifestable)
         {
-            name = "BookcaseManifestation" + manifestable.Id;
-            foreach(var d in _dominions)
-                d.RegisterFor(manifestable);
+            throw new NotImplementedException();
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-     
+            throw new NotImplementedException();
         }
 
         public void OnBeginDragVisuals()
         {
+            throw new NotImplementedException();
         }
 
         public void OnEndDragVisuals()
         {
+            throw new NotImplementedException();
         }
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
+            throw new NotImplementedException();
         }
 
         public void Unhighlight(HighlightType highlightType, IManifestable manifestable)
         {
+            throw new NotImplementedException();
         }
 
         public bool NoPush { get; }
         public void Unshroud(bool instant)
         {
-       
+            throw new NotImplementedException();
         }
 
         public void Shroud(bool instant)
         {
-    
+            throw new NotImplementedException();
         }
 
         public void Emphasise()
         {
-            //
+            throw new NotImplementedException();
         }
 
         public void Understate()
         {
-           //
+            throw new NotImplementedException();
         }
 
         public bool RequestingNoDrag { get; }
-        public bool RequestingNoSplit => true;
-
+        public bool RequestingNoSplit { get; }
         public void DoMove(RectTransform tokenRectTransform)
         {
-       
-        }
-
-        public void SendNotification(INotification notification)
-        {
+            throw new NotImplementedException();
         }
 
         public bool HandlePointerClick(PointerEventData eventData, Token token)
         {
-            return false;
-        }
-
-        public void DisplaySpheres(IEnumerable<Sphere> spheres)
-        {
+            throw new NotImplementedException();
         }
 
         public IGhost CreateGhost()
         {
-            var newGhost = Watchman.Get<PrefabFactory>()
-                .CreateGhostPrefab(typeof(BookcaseGhost), this.RectTransform);
-            return newGhost;
+            throw new NotImplementedException();
         }
-
     }
 }

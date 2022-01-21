@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Spheres.Angels;
+using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Constants.Events;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -21,11 +22,10 @@ using UnityEngine.UI;
 namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class DropzoneManifestation: MonoBehaviour,IManifestation,IPointerClickHandler, IPointerEnterHandler
+    public class DropzoneManifestation: BasicManifestation, IManifestation,IPointerClickHandler, IPointerEnterHandler
     {
         
-        public Transform Transform => gameObject.transform;
-        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
+
 
         public bool RequestingNoDrag => false;
         public bool RequestingNoSplit => true;
@@ -109,12 +109,6 @@ namespace SecretHistories.Manifestations
         public void UpdateVisuals(IManifestable manifestable)
         {
             //
-        }
-
-        public void UpdateLocalScale(Vector3 newScale)
-        {
-            RectTransform.localScale = newScale;
-            
         }
 
 

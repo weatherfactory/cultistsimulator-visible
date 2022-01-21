@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -26,7 +27,7 @@ namespace SecretHistories.Manifestations
 
 {
     [RequireComponent(typeof(RectTransform))]
-    public class VerbManifestation: MonoBehaviour, IManifestation
+    public class VerbManifestation: BasicManifestation, IManifestation
     {
 #pragma warning disable 649
         [SerializeField] Image artwork;
@@ -128,10 +129,6 @@ namespace SecretHistories.Manifestations
             DisplayOutputs(manifestable);
         }
 
-        public void UpdateLocalScale(Vector3 newScale)
-        {
-            RectTransform.localScale = newScale;
-        }
 
 
         private void TryOverrideVerbIcon(AspectsDictionary forAspects)

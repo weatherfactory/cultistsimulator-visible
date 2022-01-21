@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
@@ -15,7 +16,7 @@ using UnityEngine.UI;
 namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class BookManifestation : MonoBehaviour, IManifestation, IPointerEnterHandler, IPointerExitHandler
+    public class BookManifestation : BasicManifestation, IManifestation, IPointerEnterHandler, IPointerExitHandler
     {
         private Image frontCover;
         private Image backCover;
@@ -25,8 +26,6 @@ namespace SecretHistories.Manifestations
         private const string BACK_COVER_SUFFIX = "_b";
         private const string SPINE_SUFFIX = "_";
 
-        public Transform Transform { get; }
-        public RectTransform RectTransform { get; }
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
             Destroy(gameObject);
@@ -74,10 +73,6 @@ namespace SecretHistories.Manifestations
             UpdateVisuals(manifestable);
         }
 
-        public void UpdateLocalScale(Vector3 newScale)
-        {
-            RectTransform.localScale = newScale;
-        }
 
         public void OnBeginDragVisuals()
         {

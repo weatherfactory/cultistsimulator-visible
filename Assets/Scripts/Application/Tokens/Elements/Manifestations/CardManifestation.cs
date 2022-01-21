@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -24,7 +25,7 @@ using UnityEngine.UI;
 namespace SecretHistories.Manifestations
 {
     [RequireComponent(typeof(RectTransform))]
-    public class CardManifestation : MonoBehaviour, IManifestation,IPointerEnterHandler,IPointerExitHandler
+    public class CardManifestation : BasicManifestation, IManifestation,IPointerEnterHandler,IPointerExitHandler
     {
 
         [SerializeField] private Image artwork;
@@ -42,8 +43,6 @@ namespace SecretHistories.Manifestations
         [SerializeField] public GraphicFader glowImage;
 
 
-        public Transform Transform => gameObject.transform;
-        public RectTransform RectTransform=> gameObject.GetComponent<RectTransform>();
      
         private Image decayBackgroundImage;
         private Color cachedDecayBackgroundColor;
@@ -144,7 +143,7 @@ namespace SecretHistories.Manifestations
         }
 
 
-        public void UpdateLocalScale(Vector3 newScale)
+        public override void UpdateLocalScale(Vector3 newScale)
         {
             RectTransform.localScale = newScale;
             text.rectTransform.localScale = newScale;
