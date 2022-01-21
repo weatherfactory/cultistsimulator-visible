@@ -137,4 +137,11 @@ namespace SecretHistories.Enums
         Graceful=2
     }
 
+    public enum VerbCategory
+    {
+        Shabda=1,
+        Someone=2,
+        Fitment=3
+    }
+
 }
