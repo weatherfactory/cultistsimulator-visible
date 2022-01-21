@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyId: sea
+  ApplyId: region_sea
   EnRouteSpherePath: ~/enroute
   WindowsSpherePath: ~/windows
 --- !u!114 &9413245
@@ -1829,8 +1829,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 70447374}
-  - component: {fileID: 70447377}
-  - component: {fileID: 70447376}
   - component: {fileID: 70447375}
   m_Layer: 5
   m_Name: VillageTerrainFeature
@@ -1869,40 +1867,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 70447373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1c94d18b4ba8f049adbd315cc4873af, type: 3}
+  m_Script: {fileID: 11500000, guid: 591e1bcc1ef18874abf5d00c9e1a1774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &70447376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70447373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ApplyId: village
-  EnRouteSpherePath: ~/enroute
-  WindowsSpherePath: ~/windows
---- !u!114 &70447377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70447373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 741ce118c4e144f4f95bb0c6c358cd06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WorldPosition: {x: 0, y: 0, z: 0}
-  _editorAbsolutePath: 
-  _editorWildPath: 
-  VisibleCharacteristics: []
+  EditableIdentifier: village
 --- !u!1 &73633946
 GameObject:
   m_ObjectHideFlags: 0
@@ -4406,9 +4374,9 @@ RectTransform:
   m_Father: {fileID: 1976668738}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -168.54001}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &327015170
@@ -4805,7 +4773,7 @@ GameObject:
   - component: {fileID: 368571055}
   - component: {fileID: 368571054}
   m_Layer: 5
-  m_Name: Beach
+  m_Name: Foreshore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4860,7 +4828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyId: beach
+  ApplyId: foreshore
 --- !u!114 &368571056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8870,7 +8838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyId: isle
+  ApplyId: region_isle
   EnRouteSpherePath: ~/enroute
   WindowsSpherePath: ~/windows
 --- !u!114 &936279191
@@ -9077,7 +9045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyId: sky
+  ApplyId: region_sku
   EnRouteSpherePath: ~/enroute
   WindowsSpherePath: ~/windows
 --- !u!114 &949232309
@@ -9628,7 +9596,7 @@ GameObject:
   - component: {fileID: 976315723}
   - component: {fileID: 976315722}
   m_Layer: 5
-  m_Name: Bridge
+  m_Name: Span
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9683,7 +9651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyId: bridge
+  ApplyId: span
 --- !u!114 &976315724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9907,8 +9875,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027683026}
-  - component: {fileID: 1027683029}
-  - component: {fileID: 1027683028}
   - component: {fileID: 1027683027}
   m_Layer: 5
   m_Name: BridgeTerrainFeature
@@ -9947,40 +9913,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1027683025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1c94d18b4ba8f049adbd315cc4873af, type: 3}
+  m_Script: {fileID: 11500000, guid: 591e1bcc1ef18874abf5d00c9e1a1774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1027683028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027683025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ApplyId: village
-  EnRouteSpherePath: ~/enroute
-  WindowsSpherePath: ~/windows
---- !u!114 &1027683029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027683025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 741ce118c4e144f4f95bb0c6c358cd06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WorldPosition: {x: 0, y: 0, z: 0}
-  _editorAbsolutePath: 
-  _editorWildPath: 
-  VisibleCharacteristics: []
+  EditableIdentifier: bridge
 --- !u!1 &1028188503
 GameObject:
   m_ObjectHideFlags: 0
@@ -17948,7 +17884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4bbf8cffdac6364daffa2669628619f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyId: village
+  ApplyId: region_coast
   EnRouteSpherePath: ~/enroute
   WindowsSpherePath: ~/windows
 --- !u!114 &1883325086
@@ -18126,7 +18062,7 @@ PrefabInstance:
     - target: {fileID: 350386533633186471, guid: 79eed2fb2a37aa04e9d188c4b0113784,
         type: 3}
       propertyPath: ApplyId
-      value: wavesroom
+      value: waves
       objectReference: {fileID: 0}
     - target: {fileID: 350386533756394856, guid: 79eed2fb2a37aa04e9d188c4b0113784,
         type: 3}
@@ -18153,6 +18089,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.34550256
       objectReference: {fileID: 0}
+    - target: {fileID: 8353506846778974187, guid: 79eed2fb2a37aa04e9d188c4b0113784,
+        type: 3}
+      propertyPath: EditableIdentifier
+      value: sea
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79eed2fb2a37aa04e9d188c4b0113784, type: 3}
 --- !u!224 &1899533075 stripped
@@ -18175,7 +18116,7 @@ GameObject:
   - component: {fileID: 1902205849}
   - component: {fileID: 1902205848}
   m_Layer: 5
-  m_Name: Village
+  m_Name: Inn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18230,7 +18171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApplyId: village
+  ApplyId: inn
 --- !u!114 &1902205850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20287,7 +20228,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 550, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2111072234
 MonoBehaviour:
@@ -20664,7 +20605,7 @@ PrefabInstance:
     - target: {fileID: 350386533633186471, guid: 79eed2fb2a37aa04e9d188c4b0113784,
         type: 3}
       propertyPath: ApplyId
-      value: weatherroom
+      value: weather
       objectReference: {fileID: 0}
     - target: {fileID: 350386533756394857, guid: 79eed2fb2a37aa04e9d188c4b0113784,
         type: 3}
@@ -20696,7 +20637,15 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.36445352
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8353506846778974187, guid: 79eed2fb2a37aa04e9d188c4b0113784,
+        type: 3}
+      propertyPath: EditableIdentifier
+      value: sky
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 350386533014417305, guid: 79eed2fb2a37aa04e9d188c4b0113784, type: 3}
+    - {fileID: 350386533014417304, guid: 79eed2fb2a37aa04e9d188c4b0113784, type: 3}
+    - {fileID: 350386533014417310, guid: 79eed2fb2a37aa04e9d188c4b0113784, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 79eed2fb2a37aa04e9d188c4b0113784, type: 3}
 --- !u!1001 &1920708848303717315
 PrefabInstance:

@@ -119,10 +119,14 @@ namespace SecretHistories.UI
             //if we have permanent spheres created in editor, as for instance in otherworld prefabs, find and add them here.
             //I decided not to make the references explicit in the editor; worth reconsidering that decision if it causes problems later
             var permanentSpheres = gameObject.GetComponentsInChildren<PermanentSphereSpec>();
-            foreach (var permanentSphere in permanentSpheres)
+
+            foreach (var permanentSphereSpec in permanentSpheres)
             {
-                var actualSphere = permanentSphere.GetSphereComponent();
-                permanentSphere.ApplySpecToSphere(actualSphere);
+                if (string.IsNullOrEmpty(permanentSphereSpec.ApplyId))
+                    NoonUtility.LogWarning("Permanent spec for sphere " + permanentSphereSpec.name + " doesn't have an id specified.");
+
+                var actualSphere = permanentSphereSpec.GetSphereComponent();
+                permanentSphereSpec.ApplySpecToSphere(actualSphere);
                 _spheres.Add(actualSphere);
             }
 
