@@ -16732,7 +16732,7 @@ Canvas:
   m_GameObject: {fileID: 1665885375}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -16753,7 +16753,7 @@ RectTransform:
   m_GameObject: {fileID: 1665885375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1652631059}
@@ -16761,11 +16761,11 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1666503208
 GameObject:
   m_ObjectHideFlags: 0
@@ -18263,6 +18263,11 @@ PrefabInstance:
       objectReference: {fileID: 1559623474}
     - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
         type: 3}
+      propertyPath: ToggleDebugEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2019357214}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
       propertyPath: PedestalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnPedestalEvent
       objectReference: {fileID: 0}
@@ -18270,6 +18275,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ZoomLevelEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnZoomEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: ToggleDebugEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Cycle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9649df484f5c1a469a65b2f1cc82805, type: 3}
@@ -20583,6 +20593,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 751612785}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2019357214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6310947744287549526, guid: 21e879d32af49d1429ceacb28750c077,
+    type: 3}
+  m_PrefabInstance: {fileID: 751612785}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c3f903d174b824596a5624e5307c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2034099113
 GameObject:
   m_ObjectHideFlags: 0
