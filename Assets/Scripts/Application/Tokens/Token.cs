@@ -488,7 +488,6 @@ namespace SecretHistories.UI {
 
     public void OnBeginDrag(PointerEventData eventData)
         {
-            NoonUtility.Log("Beginning drag for " + this.name,0,VerbosityLevel.SystemChatter);
 
             if (CanBeDragged())
                 StartDrag(eventData);
@@ -542,7 +541,7 @@ namespace SecretHistories.UI {
             Sphere.AddAngel(homingAngel);
 
             CurrentState=new BeingDraggedState();
-            
+           
             
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
             //just picked the token up, but it hasn't yet left the origin sphere. 
@@ -550,6 +549,16 @@ namespace SecretHistories.UI {
 
 
             var enrouteSphere = Payload.GetEnRouteSphere();
+
+            var canvas = transform.GetComponentInParent<Canvas>();
+            var rootCanvas = canvas.rootCanvas;
+
+            if (rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+            {
+                var mousePosition = Mouse.current.position.ReadValue();
+                transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+            }
+
 
             enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
             
