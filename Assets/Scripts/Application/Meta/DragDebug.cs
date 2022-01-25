@@ -10,6 +10,7 @@ using SecretHistories.Events;
 using SecretHistories.Fucine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
 {
@@ -51,6 +52,16 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
         currentSphere.text = args.Sphere?.name;
         if (args.Token != null && args.Token.ManifestationRectTransform != null && args.Sphere!=null)
         {
+
+            var pointerPosition = Pointer.current.position.ReadValue();
+
+            string ppString = $"{Math.Round(pointerPosition.x, 0)}, {Math.Round(pointerPosition.y, 0)}";
+
+            var pointerWorldPosition = Camera.main.ScreenToWorldPoint(pointerPosition);
+
+            string pwpString = $"{Math.Round(pointerWorldPosition.x, 0)}, {Math.Round(pointerWorldPosition.y, 0)}";
+
+
             var localPosition = args.Token.TokenRectTransform.localPosition;
             
             string lpstring = $"{Math.Round(localPosition.x, 0)}, {Math.Round(localPosition.y, 0)}, {Math.Round(localPosition.z, 0)}";
@@ -84,7 +95,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
             }
 
 
-            positioningText.text = $"Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \n Projected Position on Tabletop: {projectedPositionInTabletop} \nHovering Over: {hoveringOver}";
+            positioningText.text = $"Pointer (screen): {ppString} Pointer (world): {pwpString} Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \n Projected Position on Tabletop: {projectedPositionInTabletop} \nHovering Over: {hoveringOver}";
 
         }
 

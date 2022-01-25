@@ -30,7 +30,7 @@ namespace Assets.Scripts.Application.Meta
         [SerializeField] private Button ClearCheevo;
 
 
-        public void Awake()
+        public void Start()
         {
             SetCheevo.gameObject.SetActive(Watchman.Get<Config>().knock);
             ClearCheevo.gameObject.SetActive(Watchman.Get<Config>().knock);

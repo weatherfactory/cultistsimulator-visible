@@ -550,17 +550,16 @@ namespace SecretHistories.UI {
 
             var enrouteSphere = Payload.GetEnRouteSphere();
 
-            var canvas = transform.GetComponentInParent<Canvas>();
-            var rootCanvas = canvas.rootCanvas;
+            //var canvas = transform.GetComponentInParent<Canvas>();
+            //var rootCanvas = canvas.rootCanvas;
 
-            if (rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
-            {
-                var mousePosition = Mouse.current.position.ReadValue();
-                transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
-            }
-
-
-            enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
+            //if (rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+            //{
+            //    transform.position = transform.localPosition;
+            //    enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
+            //}
+            //else
+                enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
             
             TokenRectTransform.SetAsLastSibling();
             _manifestation.OnBeginDragVisuals();
@@ -646,6 +645,9 @@ namespace SecretHistories.UI {
 
         public  void OnEndDrag(PointerEventData eventData)
         {
+            if (CurrentState.Docked()) //OnEndDrag can be called by the event system even if the token has rejected a drag. Filter out false alarms like this.
+                return;
+
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
             
             FinishDrag();
@@ -702,6 +704,9 @@ namespace SecretHistories.UI {
             //and the token on which this method has been called is the token that is currently in situ
             var incomingToken = eventData.pointerDrag.GetComponent<Token>();
             if (incomingToken == null)
+                return;
+
+            if (incomingToken.CurrentState.Docked()) //OnDrop can be called by the event system even if the token has rejected a drag. Filter out false alarms like this.
                 return;
 
             if (CanInteractWithToken(incomingToken))
