@@ -53,12 +53,14 @@ public class Config
         PersistConfigValue(NoonConstants.CULTURE_SETTING_KEY,
             DetermineMostSuitableCultureId());
 
-      
-
 
       if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY)))
             PersistConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY,
                 NoonConstants.DEFAULT_IMAGES_FOLDER_NAME);
+
+      if (string.IsNullOrEmpty(GetConfigValue(NoonConstants.MUSIC_FOLDER_NAME_KEY)))
+          PersistConfigValue(NoonConstants.MUSIC_FOLDER_NAME_KEY,
+              NoonConstants.DEFAULT_MUSIC_FOLDER_NAME);
 
     }
 
@@ -94,6 +96,11 @@ public class Config
         //set content folder based on game. If we want to set it arbitrarily, we'll need to widen what's allowed.
         PersistConfigValue(NoonConstants.IMAGES_FOLDER_NAME_KEY,
             gameSpecificImageFolderName);
+
+        string gameSpecificMusicFolderName = NoonConstants.DEFAULT_MUSIC_FOLDER_NAME;
+        if (game != GameId.CS)
+            PersistConfigValue(NoonConstants.MUSIC_FOLDER_NAME_KEY,
+            gameSpecificMusicFolderName);
 
     }
 

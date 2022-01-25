@@ -29,25 +29,43 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
             
             foreach (var linked in forLegacy.Startup)
             {
-                //very limited! at the moment just grabs the path from the link and the effects from the recipe
-                //doesn't check challenges, reqs, warmup, any of that stuff
-                var startupRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(linked.Id);
-
+                //very limited!
                 var effectPath = linked.ToPath;
 
-                foreach (var effect in startupRecipe.Effects)
+                var startupRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(linked.Id);
+                var startupVerb = Watchman.Get<Compendium>().GetEntityById<Verb>(startupRecipe.ActionId);
+                if(startupVerb.Spontaneous)
                 {
-                    string elementId = effect.Key;
-                    int quantity = int.Parse(effect.Value); //it won't work with rich effects. Refactor recipe execution out of situations wand we can do this!
-                    var elementStackCreationCommand = new ElementStackCreationCommand(effect.Key, quantity);
-                    TokenCreationCommand startingTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(effectPath));
-                    
-                    commands.Add(startingTokenCreationCommand);
+                    ApplyEffects(startupRecipe, effectPath, commands);
                 }
+                else
+                {
+                    var situationCreationCommand = new SituationCreationCommand().WithVerbId(startupVerb.Id).WithRecipeId(startupRecipe.Id);
+                    var verbCreationCommand =
+                        new TokenCreationCommand(situationCreationCommand, TokenLocation.Default(effectPath));
+                    commands.Add(verbCreationCommand);
+                }
+
             }
 
 
             return commands;
+        }
+
+        private static void ApplyEffects(Recipe startupRecipe, FucinePath effectPath, List<TokenCreationCommand> commands)
+        {
+            foreach (var effect in startupRecipe.Effects)
+            {
+                string elementId = effect.Key;
+                int quantity =
+                    int.Parse(effect
+                        .Value); //it won't work with rich effects. Refactor recipe execution out of situations wand we can do this!
+                var elementStackCreationCommand = new ElementStackCreationCommand(elementId, quantity);
+                TokenCreationCommand startingTokenCreationCommand =
+                    new TokenCreationCommand(elementStackCreationCommand, TokenLocation.Default(effectPath));
+
+                commands.Add(startingTokenCreationCommand);
+            }
         }
     }
 }
