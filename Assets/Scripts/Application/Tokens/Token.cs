@@ -550,16 +550,7 @@ namespace SecretHistories.UI {
 
             var enrouteSphere = Payload.GetEnRouteSphere();
 
-            //var canvas = transform.GetComponentInParent<Canvas>();
-            //var rootCanvas = canvas.rootCanvas;
-
-            //if (rootCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
-            //{
-            //    transform.position = transform.localPosition;
-            //    enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
-            //}
-            //else
-                enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
+            enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
             
             TokenRectTransform.SetAsLastSibling();
             _manifestation.OnBeginDragVisuals();
@@ -632,7 +623,7 @@ namespace SecretHistories.UI {
             // rotate object slightly based on pointer Delta
             if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f)
             {
-                // This needs some tweaking so that it feels more responsive, physica. Card rotates into the direction you swing it?
+                // This needs some tweaking so that it feels more responsive, physical. Card rotates into the direction you swing it?
                 perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
                 transform.localRotation =
                     Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));

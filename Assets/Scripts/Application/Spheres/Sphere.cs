@@ -28,6 +28,7 @@ using SecretHistories.Infrastructure;
 using SecretHistories.NullObjects;
 using Steamworks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SecretHistories.Spheres
 {
@@ -312,7 +313,7 @@ namespace SecretHistories.Spheres
 
 
         public RectTransform GetRectTransform()
-        {
+        { 
             var rectTrans = transform as RectTransform;
 
             return rectTrans;
@@ -321,8 +322,10 @@ namespace SecretHistories.Spheres
         public virtual void DisplayAndPositionHere(Token token, Context context)
         {
             token.Manifest();
-            
-            token.transform.SetParent(transform,true); //'true' is the default: specifying for clarity in case I revisit
+
+
+           token.transform.SetParent(transform,true); //'true' is the default: specifying for clarity in case I revisit
+
             token.transform.localRotation = Quaternion.identity;
             token.SetLocalScale(Vector3.one);
       

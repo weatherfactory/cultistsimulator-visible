@@ -57,9 +57,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
 
             string ppString = $"{Math.Round(pointerPosition.x, 0)}, {Math.Round(pointerPosition.y, 0)}";
 
-            var pointerWorldPosition = Camera.main.ScreenToWorldPoint(pointerPosition);
-
-            string pwpString = $"{Math.Round(pointerWorldPosition.x, 0)}, {Math.Round(pointerWorldPosition.y, 0)}";
+    
 
 
             var localPosition = args.Token.TokenRectTransform.localPosition;
@@ -76,14 +74,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
             string pstring = $"{Math.Round(position.x, 0)}, {Math.Round(position.y, 0)}, {Math.Round(position.z, 0)}";
 
 
-            var defaultSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
-
             
-            var projectionPosition = defaultSphere.GetRectTransform().InverseTransformPoint(position);
-            string projectedPositionInTabletop = $"{Math.Round(projectionPosition.x, 0)}, {Math.Round(projectionPosition.y, 0)}, {Math.Round(projectionPosition.z, 0)}";
-
-
-
             string hoveringOver = string.Empty;
             var hovered = args.PointerEventData.hovered;
 
@@ -95,7 +86,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
             }
 
 
-            positioningText.text = $"Pointer (screen): {ppString} Pointer (world): {pwpString} Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \n Projected Position on Tabletop: {projectedPositionInTabletop} \nHovering Over: {hoveringOver}";
+            positioningText.text = $"Pointer (screen): {ppString}\n Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \nHovering Over: {hoveringOver}";
 
         }
 
