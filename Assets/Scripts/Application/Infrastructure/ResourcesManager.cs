@@ -142,32 +142,39 @@ public class ResourcesManager: MonoBehaviour
     {
         var musicFolderNameInResources =
             Watchman.Get<Config>().GetConfigValue(NoonConstants.MUSIC_FOLDER_NAME_KEY);
-        return Resources.LoadAll<AudioClip>("{musicFolderNameInResources}/background");
+        return Resources.LoadAll<AudioClip>($"{musicFolderNameInResources}/background");
     }
 
     public static IEnumerable<AudioClip> GetImpendingDoomMusic()
     {
-        return Resources.LoadAll<AudioClip>("{musicFolderNameInResources}/impendingdoom");
+        var musicFolderNameInResources =
+            Watchman.Get<Config>().GetConfigValue(NoonConstants.MUSIC_FOLDER_NAME_KEY);
+        return Resources.LoadAll<AudioClip>($"{musicFolderNameInResources}/impendingdoom");
     }
 
     public static IEnumerable<AudioClip> GetOtherworldMusic() {
-        return Resources.LoadAll<AudioClip>("{musicFolderNameInResources}/otherworld");
+        var musicFolderNameInResources =
+            Watchman.Get<Config>().GetConfigValue(NoonConstants.MUSIC_FOLDER_NAME_KEY);
+        return Resources.LoadAll<AudioClip>($"{musicFolderNameInResources}/otherworld");
     }
 
     public static IEnumerable<AudioClip> GetEndingMusic(EndingFlavour endingFlavour)
     {
+        var musicFolderNameInResources =
+            Watchman.Get<Config>().GetConfigValue(NoonConstants.MUSIC_FOLDER_NAME_KEY);
+
         if (endingFlavour == EndingFlavour.Grand)
-            return Resources.LoadAll<AudioClip>("{musicFolderNameInResources}/endings/grand");
+            return Resources.LoadAll<AudioClip>("${musicFolderNameInResources}/endings/grand");
 
         if (endingFlavour == EndingFlavour.Melancholy)
-            return Resources.LoadAll<AudioClip>("{musicFolderNameInResources}/endings/melancholy");
+            return Resources.LoadAll<AudioClip>("${musicFolderNameInResources}/endings/melancholy");
 
         if (endingFlavour == EndingFlavour.Pale)
-            return Resources.LoadAll<AudioClip>("{musicFolderNameInResources}/endings/melancholy");
+            return Resources.LoadAll<AudioClip>("${musicFolderNameInResources}/endings/melancholy");
 
 
         if (endingFlavour == EndingFlavour.Vile)
-            return Resources.LoadAll<AudioClip>("{musicFolderNameInResources}/endings/melancholy");
+            return Resources.LoadAll<AudioClip>("${musicFolderNameInResources}/endings/melancholy");
         else
             return null;
     }
