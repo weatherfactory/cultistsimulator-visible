@@ -339,6 +339,21 @@ namespace SecretHistories.Entities {
 
         }
 
+        public Type GetWindowType()
+        {
+
+
+            switch (Verb.Category)
+            {
+             //   case VerbCategory.Someone:
+             //       return typeof(MortalManifestation);
+                default:
+                    return typeof(SituationWindow);
+            }
+
+
+        }
+
         public void InitialiseManifestation(IManifestation manifestation)
         {
             manifestation.Initialise(this);

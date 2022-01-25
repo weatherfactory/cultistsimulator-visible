@@ -629,8 +629,6 @@ namespace SecretHistories.UI {
                     Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
             }
 
-
-
         }
 
 
