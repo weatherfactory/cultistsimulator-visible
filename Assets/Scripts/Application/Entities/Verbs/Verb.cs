@@ -33,7 +33,7 @@ namespace SecretHistories.Entities
         public bool Startable { get; set; }
 
         [FucineValue(DefaultValue=VerbCategory.Shabda)]
-        public string Category { get; set; }
+        public VerbCategory Category { get; set; }
 
         public bool Spontaneous { get; set; }
 

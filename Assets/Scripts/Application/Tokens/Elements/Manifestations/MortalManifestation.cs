@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Enums;
+using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
+using SecretHistories.Services;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -33,12 +35,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
 
         public void Initialise(IManifestable manifestable)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void OnBeginDragVisuals()
@@ -64,22 +66,22 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
         public bool NoPush { get; }
         public void Unshroud(bool instant)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public void Shroud(bool instant)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void Emphasise()
         {
-            throw new NotImplementedException();
+          //
         }
 
         public void Understate()
         {
-            throw new NotImplementedException();
+          //
         }
 
         public bool RequestingNoDrag { get; }
@@ -96,7 +98,9 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
 
         public IGhost CreateGhost()
         {
-            throw new NotImplementedException();
+            var newGhost = Watchman.Get<PrefabFactory>()
+                .CreateGhostPrefab(typeof(VerbGhost), this.RectTransform);
+            return newGhost;
         }
     }
 }
