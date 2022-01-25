@@ -55,12 +55,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
-            throw new NotImplementedException();
+        //
         }
 
         public void Unhighlight(HighlightType highlightType, IManifestable manifestable)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public bool NoPush { get; }
@@ -88,7 +88,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
         public bool RequestingNoSplit { get; }
         public void DoMove(RectTransform tokenRectTransform)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public bool HandlePointerClick(PointerEventData eventData, Token token)
