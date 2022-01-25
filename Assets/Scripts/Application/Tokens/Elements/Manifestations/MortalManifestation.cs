@@ -45,12 +45,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
 
         public void OnBeginDragVisuals()
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void OnEndDragVisuals()
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
@@ -93,7 +93,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
 
         public bool HandlePointerClick(PointerEventData eventData, Token token)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public IGhost CreateGhost()
