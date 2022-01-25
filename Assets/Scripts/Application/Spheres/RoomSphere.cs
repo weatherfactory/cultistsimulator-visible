@@ -19,6 +19,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
         public override SphereCategory SphereCategory => SphereCategory.World;
 
-        
+        public override bool AllowDrag => true;
     }
 }
