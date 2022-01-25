@@ -29,7 +29,7 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
             
             foreach (var linked in forLegacy.Startup)
             {
-                //very limited!
+                //very limited! Consider executing all recipes and allowing an utterly transient verb?
                 var effectPath = linked.ToPath;
 
                 var startupRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(linked.Id);
