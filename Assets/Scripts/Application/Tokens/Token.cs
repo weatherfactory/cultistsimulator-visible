@@ -205,6 +205,9 @@ namespace SecretHistories.UI {
         }
 
         //Sets the stable version of the token's current state. At time of writing, this is always 'DroppedInSphere'
+        //It's called by Dropcatchers and also explicitly by TabletopSphere - but not explicitly by ThresholdSpheres.
+        //This probably makes sense, because things return to TabletopSphere rather than being explicitly dropped, but it may not make sense in 
+        //BH, where we effectively have multiple tabletops.
         public void Stabilise()
         {
             CurrentState = CurrentState.GetDefaultStableState();
@@ -634,9 +637,8 @@ namespace SecretHistories.UI {
 
         public  void OnEndDrag(PointerEventData eventData)
         {
-            if (CurrentState.Docked()) //OnEndDrag can be called by the event system even if the token has rejected a drag. Filter out false alarms like this.
-                return;
-
+            //This is called after OnDrop. So if the token has been dropped on something else, it will already have 
+            //been accepted by the new sphere and potentially stabilised.
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
             
             FinishDrag();

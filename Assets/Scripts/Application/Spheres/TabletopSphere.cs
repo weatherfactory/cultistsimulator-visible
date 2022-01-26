@@ -144,7 +144,7 @@ namespace SecretHistories.Spheres
         public override void AcceptToken(Token token, Context context)
         {
           base.AcceptToken(token,context);
-          token.Stabilise();
+       //   token.Stabilise();
           if(token.Shrouded())
               token.Unshroud(true);
           
