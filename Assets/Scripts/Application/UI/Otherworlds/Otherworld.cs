@@ -274,7 +274,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
         public void OnArrival()
         {
-            float targetHeight = CamOperator.ZOOM_Z_FAR;
+            float targetHeight = Watchman.Get<CamOperator>().ZOOM_Z_FAR;
                 Watchman.Get<CamOperator>().PointAtTableLevelAtHeight(_activeEgress.GetRectTransform().position, targetHeight,0.2f,null);
 
 
