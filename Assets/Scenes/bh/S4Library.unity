@@ -8025,6 +8025,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 286832983}
     m_Modifications:
+    - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
+      propertyPath: LinkedSpheres.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
+      propertyPath: LinkedSpheres.Array.data[0]
+      value: 
+      objectReference: {fileID: 2099847610}
+    - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
+      propertyPath: LinkedSpheres.Array.data[1]
+      value: 
+      objectReference: {fileID: 1902205848}
     - target: {fileID: 663197111911523606, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8133,7 +8148,7 @@ PrefabInstance:
     - target: {fileID: 663197111911523607, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
       propertyPath: m_Name
-      value: Way
+      value: HillsPath
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b, type: 3}
@@ -24600,6 +24615,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
+      propertyPath: LinkedSpheres.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
+      propertyPath: LinkedSpheres.Array.data[0]
+      value: 
+      objectReference: {fileID: 1906215820}
+    - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
+      propertyPath: LinkedSpheres.Array.data[1]
+      value: 
+      objectReference: {fileID: 1902205848}
+    - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
       propertyPath: LinkedRoomSpheres.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -24721,7 +24751,7 @@ PrefabInstance:
     - target: {fileID: 663197111911523607, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
       propertyPath: m_Name
-      value: Way
+      value: DunesPath
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b, type: 3}
@@ -24927,6 +24957,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
+      propertyPath: LinkedSpheres.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
+      propertyPath: LinkedSpheres.Array.data[0]
+      value: 
+      objectReference: {fileID: 368571054}
+    - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
+      propertyPath: LinkedSpheres.Array.data[1]
+      value: 
+      objectReference: {fileID: 1906215820}
+    - target: {fileID: 663197111911523601, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
       propertyPath: LinkedRoomSpheres.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -25048,7 +25093,7 @@ PrefabInstance:
     - target: {fileID: 663197111911523607, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
       propertyPath: m_Name
-      value: Way
+      value: BeachPath
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b, type: 3}

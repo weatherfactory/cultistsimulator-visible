@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Entities;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Enums;
@@ -31,6 +32,7 @@ namespace SecretHistories.Entities {
         private bool _tabletopAspectsDirty = true;
         private bool _allAspectsExtantDirty = true;
         private List<Situation> _currentSituations;
+        private readonly HashSet<Way> _registeredWays = new HashSet<Way>();
         private readonly HashSet<Sphere> _registeredSpheres=new HashSet<Sphere>(); //Use this to find, eg, all World spheres. Don't use it for Fucine pathing!
         private FucinePath _defaultSpherePath;
 
@@ -118,7 +120,22 @@ namespace SecretHistories.Entities {
 
             _registeredSpheres.Remove(sphere);
         }
-        
+
+        public void RegisterWay(Way way)
+        {
+            _registeredWays.Add(way);
+        }
+
+        public void DeregisterWay(Way way)
+        {
+            _registeredWays.Remove(way);
+        }
+
+        public void GetWaysForSphere(Sphere s)
+        {
+
+        }
+
         public void Subscribe(ISphereCatalogueEventSubscriber subscriber) {
             _subscribers.Add(subscriber);
          }
