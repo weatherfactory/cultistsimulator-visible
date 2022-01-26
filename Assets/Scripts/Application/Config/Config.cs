@@ -99,7 +99,9 @@ public class Config
 
         string gameSpecificMusicFolderName = NoonConstants.DEFAULT_MUSIC_FOLDER_NAME;
         if (game != GameId.CS)
-            PersistConfigValue(NoonConstants.MUSIC_FOLDER_NAME_KEY,
+            gameSpecificMusicFolderName = (game.ToString() + gameSpecificMusicFolderName).ToLower();
+
+        PersistConfigValue(NoonConstants.MUSIC_FOLDER_NAME_KEY,
             gameSpecificMusicFolderName);
 
     }
