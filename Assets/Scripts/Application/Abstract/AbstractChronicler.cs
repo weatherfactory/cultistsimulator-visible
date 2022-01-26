@@ -82,7 +82,7 @@ namespace SecretHistories.Abstract
 
         public void CharacterProfessionUpdated(string newProfession)
         {
-            //someday maybe
+            //never used this, but someday maybe
         }
         public abstract void ChronicleOtherworldEntry(string portal);
     }
