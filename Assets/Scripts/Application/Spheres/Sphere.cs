@@ -90,7 +90,9 @@ namespace SecretHistories.Spheres
 
         public virtual void Awake()
         {
-            gameObject.AddComponent<SimpleChoreographer>();
+            var existingChoreographer = gameObject.GetComponent<AbstractChoreographer>();
+            if(existingChoreographer==null)
+                gameObject.AddComponent<SimpleChoreographer>();
 
         }
 
