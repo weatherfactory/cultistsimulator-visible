@@ -123,8 +123,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2931150508249505524}
   - component: {fileID: 8399757162958279375}
-  - component: {fileID: 6181511827061851061}
   - component: {fileID: 5422168114861072714}
+  - component: {fileID: 4248533920522423440}
   m_Layer: 5
   m_Name: MortalGhost
   m_TagString: Untagged
@@ -165,19 +165,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &6181511827061851061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3982648519476642128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f27ac212431f9c047b58ea7c8731faaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroupFader: {fileID: 5422168114861072714}
 --- !u!114 &5422168114861072714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,3 +180,16 @@ MonoBehaviour:
   blockRaysDuringFade: 0
   durationTurnOn: 0.1
   durationTurnOff: 0
+--- !u!114 &4248533920522423440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3982648519476642128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ca1952c6891de4b9521d79a2e90279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroupFader: {fileID: 5422168114861072714}
