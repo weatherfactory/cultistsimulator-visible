@@ -21,13 +21,13 @@ namespace Assets.Editor.BuildScripts
             //Scene management way more finicky than I expected! coming back to this
             CSScenes = new List<string>
             {
-                "Assets/Scenes/CS/S3Menu.unity",
+           //     "Assets/Scenes/CS/S3Menu.unity",
                 "Assets/Scenes/CS/S4Tabletop.unity"
             };
 
              BHScenes = new List<string>
             {
-                "Assets/Scenes/BH/S3MenuUmber.unity",
+         //       "Assets/Scenes/BH/S3MenuUmber.unity",
                 "Assets/Scenes/BH/S4Library.unity"
             };
 
