@@ -3,7 +3,7 @@
     {
         "id": "setup.librarian.abilities",
         "label": ".",
-        "actionid": ".path_could_go_here",
+        "actionid": ".",
         "requirements": {},
         "effects": {
                 "xhea":1,
@@ -17,9 +17,19 @@
 	    {
         "id": "setup.librarian.fitments",
         "label": ".",
-        "actionid": ".path_could_go_here",
+        "actionid": ".",
         "requirements": {},
         "effects": {"bookcase":1},
+        "startdescription": ".",
+        "description": ".",
+        "warmup": 0,
+        "craftable": false
+    },
+	{
+        "id": "setup.librarian.shipwrecked",
+        "label": ".",
+        "actionid": "pc",
+        "requirements": {},
         "startdescription": ".",
         "description": ".",
         "warmup": 0,

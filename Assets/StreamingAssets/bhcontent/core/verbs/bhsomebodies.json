@@ -5,7 +5,14 @@
           "label": "Librarian",
           "category": "Someone",
           "startable": false,
-            "description": "Flesh is heir"
+            "description": "Flesh is heir",
+			 "slot": {
+                "id": "carry",
+                "label": "Carry",
+                "description": "Something I can bear.",
+                "required": {},
+                "forbidden": {}
+            }
         }
     ]
 }

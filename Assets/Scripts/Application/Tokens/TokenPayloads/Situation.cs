@@ -22,6 +22,7 @@ using SecretHistories.Constants.Events;
 using SecretHistories.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
+using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Commands.TokenEffectCommands;
 using SecretHistories.Constants;
 using SecretHistories.Core;
@@ -324,7 +325,33 @@ namespace SecretHistories.Entities {
             if (sphereCategory == SphereCategory.Meta)
                 return typeof(NullManifestation);
 
-            return typeof(VerbManifestation);
+            if (Verb == null)
+                return typeof(NullManifestation);
+
+            switch (Verb.Category)
+            {
+                case VerbCategory.Someone:
+                    return typeof(MortalManifestation);
+                default:
+                    return typeof(VerbManifestation);
+            }
+
+
+        }
+
+        public Type GetWindowType()
+        {
+
+
+            switch (Verb.Category)
+            {
+             //   case VerbCategory.Someone:
+             //       return typeof(MortalManifestation);
+                default:
+                    return typeof(SituationWindow);
+            }
+
+
         }
 
         public void InitialiseManifestation(IManifestation manifestation)

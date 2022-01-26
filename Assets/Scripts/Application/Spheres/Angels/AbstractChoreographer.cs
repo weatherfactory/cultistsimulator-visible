@@ -51,7 +51,8 @@ namespace SecretHistories.Spheres.Angels
               return 0.5f;
           else if (snapValue == 3f)
               return 0.25f;
-
+          else if (snapValue == 0f)
+              return 1f; //assuming unset
           else
           {
               NoonUtility.LogWarning($"Unexpected snapvalue {snapValue}: assuming it means grid set at 1. ");

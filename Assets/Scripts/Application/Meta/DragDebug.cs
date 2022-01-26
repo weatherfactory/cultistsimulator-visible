@@ -10,6 +10,7 @@ using SecretHistories.Events;
 using SecretHistories.Fucine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
 {
@@ -51,6 +52,14 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
         currentSphere.text = args.Sphere?.name;
         if (args.Token != null && args.Token.ManifestationRectTransform != null && args.Sphere!=null)
         {
+
+            var pointerPosition = Pointer.current.position.ReadValue();
+
+            string ppString = $"{Math.Round(pointerPosition.x, 0)}, {Math.Round(pointerPosition.y, 0)}";
+
+    
+
+
             var localPosition = args.Token.TokenRectTransform.localPosition;
             
             string lpstring = $"{Math.Round(localPosition.x, 0)}, {Math.Round(localPosition.y, 0)}, {Math.Round(localPosition.z, 0)}";
@@ -65,14 +74,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
             string pstring = $"{Math.Round(position.x, 0)}, {Math.Round(position.y, 0)}, {Math.Round(position.z, 0)}";
 
 
-            var defaultSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
-
             
-            var projectionPosition = defaultSphere.GetRectTransform().InverseTransformPoint(position);
-            string projectedPositionInTabletop = $"{Math.Round(projectionPosition.x, 0)}, {Math.Round(projectionPosition.y, 0)}, {Math.Round(projectionPosition.z, 0)}";
-
-
-
             string hoveringOver = string.Empty;
             var hovered = args.PointerEventData.hovered;
 
@@ -84,7 +86,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
             }
 
 
-            positioningText.text = $"Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \n Projected Position on Tabletop: {projectedPositionInTabletop} \nHovering Over: {hoveringOver}";
+            positioningText.text = $"Pointer (screen): {ppString}\n Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \nHovering Over: {hoveringOver}";
 
         }
 

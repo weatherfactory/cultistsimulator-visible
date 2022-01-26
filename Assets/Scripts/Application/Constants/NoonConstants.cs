@@ -29,6 +29,8 @@ namespace SecretHistories.Constants
 
         public const string DEFAULT_IMAGES_FOLDER_NAME = "images";
         public const string IMAGES_FOLDER_NAME_KEY = "imagesdir";
+        public const string DEFAULT_MUSIC_FOLDER_NAME = "music";
+        public const string MUSIC_FOLDER_NAME_KEY = "musicdir";
         public const string MESSAGE_ILLUMINATION_KEY = "mansusjournal";
         public const string TLG_NOTES_TITLE_KEY = "tlg.notes.title";
         public const string TLG_NOTES_DESCRIPTION_KEY = "tlg.notes.description";

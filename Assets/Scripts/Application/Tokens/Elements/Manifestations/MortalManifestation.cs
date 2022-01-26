@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Enums;
+using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
+using SecretHistories.Services;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -33,70 +35,72 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
 
         public void Initialise(IManifestable manifestable)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void OnBeginDragVisuals()
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void OnEndDragVisuals()
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
-            throw new NotImplementedException();
+        //
         }
 
         public void Unhighlight(HighlightType highlightType, IManifestable manifestable)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public bool NoPush { get; }
         public void Unshroud(bool instant)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public void Shroud(bool instant)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void Emphasise()
         {
-            throw new NotImplementedException();
+          //
         }
 
         public void Understate()
         {
-            throw new NotImplementedException();
+          //
         }
 
         public bool RequestingNoDrag { get; }
         public bool RequestingNoSplit { get; }
         public void DoMove(RectTransform tokenRectTransform)
         {
-            throw new NotImplementedException();
+           //
         }
 
         public bool HandlePointerClick(PointerEventData eventData, Token token)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public IGhost CreateGhost()
         {
-            throw new NotImplementedException();
+            var newGhost = Watchman.Get<PrefabFactory>()
+                .CreateGhostPrefab(typeof(VerbGhost), this.RectTransform);
+            return newGhost;
         }
     }
 }

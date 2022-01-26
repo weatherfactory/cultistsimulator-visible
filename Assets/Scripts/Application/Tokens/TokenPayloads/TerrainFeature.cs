@@ -292,12 +292,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public void OpenAt(TokenLocation location)
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void Close()
         {
-            throw new NotImplementedException();
+            //
         }
 
         public void Conclude()
