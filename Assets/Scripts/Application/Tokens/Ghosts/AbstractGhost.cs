@@ -105,7 +105,8 @@ namespace SecretHistories.Ghosts
         //otherwise, we did show the ghost, so we'd better be ready to make good on it.
             TokenTravelItinerary travellingToGhost =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, rectTransform.anchoredPosition3D)
-                    .WithDuration(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultQuickTravelDuration);
+                    .WithDuration(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultQuickTravelDuration)
+                    .WithDestinationSpherePath(_projectedInSphere.GetWildPath());
 
             travellingToGhost.Depart(token, context);
 
