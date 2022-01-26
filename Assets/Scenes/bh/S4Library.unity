@@ -5158,7 +5158,7 @@ PrefabInstance:
     - target: {fileID: 6806306930390199627, guid: a7cbdc435c6137d459bcd06419e69017,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6806306930525469577, guid: a7cbdc435c6137d459bcd06419e69017,
         type: 3}
@@ -5379,6 +5379,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Xamanek
+      objectReference: {fileID: 0}
+    - target: {fileID: 6806306931416242882, guid: a7cbdc435c6137d459bcd06419e69017,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6806306931416242895, guid: a7cbdc435c6137d459bcd06419e69017,
         type: 3}
@@ -17823,7 +17828,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -650, y: 0}
+  m_AnchoredPosition: {x: -649.99994, y: 0}
   m_SizeDelta: {x: -1100, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1771794124
@@ -18357,6 +18362,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
         type: 3}
+      propertyPath: _debugTools
+      value: 
+      objectReference: {fileID: 2019357214}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
       propertyPath: TruckEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1559623474}
@@ -18387,6 +18397,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
         type: 3}
+      propertyPath: SpeedControlEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1859304714}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: SpeedControlEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1652631060}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: SpeedControlEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1859304712}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
       propertyPath: ZoomLevelEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnZoomEvent
       objectReference: {fileID: 0}
@@ -18394,6 +18419,31 @@ PrefabInstance:
         type: 3}
       propertyPath: ToggleDebugEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Cycle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: SpeedControlEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RespondToSpeedControlCommand
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: SpeedControlEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: RespondToSpeedControlCommand
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: SpeedControlEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: SpeedControlEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SecretHistories.Constants.SpeedControlUI, SecretHistories.Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000633285607834299, guid: c9649df484f5c1a469a65b2f1cc82805,
+        type: 3}
+      propertyPath: SpeedControlEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Heart, SecretHistories.Main
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9649df484f5c1a469a65b2f1cc82805, type: 3}
