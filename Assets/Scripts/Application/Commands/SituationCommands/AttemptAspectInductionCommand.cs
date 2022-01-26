@@ -90,7 +90,7 @@ namespace SecretHistories.Commands.SituationCommands
             }
         }
 
-        void CreateRecipeFromInduction(Recipe inducedRecipe, string aspectID, Situation situation) // yeah this *definitely* should be through subscription!
+        void CreateRecipeFromInduction(Recipe inducedRecipe, string aspectID, Situation situation) //REFACTOR: yeah this *definitely* should be through subscription!
         {
             if (inducedRecipe == null)
             {

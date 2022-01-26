@@ -25,20 +25,6 @@ namespace Assets.Logic
             _dealersTable = dealersTable;
         }
 
-        //public DrawWithMessage DealWithMessage(DeckInstance deck)
-        //{
-        //    var drawnCard = Deal(deck.Id);
-        //    var drawWithMessage = new DrawWithMessage {DrawnCard = drawnCard};
-        //    if (deck.GetDrawMessages().ContainsKey(drawnCard))
-        //        drawWithMessage.WithMessage = deck.GetDrawMessages()[drawnCard];
-        //    else
-        //    {
-        //        if (deck.GetDefaultDrawMessages().Any())
-        //           drawWithMessage.WithMessage=deck.GetDefaultDrawMessages().OrderBy(x => Random.value).First().Value;
-        //    }
-
-        //    return drawWithMessage;
-        //}
 
         public Token Deal(string fromDeckSpecId)
         {
@@ -121,8 +107,8 @@ namespace Assets.Logic
             { 
                 d.RetireTokensWhere(x => x.Payload.EntityId == elementId);
 
-                //I do in fact need to do both of these... what happens if Ezeem has been drawn in the past, and then is shuffled back in later?
-                //more elegant alternative might be to add the cards to the forbidden pile, and then autoremove all instances of that card from the matching draw pile whenever a card enters the forbidden pile
+                //REFACTOR: I do in fact need to do both of these... what happens if Ezeem has been drawn in the past, and then is shuffled back in later?
+                //REFACTOR: more elegant alternative might be to add the cards to the forbidden pile, and then autoremove all instances of that card from the matching draw pile whenever a card enters the forbidden pile
 
                 var deckSpec = Watchman.Get<Compendium>().GetEntityById<DeckSpec>(d.GetDeckSpecId());
 

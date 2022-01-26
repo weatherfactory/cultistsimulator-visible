@@ -208,7 +208,7 @@ public class Config
 
 
     /// <summary>
-    /// This only saves the value to the connfig. It doesn't update any associated Settings! (which communicate their changes directly to Config)
+    /// This only saves the value to the config. It doesn't update any associated Settings! (which communicate their changes directly to Config)
     /// </summary>
     /// <param name="key"></param>
     /// <param name="value"></param>

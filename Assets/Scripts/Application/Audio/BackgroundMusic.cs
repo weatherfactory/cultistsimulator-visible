@@ -146,7 +146,7 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
 
     private float GetClampedVol(float sliderValue)
     {
-        return Mathf.Pow(sliderValue / 10f, 2f); // slider has whole numbers only and goes from 0 to 10
+        return Mathf.Pow(sliderValue / 10f, 2f); // slider has integers only and goes from 0 to 10
     }
 
     public void SetMute(bool mute) {

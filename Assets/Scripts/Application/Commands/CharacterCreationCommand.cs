@@ -63,7 +63,7 @@ namespace SecretHistories.Commands
             var character = stable.InstantiateCharacterInStable();
             
             character.Name = Name; //the data property...
-            character.name = "Character_" + Name; //...and the game object name. Let's not do this again, eh
+            character.name = "Character_" + Name; //...and the game object name, DISTINGUISHABLE ONLY BY CASE. Let's not do this again, eh
             character.Profession = Profession;
 
             var compendium = Watchman.Get<Compendium>();

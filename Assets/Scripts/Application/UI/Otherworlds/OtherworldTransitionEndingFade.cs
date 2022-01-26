@@ -16,63 +16,7 @@ using UnityEngine.UI;
 namespace SecretHistories.UI
 
 {
-    //TODO:
-    // disable all input.
-    //below is the original code, but this may be better done through metapause
-    //GraphicRaycaster rayCaster;
-    //rayCaster = tableCanvas.GetComponent<GraphicRaycaster>();
-    //rayCaster.enabled = false; // Disable clicks on tabletop
-    //rayCaster = menuCanvas.GetComponent<GraphicRaycaster>();
-    //rayCaster.enabled = false; // Disable clicks on Screen
-
-    //cameraZoom.enablePlayerZoom = false;
-    //_uiController.enabled = false; // Disable shortcuts
-
-    // pause game
-    //Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
-
-
-    //TODO: //stop scrolling.
-    //tableScroll.StopMovement(); // make sure the scroll rect stops
-    //tableScroll.movementType = ScrollRect.MovementType.Unrestricted; // this allows us to leave the boundaries on the anim in case our token is at the table edges
-
-    //TODO: close all windows
-    //_tabletopManager.CloseAllSituationWindowsExcept(null); // no window has an id of NULL, so all close
-
-    // TODO: play death effect / music
-
-
-    // TODO: wipe all stacks. Though we may no longer want to do this.
-    // RetireAllStacks(RetirementVFX.CardBurn);
-
-
-    //TODO: the actual zoom
-    //float time = 0f;
-    //Vector2 startPos = tableScroll.content.anchoredPosition;
-    //Vector2 targetPos = -1f * focusOnTransform.anchoredPosition + targetPosOffset;
-    //// ^ WARNING: targetPosOffset fixes the difference between the scrollable and tokenParent rect sizes 
-
-    //Debug.Log("Target Zoom Pos " + targetPos);
-
-
-    //cameraZoom.StartFixedZoom(0f, zoomDuration);
-
-    //TODO: abort with abort hotkey
-    //while (time < zoomDuration && !_uiController.IsPressingAbortHotkey())
-    //{
-    //menuBarCanvasGrp.alpha = 1f - time; // remove lower button bar.
-    //tableScroll.content.anchoredPosition = Vector2.Lerp(startPos, targetPos, Easing.Circular.Out((time / zoomDuration)));
-    //yield return null;
-    //time += Time.deltaTime;
-    //}
-
-    // automatically jumps here on Abort - NOTE: At the moment this auto-focuses the token, but that's okay, it's important info
-    //tableScroll.content.anchoredPosition = targetPos;
-
-    //todo: make menu bar invisible
-    //var menuBarCanvasGrp = menuCanvas.GetComponent<CanvasGroup>();
-    //menuBarCanvasGrp.alpha = 0f;
-
+    
 
 public class OtherworldTransitionEndingFade: OtherworldTransitionFX
 {

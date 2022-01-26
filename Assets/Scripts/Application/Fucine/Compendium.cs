@@ -206,7 +206,8 @@ public class Compendium
 
         aspectsInContext.ThrowErrorIfNotPopulated(verb);
 
-        //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
+        //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable.
+        //This means 'craftable=true hintonly=true' is an ugly hole in the condition matrix. It might also be an opportunity to add functionality
         var _recipes = EntityStoreFor(typeof(Recipe)).GetAllAsList<Recipe>();
         List<Recipe> candidateRecipes = _recipes.Where(r => r.ActionId == verb && (r.Craftable || getHintRecipes) && r.HintOnly == getHintRecipes && !character.HasExhaustedRecipe(r)).ToList();
         foreach (var recipe in candidateRecipes)

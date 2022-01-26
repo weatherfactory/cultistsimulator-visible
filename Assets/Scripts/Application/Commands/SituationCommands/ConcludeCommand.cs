@@ -19,7 +19,7 @@ namespace SecretHistories.Commands.SituationCommands
 
        public bool IsObsoleteInState(StateEnum forState)
        {
-           //return false;
+           
            return forState == StateEnum.Unstarted;
        }
 

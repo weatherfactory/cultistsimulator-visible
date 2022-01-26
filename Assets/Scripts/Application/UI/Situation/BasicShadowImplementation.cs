@@ -6,8 +6,8 @@ namespace SecretHistories.UI
     public class BasicShadowImplementation : MonoBehaviour {
 
         [SerializeField] float shadowOffset = -5;
-
-
+        //When Martin wrote this class he called it 'shitty shadow implementation'. His original comments below
+        
         // Shitty shadow also has some issues with casting shadow on things that are higher up. card casting shadow on window does not work visually.
         // possibly multiple seperate shadow objects, that are independent from the card display, but that are subscribed to the biz object? And thus updated whenever it moves?
         // one shadow object on the window and it is masked by the window?

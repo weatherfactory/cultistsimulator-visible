@@ -51,7 +51,7 @@ namespace SecretHistories.Abstract
         public abstract void TokenPlacedInWorld(Token token);
         public virtual void ChronicleGameEnd(List<Situation> situations, HashSet<Sphere> tokenContainers, Ending ending)
         {
-            //a lot of the stuff in TokenPlacedOnTabletop might be better here, actually
+            //REFACTOR: a lot of the stuff in TokenPlacedOnTabletop might be better here, actually
             SetAchievementsForEnding(ending);
 
             List<Token> allStacksInGame = new List<Token>();
@@ -82,7 +82,7 @@ namespace SecretHistories.Abstract
 
         public void CharacterProfessionUpdated(string newProfession)
         {
-            //
+            //someday maybe
         }
         public abstract void ChronicleOtherworldEntry(string portal);
     }

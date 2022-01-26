@@ -62,7 +62,7 @@ namespace SecretHistories.Spheres.Angels
         {
             var blocks = new List<SphereBlock>();
             foreach(var a in _angels)
-                if(a.GetType()==typeof(GreedyAngel)) // HACK, FIX
+                if(a.GetType()==typeof(GreedyAngel)) // TODO: it's called polymorphism you pig-toothed dog-licker
                     blocks.Add(new SphereBlock(FucinePath.Current(), BlockDirection.Inward,BlockReason.GreedyAngel));
 
             return blocks;
