@@ -19,10 +19,22 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
         private Dictionary<string, FucinePath> _exits;
 
-
+        public bool IsNavigable()
+        {
+            var dropCatcher = gameObject.GetComponentInChildren<SphereDropCatcher>();
+            return dropCatcher != null;
+            //this'll do as a statement of intent, but it may not hold for all cases
+        }
+        
         public override SphereCategory SphereCategory => SphereCategory.World;
 
         public override bool AllowDrag => true;
+
+        public void Start()
+        {
+
+        }
+        
         public override bool TryDisplayGhost(Token forToken)
         {
             return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
