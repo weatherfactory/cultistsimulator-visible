@@ -11,29 +11,34 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
     public class TokenPathItinerary: TokenItinerary
 
     {
+        private Token _travellingToken;
+
+
         public override string GetDescription()
         {
-            throw new NotImplementedException();
+            return "🚶";
         }
 
         public override void Depart(Token tokenToSend, Context context)
         {
-            throw new NotImplementedException();
+            _travellingToken = tokenToSend;
+
         }
 
         public override void Arrive(Token tokenToSend, Context context)
         {
-            throw new NotImplementedException();
+         //
         }
 
         public override IGhost GetGhost()
         {
-            throw new NotImplementedException();
+            return _travellingToken.GetCurrentGhost();
+
         }
 
         public override bool IsActive()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
