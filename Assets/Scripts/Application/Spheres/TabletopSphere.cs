@@ -52,22 +52,10 @@ namespace SecretHistories.Spheres
         public override float TokenHeartbeatIntervalMultiplier => 1;
 
 
-        public override void Awake()
-        {
-            gameObject.AddComponent<TabletopChoreographer>();
-
-        }
 
         [SerializeField] private TabletopChoreographer _tabletopChoreographer;
 
 
-        // This is used to determine if this component is the tabletop.
-        // Needed because the MapTokenContainer inherits from TabletopTokenContainer but is not the Tabletop
-        //YOU AR FUCKING KIDING ME - AK
-        public virtual bool IsTabletop
-        {
-            get { return true; }
-        }
 
         public virtual void Start()
         {
