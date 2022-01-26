@@ -131,9 +131,15 @@ namespace SecretHistories.Entities {
             _registeredWays.Remove(way);
         }
 
-        public void GetWaysForSphere(Sphere s)
+        public List<Way> GetWaysLinkedToSphere(Sphere s)
         {
+            var linkedWays = _registeredWays.Where(w => w.LinkedSpheres.Contains(s));
+            return new List<Way>(linkedWays);
+        }
 
+        public Way GetNextWayInRoute(Sphere fromSphere, Sphere toSphere)
+        {
+            throw new NotImplementedException();
         }
 
         public void Subscribe(ISphereCatalogueEventSubscriber subscriber) {

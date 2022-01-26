@@ -580,8 +580,17 @@ namespace SecretHistories.Spheres
         }
 
 
+
+
         public virtual bool TryAcceptToken(Token token,Context context)
         {
+            if (token.RequestingNoDirectDrop() && token.CurrentState.InPlayerDrivenMotion())
+            {
+                token.GetCurrentGhost().TryFulfilPromise(token, context);
+                return false;
+            }
+
+
             AcceptToken(token,context);
             return true;
         }

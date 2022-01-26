@@ -31,5 +31,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
        public abstract IGhost GetGhost();
 
        public abstract bool IsActive();
+
+
    }
 }

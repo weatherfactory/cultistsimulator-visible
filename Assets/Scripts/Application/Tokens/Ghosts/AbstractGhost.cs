@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Manifestations;
@@ -14,7 +15,7 @@ namespace SecretHistories.Ghosts
     {
         
         protected RectTransform rectTransform;
-        private Sphere _projectedInSphere;
+        protected Sphere _projectedInSphere;
         [SerializeField] protected CanvasGroupFader canvasGroupFader;
 
         private Coroutine _travelCoroutine;
@@ -97,18 +98,15 @@ namespace SecretHistories.Ghosts
         }
 
 
-        public bool TryFulfilPromise(Token token,Context context)
+        public virtual bool TryFulfilPromise(Token token,Context context)
         {
             if (!Visible)
                 return false; //if the ghost isn't active, there's no promise to fulfill.
 
-        //otherwise, we did show the ghost, so we'd better be ready to make good on it.
-            TokenTravelItinerary travellingToGhost =
-                new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, rectTransform.anchoredPosition3D)
-                    .WithDuration(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultQuickTravelDuration)
-                    .WithDestinationSpherePath(_projectedInSphere.GetWildPath());
+            //otherwise, we did show the ghost, so we'd better be ready to make good on it.
+            var travelToGhostItinerary = GetFulfilmentItinerary(token);
 
-            travellingToGhost.Depart(token, context);
+            travelToGhostItinerary.Depart(token, context);
 
             HideIn(token); //now clean up the ghost
 
@@ -116,6 +114,14 @@ namespace SecretHistories.Ghosts
             return true;
         }
 
+        public virtual TokenItinerary GetFulfilmentItinerary(Token token)
+        {
+            TokenTravelItinerary travellingToGhost =
+                new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, rectTransform.anchoredPosition3D)
+                    .WithDuration(Watchman.Get<Compendium>().GetSingleEntity<Dictum>().DefaultQuickTravelDuration)
+                    .WithDestinationSpherePath(_projectedInSphere.GetWildPath());
+            return travellingToGhost;
+        }
 
 
         public virtual void Retire()

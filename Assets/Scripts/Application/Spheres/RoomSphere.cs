@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Commands;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
@@ -30,11 +31,9 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
         public override bool AllowDrag => true;
 
-        public void Start()
-        {
 
-        }
-        
+
+
         public override bool TryDisplayGhost(Token forToken)
         {
             return forToken.DisplayGhostAtChoreographerDrivenPosition(this);

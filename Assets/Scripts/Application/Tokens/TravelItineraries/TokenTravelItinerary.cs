@@ -28,7 +28,7 @@ namespace SecretHistories.UI
                 if(_token==null) return 0;
               var currentTravelAnimation = _token.gameObject.GetComponent<TokenTravelAnimation>();
                 if (currentTravelAnimation == null)
-                return 0;
+                    return 0;
 
                 return currentTravelAnimation.GetDurationElapsed();
 

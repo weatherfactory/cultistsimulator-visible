@@ -536,6 +536,11 @@ namespace SecretHistories.UI {
             return true;
         }
 
+        public bool RequestingNoDirectDrop()
+        {
+            return _manifestation.RequestingNoDirectDrop;
+        }
+
         protected void StartDrag(PointerEventData eventData)
         {
             //remember the original location in case the token gets evicted later
@@ -649,7 +654,7 @@ namespace SecretHistories.UI {
         {
             MakeInteractable();
 
-            if (!CurrentState.Docked())
+            if (!CurrentState.Docked() && !CurrentState.InSystemDrivenMotion())
                 //evict the token before hiding the ghost. If the ghost is still active, it'll give the evicted token a place to go.
                 this.Sphere.EvictToken(this,new Context(Context.ActionSource.PlayerDrag));
 

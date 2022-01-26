@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Entities;
+using SecretHistories.Fucine;
 using SecretHistories.UI;
+using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 {
@@ -12,7 +15,24 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 
     {
         private Token _travellingToken;
+        public TokenPathItinerary()
+        { }
 
+        public TokenPathItinerary(TokenLocation startLocation, TokenLocation endLocation)
+        {
+            Anchored3DStartPosition = startLocation.Anchored3DPosition;
+            Anchored3DEndPosition = endLocation.Anchored3DPosition;
+            DestinationSpherePath = endLocation.AtSpherePath;
+        }
+
+        public TokenPathItinerary(Vector3 anchored3DStartPosition, Vector3 anchored3DEndPosition)
+        {
+            //the most basic itinerary: don't change sphere, move in current sphere from point to point,s et default duration based on distance, keep current scale
+            Anchored3DStartPosition = anchored3DStartPosition;
+            Anchored3DEndPosition = anchored3DEndPosition;
+
+            DestinationSpherePath = Watchman.Get<HornedAxe>().GetDefaultSpherePath();
+        }
 
         public override string GetDescription()
         {
@@ -22,6 +42,10 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
         public override void Depart(Token tokenToSend, Context context)
         {
             _travellingToken = tokenToSend;
+            //lock ghost at ultimate destination
+            var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
+            var ghost = GetGhost();
+          ghost.ShowAt(destinationSphere,Anchored3DEndPosition,_travellingToken.TokenRectTransform);
 
         }
 
@@ -39,6 +63,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
         public override bool IsActive()
         {
             return true;
+        }
+
+        public TokenPathItinerary WithDestinationSpherePath(FucinePath destinationSpherePath)
+        {
+            DestinationSpherePath = destinationSpherePath;
+            return this;
         }
     }
 }

@@ -17,5 +17,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
             RectTransform.localScale = newScale;
         }
 
+
+        public virtual bool RequestingNoDirectDrop => false;
+
     }
 }
