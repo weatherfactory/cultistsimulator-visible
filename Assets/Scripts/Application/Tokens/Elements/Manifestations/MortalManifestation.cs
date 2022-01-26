@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens.Ghosts;
 using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
@@ -99,7 +100,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
         public IGhost CreateGhost()
         {
             var newGhost = Watchman.Get<PrefabFactory>()
-                .CreateGhostPrefab(typeof(VerbGhost), this.RectTransform);
+                .CreateGhostPrefab(typeof(MortalGhost), this.RectTransform);
             return newGhost;
         }
     }

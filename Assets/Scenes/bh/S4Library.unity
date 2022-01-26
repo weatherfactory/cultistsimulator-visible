@@ -6048,6 +6048,7 @@ GameObject:
   - component: {fileID: 368571056}
   - component: {fileID: 368571055}
   - component: {fileID: 368571054}
+  - component: {fileID: 368571058}
   m_Layer: 5
   m_Name: Foreshore
   m_TagString: Untagged
@@ -6143,6 +6144,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368571052}
   m_CullTransparentMesh: 1
+--- !u!114 &368571058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368571052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f5310c2177a394c87869788dd148a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDebugInfo: 0
+  showGrid: 0
 --- !u!1 &392052080
 GameObject:
   m_ObjectHideFlags: 0
@@ -13127,6 +13142,7 @@ GameObject:
   - component: {fileID: 976315724}
   - component: {fileID: 976315723}
   - component: {fileID: 976315722}
+  - component: {fileID: 976315726}
   m_Layer: 5
   m_Name: Span
   m_TagString: Untagged
@@ -13222,6 +13238,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976315720}
   m_CullTransparentMesh: 1
+--- !u!114 &976315726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976315720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f5310c2177a394c87869788dd148a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDebugInfo: 0
+  showGrid: 0
 --- !u!1 &981481193
 GameObject:
   m_ObjectHideFlags: 0
@@ -20002,7 +20032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -650, y: 0}
+  m_AnchoredPosition: {x: -649.99994, y: 0}
   m_SizeDelta: {x: -1100, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1771794124
@@ -21790,6 +21820,7 @@ GameObject:
   - component: {fileID: 1902205850}
   - component: {fileID: 1902205849}
   - component: {fileID: 1902205848}
+  - component: {fileID: 1902205852}
   m_Layer: 5
   m_Name: Inn
   m_TagString: Untagged
@@ -21885,6 +21916,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902205846}
   m_CullTransparentMesh: 1
+--- !u!114 &1902205852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902205846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f5310c2177a394c87869788dd148a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDebugInfo: 0
+  showGrid: 0
 --- !u!1 &1906215818
 GameObject:
   m_ObjectHideFlags: 0
@@ -21898,6 +21943,7 @@ GameObject:
   - component: {fileID: 1906215822}
   - component: {fileID: 1906215821}
   - component: {fileID: 1906215820}
+  - component: {fileID: 1906215824}
   m_Layer: 5
   m_Name: Dunes
   m_TagString: Untagged
@@ -21993,6 +22039,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906215818}
   m_CullTransparentMesh: 1
+--- !u!114 &1906215824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906215818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f5310c2177a394c87869788dd148a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDebugInfo: 0
+  showGrid: 0
 --- !u!1 &1935844959
 GameObject:
   m_ObjectHideFlags: 0
@@ -23702,6 +23762,7 @@ GameObject:
   - component: {fileID: 2099847612}
   - component: {fileID: 2099847611}
   - component: {fileID: 2099847610}
+  - component: {fileID: 2099847614}
   m_Layer: 5
   m_Name: HeadlandSlope
   m_TagString: Untagged
@@ -23797,6 +23858,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099847608}
   m_CullTransparentMesh: 1
+--- !u!114 &2099847614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099847608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f5310c2177a394c87869788dd148a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDebugInfo: 0
+  showGrid: 0
 --- !u!1 &2105768239
 GameObject:
   m_ObjectHideFlags: 0
