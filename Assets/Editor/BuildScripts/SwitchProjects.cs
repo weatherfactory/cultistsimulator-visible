@@ -6,25 +6,26 @@ using UnityEditor;
 using UnityEditor.Build.Content;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Editor.BuildScripts
 {
     public class SwitchProjects : ScriptableObject
     {
-        private static List<string> CSSceneNames;
-        private static List<string> BHSceneNames;
+        private static List<string> CSScenes;
+        private static List<string> BHScenes;
 
 
         static SwitchProjects()
         {
             //Scene management way more finicky than I expected! coming back to this
-            CSSceneNames = new List<string>
+            CSScenes = new List<string>
             {
                 "Assets/Scenes/CS/S3Menu.unity",
                 "Assets/Scenes/CS/S4Tabletop.unity"
             };
 
-             BHSceneNames = new List<string>
+             BHScenes = new List<string>
             {
                 "Assets/Scenes/BH/S3MenuUmber.unity",
                 "Assets/Scenes/BH/S4Library.unity"
@@ -37,11 +38,8 @@ namespace Assets.Editor.BuildScripts
         {
             PlayerSettings.productName = "Cultist Simulator";
             SetGameId(GameId.CS);
-            foreach (var scenePath in CSSceneNames)
-            {
-                EditorSceneManager.OpenScene(scenePath, OpenSceneMode.AdditiveWithoutLoading);
-            }
-
+            OpenScenes(CSScenes);
+            CloseScenes(BHScenes);
 
         }
 
@@ -50,17 +48,31 @@ namespace Assets.Editor.BuildScripts
         {
             PlayerSettings.productName = "Book of Hours";
             SetGameId(GameId.BH);
-            foreach (var scenePath in BHSceneNames)
-            {
-                EditorSceneManager.OpenScene(scenePath, OpenSceneMode.AdditiveWithoutLoading);
-            }
+            OpenScenes(BHScenes);
+            CloseScenes(CSScenes);
         }
 
         private static void SetGameId(GameId gameIdAsEnum)
         {
             var glory = GameObject.Find("Glory").GetComponent<Glory>();
             glory.SetGameIdFieldInEditor(gameIdAsEnum);
-     
+        }
+
+        private static void OpenScenes(List<string> scenePaths)
+        {
+            foreach (var scenePath in scenePaths)
+            {
+                EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
+            }
+        }
+
+        private static void CloseScenes(List<string> scenePaths)
+        {
+            foreach(var scenePath in scenePaths)
+            {
+                var scene = EditorSceneManager.GetSceneByPath(scenePath);
+                EditorSceneManager.CloseScene(scene, false);
+            }
         }
     }
 }
