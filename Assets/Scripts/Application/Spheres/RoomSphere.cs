@@ -17,7 +17,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
         private Dictionary<string, FucinePath> _exits;
 
 
-        public override SphereCategory SphereCategory => SphereCategory.World;
+        public override SphereCategory SphereCategory => SphereCategory.Threshold;
 
         public override bool AllowDrag => true;
     }
