@@ -27,29 +27,11 @@ using Random = System.Random;
 namespace SecretHistories.UI {
     public class Meniscate : MonoBehaviour
     {
-        //marshalling point for services; link to the master scene. Once, this was TabletopManager
-        [SerializeField] TabletopBackground tabletopBackground;
 
-        [Header("Detail Windows")] [SerializeField]
-        private AspectDetailsWindow aspectDetailsWindow;
-
-        [SerializeField] private TokenDetailsWindow tokenDetailsWindow;
         [SerializeField] private CardHoverDetail cardHoverDetail;
 
 
-        [Header("Drag & Window")] [SerializeField]
-        private RectTransform draggableHolderRectTransform;
-
-
-        [Header("Status Bar & Notes")] [SerializeField]
-        private StatusBar StatusBar;
-        
-
-        [SerializeField] private Notifier _notifier;
-        [SerializeField] private ElementOverview _elementOverview;
-        
-
-       public void Awake()
+        public void Awake()
         {
             var registry = new Watchman();
             registry.Register(this);
@@ -84,7 +66,11 @@ namespace SecretHistories.UI {
 
             if (enableAccessibleCards==null || enableAccessibleCards==0)
 		        return;
-	        if (elementId == null)
+
+            if (cardHoverDetail == null) //in BH, there's no CardHoverDetail reference set yet.
+                return;
+            
+            if (elementId == null)
 	        {
 		        cardHoverDetail.Hide();
 		        return;
