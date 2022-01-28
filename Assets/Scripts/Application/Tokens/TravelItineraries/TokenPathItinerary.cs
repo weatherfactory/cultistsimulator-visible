@@ -49,7 +49,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
         public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
         {
             _travellingToken = tokenToSend;
-            _travellingToken.Walk(this);
+            _travellingToken.StartWalk(this);
             //lock ghost at ultimate destination
             //          var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
             //            var ghost = GetGhost();

@@ -167,11 +167,7 @@ namespace SecretHistories.UI {
         [SerializeField]
         private string FullPathAsString;
 
-        public void Update()
-        {
-            WorldPosition = TokenRectTransform.position;
-           
-        }
+  
 
 
         public bool IsValid()
@@ -1055,19 +1051,25 @@ namespace SecretHistories.UI {
 
         }
 
-        public void Walk(TokenPathItinerary pathItinerary)
+        public void StartWalk(TokenPathItinerary pathItinerary)
         {
             var seeker = GetComponent<Seeker>();
-            var AILerp = GetComponent<AILerp>();
 
-            seeker.StartPath(pathItinerary.Anchored3DStartPosition, pathItinerary.Anchored3DEndPosition);
+           Path p= seeker.StartPath(pathItinerary.Anchored3DStartPosition, pathItinerary.Anchored3DEndPosition, OnPathComplete);
+               p.BlockUntilCalculated();
+
+            
         }
 
-        public void OnPathComplete()
+        public void OnPathComplete(Path path)
         {
-            Debug.Log("Hang on");
+      
         }
 
+        public void Update()
+        {
+            WorldPosition = TokenRectTransform.position;
 
+        }
     }
 }
