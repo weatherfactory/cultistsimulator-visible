@@ -46,7 +46,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
 
             TokenTravelItinerary travellingToGhost =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, rectTransform.anchoredPosition3D)
-                    .WithDuration(5f)
+                    .WithDuration(2f)
                     .WithDestinationSpherePath(_projectedInSphere.GetWildPath());
 
             return travellingToGhost;

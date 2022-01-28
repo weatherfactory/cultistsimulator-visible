@@ -27,7 +27,7 @@ using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.Spheres;
-
+using Pathfinding;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -48,6 +48,7 @@ namespace SecretHistories.UI {
 
         [DontEncaust]
         public RectTransform TokenRectTransform => GetComponent<RectTransform>();
+
         [DontEncaust]
         public RectTransform ManifestationRectTransform => _manifestation.RectTransform;
         [Encaust]
@@ -71,6 +72,7 @@ namespace SecretHistories.UI {
         /// <returns></returns>
         public Vector3 AnchoredPosInWorld()
         {
+
             if (TokenRectTransform == null)
                 return Vector3.zero;
             if (TokenRectTransform == null)
@@ -685,6 +687,7 @@ namespace SecretHistories.UI {
 
         public void MakeInteractable()
         {
+            
             if (canvasGroup != null)
                 canvasGroup.blocksRaycasts = true;
         }
@@ -1051,6 +1054,20 @@ namespace SecretHistories.UI {
             Payload.ApplyExoticEffect(exoticEffect);
 
         }
-        
+
+        public void Walk(TokenPathItinerary pathItinerary)
+        {
+            var seeker = GetComponent<Seeker>();
+            var AILerp = GetComponent<AILerp>();
+
+            seeker.StartPath(pathItinerary.Anchored3DStartPosition, pathItinerary.Anchored3DEndPosition);
+        }
+
+        public void OnPathComplete()
+        {
+            Debug.Log("Hang on");
+        }
+
+
     }
 }
