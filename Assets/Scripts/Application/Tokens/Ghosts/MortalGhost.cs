@@ -51,6 +51,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
 
             return travellingToGhost;
         }
+
+        public override void HideIn(Token forToken)
+        {
+            actingAsPathBeacon = false; //first pass at switching path beacon state on journey completion
+
+        }
     }
 
 
