@@ -49,7 +49,7 @@ namespace SecretHistories.UI {
         [SerializeField] private ElementOverview _elementOverview;
         
 
-        void Awake()
+       public void Awake()
         {
             var registry = new Watchman();
             registry.Register(this);

@@ -111,7 +111,7 @@ namespace SecretHistories.Commands
             var windowSphere = FucineRoot.Get().GetWindowsSphere(); //we can't check the windowsphere from the sphere the situation token's going in, because we don't know what that will be yet... so we might need to move the window later
             var windowLocation =
                 new TokenLocation(Vector3.zero, windowSphere.GetAbsolutePath()); //it shouldn't really be zero, but we don't know the real token loc in the current flow
-
+            
             var sphereToDisplayWindowIn = Watchman.Get<HornedAxe>().GetSphereByPath(windowLocation.AtSpherePath);
             var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphereToDisplayWindowIn.transform);
             newWindow.Attach(newSituation);

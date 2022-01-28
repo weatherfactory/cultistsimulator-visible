@@ -339,9 +339,10 @@ namespace SecretHistories.Entities {
 
         }
 
-        public Type GetWindowType()
+        public Type GetWindowType(SphereCategory sphereCategory)
         {
-
+            if (Verb == null)
+                return typeof(SituationWindow); // shouldn't happen, but belt and braces
 
             switch (Verb.Category)
             {
@@ -874,7 +875,8 @@ namespace SecretHistories.Entities {
            IsOpen = true;
            var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Opening);
            OnChanged?.Invoke(changeArgs);
-           Watchman.Get<Meniscate>().CloseAllSituationWindowsExcept(VerbId);
+           var meniscate= Watchman.Get<Meniscate>();
+           meniscate.CloseAllSituationWindowsExcept(VerbId);
     }
 
         public void Close()
