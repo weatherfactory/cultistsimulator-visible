@@ -48,6 +48,11 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 
         }
 
+        public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Arrive(Token tokenToSend, Context context)
         {
          //

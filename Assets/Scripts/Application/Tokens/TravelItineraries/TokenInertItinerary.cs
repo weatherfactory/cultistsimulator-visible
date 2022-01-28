@@ -27,6 +27,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
             _travellingToken = tokenToSend;
         }
 
+        public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
+        {
+            _travellingToken = tokenToSend;
+            onArrivalCallback(tokenToSend, context); //calling it immediately
+        }
+
         public override void Arrive(Token tokenToSend, Context context)
         {
             _travellingToken = tokenToSend;

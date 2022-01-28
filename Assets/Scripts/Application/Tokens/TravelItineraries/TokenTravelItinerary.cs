@@ -17,7 +17,9 @@ namespace SecretHistories.UI
 
     public class TokenTravelItinerary: TokenItinerary
     {
-        public override float Elapsed
+        protected event Action<Token, Context> OnItineraryArrival;
+        
+            public override float Elapsed
         {
             //primary candidate for refactoring in itinerary world!
             //let's sort out what keeps a reference to what.
@@ -86,13 +88,18 @@ namespace SecretHistories.UI
 
         public override void Depart(Token tokenToSend, Context context)
         {
+            Depart(tokenToSend, context, null);
+        }
+
+        public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
+        {
             _token = tokenToSend;
-     
-            
-            Watchman.Get<Xamanek>().ItineraryStarted( tokenToSend.PayloadId,this);
+            OnItineraryArrival += onArrivalCallback;
+
+            Watchman.Get<Xamanek>().ItineraryStarted(tokenToSend.PayloadId, this);
 
             tokenToSend.Unshroud(true);
-            tokenToSend.CurrentState=new TravellingState();
+            tokenToSend.CurrentState = new TravellingState();
 
             //create TokenTravelAnimation component
             //set the Arrival event on TokenTravelAnimation so we know how to deal with it @end
@@ -118,17 +125,18 @@ namespace SecretHistories.UI
 
 
             tokenTravelAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
-            tokenTravelAnimation.SetScaling(StartScale,EndScale, Duration); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
-        
-           
+            tokenTravelAnimation.SetScaling(StartScale, EndScale, Duration); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
 
-           var enrouteSphere=tokenToSend.Payload.GetEnRouteSphere();
-            enrouteSphere.AcceptToken(tokenToSend,context);
 
-   
+
+            var enrouteSphere = tokenToSend.Payload.GetEnRouteSphere();
+            enrouteSphere.AcceptToken(tokenToSend, context);
+
+
             destinationSphere.Subscribe(tokenTravelAnimation);
 
-            tokenTravelAnimation.Begin(tokenToSend, context,Duration);
+            tokenTravelAnimation.Begin(tokenToSend, context, Duration);
+
         }
 
         private void SetDefaultDuration()
@@ -170,8 +178,9 @@ namespace SecretHistories.UI
                     token.HideGhost();
                 }
 
+                OnItineraryArrival?.Invoke(_token, context);
+                OnItineraryArrival = null;
 
-           
             }
             catch(Exception e)
             {

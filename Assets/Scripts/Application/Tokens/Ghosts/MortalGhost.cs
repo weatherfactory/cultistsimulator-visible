@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Entities;
 using SecretHistories.Ghosts;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 
 namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
 {
     public class MortalGhost: AbstractGhost
     {
+
 
         private bool activeAsPathBeacon=false; //TEMPORARY! deactivate when complete or it'll only work once
 
@@ -33,7 +35,9 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
             //originally FinishDrag() hid the ghost, too, but ofc we don't want to hide it for a path.
             //(another way round would be to make path-indicating ghosts behave differently from potential-indicating ghosts.
             
+            
             travelToGhostItinerary.Depart(token, context);
+
 
             //TODO: hide the ghost once the token arrives and/or when we lose focus (in which case show it again when we get the focus back?)
 
