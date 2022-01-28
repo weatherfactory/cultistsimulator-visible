@@ -41,19 +41,19 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 
         public override void Depart(Token tokenToSend, Context context)
         {
-            _travellingToken = tokenToSend;
-            _travellingToken.Walk(this);
-            //lock ghost at ultimate destination
-            var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
-            var ghost = GetGhost();
-          ghost.ShowAt(destinationSphere,Anchored3DEndPosition,_travellingToken.TokenRectTransform);
 
+            Depart(tokenToSend,context,null);
 
         }
 
         public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
         {
-         
+            _travellingToken = tokenToSend;
+            _travellingToken.Walk(this);
+            //lock ghost at ultimate destination
+            //          var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
+            //            var ghost = GetGhost();
+            //ghost.ShowAt(destinationSphere,Anchored3DEndPosition,_travellingToken.TokenRectTransform);
         }
 
         public override void Arrive(Token tokenToSend, Context context)

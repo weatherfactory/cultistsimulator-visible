@@ -2017,7 +2017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAAIexVRnimGQEAAOMBAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFtkE1vwjAMhv9KlfMmDcoY3ZmN0zYEk3b2Ure1SJMqThgF8d/n8DmkXWLnkf3ar3fKOxfUc2ajMXeZYgSvm0+oBakv6JWwFjZT4gBWo9AHIYZaCiyfXaY2J9af4jbFbC+Zh14DJ/HgIwqIjMPpvOmZdGquwHDCoSG9WlyK/8MLKCmmnkHSRR090xqvyi3w6rjOGkzEywquC7LqFl+dX3bgGWceuubaZ8Uucnh3JZ4tvkmezCeW3NeRyltpVcB4UgzGusqfKsAx3I/kLfJimD9Ovqt8hOownCwFAjNHCyacz+M6tH/mQ3tQnDuyITsuJ7j08DOjbev4Wkq2ckvtEe3HUeJ8J0YvU8Rk+VJSEKMYAtk6tardXu1/AVBLAwQUAAAICAAAACHsYGrLSm0AAAB5AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kmWimYWloVlymrF5WmKqWaKuCZC0NLY0Mja1SEozNklVigWqL6ksSPVLzE2F6AlILMlIy8xLycxL1wvIz8wrcQeZrRRbCwBQSwECLQAUAAAICAAAACHsVUZ4phkBAADjAQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAACHsYGrLSm0AAAB5AAAACQAkAAAAAAAAAAAAAABmAQAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAB4CAAAAAA==
+    dataString: UEsDBBQAAAgIAAAAIezQzBfZGwEAAOUBAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFtkMFuwjAMhl+lynmTgAKjO7Nx2oZg0s5e6rYWaVLFCaMg3n0ODNikXWLnk/3bvw/KOxfUY2ajMXeZYgSvm3eoBakP6JWwFnZz4gBWo9DJYCDMUEuB5XvI1E5CYv1P3KeYHSXz0GvgJB98RAGRcTRfNj2TTs0VGE44NKQ3q2vxf3gFJcXUM0y6qKNn2uJNuQXenNfZgol4XcF1QVbd47Pz6w4848JD19z6rBhGDq+uxIvJF8mT/cSS/zpS+VdaFTCdFcOprvKHCnAK92N5i7wY5ZPZZ5WPUZ2Gk6VAYJZowYTLeVyH9td8aE+KS0c2ZOflBJcevha0bx3fSslWbq09on07S1zuxOhlipgsn0oKYhRDIFunVnU4quM3UEsDBBQAAAgIAAAAIexgastKbQAAAHkAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSZaKZhaWhWXKasXlaYqpZoq4JkLQ0tjQyNrVISjM2SVWKBaovqSxI9UvMTYXoCUgsyUjLzEvJzEvXC8jPzCtxB5mtFFsLAFBLAQItABQAAAgIAAAAIezQzBfZGwEAAOUBAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAAIexgastKbQAAAHkAAAAJACQAAAAAAAAAAAAAAGgBAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAIAIAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -2031,7 +2031,7 @@ MonoBehaviour:
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
   logPathResults: 1
-  maxNearestNodeDistance: 100
+  maxNearestNodeDistance: 1000
   scanOnStartup: 1
   fullGetNearestSearch: 0
   prioritizeGraphs: 0
@@ -2045,11 +2045,43 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
-  maxFrameTime: 1
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -8236,6 +8268,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HillsPath
+      objectReference: {fileID: 0}
+    - target: {fileID: 663197111911523607, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Way
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b, type: 3}
@@ -24828,12 +24865,12 @@ PrefabInstance:
     - target: {fileID: 663197111911523606, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 762.9
+      value: 753
       objectReference: {fileID: 0}
     - target: {fileID: 663197111911523606, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -940.69
+      value: -765
       objectReference: {fileID: 0}
     - target: {fileID: 663197111911523606, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
@@ -24854,6 +24891,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DunesPath
+      objectReference: {fileID: 0}
+    - target: {fileID: 663197111911523607, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Way
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b, type: 3}
@@ -25170,12 +25212,12 @@ PrefabInstance:
     - target: {fileID: 663197111911523606, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 449.11673
+      value: 444
       objectReference: {fileID: 0}
     - target: {fileID: 663197111911523606, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -940.6894
+      value: -765
       objectReference: {fileID: 0}
     - target: {fileID: 663197111911523606, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
         type: 3}
@@ -25196,6 +25238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BeachPath
+      objectReference: {fileID: 0}
+    - target: {fileID: 663197111911523607, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Way
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a3f9d2aa90da004f90b3daf1be4ec2b, type: 3}
