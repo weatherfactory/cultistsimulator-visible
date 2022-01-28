@@ -1,4 +1,7 @@
-﻿using SecretHistories.Abstract;
+﻿using System;
+using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens;
+using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Manifestations;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
@@ -26,6 +29,11 @@ namespace SecretHistories.Ghosts
         public bool TryFulfilPromise(Token token, Context context)
         {
           return false;
+        }
+
+        public TokenItinerary GetItineraryForFulfilment(Token token)
+        {
+            return new TokenInertItinerary();
         }
 
         public bool PromiseBlocksCandidateRect(Sphere sphere, Rect candidateRect)

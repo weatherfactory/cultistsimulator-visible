@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
@@ -18,6 +19,7 @@ namespace SecretHistories.Abstract
         void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D,RectTransform tokenRectTransform);
         void HideIn(Token forToken);
         bool TryFulfilPromise(Token token,Context context);
+        TokenItinerary GetItineraryForFulfilment(Token token);
         bool PromiseBlocksCandidateRect(Sphere sphere, Rect candidateRect);
         Rect GetRect();
         void Retire();

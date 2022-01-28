@@ -167,6 +167,7 @@ namespace SecretHistories.UI
                     token.CurrentState=new TravelledToSphere();
                     // Assign element to new slot
                     destinationSphere.TryAcceptToken(token,context);
+                    token.HideGhost();
                 }
 
 

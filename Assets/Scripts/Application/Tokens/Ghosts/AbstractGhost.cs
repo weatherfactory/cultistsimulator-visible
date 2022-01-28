@@ -104,7 +104,7 @@ namespace SecretHistories.Ghosts
                 return false; //if the ghost isn't active, there's no promise to fulfill.
 
             //otherwise, we did show the ghost, so we'd better be ready to make good on it.
-            var travelToGhostItinerary = GetFulfilmentItinerary(token);
+            var travelToGhostItinerary = GetItineraryForFulfilment(token);
 
             travelToGhostItinerary.Depart(token, context);
 
@@ -114,7 +114,7 @@ namespace SecretHistories.Ghosts
             return true;
         }
 
-        public virtual TokenItinerary GetFulfilmentItinerary(Token token)
+        public virtual TokenItinerary GetItineraryForFulfilment(Token token)
         {
             TokenTravelItinerary travellingToGhost =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, rectTransform.anchoredPosition3D)
@@ -122,6 +122,8 @@ namespace SecretHistories.Ghosts
                     .WithDestinationSpherePath(_projectedInSphere.GetWildPath());
             return travellingToGhost;
         }
+
+
 
 
         public virtual void Retire()

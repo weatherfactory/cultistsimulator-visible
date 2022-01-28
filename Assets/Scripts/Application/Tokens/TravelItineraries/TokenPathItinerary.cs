@@ -27,7 +27,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 
         public TokenPathItinerary(Vector3 anchored3DStartPosition, Vector3 anchored3DEndPosition)
         {
-            //the most basic itinerary: don't change sphere, move in current sphere from point to point,s et default duration based on distance, keep current scale
             Anchored3DStartPosition = anchored3DStartPosition;
             Anchored3DEndPosition = anchored3DEndPosition;
 

@@ -187,6 +187,19 @@ namespace SecretHistories.UI {
 
         private ITokenPayload _payload;
 
+        private HomingAngel _homingAngel;
+
+        public Sphere GetLikelyHomeSphere()
+        {
+            if (_homingAngel == null)
+                return Watchman.Get<HornedAxe>().GetDefaultSphere();
+            if(_homingAngel.GetWatchedSphere()==null)
+                return Watchman.Get<HornedAxe>().GetDefaultSphere();
+
+            return _homingAngel.GetWatchedSphere();
+
+        }
+
         public UnityEvent OnWindowClosed;
         public OnSphereAddedEvent OnSphereAdded;
         public OnSphereRemovedEvent OnSphereRemoved;
@@ -403,13 +416,18 @@ namespace SecretHistories.UI {
                 _ghost.HideIn(this);
         }
 
+        /// <summary>
+        /// Apply an itinerary that will move the token from its current position to its ghost's position.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public bool TryFulfilGhostPromise(Context context)
         {
             
             return   _ghost.TryFulfilPromise(this,context);
-            }
+        }
 
-
+ 
         public virtual void Manifest()
         {
             //I believe this only happens in automated test scenarios. but it's a bear sorting out the lifecycle!
@@ -544,16 +562,16 @@ namespace SecretHistories.UI {
         protected void StartDrag(PointerEventData eventData)
         {
             //remember the original location in case the token gets evicted later
-            var homingAngel = new HomingAngel(this);
-            homingAngel.SetWatch(Sphere);
-            Sphere.AddAngel(homingAngel);
+             _homingAngel = new HomingAngel(this);
+            _homingAngel.SetWatch(Sphere);
+            Sphere.AddAngel(_homingAngel);
 
             CurrentState=new BeingDraggedState();
            
             
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
             //just picked the token up, but it hasn't yet left the origin sphere. 
-            TryCalveOriginToken(homingAngel);
+            TryCalveOriginToken(_homingAngel);
 
 
             var enrouteSphere = Payload.GetEnRouteSphere();
@@ -658,7 +676,10 @@ namespace SecretHistories.UI {
                 //evict the token before hiding the ghost. If the ghost is still active, it'll give the evicted token a place to go.
                 this.Sphere.EvictToken(this,new Context(Context.ActionSource.PlayerDrag));
 
-            HideGhost(); 
+            //Commented this out: we're now hiding a ghost when a token travel itinerary completes instead.
+            //This is because FinishDrag() is also used for path itineraries.
+            //If the change causes problems, we can fork logic here instead?
+            // HideGhost(); 
 
         }
 

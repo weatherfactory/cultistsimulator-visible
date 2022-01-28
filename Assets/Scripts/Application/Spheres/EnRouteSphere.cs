@@ -21,7 +21,7 @@ namespace SecretHistories.Spheres
         public override SphereCategory SphereCategory => SphereCategory.World;
         public override float TokenHeartbeatIntervalMultiplier => SpecifiedTokenHeartbeatIntervalMultiplier;
         [SerializeField] private float SpecifiedTokenHeartbeatIntervalMultiplier;
-        private Sphere _overridingDefaultDestination;
+        private Sphere _overridingDefaultDestination; //currently in use for otherworlds; tracking a homingAngel reference may be better
 
         public override bool ProcessEvictedToken(Token token, Context context)
         {
@@ -36,8 +36,7 @@ namespace SecretHistories.Spheres
               _overridingDefaultDestination.AcceptToken(token,context);
             else
             {
-            
-                var  nextStop = Watchman.Get<HornedAxe>().GetDefaultSphere();
+                var nextStop = token.GetLikelyHomeSphere(); //eg the current homing angel's location, or a default sphere
                 nextStop.ProcessEvictedToken(token, context);
             }
             return true;

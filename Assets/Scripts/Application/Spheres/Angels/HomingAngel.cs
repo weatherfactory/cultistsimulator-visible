@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Constants;
 using SecretHistories.UI;
+using Steamworks;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -38,6 +39,11 @@ namespace SecretHistories.Spheres.Angels
         public void SetWatch(Sphere sphere)
         {
             SphereToWatchOver = sphere;
+        }
+
+        public Sphere GetWatchedSphere()
+        {
+            return SphereToWatchOver;
         }
 
         public bool MinisterToDepartingToken(Token token, Context context)

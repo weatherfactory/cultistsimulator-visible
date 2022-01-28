@@ -586,13 +586,13 @@ namespace SecretHistories.Spheres
         {
             if (token.RequestingNoDirectDrop() && token.CurrentState.InPlayerDrivenMotion())
             {
-                token.GetCurrentGhost().TryFulfilPromise(token, context);
+                token.TryFulfilGhostPromise(context);
                 return false;
             }
-
-
+  
             AcceptToken(token,context);
             return true;
+            
         }
 
         /// <summary>
