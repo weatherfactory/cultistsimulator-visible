@@ -85,7 +85,7 @@ namespace SecretHistories.UI {
         public AbstractTokenState CurrentState
         {
             get => _currentState;
-            set => _currentState = value; //this was here for 
+            set => _currentState = value;
         }
 
 
@@ -189,7 +189,7 @@ namespace SecretHistories.UI {
 
         private HomingAngel _homingAngel;
 
-        public Sphere GetLikelyHomeSphere()
+        public Sphere GetHomeSphere()
         {
             if (_homingAngel == null)
                 return Watchman.Get<HornedAxe>().GetDefaultSphere();
@@ -862,8 +862,7 @@ namespace SecretHistories.UI {
             Sphere.EvictToken(this,context);
         }
 
-
-        protected virtual void NotifyInteracted(TokenInteractionEventArgs args)
+   protected virtual void NotifyInteracted(TokenInteractionEventArgs args)
         {
             Sphere.NotifyTokenInThisSphereInteracted(args);
             Watchman.Get<IChronicler>()?.TokenPlacedInWorld(this);

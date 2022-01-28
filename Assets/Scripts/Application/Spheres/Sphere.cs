@@ -584,11 +584,6 @@ namespace SecretHistories.Spheres
 
         public virtual bool TryAcceptToken(Token token,Context context)
         {
-            if (token.RequestingNoDirectDrop() && token.CurrentState.InPlayerDrivenMotion())
-            {
-                token.TryFulfilGhostPromise(context);
-                return false;
-            }
   
             AcceptToken(token,context);
             return true;
@@ -610,10 +605,15 @@ namespace SecretHistories.Spheres
         /// </summary>
         public virtual bool ProcessEvictedToken(Token token, Context context)
         {
-            if (token.TryFulfilGhostPromise(context)) //this should probably be an angel, actually
+            if (token.TryFulfilGhostPromise(context))
                 return true;
+
+
+
             if (flock.MinisterToEvictedToken(token, context))
                 return true;
+            
+            
 
             var existingElementTokens = GetElementTokens();
 

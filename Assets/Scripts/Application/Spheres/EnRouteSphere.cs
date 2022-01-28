@@ -36,7 +36,7 @@ namespace SecretHistories.Spheres
               _overridingDefaultDestination.AcceptToken(token,context);
             else
             {
-                var nextStop = token.GetLikelyHomeSphere(); //eg the current homing angel's location, or a default sphere
+                var nextStop = token.GetHomeSphere(); //eg the current homing angel's location, or a default sphere
                 nextStop.ProcessEvictedToken(token, context);
             }
             return true;

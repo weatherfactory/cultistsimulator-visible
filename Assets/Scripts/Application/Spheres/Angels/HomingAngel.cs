@@ -110,6 +110,7 @@ namespace SecretHistories.Spheres.Angels
         {
             TokenTravelItinerary travellingHome =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, destination)
+                    .WithDestinationSpherePath(SphereToWatchOver.GetWildPath())
                     .WithDuration(NoonConstants.MOMENT_TIME_INTERVAL);
 
             travellingHome.Depart(token,context);

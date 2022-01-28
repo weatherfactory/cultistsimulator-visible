@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Spheres.Angels;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Entities;
 using SecretHistories.Ghosts;
@@ -13,35 +14,27 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
 {
     public class MortalGhost: AbstractGhost
     {
+        private bool actingAsPathBeacon = false;
 
-
-        private bool activeAsPathBeacon=false; //TEMPORARY! deactivate when complete or it'll only work once
 
         ///Get a path itinerary based on the ghost's current position. Return the token to its
         /// original location if it's being dragged, and then apply the path itinerary to the token.
         public override bool TryFulfilPromise(Token token, Context context)
         {
-           
+            if (actingAsPathBeacon)
+                return false;
 
             if (!Visible)
                 return false; //if the ghost isn't active, there's no promise to fulfill.
-            if (activeAsPathBeacon)
-                return false;
-
-            //otherwise, we did show the ghost, so we'd better be ready to make good on it.
+            
             var travelToGhostItinerary = GetItineraryForFulfilment(token);
-            activeAsPathBeacon = true;
-            token.FinishDrag(); //This should remove the token from its being-dragged state (and generally return it to its origin point before it begins moving on its path)
-            //originally FinishDrag() hid the ghost, too, but ofc we don't want to hide it for a path.
-            //(another way round would be to make path-indicating ghosts behave differently from potential-indicating ghosts.
+
+            var homeSphere = token.GetHomeSphere();
+            var onwardsAngel = new OnwardsAngel(token, travelToGhostItinerary,homeSphere);
+            homeSphere.AddAngel(onwardsAngel);
+            actingAsPathBeacon = true;
+            token.GoAway(context);
             
-            
-            travelToGhostItinerary.Depart(token, context);
-
-
-            //TODO: hide the ghost once the token arrives and/or when we lose focus (in which case show it again when we get the focus back?)
-
-            //and say that we've fulfilled the promise
             return true;
         }
 

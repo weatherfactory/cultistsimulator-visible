@@ -28,6 +28,9 @@ namespace SecretHistories.Spheres
 
             if (token != null)
             {
+                if (token.RequestingNoDirectDrop())
+                    token.TryFulfilGhostPromise(new Context(Context.ActionSource.PlayerDrag));
+                else    
                 if (Sphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag)))
                     token.Stabilise();
             }
