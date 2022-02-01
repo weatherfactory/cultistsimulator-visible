@@ -44,19 +44,10 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
                 new TokenPathItinerary(token.TokenRectTransform.anchoredPosition3D, transform.position)
                     .WithDestinationSpherePath(_projectedInSphere.GetWildPath());
 
-            //TokenTravelItinerary travellingToGhost =
-            //    new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, rectTransform.anchoredPosition3D)
-            //        .WithDuration(2f)
-            //        .WithDestinationSpherePath(_projectedInSphere.GetWildPath());
-
             return pathToGhost;
         }
 
-        public override void HideIn(Token forToken)
-        {
-            actingAsPathBeacon = false; //first pass at switching path beacon state on journey completion
 
-        }
     }
 
 

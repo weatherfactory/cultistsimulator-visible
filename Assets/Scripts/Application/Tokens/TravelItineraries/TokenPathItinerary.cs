@@ -55,10 +55,10 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
             
             
             var seeker = tokenToSend.gameObject.GetComponent<Seeker>();
-
-
+            var tokenAILerp = tokenToSend.gameObject.gameObject.GetComponent<TokenAILerp>();
+            
             AStarPath = seeker.StartPath(tokenToSend.transform.position, Anchored3DEndPosition);
-           // tokenAnimation.OnTokenArrival += Arrive;
+            tokenAILerp.OnTokenArrival += Arrive;
 
             _travellingToken.transform.SetAsLastSibling();
 
@@ -67,7 +67,11 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 
         public override void Arrive(Token tokenToSend, Context context)
         {
-         //
+            var tokenAILerp = tokenToSend.gameObject.gameObject.GetComponent<TokenAILerp>();
+            
+            tokenAILerp.OnTokenArrival -= Arrive;
+            _travellingToken.OnCompletedTravelItinerary();
+            _travellingToken.HideGhost();
         }
 
         public override IGhost GetGhost()

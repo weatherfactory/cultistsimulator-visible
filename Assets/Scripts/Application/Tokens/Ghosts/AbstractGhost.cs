@@ -66,6 +66,7 @@ namespace SecretHistories.Ghosts
             }
         }
 
+        
         public virtual void HideIn(Token forToken)
         {
             canvasGroupFader.HideImmediately(); //ghost behaviour is determined by whether it's visible or not. So when we hide it, we mean hide immediately.

@@ -413,7 +413,7 @@ namespace SecretHistories.UI {
             if(_ghost!=null)
                 _ghost.HideIn(this);
         }
-
+        
         /// <summary>
         /// Apply an itinerary that will move the token from its current position to its ghost's position.
         /// </summary>
@@ -711,6 +711,17 @@ namespace SecretHistories.UI {
                 canvasGroup.alpha = 0f;
 
             MakeNonInteractable();
+        }
+
+        public void OnCompletedTravelItinerary()
+        {
+            CurrentState = new TravelledToSphere();
+            HideGhost();
+        }
+
+        public void OnCompletedPathItinerary()
+        {
+            HideGhost();
         }
 
         public  void OnDrop(PointerEventData eventData)

@@ -172,10 +172,10 @@ namespace SecretHistories.UI
                 else
                 {
                     Watchman.Get<Xamanek>().TokenItineraryCompleted(token);
-                    token.CurrentState=new TravelledToSphere();
-                    // Assign element to new slot
+                    token.OnCompletedTravelItinerary();
+                    
                     destinationSphere.TryAcceptToken(token,context);
-                    token.HideGhost();
+                    
                 }
 
                 OnItineraryArrival?.Invoke(_token, context);
