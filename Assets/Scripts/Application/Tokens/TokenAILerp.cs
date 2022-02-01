@@ -20,15 +20,17 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
             var token = gameObject.GetComponent<Token>();
             if(OnTokenArrival!=null)
                 OnTokenArrival.Invoke(token,Context.Unknown());
+        
         }
 
         protected override void Update()
         {
             base.Update();
 
-            if (!hasPath)
+            if (!hasPath || !canMove)
                 return;
 
+   
             var token = gameObject.GetComponent<Token>();
 
 
