@@ -1055,7 +1055,9 @@ namespace SecretHistories.UI {
         {
             var seeker = GetComponent<Seeker>();
 
-           Path p= seeker.StartPath(pathItinerary.Anchored3DStartPosition, pathItinerary.Anchored3DEndPosition, OnPathComplete);
+           
+
+            Path p= seeker.StartPath(pathItinerary.Anchored3DStartPosition, pathItinerary.Anchored3DEndPosition, OnPathComplete);
                p.BlockUntilCalculated();
 
             
