@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Pathfinding;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -16,13 +17,14 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 
     {
         private Token _travellingToken;
+        private Path AStarPath;
         public TokenPathItinerary()
         { }
 
 
         public TokenPathItinerary(TokenLocation startLocation, TokenLocation endLocation)
         {
-            Anchored3DStartPosition = startLocation.Anchored3DPosition;
+            Anchored3DStartPosition = startLocation.Anchored3DPosition; //Is this unused??
             Anchored3DEndPosition = endLocation.Anchored3DPosition;
             DestinationSpherePath = endLocation.AtSpherePath;
         }
@@ -50,17 +52,16 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
         public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
         {
             _travellingToken = tokenToSend;
-            var pathwalkerAnimation = SetupAnimation(tokenToSend,Anchored3DEndPosition);
-            pathwalkerAnimation.Begin(tokenToSend,context,200f);
+            
+            
+            var seeker = tokenToSend.gameObject.GetComponent<Seeker>();
 
-        }
 
-        private TokenPathwalkerAnimation SetupAnimation(Token tokenToSend,Vector3 endPosition)
-        {
-            var tokenAnimation = tokenToSend.gameObject.AddComponent<TokenPathwalkerAnimation>();
-            tokenAnimation.EndPosition = endPosition;
-            tokenAnimation.OnTokenArrival += Arrive;
-            return tokenAnimation;
+            AStarPath = seeker.StartPath(tokenToSend.transform.position, Anchored3DEndPosition);
+           // tokenAnimation.OnTokenArrival += Arrive;
+
+            _travellingToken.transform.SetAsLastSibling();
+
         }
 
 
