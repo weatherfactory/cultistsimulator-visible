@@ -66,22 +66,6 @@ namespace SecretHistories.UI {
                     return TokenLocation.Default(locationPath);
             }
         }
-        /// <summary>
-        /// This gives the anchorPosition3D run through Transform.TransformPoint()
-        /// </summary>
-        /// <returns></returns>
-        public Vector3 AnchoredPosInWorld()
-        {
-
-            if (TokenRectTransform == null)
-                return Vector3.zero;
-            if (TokenRectTransform == null)
-                return Vector3.zero;
-
-            Vector3 worldPos = TokenRectTransform.parent.TransformPoint(TokenRectTransform.anchoredPosition3D);
-
-            return worldPos;
-        }
 
         [Encaust]
         public AbstractTokenState CurrentState
@@ -253,13 +237,7 @@ namespace SecretHistories.UI {
             return _manifestation.CanAnimateIcon();
         }
 
-        public Rect GetRectInWorldSpace()
-        {
-            var rect = TokenRectTransform.rect;
 
-            var rectInWorldSpace = new Rect((Vector2)AnchoredPosInWorld() - rect.size / 2f, rect.size); //This assumes a centre pivot. We can address that here if nec.
-            return rectInWorldSpace;
-        }
         /// <summary>
         /// Helper function for rect to compare with rects in another sphere
         /// </summary>

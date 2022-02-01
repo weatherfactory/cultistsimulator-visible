@@ -72,6 +72,8 @@ namespace SecretHistories.Spheres
         [DontEncaust]
         public virtual bool ContentsHidden => false;
         [DontEncaust]
+        public virtual bool Traversable => false;
+        [DontEncaust]
         public virtual float TokenHeartbeatIntervalMultiplier => 0;
         [DontEncaust]
         public abstract SphereCategory SphereCategory { get; }
@@ -307,6 +309,27 @@ namespace SecretHistories.Spheres
             return false;
         }
 
+
+        public bool IsWorldPointInBoundingRect(Vector2 worldPoint)
+        {
+            var r = GetRect();
+            var rt = GetRectTransform();
+          
+            float leftSide = rt.position.x - r.width / 2;
+            float rightSide = rt.position.x + r.width / 2;
+            float topSide = rt.position.y + r.height / 2;
+            float bottomSide = rt.position.y - r.height / 2;
+
+            if (worldPoint.x >= leftSide &&
+                worldPoint.x <= rightSide &&
+                worldPoint.y >= bottomSide &&
+                worldPoint.y <= topSide)
+
+                return true;
+
+            return false;
+
+        }
 
         public Rect GetRect()
         {

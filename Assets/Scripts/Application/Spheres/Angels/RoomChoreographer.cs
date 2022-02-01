@@ -17,7 +17,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     public class RoomChoreographer: AbstractChoreographer
     {
         [SerializeField]
-        private List<Transform> Floors;
+        public List<Transform> Floors;
 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Spheres.Angels;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Commands;
 using SecretHistories.Enums;
@@ -17,16 +18,18 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
     public class RoomSphere: Sphere
     {
+        private bool _traversable;
+        public override bool Traversable => _traversable;
 
-        private Dictionary<string, FucinePath> _exits;
-
-        public bool IsNavigable()
+        public void Start()
         {
-            var dropCatcher = gameObject.GetComponentInChildren<SphereDropCatcher>();
-            return dropCatcher != null;
-            //this'll do as a statement of intent, but it may not hold for all cases
+            RoomChoreographer rc = gameObject.GetComponent<RoomChoreographer>();
+            
+            if (rc!=null && rc.Floors.Any())
+                _traversable = true;
+
         }
-        
+
         public override SphereCategory SphereCategory => SphereCategory.World;
 
         public override bool AllowDrag => true;

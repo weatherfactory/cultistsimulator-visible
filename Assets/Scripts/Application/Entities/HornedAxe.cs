@@ -105,6 +105,11 @@ namespace SecretHistories.Entities {
             return _registeredSpheres.Where(c => c.SphereCategory == category);
         }
 
+        public IEnumerable<Sphere> GetTraversableSpheres()
+        {
+            return _registeredSpheres.Where(s=>s.Traversable);
+        }
+
 
         public void RegisterSphere(Sphere sphere) {
             
