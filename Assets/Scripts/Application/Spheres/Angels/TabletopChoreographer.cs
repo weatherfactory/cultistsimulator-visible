@@ -138,7 +138,7 @@ namespace SecretHistories.Constants {
 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
      {
-         token.TokenRectTransform.anchoredPosition = GetFreeLocalPosition(token, Vector2.zero);
+         token.TokenRectTransform.anchoredPosition = GetClosestFreeLocalPosition(token, Vector2.zero);
      }
 
 
@@ -148,7 +148,7 @@ namespace SecretHistories.Constants {
         /// </summary>
         public override void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
-        Vector2 freeLocalPosition= GetFreeLocalPosition(token, pos);
+        Vector2 freeLocalPosition= GetClosestFreeLocalPosition(token, pos);
     
             Vector3 finalPositionAtTableLevel=new Vector3(freeLocalPosition.x,freeLocalPosition.y, Sphere.transform.position.z);
             token.TokenRectTransform.localPosition = finalPositionAtTableLevel;
@@ -158,7 +158,7 @@ namespace SecretHistories.Constants {
 
 
 
-        public override Vector2 GetFreeLocalPosition(Token token, Vector2 intendedPos)
+        public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 intendedPos)
         {
             HideAllDebugRects(); //if we're beginning another attempt to find a free local position, hide all existing debug information
 

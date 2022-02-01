@@ -28,7 +28,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
             {
-                var acceptablePosition = GetFreeLocalPosition(token, Vector3.zero);
+                var acceptablePosition = GetClosestFreeLocalPosition(token, Vector3.zero);
                 token.TokenRectTransform.anchoredPosition3D = acceptablePosition;
         }
 
@@ -37,7 +37,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             public override void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context,
                 Vector2 targetPosition)
             {
-                var acceptablePosition = GetFreeLocalPosition(token, targetPosition);
+                var acceptablePosition = GetClosestFreeLocalPosition(token, targetPosition);
                 token.TokenRectTransform.anchoredPosition3D = acceptablePosition;
 
             }
@@ -75,7 +75,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 return base.CanTokenBeIgnored(token);
             }
 
-            public override Vector2 GetFreeLocalPosition(Token token, Vector2 startPos)
+            public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 startPos)
             {
 
                 float sphereWidth = Sphere.GetRectTransform().rect.width;

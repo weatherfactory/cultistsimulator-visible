@@ -28,7 +28,7 @@ namespace SecretHistories.Spheres.Angels
 
         public abstract LegalPositionCheckResult IsLegalPlacement(Rect candidateRect, Token placingToken);
 
-      public abstract  Vector2  GetFreeLocalPosition(Token token, Vector2 startPos);
+      public abstract  Vector2  GetClosestFreeLocalPosition(Token token, Vector2 startPos);
 
       public virtual bool CanTokenBeIgnored(Token token)
       {

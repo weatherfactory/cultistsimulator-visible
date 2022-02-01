@@ -38,7 +38,7 @@ namespace SecretHistories.Spheres.Angels
             return LegalPositionCheckResult.Legal();
         }
 
-        public override Vector2 GetFreeLocalPosition(Token token, Vector2 centerPos)
+        public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 centerPos)
         {
             return Vector3.zero;
         }

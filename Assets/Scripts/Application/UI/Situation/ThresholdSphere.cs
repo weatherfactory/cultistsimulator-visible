@@ -273,7 +273,7 @@ namespace SecretHistories.UI
             if (_container.IsOpen)
             //the threshold is visible, so the reference position should be the sphere itself in world space
             {
-                eventualTokenPosition = Choreographer.GetFreeLocalPosition(forToken, Vector2.zero);
+                eventualTokenPosition = Choreographer.GetClosestFreeLocalPosition(forToken, Vector2.zero);
                 destinationScale = 1f;
             }
             else

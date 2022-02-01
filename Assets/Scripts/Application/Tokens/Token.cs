@@ -380,9 +380,9 @@ namespace SecretHistories.UI {
 
 
             var tokenWorldPosition = Sphere.GetRectTransform().TransformPoint(Location.Anchored3DPosition);
-            var projectionPosition = projectInSphere.GetRectTransform().InverseTransformPoint(tokenWorldPosition);
+            var projectionPositionLocalToSphere = projectInSphere.GetRectTransform().InverseTransformPoint(tokenWorldPosition);
             
-            var candidatePosition = projectInSphere.Choreographer.GetFreeLocalPosition(this, projectionPosition);
+            var candidatePosition = projectInSphere.Choreographer.GetClosestFreeLocalPosition(this, projectionPositionLocalToSphere);
 
             _ghost.ShowAt(projectInSphere, candidatePosition,TokenRectTransform);
 

@@ -150,7 +150,7 @@ namespace SecretHistories.Commands
             
 
             var spawnedTravelItinerary = new TokenTravelItinerary(fromSourceToken.TokenRectTransform.anchoredPosition3D,
-                    newToken.Sphere.Choreographer.GetFreeLocalPosition(newToken,
+                    newToken.Sphere.Choreographer.GetClosestFreeLocalPosition(newToken,
                         fromSourceToken.ManifestationRectTransform.anchoredPosition))
                 .WithDuration(1f)
                 .WithDestinationSpherePath(newToken.Sphere.GetAbsolutePath())
@@ -164,7 +164,7 @@ namespace SecretHistories.Commands
 
             var itineraryForNewToken =
                 new TokenTravelItinerary(newToken.TokenRectTransform.anchoredPosition3D,
-                        newToken.Sphere.Choreographer.GetFreeLocalPosition(newToken, destination.Anchored3DPosition))
+                        newToken.Sphere.Choreographer.GetClosestFreeLocalPosition(newToken, destination.Anchored3DPosition))
                     .WithDuration(_travelDuration).
                     WithDestinationSpherePath(destination.AtSpherePath);
             newToken.TravelTo(itineraryForNewToken, new Context(Context.ActionSource.JustSpawned));

@@ -102,7 +102,7 @@ namespace SecretHistories.Spheres.Angels
 
         private void ReturnToHomeLocation(Context context)
         {
-            var destination = SphereToWatchOver.Choreographer.GetFreeLocalPosition(TokenToBringHome, PreferredHomingPosition);
+            var destination = SphereToWatchOver.Choreographer.GetClosestFreeLocalPosition(TokenToBringHome, PreferredHomingPosition);
             SendToken(TokenToBringHome,destination, context);
         }
 

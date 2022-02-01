@@ -627,7 +627,7 @@ namespace SecretHistories.Spheres
                 }
             }
 
-            var targetFreePosition= Choreographer.GetFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition3D);
+            var targetFreePosition= Choreographer.GetClosestFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition3D);
 
             TokenTravelItinerary journeyToFreePosition =
                 new TokenTravelItinerary(token.TokenRectTransform.anchoredPosition3D, targetFreePosition)
