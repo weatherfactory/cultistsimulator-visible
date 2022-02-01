@@ -14,7 +14,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
         [SerializeField]
         private Vector3 _startPosition;
         [SerializeField]
-        private Vector3 _endPosition;
+        public Vector3 EndPosition;
         
 
         public Path path;
@@ -31,6 +31,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
         public bool Defunct { get; set; }
 
 
+        public event Action<Token, Context> OnTokenArrival;
+
         public virtual void Begin(Token token, Context context,float speed)
         {
             _token = token;
@@ -39,11 +41,16 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
             transform.SetAsLastSibling();
 
             var seeker = token.gameObject.GetComponent<Seeker>();
+            _startPosition = token.transform.position;
 
-            path = seeker.StartPath(_startPosition, _endPosition);
+
+            path = seeker.StartPath(_startPosition, EndPosition,OnPathComplete);
             path.BlockUntilCalculated();
         }
-
+        public void OnPathComplete(Path p)
+        {
+        //do nothing right now. THis takes the place of BlockUntilCalculated, right?
+        }
 
         public void Update()
         {

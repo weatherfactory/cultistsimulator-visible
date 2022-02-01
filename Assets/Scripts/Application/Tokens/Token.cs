@@ -1051,22 +1051,7 @@ namespace SecretHistories.UI {
 
         }
 
-        public void StartWalk(TokenPathItinerary pathItinerary)
-        {
-            var seeker = GetComponent<Seeker>();
 
-           
-
-            Path p= seeker.StartPath(pathItinerary.Anchored3DStartPosition, pathItinerary.Anchored3DEndPosition, OnPathComplete);
-               p.BlockUntilCalculated();
-
-            
-        }
-
-        public void OnPathComplete(Path path)
-        {
-      
-        }
 
         public void Update()
         {

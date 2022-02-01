@@ -19,6 +19,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
         public TokenPathItinerary()
         { }
 
+
         public TokenPathItinerary(TokenLocation startLocation, TokenLocation endLocation)
         {
             Anchored3DStartPosition = startLocation.Anchored3DPosition;
@@ -49,12 +50,23 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
         public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
         {
             _travellingToken = tokenToSend;
-            _travellingToken.StartWalk(this);
+            var pathwalkerAnimation = SetupAnimation(tokenToSend,Anchored3DEndPosition);
+            pathwalkerAnimation.Begin(tokenToSend,context,1f);
+
             //lock ghost at ultimate destination
             //          var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
             //            var ghost = GetGhost();
             //ghost.ShowAt(destinationSphere,Anchored3DEndPosition,_travellingToken.TokenRectTransform);
         }
+
+        private TokenPathwalkerAnimation SetupAnimation(Token tokenToSend,Vector3 endPosition)
+        {
+            var tokenAnimation = tokenToSend.gameObject.AddComponent<TokenPathwalkerAnimation>();
+            tokenAnimation.EndPosition = endPosition;
+            tokenAnimation.OnTokenArrival += Arrive;
+            return tokenAnimation;
+        }
+
 
         public override void Arrive(Token tokenToSend, Context context)
         {
