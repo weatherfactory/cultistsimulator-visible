@@ -51,12 +51,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
         {
             _travellingToken = tokenToSend;
             var pathwalkerAnimation = SetupAnimation(tokenToSend,Anchored3DEndPosition);
-            pathwalkerAnimation.Begin(tokenToSend,context,1f);
+            pathwalkerAnimation.Begin(tokenToSend,context,200f);
 
-            //lock ghost at ultimate destination
-            //          var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
-            //            var ghost = GetGhost();
-            //ghost.ShowAt(destinationSphere,Anchored3DEndPosition,_travellingToken.TokenRectTransform);
         }
 
         private TokenPathwalkerAnimation SetupAnimation(Token tokenToSend,Vector3 endPosition)

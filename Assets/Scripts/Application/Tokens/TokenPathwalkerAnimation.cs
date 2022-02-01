@@ -19,7 +19,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
 
         public Path path;
 
-        public float speed = 2;
+        private float _speed = 2;
 
         public float nextWaypointDistance = 3;
 
@@ -37,6 +37,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
         {
             _token = token;
             _context = context;
+            _speed = speed;
 
             transform.SetAsLastSibling();
 
@@ -90,17 +91,13 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
 
             // Slow down smoothly upon approaching the end of the path
             // This value will smoothly go from 1 to 0 as the agent approaches the last waypoint in the path.
-            var speedFactor = reachedEndOfPath ? Mathf.Sqrt(distanceToWaypoint / nextWaypointDistance) : 1f;
+            var easingFactor = reachedEndOfPath ? Mathf.Sqrt(distanceToWaypoint / nextWaypointDistance) : 1f;
 
             // Direction to the next waypoint
             // Normalize it so that it has a length of 1 world unit
             Vector3 dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
             // Multiply the direction by our desired speed to get a velocity
-            Vector3 velocity = dir * speed * speedFactor;
-
-            // Move the agent using the CharacterController component
-            // Note that SimpleMove takes a velocity in meters/second, so we should not multiply by Time.deltaTime
-
+            Vector3 velocity = dir * _speed * easingFactor;
 
             // If you are writing a 2D game you may want to remove the CharacterController and instead use e.g transform.Translate
             transform.position += velocity * Time.deltaTime;
