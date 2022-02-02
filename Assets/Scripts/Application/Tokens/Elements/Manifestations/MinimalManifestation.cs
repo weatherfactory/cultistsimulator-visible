@@ -23,7 +23,7 @@ namespace SecretHistories.Manifestations
     public class MinimalManifestation: BasicManifestation, IManifestation
     {
 
-        public bool RequestingNoDrag => false;
+        public bool RequestingNoDrag => true;
         public bool RequestingNoSplit => true;
 
         public Type GhostType => typeof(NullGhost);

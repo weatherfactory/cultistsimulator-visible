@@ -487,11 +487,13 @@ namespace SecretHistories.UI {
     }
 
     public void OnBeginDrag(PointerEventData eventData)
-        {
+    {
 
-            if (CanBeDragged())
-                StartDrag(eventData);
-        }
+        if (CanBeDragged())
+            StartDrag(eventData);
+        else
+            eventData.pointerDrag = null; //AFAICT this is a sensible precaution, but check here first if we're relying on non-drag/drag behaviour in a token somewhere
+    }
         /// <summary>
         /// can move manually
         /// </summary>

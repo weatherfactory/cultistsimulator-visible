@@ -17,6 +17,7 @@ using UnityEngine.UI;
 
 namespace SecretHistories.UI
 {
+    [RequireComponent(typeof(WindowPositioner))]
     public class MortalWindow: MonoBehaviour,ISituationSubscriber,IPayloadWindow
     {
         private ITokenPayload _payload;
