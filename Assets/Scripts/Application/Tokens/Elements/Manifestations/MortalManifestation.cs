@@ -88,7 +88,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
 
         }
 
-        public bool RequestingNoDrag { get; }
+        public bool RequestingNoDrag => true;
         public bool RequestingNoSplit { get; }
 
         //eg Someones which can only be directed, not dragged
