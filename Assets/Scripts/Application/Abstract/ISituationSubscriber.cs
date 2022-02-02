@@ -11,5 +11,6 @@ namespace SecretHistories.Fucine
         void TimerValuesChanged(Situation s);
         void SituationSphereContentsUpdated(Situation s);
 
+
     }
 }

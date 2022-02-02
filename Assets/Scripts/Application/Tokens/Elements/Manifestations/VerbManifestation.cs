@@ -542,15 +542,13 @@ namespace SecretHistories.Manifestations
 
         public void Emphasise()
         {
-            //you never know when it might be useful
-            canvasGroup.alpha = 1f;
+
 
         }
 
         public void Understate()
         {
-            //you never know when it might be useful
-            canvasGroup.alpha = 0.3f;
+
 
         }
 

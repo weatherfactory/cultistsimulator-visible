@@ -1,6 +1,7 @@
 ﻿using SecretHistories.UI;
 using System.Collections;
 using System.Collections.Generic;
+using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Fucine;
 using UnityEngine;
@@ -20,6 +21,7 @@ namespace SecretHistories.UI {
         
      [SerializeField]RectTransform rectTrans;
      [SerializeField] CanvasGroup canvasGroup;
+
      RectTransform parentTrans;
         Camera uiCamera;
 
@@ -225,9 +227,10 @@ namespace SecretHistories.UI {
         void NotifyWindowThatPositionChangeIsComplete()
         {
             //if we're being used to position a situation window, advise it so it can update sphere destination information
-            var situationWindow = gameObject.GetComponent<SituationWindow>();
-            if (situationWindow != null)
-                situationWindow.NotifySpheresChanged(new Context(Context.ActionSource.SphereReferenceLocationChanged));
+            var window = gameObject.GetComponent<IPayloadWindow>(); //no serialized interface fields, can't store ref in inspector
+
+            if (window != null)
+                window.NotifySpheresChanged(new Context(Context.ActionSource.SphereReferenceLocationChanged));
 
         }
 
