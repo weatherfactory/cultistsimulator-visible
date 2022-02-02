@@ -18,6 +18,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
  [RequireComponent(typeof(RectTransform))]
     public class MortalManifestation: BasicManifestation, IManifestation
     {
+        [SerializeField]
+        private GameObject _emphasisGlow;
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -77,12 +79,13 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
 
         public void Emphasise()
         {
-          //
+          _emphasisGlow.SetActive(true);
         }
 
         public void Understate()
         {
-          //
+          _emphasisGlow.SetActive(false);
+
         }
 
         public bool RequestingNoDrag { get; }

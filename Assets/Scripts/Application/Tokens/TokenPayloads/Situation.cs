@@ -877,16 +877,18 @@ namespace SecretHistories.Entities {
            OnChanged?.Invoke(changeArgs);
            var meniscate= Watchman.Get<Meniscate>();
            meniscate.CloseAllSituationWindowsExcept(VerbId);
-    }
+           _token?.Emphasise(); //does nothing for verbs, important for someones
+        }
 
         public void Close()
         {
             IsOpen = false;
-
+            
             var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Closing);
 
             OnChanged?.Invoke(changeArgs);
             DumpUnstartedBusiness();
+            _token?.Understate(); //does nothing for verbs, important for someones
         }
 
 
