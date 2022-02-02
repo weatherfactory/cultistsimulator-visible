@@ -10,12 +10,14 @@ namespace SecretHistories.Assets.Scripts.Application.Entities
 {
     public class Way : MonoBehaviour
     {
+
+        //Ways are redundant now I'm using AStar, but may become dundant again esp for range.
         public List<Sphere> LinkedSpheres = new List<Sphere>();
 
         public void Start()
         {
             Watchman.Get<HornedAxe>().RegisterWay(this);
-            //TODO: hide the Way on startup unless debugging.
+           
         }
 
 

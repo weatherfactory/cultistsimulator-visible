@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Galaxy.Api;
 using SecretHistories.Choreographers;
+using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.UI;
 using UnityEngine;
@@ -17,7 +18,13 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     public class RoomChoreographer: AbstractChoreographer
     {
         [SerializeField]
-        public List<Transform> Floors;
+        public List<WalkableFloor> Floors;
+
+        public void Awake()
+        {
+            Floors = GetComponentsInChildren<WalkableFloor>().ToList();
+        
+        }
 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
         {
@@ -49,11 +56,11 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             }
 
-            Transform closestFloorLevel = null;
+            WalkableFloor closestFloorLevel = null;
 
             foreach (var f in Floors)
             {
-                var floorY = f.localPosition.y;
+                var floorY = f.gameObject.transform.localPosition.y;
                 if (Math.Abs(floorY - startPositionLocal.y) < difference)
                 {
                     difference = Math.Abs(floorY - startPositionLocal.y);
@@ -70,7 +77,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             else
             {
 
-                var positionAtFloorLevel = new Vector2(startPositionLocal.x, closestFloorLevel.localPosition.y);
+                var positionAtFloorLevel = new Vector2(startPositionLocal.x, closestFloorLevel.gameObject.transform.localPosition.y);
                 
                 return positionAtFloorLevel;
             }

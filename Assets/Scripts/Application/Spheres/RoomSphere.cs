@@ -22,6 +22,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
         private bool _traversable;
         public override bool Traversable => _traversable;
 
+ 
         public void Start()
         {
             RoomChoreographer rc = gameObject.GetComponent<RoomChoreographer>();
