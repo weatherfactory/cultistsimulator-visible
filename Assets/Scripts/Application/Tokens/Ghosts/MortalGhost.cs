@@ -29,11 +29,10 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
             
             var ghostPathItinerary = GetItineraryForFulfilment(token);
 
-            var homeSphere = token.GetHomeSphere();
-            var onwardsAngel = new OnwardsAngel(token, ghostPathItinerary,homeSphere);
-            homeSphere.AddAngel(onwardsAngel);
-            actingAsPathBeacon = true;
-            token.GoAway(context);
+            ghostPathItinerary.Depart(token, new Context(Context.ActionSource.Unknown));
+
+                actingAsPathBeacon = true;
+  
             
             return true;
         }
