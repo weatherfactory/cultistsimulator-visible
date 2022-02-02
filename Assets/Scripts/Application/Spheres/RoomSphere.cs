@@ -32,8 +32,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
             
             if (rc!=null && rc.GetWalkableFloors().Any())
                 _traversable = true;
-
-            _label.text = gameObject.name;
+            if(_label!=null)
+                _label.text = gameObject.name;
 
         }
 

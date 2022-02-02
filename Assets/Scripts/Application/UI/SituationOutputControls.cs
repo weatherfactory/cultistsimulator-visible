@@ -18,17 +18,17 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         private string buttonClearResultsDefault = "VERB_COLLECT";
         private string buttonClearResultsNone = "VERB_ACCEPT";
 
-        public void SituationStateChanged(Situation situation)
+        public void SituationStateChanged(SecretHistories.Entities.Situation situation)
         {
             //
         }
 
-        public void TimerValuesChanged(Situation s)
+        public void TimerValuesChanged(SecretHistories.Entities.Situation s)
         {
             //
         }
 
-        public void SituationSphereContentsUpdated(Situation s)
+        public void SituationSphereContentsUpdated(SecretHistories.Entities.Situation s)
         {
             var outputSphere = s.GetSingleSphereByCategory(SphereCategory.Output);
 

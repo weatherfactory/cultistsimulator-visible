@@ -32,33 +32,30 @@ namespace SecretHistories.UI {
 
 
     [RequireComponent(typeof(WindowPositioner))]
-    public class SituationWindow : MonoBehaviour, ISituationSubscriber {
+    public class SituationWindow : MonoBehaviour, ISituationSubscriber, IPayloadWindow
+    {
 
 
-        [SerializeField] private StateEnum CurrentStateIdentifier;
-        [SerializeField] private string CurrentRecipeId;
+        //[SerializeField] private StateEnum CurrentStateIdentifier;
+        //  [SerializeField] private string CurrentRecipeId;
 
-        [Header("Visuals")]
-		[SerializeField] CanvasGroupFader canvasGroupFader;
+        [Header("Visuals")] [SerializeField] CanvasGroupFader canvasGroupFader;
         public WindowPositioner positioner;
 
-        [Space]
-        [SerializeField] Image artwork;
+        [Space] [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] private LayoutElement layoutElement;
         [SerializeField] private float MinHeightBeforeExpansion;
 
 
 
-        [Space]
-        [SerializeField] List<SituationDominion> Dominions;
+        [Space] [SerializeField] List<SituationDominion> Dominions;
 
 
-        [Space]
-        [SerializeField] AspectsDisplay aspectsDisplay;
+        [Space] [SerializeField] AspectsDisplay aspectsDisplay;
 
-		[SerializeField] Button startButton;
-		[SerializeField] TextMeshProUGUI startButtonText;
+        [SerializeField] Button startButton;
+        [SerializeField] TextMeshProUGUI startButtonText;
 
         public UnityEvent OnStart;
         public UnityEvent OnCollect;
@@ -67,29 +64,36 @@ namespace SecretHistories.UI {
         public OnSphereRemovedEvent OnSphereRemoved;
 
 
-        public TokenLocation LastOpenLocation;
+        //  public TokenLocation LastOpenLocation;
 
-        private ITokenPayload _payload; //Ideally, we would reduce this to an ITokenPayload
+        private ITokenPayload _payload;
 
 
-        public bool IsVisible {
-            get { return canvasGroupFader.IsFullyVisible(); }
-        }
-
-		public string Title {
-			get { return title.text; }
-			set { title.text = value; }
-        }
-
-		public Vector3 Position
-		{
-			get { return positioner.GetPosition(); }
-			set { positioner.SetPosition( value ); }
-		}
-
-        public void Attach(Situation newSituation)
+        public bool IsVisible
         {
-        
+            get { return canvasGroupFader.IsFullyVisible() || canvasGroupFader.IsAppearing(); }
+        }
+
+        public string Title
+        {
+            get { return title.text; }
+            set { title.text = value; }
+        }
+
+        public Vector3 Position
+        {
+            get { return positioner.GetPosition(); }
+            set { positioner.SetPosition(value); }
+        }
+
+        public void Attach(ElementStack newElementStack)
+        {
+            throw new NotImplementedException("Can't attach a SituationWindow to an element stack");
+        }
+
+    public void Attach(Situation newSituation)
+        {
+
             newSituation.AddSubscriber(this);
 
             OnWindowClosed.AddListener(newSituation.Close);
@@ -217,8 +221,8 @@ namespace SecretHistories.UI {
         public void SituationStateChanged(Situation situation)
         {
             DisplayButtonState(situation);
-            CurrentStateIdentifier = situation.StateIdentifier;
-            CurrentRecipeId = situation.RecipeId;
+         //   CurrentStateIdentifier = situation.StateIdentifier;
+        //    CurrentRecipeId = situation.RecipeId;
         }
 
         public void TimerValuesChanged(Situation situation)

@@ -123,7 +123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114020662237663214}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Assets.CS.TabletopUI.SituationWindow, Assembly-CSharp
         m_MethodName: Collect
         m_Mode: 1
@@ -411,7 +411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224000010579208946}
-  - component: {fileID: 114020662237663214}
+  - component: {fileID: 6975200864881271092}
   - component: {fileID: 114651031545853594}
   - component: {fileID: 114000011356646590}
   - component: {fileID: 225000011348779986}
@@ -457,7 +457,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 700, y: 0}
   m_Pivot: {x: 0.5, y: 0.7}
---- !u!114 &114020662237663214
+--- !u!114 &6975200864881271092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -466,30 +466,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013105576594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d82a6bfde0cdd94890dbb172a940e75, type: 3}
+  m_Script: {fileID: 11500000, guid: a4a6cfcce6f2d2b44a4360baa3f446ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentStateIdentifier: 0
-  CurrentRecipeId: 
-  canvasGroupFader: {fileID: 114000011356646590}
-  positioner: {fileID: 114651031545853594}
-  artwork: {fileID: 114475561134123840}
-  title: {fileID: 114797357020451180}
-  layoutElement: {fileID: 7815957290418404374}
-  MinHeightBeforeExpansion: 420
-  Dominions:
-  - {fileID: 4470030975996782642}
-  - {fileID: 7731683286596552914}
-  - {fileID: 8331173372513189640}
-  - {fileID: 7216067067506907108}
-  - {fileID: 4789969075872377100}
-  aspectsDisplay: {fileID: 114000011139942088}
-  startButton: {fileID: 114376102645738516}
-  startButtonText: {fileID: 114504879707443264}
   OnStart:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCollect:
     m_PersistentCalls:
       m_Calls: []
   OnWindowClosed:
@@ -501,6 +481,16 @@ MonoBehaviour:
   OnSphereRemoved:
     m_PersistentCalls:
       m_Calls: []
+  canvasGroupFader: {fileID: 114000011356646590}
+  positioner: {fileID: 114651031545853594}
+  _artwork: {fileID: 114475561134123840}
+  _title: {fileID: 114797357020451180}
+  Dominions:
+  - {fileID: 4470030975996782642}
+  - {fileID: 7731683286596552914}
+  - {fileID: 4789969075872377100}
+  - {fileID: 8331173372513189640}
+  - {fileID: 7216067067506907108}
 --- !u!114 &114651031545853594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,7 +1673,7 @@ MonoBehaviour:
   ContentsDisplayChangedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114020662237663214}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SecretHistories.UI.SituationWindow, SecretHistories.Main
         m_MethodName: ContentsDisplayChanged
         m_Mode: 0
@@ -2739,7 +2729,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114020662237663214}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SecretHistories.UI.SituationWindow, SecretHistories.Main
         m_MethodName: CloseButtonClicked
         m_Mode: 1

@@ -66,6 +66,14 @@ namespace SecretHistories.Services
             return GetPrefab(loadFromPath,parent).GetComponent(manifestationType) as IManifestation;
         }
 
+        public IPayloadWindow CreateWindowPrefab(Type payloadWindowType, Transform parent)
+        {
+
+            string loadFromPath = prefabPath + payloadWindowType.Name;
+            return GetPrefab(loadFromPath, parent).GetComponent(payloadWindowType) as IPayloadWindow;
+        }
+
+
 
         public AbstractGhost CreateGhostPrefab(Type ghostType, Transform parent)
         {

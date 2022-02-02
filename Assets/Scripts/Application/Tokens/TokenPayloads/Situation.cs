@@ -23,6 +23,7 @@ using SecretHistories.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
+using SecretHistories.Assets.Scripts.Application.UI;
 using SecretHistories.Commands.TokenEffectCommands;
 using SecretHistories.Constants;
 using SecretHistories.Core;
@@ -339,15 +340,15 @@ namespace SecretHistories.Entities {
 
         }
 
-        public Type GetWindowType(SphereCategory sphereCategory)
+        public Type GetWindowType()
         {
             if (Verb == null)
                 return typeof(SituationWindow); // shouldn't happen, but belt and braces
 
             switch (Verb.Category)
             {
-             //   case VerbCategory.Someone:
-             //       return typeof(MortalManifestation);
+                case VerbCategory.Someone:
+                    return typeof(MortalWindow);
                 default:
                     return typeof(SituationWindow);
             }
