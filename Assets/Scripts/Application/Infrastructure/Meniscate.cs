@@ -19,6 +19,7 @@ using SecretHistories.Spheres;
 
 using SecretHistories.Enums.Elements;
 using SecretHistories.Infrastructure;
+using SecretHistories.NullObjects;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -55,8 +56,32 @@ namespace SecretHistories.UI {
         }
 
         public bool IsSituationWindowOpen() {
-	        var situationControllers = Watchman.Get<HornedAxe>().GetRegisteredSituations();
-	        return situationControllers.Any(c => c.IsOpen);
+	        var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
+	        return situations.Any(c => c.IsOpen);
+        }
+
+        public Situation GetCurrentlyOpenSituation()
+        {
+            var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
+            var openSituations = situations.Where(s => s.IsOpen);
+
+            
+            var enumerable = openSituations.ToList();
+            if (enumerable.Count > 1)
+            {
+               string warning=$"Found {situations.Count} open situations, which shouldn't happen: ";
+               foreach (var o in new List<Situation>(enumerable))
+                   warning += $" {o.Id};";
+               NoonUtility.LogWarning(warning);
+
+               return enumerable.First();
+            }
+
+            if (enumerable.Count == 0)
+                return NullSituation.Create();
+
+            return enumerable.Single();
+
         }
 
         public void SetHighlightedElement(string elementId, int quantity = 1)

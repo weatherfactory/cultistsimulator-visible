@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using SecretHistories.UI;
 using SecretHistories.States.TokenStates;
 using SecretHistories.Constants;
+using SecretHistories.Enums;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace SecretHistories.Spheres
 {
-    public class SphereDropCatcher: MonoBehaviour,IDropHandler
+    public class SphereDropCatcher: MonoBehaviour,IDropHandler,IPointerClickHandler
     {
         public Sphere Sphere;
 
@@ -43,6 +44,21 @@ namespace SecretHistories.Spheres
         {
             return Sphere.TryDisplayGhost(forToken);
             
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if(Sphere.Traversable) //move someones with a right-click
+            {
+
+                if (eventData.button == PointerEventData.InputButton.Right)
+                {
+                    var currentlyOpenSituation = Watchman.Get<Meniscate>().GetCurrentlyOpenSituation();
+                    if(currentlyOpenSituation.Verb.Category==VerbCategory.Someone)
+                        NoonUtility.Log("Ar");
+                }
+
+            }
         }
     }
 }
