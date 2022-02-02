@@ -826,6 +826,15 @@ namespace SecretHistories.Spheres
             }
         }
 
+        public virtual void Emphasise()
+        {
+            //
+        }
+
+        public virtual void Understate()
+        {
+            //
+        }
 
         public bool IsInRoot()
         {

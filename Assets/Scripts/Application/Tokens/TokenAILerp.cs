@@ -42,7 +42,11 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
                     continue;
 
                 if(ts.IsWorldPointInBoundingRect(token.TokenRectTransform.position))
+                {
+                    token.Sphere.Understate();
                     ts.AcceptToken(token,Context.Unknown());
+                    ts.Emphasise();
+                }
             }
         }
     }

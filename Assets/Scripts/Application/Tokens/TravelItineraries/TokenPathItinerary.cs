@@ -59,7 +59,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
             
             tokenAi.destination= Anchored3DEndPosition;
             
-           // AStarPath = seeker.StartPath(tokenToSend.transform.position, Anchored3DEndPosition);
     tokenAi.OnTokenArrival += Arrive;
 
             _travellingToken.transform.SetAsLastSibling();
