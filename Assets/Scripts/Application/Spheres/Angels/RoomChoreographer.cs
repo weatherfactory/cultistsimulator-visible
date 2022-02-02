@@ -72,6 +72,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             }
 
             WalkableFloor closestFloor = null;
+            //var tokenHeightAdjustment = token.ManifestationRectTransform.rect.height *0.65f;
+            var tokenHeightAdjustment = token.ManifestationRectTransform.rect.height *0f;
 
             foreach (var f in _floors)
             {
@@ -99,12 +101,12 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             if (closestLadder != null && ladderXDifference < flooryDifference)
             {
                 var positionOnLadder =
-                    new Vector2(closestLadder.gameObject.transform.localPosition.x, startPositionLocal.y);
+                    new Vector2(closestLadder.gameObject.transform.localPosition.x, startPositionLocal.y + tokenHeightAdjustment);
                 return positionOnLadder;
             }
             else if(closestFloor != null && flooryDifference<float.PositiveInfinity) //second condition is redundant, but keeping it here in case of accident
             {
-                var positionAtFloorLevel = new Vector2(startPositionLocal.x, closestFloor.gameObject.transform.localPosition.y);
+                var positionAtFloorLevel = new Vector2(startPositionLocal.x, closestFloor.gameObject.transform.localPosition.y + tokenHeightAdjustment);
                 return positionAtFloorLevel;
             }
             else
