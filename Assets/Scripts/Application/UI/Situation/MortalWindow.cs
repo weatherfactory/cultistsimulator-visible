@@ -135,7 +135,10 @@ foreach (var d in Dominions)
 
 
         }
-
+        public void CloseButtonClicked()
+        {
+            OnWindowClosed.Invoke(); //calls down to payload, which should then call up again
+        }
         public void PayloadRequestsHide()
         {
             if (IsVisible)
