@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Galaxy.Api;
+using SecretHistories.Assets.Scripts.Application.Abstract;
 using SecretHistories.Choreographers;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
@@ -19,16 +20,24 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     {
         
         private List<WalkableFloor> _floors;
+        private List<WalkableLadder> _ladders;
 
         public List<WalkableFloor> GetWalkableFloors()
         {
             return new List<WalkableFloor>(_floors);
+
+        }
+
+        public List<WalkableLadder> GetWalkableLadders()
+        {
+            return new List<WalkableLadder>(_ladders);
+
         }
 
         public void Awake()
         {
             _floors = GetComponentsInChildren<WalkableFloor>().ToList();
-        
+            _ladders = GetComponentsInChildren<WalkableLadder>().ToList();
         }
 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
@@ -53,7 +62,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 startPositionLocal)
         {
-            float difference = float.PositiveInfinity;
+            float flooryDifference = float.PositiveInfinity;
+            float ladderXDifference = float.PositiveInfinity;
             if (!_floors.Any())
             {
                 NoonUtility.LogWarning($"No walkable floors in {Sphere.name}; defaulting to zero vector");
@@ -61,32 +71,48 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             }
 
-            WalkableFloor closestFloorLevel = null;
+            WalkableFloor closestFloor = null;
 
             foreach (var f in _floors)
             {
                 var floorY = f.gameObject.transform.localPosition.y;
-                if (Math.Abs(floorY - startPositionLocal.y) < difference)
+                if (Math.Abs(floorY - startPositionLocal.y) < flooryDifference)
                 {
-                    difference = Math.Abs(floorY - startPositionLocal.y);
-                    closestFloorLevel = f;
+                    flooryDifference = Math.Abs(floorY - startPositionLocal.y);
+                    closestFloor = f;
                 }
             }
 
-            if (closestFloorLevel == null)
+            WalkableLadder closestLadder = null;
+
+            foreach (var l in _ladders)
             {
-                NoonUtility.LogWarning(
-                    $"Couldn't decide a closest floor level in {Sphere.name}; defaulting to zero vector");
-                return Vector2.zero;
+                var ladderX = l.gameObject.transform.localPosition.x;
+                if (Math.Abs(ladderX - startPositionLocal.x) < ladderXDifference)
+                {
+                    ladderXDifference = Math.Abs(ladderX - startPositionLocal.x);
+                    closestLadder = l;
+                }
+            }
+
+
+            if (closestLadder != null && ladderXDifference < flooryDifference)
+            {
+                var positionOnLadder =
+                    new Vector2(closestLadder.gameObject.transform.localPosition.x, startPositionLocal.y);
+                return positionOnLadder;
+            }
+            else if(closestFloor != null && flooryDifference<float.PositiveInfinity) //second condition is redundant, but keeping it here in case of accident
+            {
+                var positionAtFloorLevel = new Vector2(startPositionLocal.x, closestFloor.gameObject.transform.localPosition.y);
+                return positionAtFloorLevel;
             }
             else
             {
-
-                var positionAtFloorLevel = new Vector2(startPositionLocal.x, closestFloorLevel.gameObject.transform.localPosition.y);
-                
-                return positionAtFloorLevel;
+                NoonUtility.LogWarning(
+                    $"Couldn't decide a closest walkable surface in {Sphere.name}; defaulting to zero vector");
+                return Vector2.zero;
             }
-
         }
     }
 }
