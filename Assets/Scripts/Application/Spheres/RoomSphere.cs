@@ -43,12 +43,14 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
         public override void Emphasise()
         {
-            _label.alpha = 1f;
+            if(_label!=null)
+                _label.alpha = 1f;
         }
 
         public override void Understate()
         {
-            _label.alpha = 0f;
+            if (_label != null)
+                _label.alpha = 0f;
         }
 
         public override bool TryDisplayGhost(Token forToken)
