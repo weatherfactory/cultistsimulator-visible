@@ -55,11 +55,12 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
             
             
             var seeker = tokenToSend.gameObject.GetComponent<Seeker>();
-            var tokenAILerp = tokenToSend.gameObject.gameObject.GetComponent<TokenAILerp>();
+            var tokenAi = tokenToSend.gameObject.gameObject.GetComponent<TokenAILerp>();
             
-            AStarPath = seeker.StartPath(tokenToSend.transform.position, Anchored3DEndPosition);
-            tokenAILerp.canMove = true;
-            tokenAILerp.OnTokenArrival += Arrive;
+            tokenAi.destination= Anchored3DEndPosition;
+            
+           // AStarPath = seeker.StartPath(tokenToSend.transform.position, Anchored3DEndPosition);
+    tokenAi.OnTokenArrival += Arrive;
 
             _travellingToken.transform.SetAsLastSibling();
 
@@ -71,7 +72,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
             
             var tokenAILerp = tokenToSend.gameObject.gameObject.GetComponent<TokenAILerp>();
             tokenAILerp.OnTokenArrival -= Arrive;
-            tokenAILerp.canMove = false; //without this, it'll keep moving back to its target when we try to pick it up. Is there a more appropriate way though?
+            
             _travellingToken.OnCompletedTravelItinerary();
             _travellingToken.HideGhost();
         }

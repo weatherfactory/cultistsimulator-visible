@@ -14,15 +14,14 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
 {
     public class MortalGhost: AbstractGhost
     {
-        private bool actingAsPathBeacon = false;
+
 
 
         ///Get a path itinerary based on the ghost's current position. Return the token to its
         /// original location if it's being dragged, and then apply the path itinerary to the token.
         public override bool TryFulfilPromise(Token token, Context context)
         {
-            if (actingAsPathBeacon)
-                return false;
+  
 
             if (!Visible)
                 return false; //if the ghost isn't active, there's no promise to fulfill.
@@ -31,8 +30,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
 
             ghostPathItinerary.Depart(token, new Context(Context.ActionSource.Unknown));
 
-                actingAsPathBeacon = true;
-  
             
             return true;
         }
