@@ -831,8 +831,11 @@ namespace SecretHistories.Spheres
         {
             return GetAbsolutePath().IsPathToSphereInRoot();
         }
-
         public virtual bool TryDisplayGhost(Token forToken)
+        {
+            return false; //most spheres won't show a ghost
+        }
+        public virtual bool TryDisplayGhost(Token forToken,Vector3 overridingWorldPosition)
         {
             return false; //most spheres won't show a ghost
         }

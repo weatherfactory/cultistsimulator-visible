@@ -27,10 +27,10 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
             if (!Visible)
                 return false; //if the ghost isn't active, there's no promise to fulfill.
             
-            var travelToGhostItinerary = GetItineraryForFulfilment(token);
+            var ghostPathItinerary = GetItineraryForFulfilment(token);
 
             var homeSphere = token.GetHomeSphere();
-            var onwardsAngel = new OnwardsAngel(token, travelToGhostItinerary,homeSphere);
+            var onwardsAngel = new OnwardsAngel(token, ghostPathItinerary,homeSphere);
             homeSphere.AddAngel(onwardsAngel);
             actingAsPathBeacon = true;
             token.GoAway(context);

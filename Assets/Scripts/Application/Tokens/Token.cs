@@ -371,14 +371,17 @@ namespace SecretHistories.UI {
             return true;
         }
 
-        public bool DisplayGhostAtWorldPosition(Vector3 atPosition, Sphere projectInSphere)
+        public bool DisplayGhostAtChoreographerDrivenPosition(Sphere projectInSphere, Vector3 overridingWorldPosition)
         {
             if (_ghost == null)
                 return false;
 
-            
-            _ghost.ShowAt(projectInSphere, atPosition,TokenRectTransform);
 
+            var projectionPositionLocalToSphere = projectInSphere.GetRectTransform().InverseTransformPoint(overridingWorldPosition);
+
+            var candidatePosition = projectInSphere.Choreographer.GetClosestFreeLocalPosition(this, projectionPositionLocalToSphere);
+
+            _ghost.ShowAt(projectInSphere, candidatePosition, TokenRectTransform);
 
             //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
             _manifestation.Unhighlight(HighlightType.WillInteract, _payload);
@@ -530,7 +533,7 @@ namespace SecretHistories.UI {
             return true;
         }
 
-        public bool RequestingNoDirectDrop()
+        public bool RequestingNoDirectDrop() //This may now be redundant if we're using right-clicking
         {
             return _manifestation.RequestingNoDirectDrop;
         }

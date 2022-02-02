@@ -11,6 +11,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.UI;
+using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.Spheres
 {
@@ -36,11 +37,14 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
 
 
 
-
         public override bool TryDisplayGhost(Token forToken)
         {
             return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
 
+        }
+        public override bool TryDisplayGhost(Token forToken, Vector3 overridingWorldPosition)
+        {
+            return forToken.DisplayGhostAtChoreographerDrivenPosition(this, overridingWorldPosition);
         }
     }
 }

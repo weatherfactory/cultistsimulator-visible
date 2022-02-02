@@ -29,7 +29,7 @@ namespace SecretHistories.Spheres
 
             if (token != null)
             {
-                if (token.RequestingNoDirectDrop())
+                if (token.RequestingNoDirectDrop()) //This may now be redundant if we're using right-clicking
                     token.TryFulfilGhostPromise(new Context(Context.ActionSource.PlayerDrag));
                 else    
                 if (Sphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag)))
@@ -55,7 +55,11 @@ namespace SecretHistories.Spheres
                 {
                     var currentlyOpenSituation = Watchman.Get<Meniscate>().GetCurrentlyOpenSituation();
                     if(currentlyOpenSituation.Verb.Category==VerbCategory.Someone)
-                        NoonUtility.Log("Ar");
+                    {
+                        var token = currentlyOpenSituation.Token;
+                        Sphere.TryDisplayGhost(token, eventData.pointerCurrentRaycast.worldPosition);
+                        token.TryFulfilGhostPromise(Context.Unknown());
+                    }
                 }
 
             }
