@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6310470028541913362}
   - component: {fileID: 6310470028541913361}
   - component: {fileID: 6310470028541913360}
-  - component: {fileID: 6664024728802880789}
+  - component: {fileID: 3337221095425751065}
   m_Layer: 5
   m_Name: RoomSphere
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MonoBehaviour:
   _editorAbsolutePath: 
   _editorWildPath: 
   VisibleCharacteristics: []
---- !u!114 &6664024728802880789
+--- !u!114 &3337221095425751065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,11 +87,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6310470028541913365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0f5310c2177a394c87869788dd148a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8aec92dd222568644b911bfeaac30388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showDebugInfo: 0
-  showGrid: 0
+  Floors: []
 --- !u!1 &6310470029274160256
 GameObject:
   m_ObjectHideFlags: 0

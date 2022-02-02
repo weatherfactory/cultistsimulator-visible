@@ -17,12 +17,17 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     
     public class RoomChoreographer: AbstractChoreographer
     {
-        [SerializeField]
-        public List<WalkableFloor> Floors;
+        
+        private List<WalkableFloor> _floors;
+
+        public List<WalkableFloor> GetWalkableFloors()
+        {
+            return new List<WalkableFloor>(_floors);
+        }
 
         public void Awake()
         {
-            Floors = GetComponentsInChildren<WalkableFloor>().ToList();
+            _floors = GetComponentsInChildren<WalkableFloor>().ToList();
         
         }
 
@@ -49,7 +54,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 startPositionLocal)
         {
             float difference = float.PositiveInfinity;
-            if (!Floors.Any())
+            if (!_floors.Any())
             {
                 NoonUtility.LogWarning($"No walkable floors in {Sphere.name}; defaulting to zero vector");
                 return Vector2.zero;
@@ -58,7 +63,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             WalkableFloor closestFloorLevel = null;
 
-            foreach (var f in Floors)
+            foreach (var f in _floors)
             {
                 var floorY = f.gameObject.transform.localPosition.y;
                 if (Math.Abs(floorY - startPositionLocal.y) < difference)

@@ -27,7 +27,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
         {
             RoomChoreographer rc = gameObject.GetComponent<RoomChoreographer>();
             
-            if (rc!=null && rc.Floors.Any())
+            if (rc!=null && rc.GetWalkableFloors().Any())
                 _traversable = true;
 
         }
