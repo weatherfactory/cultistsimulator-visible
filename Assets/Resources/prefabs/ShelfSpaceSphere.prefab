@@ -59,8 +59,6 @@ MonoBehaviour:
   _editorAbsolutePath: 
   _editorWildPath: 
   VisibleCharacteristics: []
-  viz: {fileID: 0}
-  SlotLabel: {fileID: 0}
   slotGlow: {fileID: 1432004365391369781}
   slotIconHolder: {fileID: 114578752802880294}
 --- !u!225 &225443034359755438
@@ -112,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752301e92f31b4942991c2d296b9d765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxPlacementAttempts: 0
+  MaxPlacementAttempts: 20
 --- !u!1 &1052193299888978
 GameObject:
   m_ObjectHideFlags: 0
