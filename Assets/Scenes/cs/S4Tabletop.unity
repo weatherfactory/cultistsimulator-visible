@@ -281,6 +281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pan_step_distance: 30
   zoom_step_distance: 30
+  ZOOM_Z_CLOSE: -500
+  ZOOM_Z_MID: -900
+  ZOOM_Z_FAR: -1500
   defaultCameraMoveDuration: 0.2
   navigationLimits: {fileID: 75532657}
 --- !u!1 &53
@@ -2053,14 +2056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6dede08ba6a40338d4b3130dc33ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tabletopBackground: {fileID: 577}
-  aspectDetailsWindow: {fileID: 114432530904652398}
-  tokenDetailsWindow: {fileID: 114111364633692442}
   cardHoverDetail: {fileID: 5265435531635378363}
-  draggableHolderRectTransform: {fileID: 1610149764}
-  StatusBar: {fileID: 1243788745}
-  _notifier: {fileID: 594}
-  _elementOverview: {fileID: 1895797520}
 --- !u!4 &601
 Transform:
   m_ObjectHideFlags: 0
