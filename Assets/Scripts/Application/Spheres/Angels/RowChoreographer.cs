@@ -23,7 +23,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             public int MaxPlacementAttempts; /// set in code in the dropzone, because I was fudging my way out of *that* one.
             
 
-        public string PathOfOverlapSphereToWatch;
+        
             
 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)

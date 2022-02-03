@@ -19,6 +19,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     //skip gaps created by tokens in the world sphere.
     public class WorldAwareRowChoreographer: RowChoreographer
     {
+        public string PathOfOverlapSphereToWatch;
+
         public override LegalPositionCheckResult IsLegalPlacement(Rect candidateRect, Token placingToken)
         {
             Sphere overlapSphereToWatch;
