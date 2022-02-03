@@ -31,7 +31,6 @@ namespace SecretHistories.UI
         public RecipeSlotViz viz;
 
         public TextMeshProUGUI SlotLabel;
-        public Graphic border;
         public GraphicFader slotGlow;
         public LayoutGroup slotIconHolder;
         protected virtual UIStyle.GlowTheme GlowTheme=>UIStyle.GlowTheme.Classic;

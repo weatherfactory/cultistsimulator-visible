@@ -9,6 +9,7 @@ using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
 using SecretHistories.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,10 +19,17 @@ namespace SecretHistories.Manifestations
     [RequireComponent(typeof(RectTransform))]
     public class BookManifestation : BasicManifestation, IManifestation, IPointerEnterHandler, IPointerExitHandler
     {
+        [SerializeField]
         private Image frontCover;
+        [SerializeField]
         private Image backCover;
+        [SerializeField]
         private Image spine;
-        private string _entityId;
+
+        [SerializeField] private TextMeshProUGUI spineTitle;
+
+        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private GraphicFader _glow;
 
         private const string BACK_COVER_SUFFIX = "_b";
         private const string SPINE_SUFFIX = "_";
@@ -62,15 +70,15 @@ namespace SecretHistories.Manifestations
             backCover.sprite = b;
             
             name = "book_" + manifestable.Id;
+            spineTitle.text = manifestable.Label;
             
-            _entityId = manifestable.EntityId;
             UpdateVisuals(manifestable);
             
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-            UpdateVisuals(manifestable);
+         //
         }
 
 
