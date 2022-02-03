@@ -20,21 +20,7 @@ namespace SecretHistories.UI
     public class ShelfDominion: AbstractDominion
     {
      
-        //public override void RegisterFor(IManifestable manifestable)
-        //{
-        //    _manifestable = manifestable;
-        //    manifestable.RegisterDominion(this);
 
-        //    //var shelfSpheres = GetComponentsInChildren<ShelfSpaceSphere>();
-        //    //int shelfCount = 1;
-        //    //foreach (var shelfSpaceSphere in shelfSpheres)
-        //    //{
-        //    //     var spec = new SphereSpec(typeof(ShelfSpaceSphere), $"shelf{shelfCount}");
-        //    //     shelfSpaceSphere.SetPropertiesFromSpec(spec);
-        //    //     shelfCount++;
-        //    //}
-
-        //}
 
         public override Sphere TryCreateSphere(SphereSpec spec)
         {
