@@ -8,6 +8,7 @@ using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
+using SecretHistories.Services;
 using SecretHistories.UI;
 using TMPro;
 using UnityEngine;
@@ -137,7 +138,9 @@ namespace SecretHistories.Manifestations
 
         public IGhost CreateGhost()
         {
-            return NullGhost.Create(this);
+            var newGhost = Watchman.Get<PrefabFactory>()
+                .CreateGhostPrefab(typeof(BookGhost), this.RectTransform);
+            return newGhost;
         }
 
         public void OnPointerEnter(PointerEventData eventData)

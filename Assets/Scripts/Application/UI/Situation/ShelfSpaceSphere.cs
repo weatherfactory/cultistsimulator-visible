@@ -20,7 +20,7 @@ namespace SecretHistories.UI
     [IsEmulousEncaustable(typeof(Sphere))]
     [RequireComponent(typeof(SphereDropCatcher))]
     [RequireComponent(typeof(TokenMovementReactionDecorator))]
-    public class ShelfSpaceSphere : Sphere
+    public class ShelfSpaceSphere : Sphere, IInteractsWithTokens
     {
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
 
