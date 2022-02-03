@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224000011871924944}
   - component: {fileID: -2494200179644631504}
-  - component: {fileID: 114972629330940566}
-  - component: {fileID: 111265985691825676}
   - component: {fileID: 225443034359755438}
   - component: {fileID: 4921537108124972761}
   - component: {fileID: 3243761884941166812}
@@ -60,45 +58,10 @@ MonoBehaviour:
   _editorAbsolutePath: 
   _editorWildPath: 
   VisibleCharacteristics: []
-  viz: {fileID: 114972629330940566}
+  viz: {fileID: 0}
   SlotLabel: {fileID: 0}
-  border: {fileID: 0}
   slotGlow: {fileID: 1432004365391369781}
   slotIconHolder: {fileID: 114578752802880294}
---- !u!114 &114972629330940566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010408375514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3afd1cc281c3a492ebfdc426bbd1d2b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rectTrans: {fileID: 224000011871924944}
-  slot: {fileID: -2494200179644631504}
-  anim: {fileID: 111265985691825676}
-  easeTypeX: 18
-  easeTypeY: 21
---- !u!111 &111265985691825676
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010408375514}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 2c1c956df5566fb4f8a49dc1cee4173f, type: 2}
-  - {fileID: 7400000, guid: 3b0121abb54520b42a24d879f94bba40, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!225 &225443034359755438
 CanvasGroup:
   m_ObjectHideFlags: 0

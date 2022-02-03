@@ -182,7 +182,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000010408375514, guid: 9d1ae455caddd42ca8a4be1bbaffbab2, type: 3}
       propertyPath: m_Name
-      value: ShelfSpaceSphere (1)
+      value: BookcaseShelfSphere2
       objectReference: {fileID: 0}
     - target: {fileID: 224000011871924944, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
         type: 3}
@@ -297,6 +297,25 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3982476976559661981}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3983174612680382279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010408375514, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3982476976559661981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5198053014226838780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983174612680382279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: shelf2
 --- !u!1001 &6326230794766627380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -306,7 +325,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000010408375514, guid: 9d1ae455caddd42ca8a4be1bbaffbab2, type: 3}
       propertyPath: m_Name
-      value: ShelfSpaceSphere
+      value: BookcaseShelfSphere1
       objectReference: {fileID: 0}
     - target: {fileID: 224000011871924944, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
         type: 3}
@@ -421,6 +440,25 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6326230794766627380}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6325522154940663534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010408375514, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+    type: 3}
+  m_PrefabInstance: {fileID: 6326230794766627380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5702853894162546611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325522154940663534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: shelf1
 --- !u!1001 &8269032569149565183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,7 +468,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000010408375514, guid: 9d1ae455caddd42ca8a4be1bbaffbab2, type: 3}
       propertyPath: m_Name
-      value: ShelfSpaceSphere (2)
+      value: BookcaseShelfSphere3
       objectReference: {fileID: 0}
     - target: {fileID: 224000011871924944, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
         type: 3}
@@ -545,3 +583,22 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8269032569149565183}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8269185946476485669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010408375514, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8269032569149565183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &480134827857884176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8269185946476485669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ad664e66a4e4b408469ca5e901fea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyId: shelf3
