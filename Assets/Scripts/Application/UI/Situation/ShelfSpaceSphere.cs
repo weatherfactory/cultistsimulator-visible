@@ -301,6 +301,9 @@ namespace SecretHistories.UI
             if (homeSpherePath.Contains(this.GetAbsolutePath()))
                 return true;
 
+            if (homeSpherePath.GetTokenPath() == this.GetAbsolutePath().GetTokenPath())
+                return true;
+
             //If neither of these, return false.
             return false;
         }
