@@ -79,7 +79,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
             if (token.GetHomeSphere()==this)
                 //if so, display ghost.
                 return true;
-            //Is it container in this sphere?
+            //Is its path this sphere + lower down?
             var homeSpherePath = token.GetHomeSphere().GetAbsolutePath();
             if (this.GetAbsolutePath().Contains(homeSpherePath))
                 return true;

@@ -148,8 +148,12 @@ namespace SecretHistories.UI
                 incumbentMoved = false;
         }
 
+ 
         public override bool TryAcceptToken(Token token, Context context)
         {
+            if (!IsTokenInRangeOfThisShelf(token))
+                return false;
+        
 
             //does the token match the slot? Check that first
             ContainerMatchForStack match = GetMatchForTokenPayload(token.Payload);
@@ -167,17 +171,7 @@ namespace SecretHistories.UI
                 if (notifier != null)
                     notifier.ShowNotificationWindow(Watchman.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
             }
-            else if (token.Quantity != 1)
-            {
-                // We're dropping a stack of >1?
-                // set main stack to be returned to start position
-                token.CurrentState = new RejectedViaSplit();
-                // And we split a new one that's 1 (leaving the returning card to be n-1)
-                var newStack = token.CalveToken(1, new Context(Context.ActionSource.PlayerDrag));
-                // And we put that into the slot
-                AcceptToken(newStack, context);
-                return false; //We've accepted the *new* calved token, but we don't return true because the remaining, original token is rejected.
-            }
+           
             else
             {
                 //it matches.
@@ -285,12 +279,30 @@ namespace SecretHistories.UI
 
         public override bool TryDisplayGhost(Token forToken)
         {
-            return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
+            if(IsTokenInRangeOfThisShelf(forToken))
+                return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
+            return false;
 
         }
         public override bool DisplayGhostAt(Token forToken, Vector3 overridingWorldPosition)
         {
             return forToken.DisplayGhostAtChoreographerDrivenPosition(this, overridingWorldPosition);
+        }
+
+        private bool IsTokenInRangeOfThisShelf(Token token)
+        {
+            //Get the home sphere location of this token.
+            //Is it the same as this sphere?
+            if (token.GetHomeSphere() == this)
+                //if so, display ghost.
+                return true;
+            //Is this sphere contained in the home sphere
+            var homeSpherePath = token.GetHomeSphere().GetAbsolutePath();
+            if (homeSpherePath.Contains(this.GetAbsolutePath()))
+                return true;
+
+            //If neither of these, return false.
+            return false;
         }
     }
 
