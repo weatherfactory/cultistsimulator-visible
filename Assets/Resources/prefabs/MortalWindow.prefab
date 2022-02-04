@@ -492,6 +492,7 @@ MonoBehaviour:
   - {fileID: 4789969075872377100}
   - {fileID: 8331173372513189640}
   - {fileID: 7216067067506907108}
+  - {fileID: 5710641789445005943}
 --- !u!114 &114651031545853594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3648,7 +3649,6 @@ GameObject:
   - component: {fileID: 8409802486793930613}
   - component: {fileID: 5444804138790237845}
   - component: {fileID: 3675349329376214826}
-  - component: {fileID: 5759371947734779741}
   m_Layer: 5
   m_Name: PortageDominion
   m_TagString: Untagged
@@ -3744,36 +3744,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4302348721752569603}
   m_CullTransparentMesh: 1
---- !u!114 &5759371947734779741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4302348721752569603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.61775744, g: 0.39215687, b: 0.6431373, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5119002418793815506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3980,7 +3950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000010408375514, guid: 9d1ae455caddd42ca8a4be1bbaffbab2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224000011871924944, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
         type: 3}
@@ -4086,6 +4056,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224515374652696020, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 224515374652696020, guid: 9d1ae455caddd42ca8a4be1bbaffbab2,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d1ae455caddd42ca8a4be1bbaffbab2, type: 3}

@@ -296,12 +296,21 @@ namespace SecretHistories.UI
             if (token.GetHomeSphere() == this)
                 //if so, display ghost.
                 return true;
-            //Is this sphere contained in the home sphere
+            //Is this sphere's path contained in the home sphere's path
             var homeSpherePath = token.GetHomeSphere().GetAbsolutePath();
             if (homeSpherePath.Contains(this.GetAbsolutePath()))
                 return true;
 
-            if (homeSpherePath.GetTokenPath() == this.GetAbsolutePath().GetTokenPath())
+            //get the token path for this sphere and the token path for the home sphere - i.e. what tokens they live inside.
+            //if they're the same, return true
+            var homeSphereInToken = homeSpherePath.GetTokenPath();
+            var thisInToken = GetAbsolutePath().GetTokenPath();
+            if (homeSphereInToken == thisInToken)
+                return true;
+
+            //last possibility: the token paths for each might exist in the same sphere
+            //e.g., a librarian and a shelf are in different tokens, but those are in the same room sphere.
+            if (homeSphereInToken.GetSpherePath() == thisInToken.GetSpherePath())
                 return true;
 
             //If neither of these, return false.
