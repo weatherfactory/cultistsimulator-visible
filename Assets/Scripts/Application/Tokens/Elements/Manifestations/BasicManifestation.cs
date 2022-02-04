@@ -18,7 +18,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
         }
 
 
-        public virtual bool RequestingNoDirectDrop => false;
 
     }
 }

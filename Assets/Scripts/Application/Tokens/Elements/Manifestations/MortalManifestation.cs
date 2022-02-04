@@ -92,7 +92,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestati
         public bool RequestingNoSplit { get; }
 
         //eg Someones which can only be directed, not dragged
-        public override bool RequestingNoDirectDrop => true;
 
         public void DoMove(RectTransform tokenRectTransform)
         {

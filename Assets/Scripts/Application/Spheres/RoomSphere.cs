@@ -52,15 +52,40 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
             if (_label != null)
                 _label.alpha = 0f;
         }
-
+        public override bool TryAcceptToken(Token token, Context context)
+        {
+            if(IsTokenInRangeOfThisRoom(token))
+                return base.TryAcceptToken(token, context);
+            return false;
+        }
         public override bool TryDisplayGhost(Token forToken)
         {
-            return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
+            if (IsTokenInRangeOfThisRoom(forToken))
+                //if so, display ghost.
+                return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
+            else
+                return false;
 
         }
-        public override bool TryDisplayGhost(Token forToken, Vector3 overridingWorldPosition)
+        public override bool DisplayGhostAt(Token forToken, Vector3 overridingWorldPosition)
         {
             return forToken.DisplayGhostAtChoreographerDrivenPosition(this, overridingWorldPosition);
+        }
+
+        private bool IsTokenInRangeOfThisRoom(Token token)
+        {
+            //Get the home sphere location of this token.
+            //Is it the same as this sphere?
+            if (token.GetHomeSphere()==this)
+                //if so, display ghost.
+                return true;
+            //Is it container in this sphere?
+            var homeSpherePath = token.GetHomeSphere().GetAbsolutePath();
+            if (this.GetAbsolutePath().Contains(homeSpherePath))
+                return true;
+
+            //If neither of these, return false.
+            return false;
         }
     }
 }

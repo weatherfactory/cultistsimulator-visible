@@ -29,9 +29,7 @@ namespace SecretHistories.Spheres
 
             if (token != null)
             {
-                if (token.RequestingNoDirectDrop()) //This may now be redundant if we're using right-clicking
-                    token.TryFulfilGhostPromise(new Context(Context.ActionSource.PlayerDrag));
-                else    
+                
                 if (Sphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag)))
                     token.Stabilise();
             }
@@ -57,7 +55,7 @@ namespace SecretHistories.Spheres
                     if(currentlyOpenSituation.Verb.Category==VerbCategory.Someone)
                     {
                         var token = currentlyOpenSituation.Token;
-                        Sphere.TryDisplayGhost(token, eventData.pointerCurrentRaycast.worldPosition);
+                        Sphere.DisplayGhostAt(token, eventData.pointerCurrentRaycast.worldPosition);
                         token.TryFulfilGhostPromise(Context.Unknown());
                     }
                 }

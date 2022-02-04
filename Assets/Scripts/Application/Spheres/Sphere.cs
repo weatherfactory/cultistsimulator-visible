@@ -844,7 +844,7 @@ namespace SecretHistories.Spheres
         {
             return false; //most spheres won't show a ghost
         }
-        public virtual bool TryDisplayGhost(Token forToken,Vector3 overridingWorldPosition)
+        public virtual bool DisplayGhostAt(Token forToken,Vector3 overridingWorldPosition)
         {
             return false; //most spheres won't show a ghost
         }

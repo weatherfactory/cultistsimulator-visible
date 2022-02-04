@@ -521,24 +521,10 @@ namespace SecretHistories.UI {
             if (CurrentState.InSystemDrivenMotion())
                 return false;
 
-            var allowExploits = Watchman.Get<Config>().GetConfigValueAsInt(NoonConstants.BIRDWORMSLIDER);
-            if (allowExploits != null || allowExploits > 0)
-            {
-
-                if (CurrentlyBeingDragged())
-                {
-                    NoonUtility.Log("WORM enabled: dragging defeats pulling");
-                     return false; // don't pull cards being dragged if Worm is set On}
-                }
-            }
-
+            
             return true;
         }
 
-        public bool RequestingNoDirectDrop() //This may now be redundant if we're using right-clicking
-        {
-            return _manifestation.RequestingNoDirectDrop;
-        }
 
         protected void StartDrag(PointerEventData eventData)
         {

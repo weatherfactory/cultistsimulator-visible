@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Fucine;
 using Newtonsoft.Json;
+using Pathfinding;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 
@@ -322,6 +323,31 @@ namespace SecretHistories.Fucine
         public static FucinePath Current()
         {
             return new FucinePath(String.Empty);
+        }
+
+        
+        /// <summary>
+        /// Doesn't work with wild paths; won't work with relative paths unless they're the same length
+        /// </summary>
+        /// <param name="otherPath"></param>
+        /// <returns></returns>
+        public bool Contains(FucinePath otherPath)
+        {
+            if (this.IsWild() || otherPath.IsWild())
+                return false;
+
+            var otherPathParts = new List<FucinePathPart>(otherPath.PathParts);
+            var thesePathParts = new List<FucinePathPart>(PathParts);
+            for (int i = 0; i < thesePathParts.Count; i++)
+            {
+                var thisPathPart = thesePathParts[i];
+                var otherPathPart= otherPathParts[i];
+
+                if(!thisPathPart.Equals(otherPathPart))
+                    return false;
+            }
+
+            return true;
         }
 
         public bool Conforms(FucinePath otherPath)

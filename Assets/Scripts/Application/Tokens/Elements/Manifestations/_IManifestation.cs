@@ -50,7 +50,6 @@ namespace SecretHistories.Manifestations
         void Understate();
         bool RequestingNoDrag { get; }
         bool RequestingNoSplit { get; }
-        bool RequestingNoDirectDrop { get; }
         void DoMove(RectTransform tokenRectTransform);
 
         bool HandlePointerClick(PointerEventData eventData, Token token);

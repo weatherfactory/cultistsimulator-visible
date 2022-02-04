@@ -51,6 +51,19 @@ namespace SecretHistories.Spheres.Angels
             return _angels.Any(a => a.GetType() == angelType);
         }
 
+        public bool HasHomingAngelFor(Token token)
+        {
+            var _homingAngels = _angels.Where(a => a.GetType() == typeof(HomingAngel)).Select(a=>a as HomingAngel).ToList();
+            if (!_homingAngels.Any())
+                return false;
+            var matchingHomingAngel = _homingAngels.Where(ha => ha.GetTokenToBringHome() == token);
+
+            if (matchingHomingAngel.Any()) //should only ever be one, but just in case
+                return true;
+            else
+                return false;
+        }
+
         public void RetireAllAngels()
         {
             foreach (var a in _angels)

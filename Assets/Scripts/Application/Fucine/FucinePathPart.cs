@@ -19,6 +19,11 @@ namespace SecretHistories.Fucine
             Current
         }
 
+        public bool Equals(FucinePathPart other)
+        {
+            return ToString() == other.ToString();
+        }
+
         protected string PathPartValue;
         public abstract PathCategory Category { get; }
 

@@ -46,6 +46,10 @@ namespace SecretHistories.Spheres.Angels
             return SphereToWatchOver;
         }
 
+        public Token GetTokenToBringHome()
+        {
+            return TokenToBringHome;
+        }
         public bool MinisterToDepartingToken(Token token, Context context)
         {
             return false; //if it's been purposefully removed, it's not our business.

@@ -106,7 +106,6 @@ namespace SecretHistories.Manifestations
         }
 
         public bool RequestingNoSplit => false;
-        public bool RequestingNoDirectDrop => false;
 
         public void DoMove(RectTransform tokenRectTransform)
         {

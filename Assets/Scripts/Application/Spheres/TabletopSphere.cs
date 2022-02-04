@@ -171,7 +171,7 @@ namespace SecretHistories.Spheres
             return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
 
         }
-        public override bool TryDisplayGhost(Token forToken, Vector3 overridingWorldPosition)
+        public override bool DisplayGhostAt(Token forToken, Vector3 overridingWorldPosition)
         {
             return forToken.DisplayGhostAtChoreographerDrivenPosition(this,overridingWorldPosition);
         }
