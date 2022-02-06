@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations
+namespace SecretHistories.Manifestations
 {
     public class BasicManifestation: MonoBehaviour
     {

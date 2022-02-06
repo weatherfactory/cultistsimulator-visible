@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
-using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -16,6 +15,7 @@ using SecretHistories.Constants;
 using SecretHistories.Constants.Events;
 using SecretHistories.Core;
 using SecretHistories.Ghosts;
+using SecretHistories.Manifestations;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using TMPro;
@@ -24,7 +24,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace SecretHistories.Manifestations
-
 {
     [RequireComponent(typeof(RectTransform))]
     public class VerbManifestation: BasicManifestation, IManifestation

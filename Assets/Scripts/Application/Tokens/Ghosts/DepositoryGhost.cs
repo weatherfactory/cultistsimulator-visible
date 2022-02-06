@@ -2,7 +2,7 @@
 
 namespace SecretHistories.Ghosts
 {
-    public class BookcaseGhost : AbstractGhost
+    public class DepositoryGhost : AbstractGhost
     {
 
     }

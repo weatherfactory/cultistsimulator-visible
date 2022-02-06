@@ -16,6 +16,7 @@ using SecretHistories.Enums;
 using SecretHistories.Events;
 using SecretHistories.Fucine;
 using SecretHistories.Logic;
+using SecretHistories;
 using SecretHistories.Manifestations;
 using SecretHistories.NullObjects;
 using SecretHistories.Spheres;

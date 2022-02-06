@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
-using SecretHistories.Manifestations;
+using SecretHistories;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine.Events;

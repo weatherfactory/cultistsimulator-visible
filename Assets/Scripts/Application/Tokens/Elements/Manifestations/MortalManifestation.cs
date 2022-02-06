@@ -7,13 +7,13 @@ using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Tokens.Ghosts;
 using SecretHistories.Enums;
 using SecretHistories.Ghosts;
-using SecretHistories.Manifestations;
+using SecretHistories;
 using SecretHistories.Services;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations
+namespace SecretHistories.Manifestations
 {
  [RequireComponent(typeof(RectTransform))]
     public class MortalManifestation: BasicManifestation, IManifestation

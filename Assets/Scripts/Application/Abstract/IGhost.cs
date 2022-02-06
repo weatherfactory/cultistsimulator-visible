@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Ghosts;
-using SecretHistories.Manifestations;
+using SecretHistories;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;

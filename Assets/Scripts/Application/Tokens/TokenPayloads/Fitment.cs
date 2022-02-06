@@ -10,7 +10,7 @@ using SecretHistories.Core;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Logic;
-using SecretHistories.Manifestations;
+using SecretHistories;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;

@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
+namespace SecretHistories
 {
     public class ReqFrame: MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {

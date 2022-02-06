@@ -15,7 +15,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-namespace SecretHistories.Manifestations
+namespace SecretHistories
 {
     public enum HighlightType
     {

@@ -6,7 +6,7 @@ using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.Manifestations;
+using SecretHistories;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 

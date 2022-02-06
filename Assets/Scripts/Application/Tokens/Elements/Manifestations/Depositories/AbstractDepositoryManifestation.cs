@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
-using SecretHistories.Assets.Scripts.Application.Tokens.Elements.Manifestations;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Ghosts;
+using SecretHistories;
+using SecretHistories.Manifestations;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -16,14 +17,10 @@ using UnityEngine.EventSystems;
 
 namespace SecretHistories.Manifestations
 {
-    [RequireComponent(typeof(RectTransform))]
-    public class BookcaseManifestation: BasicManifestation, IManifestation
+    public abstract class AbstractDepositoryManifestation: BasicManifestation
     {
 
-
-        [SerializeField] List<ShelfDominion> _dominions;
-
- 
+        [SerializeField] protected List<ShelfDominion> _dominions;
 
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -37,19 +34,19 @@ namespace SecretHistories.Manifestations
 
         public void BeginIconAnimation()
         {
-          //
+            //
         }
 
         public void Initialise(IManifestable manifestable)
         {
-            name = "BookcaseManifestation" + manifestable.Id;
-            foreach(var d in _dominions)
+            name = GetType().Name + manifestable.Id;
+            foreach (var d in _dominions)
                 d.RegisterFor(manifestable);
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-     
+
         }
 
         public void OnBeginDragVisuals()
@@ -71,12 +68,12 @@ namespace SecretHistories.Manifestations
         public bool NoPush { get; }
         public void Unshroud(bool instant)
         {
-       
+
         }
 
         public void Shroud(bool instant)
         {
-    
+
         }
 
         public void Emphasise()
@@ -86,7 +83,7 @@ namespace SecretHistories.Manifestations
 
         public void Understate()
         {
-           //
+            //
         }
 
         public bool RequestingNoDrag { get; }
@@ -94,7 +91,7 @@ namespace SecretHistories.Manifestations
 
         public void DoMove(RectTransform tokenRectTransform)
         {
-       
+
         }
 
         public void SendNotification(INotification notification)
@@ -113,9 +110,8 @@ namespace SecretHistories.Manifestations
         public IGhost CreateGhost()
         {
             var newGhost = Watchman.Get<PrefabFactory>()
-                .CreateGhostPrefab(typeof(BookcaseGhost), this.RectTransform);
+                .CreateGhostPrefab(typeof(DepositoryGhost), this.RectTransform);
             return newGhost;
         }
-
     }
 }

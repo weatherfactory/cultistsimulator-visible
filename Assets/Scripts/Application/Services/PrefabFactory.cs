@@ -16,7 +16,7 @@ using SecretHistories.Elements;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Ghosts;
-using SecretHistories.Manifestations;
+using SecretHistories;
 using SecretHistories.Spheres;
 
 using Object = UnityEngine.Object;

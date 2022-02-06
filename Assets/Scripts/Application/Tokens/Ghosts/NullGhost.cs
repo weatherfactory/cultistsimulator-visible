@@ -2,7 +2,7 @@
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Tokens;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
-using SecretHistories.Manifestations;
+using SecretHistories;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;

@@ -11,7 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace SecretHistories.Assets.Scripts.Application.Tokens.Elements
+namespace SecretHistories
 {
     public class RequirementsDisplay : MonoBehaviour
     {
