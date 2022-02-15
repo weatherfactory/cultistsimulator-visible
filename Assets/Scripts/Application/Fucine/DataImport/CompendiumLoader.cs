@@ -146,7 +146,7 @@ public class CompendiumLoader
         }
     }
 
-    private void LoadModsToCompendium(string locContentFolderForCulture)
+    private void LoadModsToCompendium(string originalLocFolderPathForUnmoddedGame)
     {
         var modManager = Watchman.Get<ModManager>();
 
@@ -159,9 +159,9 @@ public class CompendiumLoader
 
             if (mod.HasValidLocFolder())
             {
-
+                string currentCultureSubFolderForLoc = new DirectoryInfo(originalLocFolderPathForUnmoddedGame).Name;
                 string pathForCurrentlyRelevantLoc =
-                GetModCurrentlyRelevantLocPath(mod, locContentFolderForCulture);
+                GetModCurrentlyRelevantLocPath(mod, currentCultureSubFolderForLoc);
                 var modLocLoader = new DataFileLoader(pathForCurrentlyRelevantLoc);
             modLocLoader.LoadFilesFromAssignedFolder(_log);
             modLocLoaders.Add(modLocLoader);
