@@ -31,7 +31,7 @@ namespace SecretHistories.Infrastructure
         [SerializeField]
         private Coroutine fadeToEndingCoroutine;
         private bool DefaultSaveInProgress; //This locks for TryDefaultSave only. If we move to coroutines, we can check for the existence of a coroutine.
-        
+        private bool LeaveGameInProgress=false;
         public void Awake()
         {
             var r = new Watchman();
@@ -261,33 +261,15 @@ namespace SecretHistories.Infrastructure
 
         public async void LeaveGame()
         {
+            if (LeaveGameInProgress)
+                return;
+            LeaveGameInProgress = true;
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
 
           var saveResult=await TryDefaultSave();
 
             Watchman.Get<StageHand>().MenuScreen();
 
-            //ITableSaveState tableSaveState = new TableSaveState(Watchman.Get<SphereCatalogue>().GetSpheresOfCategory(SphereCategory.World).SelectMany(sphere => sphere.GetAllTokens())
-
-            //    , Watchman.Get<SituationsCatalogue>().GetRegisteredSituations(), Watchman.Get<MetaInfo>());
-
-            //var saveTask = Watchman.Get<GameSaveManager>()
-            //    .SaveActiveGameAsync(tableSaveState, Watchman.Get<Stable>().Protag(), SourceForGameState.DefaultSave);
-
-            //var success = await saveTask;
-
-
-            //if (success)
-            //{
-            //    Watchman.Get<StageHand>().MenuScreen();
-            //}
-            //else
-            //{
-            //    // Save failed, need to let player know there's an issue
-            //    // Autosave would wait and retry in a few seconds, but player is expecting results NOW.
-            //    Watchman.Get<LocalNexus>().ToggleOptionsEvent.Invoke();
-            //    GameSaveManager.ShowSaveError();
-            //}
         }
 
         
