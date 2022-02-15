@@ -58,6 +58,7 @@ namespace SecretHistories.Services
         public void SetGameIdFieldInEditor(GameId newGameId)
         {
             _gameId = newGameId.ToString();
+            NoonUtility.Log($"Setting gameId: {_gameId}");
         }
 
         private string _initialisedAt;
@@ -113,10 +114,14 @@ namespace SecretHistories.Services
 
                 var watchman = new Watchman();
 
+                NoonUtility.Log($"GameId specified as {_gameId}");
                 //Here we specify which game it is. This affects the content folder as set in the config next.
-               GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), _gameId);
+                GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), _gameId);
+               
                 //load config: this gives us a lot of info that we'll need early
                 var config = new Config();
+
+                NoonUtility.Log($"Setting GameId in config as {gameIdAsEnum}");
                 config.SetGame(gameIdAsEnum);
                     
                 watchman.Register(config);

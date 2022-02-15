@@ -14,11 +14,14 @@ namespace SecretHistories.Editor.BuildScripts
         public Product Id { get; private set; }
         public bool IsDLC { get; private set; }
 
+        private const int LGSProductIdsStartAt = 200;
+        private const int BHProductIDsStartAt = 200;
+
         public GameId GetGameId()
         {
-            if ((int) Id > 200)
+            if ((int) Id > LGSProductIdsStartAt)
                 return GameId.LG;
-            if ((int) Id > 100)
+            if ((int) Id > BHProductIDsStartAt)
                 return GameId.BH;
             return GameId.CS;
         }
