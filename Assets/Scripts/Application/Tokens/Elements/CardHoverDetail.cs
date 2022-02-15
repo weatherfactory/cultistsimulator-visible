@@ -1,5 +1,6 @@
 using SecretHistories.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SecretHistories.Enums.Elements
 {
@@ -28,10 +29,11 @@ namespace SecretHistories.Enums.Elements
 
         private void UpdatePosition()
         {
+            var mousePosition=Mouse.current.position.ReadDefaultValue();
             var canvas = GetComponentInParent<Canvas>();
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 canvas.transform as RectTransform,
-                ClampMousePosition(canvas, Input.mousePosition),
+                ClampMousePosition(canvas, mousePosition),
                 canvas.worldCamera,
                 out var position);
             
