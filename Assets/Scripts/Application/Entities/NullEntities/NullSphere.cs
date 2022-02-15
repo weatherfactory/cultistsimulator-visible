@@ -24,6 +24,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
             Defunct = true;
         }
 
+        public override bool IsValid => false;
 
         public static NullSphere Create()
         {

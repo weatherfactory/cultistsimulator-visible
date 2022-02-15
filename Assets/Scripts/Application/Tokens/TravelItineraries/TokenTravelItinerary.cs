@@ -167,7 +167,7 @@ namespace SecretHistories.UI
             {
                 var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
 
-                if (destinationSphere.Equals(null) || destinationSphere.Defunct)
+                if (destinationSphere==null || destinationSphere.Equals(null) || !destinationSphere.IsValid || destinationSphere.Defunct)
                     TravelFailed(token);
                 else
                 {

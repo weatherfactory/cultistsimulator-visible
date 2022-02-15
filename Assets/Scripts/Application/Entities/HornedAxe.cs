@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
@@ -521,7 +522,7 @@ namespace SecretHistories.Entities {
 
         public Sphere FindFirstOrDefaultSphereByWildPath(FucinePath wildPath)
         {
-            return FindFirstOrDefaultSphereByWildPath(wildPath, null);
+            return FindFirstOrDefaultSphereByWildPath(wildPath, NullSphere.Create());
         }
 
         public Sphere FindFirstOrDefaultSphereByWildPath(FucinePath wildPath,Sphere defaultResult)
