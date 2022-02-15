@@ -276,6 +276,11 @@ namespace SecretHistories.Constants.Modding
             return sprite;
         }
 
+        public bool HasValidLocFolder()
+        {
+            return (LocFolder != null);
+        }
+
         public bool TryLoadAssembly(string fromPath)
         {
             try

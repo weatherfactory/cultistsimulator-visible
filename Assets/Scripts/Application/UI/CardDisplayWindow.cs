@@ -33,11 +33,11 @@ namespace SecretHistories.UI
                 return;
             }
 
-            List<Element> creditCards = Watchman.Get<Compendium>().GetEntitiesAsList<Element>()
+            List<Element> displayCards = Watchman.Get<Compendium>().GetEntitiesAsList<Element>()
                 .Where(e => e.Id.StartsWith(IncludeCardsWhereIdStartsWith)).ToList();
             
 
-            foreach (var cc in creditCards)
+            foreach (var cc in displayCards)
             {
                 var t=new TokenCreationCommand().WithElementStack(cc.Id,1);
                 t.Execute(new Context(Context.ActionSource.UI), CardsSphereExhibit);
@@ -46,11 +46,12 @@ namespace SecretHistories.UI
             var firstCard = CardsSphereExhibit.GetTokens().FirstOrDefault();
 
             if (firstCard != null)
+            {
                 EmphasiseThisCardAndUnderstateOthers(firstCard);
 
             Label.text = firstCard.Payload.Label;
             Description.text = firstCard.Payload.Description;
-
+            }
 
             CardsSphereExhibit.Subscribe(this);
         }

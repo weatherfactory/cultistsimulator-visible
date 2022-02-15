@@ -156,11 +156,16 @@ public class CompendiumLoader
             var modContentLoader = new DataFileLoader(mod.ContentFolder);
             modContentLoader.LoadFilesFromAssignedFolder(_log);
             modContentLoaders.Add(modContentLoader);
-            string pathForCurrentlyRelevantLoc =
+
+            if (mod.HasValidLocFolder())
+            {
+
+                string pathForCurrentlyRelevantLoc =
                 GetModCurrentlyRelevantLocPath(mod, locContentFolderForCulture);
-            var modLocLoader = new DataFileLoader(pathForCurrentlyRelevantLoc);
+                var modLocLoader = new DataFileLoader(pathForCurrentlyRelevantLoc);
             modLocLoader.LoadFilesFromAssignedFolder(_log);
             modLocLoaders.Add(modLocLoader);
+            }
         }
     }
 

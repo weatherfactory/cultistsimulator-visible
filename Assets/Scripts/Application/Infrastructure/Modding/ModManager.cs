@@ -312,7 +312,7 @@ namespace SecretHistories.Constants.Modding
 
         var candidateLocFolder = Path.Combine(modFolder, NoonConstants.LOC_FOLDER_NAME);
 
-        if (!Directory.Exists(candidateContentFolder))
+        if (!Directory.Exists(candidateLocFolder))
         {
 
             mod.CataloguingLog += " has no loc directory; ";
