@@ -58,7 +58,10 @@ namespace SecretHistories.Spheres
             base.NotifyTokenInThisSphereInteracted(args);
         }
 
-
-
+        public override void AcceptToken(Token token, Context context)
+        {
+            base.AcceptToken(token, context);
+            Pop(context);
+        }
     }
     }
