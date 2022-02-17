@@ -81,12 +81,12 @@ namespace SecretHistories.Commands
 
             Token newToken;
 
-            Sphere actualSphereToInstantiateIn;
+            Sphere sphereForThisToken;
 
             if (Location != null && sphere == null && Location.HasValidSpherePath())
             {
                 //if we have a valid location sphere path and no direct reference to a valid sphere, use the location sphere path.
-                actualSphereToInstantiateIn = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
+                sphereForThisToken = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
             }
 
             //if we have a valid location that is not the same as the sphere in which this is being executed, execute at the location instead
@@ -94,27 +94,27 @@ namespace SecretHistories.Commands
                      && !Location.AtSpherePath.IsRoot() //what? why? Because back when the pathing system was embryonic, 
                      //root meant 'ugh I dont know what should go here and/or maybe this means current.' So it's often the default for CS when it should actually be current.
                      && !sphere.GetAbsolutePath().Conforms(Location.AtSpherePath))
-                actualSphereToInstantiateIn = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
+                sphereForThisToken = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
             else
-                actualSphereToInstantiateIn = sphere;
+                sphereForThisToken = sphere;
 
             if (!payloadForToken.IsPermanent())
-                newToken = InstantiateTokenInSphere(context, actualSphereToInstantiateIn);
+                newToken = InstantiateTokenInSphere(payloadForToken,context, sphereForThisToken);
             else
             {
                 //permanent tokens, like terrain features, are already instantiated with the token component already attached.
                 //So we don't instantiate the token: we just find the existing token and then populate it with relevant payload data.
-                newToken = actualSphereToInstantiateIn.GetTokens().SingleOrDefault(t => t.PayloadId == payloadForToken.Id);
+                newToken = sphereForThisToken.GetTokens().SingleOrDefault(t => t.PayloadId == payloadForToken.Id);
                 if(newToken==null || !newToken.IsValid())
                 {
-                    NoonUtility.LogWarning($"Couldn't populate a permanent token with payload id {payloadForToken.Id} in {actualSphereToInstantiateIn.GetAbsolutePath()}");
+                    NoonUtility.LogWarning($"Couldn't populate a permanent token with payload id {payloadForToken.Id} in {sphereForThisToken.GetAbsolutePath()}");
                 }
-
-
+                else
+                  newToken.SetPayload(payloadForToken); //for a permanent token, we're replacing the starter payload with the populated one.
+    
             }
        
 
-            newToken.SetPayload(payloadForToken); //if this is a permanent sphere, we're replacing the starter payload with the populated one.
             payloadForToken.FirstHeartbeat();
 
             
@@ -133,7 +133,7 @@ namespace SecretHistories.Commands
 
 
 
-        private Token InstantiateTokenInSphere(Context context, Sphere sphere)
+        private Token InstantiateTokenInSphere(ITokenPayload payload, Context context, Sphere sphere)
         {
             //only use the location sphere if for some reason we don't have a valid sphere to accept the token
             if (sphere == null && Location.HasValidSpherePath())
@@ -141,6 +141,7 @@ namespace SecretHistories.Commands
 
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.GetRectTransform());
             token.TokenRectTransform.anchoredPosition3D = Location.Anchored3DPosition;
+            token.SetPayload(payload); //We need to do this before placing the token in the sphere, if we want the correct manifestations to appear on entry to the sphere
             sphere.AcceptToken(token, context);
             return token;
         }
