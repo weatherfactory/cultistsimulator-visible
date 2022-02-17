@@ -9,7 +9,7 @@ using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-
+using UnityEngine.WSA;
 using Random = UnityEngine.Random;
 
 namespace SecretHistories.UI {
@@ -102,9 +102,17 @@ namespace SecretHistories.UI {
         // Used as a delegate when closing pages. 
         protected abstract void ClearContent();
 
-        protected void ShowText(string header, string desc) {
-            title.text = header;
-            description.text = desc;
+        protected void ShowText(string header, string desc)
+        {
+            if (!string.IsNullOrEmpty(header))
+                title.text = header;
+            else
+                title.text = " !";
+
+            if (!string.IsNullOrEmpty(desc))
+                description.text = desc;
+            else
+                description.text = " .....";
         }
 
         protected void ShowImage(Sprite image) {
