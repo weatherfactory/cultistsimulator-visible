@@ -60,8 +60,7 @@ namespace SecretHistories.Spheres
         [DontEncaust]
         public bool Defunct { get; protected set; }
 
-        [DontEncaust]
-        public virtual bool IsValid { get; protected set; }
+        [DontEncaust] public virtual bool IsValid => true;
 
 
         [DontEncaust]
@@ -100,8 +99,6 @@ namespace SecretHistories.Spheres
             var existingChoreographer = gameObject.GetComponent<AbstractChoreographer>();
             if(existingChoreographer==null)
                 gameObject.AddComponent<SimpleChoreographer>();
-
-            IsValid = true;
 
         }
 
