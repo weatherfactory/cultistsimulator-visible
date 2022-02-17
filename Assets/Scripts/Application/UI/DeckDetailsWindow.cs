@@ -25,7 +25,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             
               ShowImage(ResourcesManager.GetSpriteForCardBack(_deckEffect.DeckSpec.Id));
               ShowText(_deckEffect.DeckSpec.Label, _deckEffect.DeckSpec.Description);
-              _drawsCount.text = deckEffect.Draws.ToString();
+              _drawsCount.text = Watchman.Get<ILocStringProvider>().Get("UI_UPCOMINGDRAWS") + deckEffect.Draws;
         }
 
         public void ShowDeckDetails(DeckEffect deckEffect)

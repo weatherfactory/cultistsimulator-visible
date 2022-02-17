@@ -26,8 +26,6 @@ namespace SecretHistories.UI {
         [SerializeField] Image greedyIcon;
         [SerializeField] Image consumesIcon;
 
-        [Header("Deck Infos")]
-        [SerializeField] TextMeshProUGUI deckInfos;
 
         [Header("Aspect Display")]
         [SerializeField] AspectSetsDisplay aspectsDisplayRequiredAndForbidden;
@@ -98,7 +96,6 @@ namespace SecretHistories.UI {
 
 
             ShowSlotIcons(slotSpec.Greedy, slotSpec.Consumes);
-            ShowDeckInfos(0); // Make sure the other hint icons are gone
 
             aspectsDisplayRequiredAndForbidden.AddAspectSet(0, slotSpec.Required);
             aspectsDisplayRequiredAndForbidden.AddAspectSet(1, slotSpec.Forbidden);
@@ -116,8 +113,6 @@ namespace SecretHistories.UI {
 
  
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
-            ShowDeckInfos(deckQuantity);
-
             aspectsDisplayRequiredAndForbidden.Clear();
         }
 
@@ -143,10 +138,7 @@ namespace SecretHistories.UI {
             consumesInfo.gameObject.SetActive(consumes);
         }
 
-        void ShowDeckInfos(int quantity) {
-            deckInfos.enabled = quantity > 0;
-            deckInfos.text = quantity > 0 ? Watchman.Get<ILocStringProvider>().Get("UI_UPCOMINGDRAWS") + quantity : null;
-        }
+  
 
 
 
