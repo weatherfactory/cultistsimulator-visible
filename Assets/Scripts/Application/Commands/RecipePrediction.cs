@@ -27,8 +27,18 @@ namespace SecretHistories.Commands
             }
         }
         public EndingFlavour SignalEndingFlavour => _predictingRecipe.SignalEndingFlavour;
+
+        //odd snarl of states here.
         public bool Craftable => _predictingRecipe.Craftable;
+            //Nothing is ever Craftable and HintOnly, but some things are Craftable/HintOnly and some are Craftable/Not HintOnly
         public bool HintOnly => _predictingRecipe.HintOnly;
+        public bool IsBaseVerbRecipe()
+        {
+            if (!string.IsNullOrEmpty(_predictingRecipe.ActionId) && string.IsNullOrEmpty(_predictingRecipe.Id))
+                return true;
+
+            return false;
+        }
 
         //public static RecipePrediction DefaultFromVerb(Verb verb)
         //{
@@ -36,7 +46,7 @@ namespace SecretHistories.Commands
         //    return new RecipePrediction(hintRecipe, new AspectsDictionary());
         //}
 
-        
+
         public RecipePrediction(Recipe predictingRecipe, AspectsDictionary aspectsAvailable,Verb withVerb)
         {
             if (!predictingRecipe.IsValid())
@@ -99,6 +109,9 @@ namespace SecretHistories.Commands
         {
 
             if (currentRecipePrediction == null) //if there's no existing prediction, this has to be an improvement
+                return true;
+
+            if (!currentRecipePrediction.IsBaseVerbRecipe()) //|| !currentRecipePrediction.va
                 return true;
 
             if (currentRecipePrediction == this) //if this and we are the same, forget about it
