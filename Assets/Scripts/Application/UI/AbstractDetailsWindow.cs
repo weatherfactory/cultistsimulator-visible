@@ -9,7 +9,6 @@ using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using UnityEngine.WSA;
 using Random = UnityEngine.Random;
 
 namespace SecretHistories.UI {
