@@ -51,8 +51,9 @@ namespace SecretHistories.UI {
 
         public void Update()
         {
-            if(Fader.IsInvisible())
+            if(Fader.IsInvisible()) //belt and braces
                 return;
+
             if (time < waitTime)
             {
                 if (!IsBusy() && !_isHoveringOver)
