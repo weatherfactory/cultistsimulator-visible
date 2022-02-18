@@ -213,7 +213,7 @@ namespace SecretHistories.Constants
             {
                 if (s.IsOpen)
                 {
-                    s.AddCommand(new EvictOutputCommand());
+                    s.Conclude();
                 }
             }
         }
