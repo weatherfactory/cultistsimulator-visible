@@ -28,9 +28,7 @@ namespace SecretHistories.Manifestations
 
 
         [SerializeField] private CanvasGroup canvasGroup;
-
-        [SerializeField] private ElementFrame elementFrame;
-
+        [SerializeField] private Image aspectImage;
 #pragma warning restore 649
 
 
@@ -38,15 +36,25 @@ namespace SecretHistories.Manifestations
         public void Initialise(IManifestable manifestable)
         {
             name = "StoredManifestation_" + manifestable.Id;
-            elementFrame.PopulateDisplay(manifestable);
+          UpdateVisuals(manifestable);
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
             var element = Watchman.Get<Compendium>().GetEntityById<Element>(manifestable.EntityId);
-            elementFrame.PopulateDisplay(element, manifestable.Quantity, false);
+       
+            DisplayImage(element);
+            //DisplayQuantity(quantity, hasBrightBg);
+            gameObject.name = "Element - " + element.Id;
         }
 
+        private void DisplayImage(Element element)
+        {
+            Sprite aspectSprite;
+            aspectSprite = ResourcesManager.GetSpriteForElement(element.Icon);
+
+            aspectImage.sprite = aspectSprite;
+        }
 
 
         public void SendNotification(INotification notification)
@@ -133,12 +141,20 @@ namespace SecretHistories.Manifestations
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
-     //
+ 
+                SoundManager.PlaySfx("TokenHover");
+                aspectImage.canvasRenderer.SetColor(UIStyle.aspectHover);
+       
+
+    
+              
+       
+
         }
 
         public void Unhighlight(HighlightType highlightType, IManifestable manifestable)
         {
-           //
+            aspectImage.canvasRenderer.SetColor(Color.white);
         }
 
         public bool NoPush { get; }
