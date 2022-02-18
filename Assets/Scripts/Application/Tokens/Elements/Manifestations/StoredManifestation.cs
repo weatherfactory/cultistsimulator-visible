@@ -144,11 +144,7 @@ namespace SecretHistories.Manifestations
  
                 SoundManager.PlaySfx("TokenHover");
                 aspectImage.canvasRenderer.SetColor(UIStyle.aspectHover);
-       
-
-    
-              
-       
+   
 
         }
 
