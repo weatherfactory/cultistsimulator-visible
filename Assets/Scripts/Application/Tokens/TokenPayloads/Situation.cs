@@ -196,13 +196,6 @@ namespace SecretHistories.Entities {
 
             HornedAxe hornedAxe = Watchman.Get<HornedAxe>();
             hornedAxe.RegisterSituation(this);
-
-            
-            if (verb.IsValid()) //we might create a situation with a null verb, for example if we're rehydrating. If it's a real verb, then base a starting recipe prediction on it.
-            {
-                var initialPredictionFromVerb = new RecipePrediction(Recipe, AspectsDictionary.Empty(), Verb);
-                ReactToLatestRecipePrediction(initialPredictionFromVerb,new Context(Context.ActionSource.SituationCreated));
-            }
             
         }
 

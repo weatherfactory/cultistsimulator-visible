@@ -98,29 +98,14 @@ namespace SecretHistories.Commands
             if (String.IsNullOrEmpty(Id)) 
                  Id = verb.DefaultUniqueTokenId();
 
-            Situation newSituation = new Situation(verb,Id);
+            var newSituation = BuildSituation(verb, recipe);
 
-           
-            newSituation.State = SituationState.Rehydrate(StateIdentifier, newSituation);
+            //This must go here, as soon as the situation is created and before tokens or commands are added, because it's here that the situation spheres get attached.
+            AttachWindow(newSituation);
 
-            newSituation.SetRecipeActive(recipe);
-            newSituation.ReduceLifetimeBy(recipe.Warmup - TimeRemaining);
-            
+            //and we can't display text before the window is attached; until then, there's no notes dominion attached to put the notes in
+            DisplayText(verb, recipe, newSituation);
 
-            //This MUST go here, as soon as the situation is created and before tokens or commands are added, because it's here that the situation spheres get attached.
-            var windowSphere = FucineRoot.Get().GetWindowsSphere(); //we can't check the windowsphere from the sphere the situation token's going in, because we don't know what that will be yet... so we might need to move the window later
-            var windowLocation =
-                new TokenLocation(Vector3.zero, windowSphere.GetAbsolutePath()); //it shouldn't really be zero, but we don't know the real token loc in the current flow
-            
-            var sphereToDisplayWindowIn = Watchman.Get<HornedAxe>().GetSphereByPath(windowLocation.AtSpherePath);
-            var windowType = newSituation.GetWindowType();
-            var newWindow = Watchman.Get<PrefabFactory>()
-                .CreateWindowPrefab(windowType, sphereToDisplayWindowIn.transform);
-            //var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphereToDisplayWindowIn.transform);
-            newWindow.Attach(newSituation);
-
-            if(IsOpen)
-                newSituation.OpenAt(windowLocation);
 
             foreach (var d in Dominions)
                 d.Execute(newSituation);
@@ -137,6 +122,49 @@ namespace SecretHistories.Commands
 
         }
 
+        private Situation BuildSituation(Verb verb, Recipe recipe)
+        {
+            Situation newSituation = new Situation(verb, Id);
 
+
+            newSituation.State = SituationState.Rehydrate(StateIdentifier, newSituation);
+
+            newSituation.SetRecipeActive(recipe);
+            newSituation.ReduceLifetimeBy(recipe.Warmup - TimeRemaining);
+            return newSituation;
+        }
+
+        private static void DisplayText(Verb verb, Recipe recipe, Situation newSituation)
+        {
+            if (verb.IsValid()) //we might create a situation with a null verb, for example if we're rehydrating. If it's a real verb, then base a starting recipe prediction on it.
+            {
+                var initialPredictionFromVerb = new RecipePrediction(recipe, AspectsDictionary.Empty(), verb);
+                newSituation.ReactToLatestRecipePrediction(initialPredictionFromVerb,
+                    new Context(Context.ActionSource.SituationCreated));
+            }
+        }
+
+        private void AttachWindow(Situation newSituation)
+        {
+            var
+                windowSphere =
+                    FucineRoot.Get()
+                        .GetWindowsSphere(); //we can't check the windowsphere from the sphere the situation token's going in, because we don't know what that will be yet... so we might need to move the window later
+            var windowLocation =
+                new TokenLocation(Vector3.zero,
+                    windowSphere
+                        .GetAbsolutePath()); //it shouldn't really be zero, but we don't know the real token loc in the current flow
+
+            var sphereToDisplayWindowIn = Watchman.Get<HornedAxe>().GetSphereByPath(windowLocation.AtSpherePath);
+            var windowType = newSituation.GetWindowType();
+            var newWindow = Watchman.Get<PrefabFactory>()
+                .CreateWindowPrefab(windowType, sphereToDisplayWindowIn.transform);
+            //var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphereToDisplayWindowIn.transform);
+            newWindow.Attach(newSituation);
+
+
+            if (IsOpen)
+                newSituation.OpenAt(windowLocation);
+        }
     }
 }
