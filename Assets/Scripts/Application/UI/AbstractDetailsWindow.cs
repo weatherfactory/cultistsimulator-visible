@@ -34,7 +34,34 @@ namespace SecretHistories.UI {
         float time;
 
         private bool _isHoveringOver;
+        public void Start()
+        {
+            var notificationTimeSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.NOTIFICATIONTIME);
+            if (notificationTimeSetting == null)
+            {
+                NoonUtility.Log("Missing setting entity: " + NoonConstants.NOTIFICATIONTIME);
+                return;
+            }
 
+            notificationTimeSetting.AddSubscriber(this);
+            WhenSettingUpdated(notificationTimeSetting.CurrentValue);
+
+
+        }
+
+        public void Update()
+        {
+            if(Fader.IsInvisible())
+                return;
+            if (time < waitTime)
+            {
+                if (!IsBusy() && !_isHoveringOver)
+                    time += Time.deltaTime;
+            }
+
+            if(time>waitTime)
+                Hide();
+        }
 
         protected void Show()
         {
@@ -56,19 +83,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public void Start()
-        {
-            var notificationTimeSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.NOTIFICATIONTIME);
-            if (notificationTimeSetting == null)
-            { NoonUtility.Log("Missing setting entity: " + NoonConstants.NOTIFICATIONTIME);
-                return;
-            }
 
-            notificationTimeSetting.AddSubscriber(this);
-            WhenSettingUpdated(notificationTimeSetting.CurrentValue);
-
-
-        }
 
         public void WhenSettingUpdated(object newValue)
         {
@@ -122,16 +137,6 @@ namespace SecretHistories.UI {
             artwork.transform.localEulerAngles = new Vector3(0f, 0f, -5f + Random.value * 10f);
         }
 
-        IEnumerator DoWaitForHide() {
-            while (time < waitTime) {
-                if (!IsBusy() && !_isHoveringOver)
-                    time += Time.deltaTime;
-
-                yield return null;
-            }
-
-            Hide();
-        }
 
         public void Hide() {
             if(Fader.IsFullyVisible())
