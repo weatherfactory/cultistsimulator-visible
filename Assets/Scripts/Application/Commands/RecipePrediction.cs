@@ -111,7 +111,7 @@ namespace SecretHistories.Commands
             if (currentRecipePrediction == null) //if there's no existing prediction, this has to be an improvement
                 return true;
 
-            if (!currentRecipePrediction.IsBaseVerbRecipe()) //Without a recipe prediction update, start button doesn't become available, so this allows us to have craftable honoured when there's no meaningful info in the startdescription
+            if (currentRecipePrediction.IsBaseVerbRecipe()) //Without a recipe prediction update, start button doesn't become available, so this allows us to have craftable honoured when there's no meaningful info in the startdescription
                 return true;
 
             if (currentRecipePrediction == this) //if this and we are the same, forget about it
