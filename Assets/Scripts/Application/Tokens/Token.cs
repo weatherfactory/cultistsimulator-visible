@@ -449,8 +449,8 @@ namespace SecretHistories.UI {
             reManifestation.Transform.position = _manifestation.Transform.position;
 
             // Put it behind the old card that we're about to destroy showily
-            reManifestation.Transform.SetSiblingIndex(_manifestation.Transform.GetSiblingIndex() - 1);
-
+            reManifestation.Transform.SetAsFirstSibling();
+            
             ReplaceManifestation(_manifestation, reManifestation, vfx);
 
             Manifest();
