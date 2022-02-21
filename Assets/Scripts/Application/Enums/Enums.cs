@@ -19,7 +19,7 @@
     {
         Purge=1, //'Not allowed here, be gone with no particular extra logic or special effects'. This might mean retire, decay to default next stage, or be banished
         BurnPurge=2,//Purge but with a hotter SFX. If no specific Burn behaviour, default to purge.
-        DrownPurge=3,//Immersion or dissolution. If no specific Drown behaviour, default to purge.
+        DrownPurge=3,//Immersion or dissolution: leaks, flooded rooms. If no specific Drown behaviour, default to purge.
         Halt = 10 //'Stop immediately but non-destructively'
     } 
 

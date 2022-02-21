@@ -587,7 +587,8 @@ namespace SecretHistories.UI {
                 return true;
 
             }
-
+            //As a placeholder and token of intent. Relevant for BoH obviously, and in another life I'd have added it
+            //as a Rite outcome.
             else if(exoticEffect is ExoticEffect.DrownPurge)
             {
                 if (!string.IsNullOrEmpty(Element.DrownTo))
