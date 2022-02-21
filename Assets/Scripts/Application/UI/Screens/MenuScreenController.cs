@@ -310,8 +310,8 @@ public class MenuScreenController : LocalNexus {
 	public void ShowSettings() {
 		if (!canTakeInput)
 			return;
-
-		ShowOverlay(settings);
+        //Not the same as other overlays: consistency with in-game ToggleVisibility
+		ToggleOptionsEvent.Invoke();
 	}
 
 	public void ShowLanguage()

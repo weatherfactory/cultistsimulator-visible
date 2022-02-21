@@ -128,18 +128,29 @@ public class OptionsPanel : MonoBehaviour {
 
     private void InitialiseButtons()
     {
-        saveAndExitButton.Initialise(Watchman.Get<LocalNexus>().SaveAndExitEvent);
-        resumeButton.Initialise(Watchman.Get<LocalNexus>().ToggleOptionsEvent);
-        viewFilesButton.Initialise(Watchman.Get<LocalNexus>().ViewFilesEvent);
+        //Mystified. Why are the nullreferenceexceptions popping up here, but only in the player not the editor?
+
+        var localNexus = Watchman.Get<LocalNexus>();
+        if (localNexus.SaveAndExitEvent != null && saveAndExitButton != null)
+            saveAndExitButton.Initialise(localNexus.SaveAndExitEvent);
+        if (localNexus.ToggleOptionsEvent != null && resumeButton != null)
+            resumeButton.Initialise(localNexus.ToggleOptionsEvent);
+
+        
+        if (localNexus.ViewFilesEvent != null && viewFilesButton != null)
+            viewFilesButton.Initialise(localNexus.ViewFilesEvent);
     }
 
     public void OnEnable()
     {
-        if(!_initialised)
-            Initialise();
+        
 
+        if (!_initialised)
+        
+            Initialise();
+        
         //because of a quirk of Unity's event / select system, we need to re-highlight the button manually when the menu is opened
-        if(currentTab!=null)
+        if (currentTab!=null)
             currentTab.Activate();
     }
 
