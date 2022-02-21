@@ -21,6 +21,8 @@ namespace SecretHistories.States
 
         public override bool AllowDuplicateVerbIfVerbSpontaneous => false;
         public override StateEnum Identifier => StateEnum.RequiringExecution;
+  
+
         public override bool UpdatePredictionDynamically => false;
 
         public override void Enter(Situation situation)
@@ -41,14 +43,18 @@ namespace SecretHistories.States
             return false;
         }
 
-
-        public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)
+        public override List<Recipe> PotentiallyValidRecipesForState(Situation s)
         {
-            //Situation is RequiringExecution, and recipe is in Linked list of current recipe.  ActionId doesn't need to match.
-            if (s.Recipe.Linked.Exists(r => r.Id == recipeToCheck.Id))
-                return true;
+            List<Recipe> potentiallyValidRecipes = new List<Recipe>();
+            foreach (var l in s.Recipe.Linked)
+            {
+                //Situation is RequiringExecution, and recipe is in Linked list of current recipe.  ActionId doesn't need to match.
+                var potentiallyValidRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(l.Id);
+                if (potentiallyValidRecipe.IsValid()) //no null/verb recipes in Ongoing
+                    potentiallyValidRecipes.Add(potentiallyValidRecipe);
+            }
 
-            return false;
+            return potentiallyValidRecipes;
         }
 
         public override void Continue(Situation situation)

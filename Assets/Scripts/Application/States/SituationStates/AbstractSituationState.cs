@@ -21,7 +21,10 @@ namespace SecretHistories.States
        public abstract void Exit(Situation situation);
        public abstract bool IsActiveInThisState(Sphere sphereToCheck);
 
-        public abstract bool IsValidPredictionForState(Recipe recipeToCheck, Situation s);
+       //i.e. could conceivably be a prediction for the state - craftable, in alt list. etc. Does *not* check if reqs are fulfilled.
+        public abstract List<Recipe> PotentiallyValidRecipesForState(Situation s);
+
+
         //For states like Unstarted and Ongoing, we change the prediction whenever tokens change.
         //for states like RequiresExecution and Complete, we don't need to (or want to - we can get echo messages)
         public abstract bool UpdatePredictionDynamically { get; }

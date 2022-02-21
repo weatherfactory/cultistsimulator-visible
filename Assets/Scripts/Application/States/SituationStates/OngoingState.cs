@@ -85,23 +85,21 @@ namespace SecretHistories.States
             return false;
         }
 
-
-        /// <summary>
-        /// WARNING: this assumes ShouldAlwaysSucceed, which is greast for prediction but not for execution
-        /// </summary>
-        /// <param name="currentRecipe"></param>
-        /// <param name="state"></param>
-        /// <returns></returns>
-        public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)
+        public override List<Recipe> PotentiallyValidRecipesForState(Situation s)
         {
-
             //Situation is Ongoing. Recipe is in Alt list of current recipe - as Always Succeed and not as Additional. ActionId doesn't need to match.
-            if(s.Recipe.Alt.Exists(r => r.Id == recipeToCheck.Id && r.ShouldAlwaysSucceed() && !r.Additional))
-                return true;
+            /// WARNING: this assumes ShouldAlwaysSucceed, which is great for prediction but not for execution
+            List<Recipe> potentiallyValidRecipes = new List<Recipe>();
+            foreach (var a in s.Recipe.Alt.Where(altLink=>altLink.ShouldAlwaysSucceed() && !altLink.Additional))
+            {
+                var potentiallyValidRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(a.Id);
+                if(potentiallyValidRecipe.IsValid()) //no null/verb recipes in Ongoing
+                    potentiallyValidRecipes.Add(potentiallyValidRecipe);
+            }
 
-            return false;
-
+            return potentiallyValidRecipes;
         }
+
 
         public override void Continue(Situation situation)
         {

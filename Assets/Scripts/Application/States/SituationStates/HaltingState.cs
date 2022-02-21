@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -32,12 +33,10 @@ namespace SecretHistories.States
             return false;
         }
 
-
-        public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)
+        public override List<Recipe> PotentiallyValidRecipesForState(Situation s)
         {
-            return false;
+            return new List<Recipe>();
         }
-
         public override void Continue(Situation situation)
         {
             situation.TransitionToState(new CompleteState());

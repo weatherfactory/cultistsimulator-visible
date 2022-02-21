@@ -31,11 +31,9 @@ namespace Assets.Scripts.Application.Entities.NullEntities
             return false;
         }
 
-
-        public override bool IsValidPredictionForState(Recipe recipeToCheck, Situation s)
+        public override List<Recipe> PotentiallyValidRecipesForState(Situation s)
         {
-            return false;
-
+            return new List<Recipe>();
         }
 
         public override bool AllowDuplicateVerbIfVerbSpontaneous => true;

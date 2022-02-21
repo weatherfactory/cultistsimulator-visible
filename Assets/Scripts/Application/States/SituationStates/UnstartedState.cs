@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+using System.Linq;
 using SecretHistories.Assets.Scripts.Application.Commands.SituationCommands;
 using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
@@ -38,7 +40,20 @@ namespace SecretHistories.States
 
         }
 
-        public override bool IsValidPredictionForState(Recipe recipeToCheck,Situation s)
+        public override List<Recipe> PotentiallyValidRecipesForState(Situation s)
+        {
+
+            //note: we *either* get craftable recipes, *or* if we're getting hint recipes we don't care if they're craftable
+            var _recipes = Watchman.Get<Compendium>().GetEntitiesAsList<Recipe>();
+
+            //The order is literally the order in the game files. No links, no alts, just what's available.
+            List<Recipe> candidateRecipes =
+                _recipes.Where(r => RecipeIsPotentiallyValidForUnstartedState(r, s)).ToList();
+
+            return candidateRecipes;
+        }
+
+        private  bool RecipeIsPotentiallyValidForUnstartedState(Recipe recipeToCheck,Situation s)
         {
             //return true if:
             //Situation is Unstarted; verb matches; and the recipe is either craftable or hintable

@@ -99,17 +99,14 @@ namespace SecretHistories.Core
         {
             _aspectsInContext.ThrowErrorIfNotPopulated(situation.Verb.Id);
 
-            //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
-            var _recipes = Watchman.Get<Compendium>().GetEntitiesAsList<Recipe>();
 
-            List<Recipe> candidateRecipes =
-                _recipes.Where(r => situation.State.IsValidPredictionForState(r, situation)).ToList();
+            var candidateRecipes = situation.State.PotentiallyValidRecipesForState(situation);
             List<Recipe> nonExhaustedCandidateRecipes =
                 candidateRecipes.Where(r => !_character.HasExhaustedRecipe(r)).ToList();
 
 
-            //returns, in order: craftable non-hint recipes; hint recipes; null recipe (which might be verb-description-based)
-            var orderedCandidateRecipes = nonExhaustedCandidateRecipes.OrderByDescending(r => r.Priority);
+            //returns, in order: craftable non-hint recipes; hint recipes / verb-null recipe
+            var orderedCandidateRecipes = nonExhaustedCandidateRecipes. OrderByDescending(r => r.Priority);
             
             foreach (var candidateRecipe in orderedCandidateRecipes)
             {
@@ -118,7 +115,7 @@ namespace SecretHistories.Core
             }
 
    
-             return new RecipePrediction(currentlyPredictedRecipe, _aspectsInContext.AspectsInSituation, situation.Verb);
+            return new RecipePrediction(currentlyPredictedRecipe, _aspectsInContext.AspectsInSituation, situation.Verb);
             
     }
 
