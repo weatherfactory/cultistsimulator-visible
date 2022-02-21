@@ -562,22 +562,49 @@ namespace SecretHistories.UI {
 
         public bool ApplyExoticEffect(ExoticEffect exoticEffect)
         {
-            if(exoticEffect is ExoticEffect.Purge or ExoticEffect.BurnPurge)
+            if (exoticEffect is ExoticEffect.Purge)
             {
                 if (string.IsNullOrEmpty(Element.DecayTo))
                 {
-                    if(exoticEffect==ExoticEffect.Purge)
-                        Retire(RetirementVFX.CardLight);
-                    else
-                        Retire(RetirementVFX.CardBurn);
+                     Retire(RetirementVFX.CardLight);
                 }
                 else
                     ChangeTo(Element.DecayTo);
 
                 return true;
+            }
+
+
+            else  if(exoticEffect is ExoticEffect.BurnPurge)
+            {
+                if(!string.IsNullOrEmpty(Element.BurnTo))
+                    ChangeTo(Element.BurnTo);
+                else if (!string.IsNullOrEmpty(Element.DecayTo))
+                    ChangeTo(Element.DecayTo);
+                else
+                    Retire(RetirementVFX.CardBurn);
+
+                return true;
 
             }
 
+            else if(exoticEffect is ExoticEffect.DrownPurge)
+            {
+                if (!string.IsNullOrEmpty(Element.DrownTo))
+                    ChangeTo(Element.BurnTo);
+                else if (!string.IsNullOrEmpty(Element.DecayTo))
+                    ChangeTo(Element.DecayTo);
+                else
+                    Retire(RetirementVFX.CardDrown);
+
+                return true;
+
+            }
+
+            else
+            {
+                
+            }
             return false;
 
         }

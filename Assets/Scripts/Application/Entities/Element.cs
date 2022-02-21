@@ -43,6 +43,14 @@ namespace SecretHistories.Entities
         [FucineValue("")]
         public string DecayTo { get; set; }
 
+
+        [FucineValue("")]
+        public string BurnTo { get; set; }
+
+        [FucineValue("")]
+        public string DrownTo { get; set; }
+
+
         [FucineValue("")]
         public string UniquenessGroup { get; set; }
 
