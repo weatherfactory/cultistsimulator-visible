@@ -245,7 +245,13 @@ namespace SecretHistories.UI
                 //now we put the token in the slot.
                 token.CurrentState=new DroppedInSphereState();
                AcceptToken(token, context);
+              
                 SoundManager.PlaySfx("CardPutInSlot");
+
+                //When we add a token into a threshold sphere, we want to make sure its ghost is hidden.
+                //This is very far from universally true on sphere entry, but it may be useful to promote this
+                //to a basic sphere dichotomy like allowdrag.
+                token.HideGhost();
             }
 
             return true;
