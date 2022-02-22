@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Galaxy.Api;
 using SecretHistories.Assets.Scripts.Application.Abstract;
 using SecretHistories.Choreographers;
 using SecretHistories.Spheres;
