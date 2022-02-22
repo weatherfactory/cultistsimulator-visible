@@ -44,6 +44,21 @@
         "description": ".",
         "warmup": 0,
         "craftable": false
+    },
+		{
+        "id": "setup.librarian.time",
+        "label": ".",
+        "actionid": "time",
+        "requirements": {},
+        "startdescription": ".",
+        "description": ".",
+        "warmup": 0,
+        "craftable": false,
+		"linked": [
+                {
+                    "id": "events.day"
+                }
+            ],
     }
    
 

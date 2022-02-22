@@ -417,9 +417,9 @@ namespace SecretHistories.UI {
             if (Sphere != null) //OKAY JUST THIS ONCE WE'RE DOING A NULL TEST. It's a headache trying to get a null sphere into the mix.
             {
 
-                if (_manifestation.GetType() != Payload.GetManifestationType(Sphere.SphereCategory))
+                if (_manifestation.GetType() != Payload.GetManifestationType(Sphere))
                 {
-                    Type newManifestationType = Payload.GetManifestationType(Sphere.SphereCategory);
+                    Type newManifestationType = Payload.GetManifestationType(Sphere);
 
                     var newManifestation = Watchman.Get<PrefabFactory>()
                         .CreateManifestationPrefab(newManifestationType, this.transform);

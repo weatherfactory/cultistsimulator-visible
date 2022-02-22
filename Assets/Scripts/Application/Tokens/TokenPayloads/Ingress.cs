@@ -231,7 +231,7 @@ namespace SecretHistories.Tokens.TokenPayloads
 
         }
 
-        public Type GetManifestationType(SphereCategory sphereCategory)
+        public Type GetManifestationType(Sphere sphere)
         {
             return typeof(PortalManifestation);
         }

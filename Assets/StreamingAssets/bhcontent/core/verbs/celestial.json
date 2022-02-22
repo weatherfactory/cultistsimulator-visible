@@ -1,0 +1,17 @@
+{
+    "verbs": [
+        {
+            "id": "time",
+          "label": "Time",
+          "startable": false,
+            "description": "The Sun, the Moon",
+			 "slot": {
+                "id": "event",
+                "label": "Event",
+                "description": "Event Slot",
+                "required": {},
+                "forbidden": {}
+            }
+        }
+    ]
+}

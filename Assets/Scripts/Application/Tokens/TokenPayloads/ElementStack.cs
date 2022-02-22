@@ -293,18 +293,18 @@ namespace SecretHistories.UI {
             return new List<Sphere>(_spheres.Where(c => c.SphereCategory == category && !c.Defunct));
         }
 
-        public Type GetManifestationType(SphereCategory forSphereCategory)
+        public Type GetManifestationType(Sphere sphere)
         {
-            if (forSphereCategory == SphereCategory.SituationStorage)
+            if (sphere.SphereCategory == SphereCategory.SituationStorage)
                 return typeof(StoredManifestation);
 
-            if (forSphereCategory == SphereCategory.Dormant)
+            if (sphere.SphereCategory == SphereCategory.Dormant)
                 return typeof(MinimalManifestation);
 
-            if (forSphereCategory == SphereCategory.Notes)
+            if (sphere.SphereCategory == SphereCategory.Notes)
                 return typeof(TextManifestation);
 
-            if (forSphereCategory == SphereCategory.Meta)
+            if (sphere.SphereCategory == SphereCategory.Meta)
                 return typeof(NullManifestation);
 
             var type = Watchman.LocateManifestationType(Element.ManifestationType);

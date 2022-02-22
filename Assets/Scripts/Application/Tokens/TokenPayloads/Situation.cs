@@ -314,9 +314,10 @@ namespace SecretHistories.Entities {
             return _spheres.SingleOrDefault(s => s.Id == sphereId && !s.Defunct);
         }
 
-        public Type GetManifestationType(SphereCategory sphereCategory)
+        public Type GetManifestationType(Sphere sphere)
         {
-            if (sphereCategory == SphereCategory.Meta)
+          
+            if (sphere.SphereCategory == SphereCategory.Meta)
                 return typeof(NullManifestation);
 
             if (Verb == null)
@@ -327,7 +328,7 @@ namespace SecretHistories.Entities {
                 case VerbCategory.Someone:
                     return typeof(MortalManifestation);
                 default:
-                    return typeof(VerbManifestation);
+                    return sphere.GetShabdaManifestation(this);
             }
 
 

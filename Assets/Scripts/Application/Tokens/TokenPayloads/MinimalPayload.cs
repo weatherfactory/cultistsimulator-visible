@@ -175,7 +175,7 @@ namespace SecretHistories.Entities
             return new List<Sphere>(_spheres.Where(c => c.SphereCategory == category && !c.Defunct));
         }
 
-        public Type GetManifestationType(SphereCategory sphereCategory)
+        public Type GetManifestationType(Sphere sphere)
         {
             return typeof(MinimalManifestation);
         }

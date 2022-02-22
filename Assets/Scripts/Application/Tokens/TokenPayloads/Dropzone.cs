@@ -171,7 +171,7 @@ namespace SecretHistories.Entities.Verbs
             return new List<Sphere>(_spheres.Where(c => c.SphereCategory == category && !c.Defunct));
         }
 
-        public Type GetManifestationType(SphereCategory forSphereCategory)
+        public Type GetManifestationType(Sphere sphere)
         {
             return typeof(DropzoneManifestation);
         }

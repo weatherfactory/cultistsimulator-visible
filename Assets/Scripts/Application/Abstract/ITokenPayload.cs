@@ -21,7 +21,7 @@ namespace SecretHistories.Abstract
         public Sphere GetSphereById(string id);
         public List<Sphere> GetSpheresByCategory(SphereCategory category);
 
-        Type GetManifestationType(SphereCategory sphereCategory);
+        Type GetManifestationType(Sphere sphere);
         void InitialiseManifestation(IManifestation manifestation);
         bool IsValid();
         bool IsValidElementStack();

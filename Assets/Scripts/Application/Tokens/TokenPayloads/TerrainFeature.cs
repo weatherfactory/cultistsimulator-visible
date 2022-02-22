@@ -216,7 +216,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
             return new List<Sphere>(_registeredSpheres.Where(s => s.SphereCategory == category));
         }
 
-        public Type GetManifestationType(SphereCategory sphereCategory)
+        public Type GetManifestationType(Sphere sphere)
         {
             return typeof(MinimalManifestation);
         }

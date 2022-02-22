@@ -25,6 +25,7 @@ using SecretHistories.Assets.Scripts.Application.Spheres;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Events;
 using SecretHistories.Infrastructure;
+using SecretHistories.Manifestations;
 using SecretHistories.NullObjects;
 using Steamworks;
 using UnityEngine;
@@ -851,6 +852,11 @@ namespace SecretHistories.Spheres
         public virtual bool DisplayGhostAt(Token forToken,Vector3 overridingWorldPosition)
         {
             return false; //most spheres won't show a ghost
+        }
+
+        public virtual Type GetShabdaManifestation(Situation situation)
+        {
+            return typeof(VerbManifestation);
         }
     }
 

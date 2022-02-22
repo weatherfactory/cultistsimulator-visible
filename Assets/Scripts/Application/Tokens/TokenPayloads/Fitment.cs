@@ -126,7 +126,7 @@ namespace SecretHistories.Entities
             throw new NotImplementedException();
         }
 
-        public Type GetManifestationType(SphereCategory sphereCategory)
+        public Type GetManifestationType(Sphere sphere)
         {
             throw new NotImplementedException();
         }
