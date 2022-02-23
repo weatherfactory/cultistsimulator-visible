@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a889ce24cdd362438cad316c9ce7266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  artwork: {fileID: 2619594045490298214}
   _countdownText: {fileID: 705754257287761314}
 --- !u!222 &-3635413407009955386
 CanvasRenderer:
@@ -208,7 +209,7 @@ GameObject:
   - component: {fileID: 1918748976596464649}
   - component: {fileID: 2619594045490298214}
   m_Layer: 5
-  m_Name: SunImage
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 66d4d533475c68f4ca0b8bd2250dde8d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

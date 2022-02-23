@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Constants;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Ghosts;
@@ -13,11 +14,16 @@ using SecretHistories.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace SecretHistories.Manifestations
 {
     public abstract class AbstractCelestialManifestation : BasicManifestation,IManifestation
     {
+        
+        [SerializeField] Image artwork;
+
+
         [SerializeField]
         private TextMeshProUGUI _countdownText;
         public void Retire(RetirementVFX retirementVfx, Action callback)
@@ -53,8 +59,26 @@ namespace SecretHistories.Manifestations
                 UpdateTimerVisuals(timeshadow.LifetimeRemaining);
             }
 
-        }
+            TryOverrideVerbIcon(manifestable.GetAspects(true));
 
+
+        }
+        private void TryOverrideVerbIcon(AspectsDictionary forAspects)
+        {
+            //if we have an element in the situation now that overrides the verb icon, update it
+            string overrideIcon = Watchman.Get<Compendium>().GetVerbIconOverrideFromAspects(forAspects);
+            if (!string.IsNullOrEmpty(overrideIcon))
+            {
+                OverrideIcon(overrideIcon);
+                // _window.DisplayIcon(overrideIcon);
+            }
+        }
+        public void OverrideIcon(string art)
+        {
+
+            Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(art);
+            artwork.sprite = sprite;
+        }
         private void SetInitialTimerVisuals()
         {
             UpdateTimerVisuals(0f);
