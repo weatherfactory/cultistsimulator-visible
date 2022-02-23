@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SecretHistories.Manifestations
 {
-    public class SunManifestation: AbstractCelestialManifestation
+    public class SkylightManifestation: AbstractCelestialManifestation
     {
     }
 }

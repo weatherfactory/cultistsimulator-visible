@@ -16,7 +16,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
     {
         public override Type GetShabdaManifestation(Situation situation)
         {
-            return typeof(SunManifestation);
+            return typeof(SkylightManifestation);
         }
     }
 }
