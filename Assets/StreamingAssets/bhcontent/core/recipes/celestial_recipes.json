@@ -1,0 +1,79 @@
+ {"recipes": [
+ 
+
+{
+        "id": "celestial.sunrise",
+        "label": "Sunrise",
+        "actionid": "time",
+        "startdescription": "The Sun is here.",
+              "warmup": 60,
+        "craftable": false,		
+		"linked": [{"id": "celestial.morning"}],
+},
+{
+        "id": "celestial.morning",
+        "label": "Morning",
+        "actionid": "time",
+        "startdescription": "Morning has begun.",
+              "warmup": 120,
+        "craftable": false,		
+		"linked": [{"id": "celestial.midday"}],
+},
+{
+        "id": "celestial.midday",
+        "label": "Midday",
+        "actionid": "time",
+        "startdescription": "The Sun at his height.",
+              "warmup": 120,
+        "craftable": false,		
+		"linked": [{"id": "celestial.afternoon"}],
+},
+{
+        "id": "celestial.afternoon",
+        "label": "Afternoon",
+        "actionid": "time",
+        "startdescription": "The Sun declines.",
+              "warmup": 120,
+        "craftable": false,		
+		"linked": [{"id": "celestial.sunset"}],
+},
+{
+        "id": "celestial.sunset",
+        "label": "Sunset",
+        "actionid": "time",
+        "startdescription": "The Sun sinks.",
+              "warmup": 60,
+        "craftable": false,		
+		"linked": [{"id": "celestial.twilight"}],
+},
+{
+        "id": "celestial.twilight",
+        "label": "Twilight",
+        "actionid": "time",
+        "startdescription": "Night approaches.",
+              "warmup": 30,
+        "craftable": false,		
+		"linked": [{"id": "celestial.deepnight"}],
+},
+{
+        "id": "celestial.deepnight",
+        "label": "Deep Night",
+        "actionid": "time",
+        "startdescription": "Night is here.",
+              "warmup": 60,
+        "craftable": false,		
+		"linked": [{"id": "celestial.dawn"}],
+},
+{
+        "id": "celestial.dawn",
+        "label": "Dawn",
+        "actionid": "time",
+        "startdescription": "The Sun's light precedes him.",
+              "warmup": 30,
+        "craftable": false,		
+		"linked": [{"id": "celestial.sunrise"}],
+},
+   
+
+]
+}
