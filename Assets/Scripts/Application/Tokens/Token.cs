@@ -829,7 +829,10 @@ namespace SecretHistories.UI {
                 }
 
                 // this moves the clicked sibling on top of any other nearby cards.
-                if (Sphere.GetType() != typeof(ThresholdSphere) && Sphere.GetType() != typeof(ExhibitCardsSphere))
+                //Lots of brittle special-casing here! TODO: when do we actually want this behaviour?
+                if (Sphere.GetType() != typeof(ThresholdSphere) 
+                    && Sphere.GetType() != typeof(ExhibitCardsSphere)
+                    && Sphere.GetType() != typeof(SituationStorageSphere))
                     transform.SetAsLastSibling();
 
                 previousClickTime = eventData.clickTime;
