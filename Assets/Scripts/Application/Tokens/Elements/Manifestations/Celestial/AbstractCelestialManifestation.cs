@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Constants;
+using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
 using SecretHistories.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,6 +18,8 @@ namespace SecretHistories.Manifestations
 {
     public abstract class AbstractCelestialManifestation : BasicManifestation,IManifestation
     {
+        [SerializeField]
+        private TextMeshProUGUI _countdownText;
         public void Retire(RetirementVFX retirementVfx, Action callback)
         {
             callback();
@@ -32,12 +37,32 @@ namespace SecretHistories.Manifestations
 
         public void Initialise(IManifestable manifestable)
         {
-            //
+            
+            SetInitialTimerVisuals();
+
+            UpdateVisuals(manifestable);
+
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-            //
+            var timeshadow = manifestable.GetTimeshadow();
+
+            if (timeshadow.Transient)
+            {
+                UpdateTimerVisuals(timeshadow.LifetimeRemaining);
+            }
+
+        }
+
+        private void SetInitialTimerVisuals()
+        {
+            UpdateTimerVisuals(0f);
+        }
+
+        private void UpdateTimerVisuals(float durationRemaining)
+        {
+            _countdownText.text = Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
         }
 
         public void OnBeginDragVisuals()

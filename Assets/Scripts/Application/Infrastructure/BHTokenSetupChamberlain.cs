@@ -40,7 +40,7 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
                 }
                 else
                 {
-                    var situationCreationCommand = new SituationCreationCommand().WithVerbId(startupVerb.Id).WithRecipeId(startupRecipe.Id);
+                    var situationCreationCommand = new SituationCreationCommand().WithVerbId(startupVerb.Id).WithRecipeAboutToActivate(startupRecipe.Id);
                     var verbCreationCommand =
                         new TokenCreationCommand(situationCreationCommand, TokenLocation.Default(effectPath));
                     commands.Add(verbCreationCommand);

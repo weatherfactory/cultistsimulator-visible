@@ -38,7 +38,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
         }
 
         public override SphereCategory SphereCategory => SphereCategory.World;
-
+        public override float TokenHeartbeatIntervalMultiplier => 1;
         public override bool AllowDrag => true;
 
         public override void Emphasise()

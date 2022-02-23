@@ -15,6 +15,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
     public class PhysicalSphere: Sphere
     {
         public override SphereCategory SphereCategory => SphereCategory.World;
-
+        public override float TokenHeartbeatIntervalMultiplier => 1;
     }
 }
