@@ -73,7 +73,8 @@
 				"effects":{"celestial.moon":-1,"celestial.sun":1,"day.tick":1},
               "warmup": 30,
         "craftable": false,		
-		"linked": [{"id": "celestial.season.crossroads"},
+		"linked": [{"id": "celestial.endseason.numa"},
+		{"id": "celestial.season.crossroads"},
 		{"id": "celestial.sunrise"}],
 },
 {
@@ -81,11 +82,13 @@
         "label": "The Crossroad of Seasons",
         "actionid": "time",
 		"requirements":{"day.tick":2},
-		"effects":{"day.tick":-2},
+		"effects":{"day.tick":-99,"numa.towards":1},
         "startdescription": "Time for a change.",
               "warmup": 1,
-        "craftable": false,		
-		"linked": [{"id": "celestial.season.spring"},
+        "craftable": false,
+		"linked": [{"id":"celestial.beginseason.numa", "challenges": {  "numa.towards": "advanced"}},
+		{"id":"celestial.forcebeginseason.numa"},
+		{"id": "celestial.beginseason.spring"},
 		{"id": "celestial.beginseason.summer"},
 		{"id": "celestial.beginseason.autumn"},
 		{"id": "celestial.beginseason.winter"}]
@@ -135,16 +138,34 @@
 		"linked": [{"id": "celestial.sunrise"}],
 },   
 {
+        "id": "celestial.forcebeginseason.numa",
+        "label": "Numa Every Fourth Year",
+		"requirements":{"numa.towards":15},
+		"startdescription":"After fifteen seasons without Numa, Numa will always occur.",
+		"linked":[{"id":"celestial.beginseason.numa"}]
+		},
+{
         "id": "celestial.beginseason.numa",
-        "label": "",
+        "label": "Numa Begins",
+        "actionid": "time",
+        "startdescription": "When was Numa?",
+              "warmup": 1,
+			  "effects":{"season.numa":1,"numa.towards":-99},
+        "craftable": false,		
+		"linked": [{"id": "celestial.sunrise"}],
+},
+{
+        "id": "celestial.endseason.numa",
+        "label": "Numa Ends",
         "actionid": "time",
         "startdescription": "Numa",
               "warmup": 1,
 			  "requirements":{"season.numa":1},
-			  "effects":{"season.numa":1,"season.numa":-1},
+			  "effects":{"season.numa":-1,"day.tick":5},
         "craftable": false,		
-		"linked": [{"id": "celestial.sunrise"}],
-}  
+		"linked": [{"id": "celestial.season.crossroads"}],
+		"comments": "A cleanup season for Numa allows us to end Numa after a single day, and provides a hook for any other exotic behavour. NB the standard season stays in the situation, so we can return at the standard season time. If this is a problem, we can hibernate it with an xtrigger. "
+},
 
 ]
 }

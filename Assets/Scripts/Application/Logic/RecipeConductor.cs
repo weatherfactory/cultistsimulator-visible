@@ -45,7 +45,13 @@ namespace SecretHistories.Core
                         lr.Id +
                         " is marked as an additional linked recipe, but we haven't worked out what to do with additional linked recipes yet");
 
+
                 Recipe candidateRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(lr.Id);
+
+                if (!candidateRecipe.IsValid())
+                {
+                    NoonUtility.Log($"Candidate linked recipe ID {lr.Id} isn't valid, which might mean it's a nullrecipe returned when we couldn't find the linked ID. Logging and continuing.",1,VerbosityLevel.Significants);
+                }
 
                 if (candidateRecipe == null)
                 {
@@ -73,10 +79,10 @@ namespace SecretHistories.Core
                     ChallengeArbiter challengeArbiter=new ChallengeArbiter(_aspectsInContext,lr);
                     
                     int diceResult = Watchman.Get<IDice>().Rolld100(currentRecipe);
-
-                    if (diceResult > challengeArbiter.GetArbitratedChance())
+                    int arbitratedChance = challengeArbiter.GetArbitratedChance();
+                    if (diceResult > arbitratedChance)
                     {
-                        NoonUtility.Log(currentRecipe.Id + " says: " + "Dice result " + diceResult + ", against chance " + challengeArbiter.GetArbitratedChance() +
+                        NoonUtility.Log(currentRecipe.Id + " says: " + "Dice result " + diceResult + ", against chance " + arbitratedChance +
                                         " for linked recipe " + lr.Id + "; will try to execute next linked recipe");
                     }
                     else
