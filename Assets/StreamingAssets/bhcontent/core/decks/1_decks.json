@@ -1,7 +1,25 @@
  {"decks": [
  
- 
-   
+         {
+            "id": "incidents.day",
+            "label": "Incidents",
+            "description": "..",
+            "spec": [
+                "incident.visit.bureau",
+				"incident.rain",
+            ],
+           "resetonexhaustion": true
+        },
+            {
+            "id": "incidents.night",
+            "label": "Incidents",
+            "description": "..",
+            "spec": [
+                "incident.dream.memory",
+				"incident.vermin",
+            ],
+           "resetonexhaustion": true
+        },
 
 ]
 }
