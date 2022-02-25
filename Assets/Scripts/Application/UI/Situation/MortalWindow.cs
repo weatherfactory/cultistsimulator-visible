@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
+using SecretHistories.Constants;
+using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Events;
 using SecretHistories.Fucine;
@@ -22,7 +24,7 @@ namespace SecretHistories.UI
     {
         private ITokenPayload _payload;
         public UnityEvent OnStart;
-        
+        public UnityEvent OnCollect;
         public UnityEvent OnWindowClosed;
         public OnSphereAddedEvent OnSphereAdded;
         public OnSphereRemovedEvent OnSphereRemoved;
@@ -33,15 +35,38 @@ namespace SecretHistories.UI
         [Space] [SerializeField] Image _artwork;
         [SerializeField] TextMeshProUGUI _title;
 
+        [SerializeField] Button startButton;
+        [SerializeField] TextMeshProUGUI startButtonText;
+
         [Space] [SerializeField] List<SituationDominion> Dominions;
 
         //TODO: make sure windowPositioner can call back here OK
 
         public void SituationStateChanged(SecretHistories.Entities.Situation situation)
         {
-            //
-        }
+            DisplayButtonState(situation);
 
+        }
+        void DisplayButtonState(Situation situation)
+        {
+
+            if (situation.TimeRemaining > 0)
+            {
+                startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_RUNNING);
+                startButton.interactable = false;
+            }
+            else if (situation.CurrentRecipePrediction != null && situation.CurrentRecipePrediction.Craftable && situation.StateIdentifier == StateEnum.Unstarted)
+            {
+                startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
+                startButton.interactable = true;
+            }
+            else
+            {
+                startButtonText.GetComponent<Babelfish>().UpdateLocLabel(NoonConstants.SITUATION_STARTABLE);
+                startButton.interactable = false;
+            }
+
+        }
         public void TimerValuesChanged(SecretHistories.Entities.Situation s)
         {
             //
@@ -81,8 +106,7 @@ namespace SecretHistories.UI
 
             OnWindowClosed.AddListener(newSituation.Close);
             OnStart.AddListener(newSituation.TryStart);
-            
-
+            OnCollect.AddListener(newSituation.Conclude);
             OnSphereAdded.AddListener(newSituation.AttachSphere);
             OnSphereRemoved.AddListener(newSituation.DetachSphere);
 
@@ -149,6 +173,12 @@ foreach (var d in Dominions)
             }
 
         }
+
+        public void Collect()
+        {
+            OnCollect.Invoke();
+        }
+
         public void NotifySpheresChanged(Context context)
         {
             List<Sphere> spheres = new List<Sphere>();

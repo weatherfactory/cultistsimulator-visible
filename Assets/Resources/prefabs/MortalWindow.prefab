@@ -123,9 +123,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1000013105576594}
         m_TargetAssemblyTypeName: Assets.CS.TabletopUI.SituationWindow, Assembly-CSharp
-        m_MethodName: Collect
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -473,6 +473,9 @@ MonoBehaviour:
   OnStart:
     m_PersistentCalls:
       m_Calls: []
+  OnCollect:
+    m_PersistentCalls:
+      m_Calls: []
   OnWindowClosed:
     m_PersistentCalls:
       m_Calls: []
@@ -486,6 +489,8 @@ MonoBehaviour:
   positioner: {fileID: 114651031545853594}
   _artwork: {fileID: 114475561134123840}
   _title: {fileID: 114797357020451180}
+  startButton: {fileID: 114000012811200902}
+  startButtonText: {fileID: 114000013027545752}
   Dominions:
   - {fileID: 4470030975996782642}
   - {fileID: 7731683286596552914}
