@@ -60,6 +60,22 @@
                     "id": "celestial.sunrise"
                 }
             ],
+    },
+			{
+        "id": "setup.librarian.visits",
+        "label": ".",
+        "actionid": "visits",
+        "requirements": {},
+		"effects": {},
+        "startdescription": ".",
+        "description": ".",
+        "warmup": 0,
+        "craftable": false,
+		"linked": [
+                {
+                    "id": "visits.cycle"
+                }
+            ],
     }
    
 

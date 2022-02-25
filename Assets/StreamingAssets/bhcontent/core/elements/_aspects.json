@@ -1,16 +1,37 @@
 {
 	"elements": [
-		{
-			"id": "season",
-			"label": "Season",
-			"description": "Time and again.",
+
+				{
+			"id": "readable",
+			"label": "Readable",
+			"description": "There are worse things to put in your eyes than this.",
 			"isAspect": true
 		},
+
 				{
 			"id": "incident",
 			"label": "Incident",
 			"description": "What happens, happens.",
 			"isAspect": true
-		}
+		},
+				{
+			"id": "season",
+			"label": "Season",
+			"description": "Time and again.",
+			"isAspect": true
+		},
+		{
+			"id": "uncatalogued",
+			"label": "Uncatalogued",
+			"description": "'There's nothing as safe as ignorance — or as dangerous.' - Nero Wolfe",
+			"isAspect": true
+		},
+					{
+			"id": "scrutiny",
+			"label": "Scrutiny",
+			"description": "Something's being examined or revealed.",
+			"isAspect": true,
+			"noartneeded": true
+			},
 	]
 }
