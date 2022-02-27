@@ -23,11 +23,12 @@ namespace SecretHistories.Manifestations
         [SerializeField]
         private Image frontCover;
         [SerializeField]
-        private Image backCover;
+        private Image backCover; //possibly won't be used
         [SerializeField]
         private Image spine;
 
         [SerializeField] private TextMeshProUGUI spineTitle;
+        [SerializeField] private TextMeshProUGUI coverTitle;
 
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private GraphicFader _glow;
@@ -72,6 +73,7 @@ namespace SecretHistories.Manifestations
             
             name = "book_" + manifestable.Id;
             spineTitle.text = manifestable.Label;
+            coverTitle.text = manifestable.Label;
             
             UpdateVisuals(manifestable);
             
