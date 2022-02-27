@@ -38,8 +38,8 @@ namespace SecretHistories
 
         void UpdateVisuals(IManifestable manifestable);
         void UpdateLocalScale(Vector3 newScale);
-        void OnBeginDragVisuals();
-        void OnEndDragVisuals();
+        void OnBeginDragVisuals(Token token);
+        void OnEndDragVisuals(Token token);
 
         void Highlight(HighlightType highlightType, IManifestable manifestable);
         void Unhighlight(HighlightType highlightType, IManifestable manifestable);

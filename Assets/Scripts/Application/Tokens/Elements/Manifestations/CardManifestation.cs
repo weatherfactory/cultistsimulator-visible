@@ -150,13 +150,13 @@ namespace SecretHistories.Manifestations
             text.ForceMeshUpdate(false, false); //Without this, the scale of the textmesh object may not match the parent object, which means the text goes blurry.
         }
 
-        public void OnBeginDragVisuals()
+        public void OnBeginDragVisuals(Token token)
         {
             ShowCardShadow(true); // Ensure we always have a shadow when dragging
         }
 
 
-        public void OnEndDragVisuals()
+        public void OnEndDragVisuals(Token token)
         {
             ShowCardShadow(false);
         }

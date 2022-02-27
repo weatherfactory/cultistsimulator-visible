@@ -547,7 +547,7 @@ namespace SecretHistories.UI {
             enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
             
             TokenRectTransform.SetAsLastSibling();
-            _manifestation.OnBeginDragVisuals();
+            _manifestation.OnBeginDragVisuals(this);
 
             MakeNonInteractable();
 
@@ -648,7 +648,7 @@ namespace SecretHistories.UI {
             //This is because FinishDrag() is also used for path itineraries.
             //If the change causes problems, we can fork logic here instead?
             // HideGhost(); 
-
+            _manifestation.OnEndDragVisuals(this);
         }
 
         public void MakeInteractable()

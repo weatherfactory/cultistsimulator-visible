@@ -46,12 +46,12 @@ namespace SecretHistories.Manifestations
             //
         }
 
-        public void OnBeginDragVisuals()
+        public void OnBeginDragVisuals(Token token)
         {
             //
         }
 
-        public void OnEndDragVisuals()
+        public void OnEndDragVisuals(Token token)
         {
             //
         }
