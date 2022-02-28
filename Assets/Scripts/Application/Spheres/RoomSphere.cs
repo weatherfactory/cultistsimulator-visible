@@ -22,6 +22,7 @@ namespace SecretHistories.Spheres
     {
         private bool _traversable;
         public override bool Traversable => _traversable;
+        public override bool UnderstateContents => true;
 
         [SerializeField]
         private TextMeshProUGUI _label;
