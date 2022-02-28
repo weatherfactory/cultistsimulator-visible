@@ -1,32 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
-using SecretHistories.Fucine;
 using SecretHistories.Spheres;
-using SecretHistories.Spheres.Angels;
 using SecretHistories.States.TokenStates;
-using System.Linq;
-using SecretHistories.Commands;
-using TMPro;
+using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-
-namespace SecretHistories.UI
+namespace SecretHistories.Assets.Scripts.Application.UI.Situation
 {
-
     [IsEmulousEncaustable(typeof(Sphere))]
     [RequireComponent(typeof(SphereDropCatcher))]
     [RequireComponent(typeof(TokenMovementReactionDecorator))]
-    public class ShelfSpaceSphere : Sphere, IInteractsWithTokens
+    public class ColumnSphere : Sphere, IInteractsWithTokens
     {
+
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
 
         // VISUAL ELEMENTS
         public GraphicFader slotGlow;
-        public LayoutGroup slotIconHolder;
         protected virtual UIStyle.GlowTheme GlowTheme => UIStyle.GlowTheme.Classic;
 
         public override bool AllowStackMerge => false;
@@ -41,7 +38,7 @@ namespace SecretHistories.UI
         }
 
 
-        
+
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
 
@@ -61,7 +58,7 @@ namespace SecretHistories.UI
                 {
                     draggedToken.ShowPossibleInteractionWithToken(draggedToken);
 
-                        ShowHoverGlow();
+                    ShowHoverGlow();
                 }
             }
         }
@@ -108,22 +105,13 @@ namespace SecretHistories.UI
         }
 
 
-        public override void DisplayAndPositionHere(Token token, Context context)
-        {
-            base.DisplayAndPositionHere(token, context);
-            Choreographer.PlaceTokenAtFreeLocalPosition(token, context);
-
-            if (slotIconHolder != null)
-                slotIconHolder.transform.SetAsLastSibling(); //this is p legacy hacky and exists just cos the hierarchy is how it is
-
-        }
 
         public override void DoRetirement(Action onRetirementComplete, SphereRetirementType retirementType)
         {
             //this should (and currently does, tho untidily) call Retire after it's done.
             HandleContentsGracefully(retirementType);
 
-                onRetirementComplete();
+            onRetirementComplete();
         }
 
 
@@ -148,12 +136,12 @@ namespace SecretHistories.UI
                 incumbentMoved = false;
         }
 
- 
+
         public override bool TryAcceptToken(Token token, Context context)
         {
-            if (!IsTokenInRangeOfThisShelf(token))
+            if (!IsTokenInRangeOfThisColumn(token))
                 return false;
-        
+
 
             //does the token match the slot? Check that first
             ContainerMatchForStack match = GetMatchForTokenPayload(token.Payload);
@@ -171,7 +159,7 @@ namespace SecretHistories.UI
                 if (notifier != null)
                     notifier.ShowNotificationWindow(Watchman.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
             }
-           
+
             else
             {
                 //it matches.
@@ -257,7 +245,7 @@ namespace SecretHistories.UI
             if (CurrentlyBlockedFor(BlockDirection.Inward))
                 return false;
 
-            
+
             //does the token match the slot? Check that first
             ContainerMatchForStack match = GetMatchForTokenPayload(token.Payload);
 
@@ -279,7 +267,7 @@ namespace SecretHistories.UI
 
         public override bool TryDisplayGhost(Token forToken)
         {
-            if(IsTokenInRangeOfThisShelf(forToken))
+            if (IsTokenInRangeOfThisColumn(forToken))
                 return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
             return false;
 
@@ -289,9 +277,13 @@ namespace SecretHistories.UI
             return forToken.DisplayGhostAtChoreographerDrivenPosition(this, overridingWorldPosition);
         }
 
-
-        private bool IsTokenInRangeOfThisShelf(Token token)
-        { // TODO: refactor into more general Range logic in Sphere, along with similar code in Column
+        /// <summary>
+        /// TODO: refactor into more general Range logic in Sphere
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        private bool IsTokenInRangeOfThisColumn(Token token)
+        {
             //Get the home sphere location of this token.
             //Is it the same as this sphere?
             if (token.GetHomeSphere() == this)
@@ -318,7 +310,5 @@ namespace SecretHistories.UI
             return false;
         }
     }
-
-
-    
 }
+
