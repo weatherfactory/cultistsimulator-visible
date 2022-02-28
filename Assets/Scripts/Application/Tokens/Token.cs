@@ -872,6 +872,7 @@ namespace SecretHistories.UI {
         {
             if (Defunct)
                 return false;
+
             Defunct = true;
             _payload.OnChanged -= OnPayloadChanged;
           //  FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex) <-- finishdrag fires other behaviour we might not want. Check next if we can still merge OK
@@ -883,6 +884,8 @@ namespace SecretHistories.UI {
             Sphere.NotifyTokensChangedForSphere(args);
 
             SetSphere(Watchman.Get<Limbo>(), new Context(Context.ActionSource.Retire));
+
+            _ghost.Retire();
 
             return true;
         }
