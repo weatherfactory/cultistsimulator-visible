@@ -6,7 +6,8 @@
             "description": "..",
 			"aspects": {"uncatalogued":1,"readable":1},
 			"manifestationtype": "Book",
-			"xtriggers":{"scrutiny":"travellingatnight.1"}
+			"xtriggers":{"scrutiny":"travellingatnight.1"},
+			"icon":"dark"
 			
         },
         {
@@ -15,7 +16,8 @@
             "description": "..",
 			"aspects": {"uncatalogued":1,"readable":1},
             "manifestationtype": "Book",
-			"xtriggers":{"scrutiny":"travellingatnight.2"}
+			"xtriggers":{"scrutiny":"travellingatnight.2"},
+			"icon":"dark"
         },
         {
             "id": "sunsetdiaries.1.unc",
@@ -31,7 +33,8 @@
             "description": "..",
 			"aspects": {"uncatalogued":1,"readable":1},
             "manifestationtype": "Book",
-			"xtriggers":{"scrutiny":"turquoisehand"}
+			"xtriggers":{"scrutiny":"turquoisehand"},
+			"icon":"sky"
 			
         },
 		        {
@@ -39,14 +42,16 @@
             "label": "Travelling at Night (1)",
             "description": "Volume 1 of the annotated dream-journals of Christopher Illopoly, sometimes called 'the only readable occultist': literate, entertaining, bewildering.",
 			"aspects": {"readable":1},
-            "manifestationtype": "Book"
+            "manifestationtype": "Book",
+			"icon":"dark"
         },
         {
             "id": "travellingatnight.2",
             "label": "Travelling at Night (2)",
             "description": "Volume 2 of the annotated dream-journals of Christopher Illopoly, sometimes called 'the only readable occultist': literate, entertaining, bewildering.",
 			"aspects": {"readable":1},
-            "manifestationtype": "Book"
+            "manifestationtype": "Book",
+			"icon":"dark"
         },
         {
             "id": "sunsetdiaries.1",
@@ -60,7 +65,8 @@
             "label": "The Turquoise Hand",
             "description": "A calligraphic manual of Ramsund which employs as exemplar-text Farid ud-Din's 'Conference of the Birds'. Its commentary, illustrations and interleavings carry revelations never intended in the original.",
 			"aspects": {"readable":1},
-            "manifestationtype": "Book"
+            "manifestationtype": "Book",
+			"icon":"sky"
         }
     ]
 }

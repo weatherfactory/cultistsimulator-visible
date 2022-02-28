@@ -60,24 +60,14 @@ namespace SecretHistories.Manifestations
             //if we add animations, the frames stuff should go in a distinct class
         }
 
-        private string GetBackCoverImageName(string frontCoverImageName)
-        {
-            return $"{frontCoverImageName}{BACK_COVER_SUFFIX}";
-        }
-
-        private string GetSpineImageName(string frontCoverImageName)
-        {
-            return $"{frontCoverImageName}{SPINE_SUFFIX}";
-        }
-
         public void Initialise(IManifestable manifestable)
         {
-            Sprite f = ResourcesManager.GetSpriteForElement(manifestable.Icon);
+            Sprite f = ResourcesManager.GetSpriteForFrontCover(manifestable.Icon);
             frontCoverImage.sprite = f;
-            Sprite s= ResourcesManager.GetSpriteForElement(GetSpineImageName(manifestable.Icon));
+            backCoverImage.sprite = f;
+            Sprite s= ResourcesManager.GetSpriteForSpine(manifestable.Icon);
             spineImage.sprite=s;
-            Sprite b = ResourcesManager.GetSpriteForElement(GetBackCoverImageName(manifestable.Icon));
-            backCoverImage.sprite = b;
+
             
             name = "book_" + manifestable.Id;
             spineTitle.text = manifestable.Label;
