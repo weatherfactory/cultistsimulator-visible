@@ -91,9 +91,11 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
         }
         public FucinePath GetAbsolutePath()
         {
-            var pathAbove = FucinePath.Root();
+            var pathAbove = _token.Sphere.GetAbsolutePath();
             var absolutePath = pathAbove.AppendingToken(this.Id);
             return absolutePath;
+
+
         }
 
         public FucinePath GetWildPath()
