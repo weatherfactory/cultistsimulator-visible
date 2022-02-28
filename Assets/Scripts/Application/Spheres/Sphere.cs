@@ -70,6 +70,12 @@ namespace SecretHistories.Spheres
         public virtual bool AllowStackMerge => true;
         [DontEncaust]
         public virtual bool AllowAmbientAnimations => false;
+
+        [DontEncaust]
+        public virtual bool EmphasiseContents => false;
+        [DontEncaust]
+        public virtual bool UnderstateContents => false;
+
         [DontEncaust]
         public virtual bool PersistBetweenScenes => false;
         [DontEncaust]
@@ -85,7 +91,9 @@ namespace SecretHistories.Spheres
 
         [DontEncaust]
         public virtual AbstractChoreographer Choreographer => gameObject.GetComponent<AbstractChoreographer>();
-   
+
+        
+
 
         public Vector3 WorldPosition;
 
@@ -602,6 +610,12 @@ namespace SecretHistories.Spheres
             args.TokenAdded = token;
             
             DisplayAndPositionHere(token, context);
+
+            if(EmphasiseContents)
+                token.Emphasise();
+            if(UnderstateContents)
+                token.Understate();
+            
 
             NotifyTokensChangedForSphere(args);
 

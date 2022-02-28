@@ -86,12 +86,12 @@ namespace SecretHistories.Manifestations
 
         public void OnBeginDragVisuals(Token token)
         {
-         token.Emphasise();
+     
         }
 
         public void OnEndDragVisuals(Token token)
         {
-         token.Understate();
+     
         }
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)

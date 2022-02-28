@@ -132,5 +132,14 @@ namespace SecretHistories.Ghosts
                 Destroy(gameObject);
         }
 
+        public virtual void Understate()
+        {
+        //
+        }
+
+        public virtual void Emphasise()
+        {
+           //
+        }
     }
 }

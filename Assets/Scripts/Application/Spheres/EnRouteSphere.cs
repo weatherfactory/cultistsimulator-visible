@@ -19,6 +19,7 @@ namespace SecretHistories.Spheres
     {
 
         public override SphereCategory SphereCategory => SphereCategory.World;
+        
         public override float TokenHeartbeatIntervalMultiplier => SpecifiedTokenHeartbeatIntervalMultiplier;
         [SerializeField] private float SpecifiedTokenHeartbeatIntervalMultiplier;
         private Sphere _overridingDefaultDestination; //currently in use for otherworlds; tracking a homingAngel reference may be better

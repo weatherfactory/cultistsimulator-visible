@@ -30,9 +30,11 @@ namespace SecretHistories.UI
         protected virtual UIStyle.GlowTheme GlowTheme => UIStyle.GlowTheme.Classic;
 
         public override bool AllowStackMerge => false;
-
-
+        
         public override bool AllowDrag => true;
+        
+        public override bool UnderstateContents => true;
+
 
 
         public virtual void Start()

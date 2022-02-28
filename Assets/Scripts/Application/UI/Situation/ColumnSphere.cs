@@ -18,7 +18,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Situation
     [RequireComponent(typeof(TokenMovementReactionDecorator))]
     public class ColumnSphere : Sphere, IInteractsWithTokens
     {
-
+        //This is for close-up display, not just columns. Rename once I'm sure.
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
 
         // VISUAL ELEMENTS
@@ -26,7 +26,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Situation
         protected virtual UIStyle.GlowTheme GlowTheme => UIStyle.GlowTheme.Classic;
 
         public override bool AllowStackMerge => false;
-
+        public override bool EmphasiseContents => true;
 
         public override bool AllowDrag => true;
 

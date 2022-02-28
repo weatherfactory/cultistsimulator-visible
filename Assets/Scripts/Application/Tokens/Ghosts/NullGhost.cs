@@ -51,6 +51,16 @@ namespace SecretHistories.Ghosts
            //
         }
 
+        public void Understate()
+        {
+            
+        }
+
+        public void Emphasise()
+        {
+           
+        }
+
 
         public static IGhost Create(IManifestation parentManifestation)
         {

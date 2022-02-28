@@ -23,5 +23,7 @@ namespace SecretHistories.Abstract
         bool PromiseBlocksCandidateRect(Sphere sphere, Rect candidateRect);
         Rect GetRect();
         void Retire();
+        void Understate();
+        void Emphasise();
     }
 }

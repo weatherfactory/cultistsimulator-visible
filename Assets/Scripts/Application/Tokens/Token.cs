@@ -363,6 +363,11 @@ namespace SecretHistories.UI {
             
             var candidatePosition = projectInSphere.Choreographer.GetClosestFreeLocalPosition(this, projectionPositionLocalToSphere);
 
+            if(projectInSphere.EmphasiseContents)
+                Emphasise();
+            if (projectInSphere.UnderstateContents)
+                Understate();
+
             _ghost.ShowAt(projectInSphere, candidatePosition,TokenRectTransform);
 
 
@@ -946,12 +951,18 @@ namespace SecretHistories.UI {
 
         public void Understate()
         {
+            //in the case of items which can be examined more closely, like books, Understate displays the storage version of the item
             _manifestation.Understate();
+            if (_ghost != null)
+                _ghost.Understate();
         }
 
         public void Emphasise()
         {
+            //in the case of items which can be examined more closely, like books, Emphasise displays the expanded version of the item
             _manifestation.Emphasise();
+            if (_ghost != null)
+                _ghost.Emphasise();
         }
 
 
