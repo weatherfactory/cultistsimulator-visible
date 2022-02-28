@@ -23,6 +23,7 @@ public class OutputSphere : Sphere{
     [SerializeField] SituationResultsPositioning outputPositioning;
 
     public override SphereCategory SphereCategory => SphereCategory.Output;
+    public override bool EmphasiseContents => true; //so that books show up in their final form
 
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return false; } }
