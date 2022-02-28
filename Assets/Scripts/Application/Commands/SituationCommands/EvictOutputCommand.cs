@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using UnityEditor;
 
 namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
 {
@@ -26,6 +27,7 @@ namespace SecretHistories.Assets.Scripts.Application.Commands.SituationCommands
         public bool Execute(Situation situation)
         {
             var results = situation.GetElementTokens(SphereCategory.Output);
+            
             foreach (var item in results)
             {
                 item.Unshroud(true);

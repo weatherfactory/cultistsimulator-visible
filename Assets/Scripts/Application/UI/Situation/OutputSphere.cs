@@ -71,4 +71,13 @@ public class OutputSphere : Sphere{
 
         base.RemoveToken(token,context);
     }
+
+
+    public override void EvictToken(Token token, Context context)
+    {
+
+        base.EvictToken(token, context);
+        
+
+    }
 }
