@@ -632,7 +632,7 @@ namespace SecretHistories.UI {
             Element = newElement;
             _aspectsDirtyExc = true;
             _aspectsDirtyInc = true;
-
+            _token.gameObject.name = newElement.Id + "_token";
 
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this,PayloadChangeType.Fundamental));
         }
