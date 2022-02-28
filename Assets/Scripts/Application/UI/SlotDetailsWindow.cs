@@ -9,11 +9,12 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Linq;
-using Assets.Scripts.Application.Spheres;
+
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Enums.Elements;
+using SecretHistories.Spheres;
 using Object = UnityEngine.Object;
 
 namespace SecretHistories.UI {

@@ -14,7 +14,7 @@ using SecretHistories.UI;
 using TMPro;
 using UnityEngine;
 
-namespace SecretHistories.Assets.Scripts.Application.Spheres
+namespace SecretHistories.Spheres
 {
     [IsEmulousEncaustable(typeof(Sphere))]
 

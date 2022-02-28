@@ -8,7 +8,7 @@ using SecretHistories.Entities;
 using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
 
-namespace SecretHistories.Assets.Scripts.Application.Spheres
+namespace SecretHistories.Spheres
 {
     [IsEmulousEncaustable(typeof(Sphere))]
 

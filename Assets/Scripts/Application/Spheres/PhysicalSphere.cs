@@ -9,7 +9,7 @@ using SecretHistories.Enums;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 
-namespace SecretHistories.Assets.Scripts.Application.Spheres
+namespace SecretHistories.Spheres
 {
     [IsEmulousEncaustable(typeof(Sphere))]
     public class PhysicalSphere: Sphere

@@ -14,7 +14,7 @@ using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 
-namespace SecretHistories.Assets.Scripts.Application.Spheres
+namespace SecretHistories.Spheres
 {
     [IsEmulousEncaustable(typeof(AbstractDominion))]
     public class OtherworldDominion: AbstractDominion

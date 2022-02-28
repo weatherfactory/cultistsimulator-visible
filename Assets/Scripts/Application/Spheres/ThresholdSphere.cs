@@ -10,6 +10,7 @@ using System.Linq;
 
 using SecretHistories.Commands;
 using SecretHistories.Constants;
+using SecretHistories.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,7 +18,7 @@ using UnityEngine.UI;
 using Vector3 = UnityEngine.Vector3;
 
 
-namespace SecretHistories.UI
+namespace SecretHistories.UI //should be SecretHistories.Sphere. But that'll break save/load until I make save/load less fussy.
 {
 
     [IsEmulousEncaustable(typeof(Sphere))]
@@ -26,6 +27,8 @@ namespace SecretHistories.UI
     public class ThresholdSphere : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler,IInteractsWithTokens {
 
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
+
+        public override bool EmphasiseContents => true;
 
         // VISUAL ELEMENTS
         public RecipeSlotViz viz;

@@ -13,7 +13,7 @@ using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 
-namespace Assets.Scripts.Application.Spheres
+namespace SecretHistories.UI
 {
     public class NavigationArgs
     {

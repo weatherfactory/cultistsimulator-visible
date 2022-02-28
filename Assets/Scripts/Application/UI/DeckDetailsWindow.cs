@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using Assets.Scripts.Application.Spheres;
 using SecretHistories.Assets.Scripts.Application.Entities;
 using SecretHistories.Entities;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using TMPro;
 using UnityEngine;

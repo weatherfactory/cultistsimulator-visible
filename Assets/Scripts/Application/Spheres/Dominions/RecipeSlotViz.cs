@@ -9,7 +9,6 @@ namespace SecretHistories.UI {
     public class RecipeSlotViz : MonoBehaviour {
 
         public RectTransform rectTrans;
-        [SerializeField] ThresholdSphere slot;
         [SerializeField] Animation anim;
 
         bool isHidden;
