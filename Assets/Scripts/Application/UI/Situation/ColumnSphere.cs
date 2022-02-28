@@ -15,7 +15,6 @@ using UnityEngine.EventSystems;
 namespace SecretHistories.Assets.Scripts.Application.UI.Situation
 {
     [IsEmulousEncaustable(typeof(Sphere))]
-    [RequireComponent(typeof(SphereDropCatcher))]
     [RequireComponent(typeof(TokenMovementReactionDecorator))]
     public class ColumnSphere : Sphere, IInteractsWithTokens
     {

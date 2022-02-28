@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224000011871924944}
-  - component: {fileID: -2494200179644631504}
   - component: {fileID: 225443034359755438}
-  - component: {fileID: 4921537108124972761}
   - component: {fileID: 3243761884941166812}
+  - component: {fileID: 7319380396417851046}
   m_Layer: 5
   m_Name: ColumnSphere
   m_TagString: Untagged
@@ -41,24 +40,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &-2494200179644631504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010408375514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c792188130c1e9a47858a61e9343b63b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WorldPosition: {x: 0, y: 0, z: 0}
-  _editorAbsolutePath: 
-  _editorWildPath: 
-  VisibleCharacteristics: []
-  slotGlow: {fileID: 1432004365391369781}
-  slotIconHolder: {fileID: 0}
 --- !u!225 &225443034359755438
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -71,19 +52,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &4921537108124972761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010408375514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sphere: {fileID: -2494200179644631504}
 --- !u!114 &3243761884941166812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +64,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab99a322f7e947344a21e3ffb6da6fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7319380396417851046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010408375514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a29a3f91da1554fbb273c2f9d39ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldPosition: {x: 0, y: 0, z: 0}
+  _editorAbsolutePath: 
+  _editorWildPath: 
+  VisibleCharacteristics: []
+  slotGlow: {fileID: 1432004365391369781}
 --- !u!1 &1233008932312792
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,6 +92,7 @@ GameObject:
   - component: {fileID: 224515374652696020}
   - component: {fileID: 222284929736396092}
   - component: {fileID: 114845874049339490}
+  - component: {fileID: 8603690853835107002}
   m_Layer: 5
   m_Name: ColumnDropCatcher
   m_TagString: Untagged
@@ -173,6 +159,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8603690853835107002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233008932312792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sphere: {fileID: 7319380396417851046}
 --- !u!1 &6799580271036606909
 GameObject:
   m_ObjectHideFlags: 0
