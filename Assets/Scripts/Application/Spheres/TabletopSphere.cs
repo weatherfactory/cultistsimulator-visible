@@ -65,7 +65,7 @@ namespace SecretHistories.Spheres
 
         public override void NotifyTokenInThisSphereInteracted(TokenInteractionEventArgs args)
         {
-            if (args.Interaction == Interaction.OnDoubleClicked)
+            if (args.Interaction == Interaction.OnDoubleClicked || args.Interaction == Interaction.OnRightClicked)
                 SendTokenToNearestValidDestination(args.Token, new Context(Context.ActionSource.DoubleClickSend));
 
             base.NotifyTokenInThisSphereInteracted(args);

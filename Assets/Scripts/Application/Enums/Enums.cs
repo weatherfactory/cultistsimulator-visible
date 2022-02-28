@@ -40,7 +40,7 @@
         Fast = 2
     }
 
-    public enum Interaction { OnClicked, OnReceivedADrop, OnPointerEntered, OnPointerExited, OnDoubleClicked, OnDragBegin, OnDrag, OnDragEnd }
+    public enum Interaction { OnClicked, OnReceivedADrop, OnPointerEntered, OnPointerExited, OnDoubleClicked, OnRightClicked,OnDragBegin, OnDrag, OnDragEnd }
 
     public enum MorphEffectType
     {

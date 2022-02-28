@@ -810,6 +810,17 @@ namespace SecretHistories.UI {
                 });
 
             }
+            else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                NotifyInteracted(new TokenInteractionEventArgs
+                {
+                    Payload = Payload,
+                    Token = this,
+                    Sphere = Sphere,
+                    PointerEventData = eventData,
+                    Interaction = Interaction.OnRightClicked
+                });
+            }
             else
             {
                 if (shrouded)
