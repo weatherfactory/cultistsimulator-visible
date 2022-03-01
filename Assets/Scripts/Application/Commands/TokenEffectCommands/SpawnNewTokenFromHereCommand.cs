@@ -16,12 +16,13 @@ namespace SecretHistories.Commands
   {
       private readonly ITokenPayloadCreationCommand _payloadCreationCommand;
       private Context _context;
-      private FucinePath toSpherePath;
+      private FucinePath _toSpherePath;
 
       private bool hasExecuted = false;
-        public SpawnNewTokenFromThisOneCommand(ITokenPayloadCreationCommand payloadCreationCommand,Context context)
+        public SpawnNewTokenFromThisOneCommand(ITokenPayloadCreationCommand payloadCreationCommand,FucinePath toSpherePath,Context context)
         {
             _payloadCreationCommand = payloadCreationCommand;
+            _toSpherePath = toSpherePath;
             _context = context;
         }
 
@@ -31,8 +32,8 @@ namespace SecretHistories.Commands
             {
                 TokenLocation newAnchorLocation;
 
-                if (toSpherePath!= FucinePath.Current())
-                    newAnchorLocation = new TokenLocation(Vector3.zero, toSpherePath);
+                if (_toSpherePath!= FucinePath.Current())
+                    newAnchorLocation = new TokenLocation(Vector3.zero, _toSpherePath);
                 else
                     newAnchorLocation = token.Location;
                 

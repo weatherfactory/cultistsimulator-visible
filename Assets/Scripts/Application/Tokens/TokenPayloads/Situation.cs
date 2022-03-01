@@ -798,7 +798,7 @@ namespace SecretHistories.Entities {
 
             var situationCreationCommand = new SituationCreationCommand(withRecipe.ActionId).WithRecipeAboutToActivate(withRecipe.Id);
 
-            var spawnNewTokenCommand = new SpawnNewTokenFromThisOneCommand(situationCreationCommand,  new Context(Context.ActionSource.JustSpawned));
+            var spawnNewTokenCommand = new SpawnNewTokenFromThisOneCommand(situationCreationCommand, FucinePath.Current(),  new Context(Context.ActionSource.JustSpawned));
 
           if(spawnNewTokenCommand.ExecuteOn(Token))
                 situationCreationCommand.LastSituationCreated.AcceptTokens(SphereCategory.SituationStorage,stacksToAddToNewSituation);
