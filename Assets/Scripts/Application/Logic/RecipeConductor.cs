@@ -106,7 +106,7 @@ namespace SecretHistories.Core
             _aspectsInContext.ThrowErrorIfNotPopulated(situation.Verb.Id);
 
 
-            var candidateRecipes = situation.State.PotentiallyValidRecipesForState(situation);
+            var candidateRecipes = situation.State.PotentiallyPredictableRecipesForState(situation);
             List<Recipe> nonExhaustedCandidateRecipes =
                 candidateRecipes.Where(r => !_character.HasExhaustedRecipe(r)).ToList();
 

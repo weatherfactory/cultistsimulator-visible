@@ -85,7 +85,7 @@ namespace SecretHistories.States
             return false;
         }
 
-        public override List<Recipe> PotentiallyValidRecipesForState(Situation s)
+        public override List<Recipe> PotentiallyPredictableRecipesForState(Situation s)
         {
             //Situation is Ongoing. Recipe is in Alt list of current recipe - as Always Succeed and not as Additional. ActionId doesn't need to match.
             /// WARNING: this assumes ShouldAlwaysSucceed, which is great for prediction but not for execution
