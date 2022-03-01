@@ -43,18 +43,20 @@ namespace SecretHistories.States
             return false;
         }
 
-        public override List<Recipe> PotentiallyValidRecipesForState(Situation s)
+        public override List<Recipe> PotentiallyPredictableRecipesForState(Situation s)
         {
-            List<Recipe> potentiallyValidRecipes = new List<Recipe>();
-            foreach (var l in s.Recipe.Linked)
-            {
-                //Situation is RequiringExecution, and recipe is in Linked list of current recipe.  ActionId doesn't need to match.
-                var potentiallyValidRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(l.Id);
-                if (potentiallyValidRecipe.IsValid()) //no null/verb recipes in Ongoing
-                    potentiallyValidRecipes.Add(potentiallyValidRecipe);
-            }
+            return new List<Recipe>();
+            //
+            //List<Recipe> potentiallyValidRecipes = new List<Recipe>();
+            //foreach (var l in s.Recipe.Linked)
+            //{
+            //    //Situation is RequiringExecution, and recipe is in Linked list of current recipe.  ActionId doesn't need to match.
+            //    var potentiallyValidRecipe = Watchman.Get<Compendium>().GetEntityById<Recipe>(l.Id);
+            //    if (potentiallyValidRecipe.IsValid()) //no null/verb recipes in Ongoing
+            //        potentiallyValidRecipes.Add(potentiallyValidRecipe);
+            //}
 
-            return potentiallyValidRecipes;
+            //return potentiallyValidRecipes;
         }
 
         public override void Continue(Situation situation)

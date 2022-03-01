@@ -40,7 +40,7 @@ namespace SecretHistories.States
 
         }
 
-        public override List<Recipe> PotentiallyValidRecipesForState(Situation s)
+        public override List<Recipe> PotentiallyPredictableRecipesForState(Situation s)
         {
 
             //note: we *either* get craftable recipes, *or* if we're getting hint recipes we don't care if they're craftable

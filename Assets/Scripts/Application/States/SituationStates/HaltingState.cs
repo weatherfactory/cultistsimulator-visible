@@ -33,7 +33,7 @@ namespace SecretHistories.States
             return false;
         }
 
-        public override List<Recipe> PotentiallyValidRecipesForState(Situation s)
+        public override List<Recipe> PotentiallyPredictableRecipesForState(Situation s)
         {
             return new List<Recipe>();
         }

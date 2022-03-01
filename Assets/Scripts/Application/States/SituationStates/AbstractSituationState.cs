@@ -22,7 +22,7 @@ namespace SecretHistories.States
        public abstract bool IsActiveInThisState(Sphere sphereToCheck);
 
        //i.e. could conceivably be a prediction for the state - craftable, in alt list. etc. Does *not* check if reqs are fulfilled.
-        public abstract List<Recipe> PotentiallyValidRecipesForState(Situation s);
+        public abstract List<Recipe> PotentiallyPredictableRecipesForState(Situation s);
 
 
         //For states like Unstarted and Ongoing, we change the prediction whenever tokens change.
