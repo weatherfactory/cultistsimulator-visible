@@ -15,7 +15,7 @@ namespace SecretHistories.Manifestations
 {
     public class WorkstationManifestation: BasicManifestation, IManifestation
     {
-        [SerializeField] protected List<ShelfDominion> _dominions;
+
 
         public bool CanAnimateIcon()
         {
@@ -30,8 +30,7 @@ namespace SecretHistories.Manifestations
         public void Initialise(IManifestable manifestable)
         {
             name = GetType().Name + manifestable.Id;
-            foreach (var d in _dominions)
-                d.RegisterFor(manifestable);
+
         }
 
         public void UpdateVisuals(IManifestable manifestable)
