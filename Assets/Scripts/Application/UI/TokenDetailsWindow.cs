@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Linq;
-
+using Assets.Scripts.Application.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;

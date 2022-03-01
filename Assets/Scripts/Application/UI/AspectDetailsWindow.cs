@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.Scripts.Application.Spheres;
 using SecretHistories.Entities;
 using SecretHistories.Enums.UI;
 

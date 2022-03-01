@@ -13,28 +13,9 @@ using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 
-namespace SecretHistories.UI
+namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere. But that'll break save/load until I make save/load less fussy.
 {
-    public class NavigationArgs
-    {
-        public int Index { get; set; }
 
-        public NavigationAnimationDirection FirstNavigationDirection { get; set; }
-        public NavigationAnimationDirection FinalNavigationDirection { get; set; }
-        public NavigationAnimation.AnimationResponse OnBegin { get; set; }
-        public NavigationAnimation.AnimationResponse OnEnd { get; set; }
-        public NavigationAnimation.AnimationResponse OnInComplete { get; set; }
-        public NavigationAnimation.AnimationResponse OnOutComplete { get; set; }
-        public bool Instant { get; set; }
-
-
-        public NavigationArgs(int index, NavigationAnimationDirection firstNavigationDirection,NavigationAnimationDirection finalNavigationDirection)
-        {
-            Index = index;
-            FirstNavigationDirection = firstNavigationDirection;
-            FinalNavigationDirection = finalNavigationDirection;
-        }
-    }
 
     [IsEmulousEncaustable(typeof(Sphere))]
     public class NotesSphere : Sphere

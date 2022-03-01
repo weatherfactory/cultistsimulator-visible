@@ -15,8 +15,7 @@ namespace SecretHistories.Ghosts
         private const float heightToSpine = 0.33f;
         private const float heightToCover = 1f;
 
-        [SerializeField]
-        private RectTransform rectTransform;
+        
         public override void Emphasise()
         {
             float height = rectTransform.rect.height;
