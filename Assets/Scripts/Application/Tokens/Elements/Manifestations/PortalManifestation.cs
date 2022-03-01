@@ -34,7 +34,7 @@ namespace SecretHistories.Manifestations
 
 
 
-        public void Retire(RetirementVFX retirementVfx, Action callback)
+        public override void Retire(RetirementVFX retirementVfx, Action callback)
         {
             
             Fader.SetOnChangeCompleteCallback(callback);

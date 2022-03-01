@@ -327,6 +327,8 @@ namespace SecretHistories.Entities {
             {
                 case VerbCategory.Someone:
                     return typeof(MortalManifestation);
+                case VerbCategory.Workstation:
+                    return typeof(WorkstationManifestation);
                 default:
                     return sphere.GetShabdaManifestation(this);
             }

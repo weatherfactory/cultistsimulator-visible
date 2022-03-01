@@ -4,30 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
-using SecretHistories.Constants;
 using SecretHistories.Enums;
-using SecretHistories.Fucine;
 using SecretHistories.Ghosts;
-using SecretHistories.Manifestations;
-using SecretHistories.Spheres;
+using SecretHistories.Services;
 using SecretHistories.UI;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace SecretHistories.Manifestations
-
 {
-    [RequireComponent(typeof(RectTransform))]
-    public class TextManifestation : BasicManifestation, IManifestation
+    public class WorkstationManifestation: BasicManifestation, IManifestation
     {
-
-        
-        [SerializeField] private TMP_Text textComponent;
-        public override void Retire(RetirementVFX retirementVfx, Action callback)
-        {
-            Destroy(gameObject);
-        }
+        [SerializeField] protected List<ShelfDominion> _dominions;
 
         public bool CanAnimateIcon()
         {
@@ -36,33 +24,19 @@ namespace SecretHistories.Manifestations
 
         public void BeginIconAnimation()
         {
-            //
-        }
-
-        private void UpdateTextFromManifestable(IManifestable manifestable)
-        {
-            var description = manifestable.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY);
-            string emphasisLevel = manifestable.GetIllumination(NoonConstants.TLG_NOTES_EMPHASISLEVEL_KEY);
-            int.TryParse(emphasisLevel, out var l);
-            if (l == -1)
-                textComponent.fontStyle = FontStyles.Italic;
-            else
-                textComponent.fontStyle = FontStyles.Normal;
-
-            textComponent.text = description;
+            
         }
 
         public void Initialise(IManifestable manifestable)
         {
-            UpdateTextFromManifestable(manifestable);
+            name = GetType().Name + manifestable.Id;
+            foreach (var d in _dominions)
+                d.RegisterFor(manifestable);
         }
 
-  
         public void UpdateVisuals(IManifestable manifestable)
         {
-            UpdateTextFromManifestable(manifestable);
         }
-
 
         public void OnBeginDragVisuals(Token token)
         {
@@ -80,20 +54,17 @@ namespace SecretHistories.Manifestations
         {
         }
 
-        public bool NoPush => true;
+        public bool NoPush { get; }
         public void Unshroud(bool instant)
         {
-        
         }
 
         public void Shroud(bool instant)
         {
-            
         }
 
         public void Emphasise()
         {
-           
         }
 
         public void Understate()
@@ -101,13 +72,8 @@ namespace SecretHistories.Manifestations
         }
 
         public bool RequestingNoDrag => false;
-        public bool RequestingNoSplit => false;
-
+        public bool RequestingNoSplit => true;
         public void DoMove(RectTransform tokenRectTransform)
-        {
-        }
-
-        public void SendNotification(INotification notification)
         {
         }
 
@@ -116,14 +82,11 @@ namespace SecretHistories.Manifestations
             return false;
         }
 
-        public void DisplaySpheres(IEnumerable<Sphere> spheres)
-        {
-        }
-
         public IGhost CreateGhost()
         {
-            return NullGhost.Create(this);
+            var newGhost = Watchman.Get<PrefabFactory>()
+                .CreateGhostPrefab(typeof(DepositoryGhost), this.RectTransform);
+            return newGhost;
         }
-
     }
 }

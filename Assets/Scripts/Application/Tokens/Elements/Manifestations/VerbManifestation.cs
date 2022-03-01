@@ -66,10 +66,7 @@ namespace SecretHistories.Manifestations
         [SerializeField] public GraphicFader glowImage;
         [SerializeField] private GameObject vanishFxPrefab;
 
-        public Transform Transform => gameObject.transform;
-        public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
-
-
+        
         private List<Sprite> frames;
         private Coroutine animCoroutine;
 
@@ -353,7 +350,7 @@ namespace SecretHistories.Manifestations
 
 
 
-        public void Retire(RetirementVFX vfx, Action callbackOnRetired)
+        public override void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
             if(vfx== RetirementVFX.Default)
                 DoVanishFx();

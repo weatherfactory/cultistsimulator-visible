@@ -461,7 +461,7 @@ namespace SecretHistories.Manifestations
 
 
 
-        public void Retire(RetirementVFX retirementVfx,Action callbackOnRetired)
+        public override void Retire(RetirementVFX retirementVfx,Action callbackOnRetired)
         {
             
             if (retirementVfx == RetirementVFX.CardHide)

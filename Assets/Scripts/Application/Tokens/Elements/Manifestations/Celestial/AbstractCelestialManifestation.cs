@@ -26,7 +26,7 @@ namespace SecretHistories.Manifestations
 
         [SerializeField]
         private TextMeshProUGUI _countdownText;
-        public void Retire(RetirementVFX retirementVfx, Action callback)
+        public override  void Retire(RetirementVFX retirementVfx, Action callback)
         {
             callback();
         }

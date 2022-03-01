@@ -1,24 +1,14 @@
 {
     "verbs": [
-        {
-            "id": "bookshelf",
-          "label": "Bookshelf",
-          "startable": false,
-          "category": "Fitment",
-            "description": "Up to an arbitrary limit",
-                "slots": [{
-	                "id": "shelf2",
-	                "label": "Shelf 2",
-	                "required": { "text": 1}
-	                },
-	                {
-		                "id": "shelf3",
-		                "label": "Shelf 3",
-		                "required": { "text": 1}
-	                }],
+		{
+            "id": "bureaudesk",
+          "label": "Bureau Desk",
+          "startable": true,
+          "category": "Workstation",
+            "description": "Inks, papers, interfering cats.",
             "slot": {
-                "id": "shelf",
-                "label": "Shelf",
+                "id": "worksurface",
+                "label": "Work Surface",
                 "required": {
                     "text": 1
                 }

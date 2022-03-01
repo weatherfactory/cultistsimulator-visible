@@ -88,7 +88,7 @@ namespace SecretHistories.Manifestations
    //
         }
         
-        public void Retire(RetirementVFX vfx, Action callbackOnRetired)
+        public override void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
             Destroy(gameObject);
             callbackOnRetired();

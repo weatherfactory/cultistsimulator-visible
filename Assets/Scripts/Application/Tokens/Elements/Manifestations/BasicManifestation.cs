@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Enums;
+using SecretHistories.UI;
 using UnityEngine;
 
 namespace SecretHistories.Manifestations
@@ -17,7 +20,14 @@ namespace SecretHistories.Manifestations
             RectTransform.localScale = newScale;
         }
 
+        public virtual void Retire(RetirementVFX retirementVfx, Action callbackOnRetired)
+        {
 
+
+            Destroy(gameObject);
+            callbackOnRetired();
+
+        }
 
     }
 }

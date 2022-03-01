@@ -21,7 +21,7 @@ namespace SecretHistories.Manifestations
         [SerializeField]
         private GameObject _emphasisGlow;
 
-        public void Retire(RetirementVFX retirementVfx, Action callback)
+        public override void Retire(RetirementVFX retirementVfx, Action callback)
         {
             throw new NotImplementedException();
         }

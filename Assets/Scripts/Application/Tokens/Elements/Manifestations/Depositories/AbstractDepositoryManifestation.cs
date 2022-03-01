@@ -22,10 +22,6 @@ namespace SecretHistories.Manifestations
 
         [SerializeField] protected List<ShelfDominion> _dominions;
 
-        public void Retire(RetirementVFX retirementVfx, Action callback)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool CanAnimateIcon()
         {
@@ -86,7 +82,7 @@ namespace SecretHistories.Manifestations
             //
         }
 
-        public bool RequestingNoDrag { get; }
+        public bool RequestingNoDrag => false;
         public bool RequestingNoSplit => true;
 
         public void DoMove(RectTransform tokenRectTransform)

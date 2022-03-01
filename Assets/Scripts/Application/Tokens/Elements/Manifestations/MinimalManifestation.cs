@@ -85,7 +85,7 @@ namespace SecretHistories.Manifestations
             //do nothing
         }
 
-        public void Retire(RetirementVFX vfx, Action callbackOnRetired)
+        public override void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
             callbackOnRetired();
         }

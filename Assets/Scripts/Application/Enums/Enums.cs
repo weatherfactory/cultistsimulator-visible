@@ -136,7 +136,7 @@
     {
         Shabda=1,
         Someone=2,
-        Fitment=3
+        Workstation=3
     }
 
 }

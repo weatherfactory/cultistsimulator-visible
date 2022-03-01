@@ -44,7 +44,7 @@ namespace SecretHistories.Manifestations
         private const string BACK_COVER_SUFFIX = "_b";
         private const string SPINE_SUFFIX = "_";
 
-        public void Retire(RetirementVFX retirementVfx, Action callback)
+        public override void Retire(RetirementVFX retirementVfx, Action callback)
         {
             Destroy(gameObject);
             callback();
