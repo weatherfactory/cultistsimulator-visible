@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Entities;
+using SecretHistories.UI;
 
 namespace SecretHistories.Logic
 {
@@ -46,10 +47,22 @@ namespace SecretHistories.Logic
             }
         }
 
-        public void UpdateEndingFlavour(EndingFlavour endingFlavour)
+        public void UpdateEndingFlavour(EndingFlavour newEndingFlavour)
         {
-            //opportunity for logic here if changing from one endingflavour to another might have more meaning
-            EndingFlavour = endingFlavour;
+            EndingFlavour oldEndingFlavour = EndingFlavour;
+            if (oldEndingFlavour == newEndingFlavour)
+                return;
+
+            Watchman.Get<BackgroundMusic>().SignalEndingFlavourHasChangedOnTimeshadow(oldEndingFlavour,newEndingFlavour);
+
+            EndingFlavour = newEndingFlavour;
+            
+            
+            
+            
+            
+            
+            
         }
     }
 }

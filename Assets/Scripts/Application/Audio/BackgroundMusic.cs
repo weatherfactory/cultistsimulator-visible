@@ -115,8 +115,8 @@ public class BackgroundMusic : MonoBehaviour, ISettingSubscriber
         }
     }
 
-    public void SignalEndingFlavour(EndingFlavour endingFlavour) {
-        if (endingFlavour == EndingFlavour.None)
+    public void SignalEndingFlavourHasChangedOnTimeshadow(EndingFlavour oldEndingFlavour,EndingFlavour newEndingFlavour) {
+        if (newEndingFlavour == EndingFlavour.None)
         {
             if (currentClip == impendingDoomMusic.ElementAt(0))
                 PlayNextClip();
