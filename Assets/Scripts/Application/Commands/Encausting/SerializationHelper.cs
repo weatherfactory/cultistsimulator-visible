@@ -16,10 +16,11 @@ namespace SecretHistories.Commands.Encausting
         
             public SerializationHelper()
         {
+            var customBinder = new EncaustablesSerializationBinder();
             var jsonSerializerSettings = new JsonSerializerSettings();
       //       jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
         jsonSerializerSettings.TypeNameHandling = TypeNameHandling.Objects;
-
+     //   jsonSerializerSettings.Binder = customBinder;
             serializer = JsonSerializer.Create(jsonSerializerSettings);
         }
 
