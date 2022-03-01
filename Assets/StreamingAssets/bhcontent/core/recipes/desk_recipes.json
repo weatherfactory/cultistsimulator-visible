@@ -1,0 +1,23 @@
+ {"recipes": [
+ 
+
+{
+        "id": "desk.repair.cracked",
+        "label": "Repair a Cracked Binding",
+        "actionid": "desk",
+		"requirements": {"readable":1,"state.cracked":1},
+        "startdescription": "The joints and hinges creak, but the spine holds firm.",
+		"description": "The cracked binding is restored. The book opens cleanly as wings.",
+              "warmup": 10,
+        "craftable": true,
+		           "mutations": [
+                {
+                    "filter": "readable",
+                    "mutate": "state.cracked",
+                    "level": -1
+                }
+				]
+	},
+
+]
+}

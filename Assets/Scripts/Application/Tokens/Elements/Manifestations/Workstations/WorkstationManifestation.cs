@@ -85,7 +85,7 @@ namespace SecretHistories.Manifestations
         public IGhost CreateGhost()
         {
             var newGhost = Watchman.Get<PrefabFactory>()
-                .CreateGhostPrefab(typeof(DepositoryGhost), this.RectTransform);
+                .CreateGhostPrefab(typeof(WorkstationGhost), this.RectTransform);
             return newGhost;
         }
     }
