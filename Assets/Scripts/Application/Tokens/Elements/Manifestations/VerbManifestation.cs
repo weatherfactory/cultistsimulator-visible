@@ -108,7 +108,7 @@ namespace SecretHistories.Manifestations
             SetInitialTimerVisuals();
 
             UpdateVisuals(manifestable);
-            glowImage.Hide(); //In the player, though not the editor, the glow image unexpectedly starts visible.
+         //   glowImage.Hide(); //In the player, though not the editor, the glow image unexpectedly starts visible. Ticket into Unity.
         }
 
         public void UpdateVisuals(IManifestable manifestable)

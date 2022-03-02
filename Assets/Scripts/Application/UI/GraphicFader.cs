@@ -80,7 +80,7 @@ namespace SecretHistories.UI {
             }
         }
 
-        #if UNITY_EDITOR
+    
         // Ensure we can see the color in the editor.
         void OnEnable() {
             graphic.canvasRenderer.SetColor(currentColor);
@@ -94,7 +94,7 @@ namespace SecretHistories.UI {
             graphic.color = Color.white;
             graphic.canvasRenderer.SetColor(currentColor);
         }
-        #endif
+        
 
     }
 }
