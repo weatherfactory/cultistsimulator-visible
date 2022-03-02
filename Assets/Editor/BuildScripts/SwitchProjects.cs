@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using SecretHistories.Constants;
 using SecretHistories.Enums;
 using SecretHistories.Services;
 using UnityEditor;
@@ -36,8 +37,7 @@ namespace Assets.Editor.BuildScripts
         [MenuItem("Tools/Switch/CS")]
         static void SwitchToCS()
         {
-            PlayerSettings.productName = "Cultist Simulator";
-            SetGameId(GameId.CS);
+            PlayerSettings.productName = NoonConstants.CSPRODUCTNAME;
             OpenScenes(CSScenes);
             CloseScenes(BHScenes);
 
@@ -46,17 +46,12 @@ namespace Assets.Editor.BuildScripts
         [MenuItem("Tools/Switch/BH")]
         static void SwitchToBH()
         {
-            PlayerSettings.productName = "Book of Hours";
-            SetGameId(GameId.BH);
+            PlayerSettings.productName = NoonConstants.BHPRODUCTNAME;
             OpenScenes(BHScenes);
             CloseScenes(CSScenes);
         }
 
-        private static void SetGameId(GameId gameIdAsEnum)
-        {
-            var glory = GameObject.Find("Glory").GetComponent<Glory>();
-            glory.SetGameIdFieldInEditor(gameIdAsEnum);
-        }
+
 
         private static void OpenScenes(List<string> scenePaths)
         {

@@ -19,10 +19,12 @@ namespace Assets.Logic
     public class Dealer
     {
         private readonly IHasCardPiles _dealersTable;
-
+        private readonly System.Random _r;
         public Dealer(IHasCardPiles dealersTable)
         {
             _dealersTable = dealersTable;
+            _r = new System.Random();
+
         }
 
 
@@ -86,12 +88,11 @@ namespace Assets.Logic
 
             var drawPile = _dealersTable.GetDrawPile(fromDeckSpec.Id);
             var forbiddenPile = _dealersTable.GetForbiddenPile(fromDeckSpec.Id);
-            var r = new System.Random();
-
+        
             var forbiddenCards = forbiddenPile.GetElementTokens().Select(f => f.PayloadEntityId);
             var permittedCards = fromDeckSpec.Spec.Except(forbiddenCards);
 
-            foreach (var card in permittedCards.OrderBy(x=>r.Next()))
+            foreach (var card in permittedCards.OrderBy(x=>_r.Next()))
             {
                 drawPile.ProvisionElementToken(card, 1);
             }

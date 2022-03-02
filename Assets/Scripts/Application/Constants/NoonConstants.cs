@@ -8,6 +8,9 @@ namespace SecretHistories.Constants
 {
     public class NoonConstants
     {
+        public const string BHPRODUCTNAME = "Book of Hours";
+        public const string CSPRODUCTNAME = "Cultist Simulator";
+
         public const float MOMENT_TIME_INTERVAL = 0.25f;
         public const string TEMPLATE_MARKER = "$";
 

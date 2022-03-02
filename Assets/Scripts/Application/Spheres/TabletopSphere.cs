@@ -139,6 +139,9 @@ namespace SecretHistories.Spheres
             SoundManager.PlaySfxOnceThisFrame("CardDrop");
           _tabletopChoreographer.HideAllDebugRects();
 
+          token.HideGhost();
+
+
         }
 
 

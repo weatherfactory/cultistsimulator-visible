@@ -27,6 +27,7 @@ using SecretHistories.Infrastructure;
 using SecretHistories.Infrastructure.Persistence;
 using SecretHistories;
 using SecretHistories.Manifestations;
+using UnityEditor;
 using UnityEngine;
 
 namespace SecretHistories.Services
@@ -52,15 +53,7 @@ namespace SecretHistories.Services
         public Limbo limbo;
         public NullManifestation NullManifestation;
         [SerializeField]private Stable _stable;
-
-        [SerializeField] private string _gameId;
-
-        public void SetGameIdFieldInEditor(GameId newGameId)
-        {
-            _gameId = newGameId.ToString();
-            NoonUtility.Log($"Setting gameId: {_gameId}");
-        }
-
+        
         private string _initialisedAt;
 #pragma warning restore 649
 
@@ -114,15 +107,22 @@ namespace SecretHistories.Services
 
                 var watchman = new Watchman();
 
-                NoonUtility.Log($"GameId specified as {_gameId}");
+                GameId gameId; //TODO: tidy all this up into a structure shared with BuildUtility
+                if (Application.productName == NoonConstants.CSPRODUCTNAME)
+                    gameId = GameId.CS;
+                else if (Application.productName == NoonConstants.BHPRODUCTNAME)
+                    gameId =  GameId.BH;
+                else
+                    gameId = GameId.XX;
+
+                NoonUtility.Log($"Game specified as {Application.productName} / {gameId}");
                 //Here we specify which game it is. This affects the content folder as set in the config next.
-                GameId gameIdAsEnum = (GameId)Enum.Parse(typeof(GameId), _gameId);
-               
+                
                 //load config: this gives us a lot of info that we'll need early
                 var config = new Config();
 
-                NoonUtility.Log($"Setting GameId in config as {gameIdAsEnum}");
-                config.SetGame(gameIdAsEnum);
+                NoonUtility.Log($"Setting GameId in config as {gameId}");
+                config.SetGame(gameId); //do we really want to store gameID here, now we've found we can check the ProductName?
                     
                 watchman.Register(config);
    
@@ -130,7 +130,7 @@ namespace SecretHistories.Services
                 //load concursum: central nexus for event responses
                 watchman.Register(concursum);
 
-                var metaInfo = new MetaInfo(gameIdAsEnum,new VersionNumber(Application.version),GetCurrentStorefront(),GetPersistentDataPath(gameIdAsEnum));
+                var metaInfo = new MetaInfo(gameId, new VersionNumber(Application.version),GetCurrentStorefront(),GetPersistentDataPath(gameId));
                 watchman.Register<MetaInfo>(metaInfo);
             
 
