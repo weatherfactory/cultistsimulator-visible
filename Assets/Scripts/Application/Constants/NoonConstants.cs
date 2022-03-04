@@ -84,7 +84,7 @@ namespace SecretHistories.Constants
         public const string NOTIFICATIONTIME = "NotificationTime";
         public const string SCREENCANVASSIZE = "ScreenCanvasSize";
         public const string AUTOSAVEINTERVAL = "AutosaveInterval";
-        public const string GRIDSNAPSIZE = "GridSnapSize";
+        public const string GRIDSNAPLEVEL = "GridSnapLevel";
         public const string SITUATION_STARTABLE = "VERB_START";
         public const string SITUATION_RUNNING = "VERB_RUNNING";
         
