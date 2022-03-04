@@ -550,6 +550,14 @@ namespace SecretHistories.Entities {
             Context context)
         {
             var acceptingSphere = GetSingleSphereByCategory(forSphereCategory);
+            if(acceptingSphere==null)
+            {
+                
+                NoonUtility.LogWarning($"Situation {Verb.Id} {RecipeId} couldn't tried to accept tokens into sphere category {forSphereCategory}, but couldn't find one. Evicting tokens rather than crashing.");
+                foreach(var t in tokens)
+                    t.GoAway(context);
+            }
+                    else
             acceptingSphere.AcceptTokens(tokens, context);
         }
 
