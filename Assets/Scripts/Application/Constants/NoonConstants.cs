@@ -11,7 +11,7 @@ namespace SecretHistories.Constants
         public const string BHPRODUCTNAME = "Book of Hours";
         public const string CSPRODUCTNAME = "Cultist Simulator";
 
-        public const float MOMENT_TIME_INTERVAL = 0.25f;
+        public const float MOMENT_TIME_INTERVAL = 0.5f;
         public const string TEMPLATE_MARKER = "$";
 
         public const string ID = "id";
@@ -90,6 +90,6 @@ namespace SecretHistories.Constants
         
 
         public const string ANCHOR_BOOKSHELF = "bookshelf";
-        public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
+        public const float SEND_STACK_TO_SLOT_DURATION = 0.6f;
     }
 }
