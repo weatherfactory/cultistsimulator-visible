@@ -27,6 +27,9 @@ namespace SecretHistories.Assets.Scripts.Application.Commands
             foreach (var ci in CurrentItineraries)
             {
                 var token = Watchman.Get<HornedAxe>().FindSingleOrDefaultTokenById(ci.Key);
+                if(token==null)
+                    NoonUtility.LogWarning($"PopulateXamanekCommand couldn't find a token with the id {ci.Key}, so we can't add an itinerary for that token. This probably means an issue saving from a weird, e.g. otherworld, state.");
+                else
                 //This doesn't take account of the different spheres the token might be passing through, so we will need to revisit in more detail for BOH
                 ci.Value.Depart(token, context);
             }
