@@ -557,8 +557,8 @@ namespace SecretHistories.Entities {
                 foreach(var t in tokens)
                     t.GoAway(context);
             }
-                    else
-            acceptingSphere.AcceptTokens(tokens, context);
+            else
+                acceptingSphere.AcceptTokens(tokens, context);
         }
 
         public void AcceptTokens(SphereCategory forSphereCategory, IEnumerable<Token> tokens)
