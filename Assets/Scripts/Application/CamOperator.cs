@@ -137,11 +137,11 @@ public class CamOperator : MonoBehaviour {
            moveDuration = defaultCameraMoveDuration; //reset to standard duration if we're moving manually again
        }
 
-       if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 10)
+       if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 1)
            cameraHasArrived();
        else
        {
-        smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
+           smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
 
            attachedCamera.transform.position = Vector3.Lerp(initialPosition, smoothTargetPosition,
                timeSpentMoving / moveDuration);
@@ -150,8 +150,8 @@ public class CamOperator : MonoBehaviour {
            SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
        }
 
-       
-    }
+
+}
 
     private void cameraHasArrived()
     {

@@ -74,8 +74,8 @@ public class CameraDragRect : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Vector2 finalChangevector = firstMousePos - eventData.position;
-        Watchman.Get<CamOperator>().ApplySmoothInputVector(finalChangevector * driftAfterDrag);
+      //  Vector2 finalChangevector = firstMousePos - eventData.position;
+     //   Watchman.Get<CamOperator>().ApplySmoothInputVector(finalChangevector * driftAfterDrag);
     }
 
 
