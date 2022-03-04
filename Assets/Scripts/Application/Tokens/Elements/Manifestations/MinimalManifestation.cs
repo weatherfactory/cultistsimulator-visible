@@ -29,10 +29,6 @@ namespace SecretHistories.Manifestations
         public Type GhostType => typeof(NullGhost);
 
 
-        public void DoMove(RectTransform tokenRectTransform)
-        {
-
-        }
 
         public void AnimateTo(float duration, Vector3 startPos, Vector3 endPos, Action<Token> animDone, float startScale, float endScale)
         {
@@ -124,15 +120,7 @@ namespace SecretHistories.Manifestations
             return false;
         }
 
-        public void OnBeginDragVisuals(Token token)
-        {
-            
-        }
 
-        public void OnEndDragVisuals(Token token)
-        {
-            
-        }
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {

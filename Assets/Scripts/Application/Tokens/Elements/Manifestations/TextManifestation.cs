@@ -64,14 +64,6 @@ namespace SecretHistories.Manifestations
         }
 
 
-        public void OnBeginDragVisuals(Token token)
-        {
-        }
-
-        public void OnEndDragVisuals(Token token)
-        {
-        }
-
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
         }
@@ -103,10 +95,7 @@ namespace SecretHistories.Manifestations
         public bool RequestingNoDrag => false;
         public bool RequestingNoSplit => false;
 
-        public void DoMove(RectTransform tokenRectTransform)
-        {
-        }
-
+   
         public void SendNotification(INotification notification)
         {
         }

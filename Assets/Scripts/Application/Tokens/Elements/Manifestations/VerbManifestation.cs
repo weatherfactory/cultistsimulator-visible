@@ -34,7 +34,7 @@ namespace SecretHistories.Manifestations
         [Header("Token Body")]
         [SerializeField] Image tokenBody;
         [SerializeField] Sprite lightweightSprite;
-        [SerializeField] private BasicShadowImplementation shadow;
+
         [SerializeField] private CanvasGroup canvasGroup;
 
 
@@ -434,15 +434,7 @@ namespace SecretHistories.Manifestations
            return frames.Any();
         }
 
-        public void OnBeginDragVisuals(Token token)
-        {
-          
-        }
-
-        public void OnEndDragVisuals(Token token)
-        {
-      
-        }
+  
 
         private void SetGlowColor(Color color)
         {

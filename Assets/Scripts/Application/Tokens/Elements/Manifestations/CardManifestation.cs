@@ -38,7 +38,7 @@ namespace SecretHistories.Manifestations
         [SerializeField] public TextMeshProUGUI decayCountText;
         [SerializeField] public Sprite spriteDecaysTextBG;
         [SerializeField] public Sprite spriteUniqueTextBG;
-        [SerializeField] public BasicShadowImplementation shadow;
+        
         [SerializeField] public CanvasGroup canvasGroup;
         [SerializeField] public GraphicFader glowImage;
 
@@ -150,16 +150,7 @@ namespace SecretHistories.Manifestations
             text.ForceMeshUpdate(false, false); //Without this, the scale of the textmesh object may not match the parent object, which means the text goes blurry.
         }
 
-        public void OnBeginDragVisuals(Token token)
-        {
-            ShowCardShadow(true); // Ensure we always have a shadow when dragging
-        }
 
-
-        public void OnEndDragVisuals(Token token)
-        {
-            ShowCardShadow(false);
-        }
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
@@ -242,12 +233,7 @@ namespace SecretHistories.Manifestations
                 glowImage.Hide(instant);
         }
 
-        private void ShowCardShadow(bool show)
-        {
-            shadow.gameObject.SetActive(show);
-        }
-
-
+  
 
         private void SetCardBackground(bool unique, bool decays)
         {

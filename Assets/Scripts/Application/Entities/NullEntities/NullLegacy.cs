@@ -12,7 +12,7 @@ namespace Assets.Scripts.Application.Entities.NullEntities
         private static NullLegacy _instance;
         protected NullLegacy()
         {
- 
+            ExcludesOnEnding = new List<string>();
         }
         public override bool IsValid()
         {

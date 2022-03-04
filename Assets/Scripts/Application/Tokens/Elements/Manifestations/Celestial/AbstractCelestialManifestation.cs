@@ -89,15 +89,7 @@ namespace SecretHistories.Manifestations
             _countdownText.text = Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
         }
 
-        public void OnBeginDragVisuals(Token token)
-        {
-            //
-        }
 
-        public void OnEndDragVisuals(Token token)
-        {
-            //
-        }
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {

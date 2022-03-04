@@ -78,10 +78,6 @@ namespace SecretHistories.Manifestations
         }
 
 
-        public void DoMove(RectTransform tokenRectTransform)
-        {
-        }
-
     
         public void Initialise(IManifestable manifestable)
         {
@@ -178,15 +174,7 @@ namespace SecretHistories.Manifestations
         {
             return false;
         }
-
-        public void OnBeginDragVisuals(Token token)
-        {
-        }
-
-        public void OnEndDragVisuals(Token token)
-        {
-        }
-
+        
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {

@@ -107,10 +107,7 @@ namespace SecretHistories.Manifestations
 
         public bool RequestingNoSplit => false;
 
-        public void DoMove(RectTransform tokenRectTransform)
-        {
-            //
-        }
+
 
         public void Initialise(IManifestable manifestable)
         {
@@ -170,6 +167,11 @@ namespace SecretHistories.Manifestations
         }
 
         public void ReceiveAndRefineTextNotification(INotification notification)
+        {
+            //
+        }
+
+        public void DoMove(PointerEventData eventData, RectTransform tokenRectTransform)
         {
             //
         }

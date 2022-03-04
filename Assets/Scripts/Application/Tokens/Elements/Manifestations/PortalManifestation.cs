@@ -51,20 +51,7 @@ namespace SecretHistories.Manifestations
          //
         }
 
-        public void ResetIconAnimation()
-        {
-      //
-        }
-        public void OnBeginDragVisuals(Token token)
-        {
-         //
-        }
-
-        public void OnEndDragVisuals(Token token)
-        {
-//
-        }
-
+  
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
       //
@@ -109,10 +96,6 @@ namespace SecretHistories.Manifestations
         public bool RequestingNoDrag => true;
         public bool RequestingNoSplit => true;
 
-        public void DoMove(RectTransform tokenRectTransform)
-        {
-            //
-        }
 
         public void Initialise(IManifestable manifestable)
         {

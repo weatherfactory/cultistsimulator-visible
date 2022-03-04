@@ -50,7 +50,7 @@ namespace SecretHistories
         void Understate();
         bool RequestingNoDrag { get; }
         bool RequestingNoSplit { get; }
-        void DoMove(RectTransform tokenRectTransform);
+        void DoMove(PointerEventData eventData,RectTransform tokenRectTransform);
 
         bool HandlePointerClick(PointerEventData eventData, Token token);
 

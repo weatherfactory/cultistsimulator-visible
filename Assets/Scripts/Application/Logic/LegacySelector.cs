@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
@@ -23,7 +24,11 @@ namespace Assets.Logic
 
 
             //try to find a legacy that matches the death.
-            Legacy endingDependentLegacy = _compendium.GetEntitiesAsList<Legacy>().OrderBy(l=>rnd.Next()).ToList().Find(l => l.FromEnding == ending.Id);
+            Legacy endingDependentLegacy = _compendium.GetEntitiesAsList<Legacy>().OrderBy(l=>rnd.Next()).ToList().
+                Find(l => l.FromEnding == ending.Id);
+
+            if (endingDependentLegacy == null)
+                endingDependentLegacy = NullLegacy.Create(); //because of the Linq above, can't rely on pulling a NullLegacy from the Compendium 
 
             //there should be one! but in case there's not, log it, and get prepped to draw an extra random legacy.
             if (!endingDependentLegacy.IsValid())

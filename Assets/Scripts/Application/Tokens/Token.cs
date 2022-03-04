@@ -89,8 +89,7 @@ namespace SecretHistories.UI {
 
         [Header("Display")]
         [SerializeField] protected bool shrouded;
-        [SerializeField] protected bool rotateOnDrag = true;
-        protected float perlinRotationPoint = 0f;
+       
         protected int startSiblingIndex;
         protected Vector3 dragOffset;
         protected CanvasGroup canvasGroup;
@@ -617,16 +616,8 @@ namespace SecretHistories.UI {
 
          Payload.OnTokenMoved(Location);
 
-         _manifestation.DoMove(ManifestationRectTransform);
-
-            // rotate object slightly based on pointer Delta
-            if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f)
-            {
-                // This needs some tweaking so that it feels more responsive, physical. Card rotates into the direction you swing it?
-                perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
-                transform.localRotation =
-                    Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
-            }
+         _manifestation.DoMove(eventData,TokenRectTransform);
+            
 
         }
 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using SecretHistories.Enums;
 using SecretHistories.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace SecretHistories.Manifestations
 {
@@ -14,6 +15,12 @@ namespace SecretHistories.Manifestations
     {
         public Transform Transform => gameObject.transform;
         public RectTransform RectTransform => gameObject.GetComponent<RectTransform>();
+
+        [SerializeField] protected bool rotateOnDrag = true;
+        protected float perlinRotationPoint = 0f;
+        [SerializeField] protected BasicShadowImplementation shadow;
+
+        private Quaternion preDragRotation; //so we can do a Perlin wiggle on drag and restore after
 
         public virtual void UpdateLocalScale(Vector3 newScale)
         {
@@ -27,6 +34,37 @@ namespace SecretHistories.Manifestations
             Destroy(gameObject);
             callbackOnRetired();
 
+        }
+
+        public void OnBeginDragVisuals(Token token)
+        {
+            if (rotateOnDrag)
+                preDragRotation = transform.localRotation;
+
+            if(shadow!=null)
+                shadow.gameObject.SetActive(true);
+
+        }
+
+
+        public void OnEndDragVisuals(Token token)
+        {
+            if (rotateOnDrag)
+                transform.localRotation = preDragRotation;
+            if (shadow != null)
+                shadow.gameObject.SetActive(false);
+        }
+
+        public virtual void DoMove(PointerEventData eventData,RectTransform tokenRectTransform)
+        {
+            // rotate object slightly based on pointer Delta
+            if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f)
+            {
+                // This needs some tweaking so that it feels more responsive, physical. Card rotates into the direction you swing it?
+                perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
+                transform.localRotation =
+                    Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
+            }
         }
 
     }
