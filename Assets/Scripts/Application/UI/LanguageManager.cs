@@ -179,7 +179,7 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
                     return localisedValue;
             }
 
-
+            NoonUtility.LogWarning($"Missing UI label {locLabel} for {currentCulture.Id}. ({currentCulture.UILabels.Count} UI labels were found for this culture.)");
             return "MISSING_" + locLabel.ToUpper();
         }
     }
