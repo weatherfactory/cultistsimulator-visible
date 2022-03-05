@@ -514,9 +514,21 @@ namespace SecretHistories.Entities {
             var spherePath = tokenInSpherePath.GetSpherePath();
             var tokenPath = tokenInSpherePath.GetTokenPath();
             var tokenId = tokenPath.GetEndingPathPart().GetId();
-            var sphere = GetSphereByPath(spherePath);
-            var token = sphere.Tokens.SingleOrDefault(t => t.PayloadId == tokenId);
-            return token;
+            Token tokenToReturn;
+            if(spherePath.IsRoot())
+            {
+                //I originally decided there would never be a token directly in the root. There *is*,
+                //though, with the Mansus and increasingly with other things like terrain features, so the rule needs rethinking
+                //I need to make sure it's consistent, though.
+                tokenToReturn = FindSingleOrDefaultTokenById(tokenId);
+            }
+            else
+            
+            {
+                    var sphere = GetSphereByPath(spherePath);
+                    tokenToReturn = sphere.Tokens.SingleOrDefault(t => t.PayloadId == tokenId);
+            }
+            return tokenToReturn;
 
         }
 
