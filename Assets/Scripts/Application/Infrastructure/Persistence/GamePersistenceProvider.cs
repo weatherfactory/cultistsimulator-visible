@@ -94,9 +94,12 @@ namespace SecretHistories.Infrastructure.Persistence
 
         public virtual void DepersistGameState()
         {
+            NoonUtility.Log($"LOADING: Depersisting game state from {GetSaveFileLocation()}");
+
             string json = File.ReadAllText(GetSaveFileLocation());
             var sh = new SerializationHelper();
             _persistedGameState = sh.DeserializeFromJsonString<PersistedGameState>(json);
+            NoonUtility.Log($"LOADING: Deserialized game state from JSON");
 
             var note = new Notification(Watchman.Get<ILocStringProvider>().Get("UI_LOADEDTITLE"),
                 Watchman.Get<ILocStringProvider>().Get("UI_LOADEDDESC"));
