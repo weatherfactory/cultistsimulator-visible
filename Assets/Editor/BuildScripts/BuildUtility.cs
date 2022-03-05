@@ -78,7 +78,11 @@ namespace SecretHistories.Utility
         {
             PerformBuild(Product.VANILLA, BuildTarget.StandaloneLinux64);
         }
-
+        [MenuItem("Tools/CS Build (Windows DEBUGGABLE)", false, 10)]
+        public static void PerformWindowsDebugBuild()
+        {
+            PerformBuild(Product.VANILLA, BuildTarget.StandaloneWindows,true);
+        }
         //[MenuItem("Tools/BH Build (ALL)", false, 30)]
         //public static void PerformAllBHBuilds()
         //{
@@ -237,6 +241,11 @@ namespace SecretHistories.Utility
 
         private static void PerformBuild(Product productId, BuildTarget target)
         {
+            PerformBuild(productId,target,false);
+        }
+
+        private static void PerformBuild(Product productId, BuildTarget target, bool DebugBuild)
+        {
             var product = new BuildProduct(productId, false);
 
             var os = new BuildOS(product.GetGameId(), target);
@@ -272,13 +281,18 @@ namespace SecretHistories.Utility
             string buildPath = env.GetProductWithOSBuildPath(product, os);
             string exePath = NoonUtility.JoinPaths(buildPath, os.ExeName);
 
+            
+
             BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions
             {
                 target = target,
                 locationPathName = exePath,
-                scenes = sceneFiles.ToArray(),
-
+                scenes = sceneFiles.ToArray()
         };
+            if(DebugBuild)
+            {
+                buildPlayerOptions.options = BuildOptions.Development | BuildOptions.AllowDebugging;
+            }
             Log("Building " + target + " version to " + exePath);
 
 

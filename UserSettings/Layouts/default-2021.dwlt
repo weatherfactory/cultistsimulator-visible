@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 2369
-    y: 202
+    x: 302
+    y: 53
     width: 2405
     height: 1381
   m_ShowMode: 4
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 25
+  controlID: 45
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 412
     height: 1331
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -94,7 +94,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 329
-    height: 1165
+    height: 936
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 1165
+    y: 936
     width: 1993
-    height: 166
+    height: 395
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 26
+  controlID: 46
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -246,11 +246,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1993
-    height: 1165
+    height: 936
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 27
+  controlID: 47
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -269,15 +269,15 @@ MonoBehaviour:
     x: 329
     y: 0
     width: 1664
-    height: 1165
+    height: 936
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 17}
   - {fileID: 19}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -353,14 +353,14 @@ MonoBehaviour:
       listIndex: 0
       nativeIndex: 0
       nativeIdentifier: 0
-      originalLog: Galaxy SDK can't be initialised on Linux, sorry
-      originalStackTrace: 'Galaxy SDK can''t be initialised on Linux, sorry
+      originalLog: Galaxy SDK was initialized
+      originalStackTrace: 'Galaxy SDK was initialized
 
         UnityEngine.Debug:Log
         (object,UnityEngine.Object)
 
         GogGalaxyManager:TryInitialise () (at
-        Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:45)
+        Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:129)
 
         SecretHistories.Services.StorefrontServicesProvider:InitialiseForStorefrontClientType
         (SecretHistories.Constants.StoreClient) (at Assets/Scripts/Application/Services/StorefrontServicesProvider.cs:46)
@@ -379,38 +379,38 @@ MonoBehaviour:
 '
       nativeFileName: Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs
       nativeFileNamePretty: 
-      nativeLineNumber: 45
+      nativeLineNumber: 129
       watchName: 
-      logText: Galaxy SDK can't be initialised on Linux, sorry
-      logTruncatedText: Galaxy SDK can't be initialised on Linux, sorry
+      logText: Galaxy SDK was initialized
+      logTruncatedText: Galaxy SDK was initialized
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 21:38:12.513
-      timeFrame: 5
-      timeStampDateTimeNow: 21:38:12.513
-      instanceID: 206680
+      timeStamp: 15:59:51.620
+      timeFrame: 4
+      timeStampDateTimeNow: 15:59:51.620
+      instanceID: 181640
       collapsedCount: 0
       cachedHeight: -1
       cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs
         fileNameWithoutAssets: Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs
-        fileNameWithoutAssetsPlusLineNumber: Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:45
+        fileNameWithoutAssetsPlusLineNumber: Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:129
         fileNameWithoutPath: GogGalaxyManager.cs
-        fileNameWithoutPathPlusLineNumber: GogGalaxyManager.cs:45
+        fileNameWithoutPathPlusLineNumber: GogGalaxyManager.cs:129
         fileNamePretty: GogGalaxyManager
         instanceID: -1
         className: GogGalaxyManager
         methodName: TryInitialise
         namespaceName: None
-        lineNumberString: 45
+        lineNumberString: 129
         charNumber: 0
         stackLabel: GogGalaxyManager.TryInitialise()
-        stackLabel2: ' at /Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:45'
+        stackLabel2: ' at /Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:129'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -955,7 +955,7 @@ MonoBehaviour:
         showInToolbar: 1
         hideLabelInToolbar: 0
         hideWhenNoMatches: 0
-    - logType: 2
+    - logType: 1
       ignore: 0
       processed: 1
       tempFilterProcessed: 1
@@ -965,699 +965,6 @@ MonoBehaviour:
       logOutputHeight: -1
       listIndex: 1
       nativeIndex: 1
-      nativeIdentifier: 0
-      originalLog: '> Trying to initialise GOG client provider, but GogGalaxyManager
-        hasn''t been successfully initialised. This will always happen on Linux.'
-      originalStackTrace: '> Trying to initialise GOG client provider, but GogGalaxyManager
-        hasn''t been successfully initialised. This will always happen on Linux.
-
-        UnityEngine.Debug:LogWarning
-        (object)
-
-        SecretHistories.Assets.Scripts.Application.Services.UnityLogWrapper:AddMessage
-        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Services/UnityLogWrapper.cs:32)
-
-        NoonUtility:Log
-        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:115)
-
-        NoonUtility:LogWarning
-        (string) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:134)
-
-        SecretHistories.Services.StorefrontServicesProvider:InitialiseForStorefrontClientType
-        (SecretHistories.Constants.StoreClient) (at Assets/Scripts/Application/Services/StorefrontServicesProvider.cs:50)
-
-        SecretHistories.Services.Glory/<Initialise>d__16:MoveNext
-        () (at Assets/Scripts/Application/Services/Glory.cs:153)
-
-        System.Runtime.CompilerServices.AsyncVoidMethodBuilder:Start<SecretHistories.Services.Glory/<Initialise>d__16>
-        (SecretHistories.Services.Glory/<Initialise>d__16&)
-
-        SecretHistories.Services.Glory:Initialise
-        ()
-
-        SecretHistories.Services.Glory:Awake () (at Assets/Scripts/Application/Services/Glory.cs:82)
-
-'
-      nativeFileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
-      nativeFileNamePretty: 
-      nativeLineNumber: 32
-      watchName: 
-      logText: '> Trying to initialise GOG client provider, but GogGalaxyManager
-        hasn''t been successfully initialised. This will always happen on Linux.'
-      logTruncatedText: '> Trying to initialise GOG client provider, but GogGalaxyManager
-        hasn''t been successfully initialised. This will always happen on Linux.'
-      logColumnText: 
-      fileName: 
-      className: 
-      namespaceName: 
-      lineCount: 1
-      hasSourceCode: 0
-      timeStamp: 21:38:12.525
-      timeFrame: 5
-      timeStampDateTimeNow: 21:38:12.525
-      instanceID: 0
-      collapsedCount: 0
-      cachedHeight: -1
-      cachedHeightLogWidth: 0
-      stackEntries:
-      - fileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
-        fileNameWithoutAssets: Scripts/Application/Services/UnityLogWrapper.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/UnityLogWrapper.cs:32
-        fileNameWithoutPath: UnityLogWrapper.cs
-        fileNameWithoutPathPlusLineNumber: UnityLogWrapper.cs:32
-        fileNamePretty: UnityLogWrapper
-        instanceID: -1
-        className: UnityLogWrapper
-        methodName: AddMessage
-        namespaceName: SecretHistories.Assets.Scripts.Application.Services
-        lineNumberString: 32
-        charNumber: 0
-        stackLabel: UnityLogWrapper.AddMessage()
-        stackLabel2: ' at /Scripts/Application/Services/UnityLogWrapper.cs:32'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:115
-        fileNameWithoutPath: NoonUtility.cs
-        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:115
-        fileNamePretty: NoonUtility
-        instanceID: -1
-        className: NoonUtility
-        methodName: Log
-        namespaceName: None
-        lineNumberString: 115
-        charNumber: 0
-        stackLabel: NoonUtility.Log()
-        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:115'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:134
-        fileNameWithoutPath: NoonUtility.cs
-        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:134
-        fileNamePretty: NoonUtility
-        instanceID: -1
-        className: NoonUtility
-        methodName: LogWarning
-        namespaceName: None
-        lineNumberString: 134
-        charNumber: 0
-        stackLabel: NoonUtility.LogWarning()
-        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:134'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Services/StorefrontServicesProvider.cs
-        fileNameWithoutAssets: Scripts/Application/Services/StorefrontServicesProvider.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/StorefrontServicesProvider.cs:50
-        fileNameWithoutPath: StorefrontServicesProvider.cs
-        fileNameWithoutPathPlusLineNumber: StorefrontServicesProvider.cs:50
-        fileNamePretty: StorefrontServicesProvider
-        instanceID: -1
-        className: StorefrontServicesProvider
-        methodName: InitialiseForStorefrontClientType
-        namespaceName: SecretHistories.Services
-        lineNumberString: 50
-        charNumber: 0
-        stackLabel: StorefrontServicesProvider.InitialiseForStorefrontClientType()
-        stackLabel2: ' at /Scripts/Application/Services/StorefrontServicesProvider.cs:50'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Services/Glory.cs
-        fileNameWithoutAssets: Scripts/Application/Services/Glory.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/Glory.cs:153
-        fileNameWithoutPath: Glory.cs
-        fileNameWithoutPathPlusLineNumber: Glory.cs:153
-        fileNamePretty: Glory
-        instanceID: -1
-        className: Glory/<Initialise>d__16
-        methodName: MoveNext
-        namespaceName: SecretHistories.Services
-        lineNumberString: 153
-        charNumber: 0
-        stackLabel: Glory/<Initialise>d__16.MoveNext()
-        stackLabel2: ' at /Scripts/Application/Services/Glory.cs:153'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Services
-        methodName: Glory/<Initialise>d__16>
-        namespaceName: None
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Services.Glory/<Initialise>d__16>()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: Glory
-        methodName: Initialise
-        namespaceName: SecretHistories.Services
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: Glory.Initialise()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Services/Glory.cs
-        fileNameWithoutAssets: Scripts/Application/Services/Glory.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/Glory.cs:82
-        fileNameWithoutPath: Glory.cs
-        fileNameWithoutPathPlusLineNumber: Glory.cs:82
-        fileNamePretty: Glory
-        instanceID: -1
-        className: Glory
-        methodName: Awake
-        namespaceName: SecretHistories.Services
-        lineNumberString: 82
-        charNumber: 0
-        stackLabel: Glory.Awake()
-        stackLabel2: ' at /Scripts/Application/Services/Glory.cs:82'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      ignoredStackEntries: []
-      lastMatchedCount: 1
-      belongsToFilters:
-      - name: Warning
-        isEnabled: 1
-        collapsed: 1
-        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
-        filterName: 
-        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
-        isStandardFilter: 1
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 1
-        useIconTexture: 0
-        filterFormatVersion: 1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list:
-          - name: 
-            isEnabled: 1
-            collapsed: 0
-            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
-            searchString: <Any>
-            searchType: 1
-            removeSearchStringFromLog: 0
-            logTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
-                logType: 2
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
-                logType: 5
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            columnTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
-                columnType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            sourceCodeList:
-              list: []
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 3
-          iconType2: 1
-          iconText: '!'
-          useIconTextFirstLetter: 0
-          useIconLogColor: 0
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 2}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 7
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-      belongsToStandardFilters:
-      - name: Warning
-        isEnabled: 1
-        collapsed: 1
-        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
-        filterName: 
-        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
-        isStandardFilter: 1
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 1
-        useIconTexture: 0
-        filterFormatVersion: 1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list:
-          - name: 
-            isEnabled: 1
-            collapsed: 0
-            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
-            searchString: <Any>
-            searchType: 1
-            removeSearchStringFromLog: 0
-            logTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
-                logType: 2
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
-                logType: 5
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            columnTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
-                columnType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            sourceCodeList:
-              list: []
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 3
-          iconType2: 1
-          iconText: '!'
-          useIconTextFirstLetter: 0
-          useIconLogColor: 0
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 2}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 7
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-      assignedTempFilter:
-        name: 
-        isEnabled: 1
-        collapsed: 0
-        itemGUID: 
-        filterName: 
-        mainColor: {r: 1, g: 1, b: 1, a: 1}
-        isStandardFilter: 0
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 0
-        useIconTexture: 0
-        filterFormatVersion: -1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list: []
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-    - logType: 1
-      ignore: 0
-      processed: 1
-      tempFilterProcessed: 1
-      remoteEndPoint: Local
-      logPanelVisible: 1
-      logPanelIndex: 2
-      logOutputHeight: -1
-      listIndex: 2
-      nativeIndex: 2
       nativeIdentifier: 0
       originalLog: '>>>> Situation notification: recipe prediction updated from 
         to .'
@@ -1725,9 +1032,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 21:38:12.526
-      timeFrame: 5
-      timeStampDateTimeNow: 21:38:12.526
+      timeStamp: 16:00:00.782
+      timeFrame: 508
+      timeStampDateTimeNow: 16:00:00.782
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -2537,10 +1844,10 @@ MonoBehaviour:
       tempFilterProcessed: 1
       remoteEndPoint: Local
       logPanelVisible: 1
-      logPanelIndex: 3
+      logPanelIndex: 2
       logOutputHeight: -1
-      listIndex: 3
-      nativeIndex: 3
+      listIndex: 2
+      nativeIndex: 2
       nativeIdentifier: 0
       originalLog: '>>>> Situation notification: recipe prediction updated from 
         to .'
@@ -2607,9 +1914,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 21:38:12.527
-      timeFrame: 5
-      timeStampDateTimeNow: 21:38:12.527
+      timeStamp: 16:00:00.784
+      timeFrame: 508
+      timeStampDateTimeNow: 16:00:00.784
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -3284,6 +2591,761 @@ MonoBehaviour:
           useIconLogColor: 1
           iconColor: {r: 1, g: 1, b: 1, a: 1}
           iconBuiltInID: BACKGROUNDS_ECPLOGICON
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 2
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 3
+      logOutputHeight: -1
+      listIndex: 3
+      nativeIndex: 3
+      nativeIdentifier: 0
+      originalLog: '> GOG Galaxy auth failed:FAILURE_REASON_GALAXY_SERVICE_NOT_SIGNED_IN'
+      originalStackTrace: '> GOG Galaxy auth failed:FAILURE_REASON_GALAXY_SERVICE_NOT_SIGNED_IN
+
+        UnityEngine.Debug:LogWarning
+        (object)
+
+        SecretHistories.Assets.Scripts.Application.Services.UnityLogWrapper:AddMessage
+        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Services/UnityLogWrapper.cs:32)
+
+        NoonUtility:Log
+        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:115)
+
+        NoonUtility:LogWarning
+        (string) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:134)
+
+        SecretHistories.Constants.GogAuthListener:OnAuthFailure
+        (Galaxy.Api.IAuthListener/FailureReason) (at Assets/Scripts/Application/Services/GOGGalaxyIntegration/StoreClientGOG.cs:105)
+
+        Galaxy.Api.IAuthListener:SwigDirectorOnAuthFailure
+        (intptr,int)
+
+        Galaxy.Api.GalaxyInstance:ProcessData ()
+
+        GogGalaxyManager:DoUpdate
+        () (at Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:160)
+
+        SecretHistories.Services.StorefrontServicesProvider:DoUpdate
+        () (at Assets/Scripts/Application/Services/StorefrontServicesProvider.cs:64)
+
+        SecretHistories.Services.Concursum:DoUpdate
+        () (at Assets/Scripts/Application/Services/Concursum.cs:104)
+
+        SecretHistories.UI.Meniscate:Update
+        () (at Assets/Scripts/Application/Infrastructure/Meniscate.cs:43)
+
+'
+      nativeFileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 32
+      watchName: 
+      logText: '> GOG Galaxy auth failed:FAILURE_REASON_GALAXY_SERVICE_NOT_SIGNED_IN'
+      logTruncatedText: '> GOG Galaxy auth failed:FAILURE_REASON_GALAXY_SERVICE_NOT_SIGNED_IN'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 16:00:04.430
+      timeFrame: 727
+      timeStampDateTimeNow: 16:00:04.430
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
+        fileNameWithoutAssets: Scripts/Application/Services/UnityLogWrapper.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/UnityLogWrapper.cs:32
+        fileNameWithoutPath: UnityLogWrapper.cs
+        fileNameWithoutPathPlusLineNumber: UnityLogWrapper.cs:32
+        fileNamePretty: UnityLogWrapper
+        instanceID: -1
+        className: UnityLogWrapper
+        methodName: AddMessage
+        namespaceName: SecretHistories.Assets.Scripts.Application.Services
+        lineNumberString: 32
+        charNumber: 0
+        stackLabel: UnityLogWrapper.AddMessage()
+        stackLabel2: ' at /Scripts/Application/Services/UnityLogWrapper.cs:32'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
+        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:115
+        fileNameWithoutPath: NoonUtility.cs
+        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:115
+        fileNamePretty: NoonUtility
+        instanceID: -1
+        className: NoonUtility
+        methodName: Log
+        namespaceName: None
+        lineNumberString: 115
+        charNumber: 0
+        stackLabel: NoonUtility.Log()
+        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:115'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
+        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:134
+        fileNameWithoutPath: NoonUtility.cs
+        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:134
+        fileNamePretty: NoonUtility
+        instanceID: -1
+        className: NoonUtility
+        methodName: LogWarning
+        namespaceName: None
+        lineNumberString: 134
+        charNumber: 0
+        stackLabel: NoonUtility.LogWarning()
+        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:134'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Services/GOGGalaxyIntegration/StoreClientGOG.cs
+        fileNameWithoutAssets: Scripts/Application/Services/GOGGalaxyIntegration/StoreClientGOG.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/GOGGalaxyIntegration/StoreClientGOG.cs:105
+        fileNameWithoutPath: StoreClientGOG.cs
+        fileNameWithoutPathPlusLineNumber: StoreClientGOG.cs:105
+        fileNamePretty: StoreClientGOG
+        instanceID: -1
+        className: GogAuthListener
+        methodName: OnAuthFailure
+        namespaceName: SecretHistories.Constants
+        lineNumberString: 105
+        charNumber: 0
+        stackLabel: GogAuthListener.OnAuthFailure()
+        stackLabel2: ' at /Scripts/Application/Services/GOGGalaxyIntegration/StoreClientGOG.cs:105'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: IAuthListener
+        methodName: SwigDirectorOnAuthFailure
+        namespaceName: Galaxy.Api
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: IAuthListener.SwigDirectorOnAuthFailure()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: GalaxyInstance
+        methodName: ProcessData
+        namespaceName: Galaxy.Api
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: GalaxyInstance.ProcessData()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs
+        fileNameWithoutAssets: Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs
+        fileNameWithoutAssetsPlusLineNumber: Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:160
+        fileNameWithoutPath: GogGalaxyManager.cs
+        fileNameWithoutPathPlusLineNumber: GogGalaxyManager.cs:160
+        fileNamePretty: GogGalaxyManager
+        instanceID: -1
+        className: GogGalaxyManager
+        methodName: DoUpdate
+        namespaceName: None
+        lineNumberString: 160
+        charNumber: 0
+        stackLabel: GogGalaxyManager.DoUpdate()
+        stackLabel2: ' at /Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:160'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Services/StorefrontServicesProvider.cs
+        fileNameWithoutAssets: Scripts/Application/Services/StorefrontServicesProvider.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/StorefrontServicesProvider.cs:64
+        fileNameWithoutPath: StorefrontServicesProvider.cs
+        fileNameWithoutPathPlusLineNumber: StorefrontServicesProvider.cs:64
+        fileNamePretty: StorefrontServicesProvider
+        instanceID: -1
+        className: StorefrontServicesProvider
+        methodName: DoUpdate
+        namespaceName: SecretHistories.Services
+        lineNumberString: 64
+        charNumber: 0
+        stackLabel: StorefrontServicesProvider.DoUpdate()
+        stackLabel2: ' at /Scripts/Application/Services/StorefrontServicesProvider.cs:64'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Services/Concursum.cs
+        fileNameWithoutAssets: Scripts/Application/Services/Concursum.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/Concursum.cs:104
+        fileNameWithoutPath: Concursum.cs
+        fileNameWithoutPathPlusLineNumber: Concursum.cs:104
+        fileNamePretty: Concursum
+        instanceID: -1
+        className: Concursum
+        methodName: DoUpdate
+        namespaceName: SecretHistories.Services
+        lineNumberString: 104
+        charNumber: 0
+        stackLabel: Concursum.DoUpdate()
+        stackLabel2: ' at /Scripts/Application/Services/Concursum.cs:104'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/Meniscate.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/Meniscate.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/Meniscate.cs:43
+        fileNameWithoutPath: Meniscate.cs
+        fileNameWithoutPathPlusLineNumber: Meniscate.cs:43
+        fileNamePretty: Meniscate
+        instanceID: -1
+        className: Meniscate
+        methodName: Update
+        namespaceName: SecretHistories.UI
+        lineNumberString: 43
+        charNumber: 0
+        stackLabel: Meniscate.Update()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/Meniscate.cs:43'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      ignoredStackEntries: []
+      lastMatchedCount: 1
+      belongsToFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
           iconTextureGUID: 
           useIconShadow: 1
           iconOffset: {x: 0, y: 0}
@@ -3429,14 +3491,14 @@ MonoBehaviour:
       listIndex: 0
       nativeIndex: 0
       nativeIdentifier: 0
-      originalLog: Galaxy SDK can't be initialised on Linux, sorry
-      originalStackTrace: 'Galaxy SDK can''t be initialised on Linux, sorry
+      originalLog: Galaxy SDK was initialized
+      originalStackTrace: 'Galaxy SDK was initialized
 
         UnityEngine.Debug:Log
         (object,UnityEngine.Object)
 
         GogGalaxyManager:TryInitialise () (at
-        Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:45)
+        Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:129)
 
         SecretHistories.Services.StorefrontServicesProvider:InitialiseForStorefrontClientType
         (SecretHistories.Constants.StoreClient) (at Assets/Scripts/Application/Services/StorefrontServicesProvider.cs:46)
@@ -3455,38 +3517,38 @@ MonoBehaviour:
 '
       nativeFileName: Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs
       nativeFileNamePretty: 
-      nativeLineNumber: 45
+      nativeLineNumber: 129
       watchName: 
-      logText: Galaxy SDK can't be initialised on Linux, sorry
-      logTruncatedText: Galaxy SDK can't be initialised on Linux, sorry
+      logText: Galaxy SDK was initialized
+      logTruncatedText: Galaxy SDK was initialized
       logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 21:38:12.513
-      timeFrame: 5
-      timeStampDateTimeNow: 21:38:12.513
-      instanceID: 206680
+      timeStamp: 15:59:51.620
+      timeFrame: 4
+      timeStampDateTimeNow: 15:59:51.620
+      instanceID: 181640
       collapsedCount: 0
       cachedHeight: -1
       cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs
         fileNameWithoutAssets: Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs
-        fileNameWithoutAssetsPlusLineNumber: Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:45
+        fileNameWithoutAssetsPlusLineNumber: Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:129
         fileNameWithoutPath: GogGalaxyManager.cs
-        fileNameWithoutPathPlusLineNumber: GogGalaxyManager.cs:45
+        fileNameWithoutPathPlusLineNumber: GogGalaxyManager.cs:129
         fileNamePretty: GogGalaxyManager
         instanceID: -1
         className: GogGalaxyManager
         methodName: TryInitialise
         namespaceName: None
-        lineNumberString: 45
+        lineNumberString: 129
         charNumber: 0
         stackLabel: GogGalaxyManager.TryInitialise()
-        stackLabel2: ' at /Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:45'
+        stackLabel2: ' at /Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:129'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -4031,7 +4093,7 @@ MonoBehaviour:
         showInToolbar: 1
         hideLabelInToolbar: 0
         hideWhenNoMatches: 0
-    - logType: 2
+    - logType: 1
       ignore: 0
       processed: 1
       tempFilterProcessed: 1
@@ -4041,699 +4103,6 @@ MonoBehaviour:
       logOutputHeight: -1
       listIndex: 1
       nativeIndex: 1
-      nativeIdentifier: 0
-      originalLog: '> Trying to initialise GOG client provider, but GogGalaxyManager
-        hasn''t been successfully initialised. This will always happen on Linux.'
-      originalStackTrace: '> Trying to initialise GOG client provider, but GogGalaxyManager
-        hasn''t been successfully initialised. This will always happen on Linux.
-
-        UnityEngine.Debug:LogWarning
-        (object)
-
-        SecretHistories.Assets.Scripts.Application.Services.UnityLogWrapper:AddMessage
-        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Services/UnityLogWrapper.cs:32)
-
-        NoonUtility:Log
-        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:115)
-
-        NoonUtility:LogWarning
-        (string) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:134)
-
-        SecretHistories.Services.StorefrontServicesProvider:InitialiseForStorefrontClientType
-        (SecretHistories.Constants.StoreClient) (at Assets/Scripts/Application/Services/StorefrontServicesProvider.cs:50)
-
-        SecretHistories.Services.Glory/<Initialise>d__16:MoveNext
-        () (at Assets/Scripts/Application/Services/Glory.cs:153)
-
-        System.Runtime.CompilerServices.AsyncVoidMethodBuilder:Start<SecretHistories.Services.Glory/<Initialise>d__16>
-        (SecretHistories.Services.Glory/<Initialise>d__16&)
-
-        SecretHistories.Services.Glory:Initialise
-        ()
-
-        SecretHistories.Services.Glory:Awake () (at Assets/Scripts/Application/Services/Glory.cs:82)
-
-'
-      nativeFileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
-      nativeFileNamePretty: 
-      nativeLineNumber: 32
-      watchName: 
-      logText: '> Trying to initialise GOG client provider, but GogGalaxyManager
-        hasn''t been successfully initialised. This will always happen on Linux.'
-      logTruncatedText: '> Trying to initialise GOG client provider, but GogGalaxyManager
-        hasn''t been successfully initialised. This will always happen on Linux.'
-      logColumnText: 
-      fileName: 
-      className: 
-      namespaceName: 
-      lineCount: 1
-      hasSourceCode: 0
-      timeStamp: 21:38:12.525
-      timeFrame: 5
-      timeStampDateTimeNow: 21:38:12.525
-      instanceID: 0
-      collapsedCount: 0
-      cachedHeight: -1
-      cachedHeightLogWidth: 0
-      stackEntries:
-      - fileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
-        fileNameWithoutAssets: Scripts/Application/Services/UnityLogWrapper.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/UnityLogWrapper.cs:32
-        fileNameWithoutPath: UnityLogWrapper.cs
-        fileNameWithoutPathPlusLineNumber: UnityLogWrapper.cs:32
-        fileNamePretty: UnityLogWrapper
-        instanceID: -1
-        className: UnityLogWrapper
-        methodName: AddMessage
-        namespaceName: SecretHistories.Assets.Scripts.Application.Services
-        lineNumberString: 32
-        charNumber: 0
-        stackLabel: UnityLogWrapper.AddMessage()
-        stackLabel2: ' at /Scripts/Application/Services/UnityLogWrapper.cs:32'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:115
-        fileNameWithoutPath: NoonUtility.cs
-        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:115
-        fileNamePretty: NoonUtility
-        instanceID: -1
-        className: NoonUtility
-        methodName: Log
-        namespaceName: None
-        lineNumberString: 115
-        charNumber: 0
-        stackLabel: NoonUtility.Log()
-        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:115'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:134
-        fileNameWithoutPath: NoonUtility.cs
-        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:134
-        fileNamePretty: NoonUtility
-        instanceID: -1
-        className: NoonUtility
-        methodName: LogWarning
-        namespaceName: None
-        lineNumberString: 134
-        charNumber: 0
-        stackLabel: NoonUtility.LogWarning()
-        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:134'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Services/StorefrontServicesProvider.cs
-        fileNameWithoutAssets: Scripts/Application/Services/StorefrontServicesProvider.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/StorefrontServicesProvider.cs:50
-        fileNameWithoutPath: StorefrontServicesProvider.cs
-        fileNameWithoutPathPlusLineNumber: StorefrontServicesProvider.cs:50
-        fileNamePretty: StorefrontServicesProvider
-        instanceID: -1
-        className: StorefrontServicesProvider
-        methodName: InitialiseForStorefrontClientType
-        namespaceName: SecretHistories.Services
-        lineNumberString: 50
-        charNumber: 0
-        stackLabel: StorefrontServicesProvider.InitialiseForStorefrontClientType()
-        stackLabel2: ' at /Scripts/Application/Services/StorefrontServicesProvider.cs:50'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Services/Glory.cs
-        fileNameWithoutAssets: Scripts/Application/Services/Glory.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/Glory.cs:153
-        fileNameWithoutPath: Glory.cs
-        fileNameWithoutPathPlusLineNumber: Glory.cs:153
-        fileNamePretty: Glory
-        instanceID: -1
-        className: Glory/<Initialise>d__16
-        methodName: MoveNext
-        namespaceName: SecretHistories.Services
-        lineNumberString: 153
-        charNumber: 0
-        stackLabel: Glory/<Initialise>d__16.MoveNext()
-        stackLabel2: ' at /Scripts/Application/Services/Glory.cs:153'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Services
-        methodName: Glory/<Initialise>d__16>
-        namespaceName: None
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<SecretHistories.Services.Glory/<Initialise>d__16>()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: Glory
-        methodName: Initialise
-        namespaceName: SecretHistories.Services
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: Glory.Initialise()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      - fileName: Assets/Scripts/Application/Services/Glory.cs
-        fileNameWithoutAssets: Scripts/Application/Services/Glory.cs
-        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/Glory.cs:82
-        fileNameWithoutPath: Glory.cs
-        fileNameWithoutPathPlusLineNumber: Glory.cs:82
-        fileNamePretty: Glory
-        instanceID: -1
-        className: Glory
-        methodName: Awake
-        namespaceName: SecretHistories.Services
-        lineNumberString: 82
-        charNumber: 0
-        stackLabel: Glory.Awake()
-        stackLabel2: ' at /Scripts/Application/Services/Glory.cs:82'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        showSource: 1
-      ignoredStackEntries: []
-      lastMatchedCount: 1
-      belongsToFilters:
-      - name: Warning
-        isEnabled: 1
-        collapsed: 1
-        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
-        filterName: 
-        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
-        isStandardFilter: 1
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 1
-        useIconTexture: 0
-        filterFormatVersion: 1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list:
-          - name: 
-            isEnabled: 1
-            collapsed: 0
-            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
-            searchString: <Any>
-            searchType: 1
-            removeSearchStringFromLog: 0
-            logTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
-                logType: 2
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
-                logType: 5
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            columnTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
-                columnType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            sourceCodeList:
-              list: []
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 3
-          iconType2: 1
-          iconText: '!'
-          useIconTextFirstLetter: 0
-          useIconLogColor: 0
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 2}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 7
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-      belongsToStandardFilters:
-      - name: Warning
-        isEnabled: 1
-        collapsed: 1
-        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
-        filterName: 
-        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
-        isStandardFilter: 1
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 1
-        useIconTexture: 0
-        filterFormatVersion: 1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list:
-          - name: 
-            isEnabled: 1
-            collapsed: 0
-            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
-            searchString: <Any>
-            searchType: 1
-            removeSearchStringFromLog: 0
-            logTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
-                logType: 2
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
-                logType: 5
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            columnTypeList:
-              list:
-              - name: 
-                isEnabled: 1
-                collapsed: 0
-                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
-                columnType: 1
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-            sourceCodeList:
-              list: []
-              selectionList: 0
-              collapsable: 1
-              collapsed: 0
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 3
-          iconType2: 1
-          iconText: '!'
-          useIconTextFirstLetter: 0
-          useIconLogColor: 0
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 2}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 7
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-      assignedTempFilter:
-        name: 
-        isEnabled: 1
-        collapsed: 0
-        itemGUID: 
-        filterName: 
-        mainColor: {r: 1, g: 1, b: 1, a: 1}
-        isStandardFilter: 0
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 0
-        useIconTexture: 0
-        filterFormatVersion: -1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list: []
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
-    - logType: 1
-      ignore: 0
-      processed: 1
-      tempFilterProcessed: 1
-      remoteEndPoint: Local
-      logPanelVisible: 1
-      logPanelIndex: 2
-      logOutputHeight: -1
-      listIndex: 2
-      nativeIndex: 2
       nativeIdentifier: 0
       originalLog: '>>>> Situation notification: recipe prediction updated from 
         to .'
@@ -4801,9 +4170,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 21:38:12.526
-      timeFrame: 5
-      timeStampDateTimeNow: 21:38:12.526
+      timeStamp: 16:00:00.782
+      timeFrame: 508
+      timeStampDateTimeNow: 16:00:00.782
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -5613,10 +4982,10 @@ MonoBehaviour:
       tempFilterProcessed: 1
       remoteEndPoint: Local
       logPanelVisible: 1
-      logPanelIndex: 3
+      logPanelIndex: 2
       logOutputHeight: -1
-      listIndex: 3
-      nativeIndex: 3
+      listIndex: 2
+      nativeIndex: 2
       nativeIdentifier: 0
       originalLog: '>>>> Situation notification: recipe prediction updated from 
         to .'
@@ -5683,9 +5052,9 @@ MonoBehaviour:
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 21:38:12.527
-      timeFrame: 5
-      timeStampDateTimeNow: 21:38:12.527
+      timeStamp: 16:00:00.784
+      timeFrame: 508
+      timeStampDateTimeNow: 16:00:00.784
       instanceID: 0
       collapsedCount: 0
       cachedHeight: -1
@@ -6360,6 +5729,761 @@ MonoBehaviour:
           useIconLogColor: 1
           iconColor: {r: 1, g: 1, b: 1, a: 1}
           iconBuiltInID: BACKGROUNDS_ECPLOGICON
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 2
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 3
+      logOutputHeight: -1
+      listIndex: 3
+      nativeIndex: 3
+      nativeIdentifier: 0
+      originalLog: '> GOG Galaxy auth failed:FAILURE_REASON_GALAXY_SERVICE_NOT_SIGNED_IN'
+      originalStackTrace: '> GOG Galaxy auth failed:FAILURE_REASON_GALAXY_SERVICE_NOT_SIGNED_IN
+
+        UnityEngine.Debug:LogWarning
+        (object)
+
+        SecretHistories.Assets.Scripts.Application.Services.UnityLogWrapper:AddMessage
+        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Services/UnityLogWrapper.cs:32)
+
+        NoonUtility:Log
+        (SecretHistories.Fucine.ILogMessage) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:115)
+
+        NoonUtility:LogWarning
+        (string) (at Assets/Scripts/Application/Utilities/NoonUtility.cs:134)
+
+        SecretHistories.Constants.GogAuthListener:OnAuthFailure
+        (Galaxy.Api.IAuthListener/FailureReason) (at Assets/Scripts/Application/Services/GOGGalaxyIntegration/StoreClientGOG.cs:105)
+
+        Galaxy.Api.IAuthListener:SwigDirectorOnAuthFailure
+        (intptr,int)
+
+        Galaxy.Api.GalaxyInstance:ProcessData ()
+
+        GogGalaxyManager:DoUpdate
+        () (at Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:160)
+
+        SecretHistories.Services.StorefrontServicesProvider:DoUpdate
+        () (at Assets/Scripts/Application/Services/StorefrontServicesProvider.cs:64)
+
+        SecretHistories.Services.Concursum:DoUpdate
+        () (at Assets/Scripts/Application/Services/Concursum.cs:104)
+
+        SecretHistories.UI.Meniscate:Update
+        () (at Assets/Scripts/Application/Infrastructure/Meniscate.cs:43)
+
+'
+      nativeFileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 32
+      watchName: 
+      logText: '> GOG Galaxy auth failed:FAILURE_REASON_GALAXY_SERVICE_NOT_SIGNED_IN'
+      logTruncatedText: '> GOG Galaxy auth failed:FAILURE_REASON_GALAXY_SERVICE_NOT_SIGNED_IN'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 16:00:04.430
+      timeFrame: 727
+      timeStampDateTimeNow: 16:00:04.430
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets/Scripts/Application/Services/UnityLogWrapper.cs
+        fileNameWithoutAssets: Scripts/Application/Services/UnityLogWrapper.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/UnityLogWrapper.cs:32
+        fileNameWithoutPath: UnityLogWrapper.cs
+        fileNameWithoutPathPlusLineNumber: UnityLogWrapper.cs:32
+        fileNamePretty: UnityLogWrapper
+        instanceID: -1
+        className: UnityLogWrapper
+        methodName: AddMessage
+        namespaceName: SecretHistories.Assets.Scripts.Application.Services
+        lineNumberString: 32
+        charNumber: 0
+        stackLabel: UnityLogWrapper.AddMessage()
+        stackLabel2: ' at /Scripts/Application/Services/UnityLogWrapper.cs:32'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
+        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:115
+        fileNameWithoutPath: NoonUtility.cs
+        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:115
+        fileNamePretty: NoonUtility
+        instanceID: -1
+        className: NoonUtility
+        methodName: Log
+        namespaceName: None
+        lineNumberString: 115
+        charNumber: 0
+        stackLabel: NoonUtility.Log()
+        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:115'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Utilities/NoonUtility.cs
+        fileNameWithoutAssets: Scripts/Application/Utilities/NoonUtility.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Utilities/NoonUtility.cs:134
+        fileNameWithoutPath: NoonUtility.cs
+        fileNameWithoutPathPlusLineNumber: NoonUtility.cs:134
+        fileNamePretty: NoonUtility
+        instanceID: -1
+        className: NoonUtility
+        methodName: LogWarning
+        namespaceName: None
+        lineNumberString: 134
+        charNumber: 0
+        stackLabel: NoonUtility.LogWarning()
+        stackLabel2: ' at /Scripts/Application/Utilities/NoonUtility.cs:134'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Services/GOGGalaxyIntegration/StoreClientGOG.cs
+        fileNameWithoutAssets: Scripts/Application/Services/GOGGalaxyIntegration/StoreClientGOG.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/GOGGalaxyIntegration/StoreClientGOG.cs:105
+        fileNameWithoutPath: StoreClientGOG.cs
+        fileNameWithoutPathPlusLineNumber: StoreClientGOG.cs:105
+        fileNamePretty: StoreClientGOG
+        instanceID: -1
+        className: GogAuthListener
+        methodName: OnAuthFailure
+        namespaceName: SecretHistories.Constants
+        lineNumberString: 105
+        charNumber: 0
+        stackLabel: GogAuthListener.OnAuthFailure()
+        stackLabel2: ' at /Scripts/Application/Services/GOGGalaxyIntegration/StoreClientGOG.cs:105'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: IAuthListener
+        methodName: SwigDirectorOnAuthFailure
+        namespaceName: Galaxy.Api
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: IAuthListener.SwigDirectorOnAuthFailure()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: GalaxyInstance
+        methodName: ProcessData
+        namespaceName: Galaxy.Api
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: GalaxyInstance.ProcessData()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs
+        fileNameWithoutAssets: Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs
+        fileNameWithoutAssetsPlusLineNumber: Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:160
+        fileNameWithoutPath: GogGalaxyManager.cs
+        fileNameWithoutPathPlusLineNumber: GogGalaxyManager.cs:160
+        fileNamePretty: GogGalaxyManager
+        instanceID: -1
+        className: GogGalaxyManager
+        methodName: DoUpdate
+        namespaceName: None
+        lineNumberString: 160
+        charNumber: 0
+        stackLabel: GogGalaxyManager.DoUpdate()
+        stackLabel2: ' at /Plugins/GOGGalaxy/GOGGalaxyScripts/GogGalaxyManager.cs:160'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Services/StorefrontServicesProvider.cs
+        fileNameWithoutAssets: Scripts/Application/Services/StorefrontServicesProvider.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/StorefrontServicesProvider.cs:64
+        fileNameWithoutPath: StorefrontServicesProvider.cs
+        fileNameWithoutPathPlusLineNumber: StorefrontServicesProvider.cs:64
+        fileNamePretty: StorefrontServicesProvider
+        instanceID: -1
+        className: StorefrontServicesProvider
+        methodName: DoUpdate
+        namespaceName: SecretHistories.Services
+        lineNumberString: 64
+        charNumber: 0
+        stackLabel: StorefrontServicesProvider.DoUpdate()
+        stackLabel2: ' at /Scripts/Application/Services/StorefrontServicesProvider.cs:64'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Services/Concursum.cs
+        fileNameWithoutAssets: Scripts/Application/Services/Concursum.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Services/Concursum.cs:104
+        fileNameWithoutPath: Concursum.cs
+        fileNameWithoutPathPlusLineNumber: Concursum.cs:104
+        fileNamePretty: Concursum
+        instanceID: -1
+        className: Concursum
+        methodName: DoUpdate
+        namespaceName: SecretHistories.Services
+        lineNumberString: 104
+        charNumber: 0
+        stackLabel: Concursum.DoUpdate()
+        stackLabel2: ' at /Scripts/Application/Services/Concursum.cs:104'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      - fileName: Assets/Scripts/Application/Infrastructure/Meniscate.cs
+        fileNameWithoutAssets: Scripts/Application/Infrastructure/Meniscate.cs
+        fileNameWithoutAssetsPlusLineNumber: Scripts/Application/Infrastructure/Meniscate.cs:43
+        fileNameWithoutPath: Meniscate.cs
+        fileNameWithoutPathPlusLineNumber: Meniscate.cs:43
+        fileNamePretty: Meniscate
+        instanceID: -1
+        className: Meniscate
+        methodName: Update
+        namespaceName: SecretHistories.UI
+        lineNumberString: 43
+        charNumber: 0
+        stackLabel: Meniscate.Update()
+        stackLabel2: ' at /Scripts/Application/Infrastructure/Meniscate.cs:43'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        showSource: 1
+      ignoredStackEntries: []
+      lastMatchedCount: 1
+      belongsToFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters:
+      - name: Warning
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: a5e0f045-220b-4813-b747-a4bbc2f88bb2
+        filterName: 
+        mainColor: {r: 1, g: 0.84, b: 0.02, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 5de9d2b7-b204-49cd-bad8-8082ee889887
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: d0ee52bc-e4a6-4c8e-a1d1-02e0610f7024
+                logType: 2
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 7d491884-1350-4919-925d-ba64f4ef6041
+                logType: 5
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: c4bf00d0-b8db-466f-b29a-f87a921c188a
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: '!'
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 2}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGTRIANGLE
           iconTextureGUID: 
           useIconShadow: 1
           iconOffset: {x: 0, y: 0}
@@ -6510,16 +6634,16 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 416
-    y: 794
+    x: 302
+    y: 1019
     width: 1992
-    height: 597
+    height: 374
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: verbm
+    m_NameFilter: 1l
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -6533,7 +6657,7 @@ MonoBehaviour:
     m_Folders:
     - Assets/Resources/images/elements
     m_Globs: []
-    m_OriginalText: verbm
+    m_OriginalText: 1l
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
@@ -6543,10 +6667,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 275}
-    m_SelectedIDs: 20a00000
-    m_LastClickedID: 40992
-    m_ExpandedIDs: 0000000010a0000012a0000014a0000016a0000018a000001aa000001ca000001ea0000020a0000022a0000024a0000026a0000028a000002aa000002ca000002ea0000030a0000032a0000034a0000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 323}
+    m_SelectedIDs: 7a880000
+    m_LastClickedID: 34938
+    m_ExpandedIDs: 000000006a8800006c8800006e88000070880000728800007488000076880000788800007a8800007c8800007e88000080880000828800008488000086880000888800008a8800008c8800008e88000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -6574,7 +6698,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000010a0000012a0000014a0000016a0000018a000001aa000001ca000001ea0000020a0000022a0000024a0000026a0000028a000002aa000002ca000002ea0000030a0000032a0000034a00000
+    m_ExpandedIDs: 000000006a8800006c8800006e88000070880000728800007488000076880000788800007a8800007c8800007e88000080880000828800008488000086880000888800008a8800008c8800008e880000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -6651,8 +6775,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 4362
-    y: 232
+    x: 2295
+    y: 83
     width: 411
     height: 1310
   m_ViewDataDictionary: {fileID: 0}
@@ -6693,10 +6817,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2369
-    y: 232
+    x: 302
+    y: 83
     width: 328
-    height: 1144
+    height: 915
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -6704,9 +6828,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 82d80300
-      m_LastClickedID: 252034
-      m_ExpandedIDs: 4c53faff5053faff4cdcfaff623afcffa63afcffb43afcffc03afcffc847fcffec4afcfff84afcff004bfcff044bfcff1a4bfcffb84cfcfffc4cfcff0a4dfcff164dfcff1e5afcff425dfcff4e5dfcff565dfcff5a5dfcff705dfcff105ffcff565ffcffa265fcffb065fcff4c73fcff7076fcff7e76fcff8876fcff8e76fcffa476fcfff0fafffff2faffffda88000048d5030056d5030066d5030074d50300
+      m_SelectedIDs: 8e30f3ff
+      m_LastClickedID: -839538
+      m_ExpandedIDs: 2cbff2ff62bff2ffaec5f2ffbcc5f2ff58d3f2ffb4d6f2ffc4d6f2ffd4d6f2ffd8d6f2ffeed6f2ffb4f9f2ffeaf9f2ff3600f3ff4400f3ffe00df3ff3c11f3ff4c11f3ff5c11f3ff6011f3ff7611f3ff8e30f3ff6aa6f6ffa0a6f6ffaea6f6ffbaa6f6ffc2b3f6ffe6b6f6fff2b6f6fffab6f6fffeb6f6ff14b7f6ffa4b8f6ffdab8f6ffe8b8f6fff4b8f6fffcc5f6ff20c9f6ff2cc9f6ff34c9f6ff38c9f6ff4ec9f6ffe0caf6ff16cbf6ff62d1f6ff70d1f6ff0cdff6ff30e2f6ff3ee2f6ff48e2f6ff4ee2f6ff64e2f6fff2f3ffff82f7ffffd2f7fffff6faffff6663000076630000a0630000c26300004a110200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -6751,10 +6875,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2698
-    y: 232
+    x: 775
+    y: 81
     width: 1662
-    height: 1144
+    height: 915
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -7057,10 +7181,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2369
-    y: 1397
+    x: 302
+    y: 1019
     width: 1992
-    height: 145
+    height: 374
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -7086,10 +7210,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2698
-    y: 232
+    x: 631
+    y: 83
     width: 1662
-    height: 1144
+    height: 915
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -7102,7 +7226,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1662, y: 1123}
+  m_TargetSize: {x: 1662, y: 894}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -7119,8 +7243,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -831
     m_HBaseRangeMax: 831
-    m_VBaseRangeMin: -561.5
-    m_VBaseRangeMax: 561.5
+    m_VBaseRangeMin: -447
+    m_VBaseRangeMax: 447
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -7129,7 +7253,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -7139,9 +7263,9 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 1662
-      height: 1123
+      height: 894
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 831, y: 561.5}
+    m_Translation: {x: 831, y: 447}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -7149,12 +7273,12 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -831
-      y: -561.5
+      y: -447
       width: 1662
-      height: 1123
+      height: 894
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1662, y: 1144}
+  m_LastWindowPixelSize: {x: 1662, y: 915}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
