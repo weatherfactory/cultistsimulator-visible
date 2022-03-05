@@ -287,8 +287,15 @@ namespace SecretHistories.Constants {
             if (!GetTableRect().Overlaps(candidateRect))
                 return LegalPositionCheckResult.Illegal();
             
-            Rect otherTokenOverlapRect;
+            
 
+            //If the player is deciding where to place the token, they have NEAR ULTIMATE POWER
+            if(placingToken.CurrentlyBeingDragged())
+                return LegalPositionCheckResult.Legal();
+
+            //If some other agency is trying to do it, they're more constricted. Look for a space.
+
+            Rect otherTokenOverlapRect;
 
             foreach (var otherToken in Sphere.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t)))
             {
