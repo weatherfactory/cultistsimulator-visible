@@ -31,7 +31,7 @@ namespace SecretHistories.Spheres.Angels
         public void Act(float seconds, float metaseconds)
         {
             //once it's safely home, forget about its origin, mark this angel for removal
-            if (TokenToBringHome.CurrentState.Docked())
+            if (TokenToBringHome.Sphere==SphereToWatchOver && TokenToBringHome.CurrentState.Docked())
                 Retire();
 
         }
