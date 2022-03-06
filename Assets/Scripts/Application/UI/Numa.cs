@@ -42,14 +42,14 @@ namespace SecretHistories.UI
 
         private async void PreOtherworldAutosave()
         {
-            Watchman.Get<Heart>().Metapause();
+          //  Watchman.Get<Heart>().Metapause(); //should already be Metapaused - see comment below.
             Watchman.Get<LocalNexus>().DisablePlayerInput(0f);
 
 
             var gameGateway = Watchman.Get<GameGateway>();
             await gameGateway.TryDefaultSave();
 
-            Watchman.Get<Heart>().Unmetapause();
+           // Watchman.Get<Heart>().Unmetapause(); //we don't want to unmetapause when we're heading into an otherworld - see comment re Metapause below
             Watchman.Get<LocalNexus>().EnablePlayerInput();
         }
 
@@ -60,6 +60,7 @@ namespace SecretHistories.UI
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.Paused, WithSFX = false });
             Watchman.Get<LocalNexus>().DoHideHud();
             Watchman.Get<CamOperator>().OnZoomEvent(new ZoomLevelEventArgs{AbsoluteTargetZoomLevel = ZoomLevel.Far});
+            Watchman.Get<Heart>().Metapause();
 
             PreOtherworldAutosave();
 
@@ -88,6 +89,7 @@ namespace SecretHistories.UI
           //  Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
 
             Watchman.Get<LocalNexus>().DoShowHud();
+            Watchman.Get<Heart>().Unmetapause();
 
         }
 
