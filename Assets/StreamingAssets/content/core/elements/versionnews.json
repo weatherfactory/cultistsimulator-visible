@@ -1,16 +1,23 @@
 ﻿{
 	"elements": [
+				{  "id": "versionnews.2022.3.e.1",
+			"label": "MORE FIXES",
+	"description": "- Explore/Hire now works again.\n
+- Belief? does not endlessly consume Reason in the Physician legacy.\n
+- Sundry crash fixes.",
+			"icon": "lockscarheart"
+			},
 			{  "id": "versionnews.2022.3.d.1",
 			"label": "CARD PLACEMENT FIXES!",
-	"description": "- Much more user freedom on card placement. Sorry about the earlier trouble.
+	"description": "- Much more user freedom on card placement. Sorry about the earlier trouble.\n
 - 1/8 gridsnap by default. This is as close to no gridsnap as makes no diff, but I may yet add that too. Watching feedback.",
 			"icon": "ascensionenlightenmentc"
 			},
 			{
 			"id": "versionnews.2022.3.c.1",
 			"label": "MORE EMERGENCY FIXES FOR METAMORPHOSED EDITION",
-	"description": "- game couldn't pick a legacy after winning rarer victories, like the romance ones: it can now.
-- a small tweak to address card placement issues. I'm not done yet though.
+	"description": "- game couldn't pick a legacy after winning rarer victories, like the romance ones: it can now.\n
+- a small tweak to address card placement issues. I'm not done yet though.\n
 - fixed a returning-from-Mansus crash issue.",
 			"icon": "ascensionpowerc"
 		},	
@@ -80,39 +87,6 @@
 			"label": "The Japanese Resolution",
 			"description": "It turns out SIX HUNDRED card descriptions in Japanese have been jumbled up. We're gradually working through and fixing, but it'll take tim. Our thanks to Japanese player Clock for helping us identify the problem in detail. If you're Japanese and wondered why the Third Mark came after the Fifth Mark, that's why.",
 			"icon": "curse_dread"
-		},	
-		{
-			"id": "versionnews.minor.2022.3.a.4",
-			"label": "2022.3.a.3 Minor Fixes",
-			"description": "- Ghosts now disappear consistently on drop.\n
-			- Arcane RNG fix that might affect arcane behaviour at the Stag Door\n
-			- Game-over warning music now triggers correctly again\n
-- New verbs appear where spawned, not just in the middle of the table",
-			"icon": "apostleforge.pillar3"
-		},
-						{
-			"id": "versionnews.minor.2022.3.a.1",
-			"label": "2022.3.a.1 Minor Fixes",
-			"description": "- Ghost now removed after token retirement\n
-- ElementStack token name now changes when its element changes (relevant only if you're modding)\n
-- Situation-stored cards don't move when clicked\n
-- Ghost now correclty hidden when card dropped in slot\n",
-			"icon": "apostleforge.pillar2"
-		},
-								{
-			"id": "versionnews.minor.previous",
-			"label": "Other Minor Fixes",
-			"description": "- Lifetimed cards can now be stacked (with a tolerance of 0.1 seconds lifetime difference)
-- Purging elements once again transforms them to decayed form, if they have one\n - changed anti-aliasing settings; should make text more readable but let me know your experiences\n - more than 4 deck effects in a recipe now possible, you LUNATICS
-- Consuming slots now have the same effect as purge: i.e., if the card in that slot decays to a final form, it'll do that instead of disappearing.
-- Ending flavours work again
-- Better font support for Central and Eastern European languages (see MODDING_README.txt)
-- Elements in a verb are clickable again
-- Expulsions no longer break game
-- Dropping token on an occupied slot sends the incumbent away, not both
-- Hilarious stack-splitting bug fixed
- - Locs for mods should work again ",
-			"icon": "apostleforge.pillar1"
 		}
 		
 		]

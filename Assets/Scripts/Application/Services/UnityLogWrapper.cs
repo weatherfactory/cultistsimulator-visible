@@ -14,9 +14,9 @@ namespace SecretHistories.Assets.Scripts.Application.Services
         public UnityLogWrapper()
         {
             if (UnityEngine.Application.isEditor)
-                Sensitivity = VerbosityLevel.Significants;
+                Sensitivity = VerbosityLevel.SystemChatter;
             else
-                Sensitivity = VerbosityLevel.Trivia;
+                Sensitivity = VerbosityLevel.Significants;
 
         }
         public void AddMessage(ILogMessage message)
