@@ -11,7 +11,8 @@
                     "id": "295541f4-2845-4bbc-a969-f497df13e6e6",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbnormalspeed",
@@ -19,7 +20,8 @@
                     "id": "e49fa150-5679-4be1-b0f6-daff5bf7eb2a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbfastspeed",
@@ -27,7 +29,8 @@
                     "id": "562ce9bb-470f-42be-9374-c8a2faa7a820",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbstartrecipe",
@@ -35,7 +38,8 @@
                     "id": "ad2078b0-1f11-4d50-abd9-71aaf89cb2bc",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbcollectall",
@@ -43,7 +47,8 @@
                     "id": "df10e8a5-e2a5-41cf-bfb8-1e24f0a3dd5b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbzoomin",
@@ -51,7 +56,8 @@
                     "id": "613ea87a-1750-429b-9d61-e3d6ef847722",
                     "expectedControlType": "Button",
                     "processors": "Clamp(min=-1,max=-1)",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbzoomout",
@@ -59,7 +65,8 @@
                     "id": "8260a3a9-1f24-4daf-a852-c52555d45ddd",
                     "expectedControlType": "Button",
                     "processors": "Clamp(min=1,max=1)",
-                    "interactions": "Press(behavior=1)"
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbstack",
@@ -67,7 +74,8 @@
                     "id": "8a460104-453b-4efc-ad1f-18bfa7bc466c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbzoom1",
@@ -75,7 +83,8 @@
                     "id": "87b30b6a-8676-46d2-9e15-49e7b39bffc1",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbzoom2",
@@ -83,7 +92,8 @@
                     "id": "075f8238-733d-4111-b646-68420367ac36",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbzoom3",
@@ -91,7 +101,8 @@
                     "id": "efeeffb0-6904-4036-836b-503c269124cf",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbpedestalup",
@@ -99,7 +110,8 @@
                     "id": "99cab8cd-a576-4545-a7fe-f4d14cb4debc",
                     "expectedControlType": "Button",
                     "processors": "Clamp(min=1,max=1)",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbpedestaldown",
@@ -107,7 +119,8 @@
                     "id": "9ee541db-f6ad-4eab-9cc7-f09988d2dffa",
                     "expectedControlType": "Button",
                     "processors": "Clamp(min=-1,max=-1)",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbtruckleft",
@@ -115,7 +128,8 @@
                     "id": "04518bf1-5d43-4cb1-aab3-c61ae1fdde63",
                     "expectedControlType": "Button",
                     "processors": "Clamp(min=-1,max=-1)",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "kbtruckright",
@@ -123,7 +137,8 @@
                     "id": "875c2103-3f10-4cf0-9c26-0c5121e710b9",
                     "expectedControlType": "Button",
                     "processors": "Clamp(min=1,max=1)",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "mousezoom",
@@ -131,7 +146,8 @@
                     "id": "ec443985-762c-4b71-b39f-ff0cdd06ac93",
                     "expectedControlType": "Axis",
                     "processors": "Invert,Clamp(min=-5,max=5)",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -183,7 +199,7 @@
                     "name": "",
                     "id": "b397d6f3-63c3-4ab0-bdb3-b2d0fae2c7b4",
                     "path": "<Keyboard>/c",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "kbcollectall",

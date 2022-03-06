@@ -151,7 +151,7 @@ namespace SecretHistories.Constants
 
         public void Input_NormalSpeed(InputAction.CallbackContext context)
         {
-            if (IsEditingText() ||_debugTools.isActiveAndEnabled || !context.started)
+            if (IsEditingText() ||_debugTools.isActiveAndEnabled || context.phase != InputActionPhase.Started)
                 return;
             SpeedControlEvent.Invoke(new SpeedControlEventArgs
                     {ControlPriorityLevel = 1, GameSpeed = GameSpeed.Normal, WithSFX = false});
@@ -179,7 +179,7 @@ namespace SecretHistories.Constants
 
         public void Input_GroupAllStacks(InputAction.CallbackContext context)
         {
-            if (IsEditingText() || playerInputDisabled)
+            if (IsEditingText() || playerInputDisabled || context.phase != InputActionPhase.Started)
                 return;
 
             StackCardsEvent.Invoke();
@@ -187,7 +187,7 @@ namespace SecretHistories.Constants
 
         public void Input_StartRecipe(InputAction.CallbackContext context)
         {
-            if (IsEditingText() || playerInputDisabled)
+            if (IsEditingText() || playerInputDisabled || context.phase!=InputActionPhase.Started)
                 return;
 
             var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
@@ -203,7 +203,7 @@ namespace SecretHistories.Constants
         }
         public void Input_CollectAll(InputAction.CallbackContext context)
         {
-            if (IsEditingText() || playerInputDisabled)
+            if (IsEditingText() || playerInputDisabled || context.phase != InputActionPhase.Started)
                 return;
 
             var situations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
