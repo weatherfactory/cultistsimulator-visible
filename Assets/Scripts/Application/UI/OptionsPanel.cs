@@ -219,9 +219,21 @@ public class OptionsPanel : MonoBehaviour {
         if (!IsInGame())
 			return;
 
-        //reset the state on the must-confirm Restart button. doesn't matter if this is closing or opening,
-        //let's reset it either way
-        restartButton.ResetState();
+
+
+        var restartingGameProvider = new RestartingGameProvider();
+        if (restartingGameProvider.SaveExists())
+        {
+            //reset the state on the must-confirm Restart button. doesn't matter if this is closing or opening,
+            //let's reset it either way
+            restartButton.gameObject.SetActive(true);
+            restartButton.ResetState();
+        }
+        else
+            restartButton.gameObject.SetActive(false); //eg if we just converted from the old save format, no restart save will exist.
+        //In any case we shouldn't let people try to restart if there's no file to look for.
+
+
 
         if (gameObject.activeInHierarchy)
 		
