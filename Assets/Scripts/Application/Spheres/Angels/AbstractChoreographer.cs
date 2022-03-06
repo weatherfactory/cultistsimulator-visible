@@ -51,7 +51,7 @@ namespace SecretHistories.Spheres.Angels
               return 0.5f;
           else if (snapValue == 3f)
               return 0.25f;
-          else if (snapValue == 3f)
+          else if (snapValue == 4f)
               return 0.125f;
             else if (snapValue == 0f)
               return 0.125f; //set at smallest value
