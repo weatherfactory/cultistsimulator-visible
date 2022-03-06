@@ -1,4 +1,5 @@
-﻿using SecretHistories.Constants;
+﻿using System;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using TMPro;
 using UnityEngine;
@@ -93,7 +94,10 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         
 
         string fontscript;
+        try
+        {
 
+        
 
         if (!string.IsNullOrEmpty(forceFontLanguage))
             fontscript = forceFontLanguage;
@@ -122,6 +126,14 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         }
 
         SetFontStyle(culture, lm);
+
+        }
+        catch (Exception e)
+        {
+            //intermittent error where GetTextComponent throws a nullref exception.
+            //This is a guard clause to deal with something like this so at least it doesn't bring the game down.
+            NoonUtility.LogException(e);
+        }
     }
 
     public void WhenSettingUpdated(object newValue)
