@@ -76,16 +76,29 @@ namespace SecretHistories.Spheres
             if (!tokenToSend.IsValidElementStack())
                 return false;
 
+
+            //   var availableThresholdSpheres = Watchman.Get<HornedAxe>().
+            //   GetSpheresOfCategory(SphereCategory.Threshold).Where(s=>s.IsValidDestinationForToken(tokenToSend));
+
+            var allSituations = Watchman.Get<HornedAxe>().GetRegisteredSituations();
+            List<Sphere> allCurrentlyOpenSpheresInSituations = new List<Sphere>();
+            foreach (var situation in allSituations)
+                allCurrentlyOpenSpheresInSituations.AddRange(situation.GetSpheresActiveForCurrentState());
             
-            var availableThresholdSpheres = Watchman.Get<HornedAxe>().
-                GetSpheresOfCategory(SphereCategory.Threshold).Where(s=>s.IsValidDestinationForToken(tokenToSend));
+            var allThresholdSpheresOpen =
+                allCurrentlyOpenSpheresInSituations.Where(sphere => sphere.SphereCategory == SphereCategory.Threshold).ToList();
+
+            var validDestinationSpheres =
+                allThresholdSpheresOpen.Where(s => s.IsValidDestinationForToken(tokenToSend));
+
+            
 
             TokenTravelItinerary selectedItinerary = null;
             
             Vector3 selectedTargetDistance = Vector3.positiveInfinity;
             
 
-            foreach (var thresholdToConsider in availableThresholdSpheres)
+            foreach (var thresholdToConsider in validDestinationSpheres)
             {
                 TokenTravelItinerary candidateItinerary;
                 candidateItinerary = thresholdToConsider.GetItineraryFor(tokenToSend);
