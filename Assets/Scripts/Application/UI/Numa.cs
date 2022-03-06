@@ -84,7 +84,8 @@ namespace SecretHistories.UI
                 _currentOtherworld = null;
             }
 
-            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
+            //turns out some people object to unpausing on return! I see their point.
+          //  Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
 
             Watchman.Get<LocalNexus>().DoShowHud();
 
