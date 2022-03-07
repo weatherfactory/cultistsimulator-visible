@@ -1,7 +1,17 @@
 ﻿{
 	"elements": [
+					{  "id": "versionnews.2022.3.f.1",
+			"label": "2022.3.f.1 FIDELIO",
+	"description": "- Possible fix for stuck-cards issue. \n
+- Better logging for intermittent bugs\n
+- Fixed tofu character in JP log\n
+- Possible catch for peculiar canvasgroupfader bug\n
+- Fixed a couple of nasty save-load issues\n
+- Better logging",
+			"icon": "apostlelantern.mentor"
+			},
 				{  "id": "versionnews.2022.3.e.1",
-			"label": "2022.3.e.1",
+			"label": "2022.3.e.1 EURYDICE",
 	"description": "- Bloody pain in the arse bug where DESPAIR AND VISIONS STOLE CARDS FROM THE MANSUS WHEN IT OPENED, TRAPPING PEOPLE FOREVER, is fixed. This was a hard one to track down and reproduce. Thank you all. \n
 - Using the same shortcut for Start and Collect no longer causes softlock.\n
 - Explore/Hire now works again.\n
@@ -13,14 +23,14 @@
 			"icon": "lockscarheart"
 			},
 			{  "id": "versionnews.2022.3.d.1",
-			"label": "2022.3.d.1",
+			"label": "2022.3.d.1 DIDO",
 	"description": "- Much more user freedom on card placement. Sorry about the earlier trouble.\n
 - 1/8 gridsnap by default. This is as close to no gridsnap as makes no diff, but I may yet add that too. Watching feedback.",
 			"icon": "ascensionenlightenmentc"
 			},
 			{
 			"id": "versionnews.2022.3.c.1",
-			"label": "2022.3.c.1",
+			"label": "2022.3.c.1 CANDIDE",
 	"description": "- game couldn't pick a legacy after winning rarer victories, like the romance ones: it can now.\n
 - a small tweak to address card placement issues. I'm not done yet though.\n
 - fixed a returning-from-Mansus crash issue.",
