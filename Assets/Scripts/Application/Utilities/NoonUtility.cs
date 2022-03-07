@@ -120,7 +120,7 @@ public class NoonLogMessage : ILogMessage
         }
 
 
-        public static void Log(string description, int messageLevel=0, VerbosityLevel verbosityNeeded=VerbosityLevel.Trivia)
+        public static void Log(string description, int messageLevel=0, VerbosityLevel verbosityNeeded=VerbosityLevel.SystemChatter)
         {
             ILogMessage message = new NoonLogMessage(description, messageLevel, Convert.ToInt32(verbosityNeeded));
 

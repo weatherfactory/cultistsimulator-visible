@@ -16,7 +16,7 @@ namespace SecretHistories.Assets.Scripts.Application.Services
             if (UnityEngine.Application.isEditor)
                 Sensitivity = VerbosityLevel.SystemChatter;
             else
-                Sensitivity = VerbosityLevel.Significants;
+                Sensitivity = VerbosityLevel.SystemChatter;
 
         }
         public void AddMessage(ILogMessage message)
