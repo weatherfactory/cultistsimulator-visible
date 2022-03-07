@@ -2,6 +2,7 @@ using System;
 using System.Numerics;
 using System.Security.Cryptography;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.Tokens;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Entities;
 using SecretHistories.States.TokenStates;
@@ -93,6 +94,19 @@ namespace SecretHistories.UI
 
         public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
         {
+            var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
+
+            //I wrote this to cater for save files with unexpectedly invalid destinationspheres as a belt-and-braces approach.
+            //It makes the cycle more robust, though, and even though the invalid destinationsphere issue is now fixed, I feel happier leaving it in. WITH LOGGING THOUGH.
+            if (destinationSphere == null || !destinationSphere.IsValid)
+            {
+                context.Description += $"Aborting token departure for {tokenToSend.PayloadId}: couldn't find a valid sphere at {DestinationSpherePath} ";
+                //an error's occurred, perhaps because of a save rehydration issue. This makes the itinerary unsalvageable.
+                AbortDeparture(tokenToSend, context);
+                return;
+            }
+
+
             _token = tokenToSend;
             OnItineraryArrival += onArrivalCallback;
 
@@ -109,7 +123,7 @@ namespace SecretHistories.UI
 
 
             var tokenTravelAnimation = SetUpTokenTravelAnimation(tokenToSend);
-            var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
+  
 
             SetupBlocksForDestinationSphere(destinationSphere, tokenTravelAnimation);
 
@@ -126,13 +140,10 @@ namespace SecretHistories.UI
 
             tokenTravelAnimation.SetPositions(startPositioninWorldSpace, endPositionInWorldSpace);
             tokenTravelAnimation.SetScaling(StartScale, EndScale, Duration); //1f was the originally set default. I'm not clear atm about the difference between Duration and ScaleDuration 
-
-
-
+            
             var enrouteSphere = tokenToSend.Payload.GetEnRouteSphere();
             enrouteSphere.AcceptToken(tokenToSend, context);
-
-
+            
             destinationSphere.Subscribe(tokenTravelAnimation);
 
             tokenTravelAnimation.Begin(tokenToSend, context, Duration);
@@ -199,6 +210,11 @@ namespace SecretHistories.UI
             return true;
         }
 
+        private void AbortDeparture(Token token,Context context)
+        {
+            token.CurrentItinerary = new TokenInertItinerary();
+            NoonUtility.LogWarning($"Aborted tokentravelitinerarydeparture for payloadid {token.PayloadId}: {context.Description}");
+        }
 
         private void TravelFailed(Token token)
         {

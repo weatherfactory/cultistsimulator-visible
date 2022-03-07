@@ -109,10 +109,11 @@ namespace SecretHistories.Infrastructure
 
             //most important command: put all the tokens in the right place.
             gameState.RootPopulationCommand.Execute(new Context(Context.ActionSource.Loading));
+            Watchman.Get<Heart>().Flush();
             //restore and action any itineraries
             gameState.PopulateXamanekCommand.Execute(new Context(Context.ActionSource.Loading));
             
-            //Show all stored notifation commands
+            //Show all stored notification commands
             foreach (var n in gameState.NotificationCommands)
             {
                 Watchman.Get<Concursum>()

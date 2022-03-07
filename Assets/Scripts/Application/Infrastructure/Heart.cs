@@ -140,7 +140,18 @@ public class Heart : MonoBehaviour
         gameSpeedState.SetGameSpeedCommand(args.ControlPriorityLevel,args.GameSpeed);
     }
 
+    public void Flush()
+    {
+        //When we load, state is only actually restored after the first two heartbeats, because
+        //it takes a while for the recipes to kick in and add RecipeSlots to the situations (e.g.). 
+        //So we call Flush() to make sure everything's caught up after the initial PopulationCommand().
+        //I don't like this. The problem is that in each cycle, a situation can only change state once.
+        //I think the approach is probably to keep changing situations on each Continue() until we hit a state that won't
+        //change unless time is spent. TODO: action this.
 
+       Beat(0f, 0f);
+       Beat(0f, 0f);
+    }
     public void Beat(float seconds,float metaseconds)
     {
 

@@ -33,6 +33,7 @@ public class Context {
         SphereReferenceLocationChanged
     }
 
+    public string Description;
     public ActionSource actionSource;
     public TokenLocation TokenDestination { get; set; }
     public FucinePath OccurringAt { get; set; }
