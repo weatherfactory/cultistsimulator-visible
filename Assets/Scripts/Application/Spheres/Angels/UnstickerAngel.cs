@@ -33,8 +33,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                         return;
                     if (t.CurrentItinerary != null && t.CurrentItinerary.IsActive())
                         return;
-
-                    unstickToken(t);
+                    if(t.CurrentState.Docked())
+                        unstickToken(t);
                 }
 
             }
@@ -46,9 +46,12 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         {
             string unstickingInfo =
                 new string(
-                    $"Unsticking token with payload ID {tokenToUnstick.PayloadEntityId} and TokenState {nameof(tokenToUnstick.CurrentState)}");
+                    $"Unsticking token with payload ID {tokenToUnstick.PayloadEntityId} and TokenState {tokenToUnstick.CurrentState.GetType().Name}");
             NoonUtility.Log(unstickingInfo,0,VerbosityLevel.Essential);
             tokenToUnstick.MakeInteractable();
+            var context = new Context(Context.ActionSource.Unknown);
+            context.Description = "UnstickAngel acting";
+           tokenToUnstick.GoAway(context);
         }
 
         public void SetWatch(Sphere sphere)
