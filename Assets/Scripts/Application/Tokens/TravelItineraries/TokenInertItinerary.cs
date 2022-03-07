@@ -45,7 +45,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
 
         public override bool IsActive()
         {
-            return true;
+            return false;
         }
     }
 }

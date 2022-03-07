@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Assets.Scripts.Application.Spheres.Angels;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -23,6 +24,14 @@ namespace SecretHistories.Spheres
         public override float TokenHeartbeatIntervalMultiplier => SpecifiedTokenHeartbeatIntervalMultiplier;
         [SerializeField] private float SpecifiedTokenHeartbeatIntervalMultiplier;
         private Sphere _overridingDefaultDestination; //currently in use for otherworlds; tracking a homingAngel reference may be better
+
+
+        public void Start()
+        {
+            var unstickAngel = new UnstickerAngel();
+            unstickAngel.SetWatch(this);
+            AddAngel(unstickAngel);
+        }
 
         public override bool ProcessEvictedToken(Token token, Context context)
         {

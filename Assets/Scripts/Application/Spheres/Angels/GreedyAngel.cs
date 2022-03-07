@@ -42,7 +42,7 @@ namespace SecretHistories.Spheres.Angels
                 return;
 
             
-                TryGrabStack(_thresholdSphereToGrabTo, metaseconds);
+            TryGrabStack(_thresholdSphereToGrabTo, metaseconds);
             
         }
 
