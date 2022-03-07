@@ -22,7 +22,16 @@ namespace SecretHistories.UI
 
         public bool IsFullyVisible()
         {
-            return Group.alpha >=1f;
+            try
+            {
+                return Group.alpha >= 1f;
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log($" Problem trying to get the CanvasGroup: assuming IsFullyVisible==false. This is a belt-and-braces workaround for an unknown native code crash.  {e.ToString() }");
+                return false;
+            }
+            
         }
 
         public bool IsAppearing()
