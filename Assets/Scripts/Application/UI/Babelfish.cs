@@ -36,8 +36,18 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         if (_tmpText == null)
         {
             _tmpText = GetComponent<TMP_Text>();
+
+            try
+            {
+            
             defaultColor = _tmpText.color;
             defaultStyle = _tmpText.fontStyle;
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log($"Can't find or set text component in Babelfish loclabel {locLabel}: {e.ToString()}");
+                throw;
+            }
         }
         return _tmpText;
     }
