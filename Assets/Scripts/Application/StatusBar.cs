@@ -14,6 +14,7 @@ public class StatusBar : MonoBehaviour,ICharacterSubscriber
 
     [SerializeField] private TMP_InputField CharacterName;
     [SerializeField] private TextMeshProUGUI CharacterProfession;
+    [SerializeField] private ElementOverview _elementOverview;
 
     public void Awake()
     {
@@ -26,6 +27,8 @@ public class StatusBar : MonoBehaviour,ICharacterSubscriber
         character.Subscribe(this);
         CharacterName.text = character.Name;
         CharacterProfession.text = character.Profession;
+        Watchman.Get<HornedAxe>().Subscribe(_elementOverview);
+        _elementOverview.SetDisplayElementsForLegacy(character.ActiveLegacy);
     }
 
     public void ChangeCharacterName(string newName)

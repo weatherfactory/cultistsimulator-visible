@@ -20,12 +20,11 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
     [SerializeField] StatusBarElementCount[] elementCounts;
     private const int MAX_ELEMENTS = 4;
 
-    public void Start() {
 
-        Watchman.Get<HornedAxe>().Subscribe(this);
+    public void SetDisplayElementsForLegacy(Legacy activeLegacy)
+    {
 
- 
-        Legacy activeLegacy = Watchman.Get<Stable>().Protag().ActiveLegacy;
+    
         if (activeLegacy == null || !activeLegacy.IsValid())
         {
             NoonUtility.LogWarning("no active legacy! Status bar can't display elements.");
