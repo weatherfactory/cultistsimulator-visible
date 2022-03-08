@@ -129,7 +129,14 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
         public void OnNoteInComplete(NavigationArgs args)
         {
             CurrentIndex = args.Index;
-            PagedTokens[CurrentIndex].MakeVisible();
+            if(CurrentIndex<PagedTokens.Count)
+            {
+                PagedTokens[CurrentIndex].MakeVisible();
+            }
+            else
+            {
+             NoonUtility.Log($"error 'Gryla' guard+log: we tried to call OnNoteInComplete with index {args.Index} when there are only {PagedTokens.Count} text tokens in the Notes Sphere here.",1,VerbosityLevel.Essential);)   
+            }
         }
 
 
