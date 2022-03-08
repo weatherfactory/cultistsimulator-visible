@@ -62,8 +62,6 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
     private void Initialise()
     {
-
-
         var concursum = Watchman.Get<Concursum>();
 
         concursum.ChangingCulture.AddListener(OnCultureChanged);
@@ -82,7 +80,20 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
 
     }
 
-    
+    public void OnDestroy()
+    {
+        var concursum = Watchman.Get<Concursum>();
+
+        concursum.ChangingCulture.RemoveListener(OnCultureChanged);
+        concursum.ContentUpdatedEvent.RemoveListener(OnContentUpdated);
+
+        var highContrastSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.HIGHCONTRAST);
+        if (highContrastSetting != null)
+        {
+            highContrastSetting.RemoveSubscriber(this);
+        }
+    }
+
 
     public void SetValuesForCurrentCulture()
     {
