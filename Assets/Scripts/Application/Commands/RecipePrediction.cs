@@ -111,6 +111,10 @@ namespace SecretHistories.Commands
             if (currentRecipePrediction == null) //if there's no existing prediction, this has to be an improvement
                 return true;
 
+            if (currentRecipePrediction.Craftable != Craftable)
+                return true;
+            //We've moved from a craftable to a non-craftable, even if the text is the same. Which we always care about.
+
             if (currentRecipePrediction.IsBaseVerbRecipe()) //Without a recipe prediction update, start button doesn't become available, so this allows us to have craftable honoured when there's no meaningful info in the startdescription
                 return true;
 
@@ -120,6 +124,7 @@ namespace SecretHistories.Commands
             //we often add a . to indicate that the description is intentionally empty.
             //if we do that, or if it's a mistaken empty string, just go back.
 
+            
 
             if (!Situation.TextIntendedForDisplay(Description))
                 return false;

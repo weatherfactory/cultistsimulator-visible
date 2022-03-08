@@ -261,6 +261,12 @@ namespace SecretHistories.Entities {
 
             if (!newRecipePrediction.AddsMeaningfulInformation(_currentRecipePrediction))
                 return;
+            //The *underlying* problem with this whole approach is that we're confusing two things:
+            //(1) Should we add a note in regard to the latest recipe prediction?
+            //(2) Should the UI respond to the latest recipe prediction in some other way, eg changing button state?
+            //This isn't necessarily the same thing.
+            //I've added another special case to AddsMeaningfulInformation as a workaround for the latest issue (moving from non-craftable to craftable recipe doesn't do anything if craftable recipe is "." startdesc
+            //but it's due a rethink.
 
             _currentRecipePrediction = newRecipePrediction;
             NoonUtility.Log($"Situation notification: recipe prediction updated from {_currentRecipePrediction.RecipeId} to {newRecipePrediction.RecipeId}.", 0, VerbosityLevel.Significants);
