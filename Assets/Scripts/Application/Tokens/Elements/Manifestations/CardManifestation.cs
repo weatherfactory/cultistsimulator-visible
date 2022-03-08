@@ -452,7 +452,15 @@ namespace SecretHistories.Manifestations
 
         public void Shroud(bool instant)
         {
-            _flipHelper.Flip(FlipHelper.TargetOrientation.FaceDown, instant);
+            try
+            {
+                _flipHelper.Flip(FlipHelper.TargetOrientation.FaceDown, instant);
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogWarning($"Guard + log for crash 'Stekkjarstaur' - cardmanifestation  {this.name}");
+            }
+            
         }
 
 
