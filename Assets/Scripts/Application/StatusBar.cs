@@ -27,8 +27,12 @@ public class StatusBar : MonoBehaviour,ICharacterSubscriber
         character.Subscribe(this);
         CharacterName.text = character.Name;
         CharacterProfession.text = character.Profession;
-        Watchman.Get<HornedAxe>().Subscribe(_elementOverview);
-        _elementOverview.SetDisplayElementsForLegacy(character.ActiveLegacy);
+
+        if(_elementOverview!=null) //as eg in BH currently...
+        {
+            Watchman.Get<HornedAxe>().Subscribe(_elementOverview);
+            _elementOverview.SetDisplayElementsForLegacy(character.ActiveLegacy);
+        }
     }
 
     public void ChangeCharacterName(string newName)
