@@ -827,7 +827,8 @@ namespace SecretHistories.Entities {
             if (exoticEffect == ExoticEffect.Halt)
             {
                 AddCommand(new TryHaltSituationCommand());
-                ExecuteHeartbeat(0f, 0f);
+                //ExecuteHeartbeat(0f, 0f); //I don't know why I did this. I hope it was to take Halt when it was persisting unhelpfully and crashing things.
+                //If this is so, then the IsObsoleteInState provision has fixed it. If not, then at least this will provide a clue to my thinking for the next adventure.
                 return true;
             }
 

@@ -15,13 +15,13 @@ namespace SecretHistories.Commands.SituationCommands
     {
         public bool IsValidForState(StateEnum forState)
         {
-            return true; //HaltSituation will try to execute in all states.
-            //It only affects OngoingState, but we don't want it to sit in the queue until it finds a state it's valid for.
+            return forState == StateEnum.Halting;
         }
 
         public bool IsObsoleteInState(StateEnum forState)
         {
-            return false;
+            return forState != StateEnum.Halting;
+
         }
 
 
