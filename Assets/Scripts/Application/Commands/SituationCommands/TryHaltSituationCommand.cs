@@ -15,12 +15,12 @@ namespace SecretHistories.Commands.SituationCommands
     {
         public bool IsValidForState(StateEnum forState)
         {
-            return forState == StateEnum.Halting;
+            return forState == StateEnum.Ongoing;
         }
 
         public bool IsObsoleteInState(StateEnum forState)
         {
-            return forState != StateEnum.Halting;
+            return forState != StateEnum.Ongoing;
 
         }
 
