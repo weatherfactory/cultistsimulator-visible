@@ -135,7 +135,7 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
             }
             else
             {
-             NoonUtility.Log($"error 'Gryla' guard+log: we tried to call OnNoteInComplete with index {args.Index} when there are only {PagedTokens.Count} text tokens in the Notes Sphere here.",1,VerbosityLevel.Essential);)   
+             NoonUtility.Log($"error 'Gryla' guard+log: we tried to call OnNoteInComplete with index {args.Index} when there are only {PagedTokens.Count} text tokens in the Notes Sphere here.",1,VerbosityLevel.Essential);   
             }
         }
 
