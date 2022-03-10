@@ -650,24 +650,13 @@ namespace SecretHistories.Spheres
             if (token.TryFulfilGhostPromise(context))
                 return true;
 
-
-
+ 
             if (flock.MinisterToEvictedToken(token, context))
                 return true;
             
             
 
-            var existingElementTokens = GetElementTokens();
 
-            //check if there's an existing stack of that type to merge with
-            foreach (var elementToken in existingElementTokens)
-            {
-                if (token.Payload.CanMergeWith(elementToken.Payload))
-                {
-                    elementToken.Payload.InteractWithIncoming(token);
-                    return true;
-                }
-            }
 
             var targetFreePosition= Choreographer.GetClosestFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition3D);
 

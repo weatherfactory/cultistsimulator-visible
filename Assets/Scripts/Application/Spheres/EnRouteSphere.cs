@@ -38,18 +38,18 @@ namespace SecretHistories.Spheres
              if (flock.MinisterToEvictedToken(token, context))
                 return true;
 
-            //accept it before moving it on: the place it's come from may just have been destroyed, so we want it out of harm's way
-            AcceptToken(token,context);
-            token.MakeInteractable(); //if we got stuck halfway through a drag event, let's make sure we restore raycasting &c
+             //accept it before moving it on: the place it's come from may just have been destroyed, so we want it out of harm's way
+             AcceptToken(token,context);
+             token.MakeInteractable(); //if we got stuck halfway through a drag event, let's make sure we restore raycasting &c
             
-            if (_overridingDefaultDestination != null)
-              _overridingDefaultDestination.AcceptToken(token,context);
-            else
-            {
-                var nextStop = token.GetHomeSphere(); //eg the current homing angel's location, or a default sphere
-                nextStop.ProcessEvictedToken(token, context);
-            }
-            return true;
+             if (_overridingDefaultDestination != null)
+                 _overridingDefaultDestination.AcceptToken(token,context);
+             else
+             {
+                 var nextStop = token.GetHomeSphere(); //eg the current homing angel's location, or a default sphere
+                 nextStop.ProcessEvictedToken(token, context);
+             }
+             return true;
             
         }
 
