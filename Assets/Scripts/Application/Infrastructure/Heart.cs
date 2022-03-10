@@ -51,12 +51,14 @@ public class Heart : MonoBehaviour
     {
         Metapaused = true;
         MetapauseIndicator.Show();
+        NoonUtility.Log("== Metapausing ==");
     }
 
     public void Unmetapause()
     {
         Metapaused = false;
         MetapauseIndicator.Hide();
+        NoonUtility.Log("== Unmetapausing ==");
 
     }
 

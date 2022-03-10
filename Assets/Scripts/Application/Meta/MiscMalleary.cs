@@ -231,7 +231,6 @@ namespace Assets.Scripts.Application.Meta
             Watchman.Get<Heart>().Unmetapause();
             MetapauseButton.gameObject.SetActive(true);
             UnmetapauseButton.gameObject.SetActive(false);
-
         }
 
         public void DoHeartbeats(int beatsToDo)

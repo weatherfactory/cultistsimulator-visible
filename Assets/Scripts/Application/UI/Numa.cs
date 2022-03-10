@@ -62,7 +62,7 @@ namespace SecretHistories.UI
             Watchman.Get<CamOperator>().OnZoomEvent(new ZoomLevelEventArgs{AbsoluteTargetZoomLevel = ZoomLevel.Far});
             Watchman.Get<Heart>().Metapause();
 
-            PreOtherworldAutosave();
+          //  PreOtherworldAutosave(); Player feedback suggests this is confusing and unhelpful, because of the portal window that opens on load. Disabling for now.
 
             var otherworldToOpen = Otherworlds.SingleOrDefault(o => o.EntityId == ingress.GetOtherworldId());
             if (otherworldToOpen == null)

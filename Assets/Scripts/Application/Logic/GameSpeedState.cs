@@ -35,9 +35,16 @@ namespace SecretHistories.Constants
 
             //if trying to pause and already paused, then unset the pause but don't explicitly set a speed
             if (setToSpeed == GameSpeed.Paused && GetEffectiveGameSpeed() == GameSpeed.Paused)
+            {
                 CurrentGameSpeedCommands[commandPriority] = GameSpeed.DeferToNextLowestCommand;
+                NoonUtility.Log("Trying to pause but already paused. Unsetting the pause but not explicitly setting a speed ('defer to next lowest speed command')");
+            }
             else
+            {
                 CurrentGameSpeedCommands[commandPriority] = setToSpeed;
+                NoonUtility.Log($"Setting speed {setToSpeed} as priority {commandPriority}. Effective speed is now {GetEffectiveGameSpeed()}");
+            }
+                
 
         }
 
