@@ -66,13 +66,13 @@ public class CamOperator : MonoBehaviour {
     public void OnTruckEvent(TruckEventArgs args)
     {
         currentTruckInput = args.CurrentTruckInput* pan_step_distance;
-        Debug.Log($"Truck event {currentTruckInput}");
+     //   Debug.Log($"Truck event {currentTruckInput}");
     }
 
     public void OnPedestalEvent(PedestalEventArgs args)
     {
         currentPedestalInput = args.CurrentPedestalInput * pan_step_distance;
-        Debug.Log($"Pedestal event {currentPedestalInput}");
+     //   Debug.Log($"Pedestal event {currentPedestalInput}");
     }
 
 
