@@ -104,6 +104,7 @@ namespace SecretHistories.Entities.Verbs
                 Id = FucinePath.TOKEN + Id;
 
         }
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.Intangible;
 
         public string GetIllumination(string key)
         {

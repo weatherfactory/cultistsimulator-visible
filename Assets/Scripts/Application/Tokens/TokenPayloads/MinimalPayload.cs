@@ -33,7 +33,8 @@ namespace SecretHistories.Entities
         public string Id { get; protected set; }
 
         private HashSet<Sphere> _spheres=new HashSet<Sphere>();
-        
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.PhysicalObject;
+
         public FucinePath GetAbsolutePath()
         {
             var pathAbove = _token.Sphere.GetAbsolutePath();

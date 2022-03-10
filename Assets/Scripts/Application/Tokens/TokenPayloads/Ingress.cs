@@ -110,6 +110,7 @@ namespace SecretHistories.Tokens.TokenPayloads
             Description = _portal.Description;
         }
 
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.PhysicalObject;
 
         public string GetOtherworldId()
         {

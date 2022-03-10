@@ -212,6 +212,8 @@ namespace SecretHistories.UI {
             return Element.Id != NullElement.NULL_ELEMENT_ID;
         }
 
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.PhysicalObject;
+
         public bool IsPermanent()
         {
             return false;

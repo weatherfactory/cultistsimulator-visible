@@ -58,6 +58,8 @@
         Closing
     }
 
+    
+
     public enum PortalEffect
     {
         None = 0,
@@ -139,4 +141,9 @@
         Workstation=3
     }
 
+    public enum OccupiesSpaceAs
+    {
+        PhysicalObject,
+        Intangible
+    }
 }

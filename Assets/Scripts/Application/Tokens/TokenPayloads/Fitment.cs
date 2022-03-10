@@ -146,6 +146,9 @@ namespace SecretHistories.Entities
             throw new NotImplementedException();
         }
 
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.PhysicalObject;
+
+
         public bool IsPermanent()
         {
             return false;

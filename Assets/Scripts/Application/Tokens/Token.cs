@@ -690,6 +690,15 @@ namespace SecretHistories.UI {
             HideGhost();
         }
 
+        public bool OccupiesSameSpaceAs(Token otherToken)
+        {
+            //e.g, Dropzones are intangibles and can share space with whatever they like
+            if (otherToken.Payload.OccupiesSpaceAs() == Payload.OccupiesSpaceAs())
+                return true;
+
+            return false;
+        }
+
         public  void OnDrop(PointerEventData eventData)
         {
             //Inevitable but endlessly confusing. OnDrop is 'something has been dropped on me' and not 'I have been dropped on something'
@@ -697,6 +706,9 @@ namespace SecretHistories.UI {
             //and the token on which this method has been called is the token that is currently in situ
             var incomingToken = eventData.pointerDrag.GetComponent<Token>();
             if (incomingToken == null)
+                return;
+
+            if (!OccupiesSameSpaceAs(incomingToken))
                 return;
 
             if (incomingToken.CurrentState.Docked()) //OnDrop can be called by the event system even if the token has rejected a drag. Filter out false alarms like this.

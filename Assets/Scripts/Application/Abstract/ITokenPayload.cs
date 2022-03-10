@@ -26,6 +26,7 @@ namespace SecretHistories.Abstract
         bool IsValid();
         bool IsValidElementStack();
 
+      public OccupiesSpaceAs OccupiesSpaceAs();
         ///Permanent token payloads are assumed already in the scene, and are populated, not created.
         bool IsPermanent();
         void FirstHeartbeat();

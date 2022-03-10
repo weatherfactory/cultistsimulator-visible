@@ -81,6 +81,7 @@ namespace SecretHistories.Entities {
             
             return wildCardPath.AppendingToken(this.Id);
         }
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.PhysicalObject;
 
         public RectTransform GetRectTransform()
         {
