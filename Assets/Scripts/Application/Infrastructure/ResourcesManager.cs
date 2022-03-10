@@ -177,17 +177,17 @@ public class ResourcesManager: MonoBehaviour
             Watchman.Get<Config>().GetConfigValue(NoonConstants.MUSIC_FOLDER_NAME_KEY);
 
         if (endingFlavour == EndingFlavour.Grand)
-            return Resources.LoadAll<AudioClip>("${musicFolderNameInResources}/endings/grand");
+            return Resources.LoadAll<AudioClip>($"{musicFolderNameInResources}/endings/grand");
 
         if (endingFlavour == EndingFlavour.Melancholy)
-            return Resources.LoadAll<AudioClip>("${musicFolderNameInResources}/endings/melancholy");
+            return Resources.LoadAll<AudioClip>($"{musicFolderNameInResources}/endings/melancholy");
 
         if (endingFlavour == EndingFlavour.Pale)
-            return Resources.LoadAll<AudioClip>("${musicFolderNameInResources}/endings/melancholy");
+            return Resources.LoadAll<AudioClip>($"{musicFolderNameInResources}/endings/melancholy");
 
 
         if (endingFlavour == EndingFlavour.Vile)
-            return Resources.LoadAll<AudioClip>("${musicFolderNameInResources}/endings/melancholy");
+            return Resources.LoadAll<AudioClip>($"{musicFolderNameInResources}/endings/melancholy");
         else
             return null;
     }
