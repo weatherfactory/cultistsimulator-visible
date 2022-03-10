@@ -8,6 +8,7 @@ using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace SecretHistories.Ghosts
 {
@@ -16,8 +17,28 @@ namespace SecretHistories.Ghosts
         
         protected RectTransform rectTransform;
         protected Sphere _projectedInSphere;
-        [SerializeField] protected CanvasGroupFader canvasGroupFader;
+        [SerializeField] private CanvasGroupFader canvasGroupFader;
 
+        protected bool CanvasGroupFaderStillExists()
+        {
+            if (canvasGroupFader == null)
+                return false;
+            if (canvasGroupFader.Equals(null))
+                return false;
+
+            return true;
+        }
+        protected void ShowCanvasGroupFader()
+        {
+            if (CanvasGroupFaderStillExists())
+                canvasGroupFader.Show();
+        }
+
+        protected void HideCanvasGroupFaderImmediately()
+        {
+            if (CanvasGroupFaderStillExists())
+                canvasGroupFader.HideImmediately();
+        }
         private Coroutine _travelCoroutine;
 
 
@@ -26,7 +47,16 @@ namespace SecretHistories.Ghosts
             rectTransform = GetComponent<RectTransform>();
         }
 
-        public bool Visible => (canvasGroupFader.IsFullyVisible() || canvasGroupFader.IsAppearing());
+        public bool Visible
+        {
+            get
+            {
+                if (!CanvasGroupFaderStillExists())
+                    return false;
+                
+                return (canvasGroupFader.IsFullyVisible() || canvasGroupFader.IsAppearing());
+            }
+        }
 
         public virtual void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D,RectTransform tokenRectTransform)
         {
@@ -39,10 +69,12 @@ namespace SecretHistories.Ghosts
                rectTransform.localScale = tokenRectTransform.localScale; //we might want to think again about this: shadows can be cast bigger
                rectTransform.rotation = tokenRectTransform.rotation; //this is to reset the rotation cos I've seen it get stuck at another rotation value
             rectTransform.anchoredPosition3D = showAtAnchoredPosition3D;
-            canvasGroupFader.Show();
+            ShowCanvasGroupFader();
             _projectedInSphere = projectInSphere;
             }
         }
+
+
 
         private void AnimateGhostMovement(Vector3 startPosition,Vector3 endPosition)
         {
@@ -69,7 +101,7 @@ namespace SecretHistories.Ghosts
         
         public virtual void HideIn(Token forToken)
         {
-            canvasGroupFader.HideImmediately(); //ghost behaviour is determined by whether it's visible or not. So when we hide it, we mean hide immediately.
+            HideCanvasGroupFaderImmediately(); //ghost behaviour is determined by whether it's visible or not. So when we hide it, we mean hide immediately.
             if(rectTransform!=null)
                 rectTransform.SetParent(forToken.TokenRectTransform); //so it doesn't clutter up the hierarchy
             _projectedInSphere = null;
