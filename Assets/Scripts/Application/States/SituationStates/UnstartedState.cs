@@ -20,15 +20,16 @@ namespace SecretHistories.States
         public override void Enter(Situation situation)
         {
 
-            var verbThresholdsCommand= new PopulateDominionCommand(SituationDominionEnum.VerbThresholds.ToString(),situation.Verb.Thresholds);
+            var verbThresholdsCommand = new PopulateDominionCommand(SituationDominionEnum.VerbThresholds.ToString(),
+                situation.Verb.Thresholds);
             situation.AddCommand(verbThresholdsCommand);
-            var resetSituationCommand=new ResetSituationCommand();
+            var resetSituationCommand = new ResetSituationCommand();
             situation.AddCommand(resetSituationCommand);
         }
 
         public override void Exit(Situation situation)
         {
-            }
+        }
 
         public override bool IsActiveInThisState(Sphere s)
         {
@@ -53,7 +54,7 @@ namespace SecretHistories.States
             return candidateRecipes;
         }
 
-        private  bool RecipeIsPotentiallyValidForUnstartedState(Recipe recipeToCheck,Situation s)
+        private bool RecipeIsPotentiallyValidForUnstartedState(Recipe recipeToCheck, Situation s)
         {
             //return true if:
             //Situation is Unstarted; verb matches; and the recipe is either craftable or hintable
@@ -68,9 +69,24 @@ namespace SecretHistories.States
         public override bool AllowDuplicateVerbIfVerbSpontaneous => false;
 
 
-        public override void Continue (Situation situation)
+        public override void Continue(Situation situation)
         {
-        
+            EnsureVerbSlotAvailable(situation);
+        }
+
+        private void EnsureVerbSlotAvailable(Situation situation)
+        {
+            if (!situation.GetSpheresActiveForCurrentState().Any())
+            {
+                NoonUtility.LogWarning(
+                    $"Situation {situation.Id} in Unstarted state but no verb slots are present. This probably means one disappeared in an unintended way. Creating base verb slot for this situation.");
+                {
+                    var verbThresholdsCommand =
+                        new PopulateDominionCommand(SituationDominionEnum.VerbThresholds.ToString(),
+                            situation.Verb.Thresholds);
+                    situation.AddCommand(verbThresholdsCommand);
+                }
+            }
         }
     }
 }
