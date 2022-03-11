@@ -460,7 +460,7 @@ public class MenuScreenController : LocalNexus {
     {
         SoundManager.PlaySfx("UIButtonClick");
         Application.OpenURL(
-            "https://weatherfactory.biz/book-of-hours/");
+            "https://weatherfactory.biz/subscribe/");
     }
 
 #endregion
