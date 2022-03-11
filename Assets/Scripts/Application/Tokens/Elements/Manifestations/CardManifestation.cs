@@ -254,7 +254,17 @@ namespace SecretHistories.Manifestations
 
             try
             {
-                stackBadge.gameObject.SetActive(_quantity > 1);
+                if(_quantity>1 && stackCountText!=null)
+                {
+                    stackBadge.gameObject.SetActive(true);
+                    stackCountText.text = _quantity.ToString();
+                }
+                else
+                {
+                    stackBadge.gameObject.SetActive(false);
+                }
+                
+                
             }
             catch (Exception e)
             {
@@ -262,7 +272,7 @@ namespace SecretHistories.Manifestations
             }
 
             
-            stackCountText.text = _quantity.ToString();
+            
             var timeshadow = manifestable.GetTimeshadow();
             UpdateTimerVisuals(timeshadow.Lifetime,timeshadow.LifetimeRemaining,timeshadow.LastInterval,timeshadow.Resaturate);
 
