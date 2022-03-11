@@ -57,7 +57,7 @@ namespace SecretHistories.UI
         public void OpenIngress(RectTransform atRectTransform, Ingress ingress)
         {
 
-            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 1, GameSpeed = GameSpeed.Paused, WithSFX = false });
+            Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(SpeedControlEventArgs.ArgsForPause());
             Watchman.Get<LocalNexus>().DoHideHud();
             Watchman.Get<CamOperator>().OnZoomEvent(new ZoomLevelEventArgs{AbsoluteTargetZoomLevel = ZoomLevel.Far});
             Watchman.Get<Heart>().Metapause();
