@@ -34,7 +34,8 @@ namespace SecretHistories.Entities
 
         protected override void OnPostImportForSpecificEntity(ContentImportLog log, Compendium populatedCompendium)
         {
-            //
+            var caseInsensitiveDictionary = new Dictionary<string, string>(UILabels, StringComparer.OrdinalIgnoreCase);
+            UILabels = caseInsensitiveDictionary;
         }
 
         public Culture(EntityData importDataForEntity, ContentImportLog log) : base(importDataForEntity, log)

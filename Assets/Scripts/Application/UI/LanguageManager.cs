@@ -171,7 +171,7 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
             return GetTemplatedResult(locLabel);
         else
         {
-            if (currentCulture.UILabels.TryGetValue(locLabel.ToLower(), out string localisedValue))
+            if (currentCulture.UILabels.TryGetValue(locLabel, out string localisedValue))
             {
                 if (localisedValue.StartsWith(NoonConstants.TEMPLATE_MARKER))
                     return GetTemplatedResult(localisedValue);
