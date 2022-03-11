@@ -534,9 +534,8 @@ namespace SecretHistories.UI {
         protected void StartDrag(PointerEventData eventData)
         {
             //remember the original location in case the token gets evicted later
-             _homingAngel = new HomingAngel(this);
-            _homingAngel.SetWatch(Sphere);
-            Sphere.AddAngel(_homingAngel);
+            //base behaviour is to set current location in current sphere as home, but not all spheres will do this
+            _homingAngel=Sphere.TryCreateHomingAngelFor(this);
 
             CurrentState=new BeingDraggedState();
            

@@ -122,9 +122,7 @@ namespace SecretHistories.Spheres
        /// This is an arbitrary list of GameObjects tagged with VisibleCharacteristic which can be used to display the presence of angels or anything else that wants to make use of them.
        /// </summary>
        [SerializeField] private List<VisibleCharacteristic> VisibleCharacteristics;
-   
-
-       /// <param name="angel"></param>
+   /// <param name="angel"></param>
        public void ShowAngelPresence(IAngel angel)
        {
            angel.ShowRelevantVisibleCharacteristic(VisibleCharacteristics);
@@ -134,7 +132,17 @@ namespace SecretHistories.Spheres
        public void HideAngelPresence(IAngel angel)
        {
            angel.HideRelevantVisibleCharacteristic(VisibleCharacteristics);
-        }
+       }
+
+       public HomingAngel TryCreateHomingAngelFor(Token forToken)
+       {
+           //override if we don't want the homing token to go back there (eg as with OutputSphere)
+
+         var  _homingAngel = new HomingAngel(forToken);
+           _homingAngel.SetWatch(this);
+           AddAngel(_homingAngel);
+           return _homingAngel;
+       }
 
         public IHasAspects GetContainer()
         {
