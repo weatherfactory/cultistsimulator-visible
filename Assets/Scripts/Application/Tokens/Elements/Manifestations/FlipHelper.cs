@@ -54,8 +54,19 @@ namespace SecretHistories.Manifestations
             if (_targetOrientation == null)
                 return;
 
+            if (_flippee == null || _flippee.Equals(null))
+            {
+                NoonUtility.LogWarning($"Trying to finish flipping/shrouding a card to {_targetOrientation}, but the flippee is null. This shouldn't happen, but maybe it just did!");
+                return;
+            }
+
+
             _flippee.transform.localRotation = Quaternion.Euler(0f, (float)_targetOrientation, 0f);
-            _turnCoroutine = null;
+            if(_turnCoroutine!=null)
+            {
+                _flippee.StopCoroutine(_turnCoroutine);
+                _turnCoroutine = null;
+            }
             CurrentOrientation = _targetOrientation;
             _targetOrientation = null;
         }

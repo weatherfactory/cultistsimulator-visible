@@ -451,24 +451,38 @@ namespace SecretHistories.Manifestations
             get { return false; }
         }
 
-        public void Unshroud(bool instant)
+        public void Unshroud(bool isInstant)
         {
-            if (!instant)
+            if (!isInstant)
                 SoundManager.PlaySfx("CardTurnOver");
 
-            _flipHelper?.Flip(FlipHelper.TargetOrientation.FaceUp,instant);
-            
-        }
-
-        public void Shroud(bool instant)
-        {
             try
             {
-                _flipHelper.Flip(FlipHelper.TargetOrientation.FaceDown, instant);
+                if(_flipHelper==null)
+                    NoonUtility.LogWarning($"cardmanifestation  {this.name} wanted to unshroud but its _fliphHelper was null");
+                else
+                    _flipHelper?.Flip(FlipHelper.TargetOrientation.FaceUp, isInstant);
+
             }
             catch (Exception e)
             {
-                NoonUtility.LogWarning($"Guard + log for crash 'Stekkjarstaur' - cardmanifestation  {this.name}");
+                NoonUtility.LogWarning($"Guard + log for crash 'Stekkjarstaur' - cardmanifestation  {this.name} couldn't flip.");
+            }
+        }
+
+        public void Shroud(bool isInstant)
+        {
+            try
+            {
+                if(_flipHelper==null)
+                    NoonUtility.LogWarning($"cardmanifestation  {this.name} wanted to shroud but its _fliphHelper was null");
+                else
+                  _flipHelper.Flip(FlipHelper.TargetOrientation.FaceDown, isInstant);
+
+            }
+            catch (Exception e)
+            {
+                NoonUtility.LogWarning($"Guard + log for crash 'Stekkjarstaur' - cardmanifestation  {this.name} ouldn't flip.");
             }
             
         }
