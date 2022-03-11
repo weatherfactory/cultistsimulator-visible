@@ -11,6 +11,10 @@ using UnityEngine.UIElements;
 
 namespace SecretHistories.Spheres.Angels
 {
+    /// <summary>
+    /// A HomingAngel is created when we drag a token from a sphere, so that the token can know to return preferentially to that token and that sphere.
+    /// Not all spheres will create HomingAngels, though - some don't want to be homes and will preserve the existing home. Others might do other things, later.
+    /// </summary>
     public class HomingAngel : IAngel
     {
         protected Token OriginToken;

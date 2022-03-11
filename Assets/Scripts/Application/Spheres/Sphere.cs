@@ -134,7 +134,7 @@ namespace SecretHistories.Spheres
            angel.HideRelevantVisibleCharacteristic(VisibleCharacteristics);
        }
 
-       public HomingAngel TryCreateHomingAngelFor(Token forToken)
+       public virtual HomingAngel TryCreateHomingAngelFor(Token forToken)
        {
            //override if we don't want the homing token to go back there (eg as with OutputSphere)
 

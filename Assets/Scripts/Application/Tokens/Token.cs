@@ -171,8 +171,21 @@ namespace SecretHistories.UI {
 
         private HomingAngel _homingAngel;
 
+        /// <summary>
+        /// could be null, remember: careful
+        /// </summary>
+        /// <returns></returns>
+        public HomingAngel GetCurrentHomingAngel()
+        {
+            return _homingAngel;
+        }
+
         public Sphere GetHomeSphere()
         {
+            //I don't like using null rather than a null object as the marker for 'no home'.
+            //This a a candidate for refactoring as and when we do more sophisticated things with HomingAngel
+            //PS at the moment the CS behaviour for a null homingangel that's evicted is to go the Dropzone, which I do like and which I should preserve in any refactoring
+
             if (_homingAngel == null) //slight tangle here: references to the homingangel from here (where we need it to check home) and the homesphere itself (where the angel lives)
                 return Watchman.Get<HornedAxe>().GetDefaultSphere();
             if(_homingAngel.GetWatchedSphere()==null)

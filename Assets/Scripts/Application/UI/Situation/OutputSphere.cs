@@ -11,6 +11,7 @@ using SecretHistories.Fucine;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Spheres;
+using SecretHistories.Spheres.Angels;
 using TMPro;
 using UnityEngine.Events;
 
@@ -71,7 +72,13 @@ public class OutputSphere : Sphere{
 
         base.RemoveToken(token,context);
     }
-
+    public override HomingAngel TryCreateHomingAngelFor(Token forToken)
+    {
+        if (forToken.GetCurrentHomingAngel().GetWatchedSphere() == this)
+            return null; //this is a special-case catch for tokens that had OutputSphere as a home before we decided that OutputSphere shouldn't be a home.
+        else
+            return forToken.GetCurrentHomingAngel();
+    }
 
     public override void EvictToken(Token token, Context context)
     {
