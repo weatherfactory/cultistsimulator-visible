@@ -62,6 +62,8 @@ namespace SecretHistories.UI
 
         public void UpdateItineraryDisplays()
         {
+            if (_itineraries.Count > 10)
+                return; //We don't display itineraries if there's more than 10, because I've brought in Schlemiel the Painter to do it
             ClearItineraryDisplays();
 
             foreach (var i in _itineraries.Where(i => i.Value.IsActive()))
@@ -86,8 +88,18 @@ namespace SecretHistories.UI
             foreach(var sbd in sbds)
                 Destroy(sbd.gameObject);
         }
+
+        public void Update()
+        {
+            UpdateItineraryDisplays();
+            UpdateSphereBlockDisplays();
+            
+        }
+
         public void UpdateSphereBlockDisplays()
         {
+            if (_sphereBlocks.Count > 10)
+                return; //We don't display sphere blocks if there's more than 10, because I've brought in Schlemiel the Painter to do it
             ClearSphereBlockDisplays();
 
             foreach (var s in _sphereBlocks)
@@ -116,14 +128,12 @@ namespace SecretHistories.UI
                 _itineraries[tokenPayloadId] = itinerary;
             else
                 _itineraries.Add(tokenPayloadId, itinerary);
-            UpdateItineraryDisplays();
         }
 
         public void TokenItineraryCompleted(Token token)
         {
             _itineraries.Remove(token.PayloadId);
             DestroyTravelAnimationForToken(token);
-            UpdateItineraryDisplays();
 
         }
 
@@ -131,14 +141,13 @@ namespace SecretHistories.UI
         {
             _itineraries.Remove(token.PayloadId);
             DestroyTravelAnimationForToken(token);
-            UpdateItineraryDisplays();
+
 
         }
 
         public void RegisterSphereBlock(SphereBlock newBlock)
         {
             _sphereBlocks.Add(newBlock);
-            UpdateSphereBlockDisplays();
         }
         //Note: we *don't* remove sphereblocks routinely when a sphere retires, because the blocks may still apply to a successor in the same location
 
@@ -160,7 +169,6 @@ namespace SecretHistories.UI
             else
                 blocksRemoved = _sphereBlocks.RemoveWhere(cb => cb.AtSpherePath.Conforms(atPath) &&
                                                                 cb.BlockDirection == blockDirection && cb.BlockReason == blockReason);
-            UpdateSphereBlockDisplays();
 
             return blocksRemoved;
         }
