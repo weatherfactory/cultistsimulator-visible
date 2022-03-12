@@ -299,6 +299,10 @@ namespace SecretHistories.Spheres
 
         public void AddBlock(BlockDirection blockDirection,BlockReason blockReason)
         {
+            if(this.CurrentlyBlockedForDirectionWithAnyReasonExcept(blockDirection,blockReason))
+                return;
+            //Possible edge case; what if we're blocked for All and we wanted to add something specifically for Inward, e.g.?
+
             var block = new SphereBlock(GetWildPath(), blockDirection, blockReason);
             Watchman.Get<Xamanek>().RegisterSphereBlock(block);
         }
@@ -315,6 +319,7 @@ namespace SecretHistories.Spheres
 
         public virtual bool CurrentlyBlockedForDirectionWithAnyReasonExcept(BlockDirection direction, BlockReason exceptReason)
         {
+            
             var allBlocks = new List<SphereBlock>();
             allBlocks.AddRange(Watchman.Get<Xamanek>().GetBlocksForSphereAtPath(GetWildPath()));
             allBlocks.AddRange(flock.GetImplicitAngelBlocks());
