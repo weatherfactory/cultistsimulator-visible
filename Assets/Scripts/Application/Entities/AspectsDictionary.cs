@@ -87,6 +87,21 @@ namespace SecretHistories.Core
                 this[k] *= quantity;
         }
 
+        /// <summary>
+        /// But there is also a time when we want to show aspects without the stack quantity. For example, in a token details window,
+        /// where we want to see the paradigmatic single-card, and multiplying the aspect * quantity is confusing. This method us to revert when we need to.
+        /// Yes, though, it would be cleaner to have different kinds of AspectDictionary passed around.
+        /// </summary>
+        /// <param name="quantity"></param>
+        public void DivideByQuantity(int quantity)
+        {
+            var keysCopiedForIteration = new List<string>(this.Keys);
+
+
+            foreach (var k in keysCopiedForIteration)
+                this[k] /= quantity;
+        }
+
         public void ApplyMutations(Dictionary<string, int> mutations)
         {
             foreach (KeyValuePair<string, int> mutation in mutations)

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Linq;
+using System.Security.Permissions;
 using Assets.Scripts.Application.Spheres;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
@@ -107,8 +108,11 @@ namespace SecretHistories.UI {
             {
                 ShowImageDecayTimer(stack.GetTimeshadow().Transient,
                     Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(stack.GetTimeshadow().LifetimeRemaining));
-                aspectsDisplayFlat.DisplayAspects(
-                    stack.GetAspects(false)); //token, not _element: cater for possible mutations
+                var aspectsToDisplay = stack.GetAspects(false); //token, not _element: cater for possible mutations
+
+                aspectsToDisplay.DivideByQuantity(stack.Quantity); //also, though, we don't want to display a stack of 8 Funds as Ingredient=8
+
+                aspectsDisplayFlat.DisplayAspects(aspectsToDisplay); 
             }
             else
                 ShowImageDecayTimer(false);
