@@ -1,5 +1,14 @@
 ﻿{
-	"elements": [
+	"elements": [								
+	{ "id": "versionnews.2022.3.k.1",
+			"label": "2022.3.k.1 KNOTGARDEN",
+				"description": "- If you visited the Mansus too often, your save would eventually eat your memory and crash. On brand but no fun. Fixed\n
+- Fixed another Mansus-related crash.\n
+- Fixed another angle on the 'Gryla' bug.\n
+- Stacked cards aspects don't show multiplied by stack total in the info window\n,
+- Double-click or right-click to send will now rememeber the card's original location.\n",
+"icon": "apostleforge.pillar2.dormant"
+			},
 								{ "id": "versionnews.2022.3.j.1",
 			"label": "2022.3.j.1 JENUFA",
 				"description": "- Fixed that bloody bug where everyone's Glover and Glover job was disappearing, and some similar issues.\n
@@ -91,51 +100,7 @@
 			"label": "Right-Click to Send",
 			"description": "You can now right-click as well as double-click to send to verbs. We didn't do this originally because we wanted to keep a mobile port in mind.... but that long since has ceased to be relevant.",
 			"icon": "locationauctionhouse"
-		},									{    
-			"id": "versionnews.emergent",
-			"label": "Alterations",
-			"description": "Restlessness and Corpses now become other things when used in Rites and similar contexts. Some other things leave similar vestiges. Prisoners and Lunatics no longer become corpses with time.",
-			"icon": "fragmentforgef"
-		},
-										{    
-			"id": "versionnews.glow",
-			"label": "Glow Shows the Way",
-			"description": "When you drop a card or tile, a glow shows where it'll end up. [This was a shadow, but the implied multiple light sources were too confusing.]",
-			"icon": "mystique"
-		},
-		
-								{    
-			"id": "versionnews.verbdropzone",
-			"label": "A Kind of Home",
-			"description": "Verbs no longer shoulder existing cards out of the way. Newly spawned verbs will now try to go to a bigger brother of the card dropzone, in order to make board org easier. (If you have an existing beta save, the dropzone will only show up in your next game.)",
-			"icon": "city.valletta"
-		},
-			{
-			"id": "versionnews.newsaveformat",
-			"label": "More Stable Save Format",
-			"description": "We've moved to a new save format. If you have an old-style save.txt but not new style save.json, the game will silently convert old-style save.txt to new-style save.json at startup. It'll rename and keep the old save.txt. If you want to revert to the main branch, you can rename it back to save.txt after you've changed back in Steam/GOG.",
-			"icon": "ascensionchangec"
-		},
-
-
-					{
-			"id": "versionnews.assembly.loading",
-			"label": "Assembly Loading for Mods",
-			"description": "Check the MODDING_README.txt in //streamingassets. If you don't know what any of this means, stay clear :)",
-			"icon": "ritetoolconsumeinfluence"
-		},
-
-									{
-			"id": "versionnews.kyiv",
-			"label": "Kyiv",
-			"description": "Kiev is the 1920s spelling in English; Kyiv is the preferred Ukrainian spelling; we didn't feel we could have a card literally called 'Kiev in Flames' while Ukraine is being invaded.",
-			"icon": "city.kiev"
-		},{    
-			"id": "versionnews.jp",
-			"label": "The Japanese Resolution",
-			"description": "It turns out SIX HUNDRED card descriptions in Japanese have been jumbled up. We're gradually working through and fixing, but it'll take tim. Our thanks to Japanese player Clock for helping us identify the problem in detail. If you're Japanese and wondered why the Third Mark came after the Fifth Mark, that's why.",
-			"icon": "curse_dread"
-		}
+		},							
 		
 		]
 
