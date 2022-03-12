@@ -235,7 +235,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         {
             if (!_transitionFx.CanHide())
                 return;
-
+            RemoveAllEgressSphereBlocks();
             UnregisterAllAttendants();
 
             foreach (var d in _dominions)
@@ -252,6 +252,15 @@ namespace SecretHistories.Assets.Scripts.Application.UI
 
             Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(_activeIngress.GetRectTransform().position,3f);
             _transitionFx.Hide(OnHideComplete);
+        }
+
+        private void RemoveAllEgressSphereBlocks()
+        {
+            foreach (var d in _dominions)
+            {
+                d.EgressSphere.RemoveMatchingBlocks(BlockDirection.Inward, BlockReason.Inactive);
+                
+            }
         }
 
 
