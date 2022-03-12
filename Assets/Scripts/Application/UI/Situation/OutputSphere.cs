@@ -74,10 +74,10 @@ public class OutputSphere : Sphere{
     }
     public override HomingAngel TryCreateHomingAngelFor(Token forToken)
     {
-        if (forToken.GetCurrentHomingAngel().GetWatchedSphere() == this)
-            return null; //this is a special-case catch for tokens that had OutputSphere as a home before we decided that OutputSphere shouldn't be a home.
-        else
-            return forToken.GetCurrentHomingAngel();
+
+        if (forToken.GetCurrentHomingAngel() != null && forToken.GetCurrentHomingAngel().GetWatchedSphere() == this)
+                return null; //this is a special-case catch for tokens that had OutputSphere as a home before we decided that OutputSphere shouldn't be a home.
+        return forToken.GetCurrentHomingAngel(); //might easily be null, if e.g. this is a newly spawned or dealt token.
     }
 
     public override void EvictToken(Token token, Context context)
