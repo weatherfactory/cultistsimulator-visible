@@ -93,10 +93,33 @@ namespace SecretHistories.Spheres
 
             
 
+            var selectedItinerary = SelectItineraryForAValidDestinationSphere(tokenToSend, validDestinationSpheres);
+
+            if (selectedItinerary != null)
+            {
+                if (tokenToSend.Quantity > 1)
+                    tokenToSend.CalveToken(tokenToSend.Quantity - 1, new Context(Context.ActionSource.DoubleClickSend));
+
+                tokenToSend.RequestHomingAngelFromCurrentSphere(); //easy to miss this: ensure that we set the homing angel as we would if we'd dragged it
+
+                selectedItinerary = selectedItinerary.WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION);
+                selectedItinerary.Depart(tokenToSend,context);
+
+
+                return true;
+            }
+
+
+            //final fallthrough - couldn't send it anywhere
+            return false;
+        }
+
+        private static TokenTravelItinerary SelectItineraryForAValidDestinationSphere(Token tokenToSend, IEnumerable<Sphere> validDestinationSpheres)
+        {
             TokenTravelItinerary selectedItinerary = null;
-            
+
             Vector3 selectedTargetDistance = Vector3.positiveInfinity;
-            
+
 
             foreach (var thresholdToConsider in validDestinationSpheres)
             {
@@ -108,38 +131,23 @@ namespace SecretHistories.Spheres
                     selectedItinerary = candidateItinerary;
                     break; //thresholds in open tokens/situations always get priority. This assumes there is only one, though! which may not be the case in future.
                 }
-                var candidateDistance = candidateItinerary.Anchored3DEndPosition - tokenToSend.Location.Anchored3DPosition; //This might well be wrong / n
+
+                var candidateDistance =
+                    candidateItinerary.Anchored3DEndPosition -
+                    tokenToSend.Location.Anchored3DPosition; //This might well be wrong / n
 
                 if (candidateDistance.sqrMagnitude < selectedTargetDistance.sqrMagnitude)
                 {
                     selectedItinerary = candidateItinerary;
                     selectedTargetDistance = candidateDistance;
-                    if (selectedTargetDistance.sqrMagnitude <= 0) //we have a valid location, and nothing will be closer than this
-                            break;
+                    if (selectedTargetDistance.sqrMagnitude <=
+                        0) //we have a valid location, and nothing will be closer than this
+                        break;
                 }
             }
 
-            if (selectedItinerary != null)
-            {
-                if (tokenToSend.Quantity > 1)
-                    tokenToSend.CalveToken(tokenToSend.Quantity - 1, new Context(Context.ActionSource.DoubleClickSend));
-
-                if(selectedItinerary != null)
-                {
-                    selectedItinerary = selectedItinerary.WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION);
-                    selectedItinerary.Depart(tokenToSend,context);
-                }
-
-                return true;
-            }
-
-
-            //final fallthrough - couldn't send it anywhere
-            return false;
+            return selectedItinerary;
         }
-
-
-
 
 
         public override void AcceptToken(Token token, Context context)

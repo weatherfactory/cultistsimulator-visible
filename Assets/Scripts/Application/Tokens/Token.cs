@@ -543,14 +543,19 @@ namespace SecretHistories.UI {
             return true;
         }
 
+        public void RequestHomingAngelFromCurrentSphere()
+        {
+            _homingAngel = Sphere.TryCreateHomingAngelFor(this);
+
+        }
 
         protected void StartDrag(PointerEventData eventData)
         {
             //remember the original location in case the token gets evicted later
             //base behaviour is to set current location in current sphere as home, but not all spheres will do this
-            _homingAngel=Sphere.TryCreateHomingAngelFor(this);
+            RequestHomingAngelFromCurrentSphere();
 
-            CurrentState=new BeingDraggedState();
+             CurrentState =new BeingDraggedState();
            
             
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
