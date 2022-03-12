@@ -98,6 +98,7 @@ namespace SecretHistories.Services
             if(!loadedInfoScene)
             {
                 CleanUpSceneContents();
+                NoonUtility.Log("CRASH!!! UH O! LOADING UH O SCENE!!!");
                 SceneManager.LoadScene(UHOSCENE, LoadSceneMode.Single);
 
                 loadedInfoScene = true;
