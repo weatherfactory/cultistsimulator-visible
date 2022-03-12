@@ -117,11 +117,16 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
 
         public void OnNoteOutComplete(NavigationArgs args)
         {
-            PagedTokens[CurrentIndex].MakeInvisible();
-
-            //foreach (var t in Tokens)
-            //{
-            //    t.MakeInvisible();
+            CurrentIndex = args.Index;
+            if (CurrentIndex < PagedTokens.Count)
+            {
+                PagedTokens[CurrentIndex].MakeInvisible();
+            }
+            else
+            {
+                NoonUtility.Log($"error 'Gryla' guard+log: we tried to call OnNoteOutComplete with index {args.Index} when there are only {PagedTokens.Count} text tokens in the Notes Sphere here.", 1, VerbosityLevel.Essential);
+            }
+            
             //}
 
         }
