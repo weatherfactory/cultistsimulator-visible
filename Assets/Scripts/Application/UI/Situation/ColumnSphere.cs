@@ -105,12 +105,12 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Situation
 
 
 
-        public override void DoRetirement(Action onRetirementComplete, SphereRetirementType retirementType)
+        public override void DoRetirement(Action<SphereRetirementType> onRetirementComplete, SphereRetirementType retirementType)
         {
             //this should (and currently does, tho untidily) call Retire after it's done.
             HandleContentsGracefully(retirementType);
 
-            onRetirementComplete();
+            onRetirementComplete(retirementType);
         }
 
 

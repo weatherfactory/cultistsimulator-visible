@@ -138,7 +138,7 @@ namespace SecretHistories.UI //should be SecretHistories.Sphere. But that'll bre
             
         }
 
-        public override void DoRetirement(Action onRetirementComplete, SphereRetirementType retirementType)
+        public override void DoRetirement(Action<SphereRetirementType> onRetirementComplete, SphereRetirementType retirementType)
         {
          //this should (and currently does, tho untidily) call Retire after it's done.
             HandleContentsGracefully(retirementType);
@@ -149,7 +149,7 @@ namespace SecretHistories.UI //should be SecretHistories.Sphere. But that'll bre
                 StartCoroutine(fxCoroutine);
             }
             else
-                onRetirementComplete();
+                onRetirementComplete(retirementType);
         }
         public Token GetTokenInSlot()
         {
@@ -199,6 +199,9 @@ namespace SecretHistories.UI //should be SecretHistories.Sphere. But that'll bre
 
         public override bool TryAcceptToken(Token token,Context context)
         {
+            if (Defunct)
+                return false; //It would be cleaner to rely on the defunct check on TryAcceptToken() in 
+            //the Sphere class. But I don't want to disentangle all the code below while in mid-bug-hunt.
 
             //does the token match the slot? Check that first
             ContainerMatchForStack match = GetMatchForTokenPayload(token.Payload);
@@ -247,7 +250,7 @@ namespace SecretHistories.UI //should be SecretHistories.Sphere. But that'll bre
                 }
                 //now we put the token in the slot.
                 token.CurrentState=new DroppedInSphereState();
-               AcceptToken(token, context);
+                AcceptToken(token, context);
               
                 SoundManager.PlaySfx("CardPutInSlot");
 

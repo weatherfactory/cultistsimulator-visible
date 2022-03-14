@@ -28,7 +28,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public IEnumerator TriggerHideAnim(Action onComplete) {
+        public IEnumerator TriggerHideAnim(Action<SphereRetirementType> onRetirementComplete) {
             isHidden = true;
 
             anim.Play("recipe-slot-hide");
@@ -42,7 +42,7 @@ namespace SecretHistories.UI {
                 yield return null;
             };
             
-            onComplete();
+            onRetirementComplete(SphereRetirementType.Graceful); //if we are hiding a threshold, we *always* want it to be a graceful retirement.
         }
 
         private void OnDisable() {

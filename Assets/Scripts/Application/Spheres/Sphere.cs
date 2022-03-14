@@ -269,10 +269,10 @@ namespace SecretHistories.Spheres
 
         }
 
-        public virtual void DoRetirement(Action onRetirementComplete,SphereRetirementType retirementType)
+        public virtual void DoRetirement(Action<SphereRetirementType> onRetirementComplete,SphereRetirementType retirementType)
         {
             HandleContentsGracefully(retirementType);
-            onRetirementComplete();
+            onRetirementComplete(retirementType);
         }
 
         protected void HandleContentsGracefully(SphereRetirementType retirementType)
@@ -287,14 +287,17 @@ namespace SecretHistories.Spheres
         }
 
 
-        //Removes the defunct object from the unity hierarchy
-        protected void FinishRetirement()
+        protected virtual void FinishRetirement(SphereRetirementType retirementType)
         {
+                HandleContentsGracefully(retirementType);
             if(Application.isPlaying) //don't destroy objects if we're in Edit Mode
-                Destroy(gameObject,0.1f); //For some reason, destroying the sphere when a token has just been removed from it borks the token's CanvasGroup.
-            //waiting a tenth of a second avoids this.
-            //I'd love to know why.
-
+                                      //      Destroy(gameObject,0.1f); //For some reason, destroying the sphere
+                                      // when a token has just been removed from it borks the token's CanvasGroup.
+                                      //waiting a tenth of a second avoids this.
+                                      //I'd love to know why.
+            //I think the above is no longer true now that we're more cautious about coroutines in CanvasGroup,
+            //and it may have other unexpected effects. Switching back to instant destro
+                Destroy(gameObject);
         }
 
         public void AddBlock(BlockDirection blockDirection,BlockReason blockReason)
@@ -639,7 +642,8 @@ namespace SecretHistories.Spheres
 
         public virtual bool TryAcceptToken(Token token,Context context)
         {
-  
+            if (Defunct)
+                return false;
             AcceptToken(token,context);
             return true;
             
