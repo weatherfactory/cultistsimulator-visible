@@ -142,6 +142,9 @@ public class SphereSpec: AbstractEntity<SphereSpec>
 
         var aspects = payload.GetAspects(true);
 
+        aspects.DivideByQuantity(payload.Quantity); //At least one more circumstance where we need to check aspects of the individual item, not the stack.
+            
+
         foreach (string k in Forbidden.Keys)
         {
             if(aspects.ContainsKey(k))
@@ -155,7 +158,7 @@ public class SphereSpec: AbstractEntity<SphereSpec>
         if(Required.Keys.Count==0)
             return new ContainerMatchForStack(null,SlotMatchForAspectsType.Okay);
 
-
+        
         foreach (string k in Required.Keys) //only one needs to match
         {
             if (aspects.ContainsKey(k))
