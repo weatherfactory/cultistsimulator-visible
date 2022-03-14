@@ -25,7 +25,7 @@ namespace SecretHistories.Entities {
     [Immanence(typeof(HornedAxe))]
     public class HornedAxe {
 
-        public bool EnableAspectCaching = true;
+        public bool EnableAspectCaching = false; //this was breaking something in stacked cards
         
         private readonly HashSet<ISphereCatalogueEventSubscriber> _subscribers = new HashSet<ISphereCatalogueEventSubscriber>();
         private AspectsDictionary _tabletopAspects = null;
