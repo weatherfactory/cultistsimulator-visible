@@ -149,6 +149,9 @@ namespace SecretHistories.UI {
         private Vector3 WorldPosition;
 
         [SerializeField]
+        private string TokenState;
+
+        [SerializeField]
         private string FullPathAsString;
 
   
@@ -1085,6 +1088,7 @@ namespace SecretHistories.UI {
         public void Update()
         {
             WorldPosition = TokenRectTransform.position;
+            TokenState = CurrentState.ToString();
 
         }
     }
