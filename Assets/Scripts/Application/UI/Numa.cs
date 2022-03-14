@@ -56,7 +56,14 @@ namespace SecretHistories.UI
 
         public void OpenIngress(RectTransform atRectTransform, Ingress ingress)
         {
+            var otherworldToOpen = Otherworlds.SingleOrDefault(o => o.EntityId == ingress.GetOtherworldId());
+            if (otherworldToOpen == null)
+            {
+                NoonUtility.LogWarning($"Can't find otherworld with id '{ingress.GetOtherworldId()}' - retiring ingress");
+                ingress.Retire(RetirementVFX.None);
+                return;
 
+            }
             Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(SpeedControlEventArgs.ArgsForPause());
             Watchman.Get<LocalNexus>().DoHideHud();
             Watchman.Get<CamOperator>().OnZoomEvent(new ZoomLevelEventArgs{AbsoluteTargetZoomLevel = ZoomLevel.Far});
@@ -64,15 +71,8 @@ namespace SecretHistories.UI
 
           //  PreOtherworldAutosave(); Player feedback suggests this is confusing and unhelpful, because of the portal window that opens on load. Disabling for now.
 
-            var otherworldToOpen = Otherworlds.SingleOrDefault(o => o.EntityId == ingress.GetOtherworldId());
-            if (otherworldToOpen == null)
-                NoonUtility.LogWarning("Can't find otherworld with id " + ingress.GetOtherworldId());
-            else
-            {
                 otherworldToOpen.Show(atRectTransform, ingress);
                 _currentOtherworld = otherworldToOpen;
-            }
-
             Watchman.Get<IChronicler>()?.ChronicleOtherworldEntry(ingress.EntityId);
         }
 
