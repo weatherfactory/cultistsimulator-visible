@@ -291,13 +291,15 @@ namespace SecretHistories.Spheres
         {
                 HandleContentsGracefully(retirementType);
             if(Application.isPlaying) //don't destroy objects if we're in Edit Mode
-                                      //      Destroy(gameObject,0.1f); //For some reason, destroying the sphere
-                                      // when a token has just been removed from it borks the token's CanvasGroup.
+                                           Destroy(gameObject,0.1f); //For some reason, destroying the sphere
+                                      // when a token has just been removed from it borks the token
                                       //waiting a tenth of a second avoids this.
-                                      //I'd love to know why.
-            //I think the above is no longer true now that we're more cautious about coroutines in CanvasGroup,
-            //and it may have other unexpected effects. Switching back to instant destro
-                Destroy(gameObject);
+                                      //NOW I UNDERSTAND: in circumstances like the Egress sphere, where the destruction
+                                      //happens sufficiently quickly, the token is still a child of the sphere transform.
+                                      //so destroying the sphere starts destroying it, too.
+                                      //We need a way to ensure this never happens, and then we can remove this tenth-of-a-second hack.
+
+             //   Destroy(gameObject);
         }
 
         public void AddBlock(BlockDirection blockDirection,BlockReason blockReason)
