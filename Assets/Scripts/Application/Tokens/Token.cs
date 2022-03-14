@@ -904,8 +904,18 @@ namespace SecretHistories.UI {
 
             Defunct = true;
             _payload.OnChanged -= OnPayloadChanged;
-          //  FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex) <-- finishdrag fires other behaviour we might not want. Check next if we can still merge OK
+            //  FinishDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex) <-- finishdrag fires other behaviour we might not want. Check next if we can still merge OK
 
+            List<ISphereCatalogueEventSubscriber> subscribersAttached =
+                this.gameObject.GetComponents<ISphereCatalogueEventSubscriber>().ToList();
+
+            foreach (var s in subscribersAttached)
+            {
+                Watchman.Get<HornedAxe>().Unsubscribe(s);
+            }
+
+
+            //The bit above should take care of anything like TokenMovementReactionDecorator; but it's still very important that OnCurrentManifestationRetired is called. If it's not, the token may continue to exist as a shell of an object, and blow up various subscriptions.
             _manifestation.Retire(vfx, OnCurrentManifestationRetired);
             _payload.Retire(vfx);
             var args=new SphereContentsChangedEventArgs(Sphere, new Context(Context.ActionSource.Retire));
@@ -915,6 +925,7 @@ namespace SecretHistories.UI {
             SetSphere(Watchman.Get<Limbo>(), new Context(Context.ActionSource.Retire));
 
             _ghost.Retire();
+
 
             return true;
         }

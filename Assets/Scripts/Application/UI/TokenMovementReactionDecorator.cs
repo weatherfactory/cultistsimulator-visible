@@ -43,6 +43,9 @@ namespace SecretHistories.UI
 
         public void OnTokenInteraction(TokenInteractionEventArgs args)
         {
+            if(_decorated==null || _decorated.Equals(null))
+                return;  //shouldn't happen, but did, when we were neglecting to unsubscribe this from HornedAxe and it was clinging on to a half-destroyed token
+
             if (args.Interaction == Interaction.OnDragBegin || args.Interaction==Interaction.OnDrag) //both: circumstances may change as we move, after we've picked it up
             //and we may want to override WilLInteract glows
             {

@@ -494,7 +494,7 @@ namespace SecretHistories.Manifestations
             
             if (retirementVfx == RetirementVFX.CardHide)
             {
-                StartCoroutine( FadeCard(this.gameObject.GetComponentInParent<CanvasGroup>(),0.5f));
+                StartCoroutine( FadeCard(this.gameObject.GetComponentInParent<CanvasGroup>(),0.5f, callbackOnRetired));
             }
             else
             {
@@ -538,7 +538,7 @@ namespace SecretHistories.Manifestations
             return obj.GetComponent<CardEffectRemove>();
         }
 
-        private IEnumerator FadeCard(CanvasGroup canvasGroup, float fadeDuration)
+        private IEnumerator FadeCard(CanvasGroup canvasGroup, float fadeDuration, Action callbackOnRetired)
         {
             float time = 0f;
 
@@ -550,6 +550,7 @@ namespace SecretHistories.Manifestations
             }
 
             Destroy(gameObject);
+            callbackOnRetired();
         }
 
         private void SetBackface(string backId)
