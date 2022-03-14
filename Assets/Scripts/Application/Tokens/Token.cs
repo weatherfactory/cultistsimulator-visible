@@ -605,7 +605,8 @@ namespace SecretHistories.UI {
             if (Quantity <= 1)
                 return;
             var stackLeftBehind = CalveToken(Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
-            homingAngel.SetOriginToken(stackLeftBehind);
+            if(homingAngel!=null) //really need to fix this
+                homingAngel.SetOriginToken(stackLeftBehind);
            
         }
 
