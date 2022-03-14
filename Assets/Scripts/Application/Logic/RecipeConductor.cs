@@ -59,7 +59,7 @@ namespace SecretHistories.Core
                 }
                 else if (!candidateRecipe.RequirementsSatisfiedBy(_aspectsInContext))
                 {
-                    NoonUtility.Log(currentRecipe.Id + " says: " + "Couldn't satisfy requirements for " + lr.Id + " so won't link to it.");
+                    NoonUtility.Log(currentRecipe.Id + " says: " + "Couldn't satisfy requirements for " + lr.Id + " so won't link to it.",0,VerbosityLevel.Trivia);
                 }
                 else if (_character.HasExhaustedRecipe(candidateRecipe))
                 {
@@ -156,7 +156,7 @@ namespace SecretHistories.Core
 
                     if (!candidateRecipe.RequirementsSatisfiedBy(_aspectsInContext))
                     {
-                        NoonUtility.Log(recipe.Id + " says: couldn't satisfy requirements for " + ar.Id);
+                        NoonUtility.Log(recipe.Id + " says: couldn't satisfy requirements for " + ar.Id,0, VerbosityLevel.Trivia);
                         continue;
                     }
                     if (_character.HasExhaustedRecipe(candidateRecipe))
