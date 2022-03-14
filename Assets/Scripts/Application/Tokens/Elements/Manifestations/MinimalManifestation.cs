@@ -83,6 +83,7 @@ namespace SecretHistories.Manifestations
 
         public override void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
+            Destroy(gameObject); //no vfx for a minimal
             callbackOnRetired();
         }
 
