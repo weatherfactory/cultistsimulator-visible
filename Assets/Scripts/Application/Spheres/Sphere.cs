@@ -299,7 +299,6 @@ namespace SecretHistories.Spheres
                                       //so destroying the sphere starts destroying it, too.
                                       //We need a way to ensure this never happens, and then we can remove this tenth-of-a-second hack.
 
-             //   Destroy(gameObject);
         }
 
         public void AddBlock(BlockDirection blockDirection,BlockReason blockReason)
