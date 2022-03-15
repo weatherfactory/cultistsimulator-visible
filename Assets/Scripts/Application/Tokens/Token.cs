@@ -423,7 +423,7 @@ namespace SecretHistories.UI {
         /// <returns></returns>
         public bool TryFulfilGhostPromise(Context context)
         {
-            
+
             return   _ghost.TryFulfilPromise(this,context);
         }
 

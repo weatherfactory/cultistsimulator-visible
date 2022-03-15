@@ -18,6 +18,11 @@ namespace SecretHistories.Entities
             ManifestationType = "Null";
         }
 
+        public override bool IsValid()
+        {
+            return false;
+        }
+
         public static NullElement Create()
         {
             if(_instance==null)

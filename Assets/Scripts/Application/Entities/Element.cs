@@ -137,6 +137,10 @@ namespace SecretHistories.Entities
             get { return Lifetime > 0; }
         }
 
+        public virtual bool IsValid()
+        {
+            return true; //not a null element
+        }
 
         public Element(EntityData importDataForEntity, ContentImportLog log):base(importDataForEntity, log)
         {

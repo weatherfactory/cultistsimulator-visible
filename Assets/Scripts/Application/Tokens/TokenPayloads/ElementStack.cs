@@ -201,7 +201,7 @@ namespace SecretHistories.UI {
 
         public virtual bool IsValid()
         {
-            return true;
+            return IsValidElementStack();
         }
 
         public virtual bool IsValidElementStack()
@@ -209,7 +209,8 @@ namespace SecretHistories.UI {
             if (Defunct)
                 return false;
 
-            return Element.Id != NullElement.NULL_ELEMENT_ID;
+            return Element.IsValid();
+            //return Element.Id != NullElement.NULL_ELEMENT_ID;
         }
 
         public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.PhysicalObject;

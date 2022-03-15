@@ -35,6 +35,7 @@ namespace SecretHistories.Spheres
 
         public override bool ProcessEvictedToken(Token token, Context context)
         {
+
              if (flock.MinisterToEvictedToken(token, context))
                 return true;
 
