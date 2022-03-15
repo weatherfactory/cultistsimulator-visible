@@ -3,9 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Fucine;
 using Assets.Scripts.Application.Infrastructure.Events;
+using JetBrains.Annotations;
 using Newtonsoft.Json.Bson;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Tokens;
@@ -34,6 +36,8 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Object = UnityEngine.Object;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 namespace SecretHistories.UI {
 
@@ -159,6 +163,12 @@ namespace SecretHistories.UI {
 
         public bool IsValid()
         {
+            if (this.Equals(null)) //in process of being destroyed
+                return false;
+
+            if (Defunct)
+                return false;
+
             return Payload.IsValid();
         }
 
@@ -517,7 +527,11 @@ namespace SecretHistories.UI {
     {
 
         if (CanBeDragged())
+        {
             StartDrag(eventData);
+            Watchman.Get<Meniscate>().StartMultiDragAlong(this, eventData); //here not in startdrag, unless we like stack overflows
+        }
+            
         else
             eventData.pointerDrag = null; //AFAICT this is a sensible precaution, but check here first if we're relying on non-drag/drag behaviour in a token somewhere
     }
@@ -531,6 +545,7 @@ namespace SecretHistories.UI {
             return
                 Sphere.AllowDrag 
                 && !CurrentState.InSystemDrivenMotion()
+                && !CurrentState.InPlayerDrivenMotion()
                 && !Defunct
                 && !shrouded
                 && !_manifestation.RequestingNoDrag;
@@ -560,6 +575,8 @@ namespace SecretHistories.UI {
 
         protected void StartDrag(PointerEventData eventData)
         {
+          
+
             //remember the original location in case the token gets evicted later
             //base behaviour is to set current location in current sphere as home, but not all spheres will do this
             RequestHomingAngelFromCurrentSphere();
@@ -584,7 +601,6 @@ namespace SecretHistories.UI {
             startSiblingIndex = TokenRectTransform.GetSiblingIndex();
 
 
-
             //commented out because I *might* not need it; but if I do, we can probably calculate it on the fly.
             //if (this.EntityId=="dropzone")
             //{
@@ -599,6 +615,13 @@ namespace SecretHistories.UI {
 
             SoundManager.PlaySfx("CardPickup");
 
+ 
+        }
+
+        public void StartDragAlong(PointerEventData eventData, Token primaryDragToken)
+        {
+            if(CanBeDragged() && primaryDragToken!=this)
+                StartDrag(eventData);
         }
 
         private void TryCalveOriginToken(HomingAngel homingAngel)
@@ -621,29 +644,37 @@ namespace SecretHistories.UI {
         {
             if (!CurrentlyBeingDragged())
                 return;
-           
-            MoveObject(eventData);
-            
+
+            Vector3 originalPosition = this.transform.position;
+
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Sphere.GetRectTransform(),
+                eventData.position, eventData.pressEventCamera, out var draggedToPosition);
+
+            MoveObject(draggedToPosition);
+            _manifestation.DoMove(eventData, TokenRectTransform);
             NotifyInteracted(new TokenInteractionEventArgs {PointerEventData = eventData, Payload = Payload, Token =this,Sphere= Sphere,Interaction = Interaction.OnDrag});
+            Watchman.Get<Meniscate>().OnMultiDragAlong(originalPosition, this);
+        }
+
+        public void ContinueDragAlong(Vector3 originalPrimaryDragTokenPosition, Token primaryDragToken )
+        {
+            
+            Vector3 offsetVector = primaryDragToken.transform.position - originalPrimaryDragTokenPosition;
+            Vector3 newPosition = this.transform.position + offsetVector;
+            MoveObject(newPosition);
 
         }
 
 
-
-        public void MoveObject(PointerEventData eventData)
+        public void MoveObject(Vector3 toPosition)
         {
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Sphere.GetRectTransform(),
-                eventData.position, eventData.pressEventCamera, out var draggedToPosition);
-
             
             // Potentially change this so it is using UI coords and the RectTransform?
             //  rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
 
-         TokenRectTransform.position = draggedToPosition; ///aaaahh it's *position* not anchoredposition3D because we're getting the world point from the click
+         TokenRectTransform.position = toPosition; ///aaaahh it's *position* not anchoredposition3D because we're getting the world point from the click
 
          Payload.OnTokenMoved(Location);
-
-         _manifestation.DoMove(eventData,TokenRectTransform);
             
 
         }
@@ -656,8 +687,14 @@ namespace SecretHistories.UI {
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
             
             FinishDrag();
+            Watchman.Get<Meniscate>().OnMultiEndDrag(eventData,this);
         }
 
+        public void EndDragAlong(PointerEventData eventData,Token primaryDragToken)
+        {
+            NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragEnd });
+            FinishDrag();
+        }
 
         public void FinishDrag()
         {
@@ -818,6 +855,13 @@ namespace SecretHistories.UI {
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            //multiselect not yet stable
+            //if (Keyboard.current.shiftKey.isPressed)
+            //{
+            //    Watchman.Get<Meniscate>().ToggleMultiSelectedToken(this);
+            //    return;
+            //}
+
             bool handled = _manifestation.HandlePointerClick(eventData, this);
 
             if (handled)
@@ -950,7 +994,7 @@ namespace SecretHistories.UI {
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (!eventData.dragging)
+            if (!eventData.dragging && !Watchman.Get<Meniscate>().IsMultiSelected(this))
                 _manifestation.Unhighlight(HighlightType.Hover, _payload);
 
             NotifyInteracted(new TokenInteractionEventArgs
@@ -988,7 +1032,15 @@ namespace SecretHistories.UI {
 
         }
 
+        public void Select()
+        {
+            _manifestation.Highlight(HighlightType.Selected,Payload);
+        }
 
+        public void Deselect()
+        {
+            _manifestation.Unhighlight(HighlightType.Selected, Payload);
+        }
 
         public void Understate()
         {
