@@ -43,7 +43,7 @@ namespace SecretHistories.Constants {
         private  float GRID_WIDTH;
         [SerializeField]
         private float GRID_HEIGHT;
-     //grid: 150x140
+     //grid: 150x150
      //verb: 140x140 with 5 x space and 5 y space
      //card: 75x115 with 0 x space and 17.5 y space
      
