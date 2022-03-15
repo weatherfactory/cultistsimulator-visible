@@ -57,7 +57,7 @@ namespace SecretHistories.Infrastructure
         }
 
 
-        public override Sphere TryCreateSphere(SphereSpec spec)
+        public override Sphere TryCreateOrRetrieveSphere(SphereSpec spec)
         {
             var newSphere=Watchman.Get<PrefabFactory>().InstantiateSphere(spec, Container);
             newSphere.transform.SetParent(transform);

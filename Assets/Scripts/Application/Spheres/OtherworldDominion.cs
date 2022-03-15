@@ -78,18 +78,20 @@ namespace SecretHistories.Spheres
         }
 
 
-        public override bool CanCreateSphere(SphereSpec spec)
-        {
-            if (GetSphereById(spec.Id) != null)
-                return false; //no spheres with duplicate id
 
-            return true;
-        }
 
-        public override Sphere TryCreateSphere(SphereSpec spec)
+        public override Sphere TryCreateOrRetrieveSphere(SphereSpec spec)
         {
+ 
+            var existingSphere = GetSphereById(spec.Id);
+            if (existingSphere != null)
+                return existingSphere;
+
             if (!CanCreateSphere(spec))
+            {
+                NoonUtility.Log($"Can't create sphere with ID {spec.Id} in dominion {Identifier}; returning NullSphere");
                 return NullSphere.Create();
+            }
 
             var newSphere = Watchman.Get<PrefabFactory>().InstantiateSphere(spec, _manifestable);
             newSphere.transform.SetParent(transform, false);

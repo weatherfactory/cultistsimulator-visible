@@ -61,15 +61,21 @@ namespace SecretHistories.UI
 
             var nativeSphereSpec=new SphereSpec(sphereType,newSphereId);
 
-            return TryCreateSphere(nativeSphereSpec);
+            return TryCreateOrRetrieveSphere(nativeSphereSpec);
         }
 
-        public abstract Sphere TryCreateSphere(SphereSpec spec);
+        public abstract Sphere TryCreateOrRetrieveSphere(SphereSpec spec);
         public abstract bool VisibleFor(string state);
         public abstract bool RelevantTo(string state, Type sphereType);
         public abstract bool RemoveSphere(string id,SphereRetirementType retirementType);
-        public abstract bool CanCreateSphere(SphereSpec spec);
-        
+        public virtual bool CanCreateSphere(SphereSpec spec)
+        {
+            if (GetSphereById(spec.Id) != null)
+                return false; //no spheres with duplicate id.
+
+            return true;
+        }
+
         [DontEncaust]
         public bool CurrentlyFullyEvoked {
             get

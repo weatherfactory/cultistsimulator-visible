@@ -469,7 +469,7 @@ namespace SecretHistories.Entities {
             {
                 //no notes sphere yet exists: create one
                 var notesSphereSpec = new SphereSpec(typeof(NotesSphere), $"{nameof(NotesSphere)}");
-                notesSphere = notesDominion.TryCreateSphere(notesSphereSpec);
+                notesSphere = notesDominion.TryCreateOrRetrieveSphere(notesSphereSpec);
                 notesSphere.transform.localScale = Vector3.one; //HACK! there's a bug where opening the window can increase the scale of new notes spheres. This sets it usefully, but I should find a more permanent solution if the issue shows up again
             }
 

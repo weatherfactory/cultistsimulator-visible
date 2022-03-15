@@ -47,7 +47,7 @@ namespace SecretHistories.Commands
         public void ExecuteOn(AbstractDominion dominion,Context context)
         {
             //ownersphereidentifier and container will also need thought
-     var sphere=dominion.TryCreateSphere(GoverningSphereSpec);
+     var sphere=dominion.TryCreateOrRetrieveSphere(GoverningSphereSpec);
      sphere.OwnerSphereIdentifier = OwnerSphereIdentifier;
          foreach (var t in Tokens)
              t.Execute(context,sphere);

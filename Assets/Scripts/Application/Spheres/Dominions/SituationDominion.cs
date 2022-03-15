@@ -61,10 +61,19 @@ namespace SecretHistories.UI {
 
 
 
-        public override Sphere TryCreateSphere(SphereSpec spec)
+        public override Sphere TryCreateOrRetrieveSphere(SphereSpec spec)
         {
+
+            var existingSphere = GetSphereById(spec.Id);
+            if (existingSphere != null)
+                return existingSphere;
+
+
             if (!CanCreateSphere(spec))
+            {
+                NoonUtility.Log($"Can't create sphere with ID {spec.Id} in dominion {Identifier}; returning NullSphere");
                 return NullSphere.Create();
+            }
 
             if (VisibleForStates == null)
                 VisibleForStates = new List<StateEnum>(); //in case it hasn't been initialised - eg in testing
@@ -166,7 +175,7 @@ namespace SecretHistories.UI {
 
             foreach (var childSlotSpecification in childSlotSpecs)
             {
-                var newSphere = TryCreateSphere(childSlotSpecification);
+                var newSphere = TryCreateOrRetrieveSphere(childSlotSpecification);
                 newSphere.OwnerSphereIdentifier = sphere.Id;
             }
         }

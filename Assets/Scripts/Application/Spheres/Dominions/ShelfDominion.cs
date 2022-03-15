@@ -22,7 +22,7 @@ namespace SecretHistories.UI
      
 
 
-        public override Sphere TryCreateSphere(SphereSpec spec)
+        public override Sphere TryCreateOrRetrieveSphere(SphereSpec spec)
         {
             throw new NotImplementedException();
         }

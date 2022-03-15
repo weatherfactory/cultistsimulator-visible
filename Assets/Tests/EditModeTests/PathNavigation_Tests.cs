@@ -58,7 +58,7 @@ namespace Assets.Tests.EditModeTests
 
              var sphereInTokenPayloadSpec = new SphereSpec(typeof(MinimalSphere), SPHEREINTOKENPAYLOAD_ID);
 
-             _sphereInTokenPayload= _tokenInSphere.Payload.Dominions.First().TryCreateSphere(sphereInTokenPayloadSpec);
+             _sphereInTokenPayload= _tokenInSphere.Payload.Dominions.First().TryCreateOrRetrieveSphere(sphereInTokenPayloadSpec);
              _hornedAxe.RegisterSphere(_sphereInTokenPayload);
 
              _hornedAxe.SetDefaultSpherePath(new FucinePath("~/default"));

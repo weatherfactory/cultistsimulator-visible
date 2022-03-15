@@ -30,7 +30,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Dominions
 
    
 
-        public override Sphere TryCreateSphere(SphereSpec spec)
+        public override Sphere TryCreateOrRetrieveSphere(SphereSpec spec)
         {
             var existingSphere = _spheres.SingleOrDefault(s => s.Id == spec.Id);
             return existingSphere; 

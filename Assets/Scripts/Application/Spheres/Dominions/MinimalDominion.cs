@@ -59,7 +59,7 @@ namespace SecretHistories.UI
             return true;
         }
 
-        public override Sphere TryCreateSphere(SphereSpec spec)
+        public override Sphere TryCreateOrRetrieveSphere(SphereSpec spec)
         {
             if (!CanCreateSphere(spec))
                 return NullSphere.Create();

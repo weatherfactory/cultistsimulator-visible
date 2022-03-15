@@ -20,8 +20,8 @@ namespace Assets.Tests.EditModeTests
         {
             var situationDominion = new GameObject().AddComponent<SituationDominion>();
             var sphereSpec = new SphereSpec(typeof(MinimalSphere), "idwillbeduplicate");
-            situationDominion.TryCreateSphere(sphereSpec);
-            situationDominion.TryCreateSphere(sphereSpec);
+            situationDominion.TryCreateOrRetrieveSphere(sphereSpec);
+            situationDominion.TryCreateOrRetrieveSphere(sphereSpec);
             Assert.AreEqual(1, situationDominion.Spheres.Count);
         }
 
