@@ -39,10 +39,14 @@ namespace SecretHistories.Constants {
      [SerializeField] private bool showDebugInfo;
      [SerializeField] private bool showGrid;
 
-
-        private const float GRID_WIDTH = 150f;
-     private const float GRID_HEIGHT = 150f;
-        
+     [SerializeField]
+        private  float GRID_WIDTH;
+        [SerializeField]
+        private float GRID_HEIGHT;
+     //grid: 150x140
+     //verb: 140x140 with 5 x space and 5 y space
+     //card: 75x115 with 0 x space and 17.5 y space
+     
 
 
         private List<DebugRect> rectanglesToDisplay=new List<DebugRect>();
@@ -187,8 +191,8 @@ namespace SecretHistories.Constants {
         public List<Rect> GetAlternativeCandidateRectsAlongVector(Rect startingRect, Vector2 alongVector, int fromIteration, int toIteration)
         {
             List<Rect> candidateRects = new List<Rect>();
-            float shiftWidth = startingRect.width * GetGridSnapCoefficient();
-            float shiftHeight = startingRect.height * GetGridSnapCoefficient();
+            float shiftWidth = GRID_WIDTH * GetGridSnapCoefficient();
+            float shiftHeight = GRID_HEIGHT * GetGridSnapCoefficient();
 
             for (int i=fromIteration;i<=toIteration;i++)
             {
@@ -297,12 +301,12 @@ namespace SecretHistories.Constants {
             //grid: 150x150
             //verb: 140x140 with 5 x space and 5 y space
             //card: 75x115 with 0 x space and 17.5 y space
-            float gridSize = 150f;
+         //forToken isn't currently in use, but we might treat tokens differently later   
 
             if (GetGridSnapCoefficient() > 0f)
             {
-                float snap_x_interval = gridSize * GetGridSnapCoefficient();
-                float snap_y_interval = gridSize * GetGridSnapCoefficient();
+                float snap_x_interval = GRID_WIDTH * GetGridSnapCoefficient();
+                float snap_y_interval = GRID_HEIGHT * GetGridSnapCoefficient();
 
                 float xAdjustment = intendedPos.x % snap_x_interval;
                 float yAdjustment = intendedPos.y % snap_y_interval;
