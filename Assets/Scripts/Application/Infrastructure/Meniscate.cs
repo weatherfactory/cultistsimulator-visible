@@ -137,7 +137,7 @@ namespace SecretHistories.UI {
                 
         }
 
-        public void ClearMultiSelection()
+        public void ClearMultiSelectedTokens()
         {
             var tokensToClear = new List<Token>(_multiSelectedTokens);
 
@@ -172,6 +172,16 @@ namespace SecretHistories.UI {
                 if (multiSelectedToken.IsValid() && multiSelectedToken != draggedToken)
                     multiSelectedToken.ContinueDragAlong(originalPosition, draggedToken);
             }
+        }
+ 
+        public void OnMultiEndDrag(PointerEventData eventData, Token draggedToken)
+        {
+            foreach (Token multiSelectedToken in _multiSelectedTokens)
+            {
+                if (multiSelectedToken.IsValid() && multiSelectedToken != draggedToken)
+                    multiSelectedToken.EndDragAlong(eventData, draggedToken);
+            }
+            ClearMultiSelectedTokens();
         }
     }
 
