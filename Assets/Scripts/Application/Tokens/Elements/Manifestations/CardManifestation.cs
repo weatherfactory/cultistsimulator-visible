@@ -636,14 +636,14 @@ namespace SecretHistories.Manifestations
         public void OnPointerEnter(PointerEventData eventData)
         {
 
-            var tabletopManager = Watchman.Get<Meniscate>();
-            if (tabletopManager != null
+            var meniscate = Watchman.Get<Meniscate>();
+            if (meniscate != null
             ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
                 if (_flipHelper.CurrentOrientation!=FlipHelper.TargetOrientation.FaceDown)
-                    tabletopManager.SetHighlightedElement(_entityId,_quantity);
+                    meniscate.SetHighlightedElement(_entityId,_quantity);
                 else
-                    tabletopManager.SetHighlightedElement(null);
+                    meniscate.SetHighlightedElement(null);
             }
 
             //ExecuteEvents.Execute<IPointerEnterHandler>(transform.parent.gameObject, eventData,
