@@ -150,19 +150,12 @@ namespace SecretHistories.Constants {
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
             {
-                HideAllDebugRects();
-                ShowDebugRect(targetRect, $"{token.name} goes here )");
                 return intendedPosOnGrid;
             }
-            else
-            {
-                ShowDebugRect(targetRect, $"{token.name} would overlap)");
-                ShowDebugRect(legalPositionCheckResult.BlockerRect,
-                    $"{legalPositionCheckResult.BlockerName} is overlapping default position for {token.name}");
-            }
+    
 
-
-            Vector2 direction = (intendedPos - legalPositionCheckResult.BlockerRect.center).normalized;
+            Vector2 direction = (intendedPosOnGrid - legalPositionCheckResult.BlockerRect.center).normalized; //intendedPosOnGrid *not* intendedPos. We're looking for candidate locations starting at the
+            //grid position we tried, because that's where the ghost will show up, not the original cursor position, which we've already corrected from and don't want to double-correct from.
 
        
 

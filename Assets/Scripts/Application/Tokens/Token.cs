@@ -373,9 +373,8 @@ namespace SecretHistories.UI {
                 return false;
 
 
-            var tokenWorldPosition = Sphere.GetRectTransform().TransformPoint(Location.Anchored3DPosition);
-            var projectionPositionLocalToSphere = projectInSphere.GetRectTransform().InverseTransformPoint(tokenWorldPosition);
-            
+            var projectionPositionLocalToSphere = GetProjectionPositionLocalToSphere(projectInSphere);
+
             var candidatePosition = projectInSphere.Choreographer.GetClosestFreeLocalPosition(this, projectionPositionLocalToSphere);
 
             if(projectInSphere.EmphasiseContents)
@@ -390,6 +389,13 @@ namespace SecretHistories.UI {
             _manifestation.Unhighlight(HighlightType.WillInteract, _payload);
 
             return true;
+        }
+
+        public Vector3 GetProjectionPositionLocalToSphere(Sphere projectInSphere)
+        {
+            var tokenWorldPosition = Sphere.GetRectTransform().TransformPoint(Location.Anchored3DPosition);
+            var projectionPositionLocalToSphere = projectInSphere.GetRectTransform().InverseTransformPoint(tokenWorldPosition);
+            return projectionPositionLocalToSphere;
         }
 
         public bool DisplayGhostAtChoreographerDrivenPosition(Sphere projectInSphere, Vector3 overridingWorldPosition)
