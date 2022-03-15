@@ -51,9 +51,6 @@ namespace SecretHistories.Constants {
         public void OnGUI()
         {
 
-            if (showGrid)
-            
-                ShowGrid();
             
             if (showDebugInfo)
              ShowDebugPlacementInfo();
@@ -74,32 +71,7 @@ namespace SecretHistories.Constants {
             }
         }
 
-        private void ShowGrid()
-        {
-            var gridStyle = GUI.skin.box;
-            Color gridColor = Color.gray;
-            gridColor.a = 0.2f;
-            gridStyle.normal.background = TextureForColour(gridColor);
 
-            float GridMaxX = GRID_WIDTH * 10;
-            float GridMaxY = GRID_HEIGHT * 10;
-
-            bool showAlternateSquare = false;
-
-            for (int x = 0; x <= 10; x++)
-            {
-                for (int y = 0; y <= 10; y++)
-                {
-                    showAlternateSquare = !showAlternateSquare;
-
-                    if (showAlternateSquare)
-                    {
-                        var gridSquare = new Rect(GRID_WIDTH * x, GRID_HEIGHT * y, GRID_WIDTH, GRID_HEIGHT);
-                        GUI.Box(gridSquare, GUIContent.none, gridStyle);
-                    }
-                }
-            }
-        }
 
         private Texture2D TextureForColour( Color col)
         {
@@ -167,7 +139,7 @@ namespace SecretHistories.Constants {
 
             Vector2 intendedPosClampedToTable = GetPosClampedToTable(intendedPos);
             
-                Vector2 intendedPosOnGrid = SnapToGrid(intendedPosClampedToTable, token);
+            Vector2 intendedPosOnGrid = SnapToGrid(intendedPosClampedToTable, token);
 
             var targetRect = token.GetRectFromPosition(intendedPosOnGrid);
 
@@ -322,11 +294,15 @@ namespace SecretHistories.Constants {
 
         public Vector3 SnapToGrid(Vector2 intendedPos,Token forToken)
         {
-            
+            //grid: 150x150
+            //verb: 140x140 with 5 x space and 5 y space
+            //card: 75x115 with 0 x space and 17.5 y space
+            float gridSize = 150f;
+
             if (GetGridSnapCoefficient() > 0f)
             {
-                float snap_x_interval = forToken.TokenRectTransform.rect.width * GetGridSnapCoefficient();
-                float snap_y_interval = forToken.TokenRectTransform.rect.height * GetGridSnapCoefficient();
+                float snap_x_interval = gridSize * GetGridSnapCoefficient();
+                float snap_y_interval = gridSize * GetGridSnapCoefficient();
 
                 float xAdjustment = intendedPos.x % snap_x_interval;
                 float yAdjustment = intendedPos.y % snap_y_interval;
