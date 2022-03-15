@@ -135,7 +135,8 @@ namespace Assets.Scripts.Application.Meta
         public void DestroyDrydockedToken()
         {
             var token = _situationDrydock.GetTokenInSlot();
-            token.Retire(RetirementVFX.None);
+            if(token!=null)
+                token.Retire(RetirementVFX.None);
         }
 
         public void OnSphereChanged(SphereChangedArgs args)

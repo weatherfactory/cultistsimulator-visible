@@ -56,6 +56,7 @@ namespace Assets.Scripts.Application.Meta
 
         public void DestroyDrydockedItem()
         {
+            if(_elementDrydock.Tokens.Any())
              _elementDrydock.GetElementTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
         }
 
