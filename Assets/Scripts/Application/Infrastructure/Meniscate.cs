@@ -155,6 +155,24 @@ namespace SecretHistories.UI {
             return false;
 
         }
+
+        public void StartMultiDragAlong(Token draggedToken, PointerEventData eventData)
+        {
+            foreach (Token multiSelectedToken in _multiSelectedTokens)
+            {
+                if(multiSelectedToken.IsValid() && multiSelectedToken!=draggedToken)
+                    multiSelectedToken.StartDragAlong(eventData,draggedToken);
+            }
+        }
+
+        public void OnMultiDragAlong(Vector3 originalPosition, Token draggedToken)
+        {
+            foreach (Token multiSelectedToken in _multiSelectedTokens)
+            {
+                if (multiSelectedToken.IsValid() && multiSelectedToken != draggedToken)
+                    multiSelectedToken.ContinueDragAlong(originalPosition, draggedToken);
+            }
+        }
     }
 
 
