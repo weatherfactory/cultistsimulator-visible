@@ -173,6 +173,10 @@ namespace SecretHistories.Manifestations
             {
                 ShowHoverGlow(true);
             }
+            else if(highlightType==HighlightType.Selected)
+            {
+                ShowGlow(true,false);
+            }
 
             if (Decays())
                 _forceDisplayTimeRemaining = true;
@@ -196,7 +200,7 @@ namespace SecretHistories.Manifestations
             {
                 ShowHoverGlow(false);
             }
-            else if (highlightType == HighlightType.PotentiallyRelevant || highlightType == HighlightType.WillInteract)
+            else if (highlightType == HighlightType.PotentiallyRelevant || highlightType == HighlightType.WillInteract || highlightType == HighlightType.Selected)
             {
                 ShowGlow(false, false);
             }

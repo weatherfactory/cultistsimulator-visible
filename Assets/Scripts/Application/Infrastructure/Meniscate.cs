@@ -32,6 +32,8 @@ namespace SecretHistories.UI {
         [SerializeField] private CardHoverDetail cardHoverDetail;
 
 
+        private List<Token> _multiSelectedTokens = new List<Token>();
+
         public void Awake()
         {
             var registry = new Watchman();
@@ -104,7 +106,55 @@ namespace SecretHistories.UI {
 	        cardHoverDetail.Show();
         }
 
+        public void ToggleMultiSelectedToken(Token token)
+        {
+            if (token.IsValid() && _multiSelectedTokens.Contains(token))
+            {
+                _multiSelectedTokens.Remove(token);
+                token.Deselect();
+            }
+            else if (token.IsValid())
+            {
+                _multiSelectedTokens.Add(token);
+                token.Select();
+            }
+        }
+        public void AddMultiSelectedToken(Token token)
+        {
+            if(token.IsValid() && !_multiSelectedTokens.Contains(token))
+            {
+                _multiSelectedTokens.Add(token);
+                token.Select();
+            }
+        }
+        public void ClearMultiSelectedToken(Token token)
+        {
+            if (token.IsValid() && _multiSelectedTokens.Contains(token))
+            {
+                _multiSelectedTokens.Remove(token);
+                token.Select();
+            }
+                
+        }
 
+        public void ClearMultiSelection()
+        {
+            var tokensToClear = new List<Token>(_multiSelectedTokens);
+
+            _multiSelectedTokens.Clear();
+
+            foreach(var t in tokensToClear)
+                t.Deselect();
+
+        }
+
+        public bool IsMultiSelected(Token token)
+        {
+            if (_multiSelectedTokens.Contains(token))
+                return true;
+            return false;
+
+        }
     }
 
 

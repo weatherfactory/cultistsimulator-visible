@@ -23,7 +23,8 @@ namespace SecretHistories
         All,
         Hover,
         AttentionPls,
-        PotentiallyRelevant
+        PotentiallyRelevant,
+        Selected
     }
 
     public interface IManifestation
