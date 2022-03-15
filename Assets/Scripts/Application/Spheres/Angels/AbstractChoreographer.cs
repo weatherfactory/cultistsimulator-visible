@@ -64,7 +64,7 @@ namespace SecretHistories.Spheres.Angels
 
       protected bool UnacceptableOverlap(Rect rect1, Rect rect2,float overlapModifier)
       {
-          rect2.size *= overlapModifier;
+          rect1.size *= overlapModifier;
           return rect1.Overlaps(rect2);
       }
     }

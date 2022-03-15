@@ -262,8 +262,8 @@ namespace SecretHistories.Constants {
             
 
             //If the player is deciding where to place the token, they have NEAR ULTIMATE POWER
-            if(placingToken.CurrentlyBeingDragged())
-                return LegalPositionCheckResult.Legal();
+       //     if(placingToken.CurrentlyBeingDragged())
+         //       return LegalPositionCheckResult.Legal();
 
             //If some other agency is trying to do it, they're more constricted. Look for a space.
 
