@@ -79,6 +79,11 @@ namespace SecretHistories.Spheres
                 {
                     if (potentialToken.TryShowPredictedInteractionIfDropped(args.Token))
                         break;
+                    else
+                    {
+                        potentialToken.Sphere.TryDisplayGhost(args.Token);
+                        break;
+                    }
                 }
 
 
