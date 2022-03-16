@@ -1001,15 +1001,15 @@ namespace SecretHistories.Entities {
             var aspectsInContext = tc.GetAspectsInContext(aspects);
 
 
-            var recipe = Watchman.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Watchman.Get<Stable>().Protag(), false);
+            var tryingToActivateRecipe = Watchman.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Watchman.Get<Stable>().Protag(), false);
 
             //no recipe found? get outta here
-            if (recipe != null)
+            if (tryingToActivateRecipe != null)
 
             {
-               var activateRecipeCommand=TryActivateRecipeCommand.ManualRecipeActivation(recipe.Id);
+               var activateRecipeCommand=TryActivateRecipeCommand.ManualRecipeActivation(tryingToActivateRecipe.Id);
                 AddCommand(activateRecipeCommand);
-
+                NoonUtility.Log($"ACTIVATING: {tryingToActivateRecipe.Id}");
                 //The game might be paused! or the player might just be incredibly quick off the mark
                 //so immediately continue with a 0 interval
 

@@ -39,6 +39,7 @@ namespace SecretHistories.Core
 
         public bool Execute(Situation situation)
         {
+            NoonUtility.Log($"EXECUTING: {Recipe.Id}");
             situation.Recipe = this.Recipe;
             var recipeAspects = Recipe.Aspects;
             var targetSphere = situation.GetSingleSphereByCategory(SphereCategory.SituationStorage);
