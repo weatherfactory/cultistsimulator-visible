@@ -212,12 +212,10 @@ namespace SecretHistories.UI //should be SecretHistories.Sphere. But that'll bre
                 SoundManager.PlaySfx("CardDragFail");
                 token.GoAway(context);
 
-                var notifier = Watchman.Get<Notifier>();
-
-                var compendium = Watchman.Get<Compendium>();
-
-                if (notifier != null)
-                    notifier.ShowNotificationWindow(Watchman.Get<ILocStringProvider>().Get("UI_CANTPUT"), match.GetProblemDescription(compendium), false);
+                if(match.MatchType==SlotMatchForAspectsType.ForbiddenAspectPresent || match.MatchType==SlotMatchForAspectsType.RequiredAspectMissing)
+                {
+                    UIDisplayMismatchInformation(match);
+                }
             }
             else if (token.Quantity != 1)
             {
@@ -261,6 +259,17 @@ namespace SecretHistories.UI //should be SecretHistories.Sphere. But that'll bre
             }
 
             return true;
+        }
+
+        private static void UIDisplayMismatchInformation(ContainerMatchForStack match)
+        {
+            var notifier = Watchman.Get<Notifier>();
+
+            var compendium = Watchman.Get<Compendium>();
+
+            if (notifier != null)
+                notifier.ShowNotificationWindow(Watchman.Get<ILocStringProvider>().Get("UI_CANTPUT"),
+                    match.GetProblemDescription(compendium), false);
         }
 
         public override bool IsValidDestinationForToken(Token tokenToSend)

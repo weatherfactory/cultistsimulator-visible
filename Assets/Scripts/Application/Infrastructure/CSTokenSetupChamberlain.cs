@@ -66,10 +66,14 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
         {
             public int tokenCountOnThisRow { get; private set; }
             public int rowCount { get; private set; }
-            private const int STARTINGX = -300;
-            private const int XGAP = 200;
-            private const int STARTINGY = 200;
-            private const int YGAP = 200;
+            private const int STARTINGX = -260;
+            private const int XGAP = 150;
+            private const int STARTINGY = 140;
+            private const int YGAP = 150;
+
+            //this is currently/now a massive magic number hack. These values should be aligned with the actual grid values
+            //this is fixable if we move grid value to settings, not just keep them internal to TabletopChoreographer
+            //refactor when I look at settings again
 
             public Vector3 GetNextTokenPositionAndIncrementCount()
             {

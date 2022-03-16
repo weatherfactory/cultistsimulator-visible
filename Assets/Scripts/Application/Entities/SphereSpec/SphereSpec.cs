@@ -138,7 +138,7 @@ public class SphereSpec: AbstractEntity<SphereSpec>
     public ContainerMatchForStack CheckPayloadAllowedHere(ITokenPayload payload)
     {
         if (!payload.IsValidElementStack() && !AllowAnyToken)
-            return new ContainerMatchForStack(new List<string>(), SlotMatchForAspectsType.ForbiddenAspectPresent);
+            return new ContainerMatchForStack(new List<string>(), SlotMatchForAspectsType.InvalidToken);
 
         var aspects = payload.GetAspects(true);
 
@@ -186,6 +186,7 @@ public enum SlotMatchForAspectsType
 {
 Okay,
     RequiredAspectMissing,
-    ForbiddenAspectPresent
+    ForbiddenAspectPresent,
+    InvalidToken
 }
 }
