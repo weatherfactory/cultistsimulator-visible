@@ -25,6 +25,10 @@ namespace SecretHistories.Spheres
         [SerializeField] private float SpecifiedTokenHeartbeatIntervalMultiplier;
         private Sphere _overridingDefaultDestination; //currently in use for otherworlds; tracking a homingAngel reference may be better
 
+        public override bool AllowDrag
+        {
+            get { return true; } //I *think* I want to do this. Tokens in EnRouteSphere are still potentially excluded from being dragged or pulled by CanBeDragged() and CanBePulled()
+        }
 
         public void Start()
         {

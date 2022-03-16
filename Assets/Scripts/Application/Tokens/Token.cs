@@ -562,7 +562,7 @@ namespace SecretHistories.UI {
                 return false;
             if (CurrentState.InSystemDrivenMotion())
                 return false;
-
+            
             
             return true;
         }

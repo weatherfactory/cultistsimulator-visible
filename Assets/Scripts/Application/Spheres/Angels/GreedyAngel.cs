@@ -94,8 +94,20 @@ namespace SecretHistories.Spheres.Angels
 
             var spheresWhichAllowDragging = Watchman.Get<HornedAxe>().GetSpheresWhichAllowDragging();
 
-  
-            foreach (var sphereToSearch in spheresWhichAllowDragging)
+            var worldSpheres = spheresWhichAllowDragging.Where(s => s.SphereCategory == SphereCategory.World);
+            var outputSpheres = spheresWhichAllowDragging.Where(s => s.SphereCategory == SphereCategory.Output);
+            var thresholdSpheres = spheresWhichAllowDragging.Where(s => s.SphereCategory == SphereCategory.Threshold);
+            //at time of writing, these are the only three categories which allow dragging. In theory, there could be others! check here first if we see a greedy angel failing
+            //but there could be more complex criteria anyway in the future, eg 'within range'
+            //Also see below
+
+            var spheresToSearch = new List<Sphere>();
+            spheresToSearch.AddRange(worldSpheres);
+            spheresToSearch.AddRange(outputSpheres);
+            spheresToSearch.AddRange(thresholdSpheres);
+
+
+            foreach (var sphereToSearch in spheresToSearch)
             {
                 var matchingToken = FindStackForSlotSpecificationInSphere(destinationThresholdSphere.GoverningSphereSpec, sphereToSearch);
 
@@ -105,13 +117,12 @@ namespace SecretHistories.Spheres.Angels
                 if (matchingToken != null)
                 {
                     
-                    if (matchingToken.CurrentlyBeingDragged())
+                    if (matchingToken.CurrentlyBeingDragged()) //This shouldn't currently ever happen, because the EnRouteSphere doesn't allow dragging, but it might cover race conditions
                         matchingToken.FinishDrag();
 
                     if (matchingToken.Quantity > GRAB_QUANTITY_LIMIT)
                         matchingToken.CalveToken(matchingToken.Quantity - GRAB_QUANTITY_LIMIT,
                             new Context(Context.ActionSource.GreedyGrab));
-
 
                     TokenTravelItinerary itinerary = destinationThresholdSphere.GetItineraryFor(matchingToken).
                         WithDuration(NoonConstants.SEND_STACK_TO_SLOT_DURATION);
