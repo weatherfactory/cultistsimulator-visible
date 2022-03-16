@@ -607,7 +607,7 @@ namespace SecretHistories.Spheres
                 {
                     var dealer = new Dealer(Watchman.Get<DealersTable>());
                     if (!String.IsNullOrEmpty(token.Payload.UniquenessGroup))
-                        dealer.IndicateElementInUniquenessGroupManifested(token.Payload.UniquenessGroup);
+                        dealer.IndicateElementInUniquenessGroupManifested(token.Payload.EntityId, token.Payload.UniquenessGroup);
                     if (token.Payload.Unique)
                         dealer.IndicateUniqueElementManifested(token.Payload.EntityId);
                 }
@@ -757,8 +757,11 @@ namespace SecretHistories.Spheres
         {
             var tokensToRetire = new List<Token>(_tokens).Where(filter);
             foreach (Token t in tokensToRetire)
+            {
+                NoonUtility.Log($"Retiring {t.PayloadId} from {this.Id}");
                 t.Retire(RetirementVFX.None);
-            
+            }
+
         }
 
         public void EvictAllTokens(Context context)

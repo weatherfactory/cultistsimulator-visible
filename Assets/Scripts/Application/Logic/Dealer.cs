@@ -85,12 +85,14 @@ namespace Assets.Logic
 
         public void Shuffle(DeckSpec fromDeckSpec)
         {
-
+            
             var drawPile = _dealersTable.GetDrawPile(fromDeckSpec.Id);
             var forbiddenPile = _dealersTable.GetForbiddenPile(fromDeckSpec.Id);
         
             var forbiddenCards = forbiddenPile.GetElementTokens().Select(f => f.PayloadEntityId);
             var permittedCards = fromDeckSpec.Spec.Except(forbiddenCards);
+
+            NoonUtility.Log($"Shuffling {fromDeckSpec.Id}. {permittedCards.Count()} cards available to shuffle.");
 
             foreach (var card in permittedCards.OrderBy(x=>_r.Next()))
             {
@@ -104,6 +106,9 @@ namespace Assets.Logic
         /// <param name="elementId"></param>
         public void IndicateUniqueElementManifested(string elementId)
         {
+            NoonUtility.Log($"Unique element manifested: {elementId}");
+
+
             foreach (var d in _dealersTable.GetDrawPiles())
             { 
                 d.RetireTokensWhere(x => x.Payload.EntityId == elementId);
@@ -114,14 +119,18 @@ namespace Assets.Logic
                 var deckSpec = Watchman.Get<Compendium>().GetEntityById<DeckSpec>(d.GetDeckSpecId());
 
                 if (deckSpec.Spec.Contains(elementId))
+                {
+                    NoonUtility.Log($"Forbidding redraw of {elementId} from {deckSpec.Id}");
                     ForbidRedrawOfCard(elementId, deckSpec);
-                
+                }
             }
 
         }
 
-        public void IndicateElementInUniquenessGroupManifested(string elementUniquenessGroup)
+        public void IndicateElementInUniquenessGroupManifested(string entityId,string elementUniquenessGroup)
         {
+            NoonUtility.Log($"Unique element manifested: {entityId} from {elementUniquenessGroup}");
+
             var elementsToEliminate = Watchman.Get<Compendium>().GetEntitiesAsList<Element>()
                 .Where(e => e.UniquenessGroup == elementUniquenessGroup);
 

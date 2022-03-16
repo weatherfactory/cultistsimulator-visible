@@ -48,7 +48,6 @@ namespace SecretHistories.Spheres
 
         public override bool AllowAmbientAnimations => true;
 
-        public override bool EnforceUniqueStacksInThisContainer => true;
         public override float TokenHeartbeatIntervalMultiplier => 1;
 
 
