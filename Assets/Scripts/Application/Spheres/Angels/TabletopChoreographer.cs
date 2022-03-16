@@ -37,7 +37,6 @@ namespace SecretHistories.Constants {
             return Sphere.GetRect();
         }
      [SerializeField] private bool showDebugInfo;
-     [SerializeField] private bool showGrid;
 
      [SerializeField]
         private  float GRID_WIDTH;
@@ -47,6 +46,7 @@ namespace SecretHistories.Constants {
      //verb: 140x140 with 5 x space and 5 y space
      //card: 75x115 with 0 x space and 17.5 y space
      
+     //remember: there are also currently-aligned magic number values in the initial card setup that need to be manually changed until I refactor the gridsnap out into settings
 
 
         private List<DebugRect> rectanglesToDisplay=new List<DebugRect>();
