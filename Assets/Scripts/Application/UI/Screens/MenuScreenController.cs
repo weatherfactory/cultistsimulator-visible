@@ -172,7 +172,6 @@ public class MenuScreenController : LocalNexus {
     void UpdateAndShowMenu()
     {
         
-        var currentCharacter = Watchman.Get<Stable>().Protag();
 
         var defaultPersistence = new DefaultGamePersistenceProvider();
         var savedGameExists=defaultPersistence.SaveExists();

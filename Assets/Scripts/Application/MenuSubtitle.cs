@@ -32,9 +32,22 @@ public class MenuSubtitle : MonoBehaviour
     public void ShowSubtitle()
     {
         //update subtitle text
-
-        if (Watchman.Get<Stable>().Protag().ActiveLegacy != null)
+        var stable = Watchman.Get<Stable>();
+        if (stable == null)
+        {
+            SetText("UNSTABLE");
+            return;
+        }
+        var protag = Watchman.Get<Stable>().Protag();
+        if (protag == null)
+        {
             //we need to go the long wway round because the label on the legacy entity in the character won't have changed if the compendium has just been repopulated with a different culture
+            SetText("BUT WHO?");
+            return;
+        }
+
+        else if (Watchman.Get<Stable>().Protag().ActiveLegacy != null)
+            //we need to go the long way round because the label on the legacy entity in the character won't have changed if the compendium has just been repopulated with a different culture
             SetText(Watchman.Get<Compendium>().GetEntityById<Legacy>(Watchman.Get<Stable>().Protag().ActiveLegacy.Id).Label);
         else
         {
