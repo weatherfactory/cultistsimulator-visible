@@ -469,8 +469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d82a6bfde0cdd94890dbb172a940e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentStateIdentifier: 0
-  CurrentRecipeId: 
   canvasGroupFader: {fileID: 114000011356646590}
   positioner: {fileID: 114651031545853594}
   artwork: {fileID: 114475561134123840}
@@ -769,7 +767,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15, y: 0}
+  m_AnchoredPosition: {x: -30, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &4521111748551047189
@@ -816,11 +814,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 8
+  m_ChildAlignment: 4
   m_StartCorner: 1
   m_StartAxis: 0
   m_CellSize: {x: 40, y: 40}
-  m_Spacing: {x: 5, y: 5}
+  m_Spacing: {x: 4, y: 4}
   m_Constraint: 2
   m_ConstraintCount: 5
 --- !u!114 &1617814118146466013
