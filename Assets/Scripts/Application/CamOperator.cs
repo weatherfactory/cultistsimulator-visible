@@ -5,6 +5,7 @@ using System.Numerics;
 using SecretHistories.UI;
 using UnityEngine;
 using SecretHistories.Constants;
+using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -110,6 +111,8 @@ public class CamOperator : MonoBehaviour {
 
     public void Update()
     {
+        if (TryMoveAtScreenEdge())
+            return;
 
        if(Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 10)
             timeSpentMoving += Time.deltaTime;
@@ -152,6 +155,48 @@ public class CamOperator : MonoBehaviour {
 
 
 }
+
+    private bool TryMoveAtScreenEdge()
+    {
+        int margin = 100;
+        bool edgeMoved = false;
+        var topEdge = new Rect(1f, Screen.height - margin, Screen.width, margin);
+        var bottomEdge = new Rect(1f, 1f, Screen.width, margin);
+        var leftEdge = new Rect(1f, 1f, margin, Screen.height);
+        var rightEdge = new Rect(Screen.width - margin, 1f, margin, Screen.height);
+
+        Vector3 edgeScrollMove=Vector3.zero;
+        if (topEdge.Contains(Mouse.current.position.ReadValue()))
+        {
+            edgeScrollMove.y = 100f;
+            edgeMoved = true;
+        }
+        else if (bottomEdge.Contains(Mouse.current.position.ReadValue()))
+        {
+            edgeScrollMove.y = -100f;
+            edgeMoved = true;
+        }
+        else if (leftEdge.Contains(Mouse.current.position.ReadValue()))
+        {
+            edgeScrollMove.x= -100f;
+            edgeMoved = true;
+        }
+        else if (rightEdge.Contains(Mouse.current.position.ReadValue()))
+        {
+            edgeScrollMove.x = 100f;
+            edgeMoved = true;
+        }
+
+
+
+
+        Vector3 targetPosition = attachedCamera.transform.position + edgeScrollMove;
+
+        attachedCamera.transform.position = Vector3.Lerp(attachedCamera.transform.position, targetPosition,
+            Time.deltaTime);
+        cameraHasArrived();
+        return edgeMoved;
+    }
 
     private void cameraHasArrived()
     {
