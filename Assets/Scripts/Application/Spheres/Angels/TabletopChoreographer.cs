@@ -138,7 +138,8 @@ namespace SecretHistories.Constants {
         {
             HideAllDebugRects(); //if we're beginning another attempt to find a free local position, hide all existing debug information
 
-            if (token.CurrentState.Docked()) //Sometimes the token has been placed assertively or is already present, but has just been accepted into the tabletop sphere - eg if calved. If so, don't worry about overlaps.
+            if (token.CurrentState.Docked()) //Sometimes the token has been placed assertively or is already present, but has just been accepted into the tabletop sphere
+                                             //- eg if calved. If so, don't worry about overlaps.
                 return intendedPos;
 
             Vector2 intendedPosClampedToTable = GetPosClampedToTable(intendedPos);

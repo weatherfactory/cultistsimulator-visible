@@ -932,6 +932,7 @@ namespace SecretHistories.UI {
 
         public void GoAway(Context context)
         {
+            CurrentState = new EvictedState();
             Sphere.EvictToken(this,context);
         }
 

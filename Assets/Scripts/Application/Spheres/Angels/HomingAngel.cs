@@ -64,14 +64,14 @@ namespace SecretHistories.Spheres.Angels
             OriginToken = originToken;
         }
 
-        public bool MinisterToEvictedToken(Token token, Context context)
+        public bool MinisterToEvictedToken(Token evictedToken, Context context)
         {
-            if (token == TokenToBringHome)
+            if (evictedToken == TokenToBringHome)
             {
                 if (OriginToken != null)
-                    ReturnToOriginTokenLocation(context);
+                    TryReturnToOriginTokenLocation(evictedToken, context);
                 else 
-                    ReturnToHomeLocation(context);
+                    TryReturnToHomeLocation(context);
 
                 Retire();
                 return true;
@@ -102,13 +102,20 @@ namespace SecretHistories.Spheres.Angels
         }
 
 
-        private void ReturnToOriginTokenLocation(Context context)
+        private void TryReturnToOriginTokenLocation(Token evictedToken, Context context)
         {
-            var destination = OriginToken.TokenRectTransform.anchoredPosition3D;
-            SendToken(TokenToBringHome, destination, context);
+            var preferredDestination = OriginToken.TokenRectTransform.anchoredPosition3D;
+            if(OriginToken.CanMergeWithToken(evictedToken))
+                SendToken(TokenToBringHome, preferredDestination, context);
+            else
+            {
+                var alternateDestination = SphereToWatchOver.Choreographer.GetClosestFreeLocalPosition(TokenToBringHome, preferredDestination);
+                SendToken(TokenToBringHome, alternateDestination, context);
+            }
+
         }
 
-        private void ReturnToHomeLocation(Context context)
+        private void TryReturnToHomeLocation(Context context)
         {
             var destination = SphereToWatchOver.Choreographer.GetClosestFreeLocalPosition(TokenToBringHome, PreferredHomingPosition);
             SendToken(TokenToBringHome,destination, context);
