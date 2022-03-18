@@ -188,7 +188,8 @@ public class CamOperator : MonoBehaviour {
             edgeMoved = true;
         }
 
-
+        if (!edgeMoved)
+            return false; //need to branch here, otherwise the lerp move below means the camera keeps re-arriving in the main loop
 
 
         Vector3 targetPosition = attachedCamera.transform.position + edgeScrollMove;
@@ -196,7 +197,8 @@ public class CamOperator : MonoBehaviour {
         attachedCamera.transform.position = Vector3.Lerp(attachedCamera.transform.position, targetPosition,
             Time.deltaTime);
         cameraHasArrived();
-        return edgeMoved;
+        return true;
+        
     }
 
     private void cameraHasArrived()
