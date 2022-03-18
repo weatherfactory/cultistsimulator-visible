@@ -79,17 +79,20 @@ namespace SecretHistories.UI
 
         public void HideCurrentOtherworld()
         {
-            if(_currentOtherworld!=null)
+        
+            if (_currentOtherworld!=null)
             {
+
                 _currentOtherworld.Hide();
                 _currentOtherworld = null;
             }
 
-            //turns out some people object to unpausing on return! I see their point.
-          //  Watchman.Get<LocalNexus>().SpeedControlEvent.Invoke(new SpeedControlEventArgs { ControlPriorityLevel = 3, GameSpeed = GameSpeed.DeferToNextLowestCommand, WithSFX = false });
 
             Watchman.Get<LocalNexus>().DoShowHud();
             Watchman.Get<Heart>().Unmetapause();
+
+ 
+
 
         }
 

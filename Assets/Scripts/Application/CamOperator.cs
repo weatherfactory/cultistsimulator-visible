@@ -233,6 +233,12 @@ public class CamOperator : MonoBehaviour {
 
     public void PointCameraAtTableLevelVector2(Vector2 targetPosition,float secondsTakenToGetThere)
     {
+        smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition, ZOOM_Z_CLOSE);
+        moveDuration = secondsTakenToGetThere;
+        timeSpentMoving = secondsTakenToGetThere;
+    }
+    public void PointCameraAtPosition_ZoomedClose(Vector2 targetPosition, float secondsTakenToGetThere)
+    {
         smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition, attachedCamera.transform.position.z);
         moveDuration = secondsTakenToGetThere;
         timeSpentMoving = secondsTakenToGetThere;
@@ -243,11 +249,12 @@ public class CamOperator : MonoBehaviour {
         float targetHeight = attachedCamera.transform.position.z * zoomFactor;
         PointAtTableLevelAtHeight(targetPosition,targetHeight,secondsTakenToGetThere,onArrival);
         
-        }
+    }
 
     public void PointAtTableLevelAtHeight(Vector2 targetPosition, float targetHeight, float secondsTakenToGetThere, Action onArrival)
     {
-        OnCameraArrived += onArrival;
+        if(onArrival!=null)
+            OnCameraArrived += onArrival;
         smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition, targetHeight);
         smoothTargetPosition.z = targetHeight;
         moveDuration = secondsTakenToGetThere;

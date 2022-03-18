@@ -641,15 +641,14 @@ namespace SecretHistories.Manifestations
         {
 
             var meniscate = Watchman.Get<Meniscate>();
-            if (meniscate != null
-            ) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
+            if (meniscate != null) //eg we might have a face down card on the credits page - in the longer term, of course, this should get interfaced
             {
                 if (_flipHelper.CurrentOrientation!=FlipHelper.TargetOrientation.FaceDown)
                     meniscate.SetHighlightedElement(_entityId,_quantity);
                 else
                     meniscate.SetHighlightedElement(null);
             }
-
+            //This was already commented out, and I think is not currently necessary
             //ExecuteEvents.Execute<IPointerEnterHandler>(transform.parent.gameObject, eventData,
             //    (parentToken, y) => parentToken.OnPointerEnter(eventData));
         }
@@ -663,8 +662,11 @@ namespace SecretHistories.Manifestations
                 Watchman.Get<Meniscate>().SetHighlightedElement(null);
             }
 
-            ExecuteEvents.Execute<IPointerExitHandler>(transform.parent.gameObject, eventData,
-                (parentToken, y) => parentToken.OnPointerExit(eventData));
+            //This was not commented out, but I think is also no longer necessary, and appeared to be causing a nullref exception with recently-Mansus
+            // cards ('Varley')
+            //   ExecuteEvents.Execute<IPointerExitHandler>(transform.parent.gameObject, eventData,
+            //   (parentToken, y) => parentToken.OnPointerExit(eventData));
+
         }
 
 

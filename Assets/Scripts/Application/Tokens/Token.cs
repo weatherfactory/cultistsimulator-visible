@@ -995,6 +995,9 @@ namespace SecretHistories.UI {
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            try
+            {
+
             if (!eventData.dragging && !Watchman.Get<Meniscate>().IsMultiSelected(this))
                 _manifestation.Unhighlight(HighlightType.Hover, _payload);
 
@@ -1007,6 +1010,11 @@ namespace SecretHistories.UI {
                 Interaction = Interaction.OnPointerExited
             });
 
+            }
+            catch (Exception e)
+            {
+             NoonUtility.Log($"Catch for 'Varley', which should no longer occur now we've removed the OnPointerExit->ExecuteEvent from CardManifestation OnPointerExit... but let's be safe. Exception: {e}");
+            }
 
         }
 
