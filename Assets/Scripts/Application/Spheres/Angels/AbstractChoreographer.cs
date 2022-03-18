@@ -43,7 +43,10 @@ namespace SecretHistories.Spheres.Angels
 
       protected float GetGridSnapCoefficient()
       {
-          var snapValue = (float) Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPLEVEL).CurrentValue;
+          var snapSetting = Watchman.Get<Compendium>().GetEntityById<Setting>(NoonConstants.GRIDSNAPLEVEL);
+          
+
+            var snapValue = (float)snapSetting.CurrentValue;
 
           if (snapValue == 1f)
               return 1f;
