@@ -45,6 +45,15 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         private Ingress _activeIngress;
         private EgressThreshold _activeEgress;
 
+
+        public Sphere GetEgressOutputSphereFromIngress()
+        {
+            if(_activeIngress!=null)
+                return _activeIngress.GetEgressOutputSphere();
+
+            return null;
+        }
+
         public string Id => gameObject.name;
         public string EntityId => editableId;
         [SerializeField] private string editableId;
@@ -249,8 +258,8 @@ namespace SecretHistories.Assets.Scripts.Application.UI
             }
 
 
-
-            Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(_activeIngress.GetRectTransform().position,3f);
+            if(_activeEgress!=null ) //definitely absolutely never should be. But WHAT IF IT IS
+                Watchman.Get<CamOperator>().PointCameraAtTableLevelVector2(_activeIngress.GetRectTransform().position,3f);
             _transitionFx.Hide(OnHideComplete);
         }
 

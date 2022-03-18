@@ -5,6 +5,7 @@ using System.Numerics;
 using SecretHistories.UI;
 using UnityEngine;
 using SecretHistories.Constants;
+using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -110,6 +111,8 @@ public class CamOperator : MonoBehaviour {
 
     public void Update()
     {
+        if (TryMoveAtScreenEdge())
+            return;
 
        if(Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 10)
             timeSpentMoving += Time.deltaTime;
@@ -153,6 +156,51 @@ public class CamOperator : MonoBehaviour {
 
 }
 
+    private bool TryMoveAtScreenEdge()
+    {
+        const int EDGE_MARGIN_PX = 75;
+        const float EDGE_SPEED = 180f;
+        bool edgeMoved = false;
+        var topEdge = new Rect(1f, Screen.height - EDGE_MARGIN_PX, Screen.width, EDGE_MARGIN_PX);
+        var bottomEdge = new Rect(1f, 1f, Screen.width, EDGE_MARGIN_PX/3);  //bottom edge of the screen is a nuisance; we want people to be able to click on status bar without scrolling
+        var leftEdge = new Rect(1f, 1f, EDGE_MARGIN_PX, Screen.height);
+        var rightEdge = new Rect(Screen.width - EDGE_MARGIN_PX, 1f, EDGE_MARGIN_PX, Screen.height);
+
+        Vector3 edgeScrollMove=Vector3.zero;
+        if (topEdge.Contains(Mouse.current.position.ReadValue()) && !Watchman.Get<DebugTools>().isActiveAndEnabled)
+        {
+            edgeScrollMove.y = EDGE_SPEED;
+            edgeMoved = true;
+        }
+        else if (bottomEdge.Contains(Mouse.current.position.ReadValue()))
+        {
+            edgeScrollMove.y = -EDGE_SPEED;
+            edgeMoved = true;
+        }
+        else if (leftEdge.Contains(Mouse.current.position.ReadValue()) && !Watchman.Get<DebugTools>().isActiveAndEnabled)
+        {
+            edgeScrollMove.x= -EDGE_SPEED;
+            edgeMoved = true;
+        }
+        else if (rightEdge.Contains(Mouse.current.position.ReadValue()))
+        {
+            edgeScrollMove.x = EDGE_SPEED;
+            edgeMoved = true;
+        }
+
+        if (!edgeMoved)
+            return false; //need to branch here, otherwise the lerp move below means the camera keeps re-arriving in the main loop
+
+
+        Vector3 targetPosition = attachedCamera.transform.position + edgeScrollMove;
+
+        attachedCamera.transform.position = Vector3.Lerp(attachedCamera.transform.position, targetPosition,
+            Time.deltaTime);
+        cameraHasArrived();
+        return true;
+        
+    }
+
     private void cameraHasArrived()
     {
         smoothTargetPosition = attachedCamera.transform.position;
@@ -185,6 +233,12 @@ public class CamOperator : MonoBehaviour {
 
     public void PointCameraAtTableLevelVector2(Vector2 targetPosition,float secondsTakenToGetThere)
     {
+        smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition, ZOOM_Z_CLOSE);
+        moveDuration = secondsTakenToGetThere;
+        timeSpentMoving = secondsTakenToGetThere;
+    }
+    public void PointCameraAtPosition_ZoomedClose(Vector2 targetPosition, float secondsTakenToGetThere)
+    {
         smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition, attachedCamera.transform.position.z);
         moveDuration = secondsTakenToGetThere;
         timeSpentMoving = secondsTakenToGetThere;
@@ -195,11 +249,12 @@ public class CamOperator : MonoBehaviour {
         float targetHeight = attachedCamera.transform.position.z * zoomFactor;
         PointAtTableLevelAtHeight(targetPosition,targetHeight,secondsTakenToGetThere,onArrival);
         
-        }
+    }
 
     public void PointAtTableLevelAtHeight(Vector2 targetPosition, float targetHeight, float secondsTakenToGetThere, Action onArrival)
     {
-        OnCameraArrived += onArrival;
+        if(onArrival!=null)
+            OnCameraArrived += onArrival;
         smoothTargetPosition = getCameraPositionAboveTableAdjustedForRotation(targetPosition, targetHeight);
         smoothTargetPosition.z = targetHeight;
         moveDuration = secondsTakenToGetThere;
