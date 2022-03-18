@@ -316,6 +316,8 @@ namespace SecretHistories.UI {
             //return typeof(CardManifestation);
         }
 
+
+        
         public void InitialiseManifestation(IManifestation _manifestation)
         {
             _manifestation.Initialise(this);

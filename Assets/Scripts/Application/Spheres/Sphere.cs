@@ -92,8 +92,11 @@ namespace SecretHistories.Spheres
         [DontEncaust]
         public virtual AbstractChoreographer Choreographer => gameObject.GetComponent<AbstractChoreographer>();
 
-        
 
+        public virtual Type GetDefaultManifestationType()
+        {
+            return typeof(CardManifestation);
+        }
 
         public Vector3 WorldPosition;
 

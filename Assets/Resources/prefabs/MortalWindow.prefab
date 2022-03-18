@@ -539,7 +539,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013105576594}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 1
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.03137255, g: 0.07058824, b: 0.105882354, a: 0.9019608}
+  m_Color: {r: 0.047058824, g: 0.043137256, b: 0.043137256, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1826,8 +1826,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293910931
-  m_fontColor: {r: 0.5764706, g: 0.88235295, b: 0.9372549, a: 1}
+    rgba: 4292472568
+  m_fontColor: {r: 0.972549, g: 0.93333334, b: 0.8509804, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2716,9 +2716,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.38039216, g: 0.7294118, b: 0.7921569, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_PressedColor: {r: 0.26708478, g: 0.63278526, b: 0.6985294, a: 1}
+    m_PressedColor: {r: 0.6392157, g: 0.53333336, b: 0.31764707, a: 1}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.53676474, g: 0.53676474, b: 0.53676474, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2817,7 +2817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbe20e58b702443bc9a2eedc97e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spherePrefab: {fileID: 1127656137174522416, guid: 8315d660ae3773442ac46832ef4f36d4,
+  spherePrefab: {fileID: -7243989048337633702, guid: 5fbdaaf95bedb0d4dbe543457fb83494,
     type: 3}
   canvasGroupFader: {fileID: 2645367709224873335}
   sphereArrangement: {fileID: 6704220074974933016}

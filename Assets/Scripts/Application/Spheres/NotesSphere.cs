@@ -9,6 +9,7 @@ using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
@@ -26,7 +27,10 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
         public List<Token> PagedTokens = new List<Token>();
         public int CurrentIndex { get; set; }
 
-
+        public override Type GetDefaultManifestationType()
+        {
+            return typeof(TextManifestation);
+        }
         /// <summary>
         ///  //Notes spheres always destroy all their contents. We don't want notes to be evicted on to the desktop
         /// </summary>
