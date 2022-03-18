@@ -158,32 +158,33 @@ public class CamOperator : MonoBehaviour {
 
     private bool TryMoveAtScreenEdge()
     {
-        int margin = 100;
+        const int EDGE_MARGIN_PX = 75;
+        const float EDGE_SPEED = 180f;
         bool edgeMoved = false;
-        var topEdge = new Rect(1f, Screen.height - margin, Screen.width, margin);
-        var bottomEdge = new Rect(1f, 1f, Screen.width, margin);
-        var leftEdge = new Rect(1f, 1f, margin, Screen.height);
-        var rightEdge = new Rect(Screen.width - margin, 1f, margin, Screen.height);
+        var topEdge = new Rect(1f, Screen.height - EDGE_MARGIN_PX, Screen.width, EDGE_MARGIN_PX);
+        var bottomEdge = new Rect(1f, 1f, Screen.width, EDGE_MARGIN_PX/3);  //bottom edge of the screen is a nuisance; we want people to be able to click on status bar without scrolling
+        var leftEdge = new Rect(1f, 1f, EDGE_MARGIN_PX, Screen.height);
+        var rightEdge = new Rect(Screen.width - EDGE_MARGIN_PX, 1f, EDGE_MARGIN_PX, Screen.height);
 
         Vector3 edgeScrollMove=Vector3.zero;
-        if (topEdge.Contains(Mouse.current.position.ReadValue()))
+        if (topEdge.Contains(Mouse.current.position.ReadValue()) && !Watchman.Get<DebugTools>().isActiveAndEnabled)
         {
-            edgeScrollMove.y = 100f;
+            edgeScrollMove.y = EDGE_SPEED;
             edgeMoved = true;
         }
         else if (bottomEdge.Contains(Mouse.current.position.ReadValue()))
         {
-            edgeScrollMove.y = -100f;
+            edgeScrollMove.y = -EDGE_SPEED;
             edgeMoved = true;
         }
-        else if (leftEdge.Contains(Mouse.current.position.ReadValue()))
+        else if (leftEdge.Contains(Mouse.current.position.ReadValue()) && !Watchman.Get<DebugTools>().isActiveAndEnabled)
         {
-            edgeScrollMove.x= -100f;
+            edgeScrollMove.x= -EDGE_SPEED;
             edgeMoved = true;
         }
         else if (rightEdge.Contains(Mouse.current.position.ReadValue()))
         {
-            edgeScrollMove.x = 100f;
+            edgeScrollMove.x = EDGE_SPEED;
             edgeMoved = true;
         }
 
