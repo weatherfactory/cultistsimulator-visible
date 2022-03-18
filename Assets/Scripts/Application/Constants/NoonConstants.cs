@@ -10,6 +10,7 @@ namespace SecretHistories.Constants
     {
         public const string BHPRODUCTNAME = "Book of Hours";
         public const string CSPRODUCTNAME = "Cultist Simulator";
+        public const string LGPRODUCTNAME = "The Long Game";
 
         public const float MOMENT_TIME_INTERVAL = 0.5f;
         public const string TEMPLATE_MARKER = "$";

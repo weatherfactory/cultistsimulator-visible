@@ -120,7 +120,11 @@ namespace SecretHistories.Utility
 
 
         }
-
+        [MenuItem("Tools/LG Build (Windows)", false, 60)]
+        public static void PerformWindowsLGBuild()
+        {
+            PerformBuild(Product.LG, BuildTarget.StandaloneWindows);
+        }
 
         [MenuItem("Tools/CS Distribution (ALL)", false, 110)]
         public static void MakeAllDistributions()

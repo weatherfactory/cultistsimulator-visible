@@ -14,12 +14,12 @@ namespace SecretHistories.Editor.BuildScripts
         public Product Id { get; private set; }
         public bool IsDLC { get; private set; }
 
-        private const int LGSProductIdsStartAt = 200;
-        private const int BHProductIDsStartAt = 200;
+        private const int LGProductIdsStartAt = 1000;
+        private const int BHProductIDsStartAt = 100;
 
         public GameId GetGameId()
         {
-            if ((int) Id > LGSProductIdsStartAt)
+            if ((int) Id > LGProductIdsStartAt)
                 return GameId.LG;
             if ((int) Id > BHProductIDsStartAt)
                 return GameId.BH;
@@ -57,7 +57,8 @@ namespace SecretHistories.Editor.BuildScripts
         PRIEST=5,
         GHOUL=6,
         EXILE=7,
-        BH=101
+        BH=101,
+        LG=1001
 
     }
 }

@@ -15,6 +15,7 @@ namespace Assets.Editor.BuildScripts
     {
         private static List<string> CSScenes;
         private static List<string> BHScenes;
+        private static List<string> LGScenes;
 
 
         static SwitchProjects()
@@ -32,6 +33,12 @@ namespace Assets.Editor.BuildScripts
                 "Assets/Scenes/BH/S4Library.unity"
             };
 
+             LGScenes = new List<string>
+             {
+                 //       "Assets/Scenes/BH/S3MenuUmber.unity",
+                 "Assets/Scenes/LG/S4World.unity" //doesn't yet exist, prototyping in CS
+             };
+
         }
 
         [MenuItem("Tools/Switch/CS")]
@@ -39,6 +46,7 @@ namespace Assets.Editor.BuildScripts
         {
             PlayerSettings.productName = NoonConstants.CSPRODUCTNAME;
             OpenScenes(CSScenes);
+         //   CloseScenes(LGScenes);
             CloseScenes(BHScenes);
 
         }
@@ -48,9 +56,19 @@ namespace Assets.Editor.BuildScripts
         {
             PlayerSettings.productName = NoonConstants.BHPRODUCTNAME;
             OpenScenes(BHScenes);
+         //   CloseScenes(LGScenes);
             CloseScenes(CSScenes);
         }
+        [MenuItem("Tools/Switch/LG")]
+        static void SwitchToLG()
+        {
+            PlayerSettings.productName = NoonConstants.LGPRODUCTNAME;
+            OpenScenes(CSScenes);
+            //   OpenScenes(LGScenes);
+            //CloseScenes(CSScenes);
 
+            CloseScenes(BHScenes);
+        }
 
 
         private static void OpenScenes(List<string> scenePaths)
