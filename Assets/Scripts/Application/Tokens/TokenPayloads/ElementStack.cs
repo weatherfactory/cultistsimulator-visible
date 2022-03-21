@@ -305,7 +305,7 @@ namespace SecretHistories.UI {
                 return typeof(MinimalManifestation);
 
             if (sphere.SphereCategory == SphereCategory.Notes)
-                return typeof(TextManifestation);
+                return sphere.GetDefaultManifestationType();
 
             if (sphere.SphereCategory == SphereCategory.Meta)
                 return typeof(NullManifestation);
@@ -313,7 +313,6 @@ namespace SecretHistories.UI {
             var type = Watchman.LocateManifestationType(Element.ManifestationType);
             return type;
 
-            //return typeof(CardManifestation);
         }
 
 

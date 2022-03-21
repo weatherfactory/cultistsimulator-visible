@@ -456,25 +456,26 @@ namespace SecretHistories.Entities {
 
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
 
-            var notesDominion = _registeredDominions.FirstOrDefault(d => d.AcceptsNoteCommands); //We should move to something more like the RelevantTo in states.
-            if (notesDominion == null)
+            var nDominion = _registeredDominions.FirstOrDefault(d => d.AcceptsNoteCommands); //We should move to something more like the RelevantTo in states.
+            if (nDominion == null)
             {
                 NoonUtility.Log($"No notes sphere and no notes dominion found: we won't add note {notification.Title}, then.");
                 return false;
             }
 
 
-            Sphere notesSphere = notesDominion.Spheres.SingleOrDefault();
-            if (notesSphere == null)
+            Sphere nSphere = nDominion.Spheres.SingleOrDefault();
+            if (nSphere == null)
             {
-                //no notes sphere yet exists: create one
-                var notesSphereSpec = new SphereSpec(typeof(NotesSphere), $"{nameof(NotesSphere)}");
-                notesSphere = notesDominion.TryCreateOrRetrieveSphere(notesSphereSpec);
-                notesSphere.transform.localScale = Vector3.one; //HACK! there's a bug where opening the window can increase the scale of new notes spheres. This sets it usefully, but I should find a more permanent solution if the issue shows up again
+                Type nSphereType = nDominion.spherePrefab.GetType();
+                   //no notes sphere yet exists: create one
+                   var notesSphereSpec = new SphereSpec(nSphereType, $"{nSphereType.Name}");
+                nSphere = nDominion.TryCreateOrRetrieveSphere(notesSphereSpec);
+                nSphere.transform.localScale = Vector3.one; //HACK! there's a bug where opening the window can increase the scale of new notes spheres. This sets it usefully, but I should find a more permanent solution if the issue shows up again
             }
 
             if (!notification.Additive) //clear out existing notes first
-                notesSphere.RetireAllTokens();
+                nSphere.RetireAllTokens();
                 
 
             var newNoteCommand = new ElementStackCreationCommand(noteElementId, 1);
@@ -483,9 +484,9 @@ namespace SecretHistories.Entities {
             newNoteCommand.Illuminations.Add(NoonConstants.TLG_NOTES_EMPHASISLEVEL_KEY,notification.EmphasisLevel.ToString());
 
             var tokenCreationCommand =
-                new TokenCreationCommand(newNoteCommand, TokenLocation.Default(notesSphere.GetAbsolutePath()));
+                new TokenCreationCommand(newNoteCommand, TokenLocation.Default(nSphere.GetAbsolutePath()));
 
-            tokenCreationCommand.Execute(context, notesSphere);
+            tokenCreationCommand.Execute(context, nSphere);
 
             OnChanged?.Invoke(new TokenPayloadChangedArgs(this, PayloadChangeType.Update));
 
