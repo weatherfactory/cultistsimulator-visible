@@ -62,7 +62,7 @@ namespace SecretHistories.Infrastructure.Persistence
             var characters = stable.GetAllCharacters();
      
             _persistedGameState =new PersistedGameState();
-
+            _persistedGameState.Version = Watchman.Get<MetaInfo>().VersionNumber;
 
             Encaustery<CharacterCreationCommand> characterEncaustery = new Encaustery<CharacterCreationCommand>();
             foreach (var character in characters)

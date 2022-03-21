@@ -70,7 +70,13 @@ namespace SecretHistories.States
 
             var migrateFromRecipeSlotsToStorageComand = new FlushTokensToCategoryCommand(SphereCategory.Threshold, SphereCategory.SituationStorage, StateEnum.RequiringExecution);
             situation.AddCommand(migrateFromRecipeSlotsToStorageComand);
-            
+            //Important: now remove the recipe threshold(s). Otherwise any greedyangel(s) will continue to try to grab things.
+            //If we want, for whatever reason, to preserve the actual recipe threshold between cycles, we should retire / disable
+            //the angels in these thresholds rather than clearing the whole sphere. But in the current model, a recipe slot is a 
+            //transient product of a recipe in a single cycle.
+            var clearRecipeThresholdsCommand = new ClearDominionCommand(SituationDominionEnum.RecipeThresholds.ToString(),
+                SphereRetirementType.Graceful);
+            situation.AddCommand(clearRecipeThresholdsCommand);
         }
 
         public override bool IsActiveInThisState(Sphere s)

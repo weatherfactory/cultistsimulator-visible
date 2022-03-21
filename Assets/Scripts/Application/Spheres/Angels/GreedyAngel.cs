@@ -118,7 +118,7 @@ namespace SecretHistories.Spheres.Angels
                 {
                     
                     if (matchingToken.CurrentlyBeingDragged()) //This shouldn't currently ever happen, because the EnRouteSphere doesn't allow dragging, but it might cover race conditions
-                        matchingToken.FinishDrag();
+                        matchingToken.ForceEndDrag();
 
                     if (matchingToken.Quantity > GRAB_QUANTITY_LIMIT)
                         matchingToken.CalveToken(matchingToken.Quantity - GRAB_QUANTITY_LIMIT,

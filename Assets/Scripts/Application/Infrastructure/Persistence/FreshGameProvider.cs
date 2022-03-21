@@ -10,7 +10,7 @@ namespace SecretHistories.Infrastructure.Persistence
 
 {
     /// <summary>
-    /// ccompletely new game, ab initio
+    /// completely new game, ab initio
     /// </summary>
     public class FreshGameProvider: GamePersistenceProvider
     {
@@ -46,7 +46,8 @@ namespace SecretHistories.Infrastructure.Persistence
         public override void DepersistGameState()
         {
             var chamberlain = Watchman.Get<AbstractTokenSetupChamberlain>();
-            _persistedGameState= PersistedGameState.ForLegacy(StartingLegacy, _historyRecordsFromPreviousCharacter);
+            VersionNumber currentVersion = Watchman.Get<MetaInfo>().VersionNumber;
+            _persistedGameState= PersistedGameState.ForLegacy(StartingLegacy, _historyRecordsFromPreviousCharacter, currentVersion);
 
         }
 

@@ -27,7 +27,8 @@ namespace SecretHistories.Spheres
 
             var token = eventData.pointerDrag.GetComponent<Token>();
 
-            if (token != null)
+            if (token != null && ! token.CurrentState.Docked()) //if the token's already been docked,
+            //eg if a greedy angel grabbed it, then we don't want to try to honour OnDrop wherever the mouse now is
             {
                 
                 if (Sphere.TryAcceptToken(token, new Context(Context.ActionSource.PlayerDrag)))

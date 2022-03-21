@@ -842,12 +842,12 @@
             "alt": [
                 {
                     "id": "health_expel_to_scar",
-                    "chance": 30,
+                    "chance":30,
                     "additional": true,
                     "expulsion": {
                         "limit": 1,
                         "filter": {
-                            "healthexhausted": 1
+                            "fatigue": 1
                         }
                     }
                 }

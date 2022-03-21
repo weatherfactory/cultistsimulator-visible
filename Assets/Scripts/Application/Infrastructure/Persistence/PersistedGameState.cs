@@ -19,9 +19,10 @@ namespace SecretHistories.Infrastructure.Persistence
         public RootPopulationCommand RootPopulationCommand;
         public PopulateXamanekCommand PopulateXamanekCommand;
         public List<AddNoteToTokenCommand> NotificationCommands;
+        public VersionNumber Version;
         public PersistedGameState()
         {
-
+            Version = VersionNumber.UnspecifiedVersion();
             CharacterCreationCommands=new List<CharacterCreationCommand>();
             RootPopulationCommand=new RootPopulationCommand();
             PopulateXamanekCommand = new PopulateXamanekCommand();
@@ -33,11 +34,14 @@ namespace SecretHistories.Infrastructure.Persistence
             return (CharacterCreationCommands.OrderByDescending(c => c.DateTimeCreated).FirstOrDefault());
         }
 
-        public static PersistedGameState ForLegacy(Legacy startingLegacy, Dictionary<string,string> historyRecordsFromPreviousCharacter)
+        public static PersistedGameState ForLegacy(Legacy startingLegacy, Dictionary<string,string> historyRecordsFromPreviousCharacter,VersionNumber currentVersion)
         {
-            var state = new PersistedGameState();
-            state.RootPopulationCommand = RootPopulationCommand.RootCommandForLegacy(startingLegacy);
-            state.PopulateXamanekCommand = new PopulateXamanekCommand(); //we can't populate xamanek itineraries until we know unique payload ids, which only happens on instantiation.
+            var state = new PersistedGameState
+            {
+                Version = currentVersion,
+                RootPopulationCommand = RootPopulationCommand.RootCommandForLegacy(startingLegacy),
+                PopulateXamanekCommand = new PopulateXamanekCommand() //we can't populate xamanek itineraries until we know unique payload ids, which only happens on instantiation.
+            };
             //so saved itineraries go in the X command, but brand new ones for new games have to be specified with the tokens in the root command.
       
             
