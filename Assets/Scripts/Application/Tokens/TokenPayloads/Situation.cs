@@ -797,7 +797,7 @@ namespace SecretHistories.Entities {
             //if there's an expulsion
             if (withExpulsion.Limit > 0)
             {
-                //find one or more matching stacks. Important! the limit applies to stacks, not cards. This might need to change.
+                //find one or more matching stacks.
                 AspectMatchFilter filter = new AspectMatchFilter(withExpulsion.Filter);
                 var filteredStacks = filter.FilterElementStacks(GetElementTokens(SphereCategory.SituationStorage)).ToList();
 
