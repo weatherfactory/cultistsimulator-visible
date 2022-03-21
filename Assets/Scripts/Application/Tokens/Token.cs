@@ -49,8 +49,7 @@ namespace SecretHistories.UI {
     {
         private float previousClickTime = 0f;
 
-
-
+ 
         [DontEncaust]
         public RectTransform TokenRectTransform => GetComponent<RectTransform>();
 
@@ -575,7 +574,7 @@ namespace SecretHistories.UI {
 
         protected void StartDrag(PointerEventData eventData)
         {
-          
+  
 
             //remember the original location in case the token gets evicted later
             //base behaviour is to set current location in current sphere as home, but not all spheres will do this
@@ -682,24 +681,41 @@ namespace SecretHistories.UI {
 
         public  void OnEndDrag(PointerEventData eventData)
         {
+  
+
             //This is called after OnDrop. So if the token has been dropped on something else, it will already have 
             //been accepted by the new sphere and potentially stabilised.
+            //So it may in fact be in a Docked state already.
+            //Our job here is to notify DragEnd;
+            //call FinishDrag if it hasn't already been called;
+            //and tidy up any MultiDrag (which maybe should go in FinishDrag
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
-            
-            FinishDrag();
+
+                CompleteDrag();
             Watchman.Get<Meniscate>().OnMultiEndDrag(eventData,this);
         }
 
         public void EndDragAlong(PointerEventData eventData,Token primaryDragToken)
         {
-            NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragEnd });
-            FinishDrag();
+
+        
+                NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragEnd });
+                CompleteDrag();
+            
         }
 
-        public void FinishDrag()
+        public void ForceEndDrag()
         {
-            MakeInteractable();
 
+                CompleteDrag();
+        }
+
+        public void CompleteDrag()
+        {
+            //FinishDrag tidies everything up. It's called from OnEndDrag() but it can also be called 
+            //externally if we want to cancel the drag.
+            MakeInteractable();
+            
             if (!CurrentState.Docked() && !CurrentState.InSystemDrivenMotion())
                 //evict the token before hiding the ghost. If the ghost is still active, it'll give the evicted token a place to go.
                 this.Sphere.EvictToken(this,new Context(Context.ActionSource.PlayerDrag));
@@ -709,7 +725,11 @@ namespace SecretHistories.UI {
             //If the change causes problems, we can fork logic here instead?
             // HideGhost(); 
             _manifestation.OnEndDragVisuals(this);
+     
+
         }
+
+   
 
         public void MakeInteractable()
         {
@@ -826,7 +846,7 @@ namespace SecretHistories.UI {
             if (Quantity <= quantityToLeaveBehind
             ) //we're trying to leave everything behind. Abort the drag and return the original token, ie this token
             {
-                FinishDrag();
+                ForceEndDrag();
                 return this;
             }
 
