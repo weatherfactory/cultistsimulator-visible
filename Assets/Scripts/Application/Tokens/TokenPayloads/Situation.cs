@@ -456,7 +456,7 @@ namespace SecretHistories.Entities {
 
             var noteElementId = Watchman.Get<Compendium>().GetSingleEntity<Dictum>().NoteElementId;
 
-            var notesDominion = GetRelevantDominions(StateIdentifier, typeof(NotesSphere)).FirstOrDefault();
+            var notesDominion = _registeredDominions.FirstOrDefault(d => d.AcceptsNoteCommands); //We should move to something more like the RelevantTo in states.
             if (notesDominion == null)
             {
                 NoonUtility.Log($"No notes sphere and no notes dominion found: we won't add note {notification.Title}, then.");
@@ -906,7 +906,7 @@ namespace SecretHistories.Entities {
 
 
 
-        public List<AbstractDominion> GetRelevantDominions(StateEnum forState,Type sphereType)
+        public List<AbstractDominion> GetRelevantDominions(StateEnum forState,Type sphereType) //This is only used in one place, and is really a hangover from an earlier structure
     {
             return new List<AbstractDominion>(_registeredDominions.Where(a=>a.RelevantTo(forState.ToString(),sphereType)));
     }
@@ -958,7 +958,7 @@ namespace SecretHistories.Entities {
 
         public void DumpUnstartedBusiness()
         {
-            var verbThresholdsDominion = GetRelevantDominions(StateEnum.Unstarted, typeof(ThresholdSphere)).SingleOrDefault();
+            var verbThresholdsDominion = GetRelevantDominions(StateEnum.Unstarted, typeof(ThresholdSphere)).SingleOrDefault(); //This is the last place this is used. Time to refactor, I think.
             if(verbThresholdsDominion!=null)
             {
               var verbThresholds = new List<Sphere>(verbThresholdsDominion.Spheres);

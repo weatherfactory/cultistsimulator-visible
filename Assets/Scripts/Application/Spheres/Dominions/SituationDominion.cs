@@ -197,7 +197,7 @@ namespace SecretHistories.UI {
 
         public void OnTokensChangedForSphere(SphereContentsChangedEventArgs args)
         {
-            if (!HonourTokenRequestsForThresholdCreation) //We don't want it extra spheres in storage or output dominions!
+            if (!HonourTokenRequestsForThresholdCreation) //We don't want  extra spheres in storage or output dominions!
                 return;
 
             //if a token has been added: add any necessary child thresholds

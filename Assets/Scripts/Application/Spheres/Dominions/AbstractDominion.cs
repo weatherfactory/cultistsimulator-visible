@@ -18,7 +18,9 @@ namespace SecretHistories.UI
     public abstract class AbstractDominion: MonoBehaviour, IEncaustable
     //A dominion is glue between an IHasAspects object and any spheres it contains.
     //It's used to handle registration and management of contained spheres, and to show/hide a group of spheres.
-  {
+    {
+
+
       [Encaust]
         public string Identifier { get; protected set; }
 
@@ -45,6 +47,7 @@ namespace SecretHistories.UI
         protected IManifestable _manifestable;
 
         public Sphere spherePrefab;
+        [SerializeField] public bool AcceptsNoteCommands;
 
         public virtual Sphere CreateAutonamedNativeSphere()
         {
