@@ -574,9 +574,7 @@ namespace SecretHistories.UI {
 
         protected void StartDrag(PointerEventData eventData)
         {
-  
-
-            //remember the original location in case the token gets evicted later
+        //remember the original location in case the token gets evicted later
             //base behaviour is to set current location in current sphere as home, but not all spheres will do this
             RequestHomingAngelFromCurrentSphere();
 
@@ -681,13 +679,11 @@ namespace SecretHistories.UI {
 
         public  void OnEndDrag(PointerEventData eventData)
         {
-  
-
-            //This is called after OnDrop. So if the token has been dropped on something else, it will already have 
-            //been accepted by the new sphere and potentially stabilised.
+            //This is called after OnDrop. So if the token has been dropped on something else, it may already have 
+            //been accepted by a new sphere and stabilised.
             //So it may in fact be in a Docked state already.
             //Our job here is to notify DragEnd;
-            //call FinishDrag if it hasn't already been called;
+            //call CompleteDrag if it hasn't already been called;
             //and tidy up any MultiDrag (which maybe should go in FinishDrag
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
 
