@@ -157,7 +157,12 @@ namespace SecretHistories.UI {
         [SerializeField]
         private string FullPathAsString;
 
-  
+        protected void UpdateVisuals(ITokenPayload payload)
+        {
+            _manifestation.UpdateVisuals(Payload);
+            if (_ghost != null)
+                _ghost.UpdateVisuals(_payload);
+        }
 
 
         public bool IsValid()
@@ -356,6 +361,7 @@ namespace SecretHistories.UI {
                 _ghost.Retire();
 
             _ghost = _manifestation.CreateGhost();
+            _ghost.UpdateVisuals(Payload);
             HideGhost();
 
 
@@ -510,7 +516,7 @@ namespace SecretHistories.UI {
             {
                 oldSphere.RemoveToken(this,context);
                 if (oldSphere.ContentsHidden && !newSphere.ContentsHidden)
-                    _manifestation.UpdateVisuals(Payload);
+                    UpdateVisuals(Payload);
             }
             FullPathAsString = new FucinePath(newSphere.GetAbsolutePath() + PayloadId).ToString();
         }
@@ -1046,9 +1052,8 @@ namespace SecretHistories.UI {
                 Remanifest(RetirementVFX.CardTransformWhite);
             else if (args.ChangeType == PayloadChangeType.Update)
             {
-                _manifestation.UpdateVisuals(_payload);
-                if (_ghost != null)
-                    _ghost.UpdateVisuals(_payload);
+                UpdateVisuals(_payload);
+                
                 PlacementAlreadyChronicled = false; //should really only do this if the element has changed
                 var sphereContentsChangedArgs = new SphereContentsChangedEventArgs(Sphere, args.Context);
                 sphereContentsChangedArgs.TokenChanged = this;
