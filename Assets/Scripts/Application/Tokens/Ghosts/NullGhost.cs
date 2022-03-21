@@ -61,6 +61,11 @@ namespace SecretHistories.Ghosts
            
         }
 
+        public void UpdateVisuals(IManifestable manifestable)
+        {
+            //
+        }
+
 
         public static IGhost Create(IManifestation parentManifestation)
         {

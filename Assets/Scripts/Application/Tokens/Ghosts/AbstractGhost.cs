@@ -19,6 +19,10 @@ namespace SecretHistories.Ghosts
         protected Sphere _projectedInSphere;
         [SerializeField] private CanvasGroupFader canvasGroupFader;
 
+        public virtual void UpdateVisuals(IManifestable manifestable)
+        {
+            //
+        }
         protected bool CanvasGroupFaderStillExists()
         {
             if (canvasGroupFader == null)

@@ -25,5 +25,7 @@ namespace SecretHistories.Abstract
         void Retire();
         void Understate();
         void Emphasise();
+
+        void UpdateVisuals(IManifestable manifestable);
     }
 }

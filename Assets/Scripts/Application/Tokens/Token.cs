@@ -1047,6 +1047,8 @@ namespace SecretHistories.UI {
             else if (args.ChangeType == PayloadChangeType.Update)
             {
                 _manifestation.UpdateVisuals(_payload);
+                if (_ghost != null)
+                    _ghost.UpdateVisuals(_payload);
                 PlacementAlreadyChronicled = false; //should really only do this if the element has changed
                 var sphereContentsChangedArgs = new SphereContentsChangedEventArgs(Sphere, args.Context);
                 sphereContentsChangedArgs.TokenChanged = this;
