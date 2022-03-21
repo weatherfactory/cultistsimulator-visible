@@ -40,12 +40,14 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
             }
 
             startingTokenDistributionStrategy.NextRow();
+            startingTokenDistributionStrategy.NextRow();
 
             var elementDropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
             var elementDropzoneCreationCommand = new DropzoneCreationCommand(nameof(ElementStack).ToString());
             var elementDropzoneTokenCreationCommand = new TokenCreationCommand(elementDropzoneCreationCommand, startingTokenDistributionStrategy.BelowBoardStartingLocation()).WithDestination(elementDropzoneLocation, startingTokenDistributionStrategy.GetPlacementDelay());
             commands.Add(elementDropzoneTokenCreationCommand);
 
+            startingTokenDistributionStrategy.NextRow();
             startingTokenDistributionStrategy.NextRow();
 
             var situationDropzoneLocation = new TokenLocation(startingTokenDistributionStrategy.GetNextTokenPositionAndIncrementCount(), tabletopSpherePath);
@@ -68,7 +70,7 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
             public int rowCount { get; private set; }
             private const int STARTINGX = -260;
             private const int XGAP = 150;
-            private const int STARTINGY = 140;
+            private const int STARTINGY = 290;
             private const int YGAP = 150;
 
             //this is currently/now a massive magic number hack. These values should be aligned with the actual grid values
