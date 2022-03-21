@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using SecretHistories.Enums;
 
@@ -30,6 +31,12 @@ namespace SecretHistories.Entities
             
             _version = version;
 
+        }
+
+        public static VersionNumber UnspecifiedVersion()
+        {
+            var unspecifiedVersion=new VersionNumber("2022.3.o.1"); //when I started adding these to the new save format
+            return unspecifiedVersion;
         }
 
         public int GetVersionYear()
