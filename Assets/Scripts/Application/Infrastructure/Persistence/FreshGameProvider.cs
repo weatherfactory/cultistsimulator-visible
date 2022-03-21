@@ -10,7 +10,7 @@ namespace SecretHistories.Infrastructure.Persistence
 
 {
     /// <summary>
-    /// ccompletely new game, ab initio
+    /// completely new game, ab initio
     /// </summary>
     public class FreshGameProvider: GamePersistenceProvider
     {
