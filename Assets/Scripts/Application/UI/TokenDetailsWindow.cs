@@ -12,6 +12,7 @@ using System.Linq;
 using System.Security.Permissions;
 using Assets.Scripts.Application.Spheres;
 using SecretHistories.Abstract;
+using SecretHistories.Constants;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Enums.Elements;
@@ -117,12 +118,22 @@ namespace SecretHistories.UI {
             else
                 ShowImageDecayTimer(false);
 
-            ShowText(element.Label, element.Description);
+            if (element.Metafictional)
+                ShowMetafictionalText(stack);
+            else
+                ShowText(element.Label, element.Description);
             SetTextMargin(true, element.Unique || element.Lifetime > 0); // if the general lifetime is > 0 it decays
 
             ShowCardIcons(element.Unique, element.Lifetime > 0);
            // ShowDeckInfos(0); // Make sure the other hint icons are gone
 
+        }
+
+        private void ShowMetafictionalText(ElementStack stack)
+        {
+            var metafictionalTitle = stack.GetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY);
+            var metafictionalDescription = "\"" + stack.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY) + "\"";
+            ShowText(metafictionalTitle, metafictionalDescription);
         }
 
 
