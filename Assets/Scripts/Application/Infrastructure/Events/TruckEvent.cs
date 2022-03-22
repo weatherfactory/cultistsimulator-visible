@@ -8,7 +8,7 @@ namespace SecretHistories.Constants
     {
 
         public float CurrentTruckInput { get; set; }
-
+        
     }
 
     [Serializable]

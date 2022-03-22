@@ -67,7 +67,7 @@ public class CamOperator : MonoBehaviour {
     public void OnTruckEvent(TruckEventArgs args)
     {
         currentTruckInput = args.CurrentTruckInput* pan_step_distance;
-     //   Debug.Log($"Truck event {currentTruckInput}");
+        Debug.Log($"Truck event {currentTruckInput}");
     }
 
     public void OnPedestalEvent(PedestalEventArgs args)
@@ -112,49 +112,78 @@ public class CamOperator : MonoBehaviour {
     public void Update()
     {
         if (TryMoveAtScreenEdge())
+        {
+            cameraHasArrived();
             return;
+        }
+            
 
-       if(Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 10)
-            timeSpentMoving += Time.deltaTime;
-
-       if (currentTruckInput != 0)
-       {
-           initialPosition = attachedCamera.transform.position;
-            smoothTargetPosition.x += currentTruckInput;
-           moveDuration = defaultCameraMoveDuration; //reset to standard duration if we're moving manually again
-       }
-
-       if (currentPedestalInput != 0)
-       {
-           initialPosition = attachedCamera.transform.position;
-            smoothTargetPosition.y += currentPedestalInput;
-           moveDuration = defaultCameraMoveDuration; //reset to standard duration if we're moving manually again
-       }
-                
-
-       if (currentZoomInput != 0)
-       {
-           initialPosition = attachedCamera.transform.position;
-            smoothTargetPosition.z -= currentZoomInput;
-           smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, ZOOM_Z_FAR, ZOOM_Z_CLOSE);
-           moveDuration = defaultCameraMoveDuration; //reset to standard duration if we're moving manually again
-       }
-
-       if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 1)
-           cameraHasArrived();
-       else
-       {
-           smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
-
-           attachedCamera.transform.position = Vector3.Lerp(initialPosition, smoothTargetPosition,
-               timeSpentMoving / moveDuration);
+        if (TryMoveWithKeys())
+        {
+            cameraHasArrived();
+            return;
+        }
 
 
-           SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
-       }
+        if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 1)
+            cameraHasArrived();
+        else
+        {
+
+            if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) > 10)
+                timeSpentMoving += Time.deltaTime;
+
+            smoothTargetPosition = ClampToNavigationRect(navigationLimits, smoothTargetPosition);
+
+            attachedCamera.transform.position = Vector3.Lerp(initialPosition, smoothTargetPosition,
+                timeSpentMoving / moveDuration);
+
+
+            SetNavigationLimitsBasedOnCurrentCameraHeight(); //so this is called every time the camera smooth-moves, which works but is clunky.
+        }
 
 
 }
+
+    private bool TryMoveWithKeys()
+    {
+        
+        const float KEY_SPEED = 5f;
+
+        Vector3 key_move = Vector3.zero;
+
+
+        if (currentTruckInput != 0)
+        {
+            key_move.x = KEY_SPEED*currentTruckInput;
+        }
+
+        if (currentPedestalInput != 0)
+        {
+            key_move.y = KEY_SPEED * currentPedestalInput;
+        }
+
+
+        if (currentZoomInput != 0)
+        {
+            initialPosition = attachedCamera.transform.position;
+            smoothTargetPosition.z -= currentZoomInput;
+            smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, ZOOM_Z_FAR, ZOOM_Z_CLOSE);
+            moveDuration = defaultCameraMoveDuration; //reset to standard duration if we're moving manually again
+            
+        }
+
+        if (key_move != Vector3.zero)
+        {
+            var targetPosition = attachedCamera.transform.position += key_move;
+            attachedCamera.transform.position = Vector3.Lerp(attachedCamera.transform.position, targetPosition,
+                Time.deltaTime);
+
+            return true;
+        }
+
+        return false;
+    }
 
     private bool TryMoveAtScreenEdge()
     {
@@ -196,7 +225,6 @@ public class CamOperator : MonoBehaviour {
 
         attachedCamera.transform.position = Vector3.Lerp(attachedCamera.transform.position, targetPosition,
             Time.deltaTime);
-        cameraHasArrived();
         return true;
         
     }

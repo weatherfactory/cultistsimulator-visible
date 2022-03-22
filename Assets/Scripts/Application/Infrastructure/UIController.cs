@@ -75,14 +75,11 @@ namespace SecretHistories.Constants
             if (IsEditingText() || playerInputDisabled)
                 return;
 
-            float value;
             if (context.started)
-                value = context.ReadValue<Single>();
-            else
-                value = 0;
+                TruckEvent.Invoke(new TruckEventArgs() { CurrentTruckInput = context.ReadValue<Single>() });
+            else if (context.canceled)
+                TruckEvent.Invoke(new TruckEventArgs() { CurrentTruckInput = 0f });
 
-
-            TruckEvent.Invoke(new TruckEventArgs {CurrentTruckInput = value});
         }
 
         public void Input_Pedestal_Key(InputAction.CallbackContext context)
@@ -90,13 +87,14 @@ namespace SecretHistories.Constants
             if (IsEditingText() || playerInputDisabled)
                 return;
 
-            float value;
+            
             if (context.started)
-                value = context.ReadValue<Single>();
-            else
-                value = 0;
+                PedestalEvent.Invoke(new PedestalEventArgs() { CurrentPedestalInput = context.ReadValue<Single>() });
+            else if (context.canceled)
+                PedestalEvent.Invoke(new PedestalEventArgs() { CurrentPedestalInput = 0f });
 
-            PedestalEvent.Invoke(new PedestalEventArgs() { CurrentPedestalInput = value });
+
+
         }
 
         public void Input_Zoom_Scrollwheel(InputAction.CallbackContext context)
