@@ -273,7 +273,7 @@ public class Compendium
                 }
                 catch (Exception)
                 {
-                   throw new ApplicationException("Couldn't find VerbIcon for element" + a.Key  + " - does that element exist?");
+                   NoonUtility.LogWarning("Couldn't find VerbIcon for element" + a.Key  + " - does that element exist?");
                 }
             }
         }
