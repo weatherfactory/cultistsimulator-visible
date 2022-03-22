@@ -106,6 +106,11 @@ namespace SecretHistories.Entities.Verbs
         }
         public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.Intangible;
 
+        public Dictionary<string, string> GetIlluminations()
+        {
+            return new Dictionary<string, string>();
+        }
+
         public string GetIllumination(string key)
         {
             return string.Empty;

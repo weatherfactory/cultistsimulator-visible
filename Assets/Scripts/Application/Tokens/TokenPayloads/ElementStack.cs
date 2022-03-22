@@ -101,6 +101,11 @@ namespace SecretHistories.UI {
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
 
 
+        public Dictionary<string, string> GetIlluminations()
+        {
+            return new Dictionary<string, string>(_illuminations);
+        }
+
         public string GetIllumination(string key)
         {
             if (_illuminations.ContainsKey(key))
@@ -473,6 +478,9 @@ namespace SecretHistories.UI {
 
         public virtual bool CanMergeWith(ITokenPayload otherPayload)
         {
+            if (otherPayload.Metafictional)
+                return false;
+
             if (!otherPayload.IsValidElementStack())
                 return false;
             if (Element.Unique)

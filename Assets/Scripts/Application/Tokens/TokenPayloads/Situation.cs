@@ -1093,8 +1093,12 @@ namespace SecretHistories.Entities {
         {
             //
         }
-        
 
+
+        public Dictionary<string, string> GetIlluminations()
+        {
+            return new Dictionary<string, string>();
+        }
 
         public string GetIllumination(string key)
         {

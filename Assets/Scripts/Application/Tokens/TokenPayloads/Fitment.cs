@@ -87,6 +87,11 @@ namespace SecretHistories.Entities
         public string UniquenessGroup { get; }
         public bool Unique { get; }
         public string Icon { get; }
+        public Dictionary<string,string> GetIlluminations()
+        {
+            throw new NotImplementedException();
+        }
+
         public string GetIllumination(string key)
         {
             throw new NotImplementedException();

@@ -13,6 +13,7 @@ using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere. But that'll break save/load until I make save/load less fussy.
 {
@@ -22,6 +23,8 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
     public class NotesSphere : Sphere
     {
         [SerializeField] private NavigationAnimation _navigationAnimation;
+        [SerializeField] private Button _popNoteButton;
+
         public override SphereCategory SphereCategory => SphereCategory.Notes;
         public override bool AllowStackMerge => false;
         public List<Token> PagedTokens = new List<Token>();
@@ -77,6 +80,10 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
 
 
                 Navigate(navigationArgs);
+                if (PagedTokens.Count > 1)
+                    _popNoteButton.gameObject.SetActive(true);
+                else
+                    _popNoteButton.gameObject.SetActive(false);
 
             }
 
@@ -157,14 +164,24 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
                 return;
             else
             {
-                var tokenToPopOut = PagedTokens[CurrentIndex];
-                PagedTokens.Remove(tokenToPopOut);
-                PagedTokens[CurrentIndex-1].MakeVisible();
-
-                tokenToPopOut.GoAway(new Context(Context.ActionSource.PlayerDump));
+                var tokenToCopy = PagedTokens[CurrentIndex];
+                tokenToCopy.Payload.ModifyQuantity(1,Context.Metafictional());
+                var tokenToPopOut = tokenToCopy.CalveToken(1, Context.Metafictional());
+                
+                tokenToPopOut.GoAway(new Context(Context.ActionSource.Metafictional));
             
+        
+       
             }
             
+        }
+
+        public override void EvictToken(Token tokenToEvict, Context context)
+        {
+            PagedTokens.Remove(tokenToEvict);
+        base.EvictToken(tokenToEvict, context);
+        tokenToEvict.MakeVisible();
+        //do some things to tidy up the paging
         }
 
         public void ShowPrevPage()

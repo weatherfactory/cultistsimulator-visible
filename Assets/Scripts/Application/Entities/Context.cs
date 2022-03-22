@@ -10,8 +10,8 @@ public class Context {
         PlayerDrag,
         PlaceInThresholdUsurpedByIncomer,
         CalvedStack,
+        Metafictional,
         PlayerClick,
-        PlayerDump,
         PlayerDumpAll,
         FlushingTokens, //Tokens are being flushed from one sphere (or >1 spheres) to another sphere, via a situation command
         SituationEffect,
@@ -57,8 +57,11 @@ public class Context {
     {
         return new Context(ActionSource.Unknown);
     }
+    public static Context Metafictional()
+    {
+        return new Context(ActionSource.Metafictional);
+    }
 
-    
     public bool IsManualAction() {
         switch (actionSource) {
             case ActionSource.DoubleClickSend:

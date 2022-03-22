@@ -19,7 +19,8 @@ namespace SecretHistories.Abstract
       string UniquenessGroup { get; }
       bool Unique { get; }
       string Icon { get; }
-      string GetIllumination(string key);
+      Dictionary<string, string> GetIlluminations();
+        string GetIllumination(string key);
       void SetIllumination(string key, string value);
         Timeshadow GetTimeshadow();
         bool RegisterDominion(AbstractDominion dominion);

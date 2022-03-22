@@ -180,6 +180,11 @@ namespace SecretHistories.Assets.Scripts.Application.UI
         }
 
 
+        public Dictionary<string, string> GetIlluminations()
+        {
+            throw new NotImplementedException();
+        }
+
         public string GetIllumination(string key)
         {
             throw new NotImplementedException();

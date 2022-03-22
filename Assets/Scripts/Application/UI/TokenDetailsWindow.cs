@@ -131,8 +131,8 @@ namespace SecretHistories.UI {
 
         private void ShowMetafictionalText(ElementStack stack)
         {
-            var metafictionalTitle = stack.GetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY);
-            var metafictionalDescription = "\"" + stack.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY) + "\"";
+            var metafictionalTitle = "'" + stack.GetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY) + "'";
+            var metafictionalDescription = "'" + stack.GetIllumination(NoonConstants.TLG_NOTES_DESCRIPTION_KEY) + "'";
             ShowText(metafictionalTitle, metafictionalDescription);
         }
 

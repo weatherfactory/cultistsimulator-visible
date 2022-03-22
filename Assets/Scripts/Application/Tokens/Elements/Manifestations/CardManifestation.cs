@@ -19,6 +19,7 @@ using SecretHistories.Services;
 using SecretHistories.Spheres;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -34,6 +35,7 @@ namespace SecretHistories.Manifestations
         [SerializeField] public TextMeshProUGUI text;
         [SerializeField] public ElementStackBadge stackBadge;
         [SerializeField] public TextMeshProUGUI stackCountText;
+        [SerializeField] public Button destroyButton;
         [SerializeField] public GameObject decayView;
         [SerializeField] public TextMeshProUGUI decayCountText;
         [SerializeField] public Sprite spriteDecaysTextBG;
@@ -42,8 +44,10 @@ namespace SecretHistories.Manifestations
         [SerializeField] public CanvasGroup canvasGroup;
         [SerializeField] public GraphicFader glowImage;
 
+        public event Func<RetirementVFX,bool> OnMetafictionalRetirement; 
 
-     
+
+
         private Image decayBackgroundImage;
         private Color cachedDecayBackgroundColor;
        [SerializeField] private float decayAlpha = 0.0f;
@@ -97,6 +101,8 @@ namespace SecretHistories.Manifestations
             frames = ResourcesManager.GetAnimFramesForElement(manifestable.EntityId);
             _entityId = manifestable.EntityId;
             _quantity = manifestable.Quantity;
+
+            OnMetafictionalRetirement=manifestable.Retire;
 
         }
 
@@ -249,12 +255,31 @@ namespace SecretHistories.Manifestations
                 textBackground.overrideSprite = null;
         }
 
+        public void MetafictionalRetirement()
+        {
+            OnMetafictionalRetirement.Invoke(RetirementVFX.CardBurn);
+        }
+
         public void UpdateVisuals(IManifestable manifestable)
         {
             _entityId = manifestable.EntityId;
             _quantity = manifestable.Quantity;
 
-            text.text = manifestable.Label;
+            if (manifestable.Metafictional)
+            {
+                text.text = "'" +   manifestable.GetIllumination(NoonConstants.TLG_NOTES_TITLE_KEY) + "'";
+                destroyButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                text.text = manifestable.Label;
+                destroyButton.gameObject.SetActive(false);
+
+            }
+
+
+
+
 
             try
             {
@@ -491,7 +516,7 @@ namespace SecretHistories.Manifestations
             
         }
 
-
+  
 
         public override void Retire(RetirementVFX retirementVfx,Action callbackOnRetired)
         {

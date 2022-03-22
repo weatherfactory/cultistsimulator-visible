@@ -177,6 +177,11 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
         }
 
 
+        public Dictionary<string,string> GetIlluminations()
+        {
+            throw new NotImplementedException();
+        }
+
         public string GetIllumination(string key)
         {
             throw new NotImplementedException();

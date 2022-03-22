@@ -127,6 +127,11 @@ namespace SecretHistories.Entities
         public string UniquenessGroup { get; }
         public bool Unique { get; }
         public string Icon { get; }
+        public Dictionary<string,string> GetIlluminations()
+        {
+            return new Dictionary<string, string>();
+        }
+
         public string GetIllumination(string key)
         {
             return String.Empty;
