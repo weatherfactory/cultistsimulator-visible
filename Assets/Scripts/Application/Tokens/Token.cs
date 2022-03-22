@@ -165,7 +165,7 @@ namespace SecretHistories.UI {
         }
 
 
-        public bool IsValid()
+        public virtual bool IsValid()
         {
             if (this.Equals(null)) //in process of being destroyed
                 return false;
@@ -585,7 +585,7 @@ namespace SecretHistories.UI {
             RequestHomingAngelFromCurrentSphere();
 
              CurrentState =new BeingDraggedState();
-           
+             Watchman.Get<Meniscate>().SetCurrentlyDraggedToken(this);
             
             NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
             //just picked the token up, but it hasn't yet left the origin sphere. 
@@ -714,6 +714,8 @@ namespace SecretHistories.UI {
 
         public void CompleteDrag()
         {
+            Watchman.Get<Meniscate>().ClearCurrentlyDraggedToken();
+
             //FinishDrag tidies everything up. It's called from OnEndDrag() but it can also be called 
             //externally if we want to cancel the drag.
             MakeInteractable();

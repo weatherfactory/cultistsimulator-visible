@@ -43,6 +43,11 @@ namespace SecretHistories.NullObjects
            //
        }
 
+       public override bool IsValid()
+       {
+           return false;
+       }
+
         public static NullToken Create()
         {
             if(_instance == null)

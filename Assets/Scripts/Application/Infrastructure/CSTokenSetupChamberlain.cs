@@ -71,7 +71,7 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
             private const int STARTINGX = -260;
             private const int XGAP = 150;
             private const int STARTINGY = 290;
-            private const int YGAP = 150;
+            private const int YGAP = 140;
 
             //this is currently/now a massive magic number hack. These values should be aligned with the actual grid values
             //this is fixable if we move grid value to settings, not just keep them internal to TabletopChoreographer

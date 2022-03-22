@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de107eae7186ff641909dbca34ca7c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pan_step_distance: 5
+  pan_step_distance: 0
   zoom_step_distance: 30
   ZOOM_Z_CLOSE: -500
   ZOOM_Z_MID: -900
@@ -716,7 +716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showDebugInfo: 0
-  GRID_WIDTH: 150
+  GRID_WIDTH: 75
   GRID_HEIGHT: 140
 --- !u!114 &151
 MonoBehaviour:

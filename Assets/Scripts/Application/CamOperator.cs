@@ -176,10 +176,10 @@ public class CamOperator : MonoBehaviour {
     private bool TryKeyMove()
     {
 
-     
+
         float maxKeyMoveSpeed = 60f;
         float accelFactor = 1f;
-        float maxAccelTime = 2.5f;
+        float maxAccelTime = 3f;
         
         if (lastTruckInput == 0f && keyMoveVector.x!=0f)
         {
@@ -222,8 +222,11 @@ public class CamOperator : MonoBehaviour {
 
     private bool TryMoveAtScreenEdge()
     {
+        if (!Watchman.Get<Meniscate>().GetCurrentlyDraggedToken().IsValid()) //don't move unless we're holding a card.
+            return false;
+
         const int EDGE_MARGIN_PX = 75;
-        const float EDGE_SPEED = 180f;
+        const float EDGE_SPEED = 200f;
         bool edgeMoved = false;
         var topEdge = new Rect(1f, Screen.height - EDGE_MARGIN_PX, Screen.width, EDGE_MARGIN_PX);
         var bottomEdge = new Rect(1f, 1f, Screen.width, EDGE_MARGIN_PX/3);  //bottom edge of the screen is a nuisance; we want people to be able to click on status bar without scrolling

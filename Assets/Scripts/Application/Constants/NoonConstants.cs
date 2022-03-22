@@ -91,6 +91,6 @@ namespace SecretHistories.Constants
         
 
         public const string ANCHOR_BOOKSHELF = "bookshelf";
-        public const float SEND_STACK_TO_SLOT_DURATION = 0.45f; //used for greedyangels as well
+        public const float SEND_STACK_TO_SLOT_DURATION = 0.8f; //used for greedyangels as well
     }
 }

@@ -33,11 +33,13 @@ namespace SecretHistories.UI {
 
 
         private List<Token> _multiSelectedTokens = new List<Token>();
+        private Token _currentlyDraggedToken;
 
         public void Awake()
         {
             var registry = new Watchman();
             registry.Register(this);
+            _currentlyDraggedToken = NullToken.Create();
         }
 
         public void Update()
@@ -183,6 +185,22 @@ namespace SecretHistories.UI {
             }
             ClearMultiSelectedTokens();
         }
+
+        public void SetCurrentlyDraggedToken(Token token)
+        {
+            _currentlyDraggedToken = token;
+        }
+        public void ClearCurrentlyDraggedToken()
+        {
+            _currentlyDraggedToken = NullToken.Create();
+        }
+
+        public Token GetCurrentlyDraggedToken()
+        {
+            return _currentlyDraggedToken;
+
+        }
+
     }
 
 
