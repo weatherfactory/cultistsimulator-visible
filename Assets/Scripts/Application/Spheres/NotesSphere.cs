@@ -150,9 +150,21 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
 
 
 
-        
 
-    public void ShowPrevPage()
+        public void PopNoteOut()
+        {
+            if (PagedTokens.Count < 1)
+                return;
+            else
+            {
+                var tokenToPopOut = PagedTokens[CurrentIndex];
+                tokenToPopOut.GoAway(new Context(Context.ActionSource.PlayerDump));
+            ShowPrevPage();    
+            }
+            
+        }
+
+        public void ShowPrevPage()
         {
             Navigate(new NavigationArgs(CurrentIndex - 1, NavigationAnimationDirection.MoveLeft, NavigationAnimationDirection.MoveLeft));
         }

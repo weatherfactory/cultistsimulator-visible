@@ -11,6 +11,7 @@ public class Context {
         PlaceInThresholdUsurpedByIncomer,
         CalvedStack,
         PlayerClick,
+        PlayerDump,
         PlayerDumpAll,
         FlushingTokens, //Tokens are being flushed from one sphere (or >1 spheres) to another sphere, via a situation command
         SituationEffect,
@@ -30,7 +31,7 @@ public class Context {
         JustSpawned,
         PushedAside,
         ContainingSphereRetired,
-        SphereReferenceLocationChanged
+        SphereReferenceLocationChanged,
     }
 
     public string Description;
