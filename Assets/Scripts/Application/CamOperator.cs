@@ -15,8 +15,13 @@ using Vector3 = UnityEngine.Vector3;
 public class CamOperator : MonoBehaviour {
 
     private Camera attachedCamera;
-    private float currentTruckInput;
-    private float currentPedestalInput;
+    private float lastTruckInput;
+    private float timeSinceLastTruckInput;
+    private float lastPedestalInput;
+    private float timeSinceLastPedestalInput;
+
+    Vector3 keyMoveVector = Vector3.zero;
+
     private float currentZoomInput;
     private Vector3 initialPosition;
     private Vector3 smoothTargetPosition;
@@ -66,14 +71,15 @@ public class CamOperator : MonoBehaviour {
 
     public void OnTruckEvent(TruckEventArgs args)
     {
-        currentTruckInput = args.CurrentTruckInput* pan_step_distance;
-        Debug.Log($"Truck event {currentTruckInput}");
+        lastTruckInput = args.CurrentTruckInput;
+        timeSinceLastTruckInput = 0f;
     }
 
     public void OnPedestalEvent(PedestalEventArgs args)
     {
-        currentPedestalInput = args.CurrentPedestalInput * pan_step_distance;
-     //   Debug.Log($"Pedestal event {currentPedestalInput}");
+        lastPedestalInput = args.CurrentPedestalInput;
+        timeSinceLastPedestalInput = 0f;
+
     }
 
 
@@ -98,12 +104,18 @@ public class CamOperator : MonoBehaviour {
 
     public void ApplySmoothInputVector(Vector3 smoothInput)
     {
+        ResetOtherMovementInputs();
         initialPosition = attachedCamera.transform.position;
         smoothTargetPosition += smoothInput;
+        
     }
+
+
 
     public void ApplySmoothInputVector(Vector3 smoothInput,float movementDuration)
     {
+        ResetOtherMovementInputs();
+
         initialPosition = attachedCamera.transform.position;
         smoothTargetPosition += smoothInput;
         moveDuration = movementDuration;
@@ -118,12 +130,20 @@ public class CamOperator : MonoBehaviour {
         }
             
 
-        if (TryMoveWithKeys())
+        if (TryKeyMove())
         {
             cameraHasArrived();
             return;
         }
 
+        if (currentZoomInput != 0)
+        {
+            initialPosition = attachedCamera.transform.position;
+            smoothTargetPosition.z -= currentZoomInput;
+            smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, ZOOM_Z_FAR, ZOOM_Z_CLOSE);
+            moveDuration = defaultCameraMoveDuration; //reset to standard duration if we're moving manually again
+
+        }
 
         if (Vector3.Distance(attachedCamera.transform.position, smoothTargetPosition) < 1)
             cameraHasArrived();
@@ -143,46 +163,61 @@ public class CamOperator : MonoBehaviour {
         }
 
 
-}
+    }
 
-    private bool TryMoveWithKeys()
+    private void ResetOtherMovementInputs()
     {
+        lastTruckInput = 0f;
+        lastPedestalInput = 0f;
+        keyMoveVector= Vector3.zero;
         
-        const float KEY_SPEED = 5f;
+    }
 
-        Vector3 key_move = Vector3.zero;
+    private bool TryKeyMove()
+    {
 
-
-        if (currentTruckInput != 0)
+     
+        float maxKeyMoveSpeed = 60f;
+        float accelFactor = 1f;
+        float maxAccelTime = 2.5f;
+        
+        if (lastTruckInput == 0f && keyMoveVector.x!=0f)
         {
-            key_move.x = KEY_SPEED*currentTruckInput;
+
+            //decelerate to zero
+            timeSinceLastTruckInput += Time.deltaTime;
+            keyMoveVector.x = Mathf.Lerp(keyMoveVector.x, 0f,timeSinceLastTruckInput / maxAccelTime);
+        }
+        else if(lastTruckInput!=0f)
+        {
+            timeSinceLastTruckInput += Time.deltaTime;
+            keyMoveVector.x = Mathf.Lerp(0f, maxKeyMoveSpeed * accelFactor * (float)lastTruckInput, timeSinceLastTruckInput / maxAccelTime);
         }
 
-        if (currentPedestalInput != 0)
+        if (lastPedestalInput == 0f && keyMoveVector.y != 0f)
         {
-            key_move.y = KEY_SPEED * currentPedestalInput;
+            //decelerate to zero
+            timeSinceLastPedestalInput += Time.deltaTime;
+            keyMoveVector.y = Mathf.Lerp(keyMoveVector.y, 0f, timeSinceLastPedestalInput / maxAccelTime);
+
+        }
+        else if (lastPedestalInput != 0f)
+        {
+            timeSinceLastPedestalInput += Time.deltaTime;
+            keyMoveVector.y = Mathf.Lerp(0f, maxKeyMoveSpeed * accelFactor * (float)lastPedestalInput, timeSinceLastPedestalInput / maxAccelTime);
+
         }
 
-
-        if (currentZoomInput != 0)
+        if (keyMoveVector != Vector3.zero)
         {
-            initialPosition = attachedCamera.transform.position;
-            smoothTargetPosition.z -= currentZoomInput;
-            smoothTargetPosition.z = Mathf.Clamp(smoothTargetPosition.z, ZOOM_Z_FAR, ZOOM_Z_CLOSE);
-            moveDuration = defaultCameraMoveDuration; //reset to standard duration if we're moving manually again
-            
-        }
-
-        if (key_move != Vector3.zero)
-        {
-            var targetPosition = attachedCamera.transform.position += key_move;
-            attachedCamera.transform.position = Vector3.Lerp(attachedCamera.transform.position, targetPosition,
-                Time.deltaTime);
+            attachedCamera.transform.position += keyMoveVector;
 
             return true;
         }
+        
 
         return false;
+
     }
 
     private bool TryMoveAtScreenEdge()
