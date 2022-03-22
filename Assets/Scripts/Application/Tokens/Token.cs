@@ -880,11 +880,11 @@ namespace SecretHistories.UI {
         public void OnPointerClick(PointerEventData eventData)
         {
             //multiselect not yet stable
-            //if (Keyboard.current.shiftKey.isPressed)
-            //{
-            //    Watchman.Get<Meniscate>().ToggleMultiSelectedToken(this);
-            //    return;
-            //}
+            if (Keyboard.current.shiftKey.isPressed)
+            {
+                Watchman.Get<Meniscate>().ToggleMultiSelectedToken(this);
+                return;
+            }
 
             bool handled = _manifestation.HandlePointerClick(eventData, this);
 

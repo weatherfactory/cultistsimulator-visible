@@ -172,8 +172,18 @@ namespace SecretHistories.UI {
             foreach (Token multiSelectedToken in _multiSelectedTokens)
             {
                 if (multiSelectedToken.IsValid() && multiSelectedToken != draggedToken)
+                {
                     multiSelectedToken.ContinueDragAlong(originalPosition, draggedToken);
+
+                    //display ghosts for dragged tokens
+                    //This only makes sense in Cultist classic, where we want to put multiselected tokens exclusively in the
+                    //tabletop sphere. If we want to put them in bookcases or containers, it'll need more flexibility
+                    var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere(); 
+                    tabletopSphere.TryDisplayGhost(multiSelectedToken);
+                }
             }
+
+            
         }
  
         public void OnMultiEndDrag(PointerEventData eventData, Token draggedToken)
