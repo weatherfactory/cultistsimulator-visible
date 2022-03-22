@@ -158,8 +158,11 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
             else
             {
                 var tokenToPopOut = PagedTokens[CurrentIndex];
+                PagedTokens.Remove(tokenToPopOut);
+                PagedTokens[CurrentIndex-1].MakeVisible();
+
                 tokenToPopOut.GoAway(new Context(Context.ActionSource.PlayerDump));
-            ShowPrevPage();    
+            
             }
             
         }
