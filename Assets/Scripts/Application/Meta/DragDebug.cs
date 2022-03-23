@@ -76,6 +76,9 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
 
             
             string hoveringOver = string.Empty;
+
+            if(args.Interaction!=Interaction.OnDragEnd)
+            {
             var hovered = args.PointerEventData.hovered;
 
             if(hovered.Any())
@@ -84,7 +87,7 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
                 foreach (var h in hovered)
                     hoveringOver = $"{hoveringOver}\n{h.name}";
             }
-
+            }
 
             positioningText.text = $"Pointer (screen): {ppString}\n Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \nHovering Over: {hoveringOver}";
 

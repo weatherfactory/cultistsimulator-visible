@@ -89,8 +89,8 @@ if(args.Interaction==Interaction.OnDrag)
                     else
                     {
                         //token isn't talking to us, but what about its sphere? (eg, if we would show a ghost next to the token)
-                        potentialToken.Sphere.TryDisplayDropInteractionHere(args.Token);
-                        return;
+                        if(potentialToken.Sphere.TryDisplayDropInteractionHere(args.Token))
+                            return;
                     }
                 }
 
