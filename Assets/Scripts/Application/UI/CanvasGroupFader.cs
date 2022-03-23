@@ -12,7 +12,8 @@ namespace SecretHistories.UI
 
         public float durationTurnOn;
         public float durationTurnOff;
-
+        [SerializeField]
+        private float maxAlpha = 1f;
         private Coroutine _appearingCoroutine;
         private Coroutine _disappearingCoroutine;
         private bool _appearingFlag = false;
@@ -24,7 +25,7 @@ namespace SecretHistories.UI
         {
             try
             {
-                return Group.alpha >= 1f;
+                return Group.alpha >= maxAlpha;
             }
             catch (Exception e)
             {
@@ -84,7 +85,7 @@ namespace SecretHistories.UI
 
         public void ShowImmediately()
         {
-            SetStatesForFinalAlpha(1f);
+            SetStatesForFinalAlpha(maxAlpha);
         }
 
         public void Show()
@@ -97,7 +98,7 @@ namespace SecretHistories.UI
 
             //If we're appearing instantly or if we are already visible, go to final alpha state, make sure everything is set correctly for that.
             if (durationTurnOn <= 0f || IsFullyVisible()) {
-                SetStatesForFinalAlpha(1f);
+                SetStatesForFinalAlpha(maxAlpha);
             }
             else
             {
@@ -105,7 +106,7 @@ namespace SecretHistories.UI
                 {
                     _appearingFlag = true;
                     _disappearingFlag = false; //probably unnecessary but this is racey world
-                    _appearingCoroutine = StartCoroutine(DoTransparencyChange(1f, durationTurnOn));
+                    _appearingCoroutine = StartCoroutine(DoTransparencyChange(maxAlpha, durationTurnOn));
                 }
             }
         }

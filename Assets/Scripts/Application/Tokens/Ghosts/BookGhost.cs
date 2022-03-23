@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretHistories.Abstract;
 using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SecretHistories.Ghosts
 {
@@ -15,16 +18,45 @@ namespace SecretHistories.Ghosts
         private const float heightToSpine = 0.33f;
         private const float heightToCover = 1f;
 
-        
-        public override void Emphasise()
+        [SerializeField] private GameObject frontCover;
+        [SerializeField]
+        private Image frontCoverImage;
+        [SerializeField]
+        private TextMeshProUGUI frontCoverTitle;
+
+
+
+        [SerializeField]
+        private GameObject spine;
+        [SerializeField]
+        private Image spineImage;
+        [SerializeField]
+        private TextMeshProUGUI spineTitle;
+
+
+
+        public void Emphasise()
         {
-            float height = rectTransform.rect.height;
-            rectTransform.sizeDelta = new Vector2(height * heightToCover, height);
+            frontCover.SetActive(true);
+            spine.SetActive(false);
         }
-        public override void Understate()
+
+        public void Understate()
         {
-            float height = rectTransform.rect.height;
-            rectTransform.sizeDelta = new Vector2(height * heightToSpine, height);
+            frontCover.SetActive(false);
+            spine.SetActive(true);
+        }
+
+        public override void UpdateVisuals(IManifestable manifestable)
+        {
+            Sprite f = ResourcesManager.GetSpriteForFrontCover(manifestable.Icon);
+            frontCoverImage.sprite = f;
+            Sprite s = ResourcesManager.GetSpriteForSpine(manifestable.Icon);
+            spineImage.sprite = s;
+
+            spineTitle.text = manifestable.Label;
+            frontCoverTitle.text = manifestable.Label;
+
         }
     }
 }
