@@ -169,9 +169,11 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
                 var tokenToPopOut = tokenToCopy.CalveToken(1, Context.Metafictional());
                 
                 tokenToPopOut.GoAway(new Context(Context.ActionSource.Metafictional));
-            
-        
-       
+
+                CurrentIndex--; //This means we're on the page for the original token once the copy is popped out.
+                //We do somehow end up with an extra page to navigate through though - and we seem to be accumulating junk extra tokens.
+
+
             }
             
         }
