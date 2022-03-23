@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c4d1168f7b3c641b4f4eeb04023ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateOnDrag: 1
+  shadow: {fileID: 0}
   _dominions:
   - {fileID: 4811172271083714018}
 --- !u!1 &6609659380403923008
@@ -145,6 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spherePrefab: {fileID: 0}
+  AcceptsNoteCommands: 0
   canvasGroupFader: {fileID: 0}
 --- !u!1001 &3982476976559661981
 PrefabInstance:
