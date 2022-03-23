@@ -59,7 +59,7 @@ namespace SecretHistories.Spheres
                 return base.TryAcceptToken(token, context);
             return false;
         }
-        public override bool TryDisplayGhost(Token forToken)
+        public override bool TryDisplayDropInteractionHere(Token forToken)
         {
             if (IsTokenInRangeOfThisRoom(forToken))
                 //if so, display ghost.

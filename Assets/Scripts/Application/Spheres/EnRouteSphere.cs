@@ -68,37 +68,45 @@ namespace SecretHistories.Spheres
 
             base.NotifyTokenInThisSphereInteracted(args);
 
-
+if(args.Interaction==Interaction.OnDrag)
+{
             //when a token is being dragged through it, the EnRoute sphere asks anything underneath to predict interactions were it dropped.
-            //we only want to show one predicted interaction, hence the break statements.
+            //we only want to show one predicted interaction, hence the return statements.
 
             if (args.PointerEventData == null || args.Token==null)
                 return;
             
+
             var hovered = args.PointerEventData.hovered.Where(h=>!h.Equals(null)); //make sure whatever we're hovering over hasn't been destroyed
             foreach (var h in hovered)
             {
                 var potentialToken = h.GetComponent<Token>();
                 if (potentialToken != null && potentialToken!=args.Token)
                 {
+                    //hovering over a token: try show interaction
                     if (potentialToken.TryShowPredictedInteractionIfDropped(args.Token))
-                        break;
+                        return;
                     else
                     {
-                        potentialToken.Sphere.TryDisplayGhost(args.Token);
-                        break;
+                        //token isn't talking to us, but what about its sphere? (eg, if we would show a ghost next to the token)
+                        potentialToken.Sphere.TryDisplayDropInteractionHere(args.Token);
+                        return;
                     }
                 }
 
-
+                //no token, but we might be hovering over a sphere with a dropcatcher
                 var potentialDropCatcher = h.GetComponent<SphereDropCatcher>();
                 if (potentialDropCatcher != null)
                 {
                     if (potentialDropCatcher.TryShowPredictedInteractionIfDropped(args.Token))
-                        break;
+                        return;
                 }
             }
 
+            //nothing we can interact with - perhaps we're hovering over a window.
+            args.Token.StopShowingPossibleInteractions();
+            return;
+}
 
         }
     }

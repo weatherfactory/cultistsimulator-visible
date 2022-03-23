@@ -1177,7 +1177,7 @@ namespace SecretHistories.UI {
 
         }
 
-        public void StopShowingPossibleInteractionWithToken(Token token)
+        public void StopShowingPossibleInteractions()
         {
             _manifestation.Unhighlight(HighlightType.PotentiallyRelevant, _payload);
         }

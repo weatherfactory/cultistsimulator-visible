@@ -71,7 +71,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Situation
                 var potentialDragToken = eventData.pointerDrag.GetComponent<Token>();
 
                 if (potentialDragToken != null)
-                    potentialDragToken.StopShowingPossibleInteractionWithToken(potentialDragToken);
+                    potentialDragToken.StopShowingPossibleInteractions();
             }
 
             HideHoverGlow();
@@ -257,14 +257,14 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Situation
             slotGlow.Show(false);
         }
 
-        public void StopShowingPossibleInteractionWithToken(Token token)
+        public void StopShowingPossibleInteractions()
         {
             SetGlowColor(UIStyle.GlowPurpose.Default);
             slotGlow.Hide(false);
 
         }
 
-        public override bool TryDisplayGhost(Token forToken)
+        public override bool TryDisplayDropInteractionHere(Token forToken)
         {
             if (IsTokenInRangeOfThisColumn(forToken))
                 return forToken.DisplayGhostAtChoreographerDrivenPosition(this);

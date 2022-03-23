@@ -872,9 +872,10 @@ namespace SecretHistories.Spheres
         {
             return GetAbsolutePath().IsPathToSphereInRoot();
         }
-        public virtual bool TryDisplayGhost(Token forToken)
+        public virtual bool TryDisplayDropInteractionHere(Token forToken)
         {
-            return false; //most spheres won't show a ghost
+ 
+            return false; //most spheres won't show a ghost but also won't hide it if it's extant.
         }
         public virtual bool DisplayGhostAt(Token forToken,Vector3 overridingWorldPosition)
         {

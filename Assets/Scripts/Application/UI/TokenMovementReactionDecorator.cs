@@ -54,7 +54,7 @@ namespace SecretHistories.UI
 
             }
             else if (args.Interaction == Interaction.OnDragEnd)
-                _decorated.StopShowingPossibleInteractionWithToken(args.Token);
+                _decorated.StopShowingPossibleInteractions();
 
 
         }

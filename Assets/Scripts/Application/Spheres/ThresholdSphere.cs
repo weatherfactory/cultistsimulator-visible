@@ -77,29 +77,19 @@ namespace SecretHistories.UI //should be SecretHistories.Sphere. But that'll bre
                 if (GetElementTokenInSlot() == null)
                     ShowHoverGlow();
             }
-            else
-            {
-                var draggedToken = eventData.pointerDrag.GetComponent<Token>();
-
-                if (CanInteractWithToken(draggedToken)) {
-                    draggedToken.ShowPossibleInteractionWithToken(draggedToken);
-
-                    if (GetElementTokenInSlot() == null) // Only glow if the slot is empty
-                        ShowHoverGlow();
-                }
-            }
+           
         }
 
         public virtual void OnPointerExit(PointerEventData eventData) {
             if (GoverningSphereSpec.Greedy) // we're greedy? No interaction.
                 return;
 
-            if(eventData.dragging)
+            if (eventData.dragging)
             {
                 var potentialDragToken = eventData.pointerDrag.GetComponent<Token>();
 
-                if ( potentialDragToken != null)
-                    potentialDragToken.StopShowingPossibleInteractionWithToken(potentialDragToken);
+                if (potentialDragToken != null)
+                    potentialDragToken.StopShowingPossibleInteractions();
             }
 
             HideHoverGlow();
@@ -361,7 +351,24 @@ namespace SecretHistories.UI //should be SecretHistories.Sphere. But that'll bre
             slotGlow.Show(false);
         }
 
-        public void StopShowingPossibleInteractionWithToken(Token token)
+        public override bool TryDisplayDropInteractionHere(Token forToken)
+        {
+
+
+            if (CanInteractWithToken(forToken))
+            {
+                forToken.ShowReadyToInteract();
+               // if (GetElementTokenInSlot() == null) // Only glow if the slot is empty
+               //     ShowHoverGlow();
+            }
+
+            forToken.HideGhost();
+
+
+            return true;
+        }
+
+        public void StopShowingPossibleInteractions()
         {
             SetGlowColor(UIStyle.GlowPurpose.Default);
             slotGlow.Hide(false);

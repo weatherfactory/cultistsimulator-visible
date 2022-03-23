@@ -189,7 +189,7 @@ namespace SecretHistories.Spheres
                 canvasGroupFader.Hide();
         }
 
-        public override bool TryDisplayGhost(Token forToken)
+        public override bool TryDisplayDropInteractionHere(Token forToken)
         {
             return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
 

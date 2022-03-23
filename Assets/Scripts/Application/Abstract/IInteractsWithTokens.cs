@@ -6,6 +6,6 @@ namespace SecretHistories.UI
     {
         bool CanInteractWithToken(Token token);
         void ShowPossibleInteractionWithToken(Token token);
-        void StopShowingPossibleInteractionWithToken(Token token);
+        void StopShowingPossibleInteractions();
     }
 }

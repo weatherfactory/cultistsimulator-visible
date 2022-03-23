@@ -179,7 +179,7 @@ namespace SecretHistories.UI {
                     //This only makes sense in Cultist classic, where we want to put multiselected tokens exclusively in the
                     //tabletop sphere. If we want to put them in bookcases or containers, it'll need more flexibility
                     var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere(); 
-                    tabletopSphere.TryDisplayGhost(multiSelectedToken);
+                    tabletopSphere.TryDisplayDropInteractionHere(multiSelectedToken);
                 }
             }
 
