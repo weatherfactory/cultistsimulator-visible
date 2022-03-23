@@ -56,7 +56,7 @@ namespace SecretHistories.Ghosts
 
             spineTitle.text = manifestable.Label;
             frontCoverTitle.text = manifestable.Label;
-
+            Understate(); //for now, stay understated
         }
     }
 }
