@@ -88,7 +88,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 //nb this is the manifestation's width, not the token's, because the token's may not have been updated at this point, and manifestation is our best guess
 
                 float startingX = -halfSphereWidth + halfTokenWidth;
-                float startingY = 0f;
+                float startingY = startPos.y;
                 Vector2 candidatePosition = new Vector2(startingX, startingY);
 
 
