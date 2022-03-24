@@ -341,12 +341,7 @@ namespace SecretHistories.UI {
             var manifestationToRetire = oldManifestation;
             _manifestation = newManifestation;
 
-            //This makes me nervous: I still only have a nebulous understanding of anchor positioning stuff
-            //but! I needed to set it because GridLayout overrides anchor positions, and there's a GridLayout in storage
-            TokenRectTransform.sizeDelta = new Vector2(_manifestation.RectTransform.sizeDelta.x,
-                _manifestation.RectTransform.sizeDelta.y);
-            TokenRectTransform.anchorMin = _manifestation.RectTransform.anchorMax;
-            TokenRectTransform.anchorMax = _manifestation.RectTransform.anchorMax;
+        UpdateRectTransformSizeFromManifestation();
 
             manifestationToRetire.Retire(vfxForOldManifestation, OnReplacedManifestationRetired);
 
@@ -547,6 +542,7 @@ namespace SecretHistories.UI {
         /// <returns></returns>
         public bool CanBeDragged()
         {
+
             return
                 Sphere.AllowDrag 
                 && !CurrentState.InSystemDrivenMotion()
@@ -1055,6 +1051,8 @@ namespace SecretHistories.UI {
         {
             //in the case of items which can be examined more closely, like books, Understate displays the storage version of the item
             _manifestation.Understate();
+            UpdateRectTransformSizeFromManifestation();
+
             if (_ghost != null)
                 _ghost.Understate();
         }
@@ -1063,8 +1061,19 @@ namespace SecretHistories.UI {
         {
             //in the case of items which can be examined more closely, like books, Emphasise displays the expanded version of the item
             _manifestation.Emphasise();
+            UpdateRectTransformSizeFromManifestation();
             if (_ghost != null)
                 _ghost.Emphasise();
+        }
+
+        private void UpdateRectTransformSizeFromManifestation()
+        {
+            //This makes me nervous: I still only have a nebulous understanding of anchor positioning stuff
+            //but! I needed to set it because GridLayout overrides anchor positions, and there's a GridLayout in storage
+            TokenRectTransform.sizeDelta = new Vector2(_manifestation.RectTransform.sizeDelta.x,
+                _manifestation.RectTransform.sizeDelta.y);
+            TokenRectTransform.anchorMin = _manifestation.RectTransform.anchorMax;
+            TokenRectTransform.anchorMax = _manifestation.RectTransform.anchorMax;
         }
 
 

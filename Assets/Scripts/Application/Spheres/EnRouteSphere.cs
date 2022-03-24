@@ -94,7 +94,7 @@ namespace SecretHistories.Spheres
                 //make sure whatever we're hovering over hasn't been destroyed
                     .OrderByDescending(h=>h.layer)
                     .ToList();
-                Debug.Log("Hovered: " + hoveredInOrder.Count);
+
 
             foreach (var h in hoveredInOrder)
             {

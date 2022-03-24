@@ -110,12 +110,31 @@ namespace SecretHistories.Manifestations
         {
             frontCover.SetActive(true);
             spine.SetActive(false);
+            UpdateRectTransformSize(frontCover);
         }
 
         public void Understate()
         {
             frontCover.SetActive(false);
             spine.SetActive(true);
+            UpdateRectTransformSize(spine);
+        }
+
+        private void UpdateRectTransformSize(GameObject toMatchObject)
+        {
+            RectTransform newSize = toMatchObject.GetComponent<RectTransform>();
+            if (newSize == null)
+            {
+                NoonUtility.LogWarning($"Trying to update recttransform for bookmanifestation from {toMatchObject.name} but it doesn't have a recttransform");
+                return;
+            }
+
+            //This makes me nervous: I still only have a nebulous understanding of anchor positioning stuff
+            //but! I needed to set it because GridLayout overrides anchor positions, and there's a GridLayout in storage
+            RectTransform.sizeDelta = new Vector2(newSize.sizeDelta.x,
+                newSize.sizeDelta.y);
+            RectTransform.anchorMin = newSize.anchorMax;
+            RectTransform.anchorMax = newSize.anchorMax;
         }
 
         public bool RequestingNoDrag { get; }

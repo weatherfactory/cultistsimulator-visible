@@ -32,7 +32,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 {
                     var otherTokenOverlapRect = otherToken
                         .GetRectInCurrentSphere();
-                    if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, GetGridSnapCoefficient()))
+
+                    if (otherTokenOverlapRect.Overlaps(candidateRect))
                         return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
                 }
             }
@@ -62,6 +63,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             }
             
             var candidatePosition = new Vector2(startX, startY);
+            NoonUtility.Log($" x: { candidatePosition.x } ");
             var positionLegality = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
             if (positionLegality.IsLegal)
                 return candidatePosition;
@@ -70,9 +72,11 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             for (int i = 0; i < maxIterations; i++)
             {
-                float adjustment = positionLegality.BlockerRect.width * changeDirection;
-                candidatePosition.x += adjustment;
+           
 
+                float adjustment = (positionLegality.BlockerRect.width+1) * changeDirection;
+                candidatePosition.x += adjustment;
+                NoonUtility.Log($"adjustment: {adjustment} newX: {candidatePosition.x} ");
                 positionLegality = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
                 if (positionLegality.IsLegal)
                     return candidatePosition;
@@ -80,7 +84,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             if (!positionLegality.IsLegal)
             {
-                throw new NotImplementedException("What do we do if there's no more room on the bookcase? Dump it on the floor?");
+                NoonUtility.Log($"Found nothing after {maxIterations} iterations");
             }
 
             return candidatePosition;
