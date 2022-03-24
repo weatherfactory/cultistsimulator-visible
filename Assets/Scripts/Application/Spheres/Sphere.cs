@@ -675,9 +675,6 @@ namespace SecretHistories.Spheres
             if (flock.MinisterToEvictedToken(token, context))
                 return true;
             
-            
-
-
 
             var targetFreePosition= Choreographer.GetClosestFreeLocalPosition(token, token.TokenRectTransform.anchoredPosition3D);
 

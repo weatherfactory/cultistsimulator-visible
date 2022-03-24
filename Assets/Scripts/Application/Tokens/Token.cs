@@ -587,7 +587,8 @@ namespace SecretHistories.UI {
              CurrentState =new BeingDraggedState();
              Watchman.Get<Meniscate>().SetCurrentlyDraggedToken(this);
             
-            NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragBegin });
+            NotifyInteracted(new TokenInteractionEventArgs(pointerEventData: eventData, payload: Payload, token: this,
+                sphere: Sphere, interaction: Interaction.OnDragBegin));
             //just picked the token up, but it hasn't yet left the origin sphere. 
             TryCalveOriginToken(_homingAngel);
 
@@ -655,7 +656,8 @@ namespace SecretHistories.UI {
 
             MoveObject(draggedToPosition);
             _manifestation.DoMove(eventData, TokenRectTransform);
-            NotifyInteracted(new TokenInteractionEventArgs {PointerEventData = eventData, Payload = Payload, Token =this,Sphere= Sphere,Interaction = Interaction.OnDrag});
+            NotifyInteracted(new TokenInteractionEventArgs(pointerEventData: eventData, payload: Payload, token: this,
+                sphere: Sphere, interaction: Interaction.OnDrag));
             Watchman.Get<Meniscate>().OnMultiDragAlong(originalPosition, this);
         }
 
@@ -691,7 +693,8 @@ namespace SecretHistories.UI {
             //Our job here is to notify DragEnd;
             //call CompleteDrag if it hasn't already been called;
             //and tidy up any MultiDrag (which maybe should go in FinishDrag
-            NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere,Interaction = Interaction.OnDragEnd});
+            NotifyInteracted(new TokenInteractionEventArgs(pointerEventData: eventData, payload: Payload, token: this,
+                sphere: Sphere, interaction: Interaction.OnDragEnd));
 
                 CompleteDrag();
             Watchman.Get<Meniscate>().OnMultiEndDrag(eventData,this);
@@ -701,7 +704,8 @@ namespace SecretHistories.UI {
         {
 
         
-                NotifyInteracted(new TokenInteractionEventArgs { PointerEventData = eventData, Payload = Payload, Token = this, Sphere = Sphere, Interaction = Interaction.OnDragEnd });
+                NotifyInteracted(new TokenInteractionEventArgs(pointerEventData: eventData, payload: Payload,
+                    token: this, sphere: Sphere, interaction: Interaction.OnDragEnd));
                 CompleteDrag();
             
         }
@@ -818,14 +822,8 @@ namespace SecretHistories.UI {
  
         private void InteractWithIncomingToken(Token incomingToken, PointerEventData eventData)
         {
-            NotifyInteracted(new TokenInteractionEventArgs
-            {
-                Token = this,
-                Payload = Payload,
-                Sphere = Sphere,
-                PointerEventData = eventData,
-                Interaction = Interaction.OnReceivedADrop
-            });
+            NotifyInteracted(new TokenInteractionEventArgs(token: this, payload: Payload, sphere: Sphere,
+                pointerEventData: eventData, interaction: Interaction.OnReceivedADrop));
 
             _manifestation.Unhighlight(HighlightType.All, _payload); //whatever's just happened, we don't want to keep predicting interactions
 
@@ -904,26 +902,14 @@ namespace SecretHistories.UI {
             if (timeSincePreviousClick<doubleClickInterval)
             {
                 previousClickTime = 0f;
-                NotifyInteracted(new TokenInteractionEventArgs
-                {
-                    Payload = Payload,
-                    Token = this,
-                    Sphere = Sphere,
-                    PointerEventData = eventData,
-                    Interaction = Interaction.OnDoubleClicked
-                });
+                NotifyInteracted(new TokenInteractionEventArgs(payload: Payload, token: this, sphere: Sphere,
+                    pointerEventData: eventData, interaction: Interaction.OnDoubleClicked));
 
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
-                NotifyInteracted(new TokenInteractionEventArgs
-                {
-                    Payload = Payload,
-                    Token = this,
-                    Sphere = Sphere,
-                    PointerEventData = eventData,
-                    Interaction = Interaction.OnRightClicked
-                });
+                NotifyInteracted(new TokenInteractionEventArgs(payload: Payload, token: this, sphere: Sphere,
+                    pointerEventData: eventData, interaction: Interaction.OnRightClicked));
             }
             else
             {
@@ -933,14 +919,8 @@ namespace SecretHistories.UI {
                 }
                 else
                 {
-                    NotifyInteracted(new TokenInteractionEventArgs
-                    {
-                        Payload = Payload,
-                        Token = this,
-                        Sphere = Sphere,
-                        PointerEventData = eventData,
-                        Interaction = Interaction.OnClicked
-                    });
+                    NotifyInteracted(new TokenInteractionEventArgs(payload: Payload, token: this, sphere: Sphere,
+                        pointerEventData: eventData, interaction: Interaction.OnClicked));
                 }
 
                 // this moves the clicked sibling on top of any other nearby cards.
@@ -1026,14 +1006,8 @@ namespace SecretHistories.UI {
             if (!eventData.dragging && !Watchman.Get<Meniscate>().IsMultiSelected(this))
                 _manifestation.Unhighlight(HighlightType.Hover, _payload);
 
-            NotifyInteracted(new TokenInteractionEventArgs
-            {
-               Payload = Payload,
-                Token = this,
-                Sphere = Sphere,
-                PointerEventData = eventData,
-                Interaction = Interaction.OnPointerExited
-            });
+            NotifyInteracted(new TokenInteractionEventArgs(payload: Payload, token: this, sphere: Sphere,
+                pointerEventData: eventData, interaction: Interaction.OnPointerExited));
 
             }
             catch (Exception e)

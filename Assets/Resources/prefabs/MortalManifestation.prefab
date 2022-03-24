@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2931150508249505524}
   - component: {fileID: 8399757162958279375}
   - component: {fileID: -6502773901388023748}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: MortalManifestation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee74abae5b4499244b40b70e2f887fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateOnDrag: 1
+  shadow: {fileID: 0}
   _emphasisGlow: {fileID: 4654600545540642898}
 --- !u!1 &4654600545540642898
 GameObject:
@@ -83,7 +85,7 @@ GameObject:
   - component: {fileID: 3945628964812182506}
   - component: {fileID: 4895668440533714760}
   - component: {fileID: 3981263763692582823}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: EmphasisGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +161,7 @@ GameObject:
   - component: {fileID: 4937266980204041097}
   - component: {fileID: 4940182812846026011}
   - component: {fileID: 5047598398291836721}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: GreedySlotIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +238,7 @@ GameObject:
   - component: {fileID: 4938082678424205963}
   - component: {fileID: 4939977130142101685}
   - component: {fileID: 5048369463563415623}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Artwork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +314,7 @@ GameObject:
   - component: {fileID: 4937224406293306359}
   - component: {fileID: 4939325226323720819}
   - component: {fileID: 5048283460127995915}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CountdownBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +391,7 @@ GameObject:
   - component: {fileID: 4936450295931735745}
   - component: {fileID: 5048001245397865205}
   - component: {fileID: 5049695036381791049}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: OngoingSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +487,7 @@ GameObject:
   - component: {fileID: 4940404922579684379}
   - component: {fileID: 5044558351227132147}
   - component: {fileID: 5048133631226277863}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CountdownText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +642,7 @@ GameObject:
   - component: {fileID: 4939690964527654687}
   - component: {fileID: 5047690204631121743}
   - component: {fileID: 5047690204674842617}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: 'Shadow '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +733,7 @@ GameObject:
   - component: {fileID: 4939690964383316793}
   - component: {fileID: 5047690205381271755}
   - component: {fileID: 5048242233676867517}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,7 +825,7 @@ GameObject:
   - component: {fileID: 4936565065061444987}
   - component: {fileID: 4939690964980861215}
   - component: {fileID: 5047690143146918553}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Artwork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +903,7 @@ GameObject:
   - component: {fileID: 5048150692578397357}
   - component: {fileID: 4939934755361026065}
   - component: {fileID: 5044462633377607549}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: DumpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -994,7 +996,7 @@ GameObject:
   - component: {fileID: 5158598619062390935}
   - component: {fileID: 4997199570522289221}
   - component: {fileID: 4998202931038979327}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ParticlesRunning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5820,7 +5822,7 @@ GameObject:
   - component: {fileID: 5154457077532713465}
   - component: {fileID: 4997211807149035171}
   - component: {fileID: 4997331362868212749}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10703,7 +10705,7 @@ GameObject:
   - component: {fileID: 4936502041034914451}
   - component: {fileID: 5047468241503622201}
   - component: {fileID: 5044584333825793041}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Artwork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10795,7 +10797,7 @@ GameObject:
   - component: {fileID: 4937576338564404509}
   - component: {fileID: 4939914935898747409}
   - component: {fileID: 5047566066375653767}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CoundownBarShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10871,7 +10873,7 @@ GameObject:
   - component: {fileID: 4937929302143879617}
   - component: {fileID: 4940108119508931515}
   - component: {fileID: 5048009165575308213}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CountdownBadge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10948,7 +10950,7 @@ GameObject:
   - component: {fileID: 5158319179334236563}
   - component: {fileID: 4997192622021706675}
   - component: {fileID: 4998339246942746345}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: SmokeWisps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15772,7 +15774,7 @@ GameObject:
   - component: {fileID: 4937600340404809723}
   - component: {fileID: 4939415306921775731}
   - component: {fileID: 5047472363135949185}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15848,7 +15850,7 @@ GameObject:
   - component: {fileID: 4938013751763724343}
   - component: {fileID: 4940110032067938645}
   - component: {fileID: 5048156178220241663}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CompletionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15984,7 +15986,7 @@ GameObject:
   - component: {fileID: 4937814825619277011}
   - component: {fileID: 4939382248426729343}
   - component: {fileID: 5047640850943980329}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Token
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16060,7 +16062,7 @@ GameObject:
   - component: {fileID: 4937863173758439625}
   - component: {fileID: 4996846951872165971}
   - component: {fileID: 4997586790299045545}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ShowSlotParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20948,7 +20950,7 @@ GameObject:
   - component: {fileID: 4938158624393265371}
   - component: {fileID: 4940126471719914307}
   - component: {fileID: 5047622331040114301}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CompletionBadge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21023,7 +21025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4937386357925218535}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CountdownCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

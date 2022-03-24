@@ -17,12 +17,12 @@ namespace SecretHistories.Constants.Events
 
     public class TokenInteractionEventArgs
     {
-        public Sphere Sphere { get; set; }
-        public ITokenPayload Payload { get; set; }
-        public Token Token { get; set; }
-        public PointerEventData PointerEventData { get; set; }
-        public Context Context { get; set; }
-        public Interaction Interaction { get; set; }
+        public Sphere Sphere { get; private set; }
+        public ITokenPayload Payload { get; private set; }
+        public Token Token { get; private set; }
+        public PointerEventData PointerEventData { get; private set; }
+        public Context Context { get; private set; }
+        public Interaction Interaction { get; private set; }
 
         public TokenInteractionEventArgs()
         {
@@ -32,6 +32,15 @@ namespace SecretHistories.Constants.Events
         public TokenInteractionEventArgs(Context context)
         {
             Context = context;
+        }
+
+        public TokenInteractionEventArgs(PointerEventData pointerEventData, ITokenPayload payload, Token token, Sphere sphere, Interaction interaction) : this()
+        {
+            PointerEventData = pointerEventData;
+            Payload = payload;
+            Token = token;
+            Sphere = sphere;
+            Interaction = interaction;
         }
     }
     

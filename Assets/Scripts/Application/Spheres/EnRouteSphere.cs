@@ -80,17 +80,23 @@ namespace SecretHistories.Spheres
             //when a token is being dragged through it, the EnRoute sphere asks anything underneath to predict interactions were it dropped.
             //we only want to show one predicted interaction, hence the return statements.
 
-            //but which predicted inreraction?
+            //but which predicted interaction?
 
             if (args.PointerEventData == null || args.Token == null)
                 return;
 
 
-            var hovered =
+            var existingHovered =
                 args.PointerEventData.hovered.Where(h =>
-                    !h.Equals(null))
-                    .OrderByDescending(h=>h.layer); //make sure whatever we're hovering over hasn't been destroyed
-            foreach (var h in hovered)
+                    !h.Equals(null));
+                
+                var hoveredInOrder=existingHovered
+                //make sure whatever we're hovering over hasn't been destroyed
+                    .OrderByDescending(h=>h.layer)
+                    .ToList();
+                Debug.Log("Hovered: " + hoveredInOrder.Count);
+
+            foreach (var h in hoveredInOrder)
             {
                 
                 var potentialToken = h.GetComponent<Token>();

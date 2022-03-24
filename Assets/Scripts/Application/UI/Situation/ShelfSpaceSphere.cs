@@ -20,7 +20,7 @@ namespace SecretHistories.UI
     [IsEmulousEncaustable(typeof(Sphere))]
     [RequireComponent(typeof(SphereDropCatcher))]
     [RequireComponent(typeof(TokenMovementReactionDecorator))]
-    public class ShelfSpaceSphere : Sphere, IInteractsWithTokens
+    public class ShelfSpaceSphere : Sphere, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IInteractsWithTokens
     {
         public override SphereCategory SphereCategory => SphereCategory.Threshold;
 
@@ -55,32 +55,14 @@ namespace SecretHistories.UI
             {
                 ShowHoverGlow();
             }
-            else
-            {
-                var draggedToken = eventData.pointerDrag.GetComponent<Token>();
-
-                if (CanInteractWithToken(draggedToken))
-                {
-                    draggedToken.ShowPossibleInteractionWithToken(draggedToken);
-
-                        ShowHoverGlow();
-                }
-            }
         }
 
         public virtual void OnPointerExit(PointerEventData eventData)
         {
 
 
-            if (eventData.dragging)
-            {
-                var potentialDragToken = eventData.pointerDrag.GetComponent<Token>();
-
-                if (potentialDragToken != null)
-                    potentialDragToken.StopShowingPossibleInteractions();
-            }
-
-            HideHoverGlow();
+            if (!eventData.dragging)
+                HideHoverGlow();
         }
 
         public void SetGlowColor(UIStyle.GlowPurpose purposeType)
@@ -110,15 +92,6 @@ namespace SecretHistories.UI
         }
 
 
-        public override void DisplayAndPositionHere(Token token, Context context)
-        {
-            base.DisplayAndPositionHere(token, context);
-            Choreographer.PlaceTokenAtFreeLocalPosition(token, context);
-
-            if (slotIconHolder != null)
-                slotIconHolder.transform.SetAsLastSibling(); //this is p legacy hacky and exists just cos the hierarchy is how it is
-
-        }
 
         public override void DoRetirement(Action<SphereRetirementType> onRetirementComplete, SphereRetirementType retirementType)
         {
@@ -150,7 +123,18 @@ namespace SecretHistories.UI
                 incumbentMoved = false;
         }
 
- 
+        public override void AcceptToken(Token token, Context context)
+        {
+            base.AcceptToken(token, context);
+
+            
+            SoundManager.PlaySfxOnceThisFrame("CardDrop");
+
+            token.HideGhost();
+
+        }
+
+
         public override bool TryAcceptToken(Token token, Context context)
         {
             if (!IsTokenInRangeOfThisShelf(token))
@@ -178,11 +162,9 @@ namespace SecretHistories.UI
             {
                 //it matches.
                 //TODO: reject if full
-
-                //now we put the token in the slot.
-                token.CurrentState = new DroppedInSphereState();
+                
                 AcceptToken(token, context);
-                SoundManager.PlaySfx("CardPutInSlot");
+                
             }
 
             return true;
@@ -281,8 +263,12 @@ namespace SecretHistories.UI
 
         public override bool TryDisplayDropInteractionHere(Token forToken)
         {
-            if(IsTokenInRangeOfThisShelf(forToken))
+            if (IsTokenInRangeOfThisShelf(forToken))
+            {
+                SetGlowColor(UIStyle.GlowPurpose.Default);
                 return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
+            }
+                
             return false;
 
         }

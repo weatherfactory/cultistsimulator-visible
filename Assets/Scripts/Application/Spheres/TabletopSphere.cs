@@ -152,16 +152,15 @@ namespace SecretHistories.Spheres
         public override void AcceptToken(Token token, Context context)
         {
           base.AcceptToken(token,context);
-       //   token.Stabilise();
+
           if(token.Shrouded())
               token.Unshroud(true);
           
-            SoundManager.PlaySfxOnceThisFrame("CardDrop");
+          SoundManager.PlaySfxOnceThisFrame("CardDrop");
           _tabletopChoreographer.HideAllDebugRects();
 
           token.HideGhost();
-
-
+            
         }
 
 
