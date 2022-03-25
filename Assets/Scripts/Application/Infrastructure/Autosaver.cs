@@ -85,13 +85,14 @@ namespace SecretHistories.Infrastructure
 
             if (housekeepingTimer > AUTOSAVE_INTERVAL)
             {
-                housekeepingTimer = 0f;
+              
                   TryAutosave();
             }
         }
 
         public async void TryAutosave()
         {
+            housekeepingTimer = 0f;
             AutosaveIndicator.Show();
 
          heart.Metapause();
@@ -116,6 +117,12 @@ namespace SecretHistories.Infrastructure
             var saveResult = await gameGateway.TryDefaultSave();
         }
 
+        public  void OnApplicationFocus(bool hasFocus)
+        {
+            if(!hasFocus)
+                TryAutosave();
+
+        }
 
 
 
