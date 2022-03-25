@@ -107,7 +107,10 @@ namespace SecretHistories.Ghosts
         {
             HideCanvasGroupFaderImmediately(); //ghost behaviour is determined by whether it's visible or not. So when we hide it, we mean hide immediately.
             if(rectTransform!=null)
+            {
                 rectTransform.SetParent(forToken.TokenRectTransform); //so it doesn't clutter up the hierarchy
+                rectTransform.position = forToken.TokenRectTransform.position;
+            }
             _projectedInSphere = null;
 
         }

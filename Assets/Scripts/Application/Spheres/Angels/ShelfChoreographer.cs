@@ -53,15 +53,17 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             {
                 changeDirection = 1f;
                 startX = -(shelfWidth / 2);
+                //startX+=  placingTokenWidth / 2; //can't do this until I stabilise the token width info
                 //on the left side
             }
             else
             {
                 changeDirection = -1f;
-                startX = shelfWidth/2;
+                startX = shelfWidth / 2;
+                //startX-= placingTokenWidth/2 ;//can't do this until I stabilise the token width info
                 //on the right side.
             }
-            
+
             var candidatePosition = new Vector2(startX, startY);
          //   NoonUtility.Log($" x: { candidatePosition.x } ");
             var positionLegality = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
@@ -72,8 +74,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             for (int i = 0; i < maxIterations; i++)
             {
-           
-
                 float adjustment = (positionLegality.BlockerRect.width+1) * changeDirection;
                 candidatePosition.x += adjustment;
                 NoonUtility.Log($"adjustment: {adjustment} newX: {candidatePosition.x} ");
