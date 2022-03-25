@@ -123,8 +123,7 @@ namespace SecretHistories.UI
         public virtual void RegisterFor(IManifestable manifestable)
         {
             _manifestable = manifestable;
-            manifestable.RegisterDominion(this);
-
+            
             //if we have permanent spheres created in editor, as for instance in otherworld prefabs, find and add them here.
             //I decided not to make the references explicit in the editor; worth reconsidering that decision if it causes problems later
             var permanentSpheres = gameObject.GetComponentsInChildren<PermanentSphereSpec>();
@@ -139,12 +138,23 @@ namespace SecretHistories.UI
                 _spheres.Add(actualSphere);
             }
 
-
+            //alternatively if there are spheres already created in the dominion, make sure
+            //they're also attached to the payload
             foreach (Sphere s in Spheres)
             {
                 manifestable.AttachSphere(s);
                 s.SetContainer(manifestable);
             }
+
+            
+            //This must come after the sphere specs have been applied. Otherwise, the manifestable may try to find spheres by ID so it 
+            //can run storeddominionpopulation commands against them, and permanent spheres won't yet have an ID.
+            //This is fragile, and there's probably a better way to apply the spherespec in the lifecycle that I haven't worked out yet.
+            //The problem is that 'permanent' but non-root spheres may be arbitrarily instantiated in eg prefabs.
+            manifestable.RegisterDominion(this);
+
+            //some dominions, like situation windows, have spheres that specified in the prefab and haven't yet been added,
+            //but aren't permanent in the sense above. We add overrides for those in each case.
 
         }
 

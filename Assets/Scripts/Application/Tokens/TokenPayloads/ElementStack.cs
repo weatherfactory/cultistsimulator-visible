@@ -289,7 +289,7 @@ namespace SecretHistories.UI {
                 return false;
 
             _dominions.Add(dominionToRegister);
-            
+
 
             foreach (var storedPopulateDominionCommand in _storedDominionCommands)
             {

@@ -9,6 +9,7 @@ using SecretHistories.Commands;
 using SecretHistories.Commands.SituationCommands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Fucine;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -19,13 +20,17 @@ namespace SecretHistories.UI
     [IsEmulousEncaustable(typeof(AbstractDominion))]
     public class ShelfDominion: AbstractDominion
     {
-     
 
-
+        
         public override Sphere TryCreateOrRetrieveSphere(SphereSpec spec)
         {
             var existingSphere = _spheres.SingleOrDefault(s => s.Id == spec.Id);
-            return existingSphere;
+            if (existingSphere != null)
+                return existingSphere;
+
+
+            NoonUtility.LogWarning($"Can't find a sphere in {_manifestable.Id} shelfdominion TryCreateOrRetrieveSphere that matches spec with id {spec.Id}. Returning null, which may cause trouble");
+            return null;
         }
 
 
