@@ -99,6 +99,7 @@ namespace SecretHistories.UI {
 
         private Timeshadow _timeshadow;
         private readonly HashSet<Sphere> _spheres = new HashSet<Sphere>();
+        private List<PopulateDominionCommand> _storedDominionCommands = new List<PopulateDominionCommand>();
 
 
         public Dictionary<string, string> GetIlluminations()
@@ -278,7 +279,7 @@ namespace SecretHistories.UI {
 
         }
 
-
+        
         public bool RegisterDominion(AbstractDominion dominionToRegister)
         {
             dominionToRegister.OnSphereAdded.AddListener(AttachSphere);
@@ -288,6 +289,14 @@ namespace SecretHistories.UI {
                 return false;
 
             _dominions.Add(dominionToRegister);
+            
+
+            foreach (var storedPopulateDominionCommand in _storedDominionCommands)
+            {
+                if (dominionToRegister.Identifier == storedPopulateDominionCommand.Identifier)
+                    storedPopulateDominionCommand.Execute(dominionToRegister);
+            }
+
             return true;
         }
 
@@ -633,7 +642,7 @@ namespace SecretHistories.UI {
 
         public void StorePopulateDominionCommand(PopulateDominionCommand populateDominionCommand)
         {
-            throw new ApplicationException($"No provision for storing a populate dominion command on an elementstack, but we can't find dominion with identifier {populateDominionCommand.Identifier} on elementstack {Id}");
+            _storedDominionCommands.Add(populateDominionCommand);
         }
 
 

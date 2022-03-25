@@ -90,8 +90,8 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
                 hoveredCount = hovered.Count;
             }
 
-            positioningText.text = $"Pointer (screen): {ppString}\n Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \nHovering Over: {hoveringOver} [total: ({hoveredCount})]";
-
+            //    positioningText.text = $"Pointer (screen): {ppString}\n Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \n<b>Hovering Over:</b> {hoveringOver} [total: ({hoveredCount})]";
+            positioningText.text = $"<b>Hovering Over:</b> [total: ({hoveredCount})]\n {hoveringOver} ";
         }
 
     }

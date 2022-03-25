@@ -42,7 +42,7 @@ namespace SecretHistories.Assets.Scripts.Application.Commands
               terrainFeaturePayload.SetMutation(m.Key,m.Value,false);
 
 
-            foreach (var d in Dominions)
+          foreach (var d in Dominions)
               d.Execute(terrainFeaturePayload);
           
           return existingTerrainFeatureToken.Payload;

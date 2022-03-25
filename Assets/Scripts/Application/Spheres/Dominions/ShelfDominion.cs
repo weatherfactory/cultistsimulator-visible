@@ -24,7 +24,8 @@ namespace SecretHistories.UI
 
         public override Sphere TryCreateOrRetrieveSphere(SphereSpec spec)
         {
-            throw new NotImplementedException();
+            var existingSphere = _spheres.SingleOrDefault(s => s.Id == spec.Id);
+            return existingSphere;
         }
 
 

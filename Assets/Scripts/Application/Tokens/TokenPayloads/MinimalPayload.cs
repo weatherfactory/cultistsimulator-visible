@@ -288,7 +288,7 @@ namespace SecretHistories.Entities
 
         public void StorePopulateDominionCommand(PopulateDominionCommand populateDominionCommand)
         {
-            throw new ApplicationException($"No provision for storing a populate dominion command on a minimal payload, but we can't find dominion with identifier {populateDominionCommand.Identifier} on payload {Id}");
+            NoonUtility.LogWarning(($"No provision for storing a populate dominion command on a minimal payload, but we can't find dominion with identifier {populateDominionCommand.Identifier} on payload {Id}"));
         }
     }
 }

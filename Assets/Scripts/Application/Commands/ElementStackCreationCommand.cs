@@ -46,7 +46,7 @@ namespace SecretHistories.Commands
 
         public ITokenPayload Execute(Context context)
         {
-            ElementStack elementStack = null;
+            ElementStack elementStackPayload = null;
 
             try
             {
@@ -63,24 +63,27 @@ namespace SecretHistories.Commands
 
                 var timeshadow = new Timeshadow(element.Lifetime, LifetimeRemaining, element.Resaturate);
 
-                elementStack = new ElementStack(Id,element, Quantity, timeshadow, context);
+                elementStackPayload = new ElementStack(Id,element, Quantity, timeshadow, context);
                 
                 foreach (var m in Mutations)
-                    elementStack.SetMutation(m.Key, m.Value, false);
+                    elementStackPayload.SetMutation(m.Key, m.Value, false);
 
                 foreach(var i in Illuminations)
-                    elementStack.SetIllumination(i.Key,i.Value);
+                    elementStackPayload.SetIllumination(i.Key,i.Value);
+
+                foreach (var d in Dominions)
+                    d.Execute(elementStackPayload);
 
             }
             catch (Exception e)
             {
 
                 NoonUtility.Log("Couldn't create element with ID " + Id + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
-                elementStack?.Retire(RetirementVFX.None);
+                elementStackPayload?.Retire(RetirementVFX.None);
             }
 
      
-            return elementStack;
+            return elementStackPayload;
         }
 
 

@@ -63,7 +63,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             }
             
             var candidatePosition = new Vector2(startX, startY);
-            NoonUtility.Log($" x: { candidatePosition.x } ");
+         //   NoonUtility.Log($" x: { candidatePosition.x } ");
             var positionLegality = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
             if (positionLegality.IsLegal)
                 return candidatePosition;
@@ -84,7 +84,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             if (!positionLegality.IsLegal)
             {
-                NoonUtility.Log($"Found nothing after {maxIterations} iterations");
+                NoonUtility.Log($"Found nowhere to put token on shelf, even after {maxIterations} iterations");
             }
 
             return candidatePosition;
