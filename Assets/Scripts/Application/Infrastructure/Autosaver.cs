@@ -119,7 +119,7 @@ namespace SecretHistories.Infrastructure
 
         public  void OnApplicationFocus(bool hasFocus)
         {
-            if(!hasFocus)
+            if(!hasFocus && !Application.isEditor)
                 TryAutosave();
 
         }
