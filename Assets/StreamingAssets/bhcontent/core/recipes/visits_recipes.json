@@ -9,8 +9,35 @@
 		"effects":{"incident":-99},
               "warmup": 10,
         "craftable": false,		
-		"linked": [{"id": "visits.cycle"}],
+		"linked": [   {"id": "visits.cycle"}]
 },
+{
+    "id": "debug.serena",
+    "label": "Serena Debug",
+    "actionid": "debug",
+    "startdescription": ".",
+          "warmup": 1,
+    "craftable": false,		
+    "alt": [  {"id": "visits.enter.serena","topath":"~/region_coast!bridge/span", "additional": "true"}]
+},
+{
+    "id": "visits.enter.serena",
+    "label": "Dr Serena",
+    "actionid": "npc.serena",
+    "startdescription": "Dr Serena Blackwood has returned to the library where once she was Secretary Vigilant.",
+    "effects":{"incident":-99},
+          "warmup": 1,
+    "craftable": false
+},
+{
+    "id": "visits.exit",
+    "label": "Outgoing visitor",
+    "actionid": "v",
+    "startdescription": "Outgoing visitor.",
+    "effects":{"incident":-99},
+          "warmup": 1,
+    "craftable": false
+}
 
 ]
 }

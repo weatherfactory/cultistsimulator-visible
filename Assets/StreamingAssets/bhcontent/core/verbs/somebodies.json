@@ -13,6 +13,19 @@
                 "required": {"readable":1,"ability":1},
                 "forbidden": {}
             }
+        },
+        {
+            "id": "npc.serena",
+          "label": "Dr Serena Blackwood",
+          "category": "Someone",
+          "startable": true,
+            "description": "This was home, once.",
+			 "slot": {
+                "id": "respond",
+                "label": "Respond",
+                "required": {},
+                "forbidden": {}
+            }
         }
     ]
 }

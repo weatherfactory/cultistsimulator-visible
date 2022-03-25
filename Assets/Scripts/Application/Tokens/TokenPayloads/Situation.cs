@@ -787,12 +787,12 @@ namespace SecretHistories.Entities {
                 if(c.Recipe.ActionId==Recipe.ActionId)
                     NoonUtility.LogWarning($"{Recipe.ActionId} {Recipe.Id} is trying to start an additional recipe, {c.Recipe.Id}... but it's got the same actionID as the existing situation, so it probably won't spawn successfully.");
 
-                SpawnNewSituation(c.Recipe,c.Expulsion);
+                SpawnNewSituation(c.Recipe,c.Expulsion,c.ToPath);
 
             }
         }
 
-        private void SpawnNewSituation(Recipe withRecipe,Expulsion withExpulsion)
+        private void SpawnNewSituation(Recipe withRecipe,Expulsion withExpulsion,FucinePath toPath)
         {
             List<Token> stacksToAddToNewSituation = new List<Token>();
             //if there's an expulsion
@@ -814,12 +814,19 @@ namespace SecretHistories.Entities {
 
             }
 
-            var situationCreationCommand = new SituationCreationCommand(withRecipe.ActionId).WithRecipeAboutToActivate(withRecipe.Id);
+            var newlySpawnedSituationCreationCommand = new SituationCreationCommand(withRecipe.ActionId).WithRecipeAboutToActivate(withRecipe.Id);
 
-            var spawnNewTokenCommand = new SpawnNewTokenFromThisOneCommand(situationCreationCommand, FucinePath.Current(),  new Context(Context.ActionSource.JustSpawned));
+            SpawnNewTokenFromThisOneCommand spawnNewTokenCommand;
+            if (toPath == null)
+            
+                spawnNewTokenCommand =new SpawnNewTokenFromThisOneCommand(newlySpawnedSituationCreationCommand, FucinePath.Current(), new Context(Context.ActionSource.JustSpawned));
+            
+            else
+                spawnNewTokenCommand= new SpawnNewTokenFromThisOneCommand(newlySpawnedSituationCreationCommand, toPath, new Context(Context.ActionSource.JustSpawned));
 
-          if(spawnNewTokenCommand.ExecuteOn(Token))
-                situationCreationCommand.LastSituationCreated.AcceptTokens(SphereCategory.SituationStorage,stacksToAddToNewSituation);
+
+            if (spawnNewTokenCommand.ExecuteOn(Token))
+                newlySpawnedSituationCreationCommand.LastSituationCreated.AcceptTokens(SphereCategory.SituationStorage,stacksToAddToNewSituation);
             
         }
 
