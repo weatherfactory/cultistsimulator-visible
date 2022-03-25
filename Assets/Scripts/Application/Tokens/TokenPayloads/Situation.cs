@@ -792,7 +792,7 @@ namespace SecretHistories.Entities {
             }
         }
 
-        private void SpawnNewSituation(Recipe withRecipe,Expulsion withExpulsion,FucinePath toPath)
+        private void SpawnNewSituation(Recipe withRecipe,Expulsion withExpulsion,FucinePath travelToSpecificPath)
         {
             List<Token> stacksToAddToNewSituation = new List<Token>();
             //if there's an expulsion
@@ -816,13 +816,7 @@ namespace SecretHistories.Entities {
 
             var newlySpawnedSituationCreationCommand = new SituationCreationCommand(withRecipe.ActionId).WithRecipeAboutToActivate(withRecipe.Id);
 
-            SpawnNewTokenFromThisOneCommand spawnNewTokenCommand;
-            if (toPath == null)
-            
-                spawnNewTokenCommand =new SpawnNewTokenFromThisOneCommand(newlySpawnedSituationCreationCommand, FucinePath.Current(), new Context(Context.ActionSource.JustSpawned));
-            
-            else
-                spawnNewTokenCommand= new SpawnNewTokenFromThisOneCommand(newlySpawnedSituationCreationCommand, toPath, new Context(Context.ActionSource.JustSpawned));
+            var spawnNewTokenCommand = new SpawnNewTokenFromThisOneCommand(newlySpawnedSituationCreationCommand, travelToSpecificPath, new Context(Context.ActionSource.JustSpawned));
 
 
             if (spawnNewTokenCommand.ExecuteOn(Token))

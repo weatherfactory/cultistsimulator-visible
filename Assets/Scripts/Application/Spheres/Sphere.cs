@@ -27,6 +27,7 @@ using SecretHistories.Events;
 using SecretHistories.Infrastructure;
 using SecretHistories.Manifestations;
 using SecretHistories.NullObjects;
+using SecretHistories.States;
 using Steamworks;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -658,9 +659,12 @@ namespace SecretHistories.Spheres
         /// </summary>
         public virtual void EvictToken(Token token, Context context)
         {
+            if (token.CurrentState.InSystemDrivenMotion())
+                return; //it's already en route somewhere)
+
             var exitSphere = token.Payload.GetEnRouteSphere();
             exitSphere.ProcessEvictedToken(token,context);
-       
+            
         }
 
         /// <summary>
