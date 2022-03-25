@@ -136,6 +136,19 @@ namespace SecretHistories.UI {
             }
         }
 
+        public bool MatchesPathTokenId(string pathTokenId)
+        {
+            //very easy to pass !bridge in when we mean bridge, or otherwise spaff up
+            string payloadId = PayloadId;
+            if (pathTokenId == payloadId)
+                return true;
+            if ($"!{pathTokenId}" == payloadId)
+                return true;
+            if (pathTokenId== $"!{payloadId}")
+                return true;
+            return false;
+        }
+
         [DontEncaust] public string PayloadEntityId
         {
             get

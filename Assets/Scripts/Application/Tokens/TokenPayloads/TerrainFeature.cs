@@ -216,9 +216,10 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public event Action<TokenPayloadChangedArgs> OnChanged;
         public event Action<float> OnLifetimeSpent;
-        public Sphere GetSphereById(string id)
+        public Sphere GetSphereById(string sphereId)
         {
-            throw new NotImplementedException();
+            return _registeredSpheres.SingleOrDefault(s => s.Id == sphereId && !s.Defunct);
+
         }
 
         public List<Sphere> GetSpheresByCategory(SphereCategory category)
