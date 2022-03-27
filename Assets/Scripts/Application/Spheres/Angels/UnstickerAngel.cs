@@ -15,7 +15,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     //This is a belt-and-braces attempt to fix an intermittent bug. I'm also losing MakeNonInteractable() in the StartDrag event
     public class UnstickerAngel: IAngel
     {
-        private const int BEATS_BETWEEN_ANGELRY = 100; //nice long pause so if it goes wild, we don't get too much log spam
+        private const int BEATS_BETWEEN_ANGELRY = 10;
         private int _beatsTowardsAngelry = 0;
         private Sphere _sphereToUnstickTokensFrom;
 

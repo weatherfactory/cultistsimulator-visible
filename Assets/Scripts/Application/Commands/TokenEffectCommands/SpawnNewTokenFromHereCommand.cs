@@ -34,13 +34,9 @@ namespace SecretHistories.Commands
        
                 var tokenCreationCommand=new TokenCreationCommand(_payloadCreationCommand, token.Location).WithSourceToken(token);
 
-                if (_toSpherePath != null)
-                {
-                    TokenLocation eventualDestinationForToken = new TokenLocation(0, 0, 0, _toSpherePath);
-                    tokenCreationCommand.WithDestination(eventualDestinationForToken, 1f);
-                }
-                    
-
+                TokenLocation eventualDestinationForToken = new TokenLocation(0, 0, 0, _toSpherePath);
+                tokenCreationCommand.WithDestination(eventualDestinationForToken, 1f);
+                
                 var newToken=tokenCreationCommand.Execute(_context,token.Sphere);
                 newToken.HideGhost();
                 SoundManager.PlaySfx("SituationTokenSpawn");
@@ -49,7 +45,6 @@ namespace SecretHistories.Commands
                 //that already exists. In this case, return false, because nothing's been created.
                 if (newToken.IsValid())
                 {
-                 //   newToken.Sphere.EvictToken(newToken, _context);
                     return true;
                 }
                 else

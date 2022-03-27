@@ -816,6 +816,9 @@ namespace SecretHistories.Entities {
 
             var newlySpawnedSituationCreationCommand = new SituationCreationCommand(withRecipe.ActionId).WithRecipeAboutToActivate(withRecipe.Id);
 
+            if (travelToSpecificPath==FucinePath.Current())
+                travelToSpecificPath = GetEnRouteSphere().GetAbsolutePath(); //if we don't know where it's going, chuck it into the EnRouteSphere, from which we expect it subsequently to be evicted
+
             var spawnNewTokenCommand = new SpawnNewTokenFromThisOneCommand(newlySpawnedSituationCreationCommand, travelToSpecificPath, new Context(Context.ActionSource.JustSpawned));
 
 
