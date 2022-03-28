@@ -24,7 +24,7 @@ namespace SecretHistories.Entities
         public Dictionary<string, string> Requirements { get; set; }
 
         [FucineDict(ValidateAsElementId = true)]
-        public Dictionary<string, string> RoomReqs { get; set; }
+        public Dictionary<string, string> NearbyReqs { get; set; }
         
         [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, string> TableReqs { get; set; }
@@ -172,7 +172,7 @@ namespace SecretHistories.Entities
 
             spontaneousHintRecipe.DeckEffects = new Dictionary<string, int>();
             spontaneousHintRecipe.Requirements = new Dictionary<string, string>();
-            spontaneousHintRecipe.RoomReqs  = new Dictionary<string, string>();
+            spontaneousHintRecipe.NearbyReqs  = new Dictionary<string, string>();
             spontaneousHintRecipe.TableReqs = new Dictionary<string, string>();
             spontaneousHintRecipe.ExtantReqs = new Dictionary<string, string>();
             spontaneousHintRecipe.Effects = new Dictionary<string, string>();
@@ -226,6 +226,10 @@ namespace SecretHistories.Entities
         {
             foreach (var req in Requirements)
                 if (!CheckRequirementsSatisfiedForContext(aspectsinContext.AspectsInSituation, req))
+                    return false;
+
+            foreach (var req in NearbyReqs)
+                if (!CheckRequirementsSatisfiedForContext(aspectsinContext.AspectsNearby, req))
                     return false;
 
             foreach (var treq in TableReqs)

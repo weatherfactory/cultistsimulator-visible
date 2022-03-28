@@ -83,7 +83,7 @@ namespace SecretHistories.UI
       public void OnTokensChanged(SphereContentsChangedEventArgs args)
       {
           var tc = Watchman.Get<HornedAxe>();
-          var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
+          var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary(),new AspectsDictionary());
 
           foreach (var hl in highlightLocations)
           {

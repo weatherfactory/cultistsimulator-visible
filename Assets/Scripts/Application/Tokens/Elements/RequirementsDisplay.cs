@@ -19,7 +19,7 @@ namespace SecretHistories
         public void DisplayRequirementsAndFulfilments(Recipe r, Situation situation)
         {
             var aspectsInContext =
-                Watchman.Get<HornedAxe>().GetAspectsInContext(situation.GetAspects(true));
+                Watchman.Get<HornedAxe>().GetAspectsInContext(situation.GetAspects(true),situation.GetNearbyAspects(true));
 
             
             foreach (var req in r.Requirements)
@@ -30,10 +30,10 @@ namespace SecretHistories
                     DisplayRequirement(req, false);
             }
 
-            if (r.RoomReqs.Any())
-                AddFilterLabel("ROO");
+            if (r.NearbyReqs.Any())
+                AddFilterLabel("NEA");
 
-            foreach (var rreq in r.RoomReqs)
+            foreach (var rreq in r.NearbyReqs)
             {
                 if (Recipe.CheckRequirementsSatisfiedForContext(aspectsInContext.AspectsOnTable, rreq))
                     DisplayRequirement(rreq, true);

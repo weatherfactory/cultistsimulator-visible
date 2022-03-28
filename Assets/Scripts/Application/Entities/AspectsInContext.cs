@@ -10,12 +10,14 @@ namespace SecretHistories.Entities
     public class AspectsInContext
     {
         public readonly AspectsDictionary _aspectsInSituation;
+        public readonly AspectsDictionary _aspectsNearby;
         public readonly AspectsDictionary _aspectsOnTable;
         public readonly AspectsDictionary _aspectsExtant;
 
-        public AspectsInContext(AspectsDictionary aspectsInSituation, AspectsDictionary aspectsOnTable, AspectsDictionary aspectsExtant)
+        public AspectsInContext(AspectsDictionary aspectsInSituation, AspectsDictionary aspectsNearby, AspectsDictionary aspectsOnTable, AspectsDictionary aspectsExtant)
         {
             _aspectsInSituation = aspectsInSituation;
+            _aspectsNearby = aspectsNearby;
             _aspectsOnTable = aspectsOnTable;
             _aspectsExtant = aspectsExtant;
         }
@@ -24,7 +26,10 @@ namespace SecretHistories.Entities
         {
             get { return _aspectsExtant; }
         }
-
+        public AspectsDictionary AspectsNearby
+        {
+            get { return _aspectsNearby; }
+        }
         public AspectsDictionary AspectsOnTable
         {
             get { return _aspectsOnTable; }

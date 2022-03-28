@@ -618,7 +618,18 @@ namespace SecretHistories.Entities {
 
         }
 
-        
+        public AspectsDictionary GetNearbyAspects(bool includeElementAspects)
+        {
+            if(Watchman.Get<MetaInfo>().GameId==GameId.CS)
+                return new AspectsDictionary(); //unused at least for now; let's not burn CPU
+
+            var nearbyAspects = Token?.Sphere?.GetTotalAspects(true);
+            if (nearbyAspects == null)
+                nearbyAspects = new AspectsDictionary();
+
+            return nearbyAspects;
+
+        }
 
         public void SetMutation(string mutationEffectMutate, int mutationEffectLevel, bool mutationEffectAdditive)
         {
@@ -741,7 +752,7 @@ namespace SecretHistories.Entities {
         {
             
             var tc = Watchman.Get<HornedAxe>();
-            var aspectsInContext = tc.GetAspectsInContext(GetAspects(true));
+            var aspectsInContext = tc.GetAspectsInContext(GetAspects(true),GetNearbyAspects(true));
 
             RecipeConductor rc =new RecipeConductor(aspectsInContext, Watchman.Get<Stable>().Protag());
 
@@ -1002,8 +1013,9 @@ namespace SecretHistories.Entities {
         {
          
             var aspects = GetAspects(true);
+            var nearbyAspects = GetAspects(true);
             var tc = Watchman.Get<HornedAxe>();
-            var aspectsInContext = tc.GetAspectsInContext(aspects);
+            var aspectsInContext = tc.GetAspectsInContext(aspects,nearbyAspects);
 
 
             var tryingToActivateRecipe = Watchman.Get<Compendium>().GetFirstMatchingRecipe(aspectsInContext, Verb.Id, Watchman.Get<Stable>().Protag(), false);
@@ -1027,9 +1039,9 @@ namespace SecretHistories.Entities {
         public RecipePrediction GetRecipePredictionForCurrentStateAndAspects()
         {
             var aspectsAvailableToSituation = GetAspects(true);
-
+            var nearbyAspects = GetNearbyAspects(true);
             var aspectsInContext =
-                Watchman.Get<HornedAxe>().GetAspectsInContext(aspectsAvailableToSituation);
+                Watchman.Get<HornedAxe>().GetAspectsInContext(aspectsAvailableToSituation,nearbyAspects);
 
             RecipeConductor rc = new RecipeConductor(aspectsInContext,Watchman.Get<Stable>().Protag());
 

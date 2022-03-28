@@ -66,7 +66,7 @@ namespace SecretHistories.States
 
 
             var tc = Watchman.Get<HornedAxe>();
-            var aspectsInContext = tc.GetAspectsInContext(situation.GetAspects(true));
+            var aspectsInContext = tc.GetAspectsInContext(situation.GetAspects(true),situation.GetNearbyAspects(true));
 
             var rc = new RecipeConductor(aspectsInContext, Watchman.Get<Stable>().Protag());
 

@@ -56,8 +56,10 @@ namespace SecretHistories.Commands.SituationCommands
         public bool Execute(Situation situation)
         {
             var aspects = situation.GetAspects(true);
+            var nearbyAspects = situation.GetNearbyAspects(true);
+
             var h = Watchman.Get<HornedAxe>();
-            var aspectsInContext = h.GetAspectsInContext(aspects);
+            var aspectsInContext = h.GetAspectsInContext(aspects, nearbyAspects);
 
             var recipeToActivate = Watchman.Get<Compendium>().GetEntityById<Recipe>(_recipeId);
 

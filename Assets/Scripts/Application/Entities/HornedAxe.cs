@@ -294,8 +294,12 @@ namespace SecretHistories.Entities {
             return matchingTokens;
         }
 
-        public AspectsInContext GetAspectsInContext(AspectsDictionary aspectsInSituation)
+
+        public AspectsInContext GetAspectsInContext(AspectsDictionary aspectsInSituation,AspectsDictionary aspectsNearby)
         {
+            if (aspectsNearby == null)
+                aspectsNearby = new AspectsDictionary();
+
             if (!EnableAspectCaching)
             {
                 _tabletopAspectsDirty = true;
@@ -384,7 +388,8 @@ namespace SecretHistories.Entities {
                     _allAspectsExtantDirty = false;     // If left dirty the aspects will recalc every frame
             }
 
-            AspectsInContext aspectsInContext = new AspectsInContext(aspectsInSituation, _tabletopAspects, _allAspectsExtant);
+
+            AspectsInContext aspectsInContext = new AspectsInContext(aspectsInSituation, aspectsNearby, _tabletopAspects, _allAspectsExtant);
 
             return aspectsInContext;
 

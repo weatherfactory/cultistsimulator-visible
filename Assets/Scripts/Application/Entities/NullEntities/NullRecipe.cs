@@ -25,7 +25,7 @@ namespace SecretHistories.Entities
             Description = String.Empty;
             DeckEffects=new Dictionary<string, int>();
             Requirements = new Dictionary<string, string>();
-            RoomReqs=new Dictionary<string, string>();
+            NearbyReqs=new Dictionary<string, string>();
             TableReqs=new Dictionary<string, string>();
             ExtantReqs=new Dictionary<string, string>();
             Effects=new Dictionary<string, string>();

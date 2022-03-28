@@ -65,7 +65,7 @@ public class ElementOverview : MonoBehaviour, ISphereCatalogueEventSubscriber {
     {
 
         var tc = Watchman.Get<HornedAxe>();
-        var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary());
+        var aspectsInContext = tc.GetAspectsInContext(new AspectsDictionary(), new AspectsDictionary());
   
         for (int i = 0; i <= 3; i++)
         {
