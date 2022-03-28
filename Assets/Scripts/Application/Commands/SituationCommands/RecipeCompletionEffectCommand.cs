@@ -87,8 +87,7 @@ namespace SecretHistories.Core
             if (situation.Token.CurrentState.InSystemDrivenMotion())
                 return;
 
-            if (Recipe.Seeking.Any())
-            {
+
                 //find the first token (later, could be nearest token) which matches the seeking criteria
                 var matchingTokens = Watchman.Get<HornedAxe>().FindTokensWithAspectsInWorld(Recipe.Seeking);
                 if (matchingTokens.Count == 0)
@@ -109,7 +108,7 @@ namespace SecretHistories.Core
                 //(3) what happens if we want to trigger a callback when the token arrives, and/or cancel the seeking when the recipe is complete? We can fudge this with a cycling recipe, for now.
                 //-- sounds lke a pathreqs, actually...
 
-            }
+            
         }
 
         private void DoRecipeVfx(Situation situation)

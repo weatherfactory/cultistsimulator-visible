@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Pathfinding;
 using SecretHistories.Abstract;
+using SecretHistories.Assets.Scripts.Application.States.TokenStates;
 using SecretHistories.Entities;
 using SecretHistories.Fucine;
+using SecretHistories.States.TokenStates;
 using SecretHistories.UI;
 
 using UnityEngine;
@@ -16,7 +18,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
     public class TokenWalkItinerary: TokenItinerary
 
     {
-        private Token _travellingToken;
+        private Token _walkingToken;
         private Path AStarPath;
         public TokenWalkItinerary()
         { }
@@ -45,17 +47,17 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 
         public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
         {
-            _travellingToken = tokenToSend;
-            
-            
+            _walkingToken = tokenToSend;
+
             var tokenAi = tokenToSend.gameObject.gameObject.GetComponent<TokenAILerp>();
             
             tokenAi.destination= Anchored3DEndPosition;
             
            tokenAi.OnTokenArrival += Arrive;
 
-            _travellingToken.transform.SetAsLastSibling();
+            _walkingToken.transform.SetAsLastSibling();
 
+            _walkingToken.CurrentState = new WalkingState();
         }
 
 
@@ -65,13 +67,15 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
             var tokenAILerp = tokenToSend.gameObject.gameObject.GetComponent<TokenAILerp>();
             tokenAILerp.OnTokenArrival -= Arrive;
             
-            _travellingToken.OnCompletedTravelItinerary();
-            _travellingToken.HideGhost();
+            _walkingToken.OnCompletedTravelItinerary();
+            _walkingToken.HideGhost();
+            _walkingToken.CurrentState = new TravelledToSphere();
+
         }
 
         public override IGhost GetGhost()
         {
-            return _travellingToken.GetCurrentGhost();
+            return _walkingToken.GetCurrentGhost();
 
         }
 

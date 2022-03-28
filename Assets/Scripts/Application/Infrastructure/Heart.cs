@@ -62,6 +62,14 @@ public class Heart : MonoBehaviour
 
     }
 
+    public bool IsPaused()
+    {
+        if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
+            return true;
+
+        return false;
+    }
+
     void SetNextAnimTime()
     {
         nextAnimTime = Time.time + UnityEngine.Random.Range(minSecondsBetweenAmbientAnimations, maxSecondsBetweenAmbientAnimations);
