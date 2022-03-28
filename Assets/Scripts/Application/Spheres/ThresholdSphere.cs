@@ -86,10 +86,16 @@ namespace SecretHistories.UI //should be SecretHistories.Sphere. But that'll bre
 
             if (eventData.dragging)
             {
-                var potentialDragToken = eventData.pointerDrag.GetComponent<Token>();
+                var pointerDrag = eventData.pointerDrag;
 
-                if (potentialDragToken != null)
-                    potentialDragToken.StopShowingPossibleInteractions();
+                if (pointerDrag != null)
+                {
+                    var potentialDragToken = eventData.pointerDrag.GetComponent<Token>();
+                    if (potentialDragToken != null)
+                        potentialDragToken.StopShowingPossibleInteractions();
+                }
+
+                
             }
 
             HideHoverGlow();
