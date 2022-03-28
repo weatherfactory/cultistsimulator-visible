@@ -47,7 +47,6 @@ namespace SecretHistories.Fucine
                     return false;
                 }
 
-                return true;
             }
 
 

@@ -35,13 +35,13 @@ namespace SecretHistories.Ghosts
 
 
 
-        public void Emphasise()
+        public override void Emphasise()
         {
             frontCover.SetActive(true);
             spine.SetActive(false);
         }
 
-        public void Understate()
+        public override void Understate()
         {
             frontCover.SetActive(false);
             spine.SetActive(true);
