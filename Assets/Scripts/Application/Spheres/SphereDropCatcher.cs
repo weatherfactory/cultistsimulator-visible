@@ -53,12 +53,8 @@ namespace SecretHistories.Spheres
                 if (eventData.button == PointerEventData.InputButton.Right)
                 {
                     var currentlyOpenSituation = Watchman.Get<Meniscate>().GetCurrentlyOpenSituation();
-                    if(currentlyOpenSituation.Verb.Category==VerbCategory.Someone)
-                    {
-                        var token = currentlyOpenSituation.Token;
-                        Sphere.DisplayGhostAt(token, eventData.pointerCurrentRaycast.worldPosition);
-                        token.TryFulfilGhostPromise(Context.Unknown());
-                    }
+                    currentlyOpenSituation.TryDirectTo(Sphere, eventData.pointerCurrentRaycast.worldPosition);
+
                 }
 
             }

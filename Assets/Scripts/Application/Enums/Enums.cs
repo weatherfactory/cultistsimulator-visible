@@ -122,11 +122,7 @@
         Humble
     }
 
-    public enum Style
-    {
-        Assertive,
-        Subtle
-    }
+
 
     public enum SphereRetirementType
     {

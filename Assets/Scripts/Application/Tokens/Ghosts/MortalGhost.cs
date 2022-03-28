@@ -21,8 +21,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
         /// original location if it's being dragged, and then apply the path itinerary to the token.
         public override bool TryFulfilPromise(Token token, Context context)
         {
-  
-
+            
             if (!Visible)
                 return false; //if the ghost isn't active, there's no promise to fulfill.
             

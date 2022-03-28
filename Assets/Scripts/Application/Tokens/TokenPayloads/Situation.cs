@@ -1154,6 +1154,20 @@ namespace SecretHistories.Entities {
 
             return true;
         }
+
+       /// <summary>
+       /// Currently just means 'move to if player-controllable', but could also mean 'focus attention on'
+       /// </summary>
+       /// <param name="directToSphere"></param>
+       /// <param name="directToPosition"></param>
+        public void TryDirectTo(Sphere directToSphere, Vector3 directToPosition)
+        {
+            if (Verb.Category == VerbCategory.Someone && Verb.Controllable)
+            {
+                directToSphere.DisplayGhostAt(Token, directToPosition);
+                Token.TryFulfilGhostPromise(Context.Unknown());
+            }
+        }
     }
 
 }

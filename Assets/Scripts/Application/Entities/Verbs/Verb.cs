@@ -30,7 +30,7 @@ namespace SecretHistories.Entities
         /// This doesn't do anything at the moment; but we should support it for teh legacy
         /// </summary>
         [FucineValue(DefaultValue = true)]
-        public bool Startable { get; set; }
+        public bool Controllable { get; set; }
 
         [FucineValue(DefaultValue=VerbCategory.Shabda)]
         public VerbCategory Category { get; set; }
