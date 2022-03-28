@@ -90,7 +90,7 @@ namespace SecretHistories.Constants
         public const string SITUATION_RUNNING = "VERB_RUNNING";
         
 
-        public const string ANCHOR_BOOKSHELF = "bookshelf";
         public const float SEND_STACK_TO_SLOT_DURATION = 0.8f; //used for greedyangels as well
+
     }
 }

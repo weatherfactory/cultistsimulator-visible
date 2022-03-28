@@ -212,7 +212,6 @@ namespace SecretHistories.UI
 
         private void AbortDeparture(Token token,Context context)
         {
-            token.CurrentItinerary = new TokenInertItinerary();
             NoonUtility.LogWarning($"Aborted tokentravelitinerarydeparture for payloadid {token.PayloadId}: {context.Description}");
         }
 

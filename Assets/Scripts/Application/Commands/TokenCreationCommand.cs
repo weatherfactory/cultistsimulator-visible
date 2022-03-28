@@ -118,15 +118,16 @@ namespace SecretHistories.Commands
             payloadForToken.FirstHeartbeat();
 
             
-            if (_sourceToken != null && _destination!=null)
+            if (_sourceToken != null && _destination != null)
             {
-                SetTokenTravellingFromSourceToken(newToken,_sourceToken,_destination);
+                SetTokenTravellingFromSourceToken(newToken,_sourceToken,_destination,_travelDuration);
             }
 
-            if (_destination != null)
+            else if (_destination != null)
             {
                 SetTokenTravellingToDestination(newToken, _destination);
             }
+
  
             return newToken;
         }
@@ -146,14 +147,14 @@ namespace SecretHistories.Commands
             return token;
         }
 
-        private void SetTokenTravellingFromSourceToken(Token newToken,Token fromSourceToken, TokenLocation destination)
+        private void SetTokenTravellingFromSourceToken(Token newToken,Token fromSourceToken, TokenLocation destination, float duration)
         {
             
 
             var spawnedTravelItinerary = new TokenTravelItinerary(fromSourceToken.TokenRectTransform.anchoredPosition3D,
                     newToken.Sphere.Choreographer.GetClosestFreeLocalPosition(newToken,
                         fromSourceToken.ManifestationRectTransform.anchoredPosition))
-                .WithDuration(1f)
+                .WithDuration(duration)
                 .WithDestinationSpherePath(destination.AtSpherePath)
                 .WithScaling(0f, 1f);
 

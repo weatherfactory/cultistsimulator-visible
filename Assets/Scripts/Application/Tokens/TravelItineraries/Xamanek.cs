@@ -144,7 +144,7 @@ namespace SecretHistories.UI
 
 
         }
-
+        
         public void RegisterSphereBlock(SphereBlock newBlock)
         {
             _sphereBlocks.Add(newBlock);

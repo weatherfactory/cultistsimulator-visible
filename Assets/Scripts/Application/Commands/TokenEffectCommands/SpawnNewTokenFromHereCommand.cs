@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Commands;
+using SecretHistories.Constants;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
@@ -26,18 +27,17 @@ namespace SecretHistories.Commands
             _context = context;
         }
 
-        public bool ExecuteOn(Token token)
+        public bool ExecuteOn(Token sourceToken)
         {
             if (!hasExecuted)
             {
-        
-       
-                var tokenCreationCommand=new TokenCreationCommand(_payloadCreationCommand, token.Location).WithSourceToken(token);
+                var tokenCreationCommand=new TokenCreationCommand(_payloadCreationCommand, sourceToken.Location).WithSourceToken(sourceToken);
 
-                TokenLocation eventualDestinationForToken = new TokenLocation(0, 0, 0, _toSpherePath);
-                tokenCreationCommand.WithDestination(eventualDestinationForToken, 1f);
+                TokenLocation eventualDestinationForToken =
+                    new TokenLocation(sourceToken.Location.Anchored3DPosition, _toSpherePath);
+                tokenCreationCommand.WithDestination(eventualDestinationForToken, NoonConstants.MOMENT_TIME_INTERVAL);
                 
-                var newToken=tokenCreationCommand.Execute(_context,token.Sphere);
+                var newToken=tokenCreationCommand.Execute(_context,sourceToken.Sphere);
                 newToken.HideGhost();
                 SoundManager.PlaySfx("SituationTokenSpawn");
 

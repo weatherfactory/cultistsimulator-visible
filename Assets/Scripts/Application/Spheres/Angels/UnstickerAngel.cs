@@ -29,10 +29,10 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 _beatsTowardsAngelry = 0;
                 foreach (var t in _sphereToUnstickTokensFrom.Tokens)
                 {
-                    if (t.CurrentlyBeingDragged())
+                    if (t.CurrentlyBeingDragged() || t.CurrentState.InSystemDrivenMotion())
                         return;
-                    if (t.CurrentItinerary != null && t.CurrentItinerary.IsActive())
-                        return;
+               
+               
                     if(t.CurrentState.Docked())
                         unstickToken(t);
                 }

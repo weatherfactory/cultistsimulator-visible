@@ -87,8 +87,6 @@ namespace SecretHistories.UI {
         protected float
             dragHeight = -8f; // Draggables all drag on a specific height and have a specific "default height"
 
-        [DontEncaust] //maybe phase this out now it exists in Xamanek.
-        public TokenItinerary CurrentItinerary { get; set; }
 
         [Header("Display")]
         [SerializeField] protected bool shrouded;
@@ -1028,7 +1026,6 @@ namespace SecretHistories.UI {
 
         public void TravelTo(TokenTravelItinerary itinerary,Context context)
         {
-            CurrentItinerary = itinerary;
           itinerary.Depart(this,context);
         }
 
