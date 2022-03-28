@@ -18,7 +18,7 @@
     "startdescription": ".",
           "warmup": 1,
     "craftable": false,		
-    "alt": [  {"id": "visits.enter.serena","topath":"~/region_coast!bridge/span", "additional": "true"}]
+    "alt": [  {"id": "visits.enter.serena","topath":"~/region_coast!hill/headland_slope", "additional": "true"}]
 },
 {
     "id": "visits.enter.serena",
@@ -35,7 +35,7 @@
     "id": "visits.arrived.serena",
     "label": "Dr Serena",
     "actionid": "npc.serena",
-    "requirements": {"incident":99},
+    "roomreqs": {"statue.founder":1},
     "startdescription": "(This is where Dr B would say something.)"
 },
 {

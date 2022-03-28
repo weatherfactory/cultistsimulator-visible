@@ -24,13 +24,16 @@ namespace SecretHistories.Entities
         public Dictionary<string, string> Requirements { get; set; }
 
         [FucineDict(ValidateAsElementId = true)]
-        public Dictionary<string, string> Seeking { get; set; }
-
+        public Dictionary<string, string> RoomReqs { get; set; }
+        
         [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, string> TableReqs { get; set; }
 
         [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, string> ExtantReqs { get; set; }
+
+        [FucineDict(ValidateAsElementId = true)]
+        public Dictionary<string, string> Seeking { get; set; }
 
         [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, string> Effects { get; set; }
@@ -161,25 +164,26 @@ namespace SecretHistories.Entities
         public static Recipe CreateSpontaneousHintRecipe(Verb forVerb)
         {
 
-            var spontanousHintRecipe = new Recipe
+            var spontaneousHintRecipe = new Recipe
             {
                 Label = forVerb.Label, StartDescription = forVerb.Description, Craftable = false, HintOnly = true
             };
 
 
-            spontanousHintRecipe.DeckEffects = new Dictionary<string, int>();
-            spontanousHintRecipe.Requirements = new Dictionary<string, string>();
-            spontanousHintRecipe.TableReqs = new Dictionary<string, string>();
-            spontanousHintRecipe.ExtantReqs = new Dictionary<string, string>();
-            spontanousHintRecipe.Effects = new Dictionary<string, string>();
-            spontanousHintRecipe.Aspects = AspectsDictionary.Empty();
-            spontanousHintRecipe.Mutations = new List<MutationEffect>();
-            spontanousHintRecipe.Purge = new Dictionary<string, int>();
-            spontanousHintRecipe.HaltVerb = new Dictionary<string, int>();
-            spontanousHintRecipe.DeleteVerb = new Dictionary<string, int>();
+            spontaneousHintRecipe.DeckEffects = new Dictionary<string, int>();
+            spontaneousHintRecipe.Requirements = new Dictionary<string, string>();
+            spontaneousHintRecipe.RoomReqs  = new Dictionary<string, string>();
+            spontaneousHintRecipe.TableReqs = new Dictionary<string, string>();
+            spontaneousHintRecipe.ExtantReqs = new Dictionary<string, string>();
+            spontaneousHintRecipe.Effects = new Dictionary<string, string>();
+            spontaneousHintRecipe.Aspects = AspectsDictionary.Empty();
+            spontaneousHintRecipe.Mutations = new List<MutationEffect>();
+            spontaneousHintRecipe.Purge = new Dictionary<string, int>();
+            spontaneousHintRecipe.HaltVerb = new Dictionary<string, int>();
+            spontaneousHintRecipe.DeleteVerb = new Dictionary<string, int>();
 
 
-            return spontanousHintRecipe;
+            return spontaneousHintRecipe;
         }
 
 

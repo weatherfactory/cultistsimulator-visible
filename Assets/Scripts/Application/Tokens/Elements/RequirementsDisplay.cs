@@ -30,7 +30,19 @@ namespace SecretHistories
                     DisplayRequirement(req, false);
             }
 
-            if(r.TableReqs.Any())
+            if (r.RoomReqs.Any())
+                AddFilterLabel("ROO");
+
+            foreach (var rreq in r.RoomReqs)
+            {
+                if (Recipe.CheckRequirementsSatisfiedForContext(aspectsInContext.AspectsOnTable, rreq))
+                    DisplayRequirement(rreq, true);
+                else
+                    DisplayRequirement(rreq, false);
+            }
+
+
+            if (r.TableReqs.Any())
                 AddFilterLabel("TAB");
 
             foreach (var treq in r.TableReqs)
