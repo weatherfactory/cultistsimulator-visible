@@ -13,23 +13,17 @@ using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 {
-    public class TokenPathItinerary: TokenItinerary
+    public class TokenWalkItinerary: TokenItinerary
 
     {
         private Token _travellingToken;
         private Path AStarPath;
-        public TokenPathItinerary()
+        public TokenWalkItinerary()
         { }
 
 
-        public TokenPathItinerary(TokenLocation startLocation, TokenLocation endLocation)
-        {
-            Anchored3DStartPosition = startLocation.Anchored3DPosition; //Is this unused??
-            Anchored3DEndPosition = endLocation.Anchored3DPosition;
-            DestinationSpherePath = endLocation.AtSpherePath;
-        }
-
-        public TokenPathItinerary(Vector3 anchored3DStartPosition, Vector3 anchored3DEndPosition)
+//TokenPathItineraries don't know or understand anything about Spheres or FucinePaths. They're described only by worldpositions (and that currently only on a 2D plane)
+        public TokenWalkItinerary(Vector3 anchored3DStartPosition, Vector3 anchored3DEndPosition)
         {
             Anchored3DStartPosition = anchored3DStartPosition;
             Anchored3DEndPosition = anchored3DEndPosition;
@@ -54,12 +48,11 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
             _travellingToken = tokenToSend;
             
             
-            var seeker = tokenToSend.gameObject.GetComponent<Seeker>();
             var tokenAi = tokenToSend.gameObject.gameObject.GetComponent<TokenAILerp>();
             
             tokenAi.destination= Anchored3DEndPosition;
             
-    tokenAi.OnTokenArrival += Arrive;
+           tokenAi.OnTokenArrival += Arrive;
 
             _travellingToken.transform.SetAsLastSibling();
 
@@ -87,10 +80,5 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
             return true;
         }
 
-        public TokenPathItinerary WithDestinationSpherePath(FucinePath destinationSpherePath)
-        {
-            DestinationSpherePath = destinationSpherePath;
-            return this;
-        }
     }
 }

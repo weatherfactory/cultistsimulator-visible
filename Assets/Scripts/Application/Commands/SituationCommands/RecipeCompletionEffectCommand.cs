@@ -97,7 +97,7 @@ namespace SecretHistories.Core
                 var goToToken = matchingTokens.First();
                 NoonUtility.Log($"{situation.Token.PayloadId} setting course for {goToToken.PayloadId}");
               
-                var pathItinerary = new TokenPathItinerary(situation.Token.Location, goToToken.Location);
+                var pathItinerary = new TokenWalkItinerary(situation.Token.transform.position, goToToken.transform.position);
                 
                 //create a PathItinerary towards that token
                 pathItinerary.Depart(situation.Token,new Context(Context.ActionSource.SituationEffect));

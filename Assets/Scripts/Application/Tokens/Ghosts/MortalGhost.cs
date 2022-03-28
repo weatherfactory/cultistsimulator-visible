@@ -35,11 +35,10 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.Ghosts
 
         public override TokenItinerary GetItineraryForFulfilment(Token token)
         {
-            TokenPathItinerary pathToGhost =
-                new TokenPathItinerary(token.TokenRectTransform.anchoredPosition3D, transform.position)
-                    .WithDestinationSpherePath(_projectedInSphere.GetWildPath());
+            TokenWalkItinerary walkToGhost =
+                new TokenWalkItinerary(token.TokenRectTransform.anchoredPosition3D, transform.position);
 
-            return pathToGhost;
+            return walkToGhost;
         }
 
 
