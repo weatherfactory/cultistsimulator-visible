@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 2059905064105882956}
   - component: {fileID: 2059905064105882954}
   - component: {fileID: 2059905064105882957}
-  - component: {fileID: 3537348697609943910}
+  - component: {fileID: 4096194829602661365}
+  - component: {fileID: -53464148500265495}
+  - component: {fileID: 3887490981587149067}
   m_Layer: 5
-  m_Name: WorkstationManifestation
+  m_Name: FitmentGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2784314, g: 0.26666668, b: 0.31132078, a: 1}
+  m_Color: {r: 0.16037738, g: 0.12482202, b: 0.12482202, a: 0.43137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -77,7 +79,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3537348697609943910
+--- !u!225 &4096194829602661365
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059905064105882959}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &-53464148500265495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,8 +100,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2059905064105882959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f2d96059dc11ff45b31cde777a3e4e0, type: 3}
+  m_Script: {fileID: 11500000, guid: e835ed38c168545d8acd9e0f7f3943f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateOnDrag: 1
-  shadow: {fileID: 0}
+  blockRaysDuringFade: 0
+  durationTurnOn: 0
+  durationTurnOff: 0
+  maxAlpha: 1
+--- !u!114 &3887490981587149067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059905064105882959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b32dd82eb5a6374fad6278ef2080edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroupFader: {fileID: -53464148500265495}

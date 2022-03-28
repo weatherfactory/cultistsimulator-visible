@@ -15,11 +15,22 @@
         "craftable": false
     },
 	    {
-        "id": "setup.librarian.fitments",
+        "id": "setup.librarian.entrance",
         "label": ".",
         "actionid": ".",
         "requirements": {},
-        "effects": {"bookcase":1},
+        "effects": {"statue.founder":1},
+        "startdescription": ".",
+        "description": ".",
+        "warmup": 0,
+        "craftable": false
+    },
+    {
+        "id": "setup.librarian.westcott",
+        "label": ".",
+        "actionid": ".",
+        "requirements": {},
+        "effects": {"bookcase":1,"turquoisehand.unc":1,"travellingatnight.1.unc":1,"travellingatnight.2.unc":1},
         "startdescription": ".",
         "description": ".",
         "warmup": 0,
@@ -36,17 +47,6 @@
         "craftable": false
     },
 
-	{
-        "id": "setup.librarian.books",
-        "label": ".",
-        "actionid": ".",
-        "requirements": {},
-        "startdescription": ".",
-        "description": ".",
-"effects":{"turquoisehand.unc":1,"travellingatnight.1.unc":1,"travellingatnight.2.unc":1},
-        "warmup": 0,
-        "craftable": false
-    },
 	{
         "id": "setup.librarian.shipwrecked",
         "label": ".",
@@ -71,7 +71,7 @@
                 {
                     "id": "celestial.sunrise"
                 }
-            ],
+            ]
     },
 			{
         "id": "setup.librarian.visits",
@@ -87,7 +87,7 @@
                 {
                     "id": "visits.cycle"
                 }
-            ],
+            ]
     }
    
 

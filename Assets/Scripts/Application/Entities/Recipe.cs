@@ -24,6 +24,9 @@ namespace SecretHistories.Entities
         public Dictionary<string, string> Requirements { get; set; }
 
         [FucineDict(ValidateAsElementId = true)]
+        public Dictionary<string, string> Seeking { get; set; }
+
+        [FucineDict(ValidateAsElementId = true)]
         public Dictionary<string, string> TableReqs { get; set; }
 
         [FucineDict(ValidateAsElementId = true)]
