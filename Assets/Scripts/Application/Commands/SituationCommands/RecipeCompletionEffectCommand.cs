@@ -4,6 +4,7 @@ using System.Linq;
 using Assets.Logic;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Commands;
+using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -72,8 +73,43 @@ namespace SecretHistories.Core
 
             OpenPortals(situation);
             DoRecipeVfx(situation);
+            TryHonourSeeking(situation);
 
             return true;
+        }
+
+        private void TryHonourSeeking(Situation situation)
+        {
+            if (!Recipe.Seeking.Any())
+                return;
+            if (!situation.Token.Sphere.Traversable)
+                return;
+            if (situation.Token.CurrentState.InSystemDrivenMotion())
+                return;
+
+            if (Recipe.Seeking.Any())
+            {
+                //find the first token (later, could be nearest token) which matches the seeking criteria
+                var matchingTokens = Watchman.Get<HornedAxe>().FindTokensWithAspectsInWorld(Recipe.Seeking);
+                if (matchingTokens.Count == 0)
+                    return;
+
+                var goToToken = matchingTokens.First();
+                NoonUtility.Log($"{situation.Token.PayloadId} setting course for {goToToken.PayloadId}");
+              
+                var pathItinerary = new TokenPathItinerary(situation.Token.Location, goToToken.Location);
+                
+                //create a PathItinerary towards that token
+                pathItinerary.Depart(situation.Token,new Context(Context.ActionSource.SituationEffect));
+                
+
+                //This is immediately flawed in several ways:
+                //(1) what happens if the situation token is in motion when the recipe triggers? currently we just discard the seeking, but we could store it as a command.
+                //(2) what happens if the target moves while the situation token is on its way to it? There's stuff in AIPath to handle this, so maybe we should let it handle it
+                //(3) what happens if we want to trigger a callback when the token arrives, and/or cancel the seeking when the recipe is complete? We can fudge this with a cycling recipe, for now.
+                //-- sounds lke a pathreqs, actually...
+
+            }
         }
 
         private void DoRecipeVfx(Situation situation)

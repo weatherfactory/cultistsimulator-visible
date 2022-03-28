@@ -65,8 +65,7 @@ namespace SecretHistories.States
 
         public override void Continue(Situation situation)
         {
-            
-
+         
         }
     }
 }

@@ -115,7 +115,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         public AspectsDictionary GetAspects(bool includeSelf)
         {
-            throw new System.NotImplementedException();
+            return new AspectsDictionary(_mutations);
         }
 
 

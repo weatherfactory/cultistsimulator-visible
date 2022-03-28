@@ -266,6 +266,33 @@ namespace SecretHistories.Entities {
                     s.OnTokenInteraction(args);
         }
 
+        public List<Token> FindTokensWithAspectsInWorld(Dictionary<string, string> withAspects)
+        {
+            List<Token> matchingTokens = new List<Token>();
+            foreach(var ws in GetSpheresOfCategory(SphereCategory.World))
+            {
+                var validTokensToCheck = ws.Tokens.Where(t => t.IsValid());
+
+                foreach (var tokenToCheck in validTokensToCheck)
+                {
+                    
+                    bool mismatch = false;
+                    foreach (var criterion in withAspects)
+                    {
+                        if(mismatch == true)
+                            continue; //if we already found a mismatch, don't bother checking the others
+                        
+                        bool matches = Recipe.CheckRequirementsSatisfiedForContext(tokenToCheck.GetAspects(true), criterion);
+                        if(!matches)
+                            mismatch=true;
+                    }
+                    if(!mismatch)
+                        matchingTokens.Add(tokenToCheck);
+                }
+            }
+
+            return matchingTokens;
+        }
 
         public AspectsInContext GetAspectsInContext(AspectsDictionary aspectsInSituation)
         {

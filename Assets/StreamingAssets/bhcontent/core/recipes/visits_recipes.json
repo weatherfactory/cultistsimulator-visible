@@ -24,10 +24,19 @@
     "id": "visits.enter.serena",
     "label": "Dr Serena",
     "actionid": "npc.serena",
-    "startdescription": "Dr Serena Blackwood has returned to the library where once she was Secretary Vigilant.",
-    "effects":{"incident":-99},
-          "warmup": 1,
-    "craftable": false
+    "startdescription": "Dr Serena Blackwood returns, again, to the library where she was Secretary Vigilant.",
+    "seeking": {"statue.founder":1},
+          "warmup": 2,
+    "craftable": false,
+    "linked":[{"id": "visits.arrived.serena"},
+        {"id": "visits.enter.serena"}]
+},
+{
+    "id": "visits.arrived.serena",
+    "label": "Dr Serena",
+    "actionid": "npc.serena",
+    "requirements": {"incident":99},
+    "startdescription": "(This is where Dr B would say something.)"
 },
 {
     "id": "visits.exit",
