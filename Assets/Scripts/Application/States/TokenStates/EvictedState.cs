@@ -24,5 +24,10 @@ namespace SecretHistories.States.TokenStates
         {
             return true;
         }
+
+        public override bool ShouldObserveRangeLimits()
+        {
+            return true;
+        }
     }
 }

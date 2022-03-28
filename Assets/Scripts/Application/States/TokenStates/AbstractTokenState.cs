@@ -19,7 +19,7 @@ namespace SecretHistories.States
         public abstract bool InPlayerDrivenMotion();
         public abstract bool InSystemDrivenMotion();
         public abstract bool CanDecay();
-
+        public abstract bool ShouldObserveRangeLimits();
 
         /// <summary>
         /// This is the 'finished, let's continue' state.

@@ -279,7 +279,10 @@ namespace SecretHistories.UI
 
 
         private bool IsTokenInRangeOfThisShelf(Token token)
-        { // TODO: refactor into more general Range logic in Sphere, along with similar code in Column
+        {
+            if (!token.CurrentState.ShouldObserveRangeLimits())
+                return true;
+            // TODO: refactor into more general Range logic in Sphere, along with similar code in Column
             //Get the home sphere location of this token.
             //Is it the same as this sphere?
             if (token.GetHomeSphere() == this)

@@ -31,5 +31,10 @@ namespace SecretHistories.States
             return false;
 
         }
+
+        public override bool ShouldObserveRangeLimits()
+        {
+            return false;
+        }
     }
 }
