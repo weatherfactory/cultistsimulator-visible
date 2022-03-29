@@ -33,9 +33,9 @@ public class CamOperator : MonoBehaviour {
     [SerializeField]
     private float zoom_step_distance;
     
-    public float ZOOM_Z_CLOSE=-500f;
+    public float ZOOM_Z_CLOSE=-800f;
 
-    public float ZOOM_Z_MID=-900f;
+    public float ZOOM_Z_MID=-1100f;
     
     public  float ZOOM_Z_FAR =-1500f;
 
