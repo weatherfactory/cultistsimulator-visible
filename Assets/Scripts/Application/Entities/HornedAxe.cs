@@ -164,7 +164,16 @@ namespace SecretHistories.Entities {
             return GetSphereByPath(constructedPath);
         }
 
+        public Sphere SafeGetSphereByPath(Sphere currentSphere, FucinePath spherePath)
+        {
+            
+            if (spherePath == FucinePath.Current())
+                return currentSphere;
+            return GetSphereByPath(spherePath);
+        }
+        //Transition to the above method wherever possible, and eventually go for a warning and a DefaultSphere with the one below
 
+        [Obsolete]
         public Sphere GetSphereByPath(FucinePath spherePath)
         {
             if (spherePath.IsWild())

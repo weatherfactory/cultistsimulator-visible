@@ -94,7 +94,8 @@ namespace SecretHistories.UI
 
         public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
         {
-            var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
+            Sphere destinationSphere= Watchman.Get<HornedAxe>().SafeGetSphereByPath(tokenToSend.Sphere, DestinationSpherePath);
+
 
             //I wrote this to cater for save files with unexpectedly invalid destinationspheres as a belt-and-braces approach.
             //It makes the cycle more robust, though, and even though the invalid destinationsphere issue is now fixed, I feel happier leaving it in. WITH LOGGING THOUGH.
@@ -176,7 +177,7 @@ namespace SecretHistories.UI
         {
             try
             {
-                var destinationSphere = Watchman.Get<HornedAxe>().GetSphereByPath(DestinationSpherePath);
+                Sphere destinationSphere = Watchman.Get<HornedAxe>().SafeGetSphereByPath(token.Sphere, DestinationSpherePath);
 
                 if (destinationSphere==null || destinationSphere.Equals(null) || !destinationSphere.IsValid || destinationSphere.Defunct)
                     TravelFailed(token);
