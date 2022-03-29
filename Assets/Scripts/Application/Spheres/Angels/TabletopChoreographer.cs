@@ -267,7 +267,7 @@ namespace SecretHistories.Constants {
 
             Rect otherTokenOverlapRect;
 
-            foreach (var otherToken in Sphere.Tokens.Where(t=>t!=placingToken && !CanTokenBeIgnored(t)))
+            foreach (var otherToken in Sphere.Tokens.Where(t=>t!=placingToken && t.OccupiesSameSpaceAs(placingToken) && !CanTokenBeIgnored(t)))
             {
                 otherTokenOverlapRect = otherToken.GetRectInCurrentSphere();
 
