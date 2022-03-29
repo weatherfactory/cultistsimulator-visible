@@ -48,7 +48,7 @@ namespace SecretHistories.UI
 
             var newlyInstantiatedInstance=prefabFactory?.CreateLocally<T>(atTransform.root); //assuming we have a prefab factory. If we don't, we're stuffed, return null
 
-            registered.TryAdd(typeof(T),newlyInstantiatedInstance);
+            registered.TryAdd(typeof(T),newlyInstantiatedInstance); //just Add causes possible race condition
 
             return newlyInstantiatedInstance;
         }
