@@ -54,8 +54,9 @@ public class BabelfishImage : MonoBehaviour
     }
 
     private void OnEnable()
-    {
-        Watchman.Get<Concursum>().AfterChangingCulture.AddListener(OnCultureChanged);
+    {
+        var c = Watchman.Get<Concursum>();
+       c.AfterChangingCulture.AddListener(OnCultureChanged);
         
     }
 
