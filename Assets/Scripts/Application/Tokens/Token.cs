@@ -650,7 +650,7 @@ namespace SecretHistories.UI {
         {
             if (!CurrentlyBeingDragged())
                 return;
-
+            
             Vector3 originalPosition = this.transform.position;
 
             RectTransformUtility.ScreenPointToWorldPointInRectangle(Sphere.GetRectTransform(),
