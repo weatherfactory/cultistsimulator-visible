@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.Spheres.Angels;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Commands;
+using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
+using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.UI;
@@ -98,6 +100,11 @@ namespace SecretHistories.Spheres
 
             //If neither of these, return false.
             return false;
+        }
+
+        public override Type GetShabdaManifestation(Situation situation)
+        {
+            return typeof(EdictManifestation);
         }
     }
 }

@@ -1,23 +1,19 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
-using SecretHistories.Commands;
+using SecretHistories.Constants;
+using SecretHistories.Core;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Fucine;
-using SecretHistories.UI;
-using SecretHistories.Constants;
-using SecretHistories.Constants.Events;
-using SecretHistories.Core;
 using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
 using SecretHistories.Services;
-using SecretHistories.Spheres;
+using SecretHistories.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -25,25 +21,21 @@ using UnityEngine.UI;
 
 namespace SecretHistories.Manifestations
 {
-    [RequireComponent(typeof(RectTransform))]
-    public class VerbManifestation: BasicManifestation, IManifestation
+    public class EdictManifestation: BasicManifestation,IManifestation
+
     {
-#pragma warning disable 649
         [SerializeField] Image artwork;
 
-        [Header("Token Body")]
-        [SerializeField] Image tokenBody;
-        [SerializeField] Sprite lightweightSprite;
 
         [SerializeField] private CanvasGroup canvasGroup;
-
+        [SerializeField] private TextMeshProUGUI sup;
 
         [Header("Countdown")]
         [SerializeField] GameObject countdownCanvas;
         [SerializeField] Image countdownBar;
         [SerializeField] Image countdownBadge;
         [SerializeField] TextMeshProUGUI countdownText;
-        [SerializeField] ParticleSystem[] particles;
+
 
         [Header("Ongoing Slot")]
         [SerializeField]
@@ -51,22 +43,11 @@ namespace SecretHistories.Manifestations
 
         [SerializeField] Image ongoingSlotArtImage;
         [SerializeField] GameObject ongoingSlotGreedyIcon;
-        [SerializeField] ParticleSystem ongoingSlotAppearFX;
-
-        [Header("Completion")]
-        [SerializeField]
-        Image completionBadge;
-
-        [SerializeField] TextMeshProUGUI completionText;
-
-        [Header("DumpButton")]
-        [SerializeField]
-        SituationTokenDumpButton dumpButton;
 
         [SerializeField] public GraphicFader glowImage;
-        [SerializeField] private GameObject vanishFxPrefab;
 
-        
+
+
         private List<Sprite> frames;
         private Coroutine animCoroutine;
 
@@ -88,27 +69,10 @@ namespace SecretHistories.Manifestations
             frames = ResourcesManager.GetAnimFramesForVerb(art);
             artwork.sprite = sprite;
             
-
-            ///Does this need to be for on the outer transform? hope not
-            ParticleSystem.MainModule mainSettings;
-
-            for (int i = 0; i < particles.Length; i++)
-            {
-                mainSettings = particles[i].main;
-                mainSettings.customSimulationSpace = Watchman.Get<HornedAxe>().GetDefaultSphere().GetRectTransform(); //so they don't move with the token when we pick it up
-            }
-
-
-
-            _spontaneousVerb = (manifestable.GetIllumination(NoonConstants.IK_SPONTANEOUS) != string.Empty);
-
-            if(_spontaneousVerb)
-                tokenBody.overrideSprite = lightweightSprite;
-
             SetInitialTimerVisuals();
 
             UpdateVisuals(manifestable);
-         
+
         }
 
         public void UpdateVisuals(IManifestable manifestable)
@@ -117,12 +81,12 @@ namespace SecretHistories.Manifestations
 
             if (timeshadow.Transient)
             {
-                UpdateTimerVisuals(timeshadow.Lifetime,timeshadow.LifetimeRemaining,timeshadow.LastInterval,timeshadow.Resaturate,timeshadow.EndingFlavour);
+                UpdateTimerVisuals(timeshadow.Lifetime, timeshadow.LifetimeRemaining, timeshadow.LastInterval, timeshadow.Resaturate, timeshadow.EndingFlavour);
             }
 
             TryOverrideVerbIcon(manifestable.GetAspects(true));
             DisplayRecipeThreshold(manifestable);
-            DisplayOutputs(manifestable);
+            sup.text = manifestable.Label;
         }
 
 
@@ -134,7 +98,7 @@ namespace SecretHistories.Manifestations
             if (!string.IsNullOrEmpty(overrideIcon))
             {
                 OverrideIcon(overrideIcon);
-               // _window.DisplayIcon(overrideIcon);
+                // _window.DisplayIcon(overrideIcon);
             }
         }
 
@@ -151,12 +115,10 @@ namespace SecretHistories.Manifestations
             {
                 SetTimerVisibility(true);
 
-                Color barColor = UIStyle.GetColorForCountdownBar(signalEndingFlavour, durationRemaining);
 
                 durationRemaining = Mathf.Max(0f, durationRemaining);
-                countdownBar.color = barColor;
+
                 countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (durationRemaining / originalDuration));
-                countdownText.color = barColor;
                 countdownText.text = Watchman.Get<ILocStringProvider>().GetTimeStringForCurrentLanguage(durationRemaining);
                 countdownText.richText = true;
             }
@@ -175,7 +137,7 @@ namespace SecretHistories.Manifestations
 
         public void SendNotification(INotification notification)
         {
-           //
+            //
         }
 
         public void OverrideIcon(string art)
@@ -188,26 +150,20 @@ namespace SecretHistories.Manifestations
 
         public Vector3 GetOngoingSlotPosition()
         {
-            return  ongoingSlotImage.rectTransform.anchoredPosition3D;
+            return ongoingSlotImage.rectTransform.anchoredPosition3D;
         }
 
 
 
         public void DoMove(RectTransform tokenRectTransform)
         {
-             shadow.DoMove(tokenRectTransform);
+            shadow.DoMove(tokenRectTransform);
         }
-        
+
 
         public bool HandlePointerClick(PointerEventData eventData, Token token)
         {
-            if (dumpButton.PointerAboveThis)
-            {
-                token.Payload.Conclude();
 
-                return true;
-            }
-            else
                 return false;
         }
 
@@ -221,7 +177,7 @@ namespace SecretHistories.Manifestations
 
             var recipeThresholdSpheres = recipeThresholdDominion.Spheres;
 
-            if(recipeThresholdSpheres.Count==0)
+            if (recipeThresholdSpheres.Count == 0)
                 HideMiniSlot();
 
             if (!recipeThresholdSpheres.Any())
@@ -235,45 +191,7 @@ namespace SecretHistories.Manifestations
 
         }
 
-        public void DisplayOutputs(IManifestable manifestable)
-        {
-            var outputDominion = manifestable.Dominions.SingleOrDefault(d =>
-                d.Identifier == SituationDominionEnum.Output.ToString());
 
-            if (outputDominion == null || (!outputDominion.CurrentlyFullyEvoked && !outputDominion.CurrentlyBeingEvoked))
-            {
-                completionBadge.gameObject.SetActive(false);
-                dumpButton.gameObject.SetActive(false);
-                return;
-            }
-
-
-            var outputSpheres = outputDominion.Spheres;
-
-            if (outputSpheres.Any())
-            {
-
-                int completionCount = outputSpheres.Select(s => s.GetTotalElementsCount()).Sum();
-                completionBadge.gameObject.SetActive(true);
-                if (completionCount > 0)
-                    completionText.text = completionCount.ToString();
-                else
-                    completionText.text = string.Empty;
-                if (_spontaneousVerb)
-                    dumpButton.gameObject.SetActive(true);
-                else
-                    dumpButton.gameObject.SetActive(false);
-
-
-            }
-            else
-            {
-                //no active output spheres: no collection badge, no dump button
-                completionBadge.gameObject.SetActive(false);
-                dumpButton.gameObject.SetActive(false);
-            }
-
-        }
 
         public IGhost CreateGhost()
         {
@@ -292,13 +210,11 @@ namespace SecretHistories.Manifestations
 
         private void ShowMiniSlot(bool greedy)
         {
-            
-            if(!ongoingSlotImage.isActiveAndEnabled)
+
+            if (!ongoingSlotImage.isActiveAndEnabled)
             {
                 ongoingSlotImage.gameObject.SetActive(true);
 
-                ongoingSlotAppearFX.Play();
-                SoundManager.PlaySfx("SituationTokenShowOngoingSlot");
             }
             if (greedy)
                 ongoingSlotGreedyIcon.gameObject.SetActive(true);
@@ -310,22 +226,22 @@ namespace SecretHistories.Manifestations
 
         private void displayStackInMiniSlot(IEnumerable<Token> tokens)
         {
-            if(tokens.Count()>1)
+            if (tokens.Count() > 1)
             {
-                NoonUtility.LogWarning("VerbManifestation implementation doessn't support >1 stack in minislot");
+                NoonUtility.LogWarning("EdictManifestation implementation doessn't support >1 stack in minislot");
                 return;
             }
-            
+
 
             var token = tokens.SingleOrDefault();
-            if(token==null)
+            if (token == null)
             {
                 ongoingSlotArtImage.sprite = null;
                 ongoingSlotArtImage.color = Color.black;
             }
             else
             {
-                ElementStack elementStackLordForgiveMe=token.Payload as ElementStack;
+                ElementStack elementStackLordForgiveMe = token.Payload as ElementStack;
                 ongoingSlotArtImage.sprite = ResourcesManager.GetSpriteForElement(elementStackLordForgiveMe?.Icon);
                 ongoingSlotArtImage.color = Color.white;
             }
@@ -336,15 +252,6 @@ namespace SecretHistories.Manifestations
 
         private void SetTimerVisibility(bool show)
         {
-            // If we're changing the state, change the particles
-            if (show != countdownCanvas.gameObject.activeSelf)
-            {
-                if (show)
-                    particles[0].Play();
-                else
-                    particles[0].Stop();
-            }
-
             countdownCanvas.gameObject.SetActive(show);
         }
 
@@ -352,25 +259,10 @@ namespace SecretHistories.Manifestations
 
         public override void Retire(RetirementVFX vfx, Action callbackOnRetired)
         {
-            if(vfx== RetirementVFX.Default)
-                DoVanishFx();
             Destroy(gameObject);
             callbackOnRetired();
         }
 
-        private void DoVanishFx()
-        {
-            if (vanishFxPrefab is null)
-                return;
-
-            var vanishFxObject = Instantiate(vanishFxPrefab, transform.parent.parent) as GameObject; //This is nasty because it assumes the token's current sphere is the grandparent. We may want to revisit, but I'm not surte about the best approach
-            if (!(vanishFxObject is null)) //I mean it shouldn't be, but let's keep the compiler happy
-            {
-                vanishFxObject.transform.position = transform.position;
-                vanishFxObject.transform.localScale = Vector3.one;
-                vanishFxObject.SetActive(true);
-            }
-        }
 
 
         public void ResetIconAnimation()
@@ -431,10 +323,10 @@ namespace SecretHistories.Manifestations
 
         public bool CanAnimateIcon()
         {
-           return frames.Any();
+            return frames.Any();
         }
 
-  
+
 
         private void SetGlowColor(Color color)
         {
@@ -467,7 +359,7 @@ namespace SecretHistories.Manifestations
             }
             else
             {
-                
+
                 glowImage.Hide();
             }
         }
@@ -495,7 +387,7 @@ namespace SecretHistories.Manifestations
 
         public void Unhighlight(HighlightType highlightType, IManifestable manifestable)
         {
-            if (highlightType== HighlightType.All)
+            if (highlightType == HighlightType.All)
             {
                 ShowHoverGlow(false);
                 ShowGlow(false);
@@ -539,8 +431,6 @@ namespace SecretHistories.Manifestations
 
 
         }
-
-
 
 
     }
