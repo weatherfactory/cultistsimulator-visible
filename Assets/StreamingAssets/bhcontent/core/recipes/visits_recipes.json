@@ -48,8 +48,9 @@
             "description": "Reading material."
         }
     ],
-    "linked":[{"id": "visits.satisfied.serena"},
-        {"id": "visits.unsatisfied.serena"}]
+    "alt":[{"id": "visits.unsatisfied.serena"},
+        {"id": "visits.satisfied.serena"}
+        ]
 },
 {
     "id": "visits.satisfied.serena",
@@ -77,7 +78,8 @@
     "startdescription": "Outgoing visitor.",
     "seeking": {"way.inland":1},
           "warmup": 1,
-    "craftable": false
+    "craftable": false,
+    "linked":[{"id": "visits.exit"}]
 }
 
 ]
