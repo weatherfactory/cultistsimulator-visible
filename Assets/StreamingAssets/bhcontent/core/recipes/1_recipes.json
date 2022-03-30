@@ -2,71 +2,38 @@
  
     {
         "id": "setup.librarian.abilities",
-        "label": ".",
-        "actionid": ".",
-        "requirements": {},
         "effects": {
                 "xhea":1,
                 "xtri":1,
-                "xwis":1},
-        "startdescription": ".",
-        "description": ".",
-        "warmup": 0,
-        "craftable": false
+                "xwis":1}
     },
 	    {
-        "id": "setup.librarian.entrance",
-        "label": ".",
-        "actionid": ".",
-        "requirements": {},
-        "effects": {"statue.founder":1},
-        "startdescription": ".",
-        "description": ".",
-        "warmup": 0,
-        "craftable": false
+        "id": "setup.librarian.entrance",    
+        "effects": {"statue.founder":1}
+    },
+    {
+        "id": "setup.librarian.inland",        
+        "effects": {"inland.exit":1}
     },
     {
         "id": "setup.librarian.westcott",
-        "label": ".",
-        "actionid": ".",
-        "requirements": {},
-        "effects": {"bookcase":1,"turquoisehand.unc":1,"travellingatnight.1.unc":1,"travellingatnight.2.unc":1},
-        "startdescription": ".",
-        "description": ".",
-        "warmup": 0,
-        "craftable": false
+        "effects": {"bookcase":1,"turquoisehand.unc":1,"travellingatnight.1.unc":1,"travellingatnight.2.unc":1}
     },
 	{
-        "id": "setup.librarian.desk",
-        "label": ".",
-        "actionid": "desk",
-        "requirements": {},
-        "startdescription": ".",
-        "description": ".",
-        "warmup": 0,
-        "craftable": false
+        "id": "setup.librarian.desk",        
+        "actionid": "desk"
     },
 
 	{
         "id": "setup.librarian.shipwrecked",
-        "label": ".",
         "actionid": "pc",
-        "requirements": {},
         "startdescription": "Something?",
-        "description": "An introductory message.",
-        "warmup": 0,
-        "craftable": false
+        "description": "An introductory message."
     },
 		{
-        "id": "setup.librarian.time",
-        "label": ".",
-        "actionid": "time",
-        "requirements": {},
-		"effects": {"celestial.sun":1,"season.spring":1},
-        "startdescription": ".",
-        "description": ".",
-        "warmup": 0,
-        "craftable": false,
+        "id": "setup.librarian.time",        
+        "actionid": "time",        
+		"effects": {"celestial.sun":1,"season.spring":1},        
 		"linked": [
                 {
                     "id": "celestial.sunrise"
@@ -74,15 +41,9 @@
             ]
     },
 			{
-        "id": "setup.librarian.visits",
-        "label": ".",
-        "actionid": "visits",
-        "requirements": {},
+        "id": "setup.librarian.visits",        
+        "actionid": "visits",        
 		"effects": {},
-        "startdescription": ".",
-        "description": ".",
-        "warmup": 0,
-        "craftable": false,
 		"linked": [
                 {
                     "id": "visits.cycle"
