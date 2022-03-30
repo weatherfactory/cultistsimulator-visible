@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using SecretHistories.Constants;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.UI;
 using SecretHistories.Services;
 
@@ -25,7 +26,8 @@ public class FontStyle
 	public TMP_FontAsset	fontCJK;	// centralized font asset list for Chinese/Japanese/Korean lang (common ideographs) - but we don't use it for Japanese, because some characters are subtly different.
     public TMP_FontAsset fontJP;// Specifically Japanese fonts
     public TMP_FontAsset	fontRu;		// for RU - cyrillic langs
-    public TMP_FontAsset	fontEn;		// for all other latin/germanic langs
+    public TMP_FontAsset	fontEn;
+    public TMP_FontAsset fontEnBH;
     public TMP_FontAsset fontX;
     public Material			fontMaterial;
 };
@@ -119,8 +121,10 @@ public class LanguageManager : MonoBehaviour,ILocStringProvider
                 break;
                 
             case "latin":
-                if (fontStyles[style].fontEn != null)
+                if (Watchman.Get<MetaInfo>().GameId==GameId.CS && fontStyles[style].fontEn != null)
                     return fontStyles[style].fontEn;
+                else if (Watchman.Get<MetaInfo>().GameId == GameId.BH && fontStyles[style].fontEn != null)
+                    return fontStyles[style].fontEnBH;
                 break;
 
             case "latinplus": //functionally identical to the default! But maybe some day it won't be.
