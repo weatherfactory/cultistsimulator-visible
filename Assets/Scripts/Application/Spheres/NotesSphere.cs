@@ -80,10 +80,7 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
 
 
                 Navigate(navigationArgs);
-                if (PagedTokens.Count >0) //always false, just disabling for now
-                    _popNoteButton.gameObject.SetActive(true);
-                else
-                    _popNoteButton.gameObject.SetActive(false);
+            
 
             }
 
@@ -104,6 +101,7 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
             if (indexToShow < 0)
                 //index -1 or lower: there ain't no that
                 return;
+
 
 
             args.OnOutComplete = OnNoteOutComplete;
@@ -138,7 +136,10 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
                 NoonUtility.Log($"error 'Gryla' guard+log: we tried to call OnNoteOutComplete with currentindex {CurrentIndex} when there are only {PagedTokens.Count} text tokens in the Notes Sphere here.", 1, VerbosityLevel.Essential);
             }
 
-            
+            if (args.Index > 0) //do it here so it appears/disappears while the note is absent.
+                _popNoteButton.gameObject.SetActive(true);
+            else
+                _popNoteButton.gameObject.SetActive(false);
 
         }
 
@@ -153,6 +154,8 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
             {
              NoonUtility.Log($"error 'Gryla' guard+log: we tried to call OnNoteInComplete with index {args.Index} when there are only {PagedTokens.Count} text tokens in the Notes Sphere here.",1,VerbosityLevel.Essential);   
             }
+
+   
         }
 
 

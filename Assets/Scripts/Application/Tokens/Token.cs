@@ -591,7 +591,14 @@ namespace SecretHistories.UI {
             //base behaviour is to set current location in current sphere as home, but not all spheres will do this
             RequestHomingAngelFromCurrentSphere();
 
-             CurrentState =new BeingDraggedState();
+
+            Vector3 pressPos;
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Sphere.GetRectTransform(), eventData.pressPosition, eventData.pressEventCamera, out pressPos);
+            dragOffset = (transform.position) - pressPos;
+            //dragOffset = (transform.position + startParent.position) - pressPos;
+
+
+            CurrentState = new BeingDraggedState();
              Watchman.Get<Meniscate>().SetCurrentlyDraggedToken(this);
             
             NotifyInteracted(new TokenInteractionEventArgs(pointerEventData: eventData, payload: Payload, token: this,
@@ -599,7 +606,7 @@ namespace SecretHistories.UI {
             //just picked the token up, but it hasn't yet left the origin sphere. 
             TryCalveOriginToken(_homingAngel);
 
-
+ 
             var enrouteSphere = Payload.GetEnRouteSphere();
 
             enrouteSphere.AcceptToken(this, new Context(Context.ActionSource.PlayerDrag));
@@ -611,18 +618,6 @@ namespace SecretHistories.UI {
 
             startSiblingIndex = TokenRectTransform.GetSiblingIndex();
 
-
-            //commented out because I *might* not need it; but if I do, we can probably calculate it on the fly.
-            //if (this.EntityId=="dropzone")
-            //{
-            //    Vector3 pressPos;
-            //    RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Get<IDraggableHolder>().RectTransform, eventData.pressPosition, eventData.pressEventCamera, out pressPos);
-            //    dragOffset = (startPosition + startParent.position) - pressPos;
-            //}
-            //else
-            //{
-            dragOffset = Vector3.zero;
-            //  }
 
             SoundManager.PlaySfx("CardPickup");
 
@@ -684,7 +679,7 @@ namespace SecretHistories.UI {
             // Potentially change this so it is using UI coords and the RectTransform?
             //  rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
 
-         TokenRectTransform.position = toPosition; ///aaaahh it's *position* not anchoredposition3D because we're getting the world point from the click
+         TokenRectTransform.position = toPosition + dragOffset; ///aaaahh it's *position* not anchoredposition3D because we're getting the world point from the click
 
          Payload.OnTokenMoved(Location);
             
