@@ -78,7 +78,7 @@ namespace SecretHistories.Manifestations
         public void UpdateVisuals(IManifestable manifestable)
         {
             var timeshadow = manifestable.GetTimeshadow();
-
+            
             if (timeshadow.Transient)
             {
                 UpdateTimerVisuals(timeshadow.Lifetime, timeshadow.LifetimeRemaining, timeshadow.LastInterval, timeshadow.Resaturate, timeshadow.EndingFlavour);
@@ -87,8 +87,13 @@ namespace SecretHistories.Manifestations
             TryOverrideVerbIcon(manifestable.GetAspects(true));
             DisplayRecipeThreshold(manifestable);
             sup.text = manifestable.Label;
+            EndIfComplete(manifestable);
         }
 
+        private void EndIfComplete(IManifestable manifestable)
+        {
+
+        }
 
 
         private void TryOverrideVerbIcon(AspectsDictionary forAspects)

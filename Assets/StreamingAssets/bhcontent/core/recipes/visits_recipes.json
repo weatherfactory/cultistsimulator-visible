@@ -59,27 +59,28 @@
     "startdescription": "Nice!",
     "requirements": {"readable":1},
           "warmup": 10,
-    "linked":[{"id": "visits.exit"}]
+    "linked":[{"id": "visits.leaving"}]
 },
 {
     "id": "visits.unsatisfied.serena",
-    "label": "Dr Serena is Grateful",
+    "label": "Dr Serena is Cross",
     "actionid": "npc.serena",
     "startdescription": "Phah!",
     "requirements": {"readable":-1},
           "warmup": 10,
-    "linked":[{"id": "visits.exit"}]
+    "linked":[{"id": "visits.leaving"}]
 },
 
 {
-    "id": "visits.exit",
+    "id": "visits.leaving",
     "label": "Outgoing visitor",
     "actionid": "v",
     "startdescription": "Outgoing visitor.",
+    "nearbyreqs": {"way.inland":-1},
     "seeking": {"way.inland":1},
           "warmup": 1,
     "craftable": false,
-    "linked":[{"id": "visits.exit"}]
+    "linked":[{"id": "visits.leaving"}]
 }
 
 ]
