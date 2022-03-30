@@ -86,9 +86,9 @@ namespace SecretHistories.Spheres
                 return;
 
 
-            var existingHovered =
+            var existingHovered =new List<GameObject>(
                 args.PointerEventData.hovered.Where(h =>
-                    !h.Equals(null));
+                    !h.Equals(null)));
                 
                 var hoveredInOrder=existingHovered
                 //make sure whatever we're hovering over hasn't been destroyed
