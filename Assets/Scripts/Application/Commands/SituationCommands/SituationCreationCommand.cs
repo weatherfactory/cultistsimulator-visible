@@ -155,10 +155,9 @@ namespace SecretHistories.Commands
                     windowSphere
                         .GetAbsolutePath()); //it shouldn't really be zero, but we don't know the real token loc in the current flow
 
-            var sphereToDisplayWindowIn = Watchman.Get<HornedAxe>().GetSphereByPath(windowLocation.AtSpherePath);
             var windowType = newSituation.GetWindowType();
             var newWindow = Watchman.Get<PrefabFactory>()
-                .CreateWindowPrefab(windowType, sphereToDisplayWindowIn.transform);
+                .CreateWindowPrefab(windowType, windowSphere.transform);
             //var newWindow = Watchman.Get<PrefabFactory>().CreateLocally<SituationWindow>(sphereToDisplayWindowIn.transform);
             newWindow.Attach(newSituation);
 

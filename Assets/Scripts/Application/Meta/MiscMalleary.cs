@@ -68,7 +68,7 @@ namespace Assets.Scripts.Application.Meta
             if (path.GetEndingPathPart().Category == FucinePathPart.PathCategory.Sphere)
             {
 
-                var sphereToFind = Watchman.Get<HornedAxe>().GetSphereByPath(path);
+                var sphereToFind = Watchman.Get<HornedAxe>().GetSphereByAbsolutePath(path);
                 if (sphereToFind != null)
                 {
                     ResponseLabel.text = $"found sphere at {sphereToFind.GetAbsolutePath()}";

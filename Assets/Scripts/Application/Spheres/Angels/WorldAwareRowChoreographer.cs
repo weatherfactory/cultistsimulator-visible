@@ -28,7 +28,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             if (!fpOverlapSphereToWatch.IsValid())
                 overlapSphereToWatch = Watchman.Get<HornedAxe>().GetDefaultSphere();
             else
-                overlapSphereToWatch = Watchman.Get<HornedAxe>().GetSphereByPath(fpOverlapSphereToWatch);
+                overlapSphereToWatch = Watchman.Get<HornedAxe>().GetSphereByAbsolutePath(fpOverlapSphereToWatch);
             var result = LegalInThisAndOtherRelevantSpheres(overlapSphereToWatch, candidateRect, placingToken);
 
 

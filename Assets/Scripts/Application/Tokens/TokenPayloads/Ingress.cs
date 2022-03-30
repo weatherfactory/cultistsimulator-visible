@@ -158,7 +158,7 @@ namespace SecretHistories.Tokens.TokenPayloads
         public Sphere GetEnRouteSphere()
         {
             if (Token.Sphere.GoverningSphereSpec.EnRouteSpherePath.IsValid())
-                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere.GoverningSphereSpec.EnRouteSpherePath);
+                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere, Token.Sphere.GoverningSphereSpec.EnRouteSpherePath);
 
             return Token.Sphere.GetContainer().GetEnRouteSphere();
         }
@@ -166,7 +166,7 @@ namespace SecretHistories.Tokens.TokenPayloads
         public Sphere GetWindowsSphere()
         {
             if (Token.Sphere.GoverningSphereSpec.WindowsSpherePath.IsValid())
-                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere.GoverningSphereSpec.WindowsSpherePath);
+                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere, Token.Sphere.GoverningSphereSpec.WindowsSpherePath);
 
             return Token.Sphere.GetContainer().GetWindowsSphere();
         }

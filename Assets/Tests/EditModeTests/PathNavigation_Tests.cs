@@ -70,7 +70,7 @@ namespace Assets.Tests.EditModeTests
         public void RetrieveRootSphere_ByPath()
         {
             var sphereinrootpath = new FucinePath("~/" + SPHEREINROOT_ID);
-            var retrievedSphere = _hornedAxe.GetSphereByPath(sphereinrootpath);
+            var retrievedSphere = _hornedAxe.GetSphereByAbsolutePath(sphereinrootpath);
             Assert.AreEqual(_sphereInRoot,retrievedSphere);
 
         }
@@ -88,7 +88,7 @@ namespace Assets.Tests.EditModeTests
         {
             var sphereInTokenPayloadPath = _sphereInRoot.GetAbsolutePath().AppendingToken(_tokenInSphere.PayloadId)
                 .AppendingSphere(SPHEREINTOKENPAYLOAD_ID);
-            var retrievedSphere = _hornedAxe.GetSphereByPath(sphereInTokenPayloadPath);
+            var retrievedSphere = _hornedAxe.GetSphereByAbsolutePath(sphereInTokenPayloadPath);
             Assert.AreEqual(_sphereInTokenPayload,retrievedSphere);
         }
 
@@ -111,7 +111,7 @@ namespace Assets.Tests.EditModeTests
 
             var sphereInTokenPayloadPath = _OTHERSphereInRoot.GetAbsolutePath().AppendingToken(_tokenInSphere.PayloadId)
                 .AppendingSphere(SPHEREINTOKENPAYLOAD_ID);
-            var retrievedSphere = _hornedAxe.GetSphereByPath(sphereInTokenPayloadPath);
+            var retrievedSphere = _hornedAxe.GetSphereByAbsolutePath(sphereInTokenPayloadPath);
             Assert.AreEqual(_sphereInTokenPayload, retrievedSphere);
         }
 

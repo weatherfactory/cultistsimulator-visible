@@ -86,7 +86,7 @@ namespace SecretHistories.Commands
             if (Location != null && sphere == null && Location.HasValidSpherePath())
             {
                 //if we have a valid location sphere path and no direct reference to a valid sphere, use the location sphere path.
-                sphereForThisToken = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
+                sphereForThisToken = Watchman.Get<HornedAxe>().GetSphereByAbsolutePath(Location.AtSpherePath);
             }
 
             //if we have a valid location that is not the same as the sphere in which this is being executed, execute at the location instead
@@ -94,7 +94,7 @@ namespace SecretHistories.Commands
                      && !Location.AtSpherePath.IsRoot() //what? why? Because back when the pathing system was embryonic, 
                      //root meant 'ugh I dont know what should go here and/or maybe this means current.' So it's often the default for CS when it should actually be current.
                      && !sphere.GetAbsolutePath().Conforms(Location.AtSpherePath))
-                sphereForThisToken = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
+                sphereForThisToken = Watchman.Get<HornedAxe>().GetSphereByAbsolutePath(Location.AtSpherePath);
             else
                 sphereForThisToken = sphere;
 
@@ -138,7 +138,7 @@ namespace SecretHistories.Commands
         {
             //only use the location sphere if for some reason we don't have a valid sphere to accept the token
             if (sphere == null && Location.HasValidSpherePath())
-                sphere = Watchman.Get<HornedAxe>().GetSphereByPath(Location.AtSpherePath);
+                sphere = Watchman.Get<HornedAxe>().GetSphereByAbsolutePath(Location.AtSpherePath);
 
             var token = Watchman.Get<PrefabFactory>().CreateLocally<Token>(sphere.GetRectTransform());
             token.TokenRectTransform.anchoredPosition3D = Location.Anchored3DPosition;

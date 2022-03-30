@@ -213,7 +213,7 @@ namespace SecretHistories.Entities.Verbs
         public Sphere GetEnRouteSphere()
         {
             if (Token.Sphere.GoverningSphereSpec.EnRouteSpherePath.IsValid() && !Token.Sphere.GoverningSphereSpec.EnRouteSpherePath.IsEmpty())
-                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere.GoverningSphereSpec.EnRouteSpherePath);
+                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere, Token.Sphere.GoverningSphereSpec.EnRouteSpherePath);
 
             return Token.Sphere.GetContainer().GetEnRouteSphere();
         }
@@ -221,7 +221,7 @@ namespace SecretHistories.Entities.Verbs
         public Sphere GetWindowsSphere()
         {
             if (Token.Sphere.GoverningSphereSpec.WindowsSpherePath.IsValid() && !Token.Sphere.GoverningSphereSpec.WindowsSpherePath.IsEmpty())
-                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere.GoverningSphereSpec.WindowsSpherePath);
+                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere, Token.Sphere.GoverningSphereSpec.WindowsSpherePath);
 
             return Token.Sphere.GetContainer().GetWindowsSphere();
         }

@@ -95,14 +95,14 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         public Sphere GetEnRouteSphere()
         {
             var defaultSphere=Watchman.Get<HornedAxe>().GetDefaultSphere();
-            return Watchman.Get<HornedAxe>().GetSphereByPath(defaultSphere.GoverningSphereSpec.EnRouteSpherePath);
+            return Watchman.Get<HornedAxe>().GetSphereByAbsolutePath(defaultSphere.GoverningSphereSpec.EnRouteSpherePath);
         }
 
         
         public Sphere GetWindowsSphere()
         {
             var defaultSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
-            return Watchman.Get<HornedAxe>().GetSphereByPath(defaultSphere.GoverningSphereSpec.WindowsSpherePath);
+            return Watchman.Get<HornedAxe>().GetSphereByAbsolutePath(defaultSphere.GoverningSphereSpec.WindowsSpherePath);
         }
 
 

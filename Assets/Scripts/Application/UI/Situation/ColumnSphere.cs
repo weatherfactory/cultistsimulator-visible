@@ -218,7 +218,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Situation
         {
             var hereAsWorldPosition = GetRectTransform().position;
 
-            var currentSphere = Watchman.Get<HornedAxe>().GetSphereByPath(forToken.Location.AtSpherePath);
+            var currentSphere = Watchman.Get<HornedAxe>().GetSphereByPath(forToken.Sphere, forToken.Location.AtSpherePath);
             var otherSphereTransform = currentSphere.GetRectTransform();
             var bestGuessReferencePosition = otherSphereTransform.InverseTransformPoint(hereAsWorldPosition);
 

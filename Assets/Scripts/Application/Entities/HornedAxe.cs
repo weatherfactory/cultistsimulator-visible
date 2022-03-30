@@ -78,7 +78,7 @@ namespace SecretHistories.Entities {
 
         public Sphere GetDefaultSphere()
         {
-            var defaultSphere = GetSphereByPath(GetDefaultSpherePath());
+            var defaultSphere = GetSphereByAbsolutePath(GetDefaultSpherePath());
             return defaultSphere;
         }
 
@@ -161,20 +161,19 @@ namespace SecretHistories.Entities {
         public Sphere GetSphereByPath(FucinePath relativePath, IHasFucinePath relativeTo)
         {
             var constructedPath = relativeTo.GetAbsolutePath().AppendingPath(relativePath);
-            return GetSphereByPath(constructedPath);
+            return GetSphereByAbsolutePath(constructedPath);
         }
 
-        public Sphere SafeGetSphereByPath(Sphere currentSphere, FucinePath spherePath)
+        public Sphere GetSphereByPath(Sphere currentSphere, FucinePath spherePath)
         {
             
             if (spherePath == FucinePath.Current())
                 return currentSphere;
-            return GetSphereByPath(spherePath);
+            return GetSphereByAbsolutePath(spherePath);
         }
         //Transition to the above method wherever possible, and eventually go for a warning and a DefaultSphere with the one below
 
-        [Obsolete]
-        public Sphere GetSphereByPath(FucinePath spherePath)
+        public Sphere GetSphereByAbsolutePath(FucinePath spherePath)
         {
             if (spherePath.IsWild())
                 return FindFirstOrDefaultSphereByWildPath(spherePath);
@@ -566,7 +565,7 @@ namespace SecretHistories.Entities {
             else
             
             {
-                    var sphere = GetSphereByPath(spherePath);
+                    var sphere = GetSphereByAbsolutePath(spherePath);
                     tokenToReturn = sphere.Tokens.SingleOrDefault(t => t.MatchesPathTokenId(pathTokenId));
             }
             return tokenToReturn;

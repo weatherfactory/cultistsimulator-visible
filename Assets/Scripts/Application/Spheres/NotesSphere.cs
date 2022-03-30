@@ -80,7 +80,7 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
 
 
                 Navigate(navigationArgs);
-                if (PagedTokens.Count <0) //always false, just disabling for now
+                if (PagedTokens.Count >0) //always false, just disabling for now
                     _popNoteButton.gameObject.SetActive(true);
                 else
                     _popNoteButton.gameObject.SetActive(false);
