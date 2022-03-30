@@ -17,6 +17,7 @@ public class ResourcesManager: MonoBehaviour
 
     public const string PLACEHOLDER_IMAGE_NAME = "_x";
     public const string COVERS_FOLDER = "covers";
+    public const string SOMEONES_FOLDER = "someones";
     public const string SPINE_SUFFIX = "_";
 
     private static readonly Dictionary<string,List<Sprite>> _cachedVerbFrames=new Dictionary<string, List<Sprite>>();
@@ -72,7 +73,10 @@ public class ResourcesManager: MonoBehaviour
     {
         return GetSprite(COVERS_FOLDER, imageName);
     }
-
+    public static Sprite GetSpriteForSomeone(string imageName)
+    {
+        return GetSprite(SOMEONES_FOLDER, imageName);
+    }
 
     public static Sprite GetSpriteForAspectInStatusBar(string imageName)
     {

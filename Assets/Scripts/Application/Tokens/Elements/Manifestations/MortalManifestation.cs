@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
@@ -12,6 +13,8 @@ using SecretHistories.Services;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 namespace SecretHistories.Manifestations
 {
@@ -20,6 +23,8 @@ namespace SecretHistories.Manifestations
     {
         [SerializeField]
         private GameObject _emphasisGlow;
+
+        [SerializeField] private Image _artwork;
 
         public override void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -33,17 +38,18 @@ namespace SecretHistories.Manifestations
 
         public void BeginIconAnimation()
         {
-            throw new NotImplementedException();
+          //
         }
 
         public void Initialise(IManifestable manifestable)
         {
-           //
+           UpdateVisuals(manifestable);
         }
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-            //
+            var sprite = ResourcesManager.GetSpriteForSomeone(manifestable.Icon);
+            _artwork.sprite = sprite;
         }
 
  
