@@ -22652,9 +22652,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pan_step_distance: 30
   zoom_step_distance: 30
-  ZOOM_Z_CLOSE: -200
-  ZOOM_Z_MID: -600
-  ZOOM_Z_FAR: -1500
+  ZOOM_Z_CLOSE: -600
+  ZOOM_Z_MID: -1000
+  ZOOM_Z_FAR: -2000
   defaultCameraMoveDuration: 0.2
   navigationLimits: {fileID: 1485596682}
 --- !u!124 &1559623475
@@ -25945,7 +25945,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -650, y: 0}
+  m_AnchoredPosition: {x: -649.99994, y: 0}
   m_SizeDelta: {x: -1100, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1771794124
@@ -29004,7 +29004,7 @@ PrefabInstance:
     - target: {fileID: 6803326875359408786, guid: 0d64a82baa6b44544982762485725b1c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -325
+      value: -42
       objectReference: {fileID: 0}
     - target: {fileID: 6803326875359408786, guid: 0d64a82baa6b44544982762485725b1c,
         type: 3}
