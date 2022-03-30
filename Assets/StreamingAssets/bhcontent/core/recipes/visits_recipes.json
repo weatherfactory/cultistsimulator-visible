@@ -33,17 +33,49 @@
 },
 {
     "id": "visits.arrived.serena",
-    "label": "Dr Serena",
+    "label": "Dr Serena Wants a Book",
     "actionid": "npc.serena",
     "nearbyreqs": {"statue.founder":1},
-    "startdescription": "'Can I have a book, please?'"
+    "startdescription": "'Can I have a book, please?'",
+    "warmup":60,
+    "slots": [
+        {
+            "id": "book",
+            "label": "Book",
+            "required": {
+                "readable": 1
+            },
+            "description": "Reading material."
+        }
+    ],
+    "linked":[{"id": "visits.satisfied.serena"},
+        {"id": "visits.unsatisfied.serena"}]
 },
+{
+    "id": "visits.satisfied.serena",
+    "label": "Dr Serena is Grateful",
+    "actionid": "npc.serena",
+    "startdescription": "Nice!",
+    "requirements": {"readable":1},
+          "warmup": 10,
+    "linked":[{"id": "visits.exit"}]
+},
+{
+    "id": "visits.unsatisfied.serena",
+    "label": "Dr Serena is Grateful",
+    "actionid": "npc.serena",
+    "startdescription": "Phah!",
+    "requirements": {"readable":-1},
+          "warmup": 10,
+    "linked":[{"id": "visits.exit"}]
+},
+
 {
     "id": "visits.exit",
     "label": "Outgoing visitor",
     "actionid": "v",
     "startdescription": "Outgoing visitor.",
-    "effects":{"incident":-99},
+    "seeking": {"inland.exit":1},
           "warmup": 1,
     "craftable": false
 }

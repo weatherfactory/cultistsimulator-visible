@@ -709,7 +709,7 @@ namespace SecretHistories.UI {
                 NotifyInteracted(new TokenInteractionEventArgs(pointerEventData: eventData, payload: Payload,
                     token: this, sphere: Sphere, interaction: Interaction.OnDragEnd));
                 CompleteDrag();
-            
+        
         }
 
         public void ForceEndDrag()
@@ -1184,5 +1184,6 @@ namespace SecretHistories.UI {
             TokenState = CurrentState.ToString();
 
         }
+
     }
 }
