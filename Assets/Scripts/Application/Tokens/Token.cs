@@ -544,7 +544,11 @@ namespace SecretHistories.UI {
         }
             
         else
+        {
             eventData.pointerDrag = null; //AFAICT this is a sensible precaution, but check here first if we're relying on non-drag/drag behaviour in a token somewhere
+            eventData.dragging=false;
+
+        }
     }
         /// <summary>
         /// can move manually
@@ -700,6 +704,7 @@ namespace SecretHistories.UI {
 
                 CompleteDrag();
             Watchman.Get<Meniscate>().OnMultiEndDrag(eventData,this);
+
         }
 
         public void EndDragAlong(PointerEventData eventData,Token primaryDragToken)
@@ -709,7 +714,7 @@ namespace SecretHistories.UI {
                 NotifyInteracted(new TokenInteractionEventArgs(pointerEventData: eventData, payload: Payload,
                     token: this, sphere: Sphere, interaction: Interaction.OnDragEnd));
                 CompleteDrag();
-        
+              
         }
 
         public void ForceEndDrag()
@@ -735,8 +740,6 @@ namespace SecretHistories.UI {
             //If the change causes problems, we can fork logic here instead?
             // HideGhost(); 
             _manifestation.OnEndDragVisuals(this);
-     
-
         }
 
    
@@ -819,6 +822,7 @@ namespace SecretHistories.UI {
                 else
                     incomingToken.CurrentState = new RejectedByTokenState();
             }
+
         }
 
  
