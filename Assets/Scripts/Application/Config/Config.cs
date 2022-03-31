@@ -252,6 +252,36 @@ public class Config
         return GetConfigValue(forId);
     }
 
+    /// <summary>
+    /// Returns all entries inside the config value as a string array.
+    /// </summary>
+    /// <param name="forId"></param>
+    /// <returns></returns>
+    public string[] GetConfigValueAsArray(string forId)
+    {
+        string configValue = GetConfigValue(forId) ?? string.Empty;
+        return configValue.Split(',', StringSplitOptions.RemoveEmptyEntries);
+    }
+
+    public void AddEntryToConfigArray(string key, string value)
+    {
+        //arrays are stored in the ini files as
+        //"key = ,value1,value2,value3,"
+        //they always start with ',' and end with ',' - to separate each value clearly
+        value = string.Concat(value, ',');
+        string currentValue = GetConfigValue(key) ?? ",";
+
+        if (currentValue.Contains("," + value) == false)
+            PersistConfigValue(key, string.Concat(currentValue, value));
+    }
+
+    public void RemoveEntryFromConfigArray(string key, string valueToRemove)
+    {
+        valueToRemove = string.Concat(",", valueToRemove, ",");
+        string currentValue = GetConfigValue(key) ?? string.Empty;
+        currentValue = currentValue.Replace(valueToRemove, ","); //replacing the entry with a ',' - not an empty string - so each entry is still clearly separated by commas
+        PersistConfigValue(key, currentValue);
+    }
 
     private Dictionary<string,string> PopulateConfigValues(string configLocation)
     {

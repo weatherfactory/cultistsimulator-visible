@@ -4,12 +4,9 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using SecretHistories.Constants.Modding;
-using Newtonsoft.Json;
 using SecretHistories.Constants;
-using UnityEngine;
+using SecretHistories.UI;
 
 namespace SecretHistories.Fucine
 
@@ -21,14 +18,13 @@ namespace SecretHistories.Fucine
         public string BaseCulture { get; } = NoonConstants.DEFAULT_CULTURE_ID;
         public string CurrentCulture { get; set; }
 
-
         private readonly ContentImportLog _log;
         private List<LoadedDataFile> _coreContentFiles = new List<LoadedDataFile>();
         private List<LoadedDataFile> _modContentFiles = new List<LoadedDataFile>();
         private List<LoadedDataFile> _coreLocFiles = new List<LoadedDataFile>();
         private List<LoadedDataFile> _modLocFiles = new List<LoadedDataFile>();
 
-        private Dictionary<string,EntityData> _allLoadedEntities { get; set; }
+        private Dictionary<string, EntityData> _allLoadedEntities { get; set; }
 
         /// <summary>
         /// k uniqueid, v original string from file
@@ -55,37 +51,47 @@ namespace SecretHistories.Fucine
             _coreLocFiles.AddRange(locContentFiles);
             _modContentFiles.AddRange(modContentFiles);
             _modLocFiles.AddRange(modLocFiles);
-            
         }
 
         public void LoadEntityDataFromSuppliedFiles()
         {
             //load localised data if we're using a non-default culture.
             //We'll use the unique field ids to replace data with localised data down in UnpackToken, if we find matching ids
-
+            //String $ operations - "$prefix", "$postfix", "$replace" are localized
             if (BaseCulture != CurrentCulture)
             {
                 var localisableKeysForEntityType = GetLocalisableKeysForEntityType();
 
-                if( _coreLocFiles.Any())
-                   RegisterLocalisedDataForEmendations(_coreLocFiles,localisableKeysForEntityType);
+                if (_coreLocFiles.Any())
+                    RegisterLocalisedDataForEmendations(_coreLocFiles, localisableKeysForEntityType);
 
                 if (_modLocFiles.Any())
                     RegisterLocalisedDataForEmendations(_modLocFiles, localisableKeysForEntityType);
-
             }
 
-            var coreEntityData = UnpackAndLocaliseData(_coreContentFiles);
+            //core content and mod content are loaded and handled uniformly - as a list, which will later be ordered by $priority and converted into the final content dictionary
+            //this allows core content to make use of $ operations (among which are JSON-level inheritance, which'll surely come in handy)
+            //also allows mods to prioritise their content over the main game (currently important only for craftable recipes evaluation order, but who knows what the future'll bring)
+            //(so, core content is effectively just another "mod" that's always on top of the loading order)
+            List<EntityData> allEntitiesInFiles = new List<EntityData>();
+            allEntitiesInFiles.AddRange(UnpackAndLocaliseContent(_coreContentFiles));
+            allEntitiesInFiles.AddRange(UnpackAndLocaliseContent(_modContentFiles));
 
-            if (_modContentFiles.Any())
-            {
-                //any localisation will also apply to the mod string values
-                var moddedEntityData = UnpackAndLocaliseData(_modContentFiles);
-                //moddedEntityData is not directly imported: it's applied to the CoreEntityData, which is then imported.
-                ApplyModsToCoreData(coreEntityData, moddedEntityData);
-            }
+            string[] ignoredContentGroups = Watchman.Get<Config>().GetConfigValueAsArray(NoonConstants.IGNOREDCONTENT);
 
-            _allLoadedEntities = coreEntityData;
+            IOrderedEnumerable<EntityData> allEntitiesOrdered = allEntitiesInFiles
+                .Where(entityData => entityData.GetAndFlushIgnore(ignoredContentGroups) == false) //entities that are inside ignored content groups are excluded
+                .OrderByDescending(entityData => entityData.GetAndFlushPriority(_log));
+            //all non-excluded entities are sorted by their $priority
+            //if entity has no defined priority, it's defaulted as 0
+            //entities with the same priority are ordered as they were: (core) > (mods), (file order) > (definitions in file from top to bottom)
+            //thus, the previous loading order is preserved for everything that makes no use of this operation
+            //(there's still an imperfection that you can't put anything in-between the things with the same priority)
+
+            _allLoadedEntities = new Dictionary<string, EntityData>(); //it gets created in a constructor, but we need to clear it anyway and just in case
+            //we're then applying all loaded entities to the final dictionary - one by one, so nothing gets lost
+            foreach (EntityData entityData in allEntitiesOrdered)
+                entityData.ApplyDataToCollection(_allLoadedEntities, _log);
         }
 
         private HashSet<string> GetLocalisableKeysForEntityType()
@@ -103,7 +109,17 @@ namespace SecretHistories.Fucine
                 if (Attribute.GetCustomAttribute(thisProperty, typeof(Fucine)) is Fucine fucineAttribute)
                 {
                     if (fucineAttribute.Localise)
-                        localizableKeys.Add(thisProperty.Name.ToLower());
+                    {
+                        string propertyName = thisProperty.Name.ToLower();
+                        localizableKeys.Add(propertyName);
+                        localizableKeys.Add(propertyName + "$prefix");
+                        localizableKeys.Add(propertyName + "$postfix");
+                        localizableKeys.Add(propertyName + "$replace");
+
+                        //need to add these too, because they can contain prefixes/postfixes/replaces
+                        localizableKeys.Add(propertyName + "$dictedit");
+                        localizableKeys.Add(propertyName + "$listedit");
+                    }
                 }
             }
 
@@ -115,69 +131,37 @@ namespace SecretHistories.Fucine
             return _allLoadedEntities.Values.ToList();
         }
 
-
- 
-
-        private void ApplyModsToCoreData(Dictionary<string,EntityData> coreEntityData, Dictionary<string, EntityData> moddedEntityData)
+        private List<EntityData> UnpackAndLocaliseContent(List<LoadedDataFile> contentFiles)
         {
-            foreach(var modData in moddedEntityData.Values)
+            List<EntityData> allModEntities = new List<EntityData>();
+            foreach (LoadedDataFile modContentFile in contentFiles)
             {
-                EntityMod entityMod=new EntityMod(modData);
-                entityMod.ApplyModTo(coreEntityData,_log);
-            }
+                FucineUniqueIdBuilder containerBuilder = new FucineUniqueIdBuilder(modContentFile.EntityContainer);
+                JArray topLevelArrayList = (JArray)modContentFile.EntityContainer.Value;
 
-        }
-
-        private Dictionary<string,EntityData> UnpackAndLocaliseData(List<LoadedDataFile> contentFilesToUnpack)
-        {
-            Dictionary<string, EntityData> entityDataCollection = new Dictionary<string, EntityData>();
-
-            foreach (var contentFile in contentFilesToUnpack)
-            {
-                var containerBuilder = new FucineUniqueIdBuilder(contentFile.EntityContainer);
-
-
-                var topLevelArrayList = (JArray) contentFile.EntityContainer.Value;
-
-
-                foreach (var eachObject in topLevelArrayList)
+                foreach (JToken eachObject in topLevelArrayList)
                 {
-                    UnpackObjectDataIntoCollection(eachObject, containerBuilder, entityDataCollection,contentFile);
+                    EntityData entityData = UnpackAndLocaliseEntityData(eachObject, containerBuilder);
+                    allModEntities.Add(entityData);
                 }
             }
 
-            return entityDataCollection;
+            return allModEntities;
         }
 
-        private void UnpackObjectDataIntoCollection(JToken eachObject, FucineUniqueIdBuilder containerBuilder,
-            Dictionary<string, EntityData> entityDataCollection, LoadedDataFile contentFile)
+        private EntityData UnpackAndLocaliseEntityData(JToken eachObject, FucineUniqueIdBuilder containerBuilder)
         {
             var eachObjectHashtable = new Hashtable(); //eg Work verb
-
             var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
 
-
-            foreach (var eachProperty in ((JObject) eachObject).Properties()
-            ) //eg description, but also eg slots - this is why we need to unpack
+            foreach (var eachProperty in ((JObject)eachObject).Properties()
+                    ) //eg description, but also eg slots - this is why we need to unpack
             {
                 eachObjectHashtable.Add(eachProperty.Name.ToLower(),
                     UnpackAndLocaliseToken(eachProperty, entityBuilder));
             }
 
-            //add the just loaded entity data to the list of all entity data, along with its unique id
-            var thisEntityDataItem = new EntityData(entityBuilder.UniqueId, eachObjectHashtable);
-
-
-            if(entityDataCollection.ContainsKey(thisEntityDataItem.Id))
-            {
-                _log.LogInfo($"Duplicate entity id {thisEntityDataItem.Id} from {contentFile.Path}: merging them (values in second instance will overwrite first, if they overlap)");
-                var existingEntityDataItem = entityDataCollection[thisEntityDataItem.Id];
-                foreach (string key in thisEntityDataItem.ValuesTable.Keys)
-                    existingEntityDataItem.OverwriteOrAdd(key, thisEntityDataItem.ValuesTable[key]);
-
-            }
-            else
-                entityDataCollection.Add(thisEntityDataItem.Id, thisEntityDataItem);
+            return new EntityData(entityBuilder.UniqueId, eachObjectHashtable);
         }
 
         /// <summary>
@@ -189,13 +173,13 @@ namespace SecretHistories.Fucine
             if (jToken.Type == JTokenType.Property)
             {
                 var propertyBuilder = new FucineUniqueIdBuilder(jToken, tokenIdBuilder);
-                return UnpackAndLocaliseToken(((JProperty) jToken).Value, propertyBuilder);
+                return UnpackAndLocaliseToken(((JProperty)jToken).Value, propertyBuilder);
             }
 
             if (jToken.Type == JTokenType.Array)
             {
                 var nextList = new ArrayList();
-                foreach (var eachItem in (JArray) jToken)
+                foreach (var eachItem in (JArray)jToken)
                 {
                     var nextBuilder = new FucineUniqueIdBuilder(jToken, tokenIdBuilder);
                     nextList.Add(UnpackAndLocaliseToken(eachItem, nextBuilder));
@@ -206,16 +190,16 @@ namespace SecretHistories.Fucine
 
             else if (jToken.Type == JTokenType.Object)
             {
-         
+
                 //create a hashtable to represent the object
                 var subObjectH = new Hashtable();
 
                 var subObjectBuilder = new FucineUniqueIdBuilder(jToken, tokenIdBuilder);
 
 
-                foreach (var subProperty in ((JObject) jToken).Properties())
+                foreach (var subProperty in ((JObject)jToken).Properties())
                 {
-                    var subPropertyIdBuilder=new FucineUniqueIdBuilder(subProperty,subObjectBuilder);
+                    var subPropertyIdBuilder = new FucineUniqueIdBuilder(subProperty, subObjectBuilder);
                     //add each property to that hashtable
                     subObjectH.Add(subProperty.Name.ToLower(), UnpackAndLocaliseToken(subProperty.Value, subPropertyIdBuilder));
                 }
@@ -233,27 +217,27 @@ namespace SecretHistories.Fucine
 
 
                     string uniqueTokenId = new FucineUniqueIdBuilder(jToken, tokenIdBuilder).UniqueId;
-                    if(CurrentCulture != BaseCulture)
+                    if (CurrentCulture != BaseCulture)
                         return TryReplaceWithLocalisedString(jToken, uniqueTokenId);
                     else
-                       return jToken.ToString();
-                    
+                        return jToken.ToString();
+
                 }
 
                 else if (jToken.Type == JTokenType.Integer)
                 {
-                    return (int) jToken;
+                    return (int)jToken;
                 }
 
 
                 else if (jToken.Type == JTokenType.Boolean)
                 {
-                    return (bool) jToken;
+                    return (bool)jToken;
                 }
 
                 else if (jToken.Type == JTokenType.Float)
                 {
-                    return (double) jToken;
+                    return (double)jToken;
                 }
                 else
                 {
@@ -270,43 +254,43 @@ namespace SecretHistories.Fucine
                 return jToken.ToString();
         }
 
-        private void RegisterLocalisedDataForEmendations(List<LoadedDataFile> locFilesToProcess,HashSet<string> localizableKeys)
+        private void RegisterLocalisedDataForEmendations(List<LoadedDataFile> locFilesToProcess, HashSet<string> localizableKeys)
         {
             foreach (var locContentFile in locFilesToProcess)
             {
                 var containerBuilder = new FucineUniqueIdBuilder(locContentFile.EntityContainer);
 
-                var topLevelArrayList = (JArray) locContentFile.EntityContainer.Value;
+                var topLevelArrayList = (JArray)locContentFile.EntityContainer.Value;
 
 
                 foreach (var eachObject in topLevelArrayList)
                 {
                     var entityBuilder = new FucineUniqueIdBuilder(eachObject, containerBuilder);
 
-                    foreach (var eachProperty in ((JObject) eachObject).Properties())
+                    foreach (var eachProperty in ((JObject)eachObject).Properties())
                     {
 
                         //There's another bug here that approximately cancels out the bug described above when scanning for localisable keys.
                         //We only check the top-level property, not its sub-properties. So if we're registering loc data for 'linked' (localisable=true)
                         //we also register loc data for all its sub properties - eg both 'startdescription' (hurray) and ID (minor perf pain)
 
-                        if(localizableKeys.Contains(eachProperty.Name))
+                        if (localizableKeys.Contains(eachProperty.Name))
                         {
                             var propertyIdBuilder = new FucineUniqueIdBuilder(eachProperty, entityBuilder);
-                            RegisterEmendationValues(eachProperty.Value, propertyIdBuilder,_localisedTextValuesRegistry);
+                            RegisterEmendationValues(eachProperty.Value, propertyIdBuilder, _localisedTextValuesRegistry);
                         }
                     }
                 }
             }
         }
 
-        private void RegisterEmendationValues(JToken jtoken, FucineUniqueIdBuilder nameBuilder,Dictionary<string,string> valuesRegistry)
+        private void RegisterEmendationValues(JToken jtoken, FucineUniqueIdBuilder nameBuilder, Dictionary<string, string> valuesRegistry)
         {
             if (jtoken.Type == JTokenType.Object)
             {
                 FucineUniqueIdBuilder subObjectBuilder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
 
-                foreach (JProperty jProperty in ((JObject) jtoken).Properties())
+                foreach (JProperty jProperty in ((JObject)jtoken).Properties())
                 {
                     var subPropertyBuilder = new FucineUniqueIdBuilder(jProperty, subObjectBuilder);
                     RegisterEmendationValues(jProperty.Value, subPropertyBuilder, valuesRegistry);
@@ -317,7 +301,7 @@ namespace SecretHistories.Fucine
             {
                 FucineUniqueIdBuilder arrayBuilder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
 
-                foreach (var item in ((JArray) jtoken))
+                foreach (var item in ((JArray)jtoken))
                 {
                     RegisterEmendationValues(item, arrayBuilder, valuesRegistry);
                 }
@@ -327,17 +311,20 @@ namespace SecretHistories.Fucine
             {
                 FucineUniqueIdBuilder builder = new FucineUniqueIdBuilder(jtoken, nameBuilder);
                 if (valuesRegistry.ContainsKey(builder.UniqueId))
-                    valuesRegistry[builder.UniqueId] = (string) jtoken;
+                    valuesRegistry[builder.UniqueId] = (string)jtoken;
                 else
-                    valuesRegistry.Add(builder.UniqueId, (string) jtoken);
+                    valuesRegistry.Add(builder.UniqueId, (string)jtoken);
             }
 
             else
 
             {
-                    //Probably superfluous non-translated json kept from the original.
+                //Probably superfluous non-translated json kept from the original.
             }
         }
+
+
+
 
 
 
