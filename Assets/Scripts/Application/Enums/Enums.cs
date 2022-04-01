@@ -140,6 +140,8 @@
     public enum OccupiesSpaceAs
     {
         PhysicalObject,
-        Intangible
+        Someone,
+        Intangible,
+        Unknown
     }
 }

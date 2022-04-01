@@ -18,9 +18,9 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     public class RoomChoreographer: AbstractChoreographer
     {
 
-        private float GRID_WIDTH=20f;
+        private float GRID_WIDTH=10f;
 
-        private float GRID_HEIGHT=20f;
+        private float GRID_HEIGHT=10f;
         private List<WalkableFloor> _floors;
         private List<WalkableLadder> _ladders;
 
@@ -53,18 +53,18 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             Vector2 closestPosition = GetClosestFreeLocalPosition(token, targetPosition);
 
-            Vector3 finalPositionAtTableLevel = new Vector3(closestPosition.x, closestPosition.y, Sphere.transform.position.z);
-            token.TokenRectTransform.localPosition = finalPositionAtTableLevel;
+            token.TokenRectTransform.localPosition = closestPosition;
         }
 
         public override LegalPositionCheckResult IsLegalPlacement(Rect candidateRect, Token placingToken)
         {
-       
-            Rect otherTokenOverlapRect;
+            var roomRect = GetSphereRect();
+            if (!roomRect.Overlaps(candidateRect))
+                return LegalPositionCheckResult.Illegal();
 
             foreach (var otherToken in Sphere.Tokens.Where(t => t != placingToken && t.OccupiesSameSpaceAs(placingToken) && !CanTokenBeIgnored(t)))
             {
-                otherTokenOverlapRect = otherToken.GetRectInCurrentSphere();
+                var otherTokenOverlapRect = otherToken.GetRectInCurrentSphere();
 
                 var overlapModifier = 1f;
 
@@ -86,16 +86,31 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
                 return closestWalkablePosition;
-                
 
-            Vector2 direction = (closestWalkablePosition - legalPositionCheckResult.BlockerRect.center).normalized;
-            var testRects = GetAlternativeCandidateRectsAlongVector(targetRect, direction, 1, 100, GRID_WIDTH, GRID_HEIGHT);
+
+            Vector2 direction;
+            //not legal. Which direction are we looking in? NB this is bobbins atm
+            if(startPositionLocal.x<=legalPositionCheckResult.BlockerRect.x)
+                direction=Vector2.left;
+            else
+                direction=Vector2.right;
+
+
+
+
+            var testRects = GetAlternativeCandidateRectsAlongVector(targetRect, direction, 1, 10, GRID_WIDTH, GRID_HEIGHT);
             foreach (var testRect in testRects)
             {
                 if (IsLegalPlacement(testRect, token).IsLegal)
                     return testRect.center;
             }
-            
+            //if we can't find any test rects before the end, reverse direction and try the other way.
+            var alternateTestRects = GetAlternativeCandidateRectsAlongVector(targetRect, -direction, 1, 10, GRID_WIDTH, GRID_HEIGHT);
+            foreach (var altTestRect in alternateTestRects)
+            {
+                if (IsLegalPlacement(altTestRect, token).IsLegal)
+                    return altTestRect.center;
+            }
             NoonUtility.Log(
                 $"Choreographer: No legal walkable position found for {token.name})! Just putting it at zero", 1);
             
@@ -104,7 +119,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         private Vector2 GetClosestWalkablePosition(Token token, Vector2 startPositionLocal)
         {
-       
+
             if (!_floors.Any() && !_ladders.Any())
             {
                 NoonUtility.LogWarning($"No walkable floors or ladders in {Sphere.name}; defaulting to zero vector");
@@ -113,13 +128,15 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
 
             WalkableFloor closestFloor = null;
-            //var tokenHeightAdjustment = token.ManifestationRectTransform.rect.height *0.65f;
-            var tokenHeightAdjustment = token.ManifestationRectTransform.rect.height * 0f;
+            var tokenHeightAdjustment = token.ManifestationRectTransform.rect.height / 2;
+            
 
 
             float flooryDifference = float.PositiveInfinity;
             foreach (var f in _floors)
             {
+                if (!f.TokenAllowedHere(token))
+                    continue;
                 var floorY = f.gameObject.transform.localPosition.y;
                 if (Math.Abs(floorY - startPositionLocal.y) < flooryDifference)
                 {
@@ -128,10 +145,13 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 }
             }
 
+
             WalkableLadder closestLadder = null;
             float ladderXDifference = float.PositiveInfinity;
             foreach (var l in _ladders)
             {
+                if(!l.TokenAllowedHere(token))
+                    continue;
                 var ladderX = l.gameObject.transform.localPosition.x;
                 if (Math.Abs(ladderX - startPositionLocal.x) < ladderXDifference)
                 {

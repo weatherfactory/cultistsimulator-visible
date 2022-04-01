@@ -22,17 +22,7 @@ namespace SecretHistories.Constants {
     //places, arranges and displays things on the table
 
     public class TabletopChoreographer: AbstractChoreographer {
-
-
-
-
-        private Rect GetTableRect()
-        {
-            return Sphere.GetRect();
-        }
-
-
-     [SerializeField]
+        [SerializeField]
         private  float GRID_WIDTH;
         [SerializeField]
         private float GRID_HEIGHT;
@@ -135,10 +125,10 @@ namespace SecretHistories.Constants {
 		{
             const float padding = .2f;
 
-            var tableMinX = GetTableRect().x + padding;
-            var tableMaxX = GetTableRect().x + GetTableRect().width - padding;
-            var tableMinY = GetTableRect().y + padding;
-            var tableMaxY = GetTableRect().y + GetTableRect().height - padding;
+            var tableMinX = GetSphereRect().x + padding;
+            var tableMaxX = GetSphereRect().x + GetSphereRect().width - padding;
+            var tableMinY = GetSphereRect().y + padding;
+            var tableMaxY = GetSphereRect().y + GetSphereRect().height - padding;
             pos.x = Mathf.Clamp(pos.x, tableMinX,tableMaxX );
             pos.y = Mathf.Clamp(pos.y, tableMinY,tableMaxY);
             return pos;
@@ -178,7 +168,7 @@ namespace SecretHistories.Constants {
        public override LegalPositionCheckResult IsLegalPlacement(Rect candidateRect,  Token placingToken)
 		{
           //Is the candidaterect inside the larger tabletop rect? if not, throw it out now.
-            if (!GetTableRect().Overlaps(candidateRect))
+            if (!GetSphereRect().Overlaps(candidateRect))
                 return LegalPositionCheckResult.Illegal();
             
             

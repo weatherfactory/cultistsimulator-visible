@@ -160,5 +160,10 @@ namespace SecretHistories.Spheres.Angels
           return candidateRects;
 
       }
+
+      protected Rect GetSphereRect()
+      {
+          return Sphere.GetRect();
+      }
  }
 }

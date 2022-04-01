@@ -81,7 +81,17 @@ namespace SecretHistories.Entities {
             
             return wildCardPath.AppendingToken(this.Id);
         }
-        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.PhysicalObject;
+        public OccupiesSpaceAs OccupiesSpaceAs()
+        {
+            if(Verb==null || Verb.Category is VerbCategory.Shabda or VerbCategory.Workstation)
+                return Enums.OccupiesSpaceAs.PhysicalObject;
+            if (Verb.Category == VerbCategory.Someone)
+                return Enums.OccupiesSpaceAs.Someone;
+
+
+            return Enums.OccupiesSpaceAs.Unknown;
+
+        }
 
         public RectTransform GetRectTransform()
         {
