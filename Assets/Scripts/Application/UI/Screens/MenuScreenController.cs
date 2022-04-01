@@ -15,6 +15,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Assets.Scripts.Application.Entities;
 using SecretHistories.Assets.Scripts.Application.Infrastructure.Modding;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -66,6 +67,7 @@ public class MenuScreenController : LocalNexus {
     public Transform LanguagesAvailable;
     public GameObject languageChoicePrefab;
 
+    [SerializeField] private GameObject MenuBlocksHolder;
 
     bool canTakeInput;
     int sceneToLoad;
@@ -459,16 +461,21 @@ public class MenuScreenController : LocalNexus {
         if (menuBlockId == null)
             menuBlockId = 1;
 
-        Watchman.Get<Config>().PersistConfigValue(NoonConstants.MENU_BLOCK_ID,menuBlockId+1.ToString());
+        //int nextBlockId = (int)menuBlockId + 1;
+        //if (nextBlockId > 3)
+        //    nextBlockId = 1;
+
+        //Watchman.Get<Config>().PersistConfigValue(NoonConstants.MENU_BLOCK_ID,nextBlockId.ToString());
+
+        var availableBlocks = MenuBlocksHolder.GetComponentsInChildren<MenuContentBlock>(true);
+        foreach (var block in availableBlocks)
+            if (block.ID == menuBlockId)
+                block.gameObject.SetActive(true);
+            else
+                block.gameObject.SetActive(false);
 
     }
 
-    public void ShowPromo()
-    {
-        SoundManager.PlaySfx("UIButtonClick");
-        Application.OpenURL(
-            "https://weatherfactory.biz/subscribe/");
-    }
 
 #endregion
 }

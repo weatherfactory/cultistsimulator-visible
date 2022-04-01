@@ -23,20 +23,14 @@ namespace SecretHistories.Constants {
 
     public class TabletopChoreographer: AbstractChoreographer {
 
-        class DebugRect
-        {
-            public string Desc { get; set; }
-            public Rect Rect { get; set; }
-            public Color Colour { get; set; }
 
-        }
 
 
         private Rect GetTableRect()
         {
             return Sphere.GetRect();
         }
-     [SerializeField] private bool showDebugInfo;
+
 
      [SerializeField]
         private  float GRID_WIDTH;
@@ -48,50 +42,7 @@ namespace SecretHistories.Constants {
      
      //remember: there are also currently-aligned magic number values in the initial card setup that need to be manually changed until I refactor the gridsnap out into settings
 
-
-        private List<DebugRect> rectanglesToDisplay=new List<DebugRect>();
-
-
-        public void OnGUI()
-        {
-
-            
-            if (showDebugInfo)
-             ShowDebugPlacementInfo();
-        }
-
-        private void ShowDebugPlacementInfo()
-        {
-            foreach (var r in rectanglesToDisplay)
-            {
-                var style = GUI.skin.box;
-                Color transparentColor = r.Colour;
-
-                transparentColor.a = 0.3f;
-                style.normal.background = TextureForColour(transparentColor);
-                style.wordWrap = true;
-
-                GUI.Box(r.Rect, r.Desc, style);
-            }
-        }
-
-
-
-        private Texture2D TextureForColour( Color col)
-        {
-            int defaultWidth = 2;
-            int defaultHeight = 2;
-            Color[] pix = new Color[defaultWidth * defaultHeight];
-            for (int i = 0; i < pix.Length; ++i)
-            {
-                pix[i] = col;
-            }
-            Texture2D result = new Texture2D(defaultWidth, defaultHeight);
-            result.SetPixels(pix);
-            result.Apply();
-            return result;
-        }
-
+     
         public void GroupAllStacks()
         {
             var stackTokens = Sphere.GetElementTokens();
@@ -144,7 +95,7 @@ namespace SecretHistories.Constants {
 
             Vector2 intendedPosClampedToTable = GetPosClampedToTable(intendedPos);
             
-            Vector2 intendedPosOnGrid = SnapToGrid(intendedPosClampedToTable, token);
+            Vector2 intendedPosOnGrid = SnapToGrid(intendedPosClampedToTable, token,GRID_WIDTH,GRID_HEIGHT);
 
             var targetRect = token.GetRectFromPosition(intendedPosOnGrid);
 
@@ -158,10 +109,7 @@ namespace SecretHistories.Constants {
             Vector2 direction = (intendedPosOnGrid - legalPositionCheckResult.BlockerRect.center).normalized; //intendedPosOnGrid *not* intendedPos. We're looking for candidate locations starting at the
             //grid position we tried, because that's where the ghost will show up, not the original cursor position, which we've already corrected from and don't want to double-correct from.
 
-       
-
-
-                var testRects = GetAlternativeCandidateRectsAlongVector(targetRect, direction,1,100);
+                var testRects = GetAlternativeCandidateRectsAlongVector(targetRect, direction,1,100,GRID_WIDTH,GRID_HEIGHT);
 
                 // Iterate over a single round of test positions. If one is legal, then return it.
                 foreach (var testRect in testRects)
@@ -181,30 +129,6 @@ namespace SecretHistories.Constants {
             return Vector2.zero;
 
         }
-
-        public List<Rect> GetAlternativeCandidateRectsAlongVector(Rect startingRect, Vector2 alongVector, int fromIteration, int toIteration)
-        {
-            List<Rect> candidateRects = new List<Rect>();
-            float shiftWidth = GRID_WIDTH * GetGridSnapCoefficient();
-            float shiftHeight = GRID_HEIGHT * GetGridSnapCoefficient();
-
-            for (int i=fromIteration;i<=toIteration;i++)
-            {
-                float shiftX = shiftWidth * alongVector.x * i;
-                float shiftY = shiftHeight * alongVector.y * i;
-
-                var candidatePoint = startingRect.center + new Vector2(shiftX, shiftY);
-                var candidateRect = new Rect(candidatePoint, startingRect.size);
-
-                candidateRects.Add(candidateRect);
-
-                ShowDebugRect(candidateRect, $"{candidatePoint}", Color.white);
-            }
-
-            return candidateRects;
-
-        }
-
 
 
         Vector2 GetPosClampedToTable(Vector2 pos)
@@ -285,36 +209,5 @@ namespace SecretHistories.Constants {
 
             return LegalPositionCheckResult.Legal();
         }
-
-
-       
-
-
-        public Vector3 SnapToGrid(Vector2 intendedPos,Token forToken)
-        {
-            //grid: 150x150
-            //verb: 140x140 with 5 x space and 5 y space
-            //card: 75x115 with 0 x space and 17.5 y space
-         //forToken isn't currently in use, but we might treat tokens differently later   
-
-            if (GetGridSnapCoefficient() > 0f)
-            {
-                float snap_x_interval = GRID_WIDTH * GetGridSnapCoefficient();
-                float snap_y_interval = GRID_HEIGHT * GetGridSnapCoefficient();
-
-                float xAdjustment = intendedPos.x % snap_x_interval;
-                float yAdjustment = intendedPos.y % snap_y_interval;
-
-                var snappedPos=new Vector2(intendedPos.x-xAdjustment,intendedPos.y-yAdjustment);
-
-                return snappedPos;
-            }
-            return intendedPos;
-        }
-
- 
-
-
-
     }
 }

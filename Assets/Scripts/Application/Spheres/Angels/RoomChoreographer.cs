@@ -17,7 +17,10 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     
     public class RoomChoreographer: AbstractChoreographer
     {
-        
+
+        private float GRID_WIDTH=20f;
+
+        private float GRID_HEIGHT=20f;
         private List<WalkableFloor> _floors;
         private List<WalkableLadder> _ladders;
 
@@ -56,24 +59,65 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         public override LegalPositionCheckResult IsLegalPlacement(Rect candidateRect, Token placingToken)
         {
+       
+            Rect otherTokenOverlapRect;
+
+            foreach (var otherToken in Sphere.Tokens.Where(t => t != placingToken && t.OccupiesSameSpaceAs(placingToken) && !CanTokenBeIgnored(t)))
+            {
+                otherTokenOverlapRect = otherToken.GetRectInCurrentSphere();
+
+                var overlapModifier = 1f;
+
+ 
+                if (UnacceptableOverlap(otherTokenOverlapRect, candidateRect, overlapModifier))
+
+                    return LegalPositionCheckResult.Blocked(otherToken.name, otherTokenOverlapRect);
+
+            }
+
             return LegalPositionCheckResult.Legal();
         }
 
         public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 startPositionLocal)
         {
-            float flooryDifference = float.PositiveInfinity;
-            float ladderXDifference = float.PositiveInfinity;
-            if (!_floors.Any())
-            {
-                NoonUtility.LogWarning($"No walkable floors in {Sphere.name}; defaulting to zero vector");
-                return Vector2.zero;
+            var closestWalkablePosition= GetClosestWalkablePosition(token, startPositionLocal);
+            
+            var targetRect = token.GetRectFromPosition(closestWalkablePosition);
+            var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
+            if (legalPositionCheckResult.IsLegal)
+                return closestWalkablePosition;
+                
 
+            Vector2 direction = (closestWalkablePosition - legalPositionCheckResult.BlockerRect.center).normalized;
+            var testRects = GetAlternativeCandidateRectsAlongVector(targetRect, direction, 1, 100, GRID_WIDTH, GRID_HEIGHT);
+            foreach (var testRect in testRects)
+            {
+                if (IsLegalPlacement(testRect, token).IsLegal)
+                    return testRect.center;
             }
+            
+            NoonUtility.Log(
+                $"Choreographer: No legal walkable position found for {token.name})! Just putting it at zero", 1);
+            
+            return Vector2.zero;
+        }
+
+        private Vector2 GetClosestWalkablePosition(Token token, Vector2 startPositionLocal)
+        {
+       
+            if (!_floors.Any() && !_ladders.Any())
+            {
+                NoonUtility.LogWarning($"No walkable floors or ladders in {Sphere.name}; defaulting to zero vector");
+                return Vector2.zero;
+            }
+
 
             WalkableFloor closestFloor = null;
             //var tokenHeightAdjustment = token.ManifestationRectTransform.rect.height *0.65f;
-            var tokenHeightAdjustment = token.ManifestationRectTransform.rect.height *0f;
+            var tokenHeightAdjustment = token.ManifestationRectTransform.rect.height * 0f;
 
+
+            float flooryDifference = float.PositiveInfinity;
             foreach (var f in _floors)
             {
                 var floorY = f.gameObject.transform.localPosition.y;
@@ -85,7 +129,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             }
 
             WalkableLadder closestLadder = null;
-
+            float ladderXDifference = float.PositiveInfinity;
             foreach (var l in _ladders)
             {
                 var ladderX = l.gameObject.transform.localPosition.x;
@@ -100,12 +144,17 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             if (closestLadder != null && ladderXDifference < flooryDifference)
             {
                 var positionOnLadder =
-                    new Vector2(closestLadder.gameObject.transform.localPosition.x, startPositionLocal.y + tokenHeightAdjustment);
+                    new Vector2(closestLadder.gameObject.transform.localPosition.x,
+                        startPositionLocal.y + tokenHeightAdjustment);
                 return positionOnLadder;
             }
-            else if(closestFloor != null && flooryDifference<float.PositiveInfinity) //second condition is redundant, but keeping it here in case of accident
+            else if
+                (closestFloor != null &&
+                 flooryDifference <
+                 float.PositiveInfinity) //second condition is redundant, but keeping it here in case of accident
             {
-                var positionAtFloorLevel = new Vector2(startPositionLocal.x, closestFloor.gameObject.transform.localPosition.y + tokenHeightAdjustment);
+                var positionAtFloorLevel = new Vector2(startPositionLocal.x,
+                    closestFloor.gameObject.transform.localPosition.y + tokenHeightAdjustment);
                 return positionAtFloorLevel;
             }
             else
