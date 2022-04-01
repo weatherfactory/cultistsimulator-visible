@@ -37,6 +37,9 @@ public class Config
     public bool skiplogo;
     public bool knock;
     
+    private const string SKIPLOGO_KEY="skiplogo";
+    private const string KNOCK_KEY="knock";
+    
     private Dictionary<string, string> _configValues;
 
     public Config()
@@ -131,14 +134,14 @@ public class Config
 
             _configValues = PopulateConfigValues(GetConfigFileLocation());
 
-            string skipLogoValue = GetConfigValue("skiplogo");
+            string skipLogoValue = GetConfigValue(SKIPLOGO_KEY);
             if (!String.IsNullOrEmpty(skipLogoValue) && skipLogoValue != "0")
             {
                 skiplogo = true;
             }
+     
 
-
-            string knockValue = GetConfigValue("knock");
+            string knockValue = GetConfigValue(KNOCK_KEY);
             if (!String.IsNullOrEmpty(knockValue) && knockValue!="0" )
             {
                 knock = true;
@@ -146,7 +149,7 @@ public class Config
         }
         else
         {
-            PersistConfigValue("skiplogo", "0");
+            PersistConfigValue(SKIPLOGO_KEY, "0");
             PersistConfigValuesToIniFile();
         }
 

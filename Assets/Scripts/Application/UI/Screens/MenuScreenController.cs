@@ -141,7 +141,7 @@ public class MenuScreenController : LocalNexus {
         var concursum = Watchman.Get<Concursum>();
 
         concursum.ContentUpdatedEvent.AddListener(OnContentUpdated);
-
+        DoMenuBlockRotation();
     }
 
 
@@ -453,7 +453,15 @@ public class MenuScreenController : LocalNexus {
         Application.Quit();
     }
 
+    public void DoMenuBlockRotation()
+    {
+        int? menuBlockId=Watchman.Get<Config>().GetConfigValueAsInt(NoonConstants.MENU_BLOCK_ID);
+        if (menuBlockId == null)
+            menuBlockId = 1;
 
+        Watchman.Get<Config>().PersistConfigValue(NoonConstants.MENU_BLOCK_ID,menuBlockId+1.ToString());
+
+    }
 
     public void ShowPromo()
     {

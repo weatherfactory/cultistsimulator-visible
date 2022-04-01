@@ -43,7 +43,9 @@ namespace SecretHistories.Constants
         public const string DEFAULT_CULTURE_ID = "en";
         public const string CULTURE_SETTING_KEY = "Culture";
 
-        
+        public const string MENU_BLOCK_ID = "menublockid";
+
+
         public const string ARCHETYPICAL_CHARACTER_NAME = "J.N. Sinombre"; //can be replaced with locale info, but we use this as the base marker
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
         public const string TOKEN_LAST_DESIRE = "#LAST_DESIRE#";
