@@ -35,6 +35,8 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens
 
     protected override void Update()
     {
+        if (_heart == null)
+            return;
 
         if (_heart.IsPaused()) //This is pretty trivial. We will likely want to work in fast-forward effects
             return;
