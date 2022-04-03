@@ -416,9 +416,6 @@ namespace SecretHistories.Constants.Modding
 
         public Sprite GetSprite(string spriteResourceName)
         {
-            spriteResourceName = SlashInvariant(spriteResourceName);
-                
-            NoonUtility.LogWarning(spriteResourceName);
             if (Images.ContainsKey(spriteResourceName))
                 return Images[spriteResourceName];
             else
@@ -494,11 +491,8 @@ namespace SecretHistories.Constants.Modding
             }
 
 
-            //we'll do the same when retrieving any loaded image in  GetSprite()
-            string relativePathUnified = SlashInvariant(relativePathWithoutLeadingSlash);
             //setting the value directly, without Add(), so earlier Images with the same name are overwritten (allowing mods to change images used in other mods)
-            NoonUtility.LogWarning(relativePathUnified);
-            Images[relativePathUnified] = spriteToLoad;
+            Images[relativePathWithoutFileExtension] = spriteToLoad;
 
             return true;
         }
@@ -524,14 +518,6 @@ namespace SecretHistories.Constants.Modding
             sprite = Sprite.Create(
                 texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             return sprite;
-        }
-
-        private string SlashInvariant(string pathToAsset)
-        {
-            //to avoid any possible confusion between slashes, we replace all '\', if they are somehow present, into '/'
-            //it should be irrelevant what changed into what, we just need to make sure only one will be present both when we're storing and retrieving an asset
-            //currently used only in LoadImage() to store Sprite, and in GetSprite()
-            return pathToAsset.Replace('\\', '/');
         }
 
         public void SwapModsInLoadOrderAndPersistToFile(int thisModIndex, int swapWithModIndex)
