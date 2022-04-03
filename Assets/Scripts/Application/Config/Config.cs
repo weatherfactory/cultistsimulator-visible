@@ -50,11 +50,19 @@ public class SettingArrayObserverForConfig : ISettingSubscriber
 
     public void WhenSettingUpdated(object newValue)
     {
-        _config.AddEntryToConfigArray(_setting.TargetConfigArray, _setting.GetInnerLabelForValue(newValue));
-        //we need to keep the value normally too, for setting to know its actual value on startup
-        _config.PersistConfigValue(_setting.Id, newValue.ToString());
+        string valueInArray = _setting.GetInnerLabelForValue(newValue);
+        if (valueInArray == string.Empty)
+        {
+            _config.RemoveConfigValue(_setting.Id);
+        }
+        else
+        {
+            _config.AddEntryToConfigArray(_setting.TargetConfigArray, valueInArray);
+            //in addition to storing the value in array, we store the Setting value normally - so the Setting knows it on startup, so it displays appropriate value in the menu, so it behaves accordingly
+            _config.PersistConfigValue(_setting.Id, newValue.ToString());
+        }
+        }
     }
-}
 
 [Immanence(typeof(Config))]
 public class Config
@@ -240,6 +248,16 @@ public class Config
         File.WriteAllLines(GetConfigFileLocation(),output);
     }
 
+    //since user-defined configs can be many, can be accidental and so on, we add the ability to remove them
+    public void RemoveConfigValue(string key)
+    {
+        if (_configValues.ContainsKey(key))
+        {
+            _configValues.Remove(key);
+            PersistConfigValuesToIniFile();
+        }
+
+    }
 
     /// <summary>
     /// This only saves the value to the config. It doesn't update any associated Settings! (which communicate their changes directly to Config)
@@ -292,15 +310,20 @@ public class Config
     public void RemoveEntryFromConfigArray(string key, string valueToRemove)
     {
         valueToRemove = string.Concat(",", valueToRemove, ",");
-        string currentValue = GetConfigValue(key) ?? ",";
+        string currentValue = GetConfigValue(key) ?? string.Empty;
 
         //need to remove only the first occurence, since there can be other from other Settings 
         int position = currentValue.IndexOf(valueToRemove);
         if (position > -1)
+        { 
+            // replacing the entry with a ',' - not an empty string - so each entry is still clearly separated by commas
             currentValue = currentValue.Remove(position, valueToRemove.Length).Insert(position, ",");
-        // replacing the entry with a ',' - not an empty string - so each entry is still clearly separated by commas
 
-        PersistConfigValue(key, currentValue);
+            if (currentValue == ",")
+                RemoveConfigValue(key);
+            else
+                PersistConfigValue(key, currentValue);
+        }
     }
 
     private Dictionary<string,string> PopulateConfigValues(string configLocation)
