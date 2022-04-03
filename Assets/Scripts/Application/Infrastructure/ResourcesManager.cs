@@ -38,9 +38,10 @@ public class ResourcesManager: MonoBehaviour
 
         int i = 0;
 
+        string animFolderPath = Path.Combine("verbs", "anim");
         while (true)
         {
-            var s= GetSprite("verbs\\anim", verbId + "_" + i, false);
+            var s= GetSprite(animFolderPath, verbId + "_" + i, false);
             if (s != null)
             {
                 frames.Add(s);
@@ -83,7 +84,8 @@ public class ResourcesManager: MonoBehaviour
 
         //This doesn't look for the placeholder image: this is intentional (we don't want a flickering pink question mark)
         //but might be a good way to spot missing animations
-        return GetSprite("elements\\anim", imageName + "_" + animFrame, false);
+        string animFolderPath = Path.Combine("elements", "anim");
+        return GetSprite(animFolderPath, imageName + "_" + animFrame, false);
     }
 
     public static List<Sprite> GetAnimFramesForElement(string imageName)
@@ -95,10 +97,10 @@ public class ResourcesManager: MonoBehaviour
         List<Sprite> frames = new List<Sprite>();
 
         int i = 0;
-
+        string animFolderPath = Path.Combine("elements", "anim");
         while (true)
         {
-            var s = GetSprite("elements\\anim", imageName + "_" + i, false);
+            var s = GetSprite(animFolderPath, imageName + "_" + i, false);
             if (s != null)
             {
                 frames.Add(s);
@@ -118,7 +120,7 @@ public class ResourcesManager: MonoBehaviour
 
     public static Sprite GetSpriteForCardBack(string backId) {
         //hardcoded to the books back at the moment
-        return GetSprite("cardbacks\\", "books");
+        return GetSprite("cardbacks", "books");
     }
 
     public static Sprite GetSpriteForAspect(string imageName)
