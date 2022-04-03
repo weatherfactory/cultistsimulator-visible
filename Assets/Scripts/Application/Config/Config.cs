@@ -31,6 +31,31 @@ public class SettingObserverForConfig : ISettingSubscriber
     }
 }
 
+public class SettingArrayObserverForConfig : ISettingSubscriber
+{
+    private readonly Setting _setting;
+    private readonly Config _config;
+
+    public SettingArrayObserverForConfig(Setting setting, Config config)
+    {
+        _setting = setting;
+        _config = config;
+    }
+
+    public void BeforeSettingUpdated(object oldValue)
+    {
+        //each time on value change, we remove the old value before adding the new one
+        _config.RemoveEntryFromConfigArray(_setting.TargetConfigArray, _setting.GetInnerLabelForValue(oldValue));
+    }
+
+    public void WhenSettingUpdated(object newValue)
+    {
+        _config.AddEntryToConfigArray(_setting.TargetConfigArray, _setting.GetInnerLabelForValue(newValue));
+        //we need to keep the value normally too, for setting to know its actual value on startup
+        _config.PersistConfigValue(_setting.Id, newValue.ToString());
+    }
+}
+
 [Immanence(typeof(Config))]
 public class Config
 {
@@ -252,6 +277,31 @@ public class Config
         return GetConfigValue(forId);
     }
 
+    public void AddEntryToConfigArray(string key, string value)
+    {
+        //arrays are stored in the ini files as
+        //"key = ,value1,value2,value3,"
+        //they always start with ',' and end with ',' - to separate each value clearly
+        value = string.Concat(value, ',');
+        string currentValue = GetConfigValue(key) ?? ",";
+
+        //it's tempting to check whether the value is already present in array and don't add it if yes, but I can see cases where having several of the same can be required
+        PersistConfigValue(key, string.Concat(currentValue, value));
+    }
+
+    public void RemoveEntryFromConfigArray(string key, string valueToRemove)
+    {
+        valueToRemove = string.Concat(",", valueToRemove, ",");
+        string currentValue = GetConfigValue(key) ?? ",";
+
+        //need to remove only the first occurence, since there can be other from other Settings 
+        int position = currentValue.IndexOf(valueToRemove);
+        if (position > -1)
+            currentValue = currentValue.Remove(position, valueToRemove.Length).Insert(position, ",");
+        // replacing the entry with a ',' - not an empty string - so each entry is still clearly separated by commas
+
+        PersistConfigValue(key, currentValue);
+    }
 
     private Dictionary<string,string> PopulateConfigValues(string configLocation)
     {

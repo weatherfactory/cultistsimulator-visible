@@ -22,9 +22,6 @@ namespace SecretHistories.Entities
         [FucineValue]
         public string Hint { get; set; }
 
-        [FucineValue]
-        public string HintLocId { get; set; }
-
         [FucineValue(DefaultValue = 0)]
         public int MinValue { get; set; }
             
@@ -40,6 +37,15 @@ namespace SecretHistories.Entities
 
         [FucineDict]
         public Dictionary<string,string> ValueLabels { get; set; }
+
+        //same thing as ValueLabels, but these are for UI specifically
+        //ie. "CURRENT GAME": { "0": "cs", "1": "bh" }
+        //the inner label of the current value is retrieved via GetCurrentValueAsHumanReadableString()
+        [FucineDict]
+        public Dictionary<string, string> ValueInnerLabels { get; set; }
+
+        [FucineValue]
+        public string TargetConfigArray { get; set; }
 
         private readonly HashSet<ISettingSubscriber> _subscribers = new HashSet<ISettingSubscriber>();
 
@@ -63,14 +69,24 @@ namespace SecretHistories.Entities
             }
             set
             {
+                object oldValue = CurrentValue;
                 _currentValue = value;
                 foreach (var subscriber in _subscribers)
                 {
+                    subscriber.BeforeSettingUpdated(oldValue);
                     subscriber.WhenSettingUpdated(CurrentValue);
                 }
             }
         }
 
+        public string GetInnerLabelForValue(object value)
+        {
+            string valueString = value.ToString();
+            if (ValueInnerLabels.ContainsKey(valueString))
+                return ValueInnerLabels[valueString];
+            else
+                return valueString;
+        }
 
         public string GetCurrentValueAsHumanReadableString()
         {
@@ -126,8 +142,14 @@ namespace SecretHistories.Entities
 
             //now that the value's been set, create an observer so that the config is updated with any changes to the Setting.
             //(Don't do it before now or we'd needlessly double-update the config)
-
-            SettingObserverForConfig observer = new SettingObserverForConfig(Id, Watchman.Get<Config>());
+            ISettingSubscriber observer;
+            if (TargetConfigArray == null)
+                observer = new SettingObserverForConfig(Id, Watchman.Get<Config>());
+            else
+                //settings that have TargetConfigArray defined will not have its own line in the .ini, but will contribute to that TargetConfigArrayValue
+                //when the settings changes, its current value is added to the target array
+                //(value is taken from GetCurrentValueAsHumanReadableString() - so we can make use of ValueInnerLabels)
+                observer = new SettingArrayObserverForConfig(this, Watchman.Get<Config>());
 
             AddSubscriber(observer);
         }
