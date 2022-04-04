@@ -323,8 +323,7 @@
                     "description": "'What Is Not Seen?'",
                     "required": {
                         "moth": 1
-                    },
-                    "consumes": true
+                    }
                 }
             ],
             "alt": [
@@ -358,7 +357,8 @@
             },
             "effects": {
                 "wound.exile.medusa": 1,
-                "op.medusa": -1
+                "op.medusa": -1,
+				"moth":-1
             },
             "burnimage": "pentiment",
             "warmup": 30
