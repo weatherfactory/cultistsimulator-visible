@@ -41,12 +41,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
         public override void Depart(Token tokenToSend, Context context)
         {
 
-            Depart(tokenToSend,context,null);
-
-        }
-
-        public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
-        {
             _walkingToken = tokenToSend;
 
             var tokenAi = tokenToSend.gameObject.gameObject.GetComponent<TokenAILerp>();

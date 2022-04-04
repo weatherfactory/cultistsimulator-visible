@@ -25,7 +25,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
 
         public abstract string GetDescription();
        public abstract void Depart(Token tokenToSend, Context context);
-       public abstract void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback);
+
         public abstract void Arrive(Token tokenToSend, Context context);
 
         public FucinePath DestinationSpherePath

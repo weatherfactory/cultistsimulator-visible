@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
 using SecretHistories.Abstract;
@@ -18,7 +19,6 @@ namespace SecretHistories.UI
 
     public class TokenTravelItinerary: TokenItinerary
     {
-        protected event Action<Token, Context> OnItineraryArrival;
         
             public override float Elapsed
         {
@@ -89,11 +89,7 @@ namespace SecretHistories.UI
 
         public override void Depart(Token tokenToSend, Context context)
         {
-            Depart(tokenToSend, context, null);
-        }
 
-        public override void Depart(Token tokenToSend, Context context, Action<Token, Context> onArrivalCallback)
-        {
             Sphere destinationSphere= Watchman.Get<HornedAxe>().GetSphereByPath(tokenToSend.Sphere, DestinationSpherePath);
 
 
@@ -109,7 +105,7 @@ namespace SecretHistories.UI
 
 
             _token = tokenToSend;
-            OnItineraryArrival += onArrivalCallback;
+
 
             Watchman.Get<Xamanek>().ItineraryStarted(tokenToSend.PayloadId, this);
 
@@ -185,13 +181,13 @@ namespace SecretHistories.UI
                 {
                     Watchman.Get<Xamanek>().TokenItineraryCompleted(token);
                     token.OnCompletedTravelItinerary();
-                    
-                    destinationSphere.TryAcceptToken(token,context);
+
+                    if (TryMergeWithTokenAtDestination(token, destinationSphere))
+                        return;
+                    else
+                        destinationSphere.TryAcceptToken(token,context);
                     
                 }
-
-                OnItineraryArrival?.Invoke(_token, context);
-                OnItineraryArrival = null;
 
             }
             catch(Exception e)
@@ -199,6 +195,26 @@ namespace SecretHistories.UI
                 NoonUtility.LogException(e); 
                 TravelFailed(token);
             }
+        }
+
+        private bool TryMergeWithTokenAtDestination(Token incomingToken, Sphere destinationSphere)
+        {
+            var incomingTokenRect = incomingToken.GetRectInOtherSphere(destinationSphere);
+           //If the token has travelled somewhere, it may be going back to its origin stack, and if it's not going back to its origin stack, we probably still want to tidy it up.
+           var candidateMergeTokens = destinationSphere.Tokens.Where(t => t.CanMergeWithToken(incomingToken));
+           foreach (var cmt in candidateMergeTokens)
+           {
+               var cmtRect = cmt.GetRectInCurrentSphere();
+               if (cmtRect.Overlaps(incomingTokenRect)) //this is very forgiving - not perfect match, just any overlap at all. I think this is preferable
+               {
+                   if(cmt.CanMergeWithToken(incomingToken)) //we just checked, but it's possible something changed in the background
+                       cmt.Payload.InteractWithIncoming(incomingToken);
+                   return true;
+               }
+
+           }
+
+           return false;
         }
 
         public override IGhost GetGhost()
