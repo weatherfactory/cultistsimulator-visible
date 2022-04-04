@@ -24,7 +24,8 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
     {
         [SerializeField] private NavigationAnimation _navigationAnimation;
         [SerializeField] private Button _popNoteButton;
-
+        [SerializeField] private Button _prevButton;
+        [SerializeField] private Button _nextButton;
         public override SphereCategory SphereCategory => SphereCategory.Notes;
         public override bool AllowStackMerge => false;
         public List<Token> PagedTokens = new List<Token>();
@@ -149,6 +150,7 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
             if(CurrentIndex<PagedTokens.Count)
             {
                 PagedTokens[CurrentIndex].MakeVisible();
+                EnableDisableButtonsForIndex(CurrentIndex, PagedTokens.Count);
             }
             else
             {
@@ -158,7 +160,19 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
    
         }
 
+        private void EnableDisableButtonsForIndex(int currentIndex, int pagedTokensCount)
+        {
+            if (currentIndex > 0)
+                _prevButton.interactable = true;
+            else
+                _prevButton.interactable = false;
 
+            if (currentIndex + 1 < pagedTokensCount)
+                _nextButton.interactable = true;
+            else
+                _nextButton.interactable = false;
+        
+        }
 
 
         public void PopNoteOut()
