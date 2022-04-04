@@ -53,25 +53,25 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
         if (args.Token != null && args.Token.ManifestationRectTransform != null && args.Sphere!=null)
         {
 
-            //var pointerPosition = Pointer.current.position.ReadValue();
+            var pointerPosition = Pointer.current.position.ReadValue();
 
-            //string ppString = $"{Math.Round(pointerPosition.x, 0)}, {Math.Round(pointerPosition.y, 0)}";
+            string ppString = $"{Math.Round(pointerPosition.x, 0)}, {Math.Round(pointerPosition.y, 0)}";
 
     
 
 
-            //var localPosition = args.Token.TokenRectTransform.localPosition;
+            var localPosition = args.Token.TokenRectTransform.localPosition;
             
-            //string lpstring = $"{Math.Round(localPosition.x, 0)}, {Math.Round(localPosition.y, 0)}, {Math.Round(localPosition.z, 0)}";
+            string lpstring = $"{Math.Round(localPosition.x, 0)}, {Math.Round(localPosition.y, 0)}, {Math.Round(localPosition.z, 0)}";
 
-            //var anchoredPosition3D = args.Token.TokenRectTransform.anchoredPosition3D;
+            var anchoredPosition3D = args.Token.TokenRectTransform.anchoredPosition3D;
 
-            //string apstring= $"{Math.Round(anchoredPosition3D.x, 0)}, {Math.Round(anchoredPosition3D.y, 0)}, {Math.Round(anchoredPosition3D.z, 0)}";
+            string apstring= $"{Math.Round(anchoredPosition3D.x, 0)}, {Math.Round(anchoredPosition3D.y, 0)}, {Math.Round(anchoredPosition3D.z, 0)}";
 
 
-            //var position = args.Token.TokenRectTransform.position;
+            var position = args.Token.TokenRectTransform.position;
 
-            //string pstring = $"{Math.Round(position.x, 0)}, {Math.Round(position.y, 0)}, {Math.Round(position.z, 0)}";
+            string pstring = $"{Math.Round(position.x, 0)}, {Math.Round(position.y, 0)}, {Math.Round(position.z, 0)}";
 
 
             
@@ -91,8 +91,8 @@ public class DragDebug : MonoBehaviour,ISphereCatalogueEventSubscriber
                 hoveredCount = hovered.Count;
             }
 
-            //    positioningText.text = $"Pointer (screen): {ppString}\n Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \n<b>Hovering Over:</b> {hoveringOver} [total: ({hoveredCount})]";
-            positioningText.text = $"<b>Hovering Over:</b> [total: ({hoveredCount})]\n {hoveringOver} ";
+                positioningText.text = $"Pointer (screen): {ppString}\n Local: {lpstring}\n Anchored: {apstring}\n Global: {pstring} \n<b>Hovering Over:</b> {hoveringOver} [total: ({hoveredCount})]";
+            //positioningText.text = $"<b>Hovering Over:</b> [total: ({hoveredCount})]\n {hoveringOver} ";
         }
 
     }
