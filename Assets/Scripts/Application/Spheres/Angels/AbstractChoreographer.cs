@@ -149,7 +149,7 @@ namespace SecretHistories.Spheres.Angels
               float shiftX = shiftWidth * alongVector.x * i;
               float shiftY = shiftHeight * alongVector.y * i;
 
-              var candidatePoint = startingRect.center + new Vector2(shiftX, shiftY);
+              var candidatePoint = startingRect.position + new Vector2(shiftX, shiftY);
               var candidateRect = new Rect(candidatePoint, startingRect.size);
 
               candidateRects.Add(candidateRect);
