@@ -132,8 +132,9 @@ namespace SecretHistories.Spheres
                 }
 
                 var candidateDistance =
-                    candidateItinerary.Anchored3DEndPosition -
-                    tokenToSend.Location.Anchored3DPosition; //This might well be wrong / n
+                    thresholdToConsider.transform.position -
+                    tokenToSend.transform.position; //This might well be wrong / n
+                Debug.Log($"Candidate distance: {candidateDistance} for {thresholdToConsider.name}");
 
                 if (candidateDistance.sqrMagnitude < selectedTargetDistance.sqrMagnitude)
                 {
