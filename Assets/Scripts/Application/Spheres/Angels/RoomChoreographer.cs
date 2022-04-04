@@ -18,9 +18,9 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     public class RoomChoreographer: AbstractChoreographer
     {
 
-        private float GRID_WIDTH=1f;
+        private float GRID_WIDTH=5f;
 
-        private float GRID_HEIGHT=1f;
+        private float GRID_HEIGHT=5f;
         private List<WalkableFloor> _floors;
         private List<WalkableLadder> _ladders;
 
@@ -95,17 +95,16 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             else
                 direction=Vector2.right;
 
+        
 
-
-
-            var testRects = GetAlternativeCandidateRectsAlongVector(targetRect, direction, 1, 10, GRID_WIDTH, GRID_HEIGHT);
+            var testRects = GetAlternativeCandidateRectsAlongVector(targetRect, direction, 1, 50, GRID_WIDTH, GRID_HEIGHT);
             foreach (var testRect in testRects)
             {
                 if (IsLegalPlacement(testRect, token).IsLegal)
                     return testRect.center;
             }
             //if we can't find any test rects before the end, reverse direction and try the other way.
-            var alternateTestRects = GetAlternativeCandidateRectsAlongVector(targetRect, -direction, 1, 10, GRID_WIDTH, GRID_HEIGHT);
+            var alternateTestRects = GetAlternativeCandidateRectsAlongVector(targetRect, -direction, 1, 50, GRID_WIDTH, GRID_HEIGHT);
             foreach (var altTestRect in alternateTestRects)
             {
                 if (IsLegalPlacement(altTestRect, token).IsLegal)
