@@ -117,7 +117,7 @@ namespace SecretHistories.Spheres
         {
             TokenTravelItinerary selectedItinerary = null;
 
-            Vector3 selectedTargetDistance = Vector3.positiveInfinity;
+            float selectedTargetDistance = float.PositiveInfinity;
 
 
             foreach (var thresholdToConsider in validDestinationSpheres)
@@ -131,17 +131,15 @@ namespace SecretHistories.Spheres
                     break; //thresholds in open tokens/situations always get priority. This assumes there is only one, though! which may not be the case in future.
                 }
 
-                var candidateDistance =
-                    thresholdToConsider.transform.position -
-                    tokenToSend.transform.position; //This might well be wrong / n
+
+                var candidateDistance =Vector2.Distance(candidateItinerary.Anchored3DStartPosition, candidateItinerary.Anchored3DEndPosition); //This might well be wrong / n
                 Debug.Log($"Candidate distance: {candidateDistance} for {thresholdToConsider.name}");
 
-                if (candidateDistance.sqrMagnitude < selectedTargetDistance.sqrMagnitude)
+                if (candidateDistance < selectedTargetDistance)
                 {
                     selectedItinerary = candidateItinerary;
                     selectedTargetDistance = candidateDistance;
-                    if (selectedTargetDistance.sqrMagnitude <=
-                        0) //we have a valid location, and nothing will be closer than this
+                    if (selectedTargetDistance <= 0) //we have a valid location, and nothing will be closer than this
                         break;
                 }
             }
