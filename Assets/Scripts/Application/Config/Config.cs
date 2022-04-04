@@ -295,37 +295,7 @@ public class Config
         return GetConfigValue(forId);
     }
 
-    public void AddEntryToConfigArray(string key, string value)
-    {
-        //arrays are stored in the ini files as
-        //"key = ,value1,value2,value3,"
-        //they always start with ',' and end with ',' - to separate each value clearly
-        value = string.Concat(value, ',');
-        string currentValue = GetConfigValue(key) ?? ",";
-
-        //it's tempting to check whether the value is already present in array and don't add it if yes, but I can see cases where having several of the same can be required
-        PersistConfigValue(key, string.Concat(currentValue, value));
-    }
-
-    public void RemoveEntryFromConfigArray(string key, string valueToRemove)
-    {
-        valueToRemove = string.Concat(",", valueToRemove, ",");
-        string currentValue = GetConfigValue(key) ?? string.Empty;
-
-        //need to remove only the first occurence, since there can be other from other Settings 
-        int position = currentValue.IndexOf(valueToRemove);
-        if (position > -1)
-        { 
-            // replacing the entry with a ',' - not an empty string - so each entry is still clearly separated by commas
-            currentValue = currentValue.Remove(position, valueToRemove.Length).Insert(position, ",");
-
-            if (currentValue == ",")
-                RemoveConfigValue(key);
-            else
-                PersistConfigValue(key, currentValue);
-        }
-    }
-
+    
     private Dictionary<string,string> PopulateConfigValues(string configLocation)
     {
         var comparer = StringComparer.OrdinalIgnoreCase;
@@ -350,6 +320,36 @@ public class Config
         return dictToPopulate;
     }
 
+    public void AddEntryToConfigArray(string key, string value)
+    {
+        //arrays are stored in the ini files as
+        //"key = ,value1,value2,value3,"
+        //they always start with ',' and end with ',' - to separate each value clearly
+        value = string.Concat(value, ',');
+        string currentValue = GetConfigValue(key) ?? ",";
+
+        //it's tempting to check whether the value is already present in array and don't add it if yes, but I can see cases where having several of the same can be required
+        PersistConfigValue(key, string.Concat(currentValue, value));
+    }
+
+    public void RemoveEntryFromConfigArray(string key, string valueToRemove)
+    {
+        valueToRemove = string.Concat(",", valueToRemove, ",");
+        string currentValue = GetConfigValue(key) ?? string.Empty;
+
+        //need to remove only the first occurence, since there can be other from other Settings 
+        int position = currentValue.IndexOf(valueToRemove);
+        if (position > -1)
+        {
+            // replacing the entry with a ',' - not an empty string - so each entry is still clearly separated by commas
+            currentValue = currentValue.Remove(position, valueToRemove.Length).Insert(position, ",");
+
+            if (currentValue == ",")
+                RemoveConfigValue(key);
+            else
+                PersistConfigValue(key, currentValue);
+        }
+    }
 
     private string DetermineMostSuitableCultureId()
     {
