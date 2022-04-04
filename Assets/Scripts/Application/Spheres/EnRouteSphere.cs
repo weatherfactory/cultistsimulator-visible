@@ -85,7 +85,6 @@ namespace SecretHistories.Spheres
             if (args.PointerEventData == null || args.Token == null)
                 return;
 
-
             var existingHovered =new List<GameObject>(
                 args.PointerEventData.hovered.Where(h =>
                     !h.Equals(null)));
