@@ -18,9 +18,9 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
     public class RoomChoreographer: AbstractChoreographer
     {
 
-        private float GRID_WIDTH=10f;
+        private float GRID_WIDTH=1f;
 
-        private float GRID_HEIGHT=10f;
+        private float GRID_HEIGHT=1f;
         private List<WalkableFloor> _floors;
         private List<WalkableLadder> _ladders;
 
@@ -84,7 +84,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             
             var targetRect = token.GetRectFromPosition(closestWalkablePosition);
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
-            if (legalPositionCheckResult.IsLegal)
+         //   if (legalPositionCheckResult.IsLegal)
                 return closestWalkablePosition;
 
 
@@ -128,8 +128,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
 
             WalkableFloor closestFloor = null;
-            var tokenHeightAdjustment = token.ManifestationRectTransform.rect.height / 2;
-            
+
+
 
 
             float flooryDifference = float.PositiveInfinity;
@@ -165,7 +165,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             {
                 var positionOnLadder =
                     new Vector2(closestLadder.gameObject.transform.localPosition.x,
-                        startPositionLocal.y + tokenHeightAdjustment);
+                        startPositionLocal.y);
                 return positionOnLadder;
             }
             else if
@@ -174,7 +174,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                  float.PositiveInfinity) //second condition is redundant, but keeping it here in case of accident
             {
                 var positionAtFloorLevel = new Vector2(startPositionLocal.x,
-                    closestFloor.gameObject.transform.localPosition.y + tokenHeightAdjustment);
+                    closestFloor.gameObject.transform.localPosition.y);
                 return positionAtFloorLevel;
             }
             else

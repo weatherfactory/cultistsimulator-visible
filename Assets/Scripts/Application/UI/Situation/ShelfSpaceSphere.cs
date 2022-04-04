@@ -266,7 +266,7 @@ namespace SecretHistories.UI
             if (IsTokenInRangeOfThisShelf(forToken))
             {
                 SetGlowColor(UIStyle.GlowPurpose.Default);
-                return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
+                return forToken.DisplayGhostAtProjectedChoreoPosition(this);
             }
                 
             return false;
@@ -274,7 +274,7 @@ namespace SecretHistories.UI
         }
         public override bool DisplayGhostAt(Token forToken, Vector3 overridingWorldPosition)
         {
-            return forToken.DisplayGhostAtChoreographerDrivenPosition(this, overridingWorldPosition);
+            return forToken.DisplayGhostAtSpecifiedChoreoPosition(this, overridingWorldPosition);
         }
 
 

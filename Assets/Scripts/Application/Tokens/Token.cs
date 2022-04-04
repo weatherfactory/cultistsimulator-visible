@@ -388,7 +388,7 @@ namespace SecretHistories.UI {
 
             return _ghost;
         }
-        public bool DisplayGhostAtChoreographerDrivenPosition(Sphere projectInSphere)
+        public bool DisplayGhostAtProjectedChoreoPosition(Sphere projectInSphere)
         {
             if (_ghost == null)
                 return false;
@@ -412,20 +412,13 @@ namespace SecretHistories.UI {
             return true;
         }
 
-        public Vector3 GetProjectionPositionLocalToSphere(Sphere projectInSphere)
-        {
-            var tokenWorldPosition = Sphere.GetRectTransform().TransformPoint(Location.Anchored3DPosition);
-            var projectionPositionLocalToSphere = projectInSphere.GetRectTransform().InverseTransformPoint(tokenWorldPosition);
-            return projectionPositionLocalToSphere;
-        }
-
-        public bool DisplayGhostAtChoreographerDrivenPosition(Sphere projectInSphere, Vector3 overridingWorldPosition)
+        public bool DisplayGhostAtSpecifiedChoreoPosition(Sphere projectInSphere, Vector3 specifyPosition)
         {
             if (_ghost == null)
                 return false;
 
 
-            var projectionPositionLocalToSphere = projectInSphere.GetRectTransform().InverseTransformPoint(overridingWorldPosition);
+            var projectionPositionLocalToSphere = projectInSphere.GetRectTransform().InverseTransformPoint(specifyPosition);
 
             var candidatePosition = projectInSphere.Choreographer.GetClosestFreeLocalPosition(this, projectionPositionLocalToSphere);
 
@@ -436,6 +429,15 @@ namespace SecretHistories.UI {
 
             return true;
         }
+
+        public Vector3 GetProjectionPositionLocalToSphere(Sphere projectInSphere)
+        {
+            var tokenWorldPosition = Sphere.GetRectTransform().TransformPoint(Location.Anchored3DPosition);
+            var projectionPositionLocalToSphere = projectInSphere.GetRectTransform().InverseTransformPoint(tokenWorldPosition);
+            return projectionPositionLocalToSphere;
+        }
+
+
 
         public void HideGhost()
         {

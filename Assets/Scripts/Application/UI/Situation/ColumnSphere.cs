@@ -267,13 +267,13 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Situation
         public override bool TryDisplayDropInteractionHere(Token forToken)
         {
             if (IsTokenInRangeOfThisColumn(forToken))
-                return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
+                return forToken.DisplayGhostAtProjectedChoreoPosition(this);
             return false;
 
         }
         public override bool DisplayGhostAt(Token forToken, Vector3 overridingWorldPosition)
         {
-            return forToken.DisplayGhostAtChoreographerDrivenPosition(this, overridingWorldPosition);
+            return forToken.DisplayGhostAtSpecifiedChoreoPosition(this, overridingWorldPosition);
         }
 
         /// <summary>

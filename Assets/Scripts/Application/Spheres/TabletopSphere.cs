@@ -189,12 +189,12 @@ namespace SecretHistories.Spheres
 
         public override bool TryDisplayDropInteractionHere(Token forToken)
         {
-            return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
+            return forToken.DisplayGhostAtProjectedChoreoPosition(this);
 
         }
         public override bool DisplayGhostAt(Token forToken, Vector3 overridingWorldPosition)
         {
-            return forToken.DisplayGhostAtChoreographerDrivenPosition(this,overridingWorldPosition);
+            return forToken.DisplayGhostAtSpecifiedChoreoPosition(this,overridingWorldPosition);
         }
     }
 

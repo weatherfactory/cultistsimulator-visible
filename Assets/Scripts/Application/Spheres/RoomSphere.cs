@@ -74,14 +74,14 @@ namespace SecretHistories.Spheres
         {
             if (IsTokenInRangeOfThisRoom(forToken))
                 //if so, display ghost.
-                return forToken.DisplayGhostAtChoreographerDrivenPosition(this);
+                return forToken.DisplayGhostAtProjectedChoreoPosition(this);
             else
                 return false;
 
         }
         public override bool DisplayGhostAt(Token forToken, Vector3 overridingWorldPosition)
         {
-            return forToken.DisplayGhostAtChoreographerDrivenPosition(this, overridingWorldPosition);
+            return forToken.DisplayGhostAtSpecifiedChoreoPosition(this, overridingWorldPosition);
         }
 
         private bool IsTokenInRangeOfThisRoom(Token token)
