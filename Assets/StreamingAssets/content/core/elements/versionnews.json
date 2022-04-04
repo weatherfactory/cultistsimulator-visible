@@ -2,12 +2,15 @@
 	"elements": [
 				{"id": "versionnews.2022.3.r1",
 			"label": "2022.3.q.1 RIGOLETTO",
-				"description": "- big token snap improvement (position wasn't updating when your pointer was above a ghost\n
+				"description": "- big token snap improvement (position wasn't updating when your pointer was above a ghost)\n
 - Tokens now drag from the cursor position where you pick 'em up \n
 - Right/double-click to send now goes reliably to closest token, if no window is open\n
 - Book of Suns in EXILE can now be assembled again, again.\n
 - Medusa now gives pentiments again.\n
-- A once-stacked token returning to its stack after a window is closed will now merge with that stack.",
+- Prev and next buttons for notes now show usable usefully again\n.
+- A once-stacked token returning to its stack after a window is closed will now merge with that stack.\n
+- Corpses now retain more effects from their previous lives (again).\n
+- Possible fix for Mac Monterey issues on GOG",
 "icon": "leoninetantrasanskrit"},
 			{"id": "versionnews.2022.3.q1",
 			"label": "2022.3.q.1 QUIETPLACE",
@@ -159,14 +162,7 @@
 - Camera feels smoother (I haven't added the old drift effect back - but I might yet)\n
 - Force-set gridsnap to 1/4. This will address a lot of perceived card placement probs. You can change it back tho.",
 			"icon": "ascensionpowerb"
-		},	
-
-		{    
-			"id": "versionnews.send",
-			"label": "Right-Click to Send",
-			"description": "You can now right-click as well as double-click to send to verbs. We didn't do this originally because we wanted to keep a mobile port in mind.... but that long since has ceased to be relevant.",
-			"icon": "locationauctionhouse"
-		},							
+		},						
 		
 		]
 

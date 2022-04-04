@@ -17,7 +17,25 @@
             },
             "lifetime": 60,
             "decayTo": "notoriety",
-			"comments":"The xtriggers for raising no longer work in any recipe which consumes the corpse via slot, so the Risens are created with a standard effect there."
+			"burnTo": "corpse.calcin",
+			"comments":"The xtriggers for raising are no longer relevant if we have corpse.calcin, but keeping them in for unexpected execution paths."
+        },
+		        {
+            "id": "corpse.calcin",
+            "label": "A Human Corpse",
+            "description": "The spirit is departed.",
+            "aspects": {
+                "winter": 3,
+                "grail": 3,
+                "ingredient": 1,
+                "remnant": 1
+            },
+            "xtriggers": {
+                "raiseburgeoning": "spirit_wintera_moth",
+                "raiseshattered": "spirit_wintera_edge"
+            },
+            "lifetime": 1,
+			"icon":"corpse"
         },
         {
             "id": "corpse.furious",
