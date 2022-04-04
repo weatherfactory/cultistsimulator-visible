@@ -141,7 +141,7 @@ public class Babelfish : MonoBehaviour,ISettingSubscriber
         }
 
         // Localization label: only applies if set.
-        if (locLabel != "")
+        if (!string.IsNullOrEmpty(locLabel))
         {
             GetTextComponent().text = lm.Get(locLabel);
         }
