@@ -9,7 +9,8 @@ namespace SecretHistories.UI
     public class CanvasGroupFader : MonoBehaviour {
 
         public bool blockRaysDuringFade = false;
-        public bool interactableWhenVisible=true;
+        [SerializeField]
+        private bool cannotInteractWhenVisible=false;
 
         public float durationTurnOn;
         public float durationTurnOff;
@@ -154,15 +155,16 @@ namespace SecretHistories.UI
         }
 
         void SetInteractable(bool state) {
-            if (interactableWhenVisible)
-            {
-                Group.blocksRaycasts = state;
-                Group.interactable = state;
-            }
-            else
+            if (cannotInteractWhenVisible)
             {
                 Group.blocksRaycasts = false;
                 Group.interactable = false;
+                
+            }
+            else
+            {
+                Group.blocksRaycasts = state;
+                Group.interactable = state;
             }
             
         }

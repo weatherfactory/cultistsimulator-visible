@@ -49,8 +49,7 @@ namespace SecretHistories.Ghosts
         public void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
-            if(canvasGroupFader!=null)
-                canvasGroupFader.interactableWhenVisible=false;
+
         }
 
         public bool Visible
