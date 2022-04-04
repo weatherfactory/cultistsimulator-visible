@@ -84,7 +84,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             
             var targetRect = token.GetRectFromPosition(closestWalkablePosition);
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
-         //   if (legalPositionCheckResult.IsLegal)
+            if (legalPositionCheckResult.IsLegal)
                 return closestWalkablePosition;
 
 
