@@ -137,9 +137,9 @@ namespace Assets.Scripts.Application.Spheres //should be SecretHistories.Sphere.
                 NoonUtility.Log($"error 'Gryla' guard+log: we tried to call OnNoteOutComplete with currentindex {CurrentIndex} when there are only {PagedTokens.Count} text tokens in the Notes Sphere here.", 1, VerbosityLevel.Essential);
             }
 
-            if (args.Index > 0) //do it here so it appears/disappears while the note is absent.
-                _popNoteButton.gameObject.SetActive(true);
-            else
+        //    if (args.Index > 0) //do it here so it appears/disappears while the note is absent.
+       //         _popNoteButton.gameObject.SetActive(true);
+       //     else
                 _popNoteButton.gameObject.SetActive(false);
 
         }
