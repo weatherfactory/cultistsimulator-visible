@@ -24,8 +24,7 @@ namespace SecretHistories.Ghosts
         [SerializeField] private GameObject frontCover;
         [SerializeField]
         private Image frontCoverImage;
-        [SerializeField]
-        private TextMeshProUGUI frontCoverTitle;
+
 
 
 
@@ -33,8 +32,7 @@ namespace SecretHistories.Ghosts
         private GameObject spine;
         [SerializeField]
         private Image spineImage;
-        [SerializeField]
-        private TextMeshProUGUI spineTitle;
+ 
 
         public override void ShowAt(Sphere projectInSphere, Vector3 showAtAnchoredPosition3D, RectTransform tokenRectTransform)
         {
@@ -99,9 +97,7 @@ namespace SecretHistories.Ghosts
             Sprite s = ResourcesManager.GetSpriteForSpine(manifestable.Icon);
             spineImage.sprite = s;
 
-            spineTitle.text = manifestable.Label;
-            frontCoverTitle.text = manifestable.Label;
-           
+ 
             Understate(); //for now, stay understated
         }
     }
