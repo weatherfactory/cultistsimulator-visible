@@ -594,7 +594,7 @@ namespace SecretHistories.UI {
 
         protected void StartDrag(PointerEventData eventData)
         {
-          //  eventData.hovered.Clear();//why does the hover data not clear itself? I don't know, and Unity doesn't know, so here we are for now.
+            eventData.hovered.Clear();//why does the hover data not clear itself? I don't know, and Unity doesn't know, so here we are for now.
 
             //remember the original location in case the token gets evicted later
             //base behaviour is to set current location in current sphere as home, but not all spheres will do this
