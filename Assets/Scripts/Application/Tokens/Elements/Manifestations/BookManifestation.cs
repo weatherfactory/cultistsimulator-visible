@@ -129,8 +129,6 @@ namespace SecretHistories.Manifestations
                 return;
             }
 
-            //This makes me nervous: I still only have a nebulous understanding of anchor positioning stuff
-            //but! I needed to set it because GridLayout overrides anchor positions, and there's a GridLayout in storage
             RectTransform.sizeDelta = new Vector2(newSize.sizeDelta.x,
                 newSize.sizeDelta.y);
             RectTransform.anchorMin = newSize.anchorMax;

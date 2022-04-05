@@ -155,7 +155,7 @@ namespace SecretHistories.Infrastructure
             try
             {
 
-                if (!gameInSaveableState())
+                if (!GameInSaveableState())
                     return false;
      
                 var game = new DefaultGamePersistenceProvider();
@@ -177,7 +177,7 @@ namespace SecretHistories.Infrastructure
             }
         }
 
-        private bool gameInSaveableState()
+        public bool GameInSaveableState()
         {
             var numa = Watchman.Get<Numa>();
             if (numa == null)

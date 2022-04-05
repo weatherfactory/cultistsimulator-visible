@@ -44,7 +44,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 originalIntendedPos)
         {
             float shelfWidth = Sphere.GetRectTransform().rect.width;
-            float placingTokenWidth=token.TokenRectTransform.rect.width;
+            float placingTokenWidth=token.ManifestationRectTransform.rect.width;
             float changeDirection = -10f; //not 0f, faint chance of loop
             float startX = 0f;
             float startY = 0f;

@@ -1,5 +1,11 @@
 ﻿{
 	"elements": [
+						{  "id": "versionnews.2022.3.s.1",
+			"label": "2022.3.s.1 SARGASSO",
+	"description": "- Fix for insane bug where game became unresponsive when you alt-tabbed out of the Mansus. (I caused this bug.) \n
+- Applied kibble to cat bowl to shut up cat. You don't think that's a bug but then you don't have to listen to this monster.",
+			"icon": "vaulteveningisles1"
+			},
 				{"id": "versionnews.2022.3.r1",
 			"label": "2022.3.q.1 RIGOLETTO",
 				"description": "- big token snap improvement (position wasn't updating when your pointer was above a ghost)\n
@@ -125,18 +131,6 @@
 - Fixed a couple of nasty save-load issues\n
 - Better logging",
 			"icon": "apostlelantern.mentor"
-			},
-				{  "id": "versionnews.2022.3.e.1",
-			"label": "2022.3.e.1 EURYDICE",
-	"description": "- Bloody pain in the arse bug where DESPAIR AND VISIONS STOLE CARDS FROM THE MANSUS WHEN IT OPENED, TRAPPING PEOPLE FOREVER, is fixed. This was a hard one to track down and reproduce. Thank you all. \n
-- Using the same shortcut for Start and Collect no longer causes softlock.\n
-- Explore/Hire now works again.\n
-- Belief? does not endlessly consume Reason in the Physician legacy.\n
-- Right-click to send to slot: inactive slots now correctly excluded\n
-- Cursor key movement for camera is calmer, but I'll be revisiting\n
-- We no longer pause on return from the Mansus.\n
-- Sundry crash fixes.",
-			"icon": "lockscarheart"
 			}
 		
 		]

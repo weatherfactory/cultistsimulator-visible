@@ -93,6 +93,11 @@ namespace SecretHistories.Infrastructure
         public async void TryAutosave()
         {
             housekeepingTimer = 0f;
+
+            var g = Watchman.Get<GameGateway>();
+            if (!g.GameInSaveableState())
+                return;
+
             AutosaveIndicator.Show();
 
          heart.Metapause();
