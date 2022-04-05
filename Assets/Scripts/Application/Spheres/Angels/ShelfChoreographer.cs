@@ -49,7 +49,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             float placingTokenWidth = token.GetCurrentWidth();
             float changeDirection = -10f; //not 0f, faint chance of loop
             float startX = 0f;
-            float startY = -(shelfHeight/2);
+            float startY = 0f;
             int maxIterations = (int)(shelfWidth/placingTokenWidth);
             if (originalIntendedPos.x < 0)
             {
@@ -67,7 +67,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             }
 
             var candidatePosition = new Vector2(startX, startY);
-         //   NoonUtility.Log($" x: { candidatePosition.x } ");
+         
             var positionLegality = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
             if (positionLegality.IsLegal)
                 return candidatePosition;
@@ -78,7 +78,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             {
                 float adjustment = (positionLegality.BlockerRect.width+1) * changeDirection;
                 candidatePosition.x += adjustment;
-                NoonUtility.Log($"adjustment: {adjustment} newX: {candidatePosition.x} ");
+                
                 positionLegality = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
                 if (positionLegality.IsLegal)
                     return candidatePosition;
