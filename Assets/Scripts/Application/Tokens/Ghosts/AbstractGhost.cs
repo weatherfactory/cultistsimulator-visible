@@ -71,7 +71,7 @@ namespace SecretHistories.Ghosts
             else
             {
                rectTransform.SetParent(projectInSphere.GetRectTransform());
-               rectTransform.localScale = tokenRectTransform.localScale; //we might want to think again about this: shadows can be cast bigger
+               rectTransform.localScale = tokenRectTransform.localScale;
                rectTransform.rotation = tokenRectTransform.rotation; //this is to reset the rotation cos I've seen it get stuck at another rotation value
             rectTransform.anchoredPosition3D = showAtAnchoredPosition3D;
             ShowCanvasGroupFader();
@@ -81,7 +81,7 @@ namespace SecretHistories.Ghosts
 
 
 
-        private void AnimateGhostMovement(Vector3 startPosition,Vector3 endPosition)
+        protected void AnimateGhostMovement(Vector3 startPosition,Vector3 endPosition)
         {
             if(_travelCoroutine!=null)
                 StopCoroutine(_travelCoroutine);

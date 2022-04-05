@@ -24,7 +24,8 @@ namespace SecretHistories.Manifestations
         private GameObject spine;
 
         [SerializeField]
-        private Image spineImage;
+        private Image spineImage;        [SerializeField]
+        private GameObject flat;
 
         [SerializeField] private GameObject frontCover;
         [SerializeField]
@@ -80,7 +81,7 @@ namespace SecretHistories.Manifestations
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-         //
+         
         }
 
 
@@ -103,7 +104,7 @@ namespace SecretHistories.Manifestations
 
         public void Shroud(bool instant)
         {
-      
+
         }
 
         public void Emphasise()

@@ -1094,12 +1094,11 @@ namespace SecretHistories.UI {
 
         private void UpdateRectTransformSizeFromManifestation()
         {
-            //This makes me nervous: I still only have a nebulous understanding of anchor positioning stuff
-            //but! I needed to set it because GridLayout overrides anchor positions, and there's a GridLayout in storage
             TokenRectTransform.sizeDelta = new Vector2(_manifestation.RectTransform.sizeDelta.x,
                 _manifestation.RectTransform.sizeDelta.y);
             TokenRectTransform.anchorMin = _manifestation.RectTransform.anchorMax;
             TokenRectTransform.anchorMax = _manifestation.RectTransform.anchorMax;
+            TokenRectTransform.pivot = _manifestation.RectTransform.pivot;
         }
 
 
