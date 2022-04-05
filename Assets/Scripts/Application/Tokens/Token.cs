@@ -223,6 +223,18 @@ namespace SecretHistories.UI {
 
         }
 
+        public float GetCurrentHeight()
+        {
+            UpdateRectTransformSizeFromManifestation();
+            return TokenRectTransform.rect.height;
+        }
+
+        public float GetCurrentWidth()
+        {
+            UpdateRectTransformSizeFromManifestation();
+            return TokenRectTransform.rect.width;
+        }
+
         public UnityEvent OnWindowClosed;
         public OnSphereAddedEvent OnSphereAdded;
         public OnSphereRemovedEvent OnSphereRemoved;

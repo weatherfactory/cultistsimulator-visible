@@ -140,6 +140,10 @@ namespace SecretHistories.UI
             if (!IsTokenInRangeOfThisShelf(token))
                 return false;
         
+            //will the token fit in the shelf?
+            if (!FitsInShelf(token))
+                return false;
+
 
             //does the token match the slot? Check that first
             ContainerMatchForStack match = GetMatchForTokenPayload(token.Payload);
@@ -167,6 +171,19 @@ namespace SecretHistories.UI
                 
             }
 
+            return true;
+        }
+
+        private float GetMaxHeightAllowedInShelf()
+        {
+            float maxHeight = GetRectTransform().rect.height;
+            return maxHeight;
+        }
+
+        private bool FitsInShelf(Token token)
+        {
+            if (token.GetCurrentHeight() > GetMaxHeightAllowedInShelf())
+                return false;
             return true;
         }
 

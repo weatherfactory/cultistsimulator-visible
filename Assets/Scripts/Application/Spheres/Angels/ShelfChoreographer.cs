@@ -44,23 +44,25 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 originalIntendedPos)
         {
             float shelfWidth = Sphere.GetRectTransform().rect.width;
-            float placingTokenWidth=token.ManifestationRectTransform.rect.width;
+            float shelfHeight = Sphere.GetRectTransform().rect.height;
+            
+            float placingTokenWidth = token.GetCurrentWidth();
             float changeDirection = -10f; //not 0f, faint chance of loop
             float startX = 0f;
-            float startY = 0f;
+            float startY = -(shelfHeight/2);
             int maxIterations = (int)(shelfWidth/placingTokenWidth);
             if (originalIntendedPos.x < 0)
             {
                 changeDirection = 1f;
                 startX = -(shelfWidth / 2);
-                //startX+=  placingTokenWidth / 2; //can't do this until I stabilise the token width info
+                startX+=  placingTokenWidth / 2;
                 //on the left side
             }
             else
             {
                 changeDirection = -1f;
                 startX = shelfWidth / 2;
-                //startX-= placingTokenWidth/2 ;//can't do this until I stabilise the token width info
+                startX-= placingTokenWidth/2;
                 //on the right side.
             }
 
