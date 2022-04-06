@@ -83,7 +83,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         {
             if (token.OccupiesSpaceAs() == OccupiesSpaceAs.PhysicalObject)
             {
-                return ClosestLegalWalkablePositionFor(token, startPositionLocal);
+                return ClosestLegalStackablePositionFor(token, startPositionLocal);
             }
 
             return ClosestLegalWalkablePositionFor(token, startPositionLocal);
@@ -131,7 +131,40 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         private Vector2 ClosestLegalStackablePositionFor(Token token, Vector2 startPositionLocal)
         {
-            throw new NotImplementedException();
+            if (!_floors.Any())
+            {
+                NoonUtility.LogWarning($"No walkable floors or ladders in {Sphere.name}; defaulting to zero vector");
+                return Vector2.zero;
+            }
+
+            WalkableFloor closestFloor = null;
+
+            float flooryDifference = float.PositiveInfinity;
+            foreach (var f in _floors)
+            {
+                if (!f.TokenAllowedHere(token))
+                    continue;
+                var floorY = f.gameObject.transform.localPosition.y;
+                if (Math.Abs(floorY - startPositionLocal.y) < flooryDifference)
+                {
+                    flooryDifference = Math.Abs(floorY - startPositionLocal.y);
+                    closestFloor = f;
+                }
+            }
+
+            if (closestFloor != null)
+            {
+                var positionAtFloorLevel = new Vector2(startPositionLocal.x,
+                    closestFloor.gameObject.transform.localPosition.y);
+                return positionAtFloorLevel;
+            }
+            else
+            {
+                NoonUtility.LogWarning(
+                    $"Couldn't decide a closest walkable surface in {Sphere.name}; defaulting to zero vector");
+                return Vector2.zero;
+            }
+
         }
 
         private Vector2 GetClosestPositionOnAWalkableSurface(Token token, Vector2 startPositionLocal)
@@ -145,10 +178,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
 
             WalkableFloor closestFloor = null;
-
-
-
-
+            
             float flooryDifference = float.PositiveInfinity;
             foreach (var f in _floors)
             {
