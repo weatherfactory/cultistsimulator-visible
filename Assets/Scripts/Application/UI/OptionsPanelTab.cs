@@ -1,8 +1,10 @@
 ﻿using System.Globalization;
 using System.Threading;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class OptionsPanelTab : MonoBehaviour
 {
@@ -18,7 +20,8 @@ public class OptionsPanelTab : MonoBehaviour
     {
         TabId = tabId;
         _parentOptionsPanel = parentOptionsPanel; TabText.GetComponent<Babelfish>().UpdateLocLabel(tabId);
-        TabImage.sprite=ResourcesManager.GetSprite("ui/tabs", tabId);
+        string iconRelativePath = Path.Combine("tabs", tabId);
+        TabImage.sprite=ResourcesManager.GetSpriteForUI(iconRelativePath);
     }
 
     public void Activate()
