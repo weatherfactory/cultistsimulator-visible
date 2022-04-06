@@ -176,7 +176,6 @@ namespace SecretHistories.Entities
             {
                 XTriggers.Add(k,inheritFromElement.XTriggers[k]);
             }
-
             foreach (SphereSpec s in inheritFromElement.Slots)
             {
                 Slots.Add(s);
@@ -186,6 +185,17 @@ namespace SecretHistories.Entities
             {
                 Induces.Add(i);
             }
+
+            //always use inherited ManifestationType. That's likely what we want.
+            ManifestationType = inheritFromElement.ManifestationType;
+
+
+            //Allow for exceptions / overrides
+            if (string.IsNullOrEmpty(Description))
+                Description = inheritFromElement.Description;
+
+            
+            
 
             UniquenessGroup = inheritFromElement.UniquenessGroup; //we would probably want to do this anyway, but also we are already inheriting aspects so we have to for tidiness
 

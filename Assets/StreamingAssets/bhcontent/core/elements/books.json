@@ -1,14 +1,19 @@
 {
     "elements": [
         {
+            "id": "_unc",
+            "label": "_unc",
+            "description": "[Catalogue this to learn more]",
+			"manifestationtype": "Book",
+			"aspects": {"uncatalogued":1,"readable":1},
+            "noartneeded": true
+        },
+	        {
             "id": "travellingatnight.1.unc",
             "label": "Travelling at Night (1)",
-            "description": "[Catalogue this to learn more]",
-			"aspects": {"uncatalogued":1,"readable":1},
-			"manifestationtype": "Book",
+			"inherits" : "_unc",
 			"xtriggers":{"scrutiny":"travellingatnight.1"},
-			"icon":"dark"
-			
+			"icon":"dark"			
         },
         {
             "id": "travellingatnight.2.unc",
@@ -36,6 +41,15 @@
 			"xtriggers":{"scrutiny":"turquoisehand"},
 			"icon":"sky"
 			
+        },
+		        {
+            "id": "debatesevencups.unc",
+            "label": "The Debate of Seven Cups",
+            "description": "[Catalogue this to learn more]",
+			"aspects": {"uncatalogued":1,"readable":1},
+            "manifestationtype": "Book",
+			"xtriggers":{"scrutiny":"turquoisehand"},
+			"icon":"sky"
         },
 		        {
             "id": "travellingatnight.1",
