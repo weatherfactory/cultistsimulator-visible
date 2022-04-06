@@ -1,86 +1,116 @@
 {
     "elements": [
         {
-            "id": "_unc",
-            "label": "_unc",
+            "id": "_book.unc",
+            "label": "_book.unc",
             "description": "[Catalogue this to learn more]",
 			"manifestationtype": "Book",
 			"aspects": {"uncatalogued":1,"readable":1},
             "noartneeded": true
         },
+        {
+            "id": "_book",
+            "label": "_book",
+			"manifestationtype": "Book",
+			"aspects": {"readable":1},
+            "noartneeded": true
+        },
+        {
+            "id": "debatesevencups.unc",
+            "label": "The Debate of Seven Cups",
+            "inherits" : "_book.unc",
+			"xtriggers":{"scrutiny":"debatesevencups"},
+			"icon":"geen"
+        }, 
+        {
+            "id": "deratioquercuum.unc",
+            "label": "De Ratio Quercuum",
+            "inherits" : "_book.unc",
+			"icon":"purp_large"
+        },
+         {
+            "id": "sunsetdiaries.1.unc",
+            "label": "Sunset Diaries (1)",
+			"inherits" : "_book.unc",
+			"xtriggers":{"scrutiny":"sunsetdiaries.1"}
+        },
 	        {
             "id": "travellingatnight.1.unc",
             "label": "Travelling at Night (1)",
-			"inherits" : "_unc",
+			"inherits" : "_book.unc",
 			"xtriggers":{"scrutiny":"travellingatnight.1"},
 			"icon":"dark"			
         },
         {
             "id": "travellingatnight.2.unc",
             "label": "Travelling at Night (2)",
-            "description": "[Catalogue this to learn more]",
-			"aspects": {"uncatalogued":1,"readable":1},
-            "manifestationtype": "Book",
+			"inherits" : "_book.unc",
 			"xtriggers":{"scrutiny":"travellingatnight.2"},
 			"icon":"dark"
         },
         {
-            "id": "sunsetdiaries.1.unc",
-            "label": "Sunset Diaries (1)",
-            "description": "[Catalogue this to learn more]",
-			"aspects": {"uncatalogued":1,"readable":1},
-            "manifestationtype": "Book",
-			"xtriggers":{"scrutiny":"sunsetdiaries.1"}
+            "id": "tripledheart.unc",
+            "label": "The Tripled Heart",
+            "inherits" : "_book.unc",
+			"icon":"odginge_small"
         },
         {
             "id": "turquoisehand.unc",
             "label": "The Turquoise Hand",
-            "description": "[Catalogue this to learn more]",
-			"aspects": {"uncatalogued":1,"readable":1},
-            "manifestationtype": "Book",
+            "inherits" : "_book.unc",
 			"xtriggers":{"scrutiny":"turquoisehand"},
 			"icon":"sky"
 			
         },
-		        {
-            "id": "debatesevencups.unc",
+        {
+            "id": "debatesevencups",
             "label": "The Debate of Seven Cups",
-            "description": "[Catalogue this to learn more]",
-			"aspects": {"uncatalogued":1,"readable":1},
-            "manifestationtype": "Book",
-			"xtriggers":{"scrutiny":"turquoisehand"},
-			"icon":"sky"
+            "description": "'Time is a pure flame, and we live by an invisible sun within us.'",
+            "inherits" : "_book",
+			"icon":"geen"
         },
-		        {
+        {
+            "id": "deratioquercuum",
+            "label": "De Ratio Quercuum",
+            "description": "'In Persia <i>taxus baccata</i> is called sorkdhar, which is 'the red tree'. There they had long understood the Grail-Root. In later times, the Great King of Pontus had bee-hives set in the branches of the oldest of the female trees. The berries open the door to death but the honey of their flowers opens a different door entirely. This was not his <i>mithridate</i> but one who has suckled at the Great Yew fears poison no longer. Perhaps they should...'",
+            "inherits" : "_book",
+			"icon":"purp_large"
+        },
+        {
+            "id": "sunsetdiaries.1",
+            "label": "Sunset Diaries (1)",
+            "description": "In 1959, Christopher Illopoly uncovered a truth which changed everything for him. That, he writes, is why he began to keep these diaries.",
+			"inherits" : "_book"
+        },
+  {
             "id": "travellingatnight.1",
             "label": "Travelling at Night (1)",
             "description": "Volume 1 of the annotated dream-journals of Christopher Illopoly, sometimes called 'the only readable occultist': literate, entertaining, bewildering.",
-			"aspects": {"readable":1,"state.cracked":1},
-            "manifestationtype": "Book",
+            "inherits" : "_book",
+			"aspects": {"state.cracked":1},
 			"icon":"dark"
         },
         {
             "id": "travellingatnight.2",
             "label": "Travelling at Night (2)",
             "description": "Volume 2 of the annotated dream-journals of Christopher Illopoly, sometimes called 'the only readable occultist': literate, entertaining, bewildering.",
-			"aspects": {"readable":1},
-            "manifestationtype": "Book",
+			"inherits" : "_book",
 			"icon":"dark"
         },
         {
-            "id": "sunsetdiaries.1",
-            "label": "Sunset Diaries (1)",
-            "description": "In 1959, Christopher Illopoly uncovered a truth which changed everything for him. That, he writes, is why he began to keep these diaries.",
-			"aspects": {"readable":1},
-            "manifestationtype": "Book"
+            "id": "tripledheart",
+            "label": "The Tripled Heart",
+            "description": "'Morning, noon, evening. These are not yet moonlight.'",
+            "inherits" : "_book",
+			"icon":"odginge_small"
         },
         {
             "id": "turquoisehand",
             "label": "The Turquoise Hand",
             "description": "A calligraphic manual of Ramsund which employs as exemplar-text Farid ud-Din's 'Conference of the Birds'. Its commentary, illustrations and interleavings carry revelations never intended in the original.",
-			"aspects": {"readable":1},
-            "manifestationtype": "Book",
+            "inherits" : "_book",
 			"icon":"sky"
         }
+
     ]
 }

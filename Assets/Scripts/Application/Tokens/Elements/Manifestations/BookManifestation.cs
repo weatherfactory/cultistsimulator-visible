@@ -74,7 +74,7 @@ namespace SecretHistories.Manifestations
             spineTitle.text = manifestable.Label;
             coverTitle.text = manifestable.Label;
             
-        Understate(); //show the backgroundy, on-shelf version by default
+          Understate(); //show the backgroundy, on-shelf version by default
             UpdateVisuals(manifestable);
             
         }
@@ -124,8 +124,20 @@ namespace SecretHistories.Manifestations
             {
              frontCover.SetActive(false);
             spine.SetActive(true);
+            UpdateObjToMatchImageDimensions(spine, spineImage);
             UpdateRectTransformSize(spine);
             }
+        }
+
+        private void UpdateObjToMatchImageDimensions(GameObject obj, Image image)
+        {
+            if (image == null || image.sprite == null)
+                return;
+
+            var height=image.sprite.texture.height;
+            var width=image.sprite.texture.width;
+            var objRT = obj.GetComponent<RectTransform>();
+            objRT.sizeDelta = new Vector2(width, height);
         }
 
         private void UpdateRectTransformSize(GameObject toMatchObject)
