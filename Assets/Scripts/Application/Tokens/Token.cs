@@ -804,10 +804,15 @@ namespace SecretHistories.UI {
             HideGhost();
         }
 
+        public OccupiesSpaceAs OccupiesSpaceAs()
+        {
+            return _manifestation.OccupiesSpaceAs();
+        }
+
         public bool OccupiesSameSpaceAs(Token otherToken)
         {
             //e.g, Dropzones are intangibles and can share space with whatever they like
-            if (otherToken.Payload.OccupiesSpaceAs() == Payload.OccupiesSpaceAs())
+            if (otherToken.OccupiesSpaceAs() == OccupiesSpaceAs())
                 return true;
 
             return false;

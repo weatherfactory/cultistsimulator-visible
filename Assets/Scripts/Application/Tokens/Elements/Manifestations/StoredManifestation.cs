@@ -77,6 +77,11 @@ namespace SecretHistories.Manifestations
             return NullGhost.Create(this);
         }
 
+        public OccupiesSpaceAs OccupiesSpaceAs()
+        {
+            return Enums.OccupiesSpaceAs.PhysicalObject;
+        }
+
         public void OverrideIcon(string icon)
         {
             NoonUtility.LogWarning(this.GetType().Name + " doesn't support OverrideIcon");

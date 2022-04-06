@@ -102,5 +102,7 @@ namespace SecretHistories.Manifestations
                 .CreateGhostPrefab(typeof(MortalGhost), this.RectTransform);
             return newGhost;
         }
+
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.Someone;
     }
 }

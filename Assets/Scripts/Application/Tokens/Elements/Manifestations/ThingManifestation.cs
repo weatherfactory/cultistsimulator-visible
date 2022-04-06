@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Tokens.Ghosts;
+using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories.Services;
 using SecretHistories.UI;
@@ -95,6 +96,8 @@ namespace SecretHistories.Manifestations
                 .CreateGhostPrefab(typeof(ThingGhost), this.RectTransform);
             return newGhost;
         }
+
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.PhysicalObject;
 
         public void OnPointerEnter(PointerEventData eventData)
         {

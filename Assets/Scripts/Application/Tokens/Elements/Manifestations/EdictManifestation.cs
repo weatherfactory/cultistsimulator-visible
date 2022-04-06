@@ -205,6 +205,8 @@ namespace SecretHistories.Manifestations
             return newGhost;
         }
 
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.Intangible;
+
 
         private void HideMiniSlot()
         {

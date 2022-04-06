@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Abstract;
+using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
 using SecretHistories.Services;
@@ -76,6 +77,8 @@ using UnityEngine.EventSystems;
                     .CreateGhostPrefab(typeof(FitmentGhost), this.RectTransform);
                 return newGhost;
             }
-        }
+
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.LargePhysicalObject;
+    }
     }
 

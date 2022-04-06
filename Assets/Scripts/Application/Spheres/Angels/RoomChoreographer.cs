@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.Abstract;
 using SecretHistories.Choreographers;
+using SecretHistories.Enums;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.UI;
@@ -80,8 +81,18 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 startPositionLocal)
         {
-            var closestWalkablePosition= GetClosestWalkablePosition(token, startPositionLocal);
-            
+            if (token.OccupiesSpaceAs() == OccupiesSpaceAs.PhysicalObject)
+            {
+                return ClosestLegalWalkablePositionFor(token, startPositionLocal);
+            }
+
+            return ClosestLegalWalkablePositionFor(token, startPositionLocal);
+        }
+
+        private Vector2 ClosestLegalWalkablePositionFor(Token token, Vector2 startPositionLocal)
+        {
+            var closestWalkablePosition = GetClosestPositionOnAWalkableSurface(token, startPositionLocal);
+
             var targetRect = token.GetRectFromPosition(closestWalkablePosition);
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
@@ -90,33 +101,40 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             Vector2 direction;
             //not legal. Which direction are we looking in? NB this is bobbins atm
-            if(startPositionLocal.x<=legalPositionCheckResult.BlockerRect.x)
-                direction=Vector2.left;
+            if (startPositionLocal.x <= legalPositionCheckResult.BlockerRect.x)
+                direction = Vector2.left;
             else
-                direction=Vector2.right;
+                direction = Vector2.right;
 
-        
 
             var testRects = GetAlternativeCandidateRectsAlongVector(targetRect, direction, 1, 50, GRID_WIDTH, GRID_HEIGHT);
             foreach (var testRect in testRects)
             {
                 if (IsLegalPlacement(testRect, token).IsLegal)
-                    return testRect.center;
+                    return testRect.position;
             }
+
             //if we can't find any test rects before the end, reverse direction and try the other way.
-            var alternateTestRects = GetAlternativeCandidateRectsAlongVector(targetRect, -direction, 1, 50, GRID_WIDTH, GRID_HEIGHT);
+            var alternateTestRects =
+                GetAlternativeCandidateRectsAlongVector(targetRect, -direction, 1, 50, GRID_WIDTH, GRID_HEIGHT);
             foreach (var altTestRect in alternateTestRects)
             {
                 if (IsLegalPlacement(altTestRect, token).IsLegal)
-                    return altTestRect.center;
+                    return altTestRect.position;
             }
+
             NoonUtility.Log(
                 $"Choreographer: No legal walkable position found for {token.name})! Just putting it at zero", 1);
-            
+
             return Vector2.zero;
         }
 
-        private Vector2 GetClosestWalkablePosition(Token token, Vector2 startPositionLocal)
+        private Vector2 ClosestLegalStackablePositionFor(Token token, Vector2 startPositionLocal)
+        {
+            throw new NotImplementedException();
+        }
+
+        private Vector2 GetClosestPositionOnAWalkableSurface(Token token, Vector2 startPositionLocal)
         {
 
             if (!_floors.Any() && !_ladders.Any())

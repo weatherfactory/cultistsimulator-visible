@@ -173,6 +173,8 @@ namespace SecretHistories.Manifestations
             return newGhost;
         }
 
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.PhysicalObject;
+
         public void OnPointerEnter(PointerEventData eventData)
         {
            //

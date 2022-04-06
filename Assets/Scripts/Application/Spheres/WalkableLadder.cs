@@ -13,7 +13,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres
         public override bool TokenAllowedHere(Token token)
         {
 
-            if (token.Payload.OccupiesSpaceAs() == OccupiesSpaceAs.Someone)
+            if (token.OccupiesSpaceAs() == OccupiesSpaceAs.Someone)
                 return true;
 
             return false;

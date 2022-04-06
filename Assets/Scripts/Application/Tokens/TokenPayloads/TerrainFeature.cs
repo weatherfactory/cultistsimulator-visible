@@ -98,9 +98,6 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TokenPayloads
 
         }
 
-        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.PhysicalObject;
-
-
         public FucinePath GetWildPath()
         {
             var wildCardPath = FucinePath.Wild();

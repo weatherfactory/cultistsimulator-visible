@@ -139,6 +139,7 @@
 
     public enum OccupiesSpaceAs
     {
+        LargePhysicalObject,
         PhysicalObject,
         Someone,
         Intangible,

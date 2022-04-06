@@ -77,5 +77,7 @@ namespace SecretHistories.Manifestations
                 .CreateGhostPrefab(typeof(WorkstationGhost), this.RectTransform);
             return newGhost;
         }
+
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.LargePhysicalObject;
     }
 }

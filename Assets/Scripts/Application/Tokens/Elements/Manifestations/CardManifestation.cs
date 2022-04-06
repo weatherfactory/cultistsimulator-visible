@@ -143,6 +143,11 @@ namespace SecretHistories.Manifestations
             return newGhost;
         }
 
+        public OccupiesSpaceAs OccupiesSpaceAs()
+        {
+            return Enums.OccupiesSpaceAs.PhysicalObject;
+        }
+
         public void OverrideIcon(string icon)
         {
             NoonUtility.LogWarning("CardManifestation doesn't support OverrideIcon");

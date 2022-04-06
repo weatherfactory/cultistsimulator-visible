@@ -57,6 +57,7 @@ namespace SecretHistories
 
         IGhost CreateGhost();
 
+        OccupiesSpaceAs OccupiesSpaceAs();
 
     }
 }
