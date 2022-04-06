@@ -153,6 +153,9 @@ public class CompendiumLoader
         modManager.CatalogueMods();
         foreach (var mod in modManager.GetEnabledModsInLoadOrder())
         {
+            //should avoid doing that in CatalogueMods(), since it happens several times during load, and thus all images are loaded several times which is... sub-optimal
+            modManager.TryLoadImagesForEnabledMods(_log);
+
             var modContentLoader = new DataFileLoader(mod.ContentFolder);
             modContentLoader.LoadFilesFromAssignedFolder(_log);
             modContentLoaders.Add(modContentLoader);

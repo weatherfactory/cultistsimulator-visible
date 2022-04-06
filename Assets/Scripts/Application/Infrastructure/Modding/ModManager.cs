@@ -36,6 +36,8 @@ namespace SecretHistories.Constants.Modding
 
         private readonly Dictionary<string, Mod> _cataloguedMods;
         private List<string> _enabledModsLoadOrder;
+        private List<Mod> _enabledMods;
+        private Dictionary<string, Sprite> Images;
 
         public void LoadModDLLs()
         {
@@ -81,6 +83,8 @@ namespace SecretHistories.Constants.Modding
         public ModManager()
         {
             _cataloguedMods = new Dictionary<string, Mod>();
+            _enabledMods = new List<Mod>();
+            Images = new Dictionary<string, Sprite>();
         }
 
         public IEnumerable<Mod> GetCataloguedMods()
@@ -89,21 +93,9 @@ namespace SecretHistories.Constants.Modding
             return cataloguedMods;
         }
 
-        public IEnumerable<Mod> GetEnabledModsInLoadOrder()
+        public List<Mod> GetEnabledModsInLoadOrder()
         {
-            var orderedIds = GetEnabledModsLoadOrderList();
-            var orderedMods=new List<Mod>();
-            foreach (var oi in orderedIds)
-            {
-                if (_cataloguedMods.ContainsKey(oi) && orderedMods.All(om => om.Id != oi)) // second clause is in case something broke and a duplicate snuck in
-                    orderedMods.Add(_cataloguedMods[oi]);
-                else
-                    NoonUtility.LogWarning(
-                        $"Problem getting enabled mod lists: {oi} was found in the enabled loading order list, but not in the catalogue");
-
-            }
-
-            return orderedMods;
+            return new List<Mod>(_enabledMods);
         }
 
         public IEnumerable<Mod> GetDisabledMods()
@@ -223,13 +215,15 @@ namespace SecretHistories.Constants.Modding
                 if (!_cataloguedMods.ContainsKey(modId))
                     _enabledModsLoadOrder.Remove(modId);
             }
-            
+
             // Set the enabled flag in all catalogued mods in the enabled list
+            _enabledMods.Clear();
             foreach (var modId in _enabledModsLoadOrder)
-            {
                 if (_cataloguedMods.ContainsKey(modId))
+                {
+                    _enabledMods.Add(_cataloguedMods[modId]);
                     _cataloguedMods[modId].Enabled = true;
-            }
+                }
         }
 
     private Dictionary<string, Mod> CatalogueModsInFolders(IEnumerable<string> inFolders,ModInstallType modInstallTypeForLocation)
@@ -323,7 +317,8 @@ namespace SecretHistories.Constants.Modding
             mod.LocFolder = candidateLocFolder;
         }
 
-        if (TryLoadAllImages(mod, modFolder))
+        var imagesFolderForMod = Path.Combine(modFolder, "images");
+        if (Directory.Exists(imagesFolderForMod))
             mod.CataloguingLog += " has a valid images directory; ";
         else
             mod.CataloguingLog += " has no valid images directory; ";
@@ -361,7 +356,13 @@ namespace SecretHistories.Constants.Modding
 
         private IEnumerable<String> GetEnabledModsLoadOrderFromFile()
         {
-            return File.Exists(ModEnabledListPath) ? File.ReadAllText(ModEnabledListPath).Split('\n') : new string[] { };
+            string[] allEnabled = File.Exists(ModEnabledListPath) ? File.ReadAllText(ModEnabledListPath).Split('\n') : new string[0];
+            //guaranteeing that list contains only unique mod ids
+            List<string> uniqueEnabled = new List<string>();
+            foreach (string id in allEnabled)
+                if (uniqueEnabled.Contains(id) == false)
+                    uniqueEnabled.Add(id);
+            return uniqueEnabled;
         }
 
         private void PersistEnabledModsLoadOrderToFile()
@@ -415,16 +416,11 @@ namespace SecretHistories.Constants.Modding
 
         public Sprite GetSprite(string spriteResourceName)
         {
-            
-            foreach (var mod in _cataloguedMods.Values)
-            {
-                if (mod.Enabled && mod.Images.ContainsKey(spriteResourceName))
-                {
-                    return mod.Images[spriteResourceName];
-                }
-            }
-
-            return null;
+            spriteResourceName = SlashInvariant(spriteResourceName);
+            if (Images.ContainsKey(spriteResourceName))
+                return Images[spriteResourceName];
+            else
+                return null;
         }
 
 
@@ -443,27 +439,64 @@ namespace SecretHistories.Constants.Modding
 
 
 
-        private bool TryLoadAllImages(Mod mod, string modPath)
+        public void TryLoadImagesForEnabledMods(ContentImportLog log)
         {
-
-            var imagesFolderForMod = Path.Combine(modPath, "images");
-            // Search all subdirectories for more image files
-            
-            if (Directory.Exists(imagesFolderForMod))
+            foreach (Mod mod in _enabledMods)
             {
-                var imageFiles = GetFilesRecursive(imagesFolderForMod, ".png");
-                if (!imageFiles.Any())
-                    return false;
+                var imagesFolderForMod = Path.Combine(mod.ModRootFolder, "images");
+                // Search all subdirectories for more image files
 
-                foreach (var imageFile in imageFiles)
-                    mod.LoadImage(imageFile);
+                if (Directory.Exists(imagesFolderForMod))
+                {
+                    var imageFiles = GetFilesRecursive(imagesFolderForMod, ".png");
+                    if (!imageFiles.Any())
+                        return;
 
-                return true;
+                    foreach (var imageFile in imageFiles)
+                    {
+                        if (Images.ContainsKey(imageFile))
+                            log.LogWarning($"Duplicate image {imageFile} in {imagesFolderForMod}; overwriting previously loaded image.");
+
+                        LoadImage(mod.ModRootFolder, imageFile);
+                    }
+                }
             }
-            else
-                return false;
         }
 
+        private bool LoadImage(string rootFolder, string imageFilePath)
+        {
+            //need to determine the subfolder tidily, to avoid absolute path problem for image key
+
+            Sprite spriteToLoad;
+
+
+            //we don't want the absolute root in here, because later we'll match it against relative locations for core images
+            string relativePath = imageFilePath.Replace(rootFolder, string.Empty);
+
+
+            string relativePathWithoutFileExtension = relativePath.Replace(Path.GetFileName(relativePath),
+                Path.GetFileNameWithoutExtension(relativePath));
+
+            string relativePathWithoutLeadingSlash = relativePathWithoutFileExtension.Remove(0, 1);
+
+            try
+            {
+                spriteToLoad = LoadSprite(imageFilePath);
+            }
+            catch
+            {
+                NoonUtility.Log(
+                    "Invalid image file '" + imageFilePath + "'",
+                    2);
+                return false;
+            }
+
+            string relativePathUnified = relativePathWithoutLeadingSlash.Replace("\\", "/");
+            //setting the value directly, without Add(), so earlier Images with the same name are overwritten (allowing mods to change images used in other mods)
+            Images[relativePathUnified] = spriteToLoad;
+
+            return true;
+        }
 
         private Sprite LoadSprite(string imagePath)
         {
@@ -486,6 +519,14 @@ namespace SecretHistories.Constants.Modding
             sprite = Sprite.Create(
                 texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             return sprite;
+        }
+
+        private string SlashInvariant(string pathToAsset)
+        {
+            //to avoid any possible confusion between slashes, we replace all '/', if they are somehow present, into '\\'
+            //it's irrelevant what changed into what, we just need to make sure only one will be present when we're both storing and retrieving an asset
+            //(currently used only in LoadImage() to store Sprite, and in GetSprite())
+            return pathToAsset.Replace('/', '\\');
         }
 
         public void SwapModsInLoadOrderAndPersistToFile(int thisModIndex, int swapWithModIndex)
