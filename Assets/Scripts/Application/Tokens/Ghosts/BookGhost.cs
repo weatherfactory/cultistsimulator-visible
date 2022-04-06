@@ -19,15 +19,8 @@ namespace SecretHistories.Ghosts
     {
 
 
-
-
-        [SerializeField]
-        private GameObject spine;
         [SerializeField]
         private Image spineImage;
-
-
-
 
 
         public override void UpdateVisuals(IManifestable manifestable)

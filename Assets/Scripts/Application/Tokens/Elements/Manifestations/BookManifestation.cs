@@ -109,20 +109,29 @@ namespace SecretHistories.Manifestations
 
         public void Emphasise()
         {
-            frontCover.SetActive(true);
-            spine.SetActive(false);
-            UpdateRectTransformSize(frontCover);
+            if(!frontCover.activeSelf || spine.activeSelf)
+            {
+                frontCover.SetActive(true);
+                spine.SetActive(false);
+                UpdateRectTransformSize(frontCover);
+
+            }
         }
 
         public void Understate()
         {
-            frontCover.SetActive(false);
+            if (frontCover.activeSelf || !spine.activeSelf)
+            {
+             frontCover.SetActive(false);
             spine.SetActive(true);
             UpdateRectTransformSize(spine);
+            }
         }
 
         private void UpdateRectTransformSize(GameObject toMatchObject)
         {
+
+
             RectTransform newSize = toMatchObject.GetComponent<RectTransform>();
             if (newSize == null)
             {
