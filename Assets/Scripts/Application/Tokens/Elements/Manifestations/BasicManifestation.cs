@@ -42,7 +42,7 @@ namespace SecretHistories.Manifestations
 
 
    
-            public void OnBeginDragVisuals(Token token)
+            public virtual void OnBeginDragVisuals(Token token)
         {
             if (rotateOnDrag)
                 preDragRotation = transform.localRotation;
@@ -53,7 +53,7 @@ namespace SecretHistories.Manifestations
         }
 
 
-        public void OnEndDragVisuals(Token token)
+        public virtual void OnEndDragVisuals(Token token)
         {
             if (rotateOnDrag)
                 transform.localRotation = preDragRotation;

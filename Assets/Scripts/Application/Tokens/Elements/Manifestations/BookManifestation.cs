@@ -87,6 +87,7 @@ namespace SecretHistories.Manifestations
             
         }
 
+ 
         public void UpdateVisuals(IManifestable manifestable)
         {
          UpdateVisuals(manifestable,NullSphere.Create());
