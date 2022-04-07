@@ -7,6 +7,7 @@ using SecretHistories.Abstract;
 using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -33,7 +34,7 @@ namespace SecretHistories.Manifestations
 
         }
 
-        public void UpdateVisuals(IManifestable manifestable)
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
         {
         }
 

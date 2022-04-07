@@ -4,7 +4,10 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
+using SecretHistories.Abstract;
 using SecretHistories.Enums;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -35,8 +38,11 @@ namespace SecretHistories.Manifestations
             callbackOnRetired();
 
         }
+ 
 
-        public void OnBeginDragVisuals(Token token)
+
+   
+            public void OnBeginDragVisuals(Token token)
         {
             if (rotateOnDrag)
                 preDragRotation = transform.localRotation;

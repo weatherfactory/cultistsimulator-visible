@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Constants;
 using SecretHistories.Core;
@@ -13,6 +14,7 @@ using SecretHistories.Fucine;
 using SecretHistories.Ghosts;
 using SecretHistories.Manifestations;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using TMPro;
 using UnityEngine;
@@ -71,11 +73,11 @@ namespace SecretHistories.Manifestations
             
             SetInitialTimerVisuals();
 
-            UpdateVisuals(manifestable);
+            UpdateVisuals(manifestable,NullSphere.Create());
 
         }
 
-        public void UpdateVisuals(IManifestable manifestable)
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
         {
             var timeshadow = manifestable.GetTimeshadow();
             

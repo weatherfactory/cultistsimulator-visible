@@ -102,7 +102,7 @@ namespace SecretHistories.Manifestations
                 NoonUtility.LogWarning($"Dropzone wants to be for payload type {manifestable.EntityId}, which we don't know about - leaving manifestation appearance at default.");
         }
 
-        public void UpdateVisuals(IManifestable manifestable)
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
         {
             //
         }

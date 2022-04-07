@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -36,10 +37,10 @@ namespace SecretHistories.Manifestations
         public void Initialise(IManifestable manifestable)
         {
             name = "StoredManifestation_" + manifestable.Id;
-          UpdateVisuals(manifestable);
+          UpdateVisuals(manifestable,NullSphere.Create());
         }
 
-        public void UpdateVisuals(IManifestable manifestable)
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
         {
             var element = Watchman.Get<Compendium>().GetEntityById<Element>(manifestable.EntityId);
        

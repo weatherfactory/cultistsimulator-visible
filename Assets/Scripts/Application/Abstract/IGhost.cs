@@ -27,5 +27,6 @@ namespace SecretHistories.Abstract
         void Emphasise();
 
         void UpdateVisuals(IManifestable manifestable);
+        void UpdateVisuals(IManifestable manifestable,Sphere sphere);
     }
 }

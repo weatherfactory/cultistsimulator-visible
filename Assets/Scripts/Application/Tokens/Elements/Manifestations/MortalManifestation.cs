@@ -4,12 +4,14 @@ using System.Linq;
 using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Tokens.Ghosts;
 using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -43,16 +45,19 @@ namespace SecretHistories.Manifestations
 
         public void Initialise(IManifestable manifestable)
         {
-           UpdateVisuals(manifestable);
+           UpdateVisuals(manifestable,NullSphere.Create());
         }
 
-        public void UpdateVisuals(IManifestable manifestable)
+
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
         {
             var sprite = ResourcesManager.GetSpriteForSomeone(manifestable.Icon);
             _artwork.sprite = sprite;
         }
 
- 
+  
+
+
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
         //

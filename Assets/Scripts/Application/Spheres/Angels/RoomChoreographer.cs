@@ -83,7 +83,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         {
             if (token.OccupiesSpaceAs() == OccupiesSpaceAs.PhysicalObject)
             {
-                return ClosestLegalStackablePositionFor(token, startPositionLocal);
+                return ClosestLegalPileablePositionFor(token, startPositionLocal);
             }
 
             return ClosestLegalWalkablePositionFor(token, startPositionLocal);
@@ -129,7 +129,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             return Vector2.zero;
         }
 
-        private Vector2 ClosestLegalStackablePositionFor(Token token, Vector2 startPositionLocal)
+        private Vector2 ClosestLegalPileablePositionFor(Token token, Vector2 startPositionLocal)
         {
 
             var closestWalkablePosition = GetClosestPositionOnAWalkableSurface(token, startPositionLocal);
@@ -148,7 +148,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             //we have a blocker. Look for positions on top until we reach the max height, and if we find none look left and right.
 
-            int maxItemsInStack = 5; //for example;
+            int maxItemsInPile = 5; //for example;
             float placingTokenHeight = targetRect.height;
 
             var candidatePosition = closestWalkablePosition;
@@ -156,7 +156,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             //start at left, offset to right until we have no collisions either in the row sphere or in its world overlap
             int failedPlacementAttempts = 0;
             var placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
-            while (failedPlacementAttempts < maxItemsInStack && !placementIsLegal.IsLegal)
+            while (failedPlacementAttempts < maxItemsInPile && !placementIsLegal.IsLegal)
             {
                 candidatePosition.y += placingTokenHeight;
                 failedPlacementAttempts++;

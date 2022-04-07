@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries;
 using SecretHistories.Commands;
@@ -21,8 +22,14 @@ namespace SecretHistories.Ghosts
 
         public virtual void UpdateVisuals(IManifestable manifestable)
         {
-            //
+            UpdateVisuals(manifestable, NullSphere.Create());
         }
+
+        public virtual void UpdateVisuals(IManifestable manifestable, Sphere sphere)
+        {
+       //
+        }
+
         protected bool CanvasGroupFaderStillExists()
         {
             if (canvasGroupFader == null)

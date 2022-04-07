@@ -106,5 +106,12 @@ namespace SecretHistories.Spheres
         {
             return typeof(EdictManifestation);
         }
+
+        public override void DisplayAndPositionHere(Token token, Context context)
+        {
+            DisplayHere(token);
+            
+            Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(token, context, token.TokenRectTransform.anchoredPosition);
+        }
     }
 }

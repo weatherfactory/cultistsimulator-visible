@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories;
 using SecretHistories.Manifestations;
 using SecretHistories.Services;
+using SecretHistories.Spheres;
 using SecretHistories.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 namespace SecretHistories.Manifestations
@@ -81,10 +84,22 @@ namespace SecretHistories.Manifestations
 
         public void UpdateVisuals(IManifestable manifestable)
         {
-         
+         UpdateVisuals(manifestable,NullSphere.Create());
         }
 
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
+        {
+            //we might be able to use this for the Emphasise/Understate stuff too
+            if (sphere.SphereCategory == SphereCategory.World)
+            {
 
+                RectTransform.eulerAngles = new Vector3(0, 0, 90);
+            }
+            else
+            {
+                RectTransform.eulerAngles = new Vector3(0, 0, 0);
+            }
+        }
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {

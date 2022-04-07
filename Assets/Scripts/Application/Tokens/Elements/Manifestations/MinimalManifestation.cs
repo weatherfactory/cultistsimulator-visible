@@ -40,14 +40,9 @@ namespace SecretHistories.Manifestations
         {
         }
 
-        public void UpdateVisuals(IManifestable manifestable)
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
         {
             //
-        }
-
-        public void UpdateVisuals(ITokenPayload payload)
-        {
-            //do nothing
         }
 
         public void UpdateTimerVisuals(float originalDuration, float durationRemaining, float interval, bool resaturate,

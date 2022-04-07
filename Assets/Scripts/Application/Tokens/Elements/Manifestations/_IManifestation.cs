@@ -37,7 +37,7 @@ namespace SecretHistories
         
         void Initialise(IManifestable manifestable);
 
-        void UpdateVisuals(IManifestable manifestable);
+        void UpdateVisuals(IManifestable manifestable,Sphere sphere);
         void UpdateLocalScale(Vector3 newScale);
         void OnBeginDragVisuals(Token token);
         void OnEndDragVisuals(Token token);

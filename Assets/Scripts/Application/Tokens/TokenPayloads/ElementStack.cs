@@ -18,6 +18,7 @@ using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.NullObjects;
 using Assets.Logic;
+using Assets.Scripts.Application.Entities.NullEntities;
 using Assets.Scripts.Application.Infrastructure.Events;
 using SecretHistories.Abstract;
 using SecretHistories.Commands.SituationCommands;
@@ -332,7 +333,7 @@ namespace SecretHistories.UI {
         public void InitialiseManifestation(IManifestation _manifestation)
         {
             _manifestation.Initialise(this);
-            _manifestation.UpdateVisuals(this);
+            _manifestation.UpdateVisuals(this,NullSphere.Create());
         }
 
         virtual public void SetMutation(string aspectId, int value, bool additive)

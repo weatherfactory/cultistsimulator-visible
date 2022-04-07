@@ -58,7 +58,7 @@ namespace SecretHistories.Manifestations
         }
 
   
-        public void UpdateVisuals(IManifestable manifestable)
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
         {
             UpdateTextFromManifestable(manifestable);
         }

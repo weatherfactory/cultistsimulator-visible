@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -193,7 +194,7 @@ namespace SecretHistories.Manifestations
                 _forceDisplayTimeRemaining = true;
             
             
-            UpdateVisuals(manifestable);
+            UpdateVisuals(manifestable,NullSphere.Create());
             
 
         }
@@ -219,7 +220,7 @@ namespace SecretHistories.Manifestations
             if (Decays())
                 _forceDisplayTimeRemaining = false;
 
-            UpdateVisuals(manifestable);
+            UpdateVisuals(manifestable,NullSphere.Create());
 
 
         }
@@ -265,7 +266,7 @@ namespace SecretHistories.Manifestations
             OnMetafictionalRetirement.Invoke(RetirementVFX.CardBurn);
         }
 
-        public void UpdateVisuals(IManifestable manifestable)
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
         {
             _entityId = manifestable.EntityId;
             _quantity = manifestable.Quantity;

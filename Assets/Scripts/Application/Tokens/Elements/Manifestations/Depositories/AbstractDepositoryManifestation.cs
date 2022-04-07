@@ -40,7 +40,7 @@ namespace SecretHistories.Manifestations
                 d.RegisterFor(manifestable);
         }
 
-        public void UpdateVisuals(IManifestable manifestable)
+        public void UpdateVisuals(IManifestable manifestable,Sphere sphere)
         {
 
         }

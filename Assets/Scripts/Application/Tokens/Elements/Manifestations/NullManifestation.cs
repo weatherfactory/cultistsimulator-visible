@@ -49,6 +49,11 @@ namespace SecretHistories.Manifestations
             //
         }
 
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
+        {
+            //
+        }
+
         public void UpdateLocalScale(Vector3 newScale)
         {
             //

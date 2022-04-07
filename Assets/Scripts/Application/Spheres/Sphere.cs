@@ -378,12 +378,14 @@ namespace SecretHistories.Spheres
             return rectTrans;
         }
 
-        public virtual void DisplayAndPositionHere(Token token, Context context)
+        protected void DisplayHere(Token token)
         {
             token.Manifest();
-
-
-           token.transform.SetParent(transform,true); //'true' is the default: specifying for clarity in case I revisit
+            token.transform.SetParent(transform, true); //'true' is the default: specifying for clarity in case I revisit
+        }
+        public virtual void DisplayAndPositionHere(Token token, Context context)
+        {
+            DisplayHere(token);
 
             token.transform.localRotation = Quaternion.identity;
             token.SetLocalScale(Vector3.one);
@@ -599,7 +601,7 @@ namespace SecretHistories.Spheres
     public virtual void AcceptToken(Token token, Context context)
         {
             
-            token.SetSphere(this, context);
+            token.SetSphere(this, context); //visuals are updated here
 
             if (token.Defunct) //possibly the token was destroyed as it left the previous sphere - eg by a consuming angel.
                 return;

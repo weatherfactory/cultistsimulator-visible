@@ -170,9 +170,9 @@ namespace SecretHistories.UI {
 
         protected void UpdateVisuals(ITokenPayload payload)
         {
-            _manifestation.UpdateVisuals(Payload);
+            _manifestation.UpdateVisuals(Payload, Sphere);
             if (_ghost != null)
-                _ghost.UpdateVisuals(_payload);
+                _ghost.UpdateVisuals(_payload, Sphere);
         }
 
 
@@ -536,7 +536,7 @@ namespace SecretHistories.UI {
             {
                 oldSphere.RemoveToken(this,context);
                 if (oldSphere.ContentsHidden && !newSphere.ContentsHidden)
-                    UpdateVisuals(Payload);
+                    UpdateVisuals(Payload); 
             }
             FullPathAsString = new FucinePath(newSphere.GetAbsolutePath() + PayloadId).ToString();
         }

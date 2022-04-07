@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Abstract;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
@@ -102,13 +103,13 @@ namespace SecretHistories.Manifestations
 
             Fader.SetStatesForFinalAlpha(0f); //make it invisible; alpha isn't set to 0 cos it's a nuisance when editing the prefab
             Fader.Show();
-    UpdateVisuals(manifestable);
+    UpdateVisuals(manifestable,NullSphere.Create());
 
     soleDominion.RegisterFor(manifestable);
             
         }
 
-        public void UpdateVisuals(IManifestable manifestable)
+        public void UpdateVisuals(IManifestable manifestable, Sphere sphere)
         {
             string art = manifestable.Icon;
 

@@ -19,6 +19,8 @@ namespace SecretHistories.Manifestations
     [RequireComponent(typeof(RectTransform))]
     public class BookcaseManifestation: AbstractDepositoryManifestation, IManifestation
     {
+
+
         public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.LargePhysicalObject;
     }
 }
