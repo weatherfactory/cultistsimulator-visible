@@ -31,6 +31,39 @@ public class SettingObserverForConfig : ISettingSubscriber
     }
 }
 
+public class SettingArrayObserverForConfig : ISettingSubscriber
+{
+    private readonly Setting _setting;
+    private readonly Config _config;
+
+    public SettingArrayObserverForConfig(Setting setting, Config config)
+    {
+        _setting = setting;
+        _config = config;
+    }
+
+    public void BeforeSettingUpdated(object oldValue)
+    {
+        //each time on value change, we remove the old value before adding the new one
+        _config.RemoveEntryFromConfigArray(_setting.TargetConfigArray, _setting.GetInnerLabelForValue(oldValue));
+    }
+
+    public void WhenSettingUpdated(object newValue)
+    {
+        string valueInArray = _setting.GetInnerLabelForValue(newValue);
+        if (valueInArray == string.Empty)
+        {
+            _config.RemoveConfigValue(_setting.Id);
+        }
+        else
+        {
+            _config.AddEntryToConfigArray(_setting.TargetConfigArray, valueInArray);
+            //in addition to storing the value in array, we store the Setting value normally - so the Setting knows it on startup, so it displays appropriate value in the menu, so it behaves accordingly
+            _config.PersistConfigValue(_setting.Id, newValue.ToString());
+        }
+    }
+}
+
 [Immanence(typeof(Config))]
 public class Config
 {
@@ -280,6 +313,47 @@ public class Config
         return dictToPopulate;
     }
 
+    public void AddEntryToConfigArray(string key, string value)
+    {
+        //arrays are stored in the ini files as
+        //"key = ,value1,value2,value3,"
+        //they always start with ',' and end with ',' - to separate each value clearly
+        value = string.Concat(value, ',');
+        string currentValue = GetConfigValue(key) ?? ",";
+
+        //it's tempting to check whether the value is already present in array and don't add it if yes, but I can see cases where having several of the same can be required
+        PersistConfigValue(key, string.Concat(currentValue, value));
+    }
+
+    public void RemoveEntryFromConfigArray(string key, string valueToRemove)
+    {
+        valueToRemove = string.Concat(",", valueToRemove, ",");
+        string currentValue = GetConfigValue(key) ?? string.Empty;
+
+        //need to remove only the first occurence, since there can be others from other Settings 
+        int position = currentValue.IndexOf(valueToRemove);
+        if (position > -1)
+        {
+            // replacing the entry with a ',' - not an empty string - so each entry is still clearly separated by commas
+            currentValue = currentValue.Remove(position, valueToRemove.Length).Insert(position, ",");
+
+            if (currentValue == ",")
+                RemoveConfigValue(key);
+            else
+                PersistConfigValue(key, currentValue);
+        }
+    }
+
+    //since user-defined configs can be many and can be accidental, better to have the ability to remove them
+    public void RemoveConfigValue(string key)
+    {
+        if (_configValues.ContainsKey(key))
+        {
+            _configValues.Remove(key);
+            PersistConfigValuesToIniFile();
+        }
+
+    }
 
     private string DetermineMostSuitableCultureId()
     {
