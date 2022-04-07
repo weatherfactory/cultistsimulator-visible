@@ -387,7 +387,7 @@ namespace SecretHistories.Spheres
         {
             DisplayHere(token);
 
-            token.transform.localRotation = Quaternion.identity;
+        //    token.transform.localRotation = Quaternion.identity; <-- I think this is redundant because we now use predrag rotation
             token.SetLocalScale(Vector3.one);
       
             Choreographer.PlaceTokenAsCloseAsPossibleToSpecifiedPosition(token,context,token.TokenRectTransform.anchoredPosition);

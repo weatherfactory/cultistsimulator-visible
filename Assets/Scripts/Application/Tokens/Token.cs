@@ -170,6 +170,8 @@ namespace SecretHistories.UI {
 
         protected void UpdateVisuals(ITokenPayload payload)
         {
+            if (Sphere.ContentsHidden)
+                return;
             _manifestation.UpdateVisuals(Payload, Sphere);
             if (_ghost != null)
                 _ghost.UpdateVisuals(_payload, Sphere);
@@ -475,6 +477,8 @@ namespace SecretHistories.UI {
             if (_manifestation == null)
                 _manifestation = Watchman.GetOrInstantiate<NullManifestation>(TokenRectTransform);
 
+            
+
             if (Sphere != null) //OKAY JUST THIS ONCE WE'RE DOING A NULL TEST. It's a headache trying to get a null sphere into the mix.
             {
 
@@ -487,6 +491,8 @@ namespace SecretHistories.UI {
 
                     ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
                 }
+
+                UpdateVisuals(Payload);
 
             }
 
@@ -535,8 +541,8 @@ namespace SecretHistories.UI {
             if (oldSphere != null && oldSphere != newSphere)
             {
                 oldSphere.RemoveToken(this,context);
-                if (oldSphere.ContentsHidden && !newSphere.ContentsHidden)
-                    UpdateVisuals(Payload); 
+              //  if (oldSphere.ContentsHidden && !newSphere.ContentsHidden)
+              //      UpdateVisuals(Payload);  <--moved this to Manifest(). Leaving comment in case there was a reason I put it here.
             }
             FullPathAsString = new FucinePath(newSphere.GetAbsolutePath() + PayloadId).ToString();
         }
