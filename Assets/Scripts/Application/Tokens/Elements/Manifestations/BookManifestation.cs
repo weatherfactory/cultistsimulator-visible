@@ -45,9 +45,11 @@ namespace SecretHistories.Manifestations
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private GraphicFader _spineGlow;
 
-        private const string BACK_COVER_SUFFIX = "_b";
-        private const string SPINE_SUFFIX = "_";
 
+        private readonly Vector3 _eulerUpright = new Vector3(0, 0, 0);
+        private readonly Vector3 _eulerFlat = new Vector3(0, 0, 90);
+        private Vector2 nativeUprightSizeDelta;
+        private Vector2 nativeFlatSizeDelta;
         public override void Retire(RetirementVFX retirementVfx, Action callback)
         {
             Destroy(gameObject);
@@ -76,8 +78,11 @@ namespace SecretHistories.Manifestations
             name = "book_" + manifestable.Id;
             spineTitle.text = manifestable.Label;
             coverTitle.text = manifestable.Label;
-            
-          Understate(); //show the backgroundy, on-shelf version by default
+
+            nativeUprightSizeDelta = new Vector2(spineImage.sprite.texture.width, spineImage.sprite.texture.height);
+            nativeFlatSizeDelta = new Vector2(spineImage.sprite.texture.height, spineImage.sprite.texture.width);
+
+            Understate(); //show the backgroundy, on-shelf version by default
             UpdateVisuals(manifestable);
             
         }
@@ -93,22 +98,16 @@ namespace SecretHistories.Manifestations
             if (sphere.SphereCategory == SphereCategory.World)
             {
                 spine.transform.eulerAngles = new Vector3(0, 0, 90);
-                ReverseWidthAndHeight();
+                RectTransform.sizeDelta = nativeFlatSizeDelta;
             }
-            else
+            else 
             {
                 spine.transform.eulerAngles = new Vector3(0, 0, 0);
-                ReverseWidthAndHeight();
+                RectTransform.sizeDelta = nativeUprightSizeDelta;
             }
         }
 
-        private void ReverseWidthAndHeight()
-        {
-            var currentSizeDelta = RectTransform.sizeDelta;
-            Vector2 newSizeDelta = new Vector2(currentSizeDelta.y, currentSizeDelta.x);
-            RectTransform.sizeDelta = newSizeDelta;
-        }
-
+ 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
         {
            //

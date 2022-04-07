@@ -149,6 +149,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             //we have a blocker. Look for positions on top until we reach the max height, and if we find none look left and right.
 
             int maxItemsInPile = 5; //for example;
+            
             float placingTokenHeight = targetRect.height;
 
             var candidatePosition = closestWalkablePosition;

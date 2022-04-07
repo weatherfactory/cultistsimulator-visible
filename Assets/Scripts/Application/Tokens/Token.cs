@@ -175,6 +175,8 @@ namespace SecretHistories.UI {
             _manifestation.UpdateVisuals(Payload, Sphere);
             if (_ghost != null)
                 _ghost.UpdateVisuals(_payload, Sphere);
+
+            UpdateRectTransformSizeFromManifestation();
         }
 
 
@@ -328,10 +330,7 @@ namespace SecretHistories.UI {
             _payload.SetToken(this);
             name = _payload.Id + "_token";
   
-            Manifest(); //just changed this from Remanifest. Surely if we've set the payload, there shouldn't be a manifestation?
-            //so we don't need this overhead and leftover objects? but check again if this breaks CS
-
-            //Remanifest(RetirementVFX.None); //Originally I said: 'Remanifest not manifest. If we've just set a new payload, the manifestation type is very likely already the correct type for that sphere.'
+            Manifest(); 
         }
 
         public void SetPayloadWithExistingManifestation(ITokenPayload payload,IManifestation alreadyExtantManifestation)
@@ -1105,6 +1104,9 @@ namespace SecretHistories.UI {
 
         private void UpdateRectTransformSizeFromManifestation()
         {
+            if (TokenRectTransform.sizeDelta == _manifestation.RectTransform.sizeDelta)
+                return;
+
             TokenRectTransform.sizeDelta = new Vector2(_manifestation.RectTransform.sizeDelta.x,
                 _manifestation.RectTransform.sizeDelta.y);
             TokenRectTransform.anchorMin = _manifestation.RectTransform.anchorMax;
