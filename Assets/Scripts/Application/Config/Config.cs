@@ -255,6 +255,16 @@ public class Config
         return GetConfigValue(forId);
     }
 
+    /// <summary>
+    /// Returns all entries inside the config value as a string array.
+    /// </summary>
+    /// <param name="forId"></param>
+    /// <returns></returns>
+    public string[] GetConfigValueAsArray(string forId)
+    {
+        string configValue = GetConfigValue(forId) ?? string.Empty;
+        return configValue.Split(',', StringSplitOptions.RemoveEmptyEntries);
+    }
 
     private Dictionary<string,string> PopulateConfigValues(string configLocation)
     {
