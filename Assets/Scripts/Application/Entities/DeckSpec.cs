@@ -28,6 +28,9 @@ namespace SecretHistories.Entities
         [FucineValue(DefaultValue = "", Localise = true)]
         public string Description { get; set; }
 
+        [FucineValue(DefaultValue = "books")]
+        public string Cover { get; set; }
+
         [FucineValue("")]
       public string Comments { get; set; }
 

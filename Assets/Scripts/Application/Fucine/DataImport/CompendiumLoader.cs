@@ -167,6 +167,9 @@ public class CompendiumLoader
             modLocLoaders.Add(modLocLoader);
             }
         }
+
+        //should avoid doing that in CatalogueMods(), since it happens several times during load, and thus all images are loaded several times which is, ahem, sub-optimal
+        modManager.TryLoadImagesForEnabledMods(_log);
     }
 
     private string GetModCurrentlyRelevantLocPath(Mod mod, string locContentFolderForCulture)

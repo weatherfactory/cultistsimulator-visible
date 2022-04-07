@@ -36,6 +36,7 @@ namespace SecretHistories.Constants.Modding
 
         private readonly Dictionary<string, Mod> _cataloguedMods;
         private List<string> _enabledModsLoadOrder;
+        private Dictionary<string, Sprite> _images;
 
         public void LoadModDLLs()
         {
@@ -81,6 +82,7 @@ namespace SecretHistories.Constants.Modding
         public ModManager()
         {
             _cataloguedMods = new Dictionary<string, Mod>();
+            _images = new Dictionary<string, Sprite>();
         }
 
         public IEnumerable<Mod> GetCataloguedMods()
@@ -314,7 +316,6 @@ namespace SecretHistories.Constants.Modding
 
         if (!Directory.Exists(candidateLocFolder))
         {
-
             mod.CataloguingLog += " has no loc directory; ";
         }
         else
@@ -323,10 +324,18 @@ namespace SecretHistories.Constants.Modding
             mod.LocFolder = candidateLocFolder;
         }
 
-        if (TryLoadAllImages(mod, modFolder))
-            mod.CataloguingLog += " has a valid images directory; ";
-        else
+        var candidateImageFolder = Path.Combine(modFolder, "images");
+
+        if (!Directory.Exists(candidateImageFolder))
+        {
             mod.CataloguingLog += " has no valid images directory; ";
+        }
+        else
+        {
+            mod.CataloguingLog += " has a valid images directory; ";
+            mod.ImageFolder = candidateImageFolder;
+        }
+            
 
 
         mod.ModInstallType = modInstallTypeForLocation;
@@ -415,16 +424,11 @@ namespace SecretHistories.Constants.Modding
 
         public Sprite GetSprite(string spriteResourceName)
         {
-            
-            foreach (var mod in _cataloguedMods.Values)
-            {
-                if (mod.Enabled && mod.Images.ContainsKey(spriteResourceName))
-                {
-                    return mod.Images[spriteResourceName];
-                }
-            }
-
-            return null;
+            spriteResourceName = SlashInvariant(spriteResourceName);
+            if (_images.ContainsKey(spriteResourceName))
+                return _images[spriteResourceName];
+            else
+                return null;
         }
 
 
@@ -443,27 +447,52 @@ namespace SecretHistories.Constants.Modding
 
 
 
-        private bool TryLoadAllImages(Mod mod, string modPath)
+        public void TryLoadImagesForEnabledMods(ContentImportLog log)
         {
-
-            var imagesFolderForMod = Path.Combine(modPath, "images");
-            // Search all subdirectories for more image files
-            
-            if (Directory.Exists(imagesFolderForMod))
+            foreach (Mod mod in GetEnabledModsInLoadOrder())
             {
-                var imageFiles = GetFilesRecursive(imagesFolderForMod, ".png");
-                if (!imageFiles.Any())
-                    return false;
+                // Search all subdirectories for more image files
+                if (mod.HasValidImageFolder())
+                {
+                    var imageFiles = GetFilesRecursive(mod.ImageFolder, ".png");
 
-                foreach (var imageFile in imageFiles)
-                    mod.LoadImage(imageFile);
-
-                return true;
+                    foreach (var imageFile in imageFiles)
+                        LoadImage(mod.ModRootFolder, imageFile, log);
+                }
             }
-            else
-                return false;
         }
 
+        private void LoadImage(string rootFolder, string imageFilePath, ContentImportLog log)
+        {
+            //need to determine the subfolder tidily, to avoid absolute path problem for image key
+
+            Sprite spriteToLoad;
+
+            //we don't want the absolute root in here, because later we'll match it against relative locations for core images
+            string relativePath = imageFilePath.Replace(rootFolder, string.Empty);
+
+            string relativePathWithoutFileExtension = relativePath.Replace(Path.GetFileName(relativePath),
+                Path.GetFileNameWithoutExtension(relativePath));
+
+            string relativePathWithoutLeadingSlash = relativePathWithoutFileExtension.Remove(0, 1);
+
+            try
+            {
+                spriteToLoad = LoadSprite(imageFilePath);
+            }
+            catch
+            {
+                log.LogWarning($"Invalid image file '{imageFilePath}'");
+                return;
+            }
+
+            string relativePathUnified = SlashInvariant(relativePathWithoutLeadingSlash);
+            NoonUtility.LogWarning(relativePathUnified);
+            if (_images.ContainsKey(relativePathUnified))
+                log.LogWarning($"Duplicate image {imageFilePath} in {rootFolder}; previously loaded image will be overwritten.");
+            //setting the value directly, without Add(), so earlier Images with the same name are overwritten (allowing mods to change images used in other mods)
+            _images[relativePathUnified] = spriteToLoad;
+        }
 
         private Sprite LoadSprite(string imagePath)
         {
@@ -486,6 +515,14 @@ namespace SecretHistories.Constants.Modding
             sprite = Sprite.Create(
                 texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             return sprite;
+        }
+
+        private string SlashInvariant(string pathToAsset)
+        {
+            //to avoid any possible confusion between slashes, we replace all '/', if they are somehow present, into '\\'
+            //it's irrelevant what changed into what, we just need to make sure only one will be present when we're both storing and retrieving an asset
+            //(currently used only in LoadImage() and GetSprite())
+            return pathToAsset.Replace('/', '\\');
         }
 
         public void SwapModsInLoadOrderAndPersistToFile(int thisModIndex, int swapWithModIndex)

@@ -23,7 +23,7 @@ public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnter
     {
 
         _deckEffect = deckEffect;
-        deckBack.sprite = ResourcesManager.GetSpriteForCardBack(_deckEffect.DeckSpec.Id); 
+        deckBack.sprite = ResourcesManager.GetSpriteForCardBack(_deckEffect.DeckSpec.Cover); 
 
         deckQuantity.gameObject.SetActive(deckEffect.Draws > 1);
         deckQuantity.text = (deckEffect.Draws > 1 ? deckEffect.Draws.ToString() : null);

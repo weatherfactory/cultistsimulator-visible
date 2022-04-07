@@ -33,12 +33,12 @@ namespace SecretHistories.Constants.Modding
         string DescriptionLong { get; set; }
         List<Dependency> Dependencies { get; set; }
         Dictionary<string, List<Hashtable>> Contents { get; set; }
-        Dictionary<string, Sprite> Images { get; set; }
         bool Enabled { get; set; }
         string ModRootFolder { get; set; }
         string PublishedFileIdPath { get; }
         string ContentFolder { get; set; }
         string LocFolder { get; set; }
+        string ImageFolder { get; set; }
         string CataloguingLog { get; set; }
         bool IsValid { get; }
         ModInstallType ModInstallType { get; set; }
@@ -72,8 +72,6 @@ namespace SecretHistories.Constants.Modding
         public List<Dependency> Dependencies { get; set; }
 
         public Dictionary<string, List<Hashtable>> Contents { get; set; }
-
-        public Dictionary<string, Sprite> Images { get; set; }
         
         public bool Enabled { get; set; }
 
@@ -86,6 +84,8 @@ namespace SecretHistories.Constants.Modding
 
         public string ContentFolder { get; set; }
         public string LocFolder { get; set; }
+
+        public string ImageFolder { get; set; }
 
         public string CataloguingLog { get; set; }
 
@@ -110,7 +110,6 @@ namespace SecretHistories.Constants.Modding
 
             Dependencies =  new List<Dependency>();
             Contents = new Dictionary<string, List<Hashtable>>();
-            Images = new Dictionary<string, Sprite>();
             Enabled = false;
             IsValid = true;
         }
@@ -220,65 +219,14 @@ namespace SecretHistories.Constants.Modding
         }
 
 
-        public bool LoadImage(string imageFilePath)
-        {
-            //need to determine the subfolder tidily, to avoid absolute path problem for image key
-
-            Sprite spriteToLoad;
-
-            
-            //we don't want the absolute root in here, because later we'll match it against relative locations for core images
-            string relativePath = imageFilePath.Replace(ModRootFolder, string.Empty);
-
-            
-            string relativePathWithoutFileExtension = relativePath.Replace(Path.GetFileName(relativePath),
-                Path.GetFileNameWithoutExtension(relativePath));
-
-            string relativePathWithoutLeadingSlash = relativePathWithoutFileExtension.Remove(0, 1);
-
-            try
-            {
-                spriteToLoad = LoadSprite(imageFilePath);
-            }
-            catch
-            {
-                NoonUtility.Log(
-                    "Invalid image file '" + imageFilePath + "'",
-                    2);
-                return false;
-            }
-
-            Images.Add(relativePathWithoutLeadingSlash, spriteToLoad);
-
-            return true;
-        }
-
-        private Sprite LoadSprite(string imagePath)
-        {
-            Sprite sprite;
-
-            if (!File.Exists(imagePath))
-                return null;
-
-            var fileData = File.ReadAllBytes(imagePath);
-
-            // Try to load the image data into a sprite
-
-
-            var texture = new Texture2D(2, 2);
-            texture.LoadImage(fileData);
-            texture.filterMode = FilterMode.Trilinear;
-            texture.anisoLevel = 9;
-            texture.mipMapBias = (float)-0.5;
-            texture.Apply();
-            sprite = Sprite.Create(
-                texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            return sprite;
-        }
-
         public bool HasValidLocFolder()
         {
             return (LocFolder != null);
+        }
+
+        public bool HasValidImageFolder()
+        {
+            return (ImageFolder != null);
         }
 
         public bool TryLoadAssembly(string fromPath)
