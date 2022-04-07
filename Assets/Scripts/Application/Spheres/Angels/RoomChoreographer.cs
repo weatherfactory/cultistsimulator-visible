@@ -54,7 +54,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
             Vector2 closestPosition = GetClosestFreeLocalPosition(token, targetPosition);
 
-            token.TokenRectTransform.localPosition = closestPosition;
+            token.TokenRectTransform.anchoredPosition3D = closestPosition;
         }
 
         public override LegalPositionCheckResult IsLegalPlacement(Rect candidateRect, Token placingToken)
@@ -131,49 +131,58 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         private Vector2 ClosestLegalStackablePositionFor(Token token, Vector2 startPositionLocal)
         {
-            if (!_floors.Any())
+
+            var closestWalkablePosition = GetClosestPositionOnAWalkableSurface(token, startPositionLocal);
+            var targetRect = token.GetRectFromPosition(closestWalkablePosition);
+            var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
+            if (legalPositionCheckResult.IsLegal)
+                return closestWalkablePosition;
+     
+            if(legalPositionCheckResult.Legality == PositionLegality.OutOfBounds)
             {
-                NoonUtility.LogWarning($"No walkable floors or ladders in {Sphere.name}; defaulting to zero vector");
+                NoonUtility.Log(
+                    $"Choreographer: Position sought for {token.name}) was out of bounds! Just putting it at zero", 1);
+
                 return Vector2.zero;
             }
 
-            WalkableFloor closestFloor = null;
+            //we have a blocker. Look for positions on top until we reach the max height, and if we find none look left and right.
 
-            float flooryDifference = float.PositiveInfinity;
-            foreach (var f in _floors)
+            int maxItemsInStack = 5; //for example;
+            float placingTokenHeight = targetRect.height;
+
+            var candidatePosition = closestWalkablePosition;
+
+            //start at left, offset to right until we have no collisions either in the row sphere or in its world overlap
+            int failedPlacementAttempts = 0;
+            var placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
+            while (failedPlacementAttempts < maxItemsInStack && !placementIsLegal.IsLegal)
             {
-                if (!f.TokenAllowedHere(token))
-                    continue;
-                var floorY = f.gameObject.transform.localPosition.y;
-                if (Math.Abs(floorY - startPositionLocal.y) < flooryDifference)
-                {
-                    flooryDifference = Math.Abs(floorY - startPositionLocal.y);
-                    closestFloor = f;
-                }
+                candidatePosition.y += placingTokenHeight;
+                failedPlacementAttempts++;
+                placementIsLegal = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
             }
 
-            if (closestFloor != null)
-            {
-                var positionAtFloorLevel = new Vector2(startPositionLocal.x,
-                    closestFloor.gameObject.transform.localPosition.y);
-                return positionAtFloorLevel;
-            }
+
+            if (placementIsLegal.IsLegal)
+                return candidatePosition;
+
             else
             {
-                NoonUtility.LogWarning(
-                    $"Couldn't decide a closest walkable surface in {Sphere.name}; defaulting to zero vector");
+                //giving up. Which isn't a long-term solution
                 return Vector2.zero;
             }
+            
 
         }
 
-        private Vector2 GetClosestPositionOnAWalkableSurface(Token token, Vector2 startPositionLocal)
+        private Vector3 GetClosestPositionOnAWalkableSurface(Token token, Vector2 startPositionLocal)
         {
 
             if (!_floors.Any() && !_ladders.Any())
             {
                 NoonUtility.LogWarning($"No walkable floors or ladders in {Sphere.name}; defaulting to zero vector");
-                return Vector2.zero;
+                return Vector3.zero;
             }
 
 
@@ -211,7 +220,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             if (closestLadder != null && ladderXDifference < flooryDifference)
             {
                 var positionOnLadder =
-                    new Vector2(closestLadder.gameObject.transform.localPosition.x,
+                    new Vector2(closestLadder.anchorX,
                         startPositionLocal.y);
                 return positionOnLadder;
             }
@@ -221,14 +230,14 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                  float.PositiveInfinity) //second condition is redundant, but keeping it here in case of accident
             {
                 var positionAtFloorLevel = new Vector2(startPositionLocal.x,
-                    closestFloor.gameObject.transform.localPosition.y);
+                    closestFloor.anchorY);
                 return positionAtFloorLevel;
             }
             else
             {
                 NoonUtility.LogWarning(
                     $"Couldn't decide a closest walkable surface in {Sphere.name}; defaulting to zero vector");
-                return Vector2.zero;
+                return Vector3.zero;
             }
         }
     }

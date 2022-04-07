@@ -42,6 +42,13 @@
 
     public enum Interaction { OnClicked, OnReceivedADrop, OnPointerEntered, OnPointerExited, OnDoubleClicked, OnRightClicked,OnDragBegin, OnDrag, OnDragEnd }
 
+
+    public enum PositionLegality
+    {
+       OK=1,
+       Blocked=2,
+       OutOfBounds=3
+    }
     public enum MorphEffectType
     {
         Transform = 1,
