@@ -92,13 +92,21 @@ namespace SecretHistories.Manifestations
             //we might be able to use this for the Emphasise/Understate stuff too
             if (sphere.SphereCategory == SphereCategory.World)
             {
-
-                RectTransform.eulerAngles = new Vector3(0, 0, 90);
+                spine.transform.eulerAngles = new Vector3(0, 0, 90);
+                ReverseWidthAndHeight();
             }
             else
             {
-                RectTransform.eulerAngles = new Vector3(0, 0, 0);
+                spine.transform.eulerAngles = new Vector3(0, 0, 0);
+                ReverseWidthAndHeight();
             }
+        }
+
+        private void ReverseWidthAndHeight()
+        {
+            var currentSizeDelta = RectTransform.sizeDelta;
+            Vector2 newSizeDelta = new Vector2(currentSizeDelta.y, currentSizeDelta.x);
+            RectTransform.sizeDelta = newSizeDelta;
         }
 
         public void Highlight(HighlightType highlightType, IManifestable manifestable)
