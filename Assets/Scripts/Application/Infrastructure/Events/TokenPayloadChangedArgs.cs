@@ -12,6 +12,7 @@ namespace Assets.Scripts.Application.Infrastructure.Events
 {
     public class TokenPayloadChangedArgs
     {
+        public Token Token { get; set; }
         public ITokenPayload Payload { get; set; }
         public PayloadChangeType ChangeType { get; set; }
         public Context Context { get; set; }

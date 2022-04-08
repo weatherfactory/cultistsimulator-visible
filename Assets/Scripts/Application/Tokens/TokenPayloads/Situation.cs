@@ -894,13 +894,17 @@ namespace SecretHistories.Entities {
         if(_token==null)
             OpenAt(TokenLocation.Default(GetAbsolutePath()));
         else
+        {
             OpenAt(_token.Location);
+        }
+            
         }
 
         public void OpenAt(TokenLocation location)
     {
            IsOpen = true;
            var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Opening,location);
+           changeArgs.Token = _token; //might need this to avoid window opening overlaps
            OnChanged?.Invoke(changeArgs);
            var meniscate= Watchman.Get<Meniscate>();
            meniscate.CloseAllSituationWindowsExcept(VerbId);

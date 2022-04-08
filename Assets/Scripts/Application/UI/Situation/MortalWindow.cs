@@ -128,10 +128,11 @@ namespace SecretHistories.UI
 
             //This slightly obscurely named method is now where we open and close the window
 
+            
             if (args.ChangeType == PayloadChangeType.Retirement)
                 Retire();
             if (args.ChangeType == PayloadChangeType.Opening && !this.IsVisible)
-                PayloadRequestsShow(args.Payload.GetRectTransform().position);
+                PayloadRequestsShow(args);
 
             if (args.ChangeType == PayloadChangeType.Closing && this.IsVisible)
                 PayloadRequestsHide();
@@ -153,20 +154,31 @@ namespace SecretHistories.UI
         }
 
 
-        public void PayloadRequestsShow(Vector3 startPosition)
+        private void PayloadRequestsShow(TokenPayloadChangedArgs args)
         {
-            if (!IsVisible)
-            {
-                SoundManager.PlaySfx("SituationWindowShow");
+            if (IsVisible)
+                return;
+
+
+            //because of some co-ords quirk, the window is currently opening in a useful place? this will need revisiting later tho
+            //if (args.Token != null)
+            //{
+            //    var windowsSphere = args.Payload.GetWindowsSphere(); //bit of a long way round, but OK
+            //    var tokenRect=args.Token.GetRectInOtherSphere(windowsSphere);
+            //    var thisRect = gameObject.GetComponent<RectTransform>().rect;
+                
+            //}
+
+            SoundManager.PlaySfx("SituationWindowShow");
                 canvasGroupFader.Show();
-                positioner.Show(canvasGroupFader.durationTurnOn, startPosition); // Animates the window (position allows optional change in position)
+                positioner.Show(canvasGroupFader.durationTurnOn, args.AtLocation.Anchored3DPosition); // Animates the window (position allows optional change in position)
                 NotifySpheresChanged(new Context(Context.ActionSource.SphereReferenceLocationChanged));
-            }
+            
 
 
         }
 
-        public void PayloadRequestsHide()
+        private void PayloadRequestsHide()
         {
             if (IsVisible)
             {
