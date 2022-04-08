@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Commands;
 using SecretHistories.Entities;
 using SecretHistories.Enums;
+using SecretHistories.Manifestations;
 using SecretHistories.Spheres;
 using SecretHistories.States.TokenStates;
 using SecretHistories.UI;
@@ -196,6 +198,7 @@ namespace SecretHistories.UI
 
             }
 
-        }
+
+    }
     }
 

@@ -887,7 +887,11 @@ namespace SecretHistories.Spheres
 
         public virtual Type GetShabdaManifestation(Situation situation)
         {
-            return typeof(VerbManifestation);
+            var gameId = Watchman.Get<MetaInfo>().GameId;
+            if (gameId == GameId.CS)
+                return typeof(VerbManifestation);
+            else
+                return typeof(EdictManifestation);
         }
     }
 
