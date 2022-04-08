@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.Abstract;
 using SecretHistories.Enums;
 using SecretHistories.UI;
@@ -6,20 +10,14 @@ using UnityEngine;
 
 namespace SecretHistories.Assets.Scripts.Application.Spheres
 {
-    public class WalkableLadder : AbstractPlacementGuide
+    public class PileablesPlacementGuide : AbstractPlacementGuide
     {
-
-        // Use this for initialization
         public override bool TokenAllowedHere(Token token)
         {
-
             if (token.OccupiesSpaceAs() == OccupiesSpaceAs.Someone)
-                return true;
+                return false;
 
-            return false;
-
-
+            return true;
         }
     }
-    
 }

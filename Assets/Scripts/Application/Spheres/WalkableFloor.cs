@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SecretHistories.Spheres
 {
-    public class WalkableFloor : WalkablePathObject
+    public class WalkableFloor : AbstractPlacementGuide
     {
         
         public override bool TokenAllowedHere(Token token)

@@ -24,6 +24,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         private float GRID_HEIGHT=5f;
         private List<WalkableFloor> _floors;
         private List<WalkableLadder> _ladders;
+        private List<PileablesPlacementGuide> _ppGuides;
+
 
         public List<WalkableFloor> GetWalkableFloors()
         {
@@ -41,6 +43,8 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         {
             _floors = GetComponentsInChildren<WalkableFloor>().ToList();
             _ladders = GetComponentsInChildren<WalkableLadder>().ToList();
+            _ppGuides = GetComponentsInChildren<PileablesPlacementGuide>().ToList();
+
         }
 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
@@ -81,7 +85,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 startPositionLocal)
         {
-            if (token.OccupiesSpaceAs() == OccupiesSpaceAs.PhysicalObject)
+            if (token.OccupiesSpaceAs() == OccupiesSpaceAs.PhysicalObject || token.OccupiesSpaceAs() == OccupiesSpaceAs.LargePhysicalObject)
             {
                 return ClosestLegalPileablePositionFor(token, startPositionLocal);
             }
@@ -132,7 +136,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         private Vector2 ClosestLegalPileablePositionFor(Token token, Vector2 startPositionLocal)
         {
 
-            var closestWalkablePosition = GetClosestPositionOnAWalkableSurface(token, startPositionLocal);
+            var closestWalkablePosition = GetClosestPositionOnAPPGuide(token, startPositionLocal);
             var targetRect = token.GetRectFromPosition(closestWalkablePosition);
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
@@ -174,6 +178,49 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 return Vector2.zero;
             }
             
+
+        }
+
+        private Vector3 GetClosestPositionOnAPPGuide(Token token, Vector2 startPositionLocal)
+        {
+            
+            if (!_ppGuides.Any())
+            {
+                NoonUtility.LogWarning($"No walkable ppguides in {Sphere.name}; defaulting to zero vector");
+                return Vector3.zero;
+            }
+
+
+            PileablesPlacementGuide closestPPG = null;
+
+            float ppgYDifference = float.PositiveInfinity;
+            foreach (var f in _ppGuides)
+            {
+                if (!f.TokenAllowedHere(token))
+                    continue;
+                var ppGuideY = f.gameObject.transform.localPosition.y;
+                if (Math.Abs(ppGuideY - startPositionLocal.y) < ppgYDifference)
+                {
+                    ppgYDifference = Math.Abs(ppGuideY - startPositionLocal.y);
+                    closestPPG = f;
+                }
+            }
+
+            if
+                (closestPPG != null &&
+                 ppgYDifference <
+                 float.PositiveInfinity) //second condition is redundant, but keeping it here in case of accident
+            {
+                var positionAtPPGuideLevel = new Vector2(startPositionLocal.x,
+                    closestPPG.anchorY);
+                return positionAtPPGuideLevel;
+            }
+            else
+            {
+                NoonUtility.LogWarning(
+                    $"Couldn't decide a closest ppg surface in {Sphere.name}; defaulting to zero vector");
+                return Vector3.zero; ;
+            }
 
         }
 
