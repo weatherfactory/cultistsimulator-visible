@@ -19,12 +19,25 @@ namespace SecretHistories.Entities
 
         public ChoreoPosition(Vector2 vector2)
         {
+            LegalPositionCheckResult=LegalPositionCheckResult.Legal();
             Vector3 = vector2;
         }
 
         public ChoreoPosition(Vector3 vector3)
         {
             Vector3 = vector3;
+            LegalPositionCheckResult = LegalPositionCheckResult.Legal();
+        }
+
+        public ChoreoPosition(Vector3 vector3,LegalPositionCheckResult lpcr)
+        {
+            Vector3 = vector3;
+            LegalPositionCheckResult = lpcr;
+        }
+        public ChoreoPosition(Vector2 vector2, LegalPositionCheckResult lpcr)
+        {
+            Vector3 = vector2;
+            LegalPositionCheckResult = lpcr;
         }
     }
 }

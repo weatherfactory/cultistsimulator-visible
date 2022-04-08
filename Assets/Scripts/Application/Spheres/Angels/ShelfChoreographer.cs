@@ -90,7 +90,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 NoonUtility.Log($"Found nowhere to put token on shelf, even after {maxIterations} iterations");
             }
 
-            return new ChoreoPosition(candidatePosition);
+            return new ChoreoPosition(candidatePosition,positionLegality);
         }
     }
 }

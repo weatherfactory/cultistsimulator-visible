@@ -122,16 +122,20 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             //if we can't find any test rects before the end, reverse direction and try the other way.
             var alternateTestRects =
                 GetAlternativeCandidateRectsAlongVector(targetRect, -direction, 1, 50, GRID_WIDTH, GRID_HEIGHT);
+            
+            
             foreach (var altTestRect in alternateTestRects)
             {
-                if (IsLegalPlacement(altTestRect, token).IsLegal)
+                legalPositionCheckResult=IsLegalPlacement(altTestRect, token);
+
+                if (legalPositionCheckResult.IsLegal)
                     return new ChoreoPosition( altTestRect.position);
             }
 
             NoonUtility.Log(
                 $"Choreographer: No legal walkable position found for {token.name})! Returning null", 1);
 
-            return null;
+            return new ChoreoPosition(Vector2.zero, legalPositionCheckResult);
         }
 
         private ChoreoPosition ClosestLegalPileablePositionFor(Token token, Vector2 startPositionLocal)
@@ -148,7 +152,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 NoonUtility.Log(
                     $"Choreographer: Position sought for {token.name}) was out of bounds! Returning null", 1);
 
-                return null;
+                return new ChoreoPosition(Vector2.zero,legalPositionCheckResult);
             }
 
             //we have a blocker. Look for positions on top until we reach the max height, and if we find none look left and right.
@@ -176,7 +180,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             else
             {
                 //giving up. Which isn't a long-term solution
-                return null;
+                return new ChoreoPosition(Vector2.zero, placementIsLegal);
             }
             
 
