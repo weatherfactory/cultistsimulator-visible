@@ -48,8 +48,22 @@ namespace Assets.Scripts.Application.Meta
 
                 Context debugContext = new Context(Context.ActionSource.Debug);
 
-                _elementDrydock.ModifyElementQuantity(elementId, 1, debugContext);
+                var existingTokens = _elementDrydock.GetTokens();
+                Token mergeableToken=null;
+                foreach (var t in existingTokens)
+                {
+                    if(t.IsValidElementStack())
+                        if(t.Payload.EntityId==elementId)
+                            mergeableToken=t;
+                }
 
+                if (mergeableToken != null)
+                    mergeableToken.Payload.ModifyQuantity(1,debugContext);
+                else
+                    _elementDrydock.ModifyElementQuantity(elementId, 1, debugContext);
+
+                
+                
                 EncaustDrydockedItem(_elementDrydock.GetTokens().FirstOrDefault(), input);
             }
         }
