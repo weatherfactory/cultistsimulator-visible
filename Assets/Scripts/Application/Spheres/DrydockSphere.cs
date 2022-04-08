@@ -33,16 +33,11 @@ namespace SecretHistories.UI
             protected virtual UIStyle.GlowTheme GlowTheme => UIStyle.GlowTheme.Classic;
 
 
-            public override bool AllowStackMerge => false;
+            public override bool AllowStackMerge => true;
 
 
-            public override bool AllowDrag
-            {
-                get
-                {
-                    return !GoverningSphereSpec.Greedy;
-                }
-            }
+            public override bool AllowDrag => true;
+            
 
 
 

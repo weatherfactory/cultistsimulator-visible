@@ -37,35 +37,51 @@ namespace Assets.Scripts.Application.Meta
             {
                 var command = sh.DeserializeFromJsonString<TokenCreationCommand>(input.text);
                 command.Execute(Context.Unknown(),_elementDrydock);
+                var tokens = _elementDrydock.GetTokens().ToList();
+            
+                var first=tokens.FirstOrDefault();
+                var second = tokens.LastOrDefault();
+
+                if (first != null && second != null)
+                {
+                    if(first.CanMergeWithToken(second))
+                        first.Payload.InteractWithIncoming(second);
+                }
+
+                
             }
             else
             {
-                var elementId = input.text;
-                var element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
-
-                if (element.Id == NullElement.Create().Id)
-                    return;
-
-                Context debugContext = new Context(Context.ActionSource.Debug);
-
-                var existingTokens = _elementDrydock.GetTokens();
-                Token mergeableToken=null;
-                foreach (var t in existingTokens)
-                {
-                    if(t.IsValidElementStack())
-                        if(t.Payload.EntityId==elementId)
-                            mergeableToken=t;
-                }
-
-                if (mergeableToken != null)
-                    mergeableToken.Payload.ModifyQuantity(1,debugContext);
-                else
-                    _elementDrydock.ModifyElementQuantity(elementId, 1, debugContext);
-
-                
-                
-                EncaustDrydockedItem(_elementDrydock.GetTokens().FirstOrDefault(), input);
+                CreateElementFromBestGuessOfElementId();
             }
+        }
+
+        private void CreateElementFromBestGuessOfElementId()
+        {
+            var elementId = input.text;
+            var element = Watchman.Get<Compendium>().GetEntityById<Element>(elementId);
+
+            if (element.Id == NullElement.Create().Id)
+                return;
+
+            Context debugContext = new Context(Context.ActionSource.Debug);
+
+            var existingTokens = _elementDrydock.GetTokens();
+            Token mergeableToken = null;
+            foreach (var t in existingTokens)
+            {
+                if (t.IsValidElementStack())
+                    if (t.Payload.EntityId == elementId)
+                        mergeableToken = t;
+            }
+
+            if (mergeableToken != null)
+                mergeableToken.Payload.ModifyQuantity(1, debugContext);
+            else
+                _elementDrydock.ModifyElementQuantity(elementId, 1, debugContext);
+
+
+            EncaustDrydockedItem(_elementDrydock.GetTokens().FirstOrDefault(), input);
         }
 
         public void DestroyDrydockedItem()
