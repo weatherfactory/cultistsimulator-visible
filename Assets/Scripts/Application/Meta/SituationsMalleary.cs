@@ -26,7 +26,7 @@ namespace Assets.Scripts.Application.Meta
    public class SituationsMalleary: MonoBehaviour,ISphereEventSubscriber, ISituationSubscriber
    {
        [SerializeField] private AutoCompletingInput input;
-       [SerializeField] private ThresholdSphere _situationDrydock;
+       [SerializeField] private DrydockSphere _situationDrydock;
        [SerializeField] private GameObject _linksPanel;
         [SerializeField] private LinkedRecipeDetailsDisplay _currentRecipeDetails;
        [SerializeField] private RecipeDetailsBrowser _altRecipeDetails;
@@ -109,7 +109,7 @@ namespace Assets.Scripts.Application.Meta
 
         public void AdvanceTimeToEndOfRecipe()
         {
-            var situationToken = _situationDrydock.GetTokenInSlot();
+            var situationToken = _situationDrydock.GetTokens().FirstOrDefault();
             if(situationToken.Payload!=null)
             {
             var timeRemaining = situationToken.Payload.GetTimeshadow().LifetimeRemaining;
@@ -120,7 +120,7 @@ namespace Assets.Scripts.Application.Meta
 
         public void AddNote()
         {
-            var situation = _situationDrydock.GetTokenInSlot().Payload;
+            var situation = _situationDrydock.GetTokens().FirstOrDefault().Payload;
             string title = "!";
             string description = input.text;
    
@@ -134,7 +134,7 @@ namespace Assets.Scripts.Application.Meta
 
         public void DestroyDrydockedToken()
         {
-            var token = _situationDrydock.GetTokenInSlot();
+            var token = _situationDrydock.GetTokens().FirstOrDefault();
             if(token!=null)
                 token.Retire(RetirementVFX.None);
         }

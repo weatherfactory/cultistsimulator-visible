@@ -23,7 +23,7 @@ namespace Assets.Scripts.Application.Meta
     public class ElementsMalleary: MonoBehaviour,ISphereEventSubscriber
     {
         [SerializeField] private AutoCompletingInput input;
-      [SerializeField]  private ThresholdSphere _elementDrydock;
+      [SerializeField]  private DrydockSphere _elementDrydock;
 
         public void Awake()
         {
@@ -50,25 +50,25 @@ namespace Assets.Scripts.Application.Meta
 
                 _elementDrydock.ModifyElementQuantity(elementId, 1, debugContext);
 
-                EncaustDrydockedItem(_elementDrydock.GetElementTokenInSlot(), input);
+                EncaustDrydockedItem(_elementDrydock.GetTokens().FirstOrDefault(), input);
             }
         }
 
         public void DestroyDrydockedItem()
         {
             if(_elementDrydock.Tokens.Any())
-             _elementDrydock.GetElementTokenInSlot().Retire(RetirementVFX.CardTakenShadow);
+             _elementDrydock.GetTokens().FirstOrDefault().Retire(RetirementVFX.CardTakenShadow);
         }
 
         public void Mutate()
         {
-            var elementToken = _elementDrydock.GetElementTokenInSlot();
+            var elementToken = _elementDrydock.GetTokens().FirstOrDefault();
             elementToken.Payload.SetMutation(input.text, 1,true);
         }
 
         public void Unmutate()
         {
-            var elementToken = _elementDrydock.GetElementTokenInSlot();
+            var elementToken = _elementDrydock.GetTokens().FirstOrDefault();
             elementToken.Payload.SetMutation(input.text, -1, true);
         }
 
