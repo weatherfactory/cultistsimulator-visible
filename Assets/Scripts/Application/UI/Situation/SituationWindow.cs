@@ -134,7 +134,7 @@ namespace SecretHistories.UI {
             if (args.ChangeType==PayloadChangeType.Retirement)
                 Retire();
             if(args.ChangeType==PayloadChangeType.Opening && !this.IsVisible)
-                PayloadRequestsShow(args.Payload.GetRectTransform().position);
+                PayloadRequestsShow(args.AtLocation.Anchored3DPosition);
 
             if (args.ChangeType == PayloadChangeType.Closing && this.IsVisible)
                 PayloadRequestsHide();

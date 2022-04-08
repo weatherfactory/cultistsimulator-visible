@@ -897,11 +897,10 @@ namespace SecretHistories.Entities {
             OpenAt(_token.Location);
         }
 
-
         public void OpenAt(TokenLocation location)
     {
            IsOpen = true;
-           var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Opening);
+           var changeArgs = new TokenPayloadChangedArgs(this, PayloadChangeType.Opening,location);
            OnChanged?.Invoke(changeArgs);
            var meniscate= Watchman.Get<Meniscate>();
            meniscate.CloseAllSituationWindowsExcept(VerbId);
