@@ -75,7 +75,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 return base.CanTokenBeIgnored(token);
             }
 
-            public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 startPos)
+            public override ChoreoPosition GetClosestFreeLocalPosition(Token token, Vector2 startPos)
             {
 
                 float sphereWidth = Sphere.GetRectTransform().rect.width;
@@ -110,7 +110,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                         candidatePosition.x += tokenWidth + InternalSpacing;
                 }
 
-                return candidatePosition;
+                return new ChoreoPosition(candidatePosition);
 
             }
 

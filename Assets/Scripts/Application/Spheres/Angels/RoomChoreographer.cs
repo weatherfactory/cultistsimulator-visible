@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Assets.Scripts.Application.Abstract;
 using SecretHistories.Choreographers;
+using SecretHistories.Entities;
 using SecretHistories.Enums;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
@@ -50,13 +51,13 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
         {
             var defaultPosition = Vector3.zero;
-            token.TokenRectTransform.anchoredPosition3D = GetClosestFreeLocalPosition(token, defaultPosition);
+            token.TokenRectTransform.anchoredPosition3D = GetClosestFreeLocalPosition(token, defaultPosition).Vector3;
         }
 
         public override void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 targetPosition)
         {
 
-            Vector2 closestPosition = GetClosestFreeLocalPosition(token, targetPosition);
+            Vector2 closestPosition = GetClosestFreeLocalPosition(token, targetPosition).Vector3;
 
             token.TokenRectTransform.anchoredPosition3D = closestPosition;
         }
@@ -83,7 +84,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             return LegalPositionCheckResult.Legal();
         }
 
-        public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 startPositionLocal)
+        public override ChoreoPosition GetClosestFreeLocalPosition(Token token, Vector2 startPositionLocal)
         {
             if (token.OccupiesSpaceAs() == OccupiesSpaceAs.PhysicalObject || token.OccupiesSpaceAs() == OccupiesSpaceAs.LargePhysicalObject)
             {
@@ -93,14 +94,14 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             return ClosestLegalWalkablePositionFor(token, startPositionLocal);
         }
 
-        private Vector2 ClosestLegalWalkablePositionFor(Token token, Vector2 startPositionLocal)
+        private ChoreoPosition ClosestLegalWalkablePositionFor(Token token, Vector2 startPositionLocal)
         {
             var closestWalkablePosition = GetClosestPositionOnAWalkableSurface(token, startPositionLocal);
 
             var targetRect = token.GetRectFromPosition(closestWalkablePosition);
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
-                return closestWalkablePosition;
+                return new ChoreoPosition(closestWalkablePosition);
 
 
             Vector2 direction;
@@ -115,7 +116,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             foreach (var testRect in testRects)
             {
                 if (IsLegalPlacement(testRect, token).IsLegal)
-                    return testRect.position;
+                    return new ChoreoPosition(testRect.position);
             }
 
             //if we can't find any test rects before the end, reverse direction and try the other way.
@@ -124,30 +125,30 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             foreach (var altTestRect in alternateTestRects)
             {
                 if (IsLegalPlacement(altTestRect, token).IsLegal)
-                    return altTestRect.position;
+                    return new ChoreoPosition( altTestRect.position);
             }
 
             NoonUtility.Log(
-                $"Choreographer: No legal walkable position found for {token.name})! Just putting it at zero", 1);
+                $"Choreographer: No legal walkable position found for {token.name})! Returning null", 1);
 
-            return Vector2.zero;
+            return null;
         }
 
-        private Vector2 ClosestLegalPileablePositionFor(Token token, Vector2 startPositionLocal)
+        private ChoreoPosition ClosestLegalPileablePositionFor(Token token, Vector2 startPositionLocal)
         {
 
             var closestWalkablePosition = GetClosestPositionOnAPPGuide(token, startPositionLocal);
             var targetRect = token.GetRectFromPosition(closestWalkablePosition);
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
-                return closestWalkablePosition;
+                return new ChoreoPosition(closestWalkablePosition);
      
             if(legalPositionCheckResult.Legality == PositionLegality.OutOfBounds)
             {
                 NoonUtility.Log(
-                    $"Choreographer: Position sought for {token.name}) was out of bounds! Just putting it at zero", 1);
+                    $"Choreographer: Position sought for {token.name}) was out of bounds! Returning null", 1);
 
-                return Vector2.zero;
+                return null;
             }
 
             //we have a blocker. Look for positions on top until we reach the max height, and if we find none look left and right.
@@ -170,12 +171,12 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
 
             if (placementIsLegal.IsLegal)
-                return candidatePosition;
+                return new ChoreoPosition(candidatePosition);
 
             else
             {
                 //giving up. Which isn't a long-term solution
-                return Vector2.zero;
+                return null;
             }
             
 

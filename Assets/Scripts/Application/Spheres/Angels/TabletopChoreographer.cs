@@ -55,7 +55,7 @@ namespace SecretHistories.Constants {
 
         public override void PlaceTokenAtFreeLocalPosition(Token token, Context context)
      {
-         token.TokenRectTransform.anchoredPosition = GetClosestFreeLocalPosition(token, Vector2.zero);
+         token.TokenRectTransform.anchoredPosition = GetClosestFreeLocalPosition(token, Vector2.zero).Vector3;
      }
 
 
@@ -65,7 +65,7 @@ namespace SecretHistories.Constants {
         /// </summary>
         public override void PlaceTokenAsCloseAsPossibleToSpecifiedPosition(Token token, Context context, Vector2 pos)
 {
-        Vector2 freeLocalPosition= GetClosestFreeLocalPosition(token, pos);
+        Vector3 freeLocalPosition= GetClosestFreeLocalPosition(token, pos);
     
             Vector3 finalPositionAtTableLevel=new Vector3(freeLocalPosition.x,freeLocalPosition.y, Sphere.transform.position.z);
             token.TokenRectTransform.localPosition = finalPositionAtTableLevel;
@@ -75,13 +75,13 @@ namespace SecretHistories.Constants {
 
 
 
-        public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 intendedPos)
+        public override ChoreoPosition GetClosestFreeLocalPosition(Token token, Vector2 intendedPos)
         {
             HideAllDebugRects(); //if we're beginning another attempt to find a free local position, hide all existing debug information
 
             if (token.CurrentState.Docked()) //Sometimes the token has been placed assertively or is already present, but has just been accepted into the tabletop sphere
                                              //- eg if calved. If so, don't worry about overlaps.
-                return intendedPos;
+                return new ChoreoPosition(intendedPos);
 
             Vector2 intendedPosClampedToTable = GetPosClampedToTable(intendedPos);
             
@@ -92,7 +92,7 @@ namespace SecretHistories.Constants {
             var legalPositionCheckResult = IsLegalPlacement(targetRect, token);
             if (legalPositionCheckResult.IsLegal)
             {
-                return intendedPosOnGrid;
+                return new ChoreoPosition(intendedPosOnGrid);
             }
     
 
@@ -105,7 +105,7 @@ namespace SecretHistories.Constants {
                 foreach (var testRect in testRects)
                 {
                     if (IsLegalPlacement(testRect, token).IsLegal)
-                        return testRect.center;
+                        return new ChoreoPosition(testRect.center);
                         //return testRect.position +
                         //       targetRect.size / 2f; //this assumes that the position is in the centre of the rect
                 }
@@ -116,7 +116,7 @@ namespace SecretHistories.Constants {
                 $"Choreographer: No legal tabletop position found for {token.name})! Just putting it at zero", 1);
 
 
-            return Vector2.zero;
+            return new ChoreoPosition(Vector2.zero);
 
         }
 

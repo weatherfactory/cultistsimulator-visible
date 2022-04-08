@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SecretHistories.Choreographers;
+using SecretHistories.Entities;
 using SecretHistories.Spheres.Angels;
 using SecretHistories.UI;
 using UnityEngine;
@@ -41,7 +42,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
 
         }
 
-        public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 originalIntendedPos)
+        public override ChoreoPosition GetClosestFreeLocalPosition(Token token, Vector2 originalIntendedPos)
         {
             float shelfWidth = Sphere.GetRectTransform().rect.width;
             float shelfHeight = Sphere.GetRectTransform().rect.height;
@@ -70,7 +71,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
          
             var positionLegality = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
             if (positionLegality.IsLegal)
-                return candidatePosition;
+                return new ChoreoPosition(candidatePosition);
 
             //first choice isn't legal, let's go looking.
 
@@ -81,7 +82,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 
                 positionLegality = IsLegalPlacement(token.GetRectFromPosition(candidatePosition), token);
                 if (positionLegality.IsLegal)
-                    return candidatePosition;
+                    return new ChoreoPosition(candidatePosition);
             }
 
             if (!positionLegality.IsLegal)
@@ -89,7 +90,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
                 NoonUtility.Log($"Found nowhere to put token on shelf, even after {maxIterations} iterations");
             }
 
-            return candidatePosition;
+            return new ChoreoPosition(candidatePosition);
         }
     }
 }

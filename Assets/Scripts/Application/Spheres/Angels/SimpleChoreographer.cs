@@ -7,6 +7,7 @@ using SecretHistories.Choreographers;
 using SecretHistories.UI;
 using SecretHistories.Constants;
 using SecretHistories.Elements;
+using SecretHistories.Entities;
 using SecretHistories.NullObjects;
 using UnityEngine;
 
@@ -38,9 +39,9 @@ namespace SecretHistories.Spheres.Angels
             return LegalPositionCheckResult.Legal();
         }
 
-        public override Vector2 GetClosestFreeLocalPosition(Token token, Vector2 centerPos)
+        public override ChoreoPosition GetClosestFreeLocalPosition(Token token, Vector2 centerPos)
         {
-            return Vector3.zero;
+            return new ChoreoPosition(Vector3.zero);
         }
     }
 }
