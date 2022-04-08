@@ -301,8 +301,13 @@ namespace SecretHistories.UI
                 return true;
             // TODO: refactor into more general Range logic in Sphere, along with similar code in Column
             //Get the home sphere location of this token.
+
+            var tokenHomeSphere = token.GetHomeSphere();
+            if (tokenHomeSphere.DragOutToAnyRange && token.CurrentlyBeingDragged())
+                return true;
+
             //Is it the same as this sphere?
-            if (token.GetHomeSphere() == this)
+            if (tokenHomeSphere == this)
                 //if so, display ghost.
                 return true;
             //Is this sphere's path contained in the home sphere's path

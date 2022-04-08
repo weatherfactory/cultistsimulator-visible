@@ -90,11 +90,15 @@ namespace SecretHistories.Spheres
                 return true;
             //Get the home sphere location of this token.
             //Is it the same as this sphere?
-            if (token.GetHomeSphere()==this)
-                //if so, display ghost.
+            var tokenHomeSphere = token.GetHomeSphere();
+            if (tokenHomeSphere == this)
                 return true;
+
+            if (tokenHomeSphere.DragOutToAnyRange && token.CurrentlyBeingDragged())
+                return true;
+
             //Is its path this sphere + lower down?
-            var homeSpherePath = token.GetHomeSphere().GetAbsolutePath();
+            var homeSpherePath = tokenHomeSphere.GetAbsolutePath();
             if (this.GetAbsolutePath().Contains(homeSpherePath))
                 return true;
 

@@ -28,10 +28,10 @@ namespace SecretHistories.UI
             public override SphereCategory SphereCategory => SphereCategory.Threshold;
 
             public override bool EmphasiseContents => true;
+            public override bool DragOutToAnyRange => true;
 
 
-            
-            public GraphicFader slotGlow;
+        public GraphicFader slotGlow;
             protected virtual UIStyle.GlowTheme GlowTheme => UIStyle.GlowTheme.Classic;
 
 

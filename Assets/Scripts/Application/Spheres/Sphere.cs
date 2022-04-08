@@ -68,6 +68,8 @@ namespace SecretHistories.Spheres
         [DontEncaust]
         public virtual bool AllowDrag { get; private set; }
         [DontEncaust]
+        public virtual bool DragOutToAnyRange=>false;
+        [DontEncaust]
         public virtual bool AllowStackMerge => true;
         [DontEncaust]
         public virtual bool AllowAmbientAnimations => false;
