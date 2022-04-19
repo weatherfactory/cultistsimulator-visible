@@ -46,7 +46,8 @@
                 "society": "fatigue",
                 "scar_ability": "scar_heart"
             },
-            "description": "これぞ我が体。世に多くの体があれど、これは我、唯一のもの。菌が土を必要とするように、我が心も体を必要とする。[活力が十分にあれば、もっと体力を獲得できる。]"
+            "description": "これぞ我が体。世に多くの体があれど、これは我、唯一のもの。菌が土を必要とするように、我が心も体を必要とする。[活力が十分にあれば、もっと体力を獲得できる。]",
+			"decayTo": "fatigue"
         },
         {
             "id": "vitality",
@@ -101,9 +102,10 @@
                 "moth": 2,
                 "memory": 1
             },
-            "description": "落ち着きのない切望を感じる。何か</i>を......したい気分だが、具体的には何を？",
+            "description": "落ち着きのない切望を感じる。<i>何か</i>を......したい気分だが、具体的には何を？",
             "lifetime": 60,
-            "decayTo": "dread"
+            "decayTo": "dread",
+			"burnTo": "preglimmering"
         },
         {
             "id": "bloodshed",
@@ -249,7 +251,8 @@
                 "ritual": "concentration",
                 "society": "concentration",
                 "scarability": "scar_lantern"
-            }
+            },
+			"decayTo": "concentration"
         },
         {
             "id": "concentration",
@@ -375,7 +378,8 @@
                 "toreason": "reason",
                 "ritual": "passionexhausted",
                 "society": "passionexhausted"
-            }
+            },
+			"decayTo": "passion"
         },
         {
             "id": "decrepitude",

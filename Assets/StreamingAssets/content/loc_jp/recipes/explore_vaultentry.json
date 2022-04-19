@@ -226,7 +226,7 @@
             "id": "explorevaultfailure_nofollowers",
             "actionid": "explore",
             "label": "誰も戻ってこない",
-            "startdescription": "遠征隊員は1人も残っていない助けを送らなければ、この遠征は終わりだ。",
+            "startdescription": "遠征隊員は1人も残っていない。助けを送らなければ、この遠征は終わりだ。",
             "description": "誰も戻ってこない。もう一度遠征を試みることはできる。同じ資源を再利用することも可能だ。",
             "requirements": {
                 "follower": -1
@@ -269,10 +269,6 @@
                 "notoriety": 1
             },
             "linked": [
-                {
-                    "id": "explorevaultcapital1_success",
-                    "chance": 100
-                },
                 {
                     "id": "explorevaultcapital1_success",
                     "chance": 100

@@ -97,14 +97,25 @@
                 }
             }
         },
-        {
-            "id": "time",
-            "label": "時間",
-            "description": "日時計の影。",
-            "slot": {
-                "id": "time",
-                "label": "時間"
-            }
+      {
+        "id": "time",
+        "label": "時間",
+        "description": "日時計の影。",
+        "slot": {
+          "id": "time",
+          "label": "時間"
         }
+      },
+      {
+        "id": "portal.mansus",
+        "label": "マンサスの扉",
+        "description": "マンサスへの移動",
+        "icon": "map"
+      },
+      {
+        "id": "pickup",
+        "label": "選択",
+        "description": "入手されたカード"
+      }
     ]
 }

@@ -159,7 +159,7 @@
             "id": "relinquish.convertyear",
             "actionid": "relinquish",
             "label": "慌てて現金を調達する",
-            "startdescription": "盗まれた命は、10年よりも年単位の方が簡単に売れる。必要な変更を行うための道具はあるが、慎重に筆を動かさなくてはいけない。太陽の前に現れる彼女は、いい加減な者には冷たい視線を向ける。[10年を売ることはできない。年は傷口の治癒には使えない。年を10年に戻すことはできない。]",
+            "startdescription": "寿命を売って直接現金に換えると、価格は低くなり、精算人の注目を集めてしまう。ちょうど良い代替案を見つけたら、できる限り少ない量を売るべきだ。",
             "description": "煙が充満する部屋、くしゃくしゃになった紙幣。うんざりしてきた。[作戦を使うと、年をより安全に現金に換えられる。ほとんどの作戦は、人脈を必要とする。]",
             "requirements": {
                 "year.stolen": 1
@@ -178,7 +178,7 @@
             "id": "relinquish.corpse.exile.underling.defiance",
             "actionid": "relinquish",
             "label": "勝利を祝う",
-            "startdescription": "寿命を売って直接現金に換えると、価格は低くなり、精算人の注目を集めてしまう。ちょうど良い代替案を見つけたら、できる限り少ない量を売るべきだ。",
+            "startdescription": "闘争と征服の時の神々は勝利を認める。このトロフィーを捧げれば、自分の立ち位置を高めることができる。",
             "description": "終わった。昼と夜が戦う時間になると、多翼の者たちが私の戦利品を確認しに降りてくる。彼らが去ると、そこには骨の欠片と髪の束だけが残されていた。",
             "requirements": {
                 "corpse.exile.underling": 1,
@@ -208,7 +208,7 @@
             "id": "relinquish.corpse.exile.underling.lore",
             "actionid": "relinquish",
             "label": "勝利から学ぶ",
-            "startdescription": "闘争と征服の時の神々は勝利を認める。このトロフィーを捧げれば、自分の立ち位置を高めることができる。",
+            "startdescription": "技の中には敵の血でしか発動できないものがある。",
             "description": "汚く不快な作業だったが......色々な定命の者の行動に関する理解が深まった。",
             "requirements": {
                 "corpse.exile.underling": 1,
@@ -227,7 +227,7 @@
             "id": "relinquish.corpse.exile",
             "actionid": "relinquish",
             "label": "控えめな埋葬",
-            "startdescription": "技の中には敵の血でしか発動できない。埋葬されないままにしておくのは見苦しいが、騒ぐ必要はない。",
+            "startdescription": "埋葬されないままにしておくのは見苦しいが、騒ぐ必要はない。",
             "description": "この可哀想な殻は、ひっそりと片付けられた。探そうとすれば偽の手掛かりが見つかるだろう。",
             "requirements": {
                 "corpse.exile": 1,
@@ -349,7 +349,7 @@
             "id": "relinquish.corpse.exile.underling.defiance.already.hint",
             "actionid": "relinquish",
             "label": "認識済み",
-            "startdescription": "殺された者を裁く多翼の者たちは既にこの手の勝利を一度認めている。再度彼らに迷惑をかけるべきではない",
+            "startdescription": "殺された者を裁く多翼の者たちは既にこの手の勝利を一度認めている。再度彼らに迷惑をかけるべきではない。",
             "requirements": {
                 "corpse.exile.underling": 1,
                 "temptation.defiance": 1,

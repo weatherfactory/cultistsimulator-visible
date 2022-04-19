@@ -259,7 +259,7 @@
             "id": "longassault.assassination.attack.follower.failure",
             "actionid": "longassault.assassination",
             "label": "突然の逆転劇",
-            "startdescription": "今回、ダーツマンは思わぬ試練に遭遇した。死んだのだ。これだけで彼を止められるかもしれない",
+            "startdescription": "今回、ダーツマンは思わぬ試練に遭遇した。死んだのだ。これだけで彼を止められるかもしれない。",
             "effects": {
                 "long.lesson.might": 1
             },
@@ -589,7 +589,7 @@
                 "health": -1,
                 "fatigue": -1
             },
-            "startdescription": "病や疲れ、目くらましのせいで、この攻撃に抵抗できなくなる。[今すぐに体力を供給したいと命を失う。]",
+            "startdescription": "病や疲れ、目くらましのせいで、この攻撃に抵抗できなくなる。[今すぐに体力を供給しないと命を失う。]",
             "craftable": false,
             "ending": "deathofthebody",
             "signalEndingFlavour": "Melancholy"
@@ -1785,7 +1785,7 @@
             "id": "long.executestrategy.dreams.drysoul.begin",
             "actionid": "longdreams",
             "label": "立ち上がる乾いた魂の呪い",
-            "startdescription": "敵は乾いた魂の呪いを我々にかけている。パーカッシガントを使えば、その元気な足音と陽気な手足で呪いを回避することができるが、そうすると、後から敵に尋問されてしまう。[パーカッシガントは呪いを未然に防ぎ、敵に教訓を与えてくれる。] ",
+            "startdescription": "敵は乾いた魂の呪いを我々にかけている。パーカッシガントを使えば、その元気な足音と陽気な手足で呪いを回避することができるが、そうすると、後から敵に尋問されてしまう。[パーカッシガントは呪いを未然に防ぐが、敵に教訓を与えてしまう。] ",
             "slots": [
                 {
                     "id": "defender",
@@ -2436,7 +2436,7 @@
             "requirements": {
                 "follower": 1
             },
-            "startdescription": "この人は目的のために命を捧げるだろう[<sprite name=edge><sprite name=forge><sprite name=winter>が5点以上ある信奉者のみが長生者を痛めつけることができる。しかし、他の者たちは、長くはないが、避けられない事態を遅らせることができる。]",
+            "startdescription": "この人は目的のために命を捧げるだろう。[<sprite name=edge><sprite name=forge><sprite name=winter>が5点以上ある信奉者のみが長生者を痛めつけることができる。しかし、他の者たちは、長くはないが、避けられない事態を遅らせることができる。]",
             "linked": [
                 {
                     "id": "long.assault.confrontation.weakfollower"
@@ -2519,7 +2519,7 @@
             "id": "long.assault.confrontation.murderskill.failure",
             "actionid": "long",
             "label": "私は敗北した",
-            "startdescription": "私は敵に立ち向かい、力の限り戦ったが負けてしまった。私は人間より優れているかもしれないが、敵は長い間人間ではなかったのだ。夜の深みに、街を揺るがす悲鳴が聞こえてくる。長生者が負傷した!",
+            "startdescription": "私は敵に立ち向かい、力の限り戦ったが負けてしまった。私は人間より優れているかもしれないが、敵は長い間人間ではなかったのだ。",
             "warmup": 30,
             "effects": {
                 "murderskill": -1
@@ -2534,7 +2534,7 @@
             "id": "long.assault.confrontation.strongfollower",
             "actionid": "long",
             "label": "高貴な終わり",
-            "startdescription": "数分は数時間に伸びていく。魚がハエを捕まえるように、夜が我々の仲間を簡単に飲み込んだ。満たされていない長生者が攻撃を続ける。",
+            "startdescription": "夜の深みに、街を揺るがす悲鳴が聞こえてくる。長生者が負傷した！",
             "mutations": [
                 {
                     "filter": "long.enemy",
@@ -2609,7 +2609,7 @@
                     }
                 }
             ],
-            "startdescription": "@#welland|ウェランド大尉は異例のことにマンサスの境界を我々の最後の戦いの場に選んだ。#tryphon|トリフォン夫人はマンサスの境界を最後の対決の場に選んだ。#julian|コーズリーはマンサスの境界で味方を集めて、攻撃を仕掛けようとしている。#diarist|日記作家はマンサスの境界から我々への総攻撃を開始した。#|敵はマンサスを通して我々を攻撃するために、精霊の群れを呼び起こした。@[長生者は、私が存在しなくなるまで、情熱と理性を食い尽くすだろう。しかし、敵は反撃の危険に身を晒している......私がマンサスの軍勢を十分に集められれば......」 ",
+            "startdescription": "@#welland|ウェランド大尉は異例なことにマンサスの境界を我々の最後の戦いの場に選んだ。#tryphon|トライフォン夫人はマンサスの境界を最後の対決の場に選んだ。#julian|コーズリーはマンサスの境界で味方を集めて、攻撃を仕掛けようとしている。#diarist|日記作家はマンサスの境界から我々への総攻撃を開始した。#|敵はマンサスを通して我々を攻撃するために、精霊の群れを呼び起こした。@[長生者は、私が存在しなくなるまで、情熱と理性を食い尽くすだろう。しかし、敵は反撃の危険に身を晒している......私がマンサスの軍勢を十分に集められれば......] ",
             "requirements": {
                 "long.dreamwork": 10
             },

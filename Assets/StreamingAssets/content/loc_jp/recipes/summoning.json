@@ -14,11 +14,12 @@
             "aspects": {
                 "raiseshattered": 1
             },
+			"effects": {"spirit_wintera_edge":1},
             "startdescription": "砕けるような力がこの肉に染み込み、砕ける復活者と化す。始めなければ。ハンマーが必要だ。",
             "description": "死体はうめき声をあげ、よろめく足（と言うよりは足の残骸）で立ち上がった。砕ける復活者の召喚に成功した。",
             "warmup": 60,
             "craftable": true,
-            "comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+            "comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much. EDIT: This is now redundant because new Consumes implementation",
             "mutations": [
                 {
                     "filter": "corpse",
@@ -38,6 +39,7 @@
                 "moth": 2,
                 "desire": -1
             },
+				"effects": {"spirit_wintera_moth":1},
             "aspects": {
                 "raiseburgeoning": 1
             },
@@ -45,7 +47,7 @@
             "description": "死体はふらふらと立ち上がった。必死で瞼を開こうとし、口から樹液が滴り落ちている。死者は芽を出し、生まれ変わったのだ。",
             "warmup": 60,
             "craftable": true,
-            "comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+            "comments": "it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much. EDIT: This is now redundant because new Consumes implementation",
             "mutations": [
                 {
                     "filter": "corpse",
@@ -212,7 +214,7 @@
             "effects": {
                 "pre.spirit_forgec_winter": 1
             },
-            "startdescription": "鍛造を使って煙のような精霊を、それを拘束するために冬を使う。支配するものが誰かはっきりさせなければいけない。",
+            "startdescription": "鍛造を使って煙のような精霊を呼び出し、それを拘束するために冬を使う。支配するものが誰かはっきりさせなければいけない。",
             "warmup": 60,
             "craftable": true,
             "linked": [
@@ -229,7 +231,7 @@
             "id": "summon_spirit_forgec_winter.success",
             "label": "煙のようなクリーチャーを召喚する",
             "actionid": "work",
-            "description": "鍛冶屋の子供たちがみんな明るいわけではない。鍛冶屋の床の割れ目に転がる鍛造剥片のように、切れ端や私生児が境界に集まってくる。これが良い例だ。",
+            "description": "鍛造の子供たちがみんな明るいわけではない。鍛冶屋の床の割れ目に転がる鍛造剥片のように、切れ端や私生児が境界に集まってくる。これが良い例だ。",
             "warmup": 0,
             "craftable": false
         },
@@ -247,7 +249,7 @@
             "effects": {
                 "pre.spirit_grailc_moth": 1
             },
-            "startdescription": "未熟な預言者の源を使って聖杯を召喚し、混沌中毒を抑えるために、少しだけ蛾を使う。",
+            "startdescription": "聖杯を使って未熟な預言者の源とし、混沌中毒を抑えるために、少しだけ蛾を使う。",
             "warmup": 60,
             "craftable": true,
             "linked": [
@@ -404,7 +406,7 @@
             "id": "summon_spirit_winterb_heart.success",
             "label": "声なき死者を1体召喚する",
             "actionid": "work",
-            "description": "冬の光で照らされた暗い形。喋らないが、その目は熱心に見つめているる。死者はいずれ現世に希望を持つようになるだろう。",
+            "description": "冬の光で照らされた暗い形。喋らないが、その目は熱心に見つめている。死者はいずれ現世に希望を持つようになるだろう。",
             "warmup": 0,
             "craftable": false
         },

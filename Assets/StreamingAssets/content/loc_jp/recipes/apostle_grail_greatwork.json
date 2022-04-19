@@ -15,7 +15,7 @@
         {
             "id": "work.apostlegrail.majorvictory.postbetrayal",
             "actionid": "work",
-            "label": "予定射通りに行われる肉謝祭",
+            "label": "予定通りに行われる謝肉祭",
             "extantreqs": {
                 "apostlegrail.mentor": -1
             },
@@ -62,7 +62,7 @@
             "id": "explore.apostlegrail.purchase.apostlegrail.pillar3",
             "actionid": "explore",
             "label": "珍しい香辛料に入札する",
-            "startdescription": "喜びの者の血を使って、特定の専門家から特定の商品を購入することができる。肉謝祭で使われるものは、すべて完璧な状態でなければいけない。",
+            "startdescription": "喜びの者の血を使って、特定の専門家から特定の商品を購入することができる。謝肉祭で使われるものは、すべて完璧な状態でなければいけない。",
             "requirements": {
                 "locationauctionhouse": 1,
                 "apostlegrail.pillarfuel": 1
@@ -98,7 +98,7 @@
             "id": "work.apostlegrail.upgrade.apostlegrail.pillar3",
             "actionid": "work",
             "label": "七つの恵みの準備をする",
-            "startdescription": "七つの恵みと三種の味（塩、甘味、最高の甘味）。極上の宴の主である我々は、自分たちを聖別しなくてはいけない。香りと風味はレシピ通りに正確でなければならない。そうすれば、私や仲間は食欲を十分にそそれるようになる――現実世界ではあり得ないほどに食欲を呼び覚ます存在になれるのだ。",
+            "startdescription": "香りと風味はレシピ通りに正確でなければならない。そうすれば、私や仲間は食欲を十分にそそれるようになる――現実世界ではあり得ないほどに食欲を呼び覚ます存在になれるのだ。",
             "requirements": {
                 "apostlegrail.pillar3": 1,
                 "ritual": -1
@@ -213,7 +213,7 @@
             "actionid": "talk",
             "label": "謝肉際の準備を始める",
             "startdescription": "喜びの者が食欲を示せば、盛大な祝いが始まる。",
-            "description": "聖杯の影響力が一番強い時がわかるまでは、いつ開催されるかわかないが、宴の主の構成要素となる者を選ばび始めることはできる。",
+            "description": "聖杯の影響力が一番強い時がわかるまでは、いつ開催されるかわかないが、宴の主の構成要素となる者を選び始めることはできる。",
             "requirements": {
                 "apostlegrail.pillar1": 1
             },
@@ -309,7 +309,7 @@
             "id": "talk.apostlegrail.upgradepillar4.succeed",
             "actionid": "talk",
             "label": "宴の主が大きくなる",
-            "startdescription": "リストに載っている名前は、神聖で秘密ものが多くなってきた。より多くの人が壮大な夜に参加してくれるようだ。",
+            "startdescription": "リストに載っている名前は、神聖で秘密のものが多くなってきた。より多くの人が壮大な夜に参加してくれるようだ。",
             "requirements": {
                 "mystique": 1,
                 "uqvitulation": 1
