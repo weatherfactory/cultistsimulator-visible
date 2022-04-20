@@ -14,9 +14,10 @@ using UnityEngine;
 namespace SecretHistories.Spheres
 {
  [IsEmulousEncaustable(typeof(Sphere))]
-    public class UIThreshold: Sphere
+    public class UIHand: Sphere
     {
-        public override SphereCategory SphereCategory => SphereCategory.Threshold;
+        public override SphereCategory SphereCategory => SphereCategory.World;
+        public override float TokenHeartbeatIntervalMultiplier => 1;
         public override bool AllowDrag
         {
             get

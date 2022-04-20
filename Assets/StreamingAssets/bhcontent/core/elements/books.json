@@ -16,6 +16,15 @@
             "noartneeded": true
         },
         {
+            "id": "journal.unc",
+            "label": "A  Journal?",
+            "description": "I thought if I wrote everything here, I wouldn't forget again. But the sea's taken that from me too.",
+            "inherits" : "_book.unc",
+            "aspects": {"journal":1},
+			"xtriggers":{"scrutiny":"journal.soaked"},
+			"icon":"geen"
+        }, 
+        {
             "id": "debatesevencups.unc",
             "label": "The Debate of Seven Cups",
             "inherits" : "_book.unc",
@@ -61,6 +70,14 @@
 			"xtriggers":{"scrutiny":"turquoisehand"},
 			"icon":"sky"
 			
+        },
+        {
+            "id": "journal.soaked",
+            "label": "A Sea-Wracked Journal",
+            "description": "The waves have eaten the words. Perhaps when it dries out I can recover something.",
+            "inherits" : "_book",
+            "aspects": {"journal":1},
+			"icon":"geen"
         },
         {
             "id": "debatesevencups",
