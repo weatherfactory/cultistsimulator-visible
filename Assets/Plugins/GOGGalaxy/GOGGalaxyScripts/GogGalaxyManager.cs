@@ -1,60 +1,4 @@
-﻿
-#if UNITY_STANDALONE_LINUX
-
-using UnityEngine;
-using System.Collections;
-using System.IO;
-
-
-//
-// The GogGalaxyManager provides a base implementation of GOGGalaxy C# wrapper on which you can build upon.
-// It handles the basics of starting up and shutting down the GOG Galaxy for use.
-//
-[DisallowMultipleComponent]
-public class GogGalaxyManager : MonoBehaviour
-{
-    public string clientID;
-    public string clientSecret;
-
-    private static GogGalaxyManager singleton;
-    public static GogGalaxyManager Instance
-    {
-        get
-        {
-            if (singleton == null)
-            {
-                return new GameObject("GogGalaxyManager").AddComponent<GogGalaxyManager>();
-            }
-            else {
-                return singleton;
-            }
-        }
-    }
-
-    private bool isInitialized = false;
-
-    public static bool IsInitialized()
-    {
-        return false;
-    }
-
-    
-    public void TryInitialise()
-    {
-   
-        Debug.Log("Galaxy SDK can't be initialised on Linux, sorry", this);
-        
-    }
-
-
-    public void DoUpdate()
-    {
-     
-    }
-}
-#else
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.IO;
 using Galaxy.Api;
@@ -67,8 +11,8 @@ using Galaxy.Api;
 [DisallowMultipleComponent]
 public class GogGalaxyManager : MonoBehaviour
 {
-    public string clientID;
-    public string clientSecret;
+    public string clientID; 
+    public string clientSecret; 
 
     private static GogGalaxyManager singleton;
     public static GogGalaxyManager Instance
@@ -92,14 +36,9 @@ public class GogGalaxyManager : MonoBehaviour
         return singleton != null && singleton.isInitialized;
     }
 
-    private void Awake()
-    {
-       // TryInitialise();
-
-    }
-
     public void TryInitialise()
     {
+
         if (singleton != null)
         {
             Destroy(gameObject);
@@ -109,7 +48,7 @@ public class GogGalaxyManager : MonoBehaviour
 
         // We want our GogGalaxyManager Instance to persist across scenes.
         //But this only works on root objects and it's in the master scene anyway.
-        //DontDestroyOnLoad(gameObject);
+//        DontDestroyOnLoad(gameObject);
 
         // Make sure clientID and clientSecret are initialized
         Debug.Assert(clientID != default(string) || clientSecret != default(string), "ClientID and/or ClientSecret are not specified");
@@ -160,4 +99,3 @@ public class GogGalaxyManager : MonoBehaviour
         GalaxyInstance.ProcessData();
     }
 }
-#endif
