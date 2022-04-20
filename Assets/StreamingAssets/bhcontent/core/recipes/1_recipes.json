@@ -1,12 +1,5 @@
  {"recipes": [
  
-    {
-        "id": "setup.librarian.abilities",
-        "effects": {
-                "xhea":1,
-                "xtri":1,
-                "xwis":1}
-    },
 	    {
         "id": "setup.librarian.entrance",    
         "effects": {"statue.founder":1,"thing.skull":1}
@@ -27,8 +20,11 @@
 	{
         "id": "setup.librarian.shipwrecked",
         "actionid": "pc",
-        "startdescription": "Something?",
-        "description": "An introductory message."
+        "startdescription": "Land. At last. Soaked, freezing, but still alive... I think.",
+        "description": "Land. At last. Soaked, freezing, but still alive... I think. [Try not to lose all your Health. You need it, if you want to be alive.]",
+        "warmup": 10,
+        "effects": {"xhea": 1}
+
     },
 		{
         "id": "setup.librarian.time",        
