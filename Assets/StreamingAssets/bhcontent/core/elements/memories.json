@@ -13,13 +13,32 @@
             "aspects": {"memory":1}
         },        {
             "id": "mem.whisper",
-            "label": "Memory: Whispers",
+            "label": "Memory: a Whisper",
             "description": "Something I heard?",
             "aspects": {"memory":1}
-        },        {
-            "id": "mem.stories",
-            "label": "Memory: Stories",
+        },
+        {
+            "id": "mem.clue",
+            "label": "Memory: a Clue",
             "description": "Something I read?",
+            "aspects": {"memory":1}
+        },
+        {
+            "id": "mem.guilt",
+            "label": "Memory: Guilt",
+            "description": "Something I regret?",
+            "aspects": {"memory":1}
+        },
+        {
+            "id": "mem.fear",
+            "label": "Memory: Fear",
+            "description": "Something I fear?",
+            "aspects": {"memory":1}
+        },
+        {
+            "id": "mem.loss",
+            "label": "Memory: Loss",
+            "description": "Something I've lost?",
             "aspects": {"memory":1}
         }
     ]
