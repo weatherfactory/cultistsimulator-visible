@@ -13899,6 +13899,7 @@ GameObject:
   - component: {fileID: 782863914}
   - component: {fileID: 782863917}
   - component: {fileID: 782863918}
+  - component: {fileID: 782863919}
   m_Layer: 5
   m_Name: HandSphere
   m_TagString: Untagged
@@ -14009,6 +14010,19 @@ MonoBehaviour:
   _editorAbsolutePath: 
   _editorWildPath: 
   VisibleCharacteristics: []
+--- !u!114 &782863919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782863909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sphere: {fileID: 782863918}
 --- !u!1 &784554160
 GameObject:
   m_ObjectHideFlags: 0
@@ -27486,8 +27500,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -650, y: 0}
-  m_SizeDelta: {x: -1100, y: 0}
+  m_AnchoredPosition: {x: -600, y: 0}
+  m_SizeDelta: {x: -1000, y: 40}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1771794124
 MonoBehaviour:
