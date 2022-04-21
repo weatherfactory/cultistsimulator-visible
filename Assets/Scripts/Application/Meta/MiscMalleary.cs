@@ -8,6 +8,7 @@ using SecretHistories.Commands;
 using SecretHistories.Constants;
 using SecretHistories.Constants.Modding;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Infrastructure;
 using SecretHistories.Infrastructure.Persistence;
@@ -186,7 +187,7 @@ namespace Assets.Scripts.Application.Meta
 
                     //get a plausible token
 
-                    var focalToken=Watchman.Get<HornedAxe>().GetDefaultSphere().GetTokensWhere(t => !t.Defunct).FirstOrDefault();
+                    var focalToken=Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown).GetTokensWhere(t => !t.Defunct).FirstOrDefault();
             if(focalToken==null)
                 NoonUtility.LogWarning("Can't find any tokens in the default sphere to focus game ending on.");
             else

@@ -92,11 +92,11 @@ namespace SecretHistories.Entities {
 
         }
 
-        public Sphere GetDefaultSphere()
-        {
-            var defaultSphere = GetSphereByAbsolutePath(GetDefaultSpherePath());
-            return defaultSphere;
-        }
+        //public Sphere GetDefaultSphere()
+        //{
+        //    var defaultSphere = GetSphereByAbsolutePath(GetDefaultSpherePath());
+        //    return defaultSphere;
+        //}
 
         public Sphere GetDefaultSphere(OccupiesSpaceAs forOccupiesSpaceAs)
         {
@@ -261,7 +261,7 @@ namespace SecretHistories.Entities {
             else
             {
                 NoonUtility.LogWarning($"Can't find sphere with path {spherePath}, so returning a default world sphere");
-                return GetDefaultSphere(); //no longer limbo; let's let people recover things
+                return GetDefaultSphere(OccupiesSpaceAs.Unknown); //no longer limbo; let's let people recover things
             }
         }
 

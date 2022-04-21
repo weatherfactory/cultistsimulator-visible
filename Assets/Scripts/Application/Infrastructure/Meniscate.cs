@@ -178,7 +178,7 @@ namespace SecretHistories.UI {
                     //display ghosts for dragged tokens
                     //This only makes sense in Cultist classic, where we want to put multiselected tokens exclusively in the
                     //tabletop sphere. If we want to put them in bookcases or containers, it'll need more flexibility
-                    var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere(); 
+                    var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere(draggedToken.OccupiesSpaceAs()); 
                     tabletopSphere.TryDisplayDropInteractionHere(multiSelectedToken);
                 }
             }

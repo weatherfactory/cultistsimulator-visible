@@ -219,9 +219,9 @@ namespace SecretHistories.UI {
             //PS at the moment the CS behaviour for a null homingangel that's evicted is to go the Dropzone, which I do like and which I should preserve in any refactoring
 
             if (_homingAngel == null) //slight tangle here: references to the homingangel from here (where we need it to check home) and the homesphere itself (where the angel lives)
-                return Watchman.Get<HornedAxe>().GetDefaultSphere();
+                return Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs());
             if(_homingAngel.GetWatchedSphere()==null)
-                return Watchman.Get<HornedAxe>().GetDefaultSphere();
+                return Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs());
 
             return _homingAngel.GetWatchedSphere();
 

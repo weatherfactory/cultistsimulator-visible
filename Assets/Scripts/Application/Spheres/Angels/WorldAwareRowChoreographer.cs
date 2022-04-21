@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.Application.Abstract;
 using SecretHistories.Choreographers;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Spheres;
 using SecretHistories.Spheres.Angels;
@@ -26,7 +27,7 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Angels
             Sphere overlapSphereToWatch;
             FucinePath fpOverlapSphereToWatch = new FucinePath(PathOfOverlapSphereToWatch);
             if (!fpOverlapSphereToWatch.IsValid())
-                overlapSphereToWatch = Watchman.Get<HornedAxe>().GetDefaultSphere();
+                overlapSphereToWatch = Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown);
             else
                 overlapSphereToWatch = Watchman.Get<HornedAxe>().GetSphereByAbsolutePath(fpOverlapSphereToWatch);
             var result = LegalInThisAndOtherRelevantSpheres(overlapSphereToWatch, candidateRect, placingToken);

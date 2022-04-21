@@ -233,7 +233,7 @@ namespace SecretHistories.Entities.Verbs
                 _spheres.Add(sphere);
                 sphere.SetContainer(this);
                 
-                var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
+                var tabletopSphere = Watchman.Get<HornedAxe>().GetDefaultSphere(Token.OccupiesSpaceAs());
                 var tidyAngel= new TidyAngel(EntityId); //entityid is where we store the payload type
                 tidyAngel.TidyToSphere(sphere);
                 tidyAngel.AddSphereForAutostack(tabletopSphere);

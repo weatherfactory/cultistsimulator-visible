@@ -77,7 +77,7 @@ public class CreationCommandsSmokeTests
         {
         var element = Watchman.Get<Compendium>().GetEntitiesAsList<Element>().First();
         var elementStackCreationCommand = new ElementStackCreationCommand(element.Id,1);
-        var location = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere());
+        var location = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown));
         var elementStackTokenCreationCommand = new TokenCreationCommand(elementStackCreationCommand, location);
        var elementStackToken=elementStackTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug), _minimalTabletopSurrogate);
         Assert.IsTrue(elementStackToken.Payload.IsValidElementStack());
@@ -103,10 +103,10 @@ public class CreationCommandsSmokeTests
             situationCreationCommand.VerbId = NullVerb.Create().Id;
         situationCreationCommand.RecipeId = NullRecipe.Create().Id;
         situationCreationCommand.StateIdentifier = StateEnum.Unstarted;
-        var location = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere());
+        var location = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown));
 
         var tokenCreationCommand =new TokenCreationCommand(situationCreationCommand,location);
-        var token = tokenCreationCommand.Execute(new Context(Context.ActionSource.Unknown), Watchman.Get<HornedAxe>().GetDefaultSphere());
+        var token = tokenCreationCommand.Execute(new Context(Context.ActionSource.Unknown), Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown));
         Assert.IsInstanceOf<Token>(token);
 
     }
@@ -117,9 +117,9 @@ public class CreationCommandsSmokeTests
     {
         
         var dropzonePayloadCreationCommand=new DropzoneCreationCommand();
-        var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere());
+        var dropzoneLocation = new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown));
         var dropzoneCreationCommand = new TokenCreationCommand(dropzonePayloadCreationCommand, dropzoneLocation);
-        var dropzone=dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Debug), Watchman.Get<HornedAxe>().GetDefaultSphere());
+        var dropzone=dropzoneCreationCommand.Execute(new Context(Context.ActionSource.Debug), Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown));
         Assert.IsInstanceOf<Dropzone>(dropzone.Payload);
 
     }
@@ -128,9 +128,9 @@ public class CreationCommandsSmokeTests
     public void CreatePortalToken()
     {
         var portalCreationCommand=new IngressCreationCommand("wood");
-        var portalLocation= new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere());
+        var portalLocation= new TokenLocation(Vector3.zero, Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown));
         var portalTokenCreationCommand = new TokenCreationCommand(portalCreationCommand, portalLocation);
-           var portalToken=portalTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug), Watchman.Get<HornedAxe>().GetDefaultSphere());
+           var portalToken=portalTokenCreationCommand.Execute(new Context(Context.ActionSource.Debug), Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown));
            Assert.IsInstanceOf<Ingress>(portalToken.Payload);
     }
 

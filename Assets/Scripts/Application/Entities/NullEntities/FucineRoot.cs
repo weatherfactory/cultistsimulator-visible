@@ -10,6 +10,7 @@ using SecretHistories.Assets.Scripts.Application.Commands;
 using SecretHistories.Commands;
 using SecretHistories.Core;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.Infrastructure;
 using SecretHistories.NullObjects;
@@ -94,14 +95,14 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         }
         public Sphere GetEnRouteSphere()
         {
-            var defaultSphere=Watchman.Get<HornedAxe>().GetDefaultSphere();
+            var defaultSphere=Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown);
             return Watchman.Get<HornedAxe>().GetSphereByAbsolutePath(defaultSphere.GoverningSphereSpec.EnRouteSpherePath);
         }
 
         
         public Sphere GetWindowsSphere()
         {
-            var defaultSphere = Watchman.Get<HornedAxe>().GetDefaultSphere();
+            var defaultSphere = Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown);
             return Watchman.Get<HornedAxe>().GetSphereByAbsolutePath(defaultSphere.GoverningSphereSpec.WindowsSpherePath);
         }
 
@@ -134,7 +135,7 @@ namespace SecretHistories.Assets.Scripts.Application.Entities.NullEntities
         public RectTransform GetRectTransform()
         {
             NoonUtility.LogWarning("Trying to get fucine root recttransform; supplying the default sphere rect transfomr.");
-            return Watchman.Get<HornedAxe>().GetDefaultSphere().GetRectTransform(); //this is most likely what we're expecting
+            return Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs.Unknown).GetRectTransform(); //this is most likely what we're expecting
         }
 
 

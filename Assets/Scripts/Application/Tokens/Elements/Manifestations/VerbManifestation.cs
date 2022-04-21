@@ -96,7 +96,7 @@ namespace SecretHistories.Manifestations
             for (int i = 0; i < particles.Length; i++)
             {
                 mainSettings = particles[i].main;
-                mainSettings.customSimulationSpace = Watchman.Get<HornedAxe>().GetDefaultSphere().GetRectTransform(); //so they don't move with the token when we pick it up
+                mainSettings.customSimulationSpace = Watchman.Get<HornedAxe>().GetDefaultSphere(OccupiesSpaceAs()).GetRectTransform(); //so they don't move with the token when we pick it up
             }
 
 

@@ -27,7 +27,7 @@ namespace SecretHistories.NullObjects
 
        public override Sphere Sphere
        {
-           get => Watchman.Get<HornedAxe>().GetDefaultSphere();
+           get => Watchman.Get<HornedAxe>().GetDefaultSphere(Enums.OccupiesSpaceAs.Unknown);
 
         set => throw new NotImplementedException();
        }
