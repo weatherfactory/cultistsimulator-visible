@@ -94,7 +94,7 @@ namespace SecretHistories.Entities {
 
         public Sphere GetDefaultSphere()
         {
-            var defaultSphere = GetSphereByAbsolutePath(GetDefaultSpherePath(OccupiesSpaceAs.Intangible));
+            var defaultSphere = GetSphereByAbsolutePath(GetDefaultSpherePath());
             return defaultSphere;
         }
 
