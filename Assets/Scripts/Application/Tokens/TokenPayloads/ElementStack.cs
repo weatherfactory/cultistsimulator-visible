@@ -140,7 +140,9 @@ namespace SecretHistories.UI {
             //otherwise get the en route sphere for the sphere's container (which might be eg FucineRoot) 
             enRouteSphere = Token.Sphere.GetContainer().GetEnRouteSphere();
 
-            return enRouteSphere;
+            var actualEnRouteSphere = enRouteSphere.GetAlternativeSphereFor(Token);
+
+            return actualEnRouteSphere;
         }
 
         public Sphere GetWindowsSphere()

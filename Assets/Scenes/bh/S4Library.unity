@@ -2124,8 +2124,8 @@ GameObject:
   - component: {fileID: 85450441}
   - component: {fileID: 85450445}
   - component: {fileID: 85450444}
-  - component: {fileID: 85450443}
   - component: {fileID: 85450442}
+  - component: {fileID: 85450446}
   m_Layer: 5
   m_Name: IntangiblesEnRouteSphere
   m_TagString: Untagged
@@ -2141,17 +2141,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85450440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 89239.63}
-  m_LocalScale: {x: 100.26925, y: 100.26925, z: 100.26925}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 155336843}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 77965.984, y: 112613.02}
-  m_SizeDelta: {x: 1738, y: 1036}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &85450442
 MonoBehaviour:
@@ -2168,23 +2168,6 @@ MonoBehaviour:
   ApplyId: intangiblesenroute
   EnRouteSpherePath: 
   WindowsSpherePath: ~/windows
---- !u!114 &85450443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 85450440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e87a6b79cc7ff1449be4ae36e38888b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WorldPosition: {x: 0, y: 0, z: 0}
-  _editorAbsolutePath: 
-  _editorWildPath: 
-  VisibleCharacteristics: []
-  SpecifiedTokenHeartbeatIntervalMultiplier: 1
 --- !u!114 &85450444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2223,6 +2206,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &85450446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85450440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1c91cb96b9d9349a59f2c478d1a7b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldPosition: {x: 0, y: 0, z: 0}
+  _editorAbsolutePath: 
+  _editorWildPath: 
+  VisibleCharacteristics: []
+  SpecifiedTokenHeartbeatIntervalMultiplier: 1
+  tangibleAlternative: {fileID: 0}
 --- !u!1 &87208084
 GameObject:
   m_ObjectHideFlags: 0
@@ -12446,6 +12447,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1720991317274574912, guid: 21e879d32af49d1429ceacb28750c077,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00088977814
+      objectReference: {fileID: 0}
     - target: {fileID: 1720991317492953273, guid: 21e879d32af49d1429ceacb28750c077,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -12489,6 +12495,11 @@ PrefabInstance:
     - target: {fileID: 1720991318430382142, guid: 21e879d32af49d1429ceacb28750c077,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720991318430382142, guid: 21e879d32af49d1429ceacb28750c077,
+        type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1720991318697594222, guid: 21e879d32af49d1429ceacb28750c077,
@@ -24605,10 +24616,10 @@ GameObject:
   - component: {fileID: 1583907622}
   - component: {fileID: 1583907626}
   - component: {fileID: 1583907625}
-  - component: {fileID: 1583907624}
   - component: {fileID: 1583907623}
+  - component: {fileID: 1583907627}
   m_Layer: 5
-  m_Name: EnRouteSphere
+  m_Name: TangiblesEnRouteSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24649,23 +24660,6 @@ MonoBehaviour:
   ApplyId: enroute
   EnRouteSpherePath: ~/enroute
   WindowsSpherePath: ~/windows
---- !u!114 &1583907624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583907621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e87a6b79cc7ff1449be4ae36e38888b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WorldPosition: {x: 0, y: 0, z: 0}
-  _editorAbsolutePath: 
-  _editorWildPath: 
-  VisibleCharacteristics: []
-  SpecifiedTokenHeartbeatIntervalMultiplier: 1
 --- !u!114 &1583907625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24704,6 +24698,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1583907627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583907621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5b03c3ce8b31f4191d32f7bb8d867a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldPosition: {x: 0, y: 0, z: 0}
+  _editorAbsolutePath: 
+  _editorWildPath: 
+  VisibleCharacteristics: []
+  SpecifiedTokenHeartbeatIntervalMultiplier: 0
+  intangibleAlternative: {fileID: 85450446}
 --- !u!1001 &1588660130
 PrefabInstance:
   m_ObjectHideFlags: 0

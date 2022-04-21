@@ -380,6 +380,13 @@ namespace SecretHistories.Spheres
             return rectTrans;
         }
 
+        public virtual Sphere GetAlternativeSphereFor(Token token)
+        {
+            //sometimes eg an intangible token should go into an alternative sphere
+            //At time of writing, only ElementStack actually checks this
+            return this;
+        }
+
         protected void DisplayHere(Token token)
         {
             token.Manifest();
