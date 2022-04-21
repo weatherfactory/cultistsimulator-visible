@@ -36,6 +36,7 @@ namespace SecretHistories.Entities {
         private readonly HashSet<Way> _registeredWays = new HashSet<Way>();
         private readonly HashSet<Sphere> _registeredSpheres=new HashSet<Sphere>(); //Use this to find, eg, all World spheres. Don't use it for Fucine pathing!
         private FucinePath _defaultSpherePath;
+        private Dictionary<string, string> _alternativeDefaultWorldSpherePaths;
 
         public HornedAxe()
         {
@@ -54,31 +55,52 @@ namespace SecretHistories.Entities {
             }
 
             _subscribers.Clear();
+
+         
         }
 
-        public void SetDefaultSpherePath(FucinePath defaultSpherePath)
+        public void PopulateDefaultSpherePaths()
         {
-            _defaultSpherePath = defaultSpherePath;
+            var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
+
+            var pathFromDictum = dictum.DefaultWorldSpherePath;
+            var alternativePathsFromDictum = dictum.AlternativeDefaultWorldSpherePaths;
+            _defaultSpherePath = pathFromDictum;
+            _alternativeDefaultWorldSpherePaths = alternativePathsFromDictum;
         }
 
         public FucinePath GetDefaultSpherePath()
         {
-            //this allows us to specify the default sphere path without needing to pull up a compendium - or to override it.
 
-            if (_defaultSpherePath != null)
+            if (_defaultSpherePath == null)
+                PopulateDefaultSpherePaths();
+
+            return _defaultSpherePath;
+        }
+        public FucinePath GetDefaultSpherePath(OccupiesSpaceAs forOccupiesSpaceAs)
+        {
+
+            if (_defaultSpherePath == null || _alternativeDefaultWorldSpherePaths==null)
+                PopulateDefaultSpherePaths();
+
+            _alternativeDefaultWorldSpherePaths.TryGetValue(forOccupiesSpaceAs.ToString(),out var specificPath);
+
+            if (specificPath == null)
                 return _defaultSpherePath;
 
-            var dictum = Watchman.Get<Compendium>().GetSingleEntity<Dictum>();
-            
-            var pathFromDictum =dictum.DefaultWorldSpherePath;
-            SetDefaultSpherePath(pathFromDictum);
+            return new FucinePath(specificPath);
 
-            return pathFromDictum;
         }
 
         public Sphere GetDefaultSphere()
         {
-            var defaultSphere = GetSphereByAbsolutePath(GetDefaultSpherePath());
+            var defaultSphere = GetSphereByAbsolutePath(GetDefaultSpherePath(OccupiesSpaceAs.Intangible));
+            return defaultSphere;
+        }
+
+        public Sphere GetDefaultSphere(OccupiesSpaceAs forOccupiesSpaceAs)
+        {
+            var defaultSphere = GetSphereByAbsolutePath(GetDefaultSpherePath(forOccupiesSpaceAs));
             return defaultSphere;
         }
 
@@ -229,7 +251,7 @@ namespace SecretHistories.Entities {
 
         private Sphere GetFallbackSphere(FucinePath spherePath)
         {
-            if (spherePath == GetDefaultSpherePath())
+            if (spherePath == GetDefaultSpherePath(OccupiesSpaceAs.Intangible))
             {
                 NoonUtility.LogWarning(
                     $"Can't find sphere with path {spherePath}, nor a default world sphere, so returning limbo");
@@ -623,6 +645,9 @@ namespace SecretHistories.Entities {
         }
 
 
-
+        public void SetDefaultSpherePath(FucinePath fucinePath)
+        {
+            _defaultSpherePath = fucinePath;
+        }
     }
 }

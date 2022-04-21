@@ -7,6 +7,7 @@ using Pathfinding;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.States.TokenStates;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.States.TokenStates;
 using SecretHistories.UI;
@@ -30,7 +31,7 @@ namespace SecretHistories.Assets.Scripts.Application.Tokens.TravelItineraries
             Anchored3DStartPosition = anchored3DStartPosition;
             Anchored3DEndPosition = anchored3DEndPosition;
 
-            DestinationSpherePath = Watchman.Get<HornedAxe>().GetDefaultSpherePath();
+            DestinationSpherePath = Watchman.Get<HornedAxe>().GetDefaultSpherePath(OccupiesSpaceAs.Someone);
         }
 
         public override string GetDescription()

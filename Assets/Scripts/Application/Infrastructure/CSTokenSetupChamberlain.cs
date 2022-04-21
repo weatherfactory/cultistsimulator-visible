@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SecretHistories.Commands;
 using SecretHistories.Core;
 using SecretHistories.Entities;
+using SecretHistories.Enums;
 using SecretHistories.Fucine;
 using SecretHistories.UI;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
         {
             var startingTokenDistributionStrategy = new CSClassicStartingTokenDistributionStrategy();
 
-            FucinePath tabletopSpherePath = Watchman.Get<HornedAxe>().GetDefaultSpherePath();
+            FucinePath tabletopSpherePath = Watchman.Get<HornedAxe>().GetDefaultSpherePath(OccupiesSpaceAs.Intangible);
 
             var commands = new List<TokenCreationCommand>();
 
@@ -103,12 +104,12 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
 
             public TokenLocation AboveBoardStartingLocation()
             {
-                return new TokenLocation(0, 2000, 0, Watchman.Get<HornedAxe>().GetDefaultSpherePath());
+                return new TokenLocation(0, 2000, 0, Watchman.Get<HornedAxe>().GetDefaultSpherePath(OccupiesSpaceAs.Intangible));
             }
 
             public TokenLocation BelowBoardStartingLocation()
             {
-                return new TokenLocation(0, -2000, 0, Watchman.Get<HornedAxe>().GetDefaultSpherePath());
+                return new TokenLocation(0, -2000, 0, Watchman.Get<HornedAxe>().GetDefaultSpherePath(OccupiesSpaceAs.Meta));
             }
         }
     }
