@@ -6,7 +6,7 @@
     },
     {
         "id": "setup.librarian.inland",        
-        "effects": {"inland.exit":1}
+        "effects": {"way.inland":1}
     },
     {
         "id": "setup.librarian.westcott",
@@ -59,7 +59,7 @@
         "description": "I've dreamt of this place, night after night.\n\n [You're stronger in <i>fet</i>: that part of us which dreams. ]",
         "warmup": 5,
         "requirements": {"mem.dreamt":1},
-        "extantreqs": {"xfet":-1,"xshapt":-1,"xwist":-1,"journal":-1},
+        "extantreqs": {"xfet":-1,"xsha":-1,"xwis":-1,"journal":-1},
         "effects": {"xfet": 1,"mem.dreamt":-1},
         "purge": {"memory":99},
         "craftable":true,
@@ -74,7 +74,7 @@
         "description": "My sources briefed me thoroughly about this place.\n\n [You're stronger in <i>shapt</i>: eloquence and understanding.]",
         "warmup": 5,
         "requirements": {"mem.whisper":1},
-        "extantreqs": {"xfet":-1,"xshapt":-1,"xwist":-1,"journal":-1},
+        "extantreqs": {"xfet":-1,"xsha":-1,"xwis":-1,"journal":-1},
         "effects": {"xsha": 1,"memory":-1},
         "purge": {"memory":99},
         "craftable":true,
