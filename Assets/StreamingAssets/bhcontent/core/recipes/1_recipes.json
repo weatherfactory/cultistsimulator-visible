@@ -18,13 +18,129 @@
     },
 
 	{
+        "id": "setup.librarian.arrival",
+        "actionid": "pc",
+        "label": "Cold. Really bloody cold.",
+        "startdescription": "Wet sand. Pounding waves. Thunder growling...",
+        "description": "Land! Dry land. I made it. How long was I out there?",
+        "warmup": 5,
+        "effects": {"mem.storm": 1}
+
+    },
+
+    {
         "id": "setup.librarian.shipwrecked",
         "actionid": "pc",
-        "startdescription": "Land. At last. Soaked, freezing, but still alive... I think.",
-        "description": "Land. At last. Soaked, freezing, but still alive... I think. [Try not to lose all your Health. You need it, if you want to be alive.]",
-        "warmup": 10,
-        "effects": {"xhea": 1}
+        "label":"I remember...",
+        "startdescription": "There was a storm. It smashed the ship like an egg.",
+        "description": "There was a storm. It smashed the ship like an egg; and the sea brought me here. \n\n I'm soaked, I'm freezing, but I'm still alive... as far as I can tell. [Try not to lose all your Health. You need it, if you want to be alive.]",
+        "warmup": 5,
+        "requirements": {"mem.storm":1},
+        "extantreqs": {"xhea":-1},
+        "effects": {"xhea": 1,"mem.storm":-1},
+        "craftable":true,
+        "alt":[
+            {
+                "id": "setup.librarian.memories.1",
+                "additional":true,
+                "warmup":5,
+                "label":"How?",
+                "startdescription": "I know this place. I've never been here, but I recognise it.",
+                "effects": {"mem.dreamt": 1,"mem.whisper":1,"mem.clue":1}
+            }
+        ]
+    },
 
+    {
+        "id": "setup.librarian.fet",
+        "actionid": "pc",
+        "label":"Hush House!",
+        "startdescription": "I've dreamt of this place, night after night.",
+        "description": "I've dreamt of this place, night after night.\n\n [You're stronger in <i>fet</i>: that part of us which dreams. ]",
+        "warmup": 5,
+        "requirements": {"mem.dreamt":1},
+        "extantreqs": {"xfet":-1,"xshapt":-1,"xwist":-1,"journal":-1},
+        "effects": {"xfet": 1,"mem.dreamt":-1},
+        "purge": {"memory":99},
+        "craftable":true,
+        "alt":[{"id": "setup.librarian.memories.2", "additional":true } ]
+    },
+
+    {
+        "id": "setup.librarian.shapt",
+        "actionid": "pc",
+        "label":"Hush House!",
+        "startdescription": "My sources briefed me thoroughly about this place.",
+        "description": "My sources briefed me thoroughly about this place.\n\n [You're stronger in <i>shapt</i>: eloquence and understanding.]",
+        "warmup": 5,
+        "requirements": {"mem.whisper":1},
+        "extantreqs": {"xfet":-1,"xshapt":-1,"xwist":-1,"journal":-1},
+        "effects": {"xsha": 1,"memory":-1},
+        "purge": {"memory":99},
+        "craftable":true,
+        "alt":[{"id": "setup.librarian.memories.2", "additional":true } ]
+    },
+    {
+        "id": "setup.librarian.wist",
+        "actionid": "pc",
+        "label":"Hush House!",
+        "startdescription": "I've read so much about this place.",
+        "description": "I've read so much about this place. \n\n [You're stronger in <i>wist</i>: name, memory, that part which remains.]",
+        "warmup": 5,
+        "requirements": {"mem.clue":1},
+        "extantreqs": {"xfet":-1,"xshapt":-1,"xwist":-1,"journal":-1},
+        "effects": {"xwis": 1,"memory":-1},
+        "purge": {"memory":1},
+        "craftable":true,
+        "alt":[{"id": "setup.librarian.memories.2", "additional":true } ]
+    },
+
+	{
+        "id": "setup.librarian.memories.2",
+        "label": "Why?",
+        "startdescription": "I came here for a reason.",
+        "warmup": 5,
+        "effects": {"mem.fear": 1,"mem.guilt": 1,"mem.loss": 1}
+
+    },
+    {
+        "id": "setup.librarian.ereb",
+        "actionid": "pc",
+        "label":"Redemption",
+        "startdescription": "Perhaps here I can atone for all I've done.",
+        "description": "Perhaps here I can atone for all I've done.  \n\n [You're driven by <i>ereb</i>: pride, compassion, the tigers of wrath, the wolves of dread.]",
+        "warmup": 5,
+        "requirements": {"mem.guilt":1},
+        "extantreqs": {"xere":-1,"xpho":-1,"xtri":-1,"journal":-1},
+        "effects": {"xere": 1,"journal.unc":1,"memory":-1},
+        "purge": {"memory":99},
+        "craftable":true
+    }, 
+       {
+        "id": "setup.librarian.pho",
+        "actionid": "pc",
+        "label":"Sanctuary",
+        "startdescription": "Perhaps here I'll find safety from what follows me. \n\n [Your y <i>phost</i>, the light within you, has always made it harder to hide from your pursuer.]",
+        "description": "",
+        "warmup": 5,
+        "requirements": {"mem.fear":1},
+        "extantreqs": {"xere":-1,"xpho":-1,"xtri":-1,"journal":-1},
+        "effects": {"xere": 1,"journal.unc":1,"memory":-1},
+        "purge": {"memory":99},
+        "craftable":true
+    },
+    {
+        "id": "setup.librarian.tri",
+        "actionid": "pc",
+        "label":"Peace",
+        "startdescription": "I've always wanted something I can't even name. Perhaps I can find it here.",
+        "description": "I've always wanted something I can't even name. Perhaps I can find it here. \n\n [Your <i>trist</i> is strong, and so there's no peace for you anywhere under the wide sky.]",
+        "warmup": 5,
+        "requirements": {"mem.loss":1},
+        "extantreqs": {"xere":-1,"xpho":-1,"xtri":-1,"journal":-1},
+        "effects": {"xtri": 1,"journal.unc":1, "memory":-1},
+        "purge": {"memory":99},
+        "craftable":true
     },
 		{
         "id": "setup.librarian.time",        

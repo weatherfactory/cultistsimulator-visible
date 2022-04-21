@@ -126,8 +126,8 @@ namespace SecretHistories.UI
 
             //We convert to world positions before sending, because we'll be animating through an EnRouteSphere to a DestinationSphere,
             //and the local positions in those are unlikely to match.
-            Vector3 startPositioninWorldSpace = tokenToSend.Sphere.GetRectTransform().TransformPoint(Anchored3DStartPosition);
-            Vector3 endPositionInWorldSpace = destinationSphere.GetRectTransform().TransformPoint(Anchored3DEndPosition);
+            Vector3 startPositioninWorldSpace = tokenToSend.Sphere.TransformPositionInSphereToWorldSpace(Anchored3DStartPosition);
+            Vector3 endPositionInWorldSpace = destinationSphere.TransformPositionInSphereToWorldSpace(Anchored3DEndPosition);
 
             //is it if scaling ends before travel duration?
             //set a default duration if we don't have a valid one

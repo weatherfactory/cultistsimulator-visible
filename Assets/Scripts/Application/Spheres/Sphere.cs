@@ -841,6 +841,15 @@ namespace SecretHistories.Spheres
             return itinerary;
         }
 
+        public virtual Vector3 TransformPositionInSphereToWorldSpace(Vector3 positionToTransform)
+        {
+            //This is a slight convenience, but also needs to be overridden for screen space spheres which we don't want to honour the z coord for - because it makes the 
+            //token get up in the camera's business and look briefly enormous
+
+            Vector3 worldSpacePosition = GetRectTransform().TransformPoint(positionToTransform);
+            return worldSpacePosition;
+        }
+
         public void Shroud()
         {
             var canvasGroup = gameObject.GetComponent<CanvasGroup>();
