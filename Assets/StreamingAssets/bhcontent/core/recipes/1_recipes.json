@@ -46,7 +46,8 @@
                 "warmup":5,
                 "label":"How?",
                 "startdescription": "I know this place. I've never been here, but I recognise it.",
-                "effects": {"mem.dreamt": 1,"mem.whisper":1,"mem.clue":1}
+                "effects": {"mem.dreamt": 1,"mem.whisper":1,"mem.clue":1},
+                "topath": "*!beach/foreshore"
             }
         ]
     },
@@ -100,7 +101,8 @@
         "label": "Why?",
         "startdescription": "I came here for a reason.",
         "warmup": 5,
-        "effects": {"mem.fear": 1,"mem.guilt": 1,"mem.loss": 1}
+        "effects": {"mem.fear": 1,"mem.guilt": 1,"mem.loss": 1},
+        "topath": "*!beach/dunes"
 
     },
     {
