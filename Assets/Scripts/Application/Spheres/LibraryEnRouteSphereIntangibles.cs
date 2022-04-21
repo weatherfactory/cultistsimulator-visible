@@ -11,7 +11,7 @@ using UnityEngine;
 namespace SecretHistories.Spheres
 {
     [IsEmulousEncaustable(typeof(Sphere))]
-    public class EnRouteSphereIntangibles: EnRouteSphere
+    public class LibraryEnRouteSphereIntangibles: EnRouteSphere
     {
         [SerializeField]
         private EnRouteSphere tangibleAlternative;
