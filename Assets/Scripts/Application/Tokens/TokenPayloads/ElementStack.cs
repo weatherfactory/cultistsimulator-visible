@@ -130,10 +130,17 @@ namespace SecretHistories.UI {
 
         public Sphere GetEnRouteSphere()
         {
+            //If the token is intangible, return the intangible en route sphere instead.
+            //If the token is in a sphere with a spec that specifies a specific en route sphere, return that
+          Sphere enRouteSphere;
             if (Token.Sphere.GoverningSphereSpec.EnRouteSpherePath.IsValid() && !Token.Sphere.GoverningSphereSpec.EnRouteSpherePath.IsEmpty())
-                return Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere, Token.Sphere.GoverningSphereSpec.EnRouteSpherePath);
+                enRouteSphere=Watchman.Get<HornedAxe>().GetSphereByPath(Token.Sphere, Token.Sphere.GoverningSphereSpec.EnRouteSpherePath);
 
-            return Token.Sphere.GetContainer().GetEnRouteSphere();
+
+            //otherwise get the en route sphere for the sphere's container (which might be eg FucineRoot) 
+            enRouteSphere = Token.Sphere.GetContainer().GetEnRouteSphere();
+
+            return enRouteSphere;
         }
 
         public Sphere GetWindowsSphere()

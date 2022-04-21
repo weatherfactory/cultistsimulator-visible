@@ -80,7 +80,7 @@ namespace SecretHistories.Manifestations
 
         public OccupiesSpaceAs OccupiesSpaceAs()
         {
-            return Enums.OccupiesSpaceAs.PhysicalObject;
+            return Enums.OccupiesSpaceAs.Intangible;
         }
 
         public void OverrideIcon(string icon)

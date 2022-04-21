@@ -150,6 +150,7 @@
         PhysicalObject,
         Someone,
         Intangible,
+        Meta,
         Unknown
     }
 }

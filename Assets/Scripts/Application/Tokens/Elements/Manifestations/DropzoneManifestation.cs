@@ -128,7 +128,7 @@ namespace SecretHistories.Manifestations
             return NullGhost.Create(this);
         }
 
-        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.Intangible;
+        public OccupiesSpaceAs OccupiesSpaceAs() => Enums.OccupiesSpaceAs.Meta;
 
         public void OverrideIcon(string icon)
         {
