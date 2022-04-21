@@ -83,7 +83,8 @@ namespace SecretHistories.Entities {
             if (_defaultSpherePath == null || _alternativeDefaultWorldSpherePaths==null)
                 PopulateDefaultSpherePaths();
 
-            _alternativeDefaultWorldSpherePaths.TryGetValue(forOccupiesSpaceAs.ToString(),out var specificPath);
+            _alternativeDefaultWorldSpherePaths.TryGetValue(forOccupiesSpaceAs.ToString().ToLower(), //ugh. we need the enums in the dict really
+                out var specificPath);
 
             if (specificPath == null)
                 return _defaultSpherePath;
@@ -92,11 +93,6 @@ namespace SecretHistories.Entities {
 
         }
 
-        //public Sphere GetDefaultSphere()
-        //{
-        //    var defaultSphere = GetSphereByAbsolutePath(GetDefaultSpherePath());
-        //    return defaultSphere;
-        //}
 
         public Sphere GetDefaultSphere(OccupiesSpaceAs forOccupiesSpaceAs)
         {
