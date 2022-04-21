@@ -69,9 +69,9 @@ namespace SecretHistories.Assets.Scripts.Application.Infrastructure
         {
             public int tokenCountOnThisRow { get; private set; }
             public int rowCount { get; private set; }
-            private const int STARTINGX = -260;
+            private const int STARTINGX = -245;
             private const int XGAP = 150;
-            private const int STARTINGY = 290;
+            private const int STARTINGY = 280;
             private const int YGAP = 140;
 
             //this is currently/now a massive magic number hack. These values should be aligned with the actual grid values
