@@ -31,7 +31,7 @@ public class DebugTools : MonoBehaviour
 {
     private const int MaxAutoCompletionSuggestions = 50;
 
-    [SerializeField] private TabletopSphere tabletop;
+
     [SerializeField] private Heart heart;
     
 

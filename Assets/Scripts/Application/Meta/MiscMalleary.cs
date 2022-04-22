@@ -29,7 +29,7 @@ namespace Assets.Scripts.Application.Meta
         [SerializeField] private Button UnmetapauseButton;
         [SerializeField] private Button SetCheevo;
         [SerializeField] private Button ClearCheevo;
-
+        [SerializeField] private DealersTable _dealersTable;
 
         public void Start()
         {
@@ -99,7 +99,14 @@ namespace Assets.Scripts.Application.Meta
             ResponseLabel.text = $"couldn't find path: {input.text}";
         }
 
-    
+        public void ToggleDealersTableVisibility()
+        {
+            if(_dealersTable.CurrentlyFullyEvoked)
+                _dealersTable.Dismiss();
+
+            else
+                _dealersTable.Evoke();
+        }
 
 
         void BeginLegacy(string legacyId)
