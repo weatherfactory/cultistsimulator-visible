@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Logic;
 using Assets.Scripts.Application.Abstract;
+using Pathfinding.Util;
 using SecretHistories.Abstract;
 using SecretHistories.Assets.Scripts.Application.Entities.NullEntities;
 using SecretHistories.Commands;
@@ -83,6 +84,28 @@ namespace SecretHistories.Infrastructure
         public override bool CanCreateSphere(SphereSpec spec)
         {
             return true;
+        }
+
+        public override void Evoke()
+        {
+            var drawPiles = GetDrawPiles();
+            foreach (var dp in drawPiles)
+            {
+              ((DrawPile)dp).ShowContents();
+            }
+            base.Evoke();
+
+        }
+
+        public override void Dismiss()
+        {
+            var drawPiles = GetDrawPiles();
+            foreach (var dp in drawPiles)
+            {
+                ((DrawPile)dp).HideContents();
+            }
+            base.Dismiss();
+
         }
 
     }

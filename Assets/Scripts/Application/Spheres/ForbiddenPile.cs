@@ -22,7 +22,15 @@ namespace SecretHistories.Spheres
         public override bool EnforceUniqueStacksInThisContainer => false;
         public override bool ContentsHidden => true;
 
-
+        public void ShowContents()
+        {
+            foreach (var t in _tokens)
+                t.Manifest();
+        }
+        public void HideContents()
+        {
+            //
+        }
 
 
 

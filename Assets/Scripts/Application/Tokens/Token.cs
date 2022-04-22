@@ -464,7 +464,15 @@ namespace SecretHistories.UI {
             return   _ghost.TryFulfilPromise(this,context);
         }
 
- 
+        public virtual void ManifestAs(Type manifestAsType)
+        {
+            var newManifestation = Watchman.Get<PrefabFactory>()
+                .CreateManifestationPrefab(manifestAsType, this.transform);
+
+            ReplaceManifestation(_manifestation, newManifestation, RetirementVFX.None);
+            
+            UpdateVisuals(Payload);
+    }
         public virtual void Manifest()
         {
             //I believe this only happens in automated test scenarios. but it's a bear sorting out the lifecycle!
