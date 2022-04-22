@@ -64,7 +64,7 @@
         "effects": {"xfet": 1,"mem.dreamt":-1},
         "purge": {"memory":99},
         "craftable":true,
-        "alt":[{"id": "setup.librarian.memories.2", "additional":true } ]
+        "alt":[{"id": "setup.librarian.memories.2", "additional":true, "topath": "*!beach/dunes" } ]
     },
 
     {
@@ -79,7 +79,7 @@
         "effects": {"xsha": 1,"memory":-1},
         "purge": {"memory":99},
         "craftable":true,
-        "alt":[{"id": "setup.librarian.memories.2", "additional":true } ]
+        "alt":[{"id": "setup.librarian.memories.2", "additional":true, "topath": "*!beach/dunes" } ]
     },
     {
         "id": "setup.librarian.wist",
@@ -93,7 +93,7 @@
         "effects": {"xwis": 1,"memory":-1},
         "purge": {"memory":1},
         "craftable":true,
-        "alt":[{"id": "setup.librarian.memories.2", "additional":true } ]
+        "alt":[{"id": "setup.librarian.memories.2", "additional":true, "topath": "*!beach/dunes"} ]
     },
 
 	{
@@ -101,8 +101,8 @@
         "label": "Why?",
         "startdescription": "I came here for a reason.",
         "warmup": 5,
-        "effects": {"mem.fear": 1,"mem.guilt": 1,"mem.loss": 1},
-        "topath": "*!beach/dunes"
+        "effects": {"mem.fear": 1,"mem.guilt": 1,"mem.loss": 1}
+
 
     },
     {
