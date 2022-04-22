@@ -125,21 +125,21 @@ namespace SecretHistories.UI {
             return VisibleForStates.Contains(stateEnum);
         }
 
-        public override bool RelevantTo(string state, Type sphereType)
-        {
-            var canParseState = Enum.TryParse(state, false, out StateEnum stateEnum);
-            if (!canParseState)
-            {
-                NoonUtility.LogWarning(
-                    $"Can't parse {state} as a StateEnum; assuming it's a match for dominion {Identifier}");
-                return true;
-            }
+        //public override bool RelevantTo(string state, Type sphereType)
+        //{
+        //    var canParseState = Enum.TryParse(state, false, out StateEnum stateEnum);
+        //    if (!canParseState)
+        //    {
+        //        NoonUtility.LogWarning(
+        //            $"Can't parse {state} as a StateEnum; assuming it's a match for dominion {Identifier}");
+        //        return true;
+        //    }
 
-            stateEnum = (StateEnum) Enum.Parse(typeof(StateEnum), state);
+        //    stateEnum = (StateEnum) Enum.Parse(typeof(StateEnum), state);
 
-            Type dominionSphereType = spherePrefab.GetType();
-            return VisibleForStates.Contains(stateEnum) && sphereType == dominionSphereType;
-        }
+        //    Type dominionSphereType = spherePrefab.GetType();
+        //    return VisibleForStates.Contains(stateEnum) && sphereType == dominionSphereType;
+        //}
 
 
         public override bool RemoveSphere(string id, SphereRetirementType retirementType)

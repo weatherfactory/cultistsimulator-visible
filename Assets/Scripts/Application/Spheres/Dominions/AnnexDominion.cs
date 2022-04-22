@@ -26,10 +26,6 @@ namespace SecretHistories.Assets.Scripts.Application.Spheres.Dominions
             return true;
         }
 
-        public override bool RelevantTo(string state, Type sphereType)
-        {
-            return true;
-        }
 
         public override bool RemoveSphere(string id, SphereRetirementType retirementType)
         {

@@ -924,10 +924,6 @@ namespace SecretHistories.Entities {
 
 
 
-        public List<AbstractDominion> GetRelevantDominions(StateEnum forState,Type sphereType) //This is only used in one place, and is really a hangover from an earlier structure
-    {
-            return new List<AbstractDominion>(_registeredDominions.Where(a=>a.RelevantTo(forState.ToString(),sphereType)));
-    }
 
     public List<Sphere> GetAvailableThresholdsForStackPush(ITokenPayload stack)
     {
@@ -976,26 +972,27 @@ namespace SecretHistories.Entities {
 
         public void DumpUnstartedBusiness()
         {
-            var verbThresholdsDominion = GetRelevantDominions(StateEnum.Unstarted, typeof(ThresholdSphere)).SingleOrDefault(); //This is the last place this is used. Time to refactor, I think.
-            if(verbThresholdsDominion!=null)
+
+            var visibleDominions = _registeredDominions.Where(d => d.VisibleFor(State.Identifier.ToString())).ToList();
+
+            
+
+            foreach (var vd in visibleDominions)
             {
-              var verbThresholds = new List<Sphere>(verbThresholdsDominion.Spheres);
-                foreach (var vt in verbThresholds)
-                {
-                    if(!vt.Defunct)
-                        vt.EvictAllTokens(Context.Unknown());
-                }
+        
+                    var verbThresholds = new List<Sphere>(vd.Spheres).Where(s=>s.SphereCategory==SphereCategory.Threshold);
+                    foreach (var vt in verbThresholds)
+                    {
+                        if (!vt.Defunct)
+                            vt.EvictAllTokens(Context.Unknown());
+                    }
+                
             }
-            //deferring this a bit longer. I need to think about how to connect startingslot behaviour with the BOH model:
-            //slot behaviour: dump when window closed?
-            //slot behaviour: block for certain kinds of interaction? using existing block?
-            //slot behaviour: specify connection type with other containers? ie expand 'greedy' effect to mean multiple things and directions
-            //if(CurrentState!=CurrentState.Ongoing)
-            //{
-            //    var slotted = GetStacks(ContainerCategory.Threshold);
-            //    foreach (var item in slotted)
-            //        item.ReturnToTabletop(new Context(Context.ActionSource.PlayerDumpAll));
-            //}
+
+
+            
+            
+
 
 
         }

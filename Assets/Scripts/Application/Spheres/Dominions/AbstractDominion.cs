@@ -69,7 +69,7 @@ namespace SecretHistories.UI
 
         public abstract Sphere TryCreateOrRetrieveSphere(SphereSpec spec);
         public abstract bool VisibleFor(string state);
-        public abstract bool RelevantTo(string state, Type sphereType);
+        
         public abstract bool RemoveSphere(string id,SphereRetirementType retirementType);
         public virtual bool CanCreateSphere(SphereSpec spec)
         {
