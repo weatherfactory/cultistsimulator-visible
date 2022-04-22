@@ -1,4 +1,60 @@
-﻿using UnityEngine;
+﻿
+#if UNITY_STANDALONE_LINUX
+
+using UnityEngine;
+using System.Collections;
+using System.IO;
+
+
+//
+// The GogGalaxyManager provides a base implementation of GOGGalaxy C# wrapper on which you can build upon.
+// It handles the basics of starting up and shutting down the GOG Galaxy for use.
+//
+[DisallowMultipleComponent]
+public class GogGalaxyManager : MonoBehaviour
+{
+    public string clientID;
+    public string clientSecret;
+
+    private static GogGalaxyManager singleton;
+    public static GogGalaxyManager Instance
+    {
+        get
+        {
+            if (singleton == null)
+            {
+                return new GameObject("GogGalaxyManager").AddComponent<GogGalaxyManager>();
+            }
+            else {
+                return singleton;
+            }
+        }
+    }
+
+    private bool isInitialized = false;
+
+    public static bool IsInitialized()
+    {
+        return false;
+    }
+
+    
+    public void TryInitialise()
+    {
+   
+        Debug.Log("Galaxy SDK can't be initialised on Linux, sorry", this);
+        
+    }
+
+
+    public void DoUpdate()
+    {
+     
+    }
+}
+#else
+
+using UnityEngine;
 using System.Collections;
 using System.IO;
 using Galaxy.Api;
@@ -99,3 +155,4 @@ public class GogGalaxyManager : MonoBehaviour
         GalaxyInstance.ProcessData();
     }
 }
+#endif
