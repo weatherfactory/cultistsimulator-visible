@@ -23,7 +23,6 @@ namespace SecretHistories.Manifestations
         protected float perlinRotationPoint = 0f;
         [SerializeField] protected BasicShadowImplementation shadow;
 
-        private Quaternion preDragRotation; //so we can do a Perlin wiggle on drag and restore after
 
         public virtual void UpdateLocalScale(Vector3 newScale)
         {
@@ -44,8 +43,6 @@ namespace SecretHistories.Manifestations
    
             public virtual void OnBeginDragVisuals(Token token)
         {
-            if (rotateOnDrag)
-                preDragRotation = transform.localRotation;
 
             if(shadow!=null)
                 shadow.gameObject.SetActive(true);
@@ -56,7 +53,7 @@ namespace SecretHistories.Manifestations
         public virtual void OnEndDragVisuals(Token token)
         {
             if (rotateOnDrag)
-                transform.localRotation = preDragRotation;
+                transform.rotation = token.Sphere.GetRectTransform().rotation;
             if (shadow != null)
                 shadow.gameObject.SetActive(false);
         }
