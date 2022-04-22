@@ -26,7 +26,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Situation
         protected virtual UIStyle.GlowTheme GlowTheme => UIStyle.GlowTheme.Classic;
 
         public override bool AllowStackMerge => false;
-        public override bool EmphasiseContents => true;
+        public override bool UnderstateContents => true;
 
         public override bool AllowDrag => true;
 
