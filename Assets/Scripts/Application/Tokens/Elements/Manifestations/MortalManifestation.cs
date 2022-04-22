@@ -10,6 +10,7 @@ using SecretHistories.Assets.Scripts.Application.Tokens.Ghosts;
 using SecretHistories.Enums;
 using SecretHistories.Ghosts;
 using SecretHistories;
+using SecretHistories.Assets.Scripts.Application.Spheres.Dominions;
 using SecretHistories.Services;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
@@ -27,6 +28,7 @@ namespace SecretHistories.Manifestations
         private GameObject _emphasisGlow;
 
         [SerializeField] private Image _artwork;
+        [SerializeField] protected List<AnnexDominion> _dominions;
 
         public override void Retire(RetirementVFX retirementVfx, Action callback)
         {
@@ -46,6 +48,9 @@ namespace SecretHistories.Manifestations
         public void Initialise(IManifestable manifestable)
         {
            UpdateVisuals(manifestable,NullSphere.Create());
+           name = GetType().Name + manifestable.Id;
+           foreach (var d in _dominions)
+               d.RegisterFor(manifestable);
         }
 
 

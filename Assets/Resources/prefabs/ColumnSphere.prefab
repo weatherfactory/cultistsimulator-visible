@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 225443034359755438}
   - component: {fileID: 3243761884941166812}
   - component: {fileID: 7319380396417851046}
+  - component: {fileID: 271673763596947393}
   m_Layer: 5
   m_Name: ColumnSphere
   m_TagString: Untagged
@@ -81,6 +82,19 @@ MonoBehaviour:
   _editorWildPath: 
   VisibleCharacteristics: []
   slotGlow: {fileID: 1432004365391369781}
+--- !u!114 &271673763596947393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010408375514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5c6b13c46627442a5a2c35c6c51c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sphere: {fileID: 7319380396417851046}
 --- !u!1 &1233008932312792
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ namespace SecretHistories.Assets.Scripts.Application.UI.Situation
     public class ColumnSphere : Sphere, IInteractsWithTokens
     {
         //This is for close-up display, not just columns. Rename once I'm sure.
-        public override SphereCategory SphereCategory => SphereCategory.Threshold;
+        public override SphereCategory SphereCategory => SphereCategory.World;
 
         // VISUAL ELEMENTS
         public GraphicFader slotGlow;
