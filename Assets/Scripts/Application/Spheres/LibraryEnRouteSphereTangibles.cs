@@ -13,6 +13,8 @@ namespace SecretHistories.Spheres
     [IsEmulousEncaustable(typeof(Sphere))]
     public class LibraryEnRouteSphereTangibles: EnRouteSphere
     {
+        public override bool EmphasiseContents => true;
+
         [SerializeField]
         private EnRouteSphere intangibleAlternative;
         public override Sphere GetAlternativeSphereFor(Token token)

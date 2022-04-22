@@ -2671,6 +2671,7 @@ RectTransform:
   - {fileID: 35567638}
   - {fileID: 1771794123}
   - {fileID: 1985642342}
+  - {fileID: 1599640180}
   m_Father: {fileID: 155336843}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3188,7 +3189,6 @@ RectTransform:
   - {fileID: 412435659}
   - {fileID: 124479442}
   - {fileID: 85450441}
-  - {fileID: 1599640180}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12450,7 +12450,7 @@ PrefabInstance:
     - target: {fileID: 1720991317274574912, guid: 21e879d32af49d1429ceacb28750c077,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00088977814
+      value: -0.00020885468
       objectReference: {fileID: 0}
     - target: {fileID: 1720991317492953273, guid: 21e879d32af49d1429ceacb28750c077,
         type: 3}
@@ -24705,12 +24705,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_TargetDisplay: 0
 --- !u!114 &1583907627
 MonoBehaviour:
@@ -24886,8 +24886,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 155336843}
-  m_RootOrder: 5
+  m_Father: {fileID: 124479442}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -27501,7 +27501,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -600, y: 0}
-  m_SizeDelta: {x: -1000, y: 40}
+  m_SizeDelta: {x: -1000, y: 20}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1771794124
 MonoBehaviour:
