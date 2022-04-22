@@ -10,6 +10,7 @@ using SecretHistories.Ghosts;
 using SecretHistories.Spheres;
 using SecretHistories.UI;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +23,7 @@ namespace SecretHistories.Ghosts
 
         [SerializeField]
         private Image spineImage;
-
+        
 
         public override void UpdateVisuals(IManifestable manifestable)
         {
@@ -37,7 +38,12 @@ namespace SecretHistories.Ghosts
             Sprite s = ResourcesManager.GetSpriteForSpine(manifestable.Icon);
             spineImage.sprite = s;
 
-  
+            if (sphere.EmphasiseContents)
+                Emphasise();
+            else
+                Understate();
+
+
             if (sphere.SphereCategory == SphereCategory.World)
             {
                 transform.eulerAngles = new Vector3(0, 0, 90);
@@ -49,6 +55,27 @@ namespace SecretHistories.Ghosts
                 ReverseWidthAndHeight();
             }
         }
+
+        public void Emphasise()
+        {
+            if (!isEmphasised())
+                ReverseWidthAndHeight();
+        }
+
+        private bool isEmphasised()
+        {
+            var rt = gameObject.GetComponent<RectTransform>();
+            if (rt.sizeDelta.x < rt.sizeDelta.y)
+                return true;
+            return false;
+        }
+
+        public void Understate()
+        {
+            if (isEmphasised())
+                ReverseWidthAndHeight();
+        }
+
 
         private void ReverseWidthAndHeight()
         {

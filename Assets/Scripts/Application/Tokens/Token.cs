@@ -411,12 +411,7 @@ namespace SecretHistories.UI {
 
             var candidatePosition = projectInSphere.Choreographer.GetClosestFreeLocalPosition(this, projectionPositionLocalToSphere);
 
-            if(projectInSphere.EmphasiseContents)
-                Emphasise();
-            if (projectInSphere.UnderstateContents)
-                Understate();
-
-            _ghost.ShowAt(projectInSphere, candidatePosition,TokenRectTransform);
+              _ghost.ShowAt(projectInSphere, candidatePosition,TokenRectTransform);
             
 
             //if we're showing a ghost, then we shouldn't show a ready-to-interact glow.
