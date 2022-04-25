@@ -1,0 +1,25 @@
+
+{"settings":[
+
+  { "id": "IgnoreGroup1", "tabid": "Tab", "hint": "Ignore Group 1",
+    "datatype": "Single", "minvalue": 0, "maxvalue": 1, "defaultvalue": 0,
+    "valuelabels": { "0": "UI_OFF", "1": "UI_ON" },
+    "targetConfigArray": "IgnoredContent",  "valueInnerLabels": { "0": "", "1": "group1" },
+    "comments": "When enabled, this will add 'group1' to the 'IgnoredContent' config array, and remove it from there when disabled. Check config.ini to test the behaviour.",
+  },
+
+  { "id": "IgnoreGroup2", "tabid": "Tab", "hint": "Ignore Group 2",
+    "datatype": "Single", "minvalue": 0, "maxvalue": 1, "defaultvalue": 0,
+    "valuelabels": { "0": "UI_OFF", "1": "UI_ON" },
+    "targetConfigArray": "IgnoredContent",  "valueInnerLabels": { "0": "", "1": "group2" },
+    "comments": "This will do the same for 'group2' to display how different values can coexist inside the array config.",
+  },
+
+  { "id": "IgnoreGroup1_duplicate", "tabid": "Tab", "hint": "Ignore Group 1, again",
+    "datatype": "Single", "minvalue": 0, "maxvalue": 1, "defaultvalue": 0,
+    "valuelabels": { "0": "UI_OFF", "1": "UI_ON" },
+    "targetConfigArray": "IgnoredContent",  "valueInnerLabels": { "0": "", "1": "group1" },
+    "comments": "This is to show how adding a duplicate value to a config array will behave (spoiler - both values are added and removed independently, since they come from different Settings).",
+  },
+
+  ]}
