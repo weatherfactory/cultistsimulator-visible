@@ -72,7 +72,8 @@ public class Config
     
     private const string SKIPLOGO_KEY="skiplogo";
     private const string KNOCK_KEY="knock";
-    
+    private const string COMMA = ",";
+
     private Dictionary<string, string> _configValues;
 
     public Config()
@@ -296,7 +297,7 @@ public class Config
     public string[] GetConfigValueAsArray(string forId)
     {
         string configValue = GetConfigValue(forId) ?? string.Empty;
-        return configValue.Split(',', StringSplitOptions.RemoveEmptyEntries);
+        return configValue.Split(COMMA, StringSplitOptions.RemoveEmptyEntries);
     }
 
     private Dictionary<string,string> PopulateConfigValues(string configLocation)
@@ -328,8 +329,8 @@ public class Config
         //arrays are stored in the ini files as
         //"key = ,value1,value2,value3,"
         //they always start with ',' and end with ',' - to separate each value clearly
-        value = string.Concat(value, ',');
-        string currentValue = GetConfigValue(key) ?? ",";
+        value = string.Concat(value, COMMA);
+        string currentValue = GetConfigValue(key) ?? COMMA;
 
         //it's tempting to check whether the value is already present in array and don't add it if yes, but I can see cases where having several of the same can be required
         PersistConfigValue(key, string.Concat(currentValue, value));
@@ -337,7 +338,7 @@ public class Config
 
     public void RemoveEntryFromConfigArray(string key, string valueToRemove)
     {
-        valueToRemove = string.Concat(",", valueToRemove, ",");
+        valueToRemove = string.Concat(COMMA, valueToRemove, COMMA);
         string currentValue = GetConfigValue(key) ?? string.Empty;
 
         //need to remove only the first occurence, since there can be others from other Settings 
@@ -345,9 +346,9 @@ public class Config
         if (position > -1)
         {
             // replacing the entry with a ',' - not an empty string - so each entry is still clearly separated by commas
-            currentValue = currentValue.Remove(position, valueToRemove.Length).Insert(position, ",");
+            currentValue = currentValue.Remove(position, valueToRemove.Length).Insert(position, COMMA);
 
-            if (currentValue == ",")
+            if (currentValue == COMMA)
                 RemoveConfigValue(key);
             else
                 PersistConfigValue(key, currentValue);
