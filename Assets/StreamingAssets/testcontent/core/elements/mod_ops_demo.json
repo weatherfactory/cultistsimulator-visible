@@ -1,0 +1,77 @@
+
+{"elements":[
+
+{ "id": "demo_element_1",
+    "description": "This element will show the possibility of using several of the same mod ops on the same property.",
+},
+
+{ "id": "demo_element_1", "description$prefix": "This text will be added to the start of the 'demo_element_1' description.\n" },
+{ "id": "demo_element_1", "description$prefix": "This text at the start of the description proves that, indeed, one can apply the same $ operation several times on the same property.\n" },
+
+{ "id": "demo_element_1", "label$prefix": "Mod Ops Demo Element", "$mute": true,
+  "comments": "This entry tries to modify the verb's label - but it's not defined! Don't worry though, it will be initialised as an empty string. Normally, this kind of thing will send a warning message (to acknowledge possible typos), but we're marked this one as 'mute', so it won't.",
+},
+
+
+{ "id": "demo_element_2",
+  "label": "$listedit and #dictedit", "description": "Put me inside the work verb, please.",
+  "aspects": { "job": 1 },
+  "slots": [ { "actionid": "work", "id": "some_slot1", "label": "Some Slot", "required": { "forge": 1 } },
+             { "actionid": "work", "id": "some_slot2", "label": "Another slot" } ],
+ },
+
+{ "id": "demo_element_2",
+  "slots$listedit": {
+    "0$dictedit": { "label$postfix": " with a postfix",
+                    "description": "This description will be added to the slot via '$dictedit' operation. Note how we don't need the ID.",
+                    "required$add": { "lantern": 1 } },
+    "0.5": { "actionid": "work", "id": "some_slot_between_1_and_2", "label": "Slot, inserted in-between." }
+                    },
+  "comments": "This element accesses 'slots' property via '$listedit'. It then accesses the first (or '0th') entry of the 'slots' via '0$dictedit' and does some modifications. It then inserts another slot between the existing ones, displaying an impressive power of fine tuning collections at will."
+},
+
+
+{ "id": "demo_element_3_parent", "label": "$derives demo",
+  "description": "Parent description.",
+  "aspects": { "edge": 1 }
+},
+
+{ "id": "demo_element_3", "$derives": "demo_element_3_parent",
+  "aspects": { "winter": 1 },
+  "description": "Parent description isn't inherited, since it's a plain value, in contrast to 'aspects', which are merged. But label - a plain value too - is inherited, since it's not defined in a child.",
+},
+
+
+
+{ "id": "demo_element_4", "$derives": "demo_element_3_parent", "$priority": -1,
+  "description": "This example is effectively the same as the previous, with the simple exception that the parent is defined after the child. Normally, this won't do anything, but since we've defined child's priority as -1, so it loads after the parent (which has default priority 0).",
+  "aspects": { "winter": 1 },
+},
+
+{ "id": "demo_element_4_parent", "label": "$derives demo 2",
+  "description": "Parent description.",
+  "aspects": { "edge": 1 }
+},
+
+
+{ "id": "demo_element_5", "label": "string $replace",
+  "comments": "This will illustrate how we replace strings and how fun and painless that is.",
+  "description": "1 2 3 \n 1 2 3 \n 1 2 3",
+},
+
+{ "id": "demo_element_5",
+  "description$replace": { "1": "One" }, "comments": "Will replace starting '1' with 'One'",
+  "description$replacelast": [ { "3": "Three" }, { "3": "Three" }, ], "comments": "Will replace two last '3's with 'Three's",
+},
+
+{ "id": "demo_element_5",
+  "comments": "Now for a trickier case. We want to change the middle '2' - and only the middle '2', not any other '2' - to 'Two'. Watch the moves.",
+  "description$replace": [
+                          { "2": "TEMPORARY CHANGE WILL REVERT ONCE DONE" },
+                          { "2": "Two" },
+                          { "TEMPORARY CHANGE WILL REVERT ONCE DONE": "2" },
+                         ],
+  "comments": "Of course, just allowing to specify the number of occurence would make more sense code-wise, but it'll result in even more complicated JSON. This method is simple and does the job."
+},
+
+  ]}

@@ -29,90 +29,53 @@ namespace SecretHistories.Fucine.DataImport
             get => _uniqueId;
         }
 
-        /// <summary>
-        /// gets entity ids to extend *and then removes it* so it doesn't show up as an invalid property later
-        /// </summary>
-        /// <returns></returns>
-        public List<string> FlushEntityIdsToExtend()
-        {
-            if (ValuesTable.ContainsKey(NoonConstants.EXTENDS))
-            {
-                var ids = ValuesTable[NoonConstants.EXTENDS] as ArrayList;
-                ValuesTable.Remove(NoonConstants.EXTENDS);
-
-                if(ids==null)
-                    return new List<string>();
-
-                return ids.Cast<string>().ToList();
-            }
-            else return new List<string>();
-
-        }
-
-        ///// <summary>
-        ///// all the values that we should copy across with extends or similar, excluding meta and mod values
-        ///// </summary>
-        ///// <returns></returns>
-        //public Hashtable GetCopiableValues()
-        //{
-        //    Hashtable copiableValues=new Hashtable();
-        //    foreach(string key in ValuesTable.Keys)
-        //        if(key!=NoonConstants.ID && key!=NoonConstants.EXTENDS)
-        //            copiableValues.Add(key,ValuesTable[key]);
-
-        //    return copiableValues;
-        //}
-
-        /// <summary>
-        /// return true if adding successfully, false if the key's already there
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public bool TryAdd(object key, object value)
-        {
-            if (ValuesTable.ContainsKey(key))
-                return false;
-
-            ValuesTable.Add(key,value);
-            return true;
-
-        }
-
-
-
-        /// <summary>
-        /// True if we overwrite, false if we add
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <returns>True if we overwrite, false if we add</returns>
-        public bool OverwriteOrAdd(object key, object value)
-        {
-            if (ValuesTable.ContainsKey(key))
-            {
-                ValuesTable[key] = value;
-                return true;
-            }
-            else
-            {
-                ValuesTable.Add(key,value);
-                return false;
-            }
-
-        }
-
         public Hashtable ValuesTable { get; set; }
+        public bool isMuted { get; set; }
+        //contentGroups are used only (to determine ignore, but I'm storing them in case they'll be required for something else)
+        public string[] contentGroups { get; set; }
 
-        public EntityData GetEntityDataFromValueTable(string key)
+        public void ApplyDataToCollection(Dictionary<string, EntityData> allUniqueEntititesOfType, ContentImportLog log)
         {
-            if (!ValuesTable.ContainsKey(key))
-                return null;
+            //$ ops are [historically] far from being foolproof, so there are a bunch of safety warnings
+            //in some cases, they'll just clog the log, so this allows to disable some of the [less critical] warnings in a this specific entity definition
+            //(from some point of view, this makes them even less foolproof)
+            this.FlushMuteFromEntityData();
+
+            this.InheritMerge(allUniqueEntititesOfType, log);
+            this.InheritOverride(allUniqueEntititesOfType, log);
+
+            if (allUniqueEntititesOfType.ContainsKey(this.Id) == false)
+            {
+                // just adding it as it is - since there's nothing to apply $ops
+                allUniqueEntititesOfType.Add(this.Id, this);
+                //if the current EntityData's id isn't present in a dictionary, we still want ops to work - for example, if you want to modify derived/extended properties
+                this.ApplyPropertyOperationsOn(this, log);
+
+                //but there's nothing to overwrite or add to, so we skip that part
+            }
             else
-                //this will be null if it's not actually EntityData in there
-                return ValuesTable[key] as EntityData;
+            {
+                //otherwise apply current EntityData's properties and operations to the "core definition" - the one that's kept in the final dictionary
+                EntityData coreEntity = allUniqueEntititesOfType[this.Id];
+
+                this.ApplyPropertyOperationsOn(coreEntity, log);
+                this.OverwriteOrAddPropertiesOfCoreEntity(coreEntity);
+
+                if (!isMuted)
+                    log.LogInfo($"Duplicate entity '{this.UniqueId}': merging them (values in second instance will overwrite first, if they overlap)");
+            }
         }
 
+        public bool ContainsKey(object key)
+        {
+            return this.ValuesTable.ContainsKey(key);
+        }
+
+        public object this[object key]
+        {
+            get { return this.ValuesTable[key]; }
+            set { this.ValuesTable[key] = value; }
+        }
 
         public EntityData()
         {

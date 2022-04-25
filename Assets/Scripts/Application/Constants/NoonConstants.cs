@@ -90,7 +90,9 @@ namespace SecretHistories.Constants
         public const string GRIDSNAPLEVEL = "GridSnapLevel";
         public const string SITUATION_STARTABLE = "VERB_START";
         public const string SITUATION_RUNNING = "VERB_RUNNING";
-        
+
+        public const string IGNOREDCONTENT = "IgnoredContent";
+
 
         public const float SEND_STACK_TO_SLOT_DURATION = 0.6f; //used for greedyangels as well
 
