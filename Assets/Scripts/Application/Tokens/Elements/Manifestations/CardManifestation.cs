@@ -99,7 +99,8 @@ namespace SecretHistories.Manifestations
             decayBackgroundImage = decayView.GetComponent<Image>();
             cachedDecayBackgroundColor = decayBackgroundImage.color;
 
-            frames = ResourcesManager.GetAnimFramesForElement(manifestable.EntityId);
+            string icon = Watchman.Get<Compendium>().GetEntityById<Element>(manifestable.EntityId).Icon;
+            frames = ResourcesManager.GetAnimFramesForElement(icon);
             _entityId = manifestable.EntityId;
             _quantity = manifestable.Quantity;
 

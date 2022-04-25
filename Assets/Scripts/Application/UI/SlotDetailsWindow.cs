@@ -103,7 +103,7 @@ namespace SecretHistories.UI {
         }
 
         void SetDeck(DeckSpec deckId, int deckQuantity) {
-            var sprite = ResourcesManager.GetSpriteForCardBack(deckId.Id);
+            var sprite = ResourcesManager.GetSpriteForCardBack(deckId.Cover);
 
             SetImageNarrow(true);
             ShowImage(sprite);
