@@ -1,6 +1,17 @@
 ﻿{
 	"elements": [
-						{  "id": "versionnews.2022.4.s.1",
+						{ 
+						{  "id": "versionnews.2022.4.t.1",
+			"label": "2022.4.t.1 TARTUFFE",
+	"description": 
+"- Substantial fixed and upgrades for modding. Many thanks to Chelnoque. More details in MODDING_README
+- Animations and images should work correctly in mods
+- Options Panel now better supports mod-driven config options (see /testcontent/core/settings/z_mod_config_demo.json)
+- More stable modding incompatibility / interoperability
+- More modding commands - see MODDING_README and /testcontent/core/settings/mod_ops_demo.json",
+			"icon": "dancerjobecdysisa"
+			},
+						"id": "versionnews.2022.4.s.1",
 			"label": "2022.4.s.1 SARGASSO",
 	"description": 
 	"- Quick fix for silliness with the starting dropzone alignment\n
@@ -110,31 +121,6 @@
 - Game ending no longer crashes with default lorem ipsum text\n
 - Better logging for speed changes, so I can work out why pause still sometimes sticks",
 "icon": "apostlegrail.pillar1"
-			},
-			{
-						"id": "versionnews.2022.3.g.1",
-			"label": "2022.3.g.1 GIOCONDA",
-	"description": "- Fixed intermittent Exile crash around halting verbs. \n
-- Changing high contrast setting no longer crashes game\n
-- Returning from Mansus no longer requires a restart to unpause\n
-- Elements shown correctly in status bar in Exile.\n
-- Reckoners no longer send an inexplicable corpse to your next destination when you leave.\n
-- Fixed issue where it was sometimes possible to start recipes with the hotkey but not a button click.\n
-- Likely fix for crash codename 'Gryla'\n
-- Likely fix for crash codename 'Gluggagegir'\n
-- Likely fix for crash codename 'Stekkjarstaur'\n
-- Started naming cause-undetermined crashes after the Yule Lads so I can keep track\n",
-			"icon": "clovette_a"
-			},
-					{  "id": "versionnews.2022.3.f.1",
-			"label": "2022.3.f.1 FIDELIO",
-	"description": "- Fix for stuck-cards issue. \n
-- Better logging for intermittent bugs\n
-- Fixed tofu character in JP log\n
-- Possible catch for peculiar canvasgroupfader bug\n
-- Fixed a couple of nasty save-load issues\n
-- Better logging",
-			"icon": "apostlelantern.mentor"
 			}
 		
 		]

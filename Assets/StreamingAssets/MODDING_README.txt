@@ -69,7 +69,7 @@ The game will process this content in this order:
 - all the original game loc content files
 - all the loc files for any enabled mods.
 
-(You can't specify loading order of mods yet, but I'll get around to that.)
+Loading order of mods can be specified by the player. Modders can override loading order of individual entities with the $priority
 
 
 CONTENT FOR MODS
@@ -111,15 +111,33 @@ Extending an entity: By adding the property "extends", you can tell Cultist Simu
 }
 
 
-Per-property extending: Sometimes when extending you just need to make a small change, like adding an entry to a deck spec or incrementing a number. This is where property operations come into play. When using "extend", you can specify some properties with the format "property_name$operation" to apply "$operation" to "property_name", where "$operation" is one of the following:
-"$append":
+Per-property extending: Sometimes when extending you just need to make a small change, like adding an entry to a deck spec or incrementing a number.
+This is where property operations come into play. When using "extend", you can specify some properties with the format "property_name$operation"
+to apply "$operation" to "property_name", where "$operation" is one of the following:
+
+$append:
 appends a list of items to the original list property.
-"$prepend":
+
+$prepend:
 prepends a list of items to the original list property.
-"$add":
+
+$add:
 adds the specified properties to a dictionary
-"$remove":
+
+$remove:
 removes each element in the list from the original property, which can either be a list or a dictionary.
+
+$prefix/$postfix/$replace/$replacelast:
+modify string properties
+
+$listedit/$dictedit:
+apply $ operations to nested collections
+
+There are also a handful of element-level modding operations:
+4
+$priority - define loading order priority for each entity;
+$derives - like 'extends', but child doesn't override parents' collections;
+$contentgroups - allows to tag content for whatever purpose;
 
 
 CULTURES
@@ -160,7 +178,8 @@ DLLs are loaded *when the main app initialises* - before JSON content is loaded.
 
 ACKNOWLEDGEMENTS
 ----------------
-The modding framework is based on Lyrositor's original fan-contributed modding framework. The DLL loading functionality follows Chelnoque's suggested approach and sample code.
+The modding framework is based on Lyrositor's original fan-contributed modding framework.
+Chelnoque suggested the approach and sample code for DLL loading, and made substantial contributions to mod stability and $operations.
 
 
 - AK 01/12/2021
