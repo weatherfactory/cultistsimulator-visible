@@ -468,12 +468,13 @@ public class MenuScreenController : LocalNexus {
             nextBlockId = 1;
 
         Watchman.Get<Config>().PersistConfigValue(NoonConstants.MENU_BLOCK_ID, nextBlockId.ToString());
-        
+           
         foreach (var block in availableBlocks)
-            if (block.ID == menuBlockId)
+            if(block.ID>=menuBlockId)
+            {
                 block.gameObject.SetActive(true);
-            else
-                block.gameObject.SetActive(false);
+                break;
+            }
 
     }
 
