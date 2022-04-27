@@ -68,6 +68,7 @@ namespace SecretHistories.UI
             Watchman.Get<LocalNexus>().DoHideHud();
             Watchman.Get<CamOperator>().OnZoomEvent(new ZoomLevelEventArgs{AbsoluteTargetZoomLevel = ZoomLevel.Far});
             Watchman.Get<Heart>().Metapause();
+            Watchman.Get<Heart>().SetMetapauseIndicatorVisible(false);
 
           //  PreOtherworldAutosave(); Player feedback suggests this is confusing and unhelpful, because of the portal window that opens on load. Disabling for now.
 
@@ -90,6 +91,7 @@ namespace SecretHistories.UI
 
             Watchman.Get<LocalNexus>().DoShowHud();
             Watchman.Get<Heart>().Unmetapause();
+            
 
  
 

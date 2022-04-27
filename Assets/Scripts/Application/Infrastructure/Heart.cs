@@ -62,6 +62,14 @@ public class Heart : MonoBehaviour
 
     }
 
+    public void SetMetapauseIndicatorVisible(bool visibility)
+    {
+        if(visibility)
+            MetapauseIndicator.Show();
+        else
+            MetapauseIndicator.Hide();
+    }
+
     public bool IsPaused()
     {
         if (gameSpeedState.GetEffectiveGameSpeed() == GameSpeed.Paused)
