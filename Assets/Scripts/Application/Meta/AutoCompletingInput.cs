@@ -23,6 +23,8 @@ namespace Assets.Scripts.Application.Meta
         public bool MakeElementSuggestions;
         public bool MakeRecipeSuggestions;
         public bool MakeEndingSuggestions;
+        public bool MakeDeckspecSuggestions;
+
 
 
         private const int MaxAutoCompletionSuggestions = 50;
@@ -161,6 +163,9 @@ namespace Assets.Scripts.Application.Meta
             if (MakeEndingSuggestions)
                 suggestions.AddRange(GetEndingAutoCompletionSuggestions(compendium, value));
 
+            if (MakeDeckspecSuggestions)
+                suggestions.AddRange(GetDeckspecAutoCompletionSuggestions(compendium, value));
+
             var orderedSuggestions = suggestions.OrderBy(acs => acs.GetText()).ToList();
 
             if (orderedSuggestions.Count == 0)
@@ -223,6 +228,13 @@ namespace Assets.Scripts.Application.Meta
             return compendium.GetEntitiesAsList<Ending>().
                 Where(x => x.Id.StartsWith(prompt)).Select(x => MakeAutocompleteSuggestion(compendium, x.Id, typeof(Ending))).ToList();
         }
+
+        List<AutoCompletionSuggestion> GetDeckspecAutoCompletionSuggestions(Compendium compendium, string prompt)
+        {
+            return compendium.GetEntitiesAsList<DeckSpec>().
+                Where(x => x.Id.StartsWith(prompt)).Select(x => MakeAutocompleteSuggestion(compendium, x.Id, typeof(Ending))).ToList();
+        }
+
 
         AutoCompletionSuggestion MakeAutocompleteSuggestion(Compendium compendium, string suggestedId, Type entityType)
         {
