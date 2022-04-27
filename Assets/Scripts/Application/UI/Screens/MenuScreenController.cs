@@ -50,6 +50,7 @@ public class MenuScreenController : LocalNexus {
     public CanvasGroupFader versionNews;
     public CanvasGroupFader modsPanel;
     public CanvasGroupFader startDLCLegacyConfirmPanel;
+    public OptionsPanel optionsPanel;
 
 
     [Header("Hints")]
@@ -231,13 +232,19 @@ public class MenuScreenController : LocalNexus {
         modal.Show();
     }
 
-    void HideCurrentOverlay() {
-        if (currentOverlay == null)
-            return;
+   public void HideCurrentOverlay() {
 
-        currentOverlay.Hide();
+       if (currentOverlay != null)
+       {
+           currentOverlay.Hide();
+           currentOverlay = null;
+        }
+        if(optionsPanel.isActiveAndEnabled)
+            optionsPanel.ToggleVisibility();
+       
+
         modal.Hide();
-        currentOverlay = null;
+        
     }
 
 #endregion
@@ -311,8 +318,9 @@ public class MenuScreenController : LocalNexus {
 	public void ShowSettings() {
 		if (!canTakeInput)
 			return;
-        //Not the same as other overlays: consistency with in-game ToggleVisibility
-		ToggleOptionsEvent.Invoke();
+
+        modal.Show();
+        ToggleOptionsEvent.Invoke();
 	}
 
 	public void ShowLanguage()
@@ -441,12 +449,7 @@ public class MenuScreenController : LocalNexus {
     
     }
     
-    public void CloseCurrentOverlay() {
-        if (!canTakeInput)
-            return;
 
-        HideCurrentOverlay();
-    }
 
     public void Exit() {
         if (!canTakeInput)
@@ -457,14 +460,15 @@ public class MenuScreenController : LocalNexus {
 
     public void DoMenuBlockRotation()
     {
+     
         int? menuBlockId=Watchman.Get<Config>().GetConfigValueAsInt(NoonConstants.MENU_BLOCK_ID);
         if (menuBlockId == null)
             menuBlockId = 1;
 
         var availableBlocks = MenuBlocksHolder.GetComponentsInChildren<MenuContentBlock>(true);
-
+        int maxBlockIndex = availableBlocks.Length; //might not always be this if we want to weight block display
         int nextBlockId = (int)menuBlockId + 1;
-        if (nextBlockId > availableBlocks.Length)
+        if (nextBlockId > maxBlockIndex)
             nextBlockId = 1;
 
         Watchman.Get<Config>().PersistConfigValue(NoonConstants.MENU_BLOCK_ID, nextBlockId.ToString());
