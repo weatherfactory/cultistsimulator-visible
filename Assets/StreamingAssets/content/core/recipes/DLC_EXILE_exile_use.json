@@ -979,8 +979,7 @@
                     "description": "'When all candles be out, all cats be grey.'",
                     "required": {
                         "lantern": 1
-                    },
-                    "consumes": true
+                    }
                 }
             ],
             "alt": [
@@ -1113,7 +1112,7 @@
             "id": "use.find.nameless",
             "actionid": "use",
             "label": "Follow",
-            "startdescription": "The Velvet, who conceals secrets, has a Nameless Name. In that Name's mists, the defeated find solace. That Name is never seen; except, now and then, by the very greyest of cats. [This will consume both the Opportunity and the light.]",
+            "startdescription": "The Velvet, who conceals secrets, has a Nameless Name. In that Name's mists, the defeated find solace. That Name is never seen; except, now and then, by the very greyest of cats. [This will consume the Opportunity.]",
             "description": "I follow the swaying tail of a grey cat through the streets after sunset.",
             "requirements": {
                 "lantern": 1
