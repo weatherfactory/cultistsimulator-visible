@@ -15,32 +15,29 @@ namespace Galaxy
 	public class CopyGalaxyLibraries {
 		private const string GALAXY_API_RELATIVE_LOC = "Assets/Plugins/GoGGalaxy";
 
-		public static void Copy(BuildTarget target, string outputLibLocation) 
+		public static void Copy(BuildTarget target, string pathToBuiltProject) 
 		{
 			#if !DISABLEREDISTCOPY
 			if (target == BuildTarget.StandaloneWindows64) {
-				Debug.Log("BUILD: copying Galaxy libraries 64 to: " + outputLibLocation);
-				CopyFile("Win64/Galaxy64.dll", Path.Combine(outputLibLocation, "Galaxy64.dll"));
-				CopyFile("Win64/GalaxyCSharpGlue.dll", Path.Combine(outputLibLocation, "GalaxyCSharpGlue.dll"));
+				Debug.Log("BUILD: copying Galaxy libraries 64 to: " + pathToBuiltProject);
+				CopyFile("Win64/Galaxy64.dll", Path.Combine(pathToBuiltProject, "Galaxy64.dll"));
+				CopyFile("Win64/GalaxyCSharpGlue.dll", Path.Combine(pathToBuiltProject, "GalaxyCSharpGlue.dll"));
 			}
 			else if (target == BuildTarget.StandaloneWindows) {
-				Debug.Log("BUILD: copying Galaxy libraries 32 to: " + outputLibLocation);
-				CopyFile("Win32/Galaxy.dll", Path.Combine(outputLibLocation, "Galaxy.dll"));
-				CopyFile("Win32/GalaxyCSharpGlue.dll", Path.Combine(outputLibLocation, "GalaxyCSharpGlue.dll"));
+				Debug.Log("BUILD: copying Galaxy libraries 32 to: " + pathToBuiltProject);
+				CopyFile("Win32/Galaxy.dll", Path.Combine(pathToBuiltProject, "Galaxy.dll"));
+				CopyFile("Win32/GalaxyCSharpGlue.dll", Path.Combine(pathToBuiltProject, "GalaxyCSharpGlue.dll"));
 			}
 			else if (target == BuildTarget.StandaloneOSX)
 			{
-				const string contentPath = "Contents/Frameworks/MonoEmbedRuntime/osx/";
-				var inAppLocation = Path.Combine(outputLibLocation, "OSX.app/" + contentPath);
-				outputLibLocation = Path.Combine(outputLibLocation, contentPath);
-
-				// TODO Research which path is actually used (outputLibLocation and inAppLocation) and remove it
-				CopyFile("OSXUniversal/Galaxy.bundle/Contents/MacOS/libGalaxy.dylib", Path.Combine(outputLibLocation, "libGalaxy.dylib"));
-				CopyFile("OSXUniversal/Galaxy.bundle/Contents/MacOS/libGalaxyCSharpGlue.dylib", Path.Combine(outputLibLocation, "libGalaxyCSharpGlue.dylib"));
-				CopyFile("OSXUniversal/Galaxy.bundle/Contents/MacOS/libGalaxy.dylib", Path.Combine(inAppLocation, "libGalaxy.dylib"));
-				CopyFile("OSXUniversal/Galaxy.bundle/Contents/MacOS/libGalaxyCSharpGlue.dylib", Path.Combine(inAppLocation, "libGalaxyCSharpGlue.dylib"));
+				//copy code as provided seems to be bobbins - it uses a source path that doesn't match the Unity bundle contents, and it assumes libgalaxy not libgalaxy64, although libgalaxy no longer appears to exist
+            pathToBuiltProject = pathToBuiltProject + "/OSX.app/"; // Ensure the .app directory name is actually treated as a directory.
+            string outputLibLocation = Path.Combine (pathToBuiltProject, "Contents/Frameworks/MonoEmbedRuntime/osx/");
+         //   CopyFile ("OSXUniversal/libGalaxy.dylib", Path.Combine (outputLibLocation, "libGalaxy.dylib"));
+            CopyFile("OSXUniversal/libGalaxy64.dylib", Path.Combine(outputLibLocation, "libGalaxy64.dylib"));
+            CopyFile("OSXUniversal/libGalaxyCSharpGlue.dylib", Path.Combine (outputLibLocation, "libGalaxyCSharpGlue.dylib"));
 			}
-			#endif
+#endif
 		}
 
 		private static void CopyFile(string sourceFilePath, string outputFilePath) 
@@ -49,8 +46,11 @@ namespace Galaxy
 			string strSource = Path.Combine(Path.Combine(strCWD, GALAXY_API_RELATIVE_LOC), sourceFilePath);
 			string strFileDest = outputFilePath;
 
-			if (!File.Exists(strSource)) {
-				Debug.LogWarning(string.Format("[GoGGalaxy RedistCopy] Could not copy {0} into the project root. {0} could not be found in '{1}'. Place {0} from the redist into the project root manually.", sourceFilePath, GALAXY_API_RELATIVE_LOC));
+			if (!File.Exists(strSource))
+            {
+                string warning =
+                    $"[GoGGalaxy RedistCopy] Could not copy {sourceFilePath} to {outputFilePath}. {sourceFilePath} could not be found in '{GALAXY_API_RELATIVE_LOC}'. Place {sourceFilePath} from the redist into the project root manually.";
+				Debug.LogWarning(warning);
 				return;
 			}
 
