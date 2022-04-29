@@ -16,6 +16,7 @@ using SecretHistories.Spheres;
 
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.HID;
 
 namespace SecretHistories.Constants {
@@ -94,9 +95,11 @@ namespace SecretHistories.Constants {
             {
                 return new ChoreoPosition(intendedPosOnGrid);
             }
-    
 
-            Vector2 direction = (intendedPosOnGrid - legalPositionCheckResult.BlockerRect.center).normalized; //intendedPosOnGrid *not* intendedPos. We're looking for candidate locations starting at the
+            var cursorWorldPosition =Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            var cursorTablePosition = (Vector2)Sphere.GetRectTransform().InverseTransformPoint(cursorWorldPosition);
+
+            Vector2 direction = (intendedPosOnGrid - cursorTablePosition).normalized; //intendedPosOnGrid *not* intendedPos. We're looking for candidate locations starting at the
             //grid position we tried, because that's where the ghost will show up, not the original cursor position, which we've already corrected from and don't want to double-correct from.
 
                 var testRects = GetAlternativeCandidateRectsAlongVector(targetRect, direction,1,100,GRID_WIDTH,GRID_HEIGHT);
