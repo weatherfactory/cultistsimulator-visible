@@ -973,28 +973,20 @@ namespace SecretHistories.Entities {
         public void DumpUnstartedBusiness()
         {
 
-            var visibleDominions = _registeredDominions.Where(d => d.VisibleFor(State.Identifier.ToString())).ToList();
+            var unstartedDominion =
+                _registeredDominions.SingleOrDefault(d =>
+                    d.Identifier == SituationDominionEnum.VerbThresholds.ToString());
 
-            
-
-            foreach (var vd in visibleDominions)
+            if (unstartedDominion != null)
             {
-        
-                    var verbThresholds = new List<Sphere>(vd.Spheres).Where(s=>s.SphereCategory==SphereCategory.Threshold);
-                    foreach (var vt in verbThresholds)
-                    {
-                        if (!vt.Defunct)
-                            vt.EvictAllTokens(Context.Unknown());
-                    }
-                
+                var verbThresholds = new List<Sphere>(unstartedDominion.Spheres).Where(s => s.SphereCategory == SphereCategory.Threshold);
+                foreach (var vt in verbThresholds)
+                {
+                    vt.EvictAllTokens(Context.Unknown());
+                }
             }
 
-
             
-            
-
-
-
         }
         
         /// <summary>
