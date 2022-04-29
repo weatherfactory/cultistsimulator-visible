@@ -80,7 +80,10 @@ namespace SecretHistories.Infrastructure.Persistence
         }
 
 
-
+        public virtual bool IsValid()
+        {
+            return true;
+        }
         public virtual bool SaveExists()
         {
             return File.Exists(GetSaveFileLocation());

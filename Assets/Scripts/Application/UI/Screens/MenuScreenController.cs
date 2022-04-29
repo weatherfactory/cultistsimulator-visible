@@ -138,8 +138,7 @@ public class MenuScreenController : LocalNexus {
 
         InitialiseServices();
 
-        //// We delay the showing to get a proper fade in
-        Invoke("UpdateAndShowMenu", 0.1f);
+        UpdateAndShowMenu();
         
         var concursum = Watchman.Get<Concursum>();
 
@@ -174,21 +173,19 @@ public class MenuScreenController : LocalNexus {
 
     void UpdateAndShowMenu()
     {
-        
 
-        var defaultPersistence = new DefaultGamePersistenceProvider();
-        var savedGameExists=defaultPersistence.SaveExists();
-            
+
+        var pp = Watchman.Get<StageHand>().GamePersistenceProvider;
+        bool savedGameExists=pp.SaveExists();
 
         // Show the buttons as needed
  
         newGameButton.gameObject.SetActive(!savedGameExists);
-        continueGameButton.gameObject.SetActive(savedGameExists);
+        continueGameButton.gameObject.SetActive(savedGameExists && pp.IsValid());
         purgeButton.gameObject.SetActive(savedGameExists);
 
       
-        
-        //brokenSaveMessage.gameObject.SetActive(savedGameExists);
+        brokenSaveMessage.gameObject.SetActive(savedGameExists && !pp.IsValid());
         UpdateVersionNumber();
         HideAllOverlays();
 
@@ -481,7 +478,10 @@ public class MenuScreenController : LocalNexus {
             }
 
     }
+    public void BrowseFiles()
+    {
+        OpenInFileBrowser.Open(Application.persistentDataPath);
+    }
 
-
-#endregion
+    #endregion
 }

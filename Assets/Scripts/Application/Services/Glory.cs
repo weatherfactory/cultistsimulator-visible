@@ -210,6 +210,7 @@ namespace SecretHistories.Services
                 catch (Exception e)
                 {
                     NoonUtility.Log($"Couldn't initialise / depersist game state when setting up: {e}",2);
+                    stageHand.UseProvider(new CorruptFileSubstituteGamePersistenceProvider());
                 }
 
 
