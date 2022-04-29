@@ -182,4 +182,4 @@ The modding framework is based on Lyrositor's original fan-contributed modding f
 Chelnoque suggested the approach and sample code for DLL loading, and made substantial contributions to mod stability and $operations.
 
 
-- AK 01/12/2021
+- AK 29/04/2022
