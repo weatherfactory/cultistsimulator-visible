@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1683235854}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8974,7 +8974,6 @@ GameObject:
   - component: {fileID: 385201826}
   - component: {fileID: 385201825}
   - component: {fileID: 385201824}
-  - component: {fileID: 385201823}
   m_Layer: 5
   m_Name: Promo Image
   m_TagString: Untagged
@@ -9002,19 +9001,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &385201823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385201821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac0616d4e7e1bc4eab2deb226e94269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesOverride: 0
 --- !u!114 &385201824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9262,7 +9248,6 @@ GameObject:
   - component: {fileID: 399304620}
   - component: {fileID: 399304619}
   - component: {fileID: 399304618}
-  - component: {fileID: 399304617}
   m_Layer: 5
   m_Name: Promo Image
   m_TagString: Untagged
@@ -9290,19 +9275,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &399304617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399304615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac0616d4e7e1bc4eab2deb226e94269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesOverride: 0
 --- !u!114 &399304618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9577,8 +9549,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 182394258}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: CloseCurrentOverlay
+        m_TargetAssemblyTypeName: MenuScreenController, SecretHistories.Main
+        m_MethodName: HideCurrentOverlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18013,8 +17985,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 182394258}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: CloseCurrentOverlay
+        m_TargetAssemblyTypeName: MenuScreenController, SecretHistories.Main
+        m_MethodName: HideCurrentOverlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24923,7 +24895,6 @@ GameObject:
   - component: {fileID: 778485979}
   - component: {fileID: 778485978}
   - component: {fileID: 778485977}
-  - component: {fileID: 778485976}
   m_Layer: 5
   m_Name: Promo Image
   m_TagString: Untagged
@@ -24951,19 +24922,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &778485976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778485974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac0616d4e7e1bc4eab2deb226e94269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesOverride: 0
 --- !u!114 &778485977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46455,7 +46413,6 @@ GameObject:
   - component: {fileID: 1000580748}
   - component: {fileID: 1000580747}
   - component: {fileID: 1000580746}
-  - component: {fileID: 1000580745}
   m_Layer: 5
   m_Name: Promo Image
   m_TagString: Untagged
@@ -46483,19 +46440,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1000580745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000580743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac0616d4e7e1bc4eab2deb226e94269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesOverride: 0
 --- !u!114 &1000580746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46560,7 +46504,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000580743}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -49045,7 +48989,6 @@ GameObject:
   - component: {fileID: 1164314710}
   - component: {fileID: 1164314709}
   - component: {fileID: 1164314708}
-  - component: {fileID: 1164314707}
   m_Layer: 5
   m_Name: Promo Image
   m_TagString: Untagged
@@ -49073,19 +49016,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1164314707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164314705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac0616d4e7e1bc4eab2deb226e94269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesOverride: 0
 --- !u!114 &1164314708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49980,8 +49910,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 182394258}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: CloseCurrentOverlay
+        m_TargetAssemblyTypeName: MenuScreenController, SecretHistories.Main
+        m_MethodName: HideCurrentOverlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -56843,7 +56773,6 @@ GameObject:
   - component: {fileID: 1413936634}
   - component: {fileID: 1413936633}
   - component: {fileID: 1413936632}
-  - component: {fileID: 1413936631}
   m_Layer: 5
   m_Name: Promo Image
   m_TagString: Untagged
@@ -56871,19 +56800,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1413936631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413936629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac0616d4e7e1bc4eab2deb226e94269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesOverride: 0
 --- !u!114 &1413936632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57755,7 +57671,6 @@ GameObject:
   - component: {fileID: 1473777164}
   - component: {fileID: 1473777163}
   - component: {fileID: 1473777162}
-  - component: {fileID: 1473777161}
   m_Layer: 5
   m_Name: Promo Image
   m_TagString: Untagged
@@ -57783,19 +57698,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 120}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1473777161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473777159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ac0616d4e7e1bc4eab2deb226e94269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesOverride: 0
 --- !u!114 &1473777162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58472,8 +58374,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 182394258}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: CloseCurrentOverlay
+        m_TargetAssemblyTypeName: MenuScreenController, SecretHistories.Main
+        m_MethodName: HideCurrentOverlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -58625,8 +58527,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 182394258}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: CloseCurrentOverlay
+        m_TargetAssemblyTypeName: MenuScreenController, SecretHistories.Main
+        m_MethodName: HideCurrentOverlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -58789,8 +58691,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 182394258}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: CloseCurrentOverlay
+        m_TargetAssemblyTypeName: MenuScreenController, SecretHistories.Main
+        m_MethodName: HideCurrentOverlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -84660,16 +84562,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4057377682757343470}
+      objectReference: {fileID: 182394258}
     - target: {fileID: 4057377681684755363, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleVisibility
+      value: HideCurrentOverlay
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681684755363, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: OptionsPanel, SecretHistories.Main
+      value: MenuScreenController, SecretHistories.Main
       objectReference: {fileID: 0}
     - target: {fileID: 4057377681792788907, guid: d7dd4dc93e7af6e489e258c92e502019,
         type: 3}
