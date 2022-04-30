@@ -236,11 +236,18 @@ namespace SecretHistories.Fucine.DataImport
                     // remove: removes items from a dictionary or a list
                     case ModPropertyOp.Remove:
                         {
+                            //original property doesn't exist, nothing to modify; skip
+                            if (entityToModify.ContainsKey(propertyToModify) == false)
+                            {
+                                break;
+                            }
+
                             ArrayList valuesToDelete = operatingEntity.GetArrayListFromEntityData(operationProperty);
 
                             if (entityToModify[propertyToModify] is EntityData)
                             {
-                                Hashtable originalNestedDictionary = operatingEntity.GetEntityDataFromEntityData(propertyToModify).ValuesTable;
+                                Hashtable originalNestedDictionary = entityToModify.GetEntityDataFromEntityData(propertyToModify).ValuesTable;
+
                                 foreach (string toDelete in valuesToDelete)
                                 {
                                     if (originalNestedDictionary.ContainsKey(toDelete))
