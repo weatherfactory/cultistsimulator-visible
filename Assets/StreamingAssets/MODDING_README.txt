@@ -122,22 +122,25 @@ $prepend:
 prepends a list of items to the original list property.
 
 $add:
-adds the specified properties to a dictionary
+adds the specified properties to a dictionary.
 
 $remove:
 removes each element in the list from the original property, which can either be a list or a dictionary.
 
+$plus/minus:
+modify numeric properties.
+
 $prefix/$postfix/$replace/$replacelast:
-modify string properties
+modify string properties.
 
 $listedit/$dictedit:
-apply $ operations to nested collections
+apply $ operations to nested collections.
 
 There are also a handful of element-level modding operations:
-4
 $priority - define loading order priority for each entity;
 $derives - like 'extends', but child doesn't override parents' collections;
 $contentgroups - allows to tag content for whatever purpose;
+$mute - boolean, don't display log messages when exporting this entity;
 
 
 CULTURES

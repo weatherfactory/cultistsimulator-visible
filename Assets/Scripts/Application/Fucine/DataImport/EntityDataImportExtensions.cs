@@ -37,7 +37,7 @@ namespace SecretHistories.Fucine.DataImport
             entityData.contentGroups = entityData.GetArrayListFromEntityData(CONTENTGROUP).Cast<string>().ToArray();
             bool result = entityData.contentGroups.Intersect(ignoredContentGroups).Any();
             entityData.ValuesTable.Remove(CONTENTGROUP);
-            
+
             return result;
         }
 
@@ -90,6 +90,19 @@ namespace SecretHistories.Fucine.DataImport
             {
                 if (allLoadedEntitiesOfType.ContainsKey(parentId))
                 {
+                    //primordial modding syntax [pre-workshop] required "extends" to modify core entities; now extends, obviously, only manage inheritance
+                    //but older mods (or mods written by older guides) still may use it in the old way and that may lead to the problem:
+                    //1. modded entity extends core entity, copying all its properties
+                    //2. modded entity uses $ ops to modify core entity's properties
+                    //3. modded entity then proceeds to undo all the changes made by copying all the original properties back (cause they're now considered not as "original" but as "defined in modded entity"
+                    //so, catching this here
+                    if (parentId == childEntity.Id)
+                    {
+                        if (!childEntity.isMuted)
+                            log.LogWarning($"Entity '{parentId}' tries to extend itself - this shouldn't happen; skipping.");
+                        continue;
+                    }
+
                     EntityData parentEntity = allLoadedEntitiesOfType[parentId];
                     //note - all parents' $ ops at this point are resolved and removed from their ValuesTables, so $ ops aren't inheritable (and aren't modifiable) by design
                     foreach (object key in parentEntity.ValuesTable.Keys)
@@ -133,7 +146,6 @@ namespace SecretHistories.Fucine.DataImport
             //            "dictionary$dictedit": { "nested_list$append": [ "value" ] }
             //$listedit also allows to insert new entries to the list (even in-between the existing ones - by using decimal values)
 
-            //  EntityData operatingEntity = this;
             const char OPSEP = '$';
 
             var allProperties = new ArrayList(operatingEntity.ValuesTable.Keys);
@@ -183,9 +195,9 @@ namespace SecretHistories.Fucine.DataImport
                             ArrayList operationList = operatingEntity.GetArrayListFromEntityData(operationProperty);
                             ArrayList originalList = entityToModify.GetArrayListFromEntityData(propertyToModify);
 
-                            if (operation == ModPropertyOp.Append)
+                            if (operation == ModPropertyOp.Prepend) //to the start of the list
                                 originalList.InsertRange(0, operationList);
-                            else
+                            else if (operation == ModPropertyOp.Append) //to the end of the list
                                 originalList.AddRange(operationList);
 
                             break;
@@ -202,7 +214,7 @@ namespace SecretHistories.Fucine.DataImport
 
                             if (operation == ModPropertyOp.Plus)
                                 entityToModify[propertyToModify] = originalValue + change;
-                            else
+                            else if (operation == ModPropertyOp.Minus)
                                 entityToModify[propertyToModify] = originalValue - change;
 
                             break;
@@ -236,11 +248,18 @@ namespace SecretHistories.Fucine.DataImport
                     // remove: removes items from a dictionary or a list
                     case ModPropertyOp.Remove:
                         {
+                            //original property doesn't exist, nothing to modify; skip
+                            if (entityToModify.ContainsKey(propertyToModify) == false)
+                            {
+                                break;
+                            }
+
                             ArrayList valuesToDelete = operatingEntity.GetArrayListFromEntityData(operationProperty);
 
                             if (entityToModify[propertyToModify] is EntityData)
                             {
-                                Hashtable originalNestedDictionary = operatingEntity.GetEntityDataFromEntityData(propertyToModify).ValuesTable;
+                                Hashtable originalNestedDictionary = entityToModify.GetEntityDataFromEntityData(propertyToModify).ValuesTable;
+
                                 foreach (string toDelete in valuesToDelete)
                                 {
                                     if (originalNestedDictionary.ContainsKey(toDelete))
@@ -285,9 +304,9 @@ namespace SecretHistories.Fucine.DataImport
                             string originalValue = entityToModify[propertyToModify].ToString();
                             string operationValue = operatingEntity[operationProperty].ToString();
 
-                            if (operation == ModPropertyOp.Prefix)
+                            if (operation == ModPropertyOp.Prefix) //original at the end
                                 entityToModify[propertyToModify] = operationValue + originalValue;
-                            else
+                            else if (operation == ModPropertyOp.Postfix) //original at the start
                                 entityToModify[propertyToModify] = originalValue + operationValue;
 
                             break;
@@ -361,14 +380,12 @@ namespace SecretHistories.Fucine.DataImport
                             }
 
                             EntityData nestedEntity;
-                            if (entityToModify.ContainsKey(propertyToModify))
+                            if (entityToModify.ContainsKey(propertyToModify) == false)
                             {
                                 nestedEntity = new EntityData($"{entityToModify.UniqueId}>{property}", new Hashtable());
                             }
-                            if (operation == ModPropertyOp.ListEdit)
-                            {
+                            else if (operation == ModPropertyOp.ListEdit)
                                 nestedEntity = entityToModify.GetArrayListFromEntityData(propertyToModify).ToEntityData(entityToModify.UniqueId, propertyToModify);
-                            }
                             else
                             {
                                 EntityData originalNestedDictionary = entityToModify.GetEntityDataFromEntityData(propertyToModify);

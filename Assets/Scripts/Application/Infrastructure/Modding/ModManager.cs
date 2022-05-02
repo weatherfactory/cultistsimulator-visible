@@ -487,7 +487,7 @@ namespace SecretHistories.Constants.Modding
             }
 
             string relativePathUnified = SlashInvariant(relativePathWithoutLeadingSlash);
-            NoonUtility.LogWarning(relativePathUnified);
+
             if (_images.ContainsKey(relativePathUnified))
                 log.LogWarning($"Duplicate image {imageFilePath} in {rootFolder}; previously loaded image will be overwritten.");
             //setting the value directly, without Add(), so earlier Images with the same name are overwritten (allowing mods to change images used in other mods)
