@@ -175,7 +175,7 @@ public class MenuScreenController : LocalNexus {
     {
 
 
-        var pp = Watchman.Get<StageHand>().GamePersistenceProvider;
+        var pp = GamePersistenceProvider.GetBestGuessGamePersistence();
         bool savedGameExists=pp.SaveExists();
 
         // Show the buttons as needed
